@@ -1,8 +1,16 @@
+
+// Hidden until light mode is ready for deployment
+export default function ThemeToggle() {
+  return null;
+}
+
+/* 
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+
 
   return (
     <button
@@ -18,3 +26,4 @@ export default function ThemeToggle() {
     </button>
   );
 }
+*/
