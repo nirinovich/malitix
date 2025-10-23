@@ -2,7 +2,7 @@ import { ArrowRight, Code, Database, Cpu, Sparkles } from 'lucide-react';
 import { HERO_CONTENT, CTA_TEXT } from '../utils/constants';
 import { useTheme } from '../context/ThemeContext';
 
-export default function HeroAnimated() {
+export default function Hero() {
   const { theme } = useTheme();
   
   return (
