@@ -231,7 +231,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce">
         <div className={`w-6 h-10 border-2 rounded-full flex items-start justify-center p-2 ${
           theme === 'dark' ? 'border-white/30' : 'border-gray-400'
         }`}>
