@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
 
 // Statistics
 export const STATS: Stat[] = [
-  { value: '100', label: 'Projets réalisés', suffix: '+' },
+  { value: '600', label: 'Projets réalisés', suffix: '+' },
   { value: '50', label: 'Clients satisfaits', suffix: '+' },
   { value: '99.9', label: 'Disponibilité', suffix: '%' },
   { value: '24/7', label: 'Support technique', suffix: '' },
