@@ -126,8 +126,15 @@ export default function Hero() {
 
               {/* Connecting lines */}
               <svg className="absolute inset-0 w-full h-full" style={{ zIndex: -1 }}>
-                <line x1="30%" y1="30%" x2="70%" y2="40%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
-                <line x1="40%" y1="70%" x2="70%" y2="80%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                {/* Web & Mobile (top-left) to Data Platform (top-right) */}
+                <line x1="35%" y1="25%" x2="65%" y2="30%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
+                
+                {/* Data Platform (top-right) to IA Métier (bottom-left) */}
+                <line x1="65%" y1="35%" x2="35%" y2="65%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+                
+                {/* IA Métier (bottom-left) to Projets Réussis (bottom-right) */}
+                <line x1="40%" y1="70%" x2="65%" y2="75%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                
                 <defs>
                   <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="rgba(44,163,189,0)" />
