@@ -141,11 +141,6 @@ export default function Hero() {
 
           {/* Right Side - Content */}
           <div className="text-center lg:text-left space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-4 py-2 text-sm text-[#2ca3bd] font-medium">
-              <Sparkles size={16} />
-              <span>Solutions tech de nouvelle génération</span>
-            </div>
 
             {/* Headline */}
             <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight ${
