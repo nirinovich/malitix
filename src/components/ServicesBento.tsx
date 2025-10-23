@@ -158,27 +158,29 @@ export default function ServicesBento() {
               theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
             }`}></div>
             
-            <div className="relative z-10 h-full flex flex-col md:flex-row gap-6">
-              <div className="flex flex-col">
-                <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="relative z-10 h-full flex flex-col">
+              <div className="flex items-start gap-6 mb-6">
+                <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                   <Database className="text-white" size={28} />
                 </div>
                 
-                <h3 className={`text-xl font-bold mb-3 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {SERVICES[3].title}
-                </h3>
-                
-                <p className={`mb-4 text-sm ${
-                  theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-                }`}>
-                  {SERVICES[3].description}
-                </p>
+                <div className="flex-grow">
+                  <h3 className={`text-xl font-bold mb-3 ${
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {SERVICES[3].title}
+                  </h3>
+                  
+                  <p className={`text-sm ${
+                    theme === 'dark' ? 'text-white/70' : 'text-gray-600'
+                  }`}>
+                    {SERVICES[3].description}
+                  </p>
+                </div>
               </div>
               
-              <div className="flex flex-col justify-between">
-                <div className="space-y-2 mb-6">
+              <div className="flex items-end justify-between">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-2">
                   {['Data Warehousing', 'ETL Pipelines', 'Analytics temps réel', 'Data Governance'].map((feature, i) => (
                     <div key={i} className={`flex items-center gap-2 text-sm ${
                       theme === 'dark' ? 'text-white/60' : 'text-gray-600'
@@ -191,7 +193,7 @@ export default function ServicesBento() {
                 
                 <a
                   href="#contact"
-                  className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm whitespace-nowrap"
+                  className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm whitespace-nowrap ml-4"
                 >
                   En savoir plus
                   <ArrowRight size={18} />
