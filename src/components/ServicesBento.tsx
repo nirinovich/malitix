@@ -159,7 +159,7 @@ export default function ServicesBento() {
             }`}></div>
             
             <div className="relative z-10 h-full flex flex-col">
-              <div className="flex items-start gap-6 mb-6">
+              <div className="flex items-start gap-6 mb-4">
                 <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                   <Database className="text-white" size={28} />
                 </div>
@@ -179,26 +179,24 @@ export default function ServicesBento() {
                 </div>
               </div>
               
-              <div className="flex items-end justify-between">
-                <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-                  {['Data Warehousing', 'ETL Pipelines', 'Analytics temps réel', 'Data Governance'].map((feature, i) => (
-                    <div key={i} className={`flex items-center gap-2 text-sm ${
-                      theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                    }`}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#2ca3bd]"></div>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <a
-                  href="#contact"
-                  className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm whitespace-nowrap ml-4"
-                >
-                  En savoir plus
-                  <ArrowRight size={18} />
-                </a>
+              <div className="grid grid-cols-2 gap-x-8 gap-y-2 mb-6">
+                {['Data Warehousing', 'ETL Pipelines', 'Analytics temps réel', 'Data Governance'].map((feature, i) => (
+                  <div key={i} className={`flex items-center gap-2 text-sm ${
+                    theme === 'dark' ? 'text-white/60' : 'text-gray-600'
+                  }`}>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2ca3bd]"></div>
+                    <span>{feature}</span>
+                  </div>
+                ))}
               </div>
+              
+              <a
+                href="#contact"
+                className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm mt-auto"
+              >
+                En savoir plus
+                <ArrowRight size={18} />
+              </a>
             </div>
           </div>
 
