@@ -49,22 +49,35 @@ export default function TrustStats() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-4 py-2 text-sm text-[#2ca3bd] font-medium mb-4">
+        {/* Section Badge */}
+        <div className="text-center mb-8">
+          <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-4 py-2 text-sm text-[#2ca3bd] font-medium">
             Performance & Fiabilité
           </div>
-          <h2 className={`text-4xl sm:text-5xl font-bold ${
+        </div>
+
+        {/* About Malitix - Human Touch */}
+        <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">
+          <h2 className={`text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-4 leading-tight ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Des résultats qui parlent d'eux-mêmes
+            Chez Malitix, nous ne construisons pas que du code,{' '}
+            <span className="text-[#2ca3bd]">nous créons des solutions qui changent la donne</span>
           </h2>
-          <p className={`text-lg ${
+          <p className={`text-lg leading-relaxed ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
           }`}>
-            Notre engagement envers l'excellence se reflète dans chaque projet
+            Nous sommes une équipe passionnée qui croit que la technologie doit servir l'humain, pas l'inverse. 
+            Chaque projet est une opportunité de transformer vos défis en succès concrets. Que vous soyez une startup 
+            ambitieuse ou une entreprise établie, nous mettons notre expertise au service de votre vision pour créer 
+            des expériences digitales qui marquent les esprits.
           </p>
         </div>
+
+        {/* Divider */}
+        <div className={`max-w-xs mx-auto mb-16 h-px ${
+          theme === 'dark' ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
+        }`}></div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
