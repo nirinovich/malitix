@@ -218,8 +218,8 @@ export default function Hero() {
                 <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Projets</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#2ca3bd]">50+</div>
-                <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Clients</div>
+                <div className="text-3xl font-bold text-[#2ca3bd]">350+</div>
+                <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Ingénieurs</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#2ca3bd]">24/7</div>
