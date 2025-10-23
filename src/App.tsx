@@ -1,6 +1,6 @@
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Navbar from './components/Navbar';
-import HeroAnimated from './components/HeroAnimated';
+import Hero from './components/Hero';
 import ServicesBento from './components/ServicesBento';
 import TrustStats from './components/TrustStats';
 import CTASection from './components/CTASection';
@@ -16,7 +16,7 @@ function AppContent() {
       <Navbar theme={theme} />
       
       {/* Hero Section */}
-      <HeroAnimated />
+      <Hero />
       
       {/* Services Section */}
       <ServicesBento />
