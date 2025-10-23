@@ -1,11 +1,9 @@
-import { Linkedin, Twitter, Github, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '../utils/constants';
 import { useTheme } from '../context/ThemeContext';
 
 const iconMap = {
   Linkedin,
-  Twitter,
-  Github,
 };
 
 export default function Footer() {
@@ -202,16 +200,6 @@ export default function Footer() {
                 }`}
               >
                 Politique de confidentialité
-              </a>
-              <a
-                href="#"
-                className={`text-sm transition-colors ${
-                  theme === 'dark'
-                    ? 'text-white/50 hover:text-[#2ca3bd]'
-                    : 'text-gray-500 hover:text-[#2ca3bd]'
-                }`}
-              >
-                CGV
               </a>
             </div>
           </div>

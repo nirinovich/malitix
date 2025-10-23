@@ -59,8 +59,6 @@ export const STATS: Stat[] = [
 // Social Media Links
 export const SOCIAL_LINKS: SocialLink[] = [
   { name: 'LinkedIn', href: '#', icon: 'Linkedin' },
-  { name: 'Twitter', href: '#', icon: 'Twitter' },
-  { name: 'GitHub', href: '#', icon: 'Github' },
 ];
 
 // Company Info
