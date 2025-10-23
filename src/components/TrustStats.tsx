@@ -134,7 +134,7 @@ export default function TrustStats() {
           })}
         </div>
 
-        {/* Trust Badges / Certifications */}
+        {/* Partner Logos */}
         <div className="mt-16 text-center">
           <div className={`inline-flex flex-wrap items-center justify-center gap-8 backdrop-blur-xl rounded-3xl px-12 py-8 ${
             theme === 'dark'
@@ -144,16 +144,50 @@ export default function TrustStats() {
             <div className={`font-semibold ${
               theme === 'dark' ? 'text-white/70' : 'text-gray-700'
             }`}>Certifié par :</div>
-            {['ISO 27001', 'AWS Partner', 'Microsoft Azure', 'Google Cloud'].map((cert, i) => (
-              <div
-                key={i}
-                className={`font-semibold transition-colors cursor-default hover:text-[#2ca3bd] ${
-                  theme === 'dark' ? 'text-white/50' : 'text-gray-500'
+            
+            {/* GCP Logo */}
+            <div className="group cursor-default transition-all duration-300 hover:scale-110">
+              <img 
+                src="/images/GCP.png" 
+                alt="Google Cloud Platform" 
+                className={`h-8 w-auto object-contain transition-all duration-300 ${
+                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
                 }`}
-              >
-                {cert}
-              </div>
-            ))}
+              />
+            </div>
+
+            {/* Cisco Logo */}
+            <div className="group cursor-default transition-all duration-300 hover:scale-110">
+              <img 
+                src="/images/Cisco.png" 
+                alt="Cisco" 
+                className={`h-8 w-auto object-contain transition-all duration-300 ${
+                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                }`}
+              />
+            </div>
+
+            {/* HubSpot Logo */}
+            <div className="group cursor-default transition-all duration-300 hover:scale-110">
+              <img 
+                src="/images/Hubspot.png" 
+                alt="HubSpot" 
+                className={`h-8 w-auto object-contain transition-all duration-300 ${
+                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                }`}
+              />
+            </div>
+
+            {/* Salesforce Logo */}
+            <div className="group cursor-default transition-all duration-300 hover:scale-110">
+              <img 
+                src="/images/Salesforce.png" 
+                alt="Salesforce" 
+                className={`h-8 w-auto object-contain transition-all duration-300 ${
+                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                }`}
+              />
+            </div>
           </div>
         </div>
       </div>
