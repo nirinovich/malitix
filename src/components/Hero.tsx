@@ -124,19 +124,36 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Connecting lines */}
-              <svg className="absolute inset-0 w-full h-full" style={{ zIndex: -1 }}>
-                {/* Web & Mobile (top-left) to Data Platform (top-right) */}
-                <line x1="35%" y1="25%" x2="65%" y2="30%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
-                
-                {/* Data Platform (top-right) to IA Métier (bottom-left) */}
-                <line x1="65%" y1="35%" x2="35%" y2="65%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
-                
-                {/* IA Métier (bottom-left) to Projets Réussis (bottom-right) */}
-                <line x1="40%" y1="70%" x2="65%" y2="75%" stroke="url(#gradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
-                
+              {/* Connecting lines that float with cards */}
+              {/* Line 1: Floats with Web & Mobile card */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none animate-float" style={{ zIndex: -1, animationDelay: '0s' }}>
+                <line x1="35%" y1="25%" x2="65%" y2="30%" stroke="url(#gradient1)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
                 <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(44,163,189,0)" />
+                    <stop offset="50%" stopColor="rgba(44,163,189,0.5)" />
+                    <stop offset="100%" stopColor="rgba(44,163,189,0)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              
+              {/* Line 2: Floats with Data Platform card */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none animate-float" style={{ zIndex: -1, animationDelay: '1s' }}>
+                <line x1="65%" y1="35%" x2="32%" y2="68%" stroke="url(#gradient2)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <defs>
+                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgba(44,163,189,0)" />
+                    <stop offset="50%" stopColor="rgba(44,163,189,0.5)" />
+                    <stop offset="100%" stopColor="rgba(44,163,189,0)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              
+              {/* Line 3: Floats with IA Métier card */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none animate-float" style={{ zIndex: -1, animationDelay: '2s' }}>
+                <line x1="40%" y1="70%" x2="65%" y2="75%" stroke="url(#gradient3)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                <defs>
+                  <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="rgba(44,163,189,0)" />
                     <stop offset="50%" stopColor="rgba(44,163,189,0.5)" />
                     <stop offset="100%" stopColor="rgba(44,163,189,0)" />
