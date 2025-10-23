@@ -118,7 +118,7 @@ export default function Hero() {
                 <div className="flex items-center gap-4">
                   <Sparkles className="text-[#2ca3bd]" size={32} />
                   <div>
-                    <div className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>100+</div>
+                    <div className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>600+</div>
                     <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Projets réussis</div>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export default function Hero() {
               theme === 'dark' ? 'border-white/10' : 'border-gray-200'
             }`}>
               <div>
-                <div className="text-3xl font-bold text-[#2ca3bd]">100+</div>
+                <div className="text-3xl font-bold text-[#2ca3bd]">600+</div>
                 <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Projets</div>
               </div>
               <div>
