@@ -53,7 +53,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <img 
-                src={theme === 'dark' ? '/Logo.png' : '/LogoInverted.png'} 
+                src={theme === 'dark' ? '/Logo.webp' : '/LogoInverted.webp'} 
                 alt="Malitix" 
                 className="h-10" 
               />

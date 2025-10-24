@@ -148,7 +148,7 @@ export default function TrustStats() {
             {/* GCP Logo */}
             <div className="group cursor-default transition-all duration-300 hover:scale-110">
               <img 
-                src="/images/GCP.png" 
+                src="/images/GCP.webp" 
                 alt="Google Cloud Platform" 
                 className={`h-8 w-auto object-contain transition-all duration-300 ${
                   theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
@@ -159,7 +159,7 @@ export default function TrustStats() {
             {/* Cisco Logo */}
             <div className="group cursor-default transition-all duration-300 hover:scale-110">
               <img 
-                src="/images/Cisco.png" 
+                src="/images/Cisco.webp" 
                 alt="Cisco" 
                 className={`h-8 w-auto object-contain transition-all duration-300 ${
                   theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
@@ -170,7 +170,7 @@ export default function TrustStats() {
             {/* HubSpot Logo */}
             <div className="group cursor-default transition-all duration-300 hover:scale-110">
               <img 
-                src="/images/Hubspot.png" 
+                src="/images/Hubspot.webp" 
                 alt="HubSpot" 
                 className={`h-8 w-auto object-contain transition-all duration-300 ${
                   theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
@@ -181,7 +181,7 @@ export default function TrustStats() {
             {/* Salesforce Logo */}
             <div className="group cursor-default transition-all duration-300 hover:scale-110">
               <img 
-                src="/images/Salesforce.png" 
+                src="/images/Salesforce.webp" 
                 alt="Salesforce" 
                 className={`h-8 w-auto object-contain transition-all duration-300 ${
                   theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
