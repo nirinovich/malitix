@@ -70,6 +70,11 @@ button, a, .card {
   50% { transform: translateY(-20px); }
 }
 
+@keyframes bounce-horizontal {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -83,6 +88,10 @@ button, a, .card {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-bounce-horizontal {
+  animation: bounce-horizontal 1s ease-in-out infinite;
 }
 
 .animate-gradient {
