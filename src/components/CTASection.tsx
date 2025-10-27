@@ -8,7 +8,7 @@ export default function CTASection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
+    website: '',
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -26,7 +26,10 @@ export default function CTASection() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          source: 'Main Page'
+        }),
       });
 
       if (!response.ok) {
@@ -36,7 +39,7 @@ export default function CTASection() {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ name: '', email: '', company: '', message: '' });
+        setFormData({ name: '', email: '', website: '', message: '' });
       }, 3000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Une erreur est survenue');
@@ -197,25 +200,25 @@ export default function CTASection() {
                     />
                   </div>
 
-                  {/* Company */}
+                  {/* Website */}
                   <div>
-                    <label htmlFor="company" className={`block font-medium mb-2 ${
+                    <label htmlFor="website" className={`block font-medium mb-2 ${
                       theme === 'dark' ? 'text-white/90' : 'text-gray-900'
                     }`}>
-                      Entreprise
+                      Site web
                     </label>
                     <input
                       type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
+                      id="website"
+                      name="website"
+                      value={formData.website}
                       onChange={handleChange}
                       className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
                         theme === 'dark'
                           ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
                           : 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400'
                       }`}
-                      placeholder="Votre entreprise"
+                      placeholder="https://votre-site.com"
                     />
                   </div>
 
