@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router';
 import { NAV_LINKS, CTA_TEXT } from '../utils/constants';
 import { useTheme } from '../context/ThemeContext';
 
@@ -12,6 +13,8 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
   const theme = propTheme || contextTheme;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +25,37 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Gérer le scroll vers la section si il y a un hash dans l'URL
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+      // Attendre que la navigation soit complète avant de scroller
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Si on est déjà sur l'accueil, juste scroller
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -44,12 +73,8 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#home');
-              }}
+            <Link
+              to="/"
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <img 
@@ -57,7 +82,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                 alt="Malitix" 
                 className="h-10" 
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
