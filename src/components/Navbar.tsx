@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router';
-import { NAV_LINKS, CTA_TEXT } from '../utils/constants';
+import { CTA_TEXT } from '../utils/constants';
 import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   theme?: 'dark' | 'light';
 }
 
+const USE_CASES = [
+  { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours' },
+  // Add more use cases here in the future
+];
+
 export default function Navbar({ theme: propTheme }: NavbarProps) {
   const { theme: contextTheme } = useTheme();
   const theme = propTheme || contextTheme;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const dropdownTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +46,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
+    setIsUseCasesOpen(false);
     
     // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
     if (location.pathname !== '/') {
@@ -57,6 +65,27 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  };
+
+  const handleUseCaseClick = (href: string) => {
+    setIsUseCasesOpen(false);
+    setIsMobileMenuOpen(false);
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Better dropdown handling to prevent it from closing too quickly
+  const handleDropdownEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsUseCasesOpen(true);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = window.setTimeout(() => {
+      setIsUseCasesOpen(false);
+    }, 200); // 200ms delay before closing
   };
 
   return (
@@ -87,22 +116,130 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(link.href);
-                }}
-                className={`relative group py-2 transition-colors ${
+            {/* Accueil */}
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#home');
+              }}
+              className={`relative group py-2 transition-colors ${
+                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              Accueil
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+            </a>
+
+            {/* Services */}
+            <a
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#services');
+              }}
+              className={`relative group py-2 transition-colors ${
+                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+            </a>
+
+            {/* Use Cases Dropdown - Now after Services */}
+            <div 
+              className="relative group"
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <button
+                className={`relative py-2 transition-colors flex items-center gap-1 ${
                   theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
-                {link.label}
+                Use Cases
+                <ChevronDown 
+                  size={16} 
+                  className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
+                />
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-              </a>
-            ))}
+              </button>
+
+              {/* Dropdown Menu - Improved with proper spacing */}
+              <div
+                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
+                  isUseCasesOpen
+                    ? 'opacity-100 visible translate-y-0'
+                    : 'opacity-0 invisible -translate-y-2'
+                }`}
+              >
+                <div className={`w-72 rounded-2xl shadow-2xl border overflow-hidden ${
+                  theme === 'dark'
+                    ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
+                    : 'bg-white/98 backdrop-blur-xl border-gray-200'
+                }`}>
+                  <div className="p-2">
+                    {USE_CASES.map((useCase) => (
+                      <button
+                        key={useCase.href}
+                        onClick={() => handleUseCaseClick(useCase.href)}
+                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item ${
+                          theme === 'dark'
+                            ? 'hover:bg-white/10 text-white/80 hover:text-white'
+                            : 'hover:bg-gray-100 text-gray-700 hover:text-gray-900'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[#2ca3bd] transition-colors">
+                              {useCase.label}
+                            </div>
+                            <div className={`text-xs ${
+                              theme === 'dark' ? 'text-white/50' : 'text-gray-500'
+                            }`}>
+                              {useCase.description}
+                            </div>
+                          </div>
+                          <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                            →
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* À propos */}
+            <a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#about');
+              }}
+              className={`relative group py-2 transition-colors ${
+                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              À propos
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+            </a>
+
+            {/* Contact */}
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#contact');
+              }}
+              className={`relative group py-2 transition-colors ${
+                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+            </a>
           </div>
 
           {/* CTA Button */}
@@ -145,23 +282,116 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
         }`}
       >
         <div className="px-4 py-6 space-y-4">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(link.href);
-              }}
-              className={`block px-4 py-3 rounded-lg transition-all ${
+          {/* Accueil */}
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('#home');
+            }}
+            className={`block px-4 py-3 rounded-lg transition-all ${
+              theme === 'dark'
+                ? 'text-white/80 hover:text-white hover:bg-white/5'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+            }`}
+          >
+            Accueil
+          </a>
+
+          {/* Services */}
+          <a
+            href="#services"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('#services');
+            }}
+            className={`block px-4 py-3 rounded-lg transition-all ${
+              theme === 'dark'
+                ? 'text-white/80 hover:text-white hover:bg-white/5'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+            }`}
+          >
+            Services
+          </a>
+
+          {/* Use Cases Mobile Dropdown */}
+          <div>
+            <button
+              onClick={() => setIsUseCasesOpen(!isUseCasesOpen)}
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${
                 theme === 'dark'
                   ? 'text-white/80 hover:text-white hover:bg-white/5'
                   : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
               }`}
             >
-              {link.label}
-            </a>
-          ))}
+              <span>Use Cases</span>
+              <ChevronDown 
+                size={16} 
+                className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            
+            {/* Mobile Use Cases List */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                isUseCasesOpen ? 'max-h-96 mt-2' : 'max-h-0'
+              }`}
+            >
+              <div className="space-y-2 pl-4">
+                {USE_CASES.map((useCase) => (
+                  <button
+                    key={useCase.href}
+                    onClick={() => handleUseCaseClick(useCase.href)}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
+                      theme === 'dark'
+                        ? 'bg-white/5 text-white/80 hover:text-white hover:bg-white/10'
+                        : 'bg-gray-50 text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="font-semibold text-sm mb-1">{useCase.label}</div>
+                    <div className={`text-xs ${
+                      theme === 'dark' ? 'text-white/50' : 'text-gray-500'
+                    }`}>
+                      {useCase.description}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* À propos */}
+          <a
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('#about');
+            }}
+            className={`block px-4 py-3 rounded-lg transition-all ${
+              theme === 'dark'
+                ? 'text-white/80 hover:text-white hover:bg-white/5'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+            }`}
+          >
+            À propos
+          </a>
+
+          {/* Contact */}
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('#contact');
+            }}
+            className={`block px-4 py-3 rounded-lg transition-all ${
+              theme === 'dark'
+                ? 'text-white/80 hover:text-white hover:bg-white/5'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+            }`}
+          >
+            Contact
+          </a>
+
           <a
             href="#contact"
             onClick={(e) => {
