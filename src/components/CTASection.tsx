@@ -12,15 +12,37 @@ export default function CTASection() {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement actual form submission logic
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', company: '', message: '' });
-    }, 3000);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi du formulaire');
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', email: '', company: '', message: '' });
+      }, 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -122,6 +144,13 @@ export default function CTASection() {
             }`}>
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Error Message */}
+                  {error && (
+                    <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500">
+                      {error}
+                    </div>
+                  )}
+
                   {/* Name */}
                   <div>
                     <label htmlFor="name" className={`block font-medium mb-2 ${
@@ -216,10 +245,11 @@ export default function CTASection() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+                    disabled={isLoading}
+                    className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    {CTA_TEXT.primary}
-                    <Send size={20} />
+                    {isLoading ? 'Envoi en cours...' : CTA_TEXT.primary}
+                    <Send size={20} className={isLoading ? 'animate-pulse' : ''} />
                   </button>
 
                   <p className={`text-sm text-center ${
