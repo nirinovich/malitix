@@ -1,45 +1,22 @@
-import { ThemeProvider, useTheme } from './context/ThemeContext';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ServicesBento from './components/ServicesBento';
-import TrustStats from './components/TrustStats';
-import CTASection from './components/CTASection';
-import Footer from './components/Footer';
-import ThemeToggle from './components/ThemeToggle';
-
-function AppContent() {
-  const { theme } = useTheme();
-
-  return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-[#060705]' : 'bg-white'}`}>
-      {/* Main Content */}
-      <Navbar theme={theme} />
-      
-      {/* Hero Section */}
-      <Hero />
-      
-      {/* Services Section */}
-      <ServicesBento />
-      
-      {/* Trust/Stats Section */}
-      <TrustStats />
-      
-      {/* CTA Section */}
-      <CTASection />
-      
-      {/* Footer */}
-      <Footer />
-
-      {/* Theme Toggle Button */}
-      <ThemeToggle />
-    </div>
-  );
-}
+import { ThemeProvider } from './context/ThemeContext';
+import { BrowserRouter, Routes, Route } from 'react-router';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import LegalNotice from './pages/LegalNotice';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/mentions-legales" element={<LegalNotice />} />
+            <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

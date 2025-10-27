@@ -1,4 +1,5 @@
 import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router';
 import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '../utils/constants';
 import { useTheme } from '../context/ThemeContext';
 
@@ -181,8 +182,8 @@ export default function Footer() {
               © {currentYear} {COMPANY_INFO.name}. Tous droits réservés.
             </p>
             <div className="flex gap-6">
-              <a
-                href="#"
+              <Link
+                to="/mentions-legales"
                 className={`text-sm transition-colors ${
                   theme === 'dark'
                     ? 'text-white/50 hover:text-[#2ca3bd]'
@@ -190,9 +191,9 @@ export default function Footer() {
                 }`}
               >
                 Mentions légales
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/politique-de-confidentialite"
                 className={`text-sm transition-colors ${
                   theme === 'dark'
                     ? 'text-white/50 hover:text-[#2ca3bd]'
@@ -200,7 +201,7 @@ export default function Footer() {
                 }`}
               >
                 Politique de confidentialité
-              </a>
+              </Link>
             </div>
           </div>
         </div>
