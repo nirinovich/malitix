@@ -1,5 +1,6 @@
 import { useTheme } from '../context/ThemeContext';
-import { CTAButtonV1 } from './CTAButtons';
+import { CTAButtonV1, CTAButtonV2, CTAButtonV3 } from './CTAButtons';
+import { useABTest } from '../context/ABTestContext';
 
 const companyLogos = [
   {
@@ -47,11 +48,14 @@ const companyLogos = [
 // Variante A - Design avec Features et Visuels
 export default function HeroVariantA() {
   const { theme } = useTheme();
+  const { buttonVariant } = useABTest();
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sprint');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const ButtonComponent = buttonVariant === 'V1' ? CTAButtonV1 : buttonVariant === 'V2' ? CTAButtonV2 : CTAButtonV3;
 
   return (
     <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
@@ -146,7 +150,7 @@ export default function HeroVariantA() {
 
           {/* CTA */}
           <div className="pt-8">
-            <CTAButtonV1 onClick={scrollToContact} />
+            <ButtonComponent onClick={scrollToContact} />
           </div>
 
           {/* Logo Carousel */}

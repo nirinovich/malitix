@@ -3,17 +3,22 @@ import HeroVariantA from './HeroVariantA';
 import HeroVariantB from './HeroVariantB';
 import HeroVariantC from './HeroVariantC';
 import { useTheme } from '../context/ThemeContext';
+import { ABTestProvider, useABTest } from '../context/ABTestContext';
 
 type HeroVariant = 'A' | 'B' | 'C';
+type ButtonVariant = 'V1' | 'V2' | 'V3';
 
-export default function HeroABTest() {
+function HeroABTestInner() {
   const [selectedVariant, setSelectedVariant] = useState<HeroVariant>('A');
   const [showControls, setShowControls] = useState(true);
   const { theme } = useTheme();
+  const { buttonVariant, setButtonVariant } = useABTest();
 
-  // Charge la variante sauvegardée ou assigne aléatoirement
+  // Charge les variantes sauvegardées ou assigne aléatoirement
   useEffect(() => {
     const savedVariant = localStorage.getItem('hero-variant') as HeroVariant;
+    const savedButton = localStorage.getItem('button-variant') as ButtonVariant;
+    
     if (savedVariant && ['A', 'B', 'C'].includes(savedVariant)) {
       setSelectedVariant(savedVariant);
     } else {
@@ -23,7 +28,16 @@ export default function HeroABTest() {
       setSelectedVariant(randomVariant);
       localStorage.setItem('hero-variant', randomVariant);
     }
-  }, []);
+
+    if (savedButton && ['V1', 'V2', 'V3'].includes(savedButton)) {
+      setButtonVariant(savedButton as ButtonVariant);
+    } else {
+      // Attribution aléatoire pour les boutons
+      const buttonVariants: ButtonVariant[] = ['V1', 'V2', 'V3'];
+      const randomButton = buttonVariants[Math.floor(Math.random() * buttonVariants.length)];
+      setButtonVariant(randomButton);
+    }
+  }, [setButtonVariant]);
 
   // Sauvegarde quand l'utilisateur change manuellement
   const handleVariantChange = (variant: HeroVariant) => {
@@ -31,7 +45,14 @@ export default function HeroABTest() {
     localStorage.setItem('hero-variant', variant);
     
     // Track l'événement (à connecter avec votre analytics)
-    console.log(`A/B Test: Variant ${variant} selected`);
+    console.log(`A/B Test: Hero Variant ${variant} selected`);
+  };
+
+  const handleButtonChange = (button: ButtonVariant) => {
+    setButtonVariant(button);
+    
+    // Track l'événement (à connecter avec votre analytics)
+    console.log(`A/B Test: Button Variant ${button} selected`);
   };
 
   // Raccourci clavier pour afficher/masquer les contrôles (Ctrl+Shift+T)
@@ -86,10 +107,10 @@ export default function HeroABTest() {
             </button>
           </div>
 
-          {/* Sélecteur de variante */}
-          <div className="space-y-2">
-            <div className={`text-xs mb-3 ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
-              Variante active : <span className="font-bold text-[#2ca3bd]">{selectedVariant}</span>
+          {/* Sélecteur de variante Hero */}
+          <div className="space-y-3">
+            <div className={`text-xs mb-2 ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
+              Variante Hero : <span className="font-bold text-[#2ca3bd]">{selectedVariant}</span>
             </div>
             
             <div className="grid grid-cols-3 gap-2">
@@ -111,20 +132,47 @@ export default function HeroABTest() {
             </div>
           </div>
 
+          {/* Sélecteur de variante Bouton */}
+          <div className={`space-y-3 mt-4 pt-4 border-t ${
+            theme === 'dark' ? 'border-white/10' : 'border-gray-200'
+          }`}>
+            <div className={`text-xs mb-2 ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
+              Variante Bouton : <span className="font-bold text-[#2ca3bd]">{buttonVariant}</span>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-2">
+              {(['V1', 'V2', 'V3'] as ButtonVariant[]).map((button) => (
+                <button
+                  key={button}
+                  onClick={() => handleButtonChange(button)}
+                  className={`px-3 py-2 rounded-xl font-bold text-xs transition-all duration-300 ${
+                    buttonVariant === button
+                      ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-lg scale-105'
+                      : theme === 'dark'
+                      ? 'bg-white/5 text-white/70 hover:bg-white/10'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  {button}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Descriptions des variantes */}
           <div className={`mt-4 pt-4 border-t ${
             theme === 'dark' ? 'border-white/10' : 'border-gray-200'
           }`}>
             <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
-              {selectedVariant === 'A' && '📐 Minimaliste et Direct'}
-              {selectedVariant === 'B' && '🔥 Bold avec Urgence'}
-              {selectedVariant === 'C' && '📊 Split avec Stats'}
+              {selectedVariant === 'A' && '📐 Hero: Features et Visuels'}
+              {selectedVariant === 'B' && '🔥 Hero: Bold et Impactant'}
+              {selectedVariant === 'C' && '📊 Hero: CPU + Roadmap'}
             </div>
-          </div>
-
-          {/* Info raccourci */}
-          <div className={`mt-3 text-[10px] ${theme === 'dark' ? 'text-white/30' : 'text-gray-400'}`}>
-            Ctrl+Shift+T pour masquer
+            <div className={`text-xs mt-1 ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
+              {buttonVariant === 'V1' && '⚡ Bouton: Animation Chakra'}
+              {buttonVariant === 'V2' && '✓ Bouton: Badge Garantie'}
+              {buttonVariant === 'V3' && '⏱️ Bouton: Minimaliste Timer'}
+            </div>
           </div>
         </div>
       )}
@@ -143,5 +191,13 @@ export default function HeroABTest() {
         </button>
       )}
     </div>
+  );
+}
+
+export default function HeroABTest() {
+  return (
+    <ABTestProvider>
+      <HeroABTestInner />
+    </ABTestProvider>
   );
 }
