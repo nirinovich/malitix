@@ -131,28 +131,6 @@ export default function HeroVariantC() {
             </div>
           </div>
 
-            {/* Features rapides */}
-            <div className="space-y-3">
-              {['✓ Diagnostic en 48h', '✓ Équipe dédiée', '✓ Résultats mesurables'].map((feature) => (
-                <div key={feature} className={`flex items-center gap-3 text-lg ${
-                  theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-                }`}>
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
-                  }`}>
-                    <span className="text-[#2ca3bd] text-sm">✓</span>
-                  </div>
-                  {feature.replace('✓ ', '')}
-                </div>
-              ))}
-            </div>
-
-            {/* CTA avec Chakra Button */}
-            <div className="pt-4">
-              <CTAButtonV3 onClick={scrollToContact} />
-            </div>
-          </div>
-
           {/* Colonne droite - Visual CPU Malitix + Roadmap */}
           <div className="relative flex justify-center">
             <div className={`relative p-8 rounded-3xl w-full max-w-md ${
