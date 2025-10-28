@@ -1,4 +1,4 @@
-import SprintHero from '../components/SprintHero';
+import HeroABTest from '../components/HeroABTest';
 import SprintProblem from '../components/SprintProblem';
 import SprintSolution from '../components/SprintSolution';
 import SprintContact from '../components/SprintContact';
@@ -9,8 +9,8 @@ import PricingGrid from '../components/PricingGrid';
 export default function SprintCommando() {
   return (
     <>
-      {/* Hero Section */}
-      <SprintHero />
+      {/* Hero Section - A/B Testing entre 3 variantes */}
+      <HeroABTest />
 
       {/* Logo Carousel / Stats */}
       <LogoCarousel />

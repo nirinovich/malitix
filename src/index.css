@@ -121,6 +121,12 @@ button, a, .card {
   }
 }
 
+/* Logo Carousel Animation */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .animate-gradient-x {
   background-size: 200% 200%;
   animation: gradient-x 3s ease infinite;
@@ -132,6 +138,10 @@ button, a, .card {
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
 }
 
 /* Responsive utilities */

@@ -1,5 +1,5 @@
 import { useTheme } from '../context/ThemeContext';
-import PowerButton from './PowerButtonNew';
+import { CTAButtonV2 } from './CTAButtons';
 
 const companyLogos = [
   {
@@ -44,7 +44,8 @@ const companyLogos = [
   }
 ];
 
-export default function SprintHero() {
+// Variante B - Design Bold avec Badge et Urgence
+export default function HeroVariantB() {
   const { theme } = useTheme();
 
   const scrollToContact = () => {
@@ -53,12 +54,12 @@ export default function SprintHero() {
   };
 
   return (
-    <section className={`relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br ${
+    <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
       theme === 'dark' 
-        ? 'from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'from-white via-gray-50 to-gray-100'
+        ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
+        : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
     }`}>
-      {/* Animated Background */}
+      {/* Background dynamique avec grille */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
           theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-400/30'
@@ -76,35 +77,63 @@ export default function SprintHero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="text-center max-w-5xl mx-auto space-y-8">
-          {/* Badge */}
-          <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-6 py-2 text-sm text-[#2ca3bd] font-medium mb-4">
-            🚀 Sprint Commando - Déblocage Garanti en 14 Jours
+        <div className="text-center max-w-5xl mx-auto space-y-10">
+          {/* Headline - Style impactant avec question */}
+          <div className="space-y-6">
+            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-tight ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              Vos projets IT{' '}
+              <span className="relative inline-block">
+                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${
+                  theme === 'dark' 
+                    ? 'from-[#2ca3bd] to-[#1e7a8f]' 
+                    : 'from-blue-600 to-blue-800'
+                }`}>
+                  en retard
+                </span>
+                <span className={`absolute -bottom-2 left-0 w-full h-1 rounded-full ${
+                  theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-600'
+                }`}></span>
+              </span>
+              <span className={`text-6xl ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}`}>?</span>
+            </h1>
+            
+            <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold space-y-3 ${
+              theme === 'dark' ? 'text-white/90' : 'text-gray-800'
+            }`}>
+              <p>On redresse votre roadmap</p>
+              <p className="flex items-center justify-center gap-3">
+                en{' '}
+                <span className={`px-4 py-2 rounded-xl ${
+                  theme === 'dark' 
+                    ? 'bg-[#2ca3bd]/20 text-[#2ca3bd] border-2 border-[#2ca3bd]/50' 
+                    : 'bg-blue-100 text-blue-700 border-2 border-blue-300'
+                }`}>
+                  2 semaines
+                </span>
+              </p>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
-            Vos projets IT <span className="text-[#2ca3bd]">en retard</span> ?
-          </h1>
-          
-          <p className={`text-3xl sm:text-4xl font-semibold ${
-            theme === 'dark' ? 'text-white/90' : 'text-gray-800'
-          }`}>
-            On redresse votre roadmap <br className="hidden sm:block" />
-            en <span className="text-[#2ca3bd]">2 semaines</span>.
+          {/* CTA */}
+          <div className="pt-8">
+            <CTAButtonV2 onClick={scrollToContact} />
+          </div>
+
+          {/* Social proof mini */}
+          <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+            ✅ Déjà <span className="font-bold text-[#2ca3bd]">50+ projets</span> redressés
           </p>
 
-          {/* CTA with Power Button */}
-          <div className="pt-8">
-            <PowerButton onClick={scrollToContact} text="Garanti ou gratuit" />
-          </div>
-
           {/* Logo Carousel */}
-          <div className="mt-16 relative">
+          <div className="mt-16 pt-8 border-t border-gray-200/10">
+            <p className={`text-xs uppercase tracking-widest mb-6 ${
+              theme === 'dark' ? 'text-white/40' : 'text-gray-400'
+            }`}>
+              Entreprises partenaires
+            </p>
             <div className="overflow-hidden relative">
-              {/* Gradient overlays */}
               <div className={`absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none ${
                 theme === 'dark'
                   ? 'bg-gradient-to-r from-[#060705] to-transparent'
@@ -116,33 +145,28 @@ export default function SprintHero() {
                   : 'bg-gradient-to-l from-gray-50 to-transparent'
               }`}></div>
               
-              {/* Scrolling logos */}
               <div className="flex animate-scroll-left">
-                {/* First set of logos */}
                 {companyLogos.map((company) => (
                   <div
                     key={`first-${company.id}`}
-                    className={`flex-shrink-0 mx-6 w-32 h-16 flex items-center justify-center rounded-xl transition-all duration-300 hover:scale-110 bg-black`}
+                    className="flex-shrink-0 mx-6 w-32 h-16 flex items-center justify-center"
                   >
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="max-w-full max-h-full object-contain p-1 filter contrast-200 mix-blend-multiply drop-shadow-md transition-all duration-300"
-                      style={{ background: 'transparent' }}
+                      className="max-w-full max-h-full object-contain p-3 filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                     />
                   </div>
                 ))}
-                {/* Duplicate set for seamless loop */}
                 {companyLogos.map((company) => (
                   <div
                     key={`second-${company.id}`}
-                    className={`flex-shrink-0 mx-6 w-32 h-16 flex items-center justify-center rounded-xl transition-all duration-300 hover:scale-110 bg-black`}
+                    className="flex-shrink-0 mx-6 w-32 h-16 flex items-center justify-center"
                   >
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="max-w-full max-h-full object-contain p-3 filter grayscale mix-blend-multiply brightness-0 invert opacity-80 drop-shadow-md transition-all duration-300"
-                      style={{ background: 'transparent' }}
+                      className="max-w-full max-h-full object-contain p-3 filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                     />
                   </div>
                 ))}
@@ -151,6 +175,21 @@ export default function SprintHero() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-scroll-left {
+          animation: scroll-left 40s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }
