@@ -66,11 +66,6 @@ export default function HeroVariantC() {
     }`}>
       {/* Background avec courbes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-0 right-0 w-1/2 h-full ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-bl from-[#2ca3bd]/10 to-transparent' 
-            : 'bg-gradient-to-bl from-blue-400/20 to-transparent'
-        }`}></div>
         <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320" opacity="0.1">
           <path 
             fill={theme === 'dark' ? '#2ca3bd' : '#3b82f6'} 
@@ -90,7 +85,7 @@ export default function HeroVariantC() {
               }`}>
                 Vos projets IT{' '}
                 <span className="relative inline-block">
-                  <span className="text-[#2ca3bd]">en retard</span>
+                  <span className="text-[#2ca3bd]">en retard ?</span>
                   <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
                     <path 
                       d="M0 4 Q50 0, 100 4 T200 4" 
@@ -101,7 +96,6 @@ export default function HeroVariantC() {
                     />
                   </svg>
                 </span>
-                <span className="text-5xl">?</span>
               </h1>
               
               <div className={`text-2xl sm:text-3xl font-semibold leading-relaxed ${
@@ -136,61 +130,147 @@ export default function HeroVariantC() {
             </div>
           </div>
 
-          {/* Colonne droite - Visual CPU Malitix + Roadmap */}
+          {/* Colonne droite - Visual CPU Malitix */}
           <div className="relative flex justify-center">
-            <div className={`relative p-8 rounded-3xl w-full max-w-md ${
-              theme === 'dark' 
-                ? 'bg-gradient-to-br from-[#060705]/40 to-transparent border border-[#2ca3bd]/12' 
-                : 'bg-white/80 border border-gray-100'
-            }`}
-            aria-hidden="true">
-              {/* Simple illustration SVG CPU + roadmap */}
-              <div className="flex flex-col items-center gap-6">
-                <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="28" y="28" width="104" height="104" rx="16" fill={theme === 'dark' ? '#071013' : '#f8fafc'} stroke={theme === 'dark' ? '#2ca3bd' : '#3b82f6'} strokeWidth="2" />
-                  <rect x="52" y="52" width="56" height="56" rx="8" fill={theme === 'dark' ? '#052227' : '#ffffff'} stroke={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} strokeWidth="1.5" />
-                  {/* Pins */}
-                  <g stroke={theme === 'dark' ? '#2ca3bd' : '#3b82f6'} strokeWidth="2">
-                    <line x1="16" y1="40" x2="28" y2="40" />
-                    <line x1="16" y1="80" x2="28" y2="80" />
-                    <line x1="16" y1="120" x2="28" y2="120" />
-                    <line x1="144" y1="40" x2="132" y2="40" />
-                    <line x1="144" y1="80" x2="132" y2="80" />
-                    <line x1="144" y1="120" x2="132" y2="120" />
-                    <line x1="40" y1="16" x2="40" y2="28" />
-                    <line x1="80" y1="16" x2="80" y2="28" />
-                    <line x1="120" y1="16" x2="120" y2="28" />
-                    <line x1="40" y1="144" x2="40" y2="132" />
-                    <line x1="80" y1="144" x2="80" y2="132" />
-                    <line x1="120" y1="144" x2="120" y2="132" />
+            <div className="relative h-[600px] w-full max-w-md">
+              {/* Lignes de circuit principales rayonnant du centre - TRANSPARENT */}
+              <svg className="absolute inset-0 w-full h-full animate-float" viewBox="0 0 400 600" style={{ animationDelay: '0s' }}>
+                <defs>
+                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} stopOpacity="0"/>
+                    <stop offset="50%" stopColor={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} stopOpacity="0.6"/>
+                    <stop offset="100%" stopColor={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} stopOpacity="0"/>
+                  </linearGradient>
+                </defs>
+                
+                {/* Circuits horizontaux */}
+                {[100, 160, 220, 280, 340, 400, 460, 520].map((y, i) => (
+                  <g key={`h-${i}`}>
+                    <path d={`M0 ${y} L150 ${y} L160 ${y + 5} L165 ${y}`} 
+                          stroke="url(#lineGradient)" 
+                          strokeWidth="2" 
+                          fill="none"
+                          className="animate-pulse"
+                          style={{ animationDelay: `${i * 0.2}s` }}/>
+                    <path d={`M235 ${y} L240 ${y + 5} L250 ${y} L400 ${y}`} 
+                          stroke="url(#lineGradient)" 
+                          strokeWidth="2" 
+                          fill="none"
+                          className="animate-pulse"
+                          style={{ animationDelay: `${i * 0.2}s` }}/>
+                    <circle cx="165" cy={y} r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
+                    <circle cx="235" cy={y} r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
                   </g>
-                </svg>
+                ))}
+                
+                {/* Circuits verticaux */}
+                {[80, 120, 160, 200, 240, 280, 320].map((x, i) => (
+                  <g key={`v-${i}`}>
+                    <path d={`M${x} 50 L${x} 220 L${x + 5} 230 L${x} 235`} 
+                          stroke="url(#lineGradient)" 
+                          strokeWidth="2" 
+                          fill="none"
+                          className="animate-pulse"
+                          style={{ animationDelay: `${i * 0.2 + 0.1}s` }}/>
+                    <path d={`M${x} 365 L${x + 5} 370 L${x} 380 L${x} 550`} 
+                          stroke="url(#lineGradient)" 
+                          strokeWidth="2" 
+                          fill="none"
+                          className="animate-pulse"
+                          style={{ animationDelay: `${i * 0.2 + 0.1}s` }}/>
+                    <circle cx={x} cy="235" r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
+                    <circle cx={x} cy="365" r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
+                  </g>
+                ))}
+              </svg>
 
-                <div className="w-full">
-                  <div className={`flex items-center gap-3 mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-                    <div className={`w-3 h-3 rounded-full ${theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-600'}`}></div>
-                    <div className="text-sm font-semibold">Roadmap Malitix</div>
-                    <div className="ml-auto text-xs text-gray-400">14 jours</div>
-                  </div>
-
-                  <div className="space-y-3">
-                    {[
-                      { title: 'Diagnostic', progress: 100 },
-                      { title: 'Plan d\'action', progress: 70 },
-                      { title: 'Livrables', progress: 30 }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${theme === 'dark' ? 'bg-[#052227] text-[#2ca3bd]' : 'bg-blue-50 text-blue-700'}`}>{i + 1}</div>
-                        <div className="flex-1">
-                          <div className={`text-sm font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{item.title}</div>
-                          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mt-2">
-                            <div style={{ width: `${item.progress}%` }} className={`${theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-600'} h-full`}></div>
-                          </div>
+              {/* CPU central - flottant directement sans wrapper */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float" style={{ animationDelay: '1s' }}>
+                <div className="relative">
+                  {/* Glow effect */}
+                  <div className={`absolute inset-0 blur-2xl ${
+                    theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-400'
+                  } opacity-20 animate-pulse`}></div>
+                  
+                  {/* Corps du CPU */}
+                  <div className={`relative w-48 h-48 rounded-2xl ${
+                    theme === 'dark' 
+                      ? 'bg-gradient-to-br from-[#1a3a3a] to-[#0d2626]' 
+                      : 'bg-gradient-to-br from-cyan-600 to-cyan-800'
+                  } shadow-2xl border-2 ${
+                    theme === 'dark' ? 'border-[#2ca3bd]' : 'border-cyan-400'
+                  } overflow-hidden`}>
+                      {/* Reflet métallique */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent"></div>
+                      
+                      {/* Centre du CPU avec effet miroir */}
+                      <div className="absolute inset-6 rounded-lg bg-gradient-to-br from-gray-300 via-gray-100 to-gray-200 shadow-inner">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-black/10"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className={`text-2xl font-black ${
+                            theme === 'dark' ? 'text-[#0d2626]' : 'text-cyan-900'
+                          } opacity-20`}>MALITIX</div>
                         </div>
-                        <div className="text-sm text-gray-500">{item.progress}%</div>
                       </div>
-                    ))}
-                  </div>
+
+                      {/* Pins dorés sur les côtés */}
+                      <div className="absolute inset-0">
+                        {/* Pins gauche */}
+                        {[...Array(6)].map((_, i) => (
+                          <div key={`left-${i}`} className="absolute left-0 w-3 h-4 bg-gradient-to-r from-yellow-600 to-yellow-400 shadow-md" 
+                               style={{ top: `${20 + i * 14}%` }}></div>
+                        ))}
+                        {/* Pins droite */}
+                        {[...Array(6)].map((_, i) => (
+                          <div key={`right-${i}`} className="absolute right-0 w-3 h-4 bg-gradient-to-l from-yellow-600 to-yellow-400 shadow-md" 
+                               style={{ top: `${20 + i * 14}%` }}></div>
+                        ))}
+                        {/* Pins haut */}
+                        {[...Array(6)].map((_, i) => (
+                          <div key={`top-${i}`} className="absolute top-0 w-4 h-3 bg-gradient-to-b from-yellow-600 to-yellow-400 shadow-md" 
+                               style={{ left: `${20 + i * 14}%` }}></div>
+                        ))}
+                        {/* Pins bas */}
+                        {[...Array(6)].map((_, i) => (
+                          <div key={`bottom-${i}`} className="absolute bottom-0 w-4 h-3 bg-gradient-to-t from-yellow-600 to-yellow-400 shadow-md" 
+                               style={{ left: `${20 + i * 14}%` }}></div>
+                        ))}
+                      </div>
+
+                      {/* Détails de surface du CPU */}
+                      <div className="absolute inset-2 rounded-xl overflow-hidden">
+                        {[...Array(8)].map((_, i) => (
+                          <div key={i} 
+                               className={`absolute h-px w-full ${
+                                 theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-cyan-400'
+                               } opacity-20`}
+                               style={{ top: `${12.5 * (i + 1)}%` }}></div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Particules lumineuses autour du CPU */}
+                    {[...Array(12)].map((_, i) => {
+                      const angle = (i / 12) * 360;
+                      const radius = 110;
+                      const x = Math.cos((angle * Math.PI) / 180) * radius;
+                      const y = Math.sin((angle * Math.PI) / 180) * radius;
+                      return (
+                        <div
+                          key={`particle-${i}`}
+                          className={`absolute w-2 h-2 rounded-full ${
+                            theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-cyan-400'
+                          } animate-pulse`}
+                          style={{
+                            left: '50%',
+                            top: '50%',
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                            animationDelay: `${i * 0.1}s`,
+                            boxShadow: `0 0 10px ${theme === 'dark' ? '#2ca3bd' : '#60a5fa'}`
+                          }}
+                        ></div>
+                      );
+                    })}
                 </div>
               </div>
             </div>
