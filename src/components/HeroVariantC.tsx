@@ -1,6 +1,6 @@
 import { useTheme } from '../context/ThemeContext';
-import { CTAButtonV1, CTAButtonV2, CTAButtonV3 } from './CTAButtons';
-import { useABTest } from '../context/ABTestContext';
+import { CTAButtonV3 } from './CTAButtons';
+// import { useABTest } from '../context/ABTestContext'; // A/B Testing désactivé
 
 const companyLogos = [
   {
@@ -48,14 +48,15 @@ const companyLogos = [
 // Variante C - Design Split avec Visual et Stats
 export default function HeroVariantC() {
   const { theme } = useTheme();
-  const { buttonVariant } = useABTest();
+  // const { buttonVariant } = useABTest(); // A/B Testing désactivé
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sprint');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const ButtonComponent = buttonVariant === 'V1' ? CTAButtonV1 : buttonVariant === 'V2' ? CTAButtonV2 : CTAButtonV3;
+  // const ButtonComponent = buttonVariant === 'V1' ? CTAButtonV1 : buttonVariant === 'V2' ? CTAButtonV2 : CTAButtonV3; // A/B Testing désactivé
+  const ButtonComponent = CTAButtonV3; // Variante de bouton fixe
 
   return (
     <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${

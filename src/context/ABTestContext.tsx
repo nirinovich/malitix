@@ -1,3 +1,10 @@
+/* ============================================
+   A/B TESTING CONTEXT - DÉSACTIVÉ
+   Ce contexte n'est plus utilisé.
+   Nous utilisons maintenant HeroVariantC avec CTAButtonV3 directement.
+   ============================================ */
+
+/*
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
@@ -38,4 +45,19 @@ export function useABTest() {
     throw new Error('useABTest must be used within ABTestProvider');
   }
   return context;
+}
+*/
+
+// Placeholder exports pour éviter les erreurs d'import
+import type { ReactNode } from 'react';
+
+export function ABTestProvider({ children }: { children: ReactNode }) {
+  return <>{children}</>;
+}
+
+export function useABTest() {
+  return {
+    buttonVariant: 'V3' as const,
+    setButtonVariant: () => {}
+  };
 }

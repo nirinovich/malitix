@@ -1,4 +1,5 @@
-import HeroABTest from '../components/HeroABTest';
+// import HeroABTest from '../components/HeroABTest'; // A/B Testing désactivé
+import HeroVariantC from '../components/HeroVariantC';
 import SprintProblem from '../components/SprintProblem';
 import SprintSolution from '../components/SprintSolution';
 import SprintContact from '../components/SprintContact';
@@ -9,8 +10,8 @@ import PricingGrid from '../components/PricingGrid';
 export default function SprintCommando() {
   return (
     <>
-      {/* Hero Section - A/B Testing entre 3 variantes */}
-      <HeroABTest />
+      {/* Hero Section - Variante C fixe (A/B Testing désactivé) */}
+      <HeroVariantC />
 
       {/* Logo Carousel / Stats */}
       <LogoCarousel />
