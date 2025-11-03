@@ -26,7 +26,8 @@ export default function SprintProblem() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Section 1: Cards à gauche, Texte à droite */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
           {/* Left - Problem indicators */}
           <div className="space-y-6">
             <div className={`backdrop-blur-xl rounded-3xl p-8 border transition-all duration-300 hover:scale-105 ${
@@ -90,7 +91,7 @@ export default function SprintProblem() {
             </div>
           </div>
 
-          {/* Right - Content */}
+          {/* Right - Content (maintenant aligné avec les cards) */}
           <div className="space-y-6">
             <h2 className={`text-4xl sm:text-5xl font-bold ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -105,50 +106,53 @@ export default function SprintProblem() {
               bloquées sur des bugs critiques ou manquent simplement de bande passante pour vraiment accélérer.
             </p>
 
-            <p className={`text-xl leading-relaxed ${
-              theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+            <p className={`text-xl font-semibold ${
+              theme === 'dark' ? 'text-white/90' : 'text-gray-800'
             }`}>
               Vous savez qu'il faut livrer plus vite, mais comment ?
             </p>
+          </div>
+        </div>
 
-            {/* Tech Stack Bento */}
-            <div className={`backdrop-blur-xl rounded-3xl p-8 border ${
-              theme === 'dark'
-                ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20'
-                : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'
-            }`}>
-              <div className="flex items-center gap-3 mb-4">
-                <Target className="text-[#2ca3bd]" size={24} />
-                <h3 className={`text-lg font-bold ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  Un vivier de 650+ développeurs experts
-                </h3>
-              </div>
-              <p className={`mb-4 text-sm ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
+        {/* Section 2: Tech Stack Bento en pleine largeur */}
+        <div className={`backdrop-blur-xl rounded-3xl p-8 md:p-12 border max-w-5xl mx-auto ${
+          theme === 'dark'
+            ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20'
+            : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'
+        }`}>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <Target className="text-[#2ca3bd]" size={32} />
+              <h3 className={`text-2xl sm:text-3xl font-bold ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Maîtrisant les technologies modernes pour renforcer vos rangs :
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {techStack.map((tech, index) => {
-                  const Icon = tech.icon;
-                  return (
-                    <div
-                      key={index}
-                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium ${
-                        theme === 'dark'
-                          ? 'bg-white/10 text-white/80'
-                          : 'bg-white text-gray-700 border border-gray-200'
-                      }`}
-                    >
-                      <Icon size={16} className="text-[#2ca3bd]" />
-                      {tech.name}
-                    </div>
-                  );
-                })}
-              </div>
+                Un vivier de 650+ développeurs experts
+              </h3>
             </div>
+            <p className={`text-lg ${
+              theme === 'dark' ? 'text-white/70' : 'text-gray-600'
+            }`}>
+              Maîtrisant les technologies modernes pour renforcer vos rangs :
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-3">
+            {techStack.map((tech, index) => {
+              const Icon = tech.icon;
+              return (
+                <div
+                  key={index}
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                    theme === 'dark'
+                      ? 'bg-white/10 text-white/80 hover:bg-white/20'
+                      : 'bg-white text-gray-700 border border-gray-200 hover:border-[#2ca3bd] hover:shadow-lg'
+                  }`}
+                >
+                  <Icon size={18} className="text-[#2ca3bd]" />
+                  {tech.name}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
