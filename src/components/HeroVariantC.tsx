@@ -5,43 +5,43 @@ import { CTAButtonV3 } from './CTAButtons';
 const companyLogos = [
   {
     id: 1,
-    name: "Total Energies",
-    logo: "https://images2.imgbox.com/0d/cf/SV31WCrC_o.png"
+    name: "KPMG",
+    logo: "/images/references/2560px-KPMG_logo.svg.png"
   },
   {
     id: 2,
     name: "Renault",
-    logo: "https://images2.imgbox.com/24/c7/JLLhEJxI_o.png"
+    logo: "/images/references/Automotive_Bleu-RVB.png"
   },
   {
     id: 3,
-    name: "Petit Forestier",
-    logo: "https://images2.imgbox.com/9c/1e/7lQoiUmD_o.png"
+    name: "Danone",
+    logo: "/images/references/Danone-Logo.png"
   },
   {
     id: 4,
-    name: "Illicado",
-    logo: "https://images2.imgbox.com/a2/62/7yuNGYWh_o.png"
+    name: "Engie",
+    logo: "/images/references/engie-logo.png"
   },
   {
     id: 5,
-    name: "Saint Gobain",
-    logo: "https://images2.imgbox.com/32/4d/BPiUa9lI_o.png"
+    name: "Fraikin",
+    logo: "/images/references/fraikin_fr.png"
   },
   {
     id: 6,
-    name: "Smallable",
-    logo: "https://images2.imgbox.com/cc/06/DXdujOUm_o.png"
+    name: "LexisNexis",
+    logo: "/images/references/LexisNexis_logo.svg.png"
   },
   {
     id: 7,
-    name: "Ardian",
-    logo: "https://images2.imgbox.com/08/69/4Ubfxi6C_o.png"
+    name: "Petit Forestier",
+    logo: "/images/references/Logo-Petit-Forestier-300x189-1.png"
   },
   {
     id: 8,
-    name: "Agronutrition",
-    logo: "https://images2.imgbox.com/f8/d1/f2g3fXze_o.png"
+    name: "Thales",
+    logo: "/images/references/THALES.png"
   }
 ];
 
@@ -202,7 +202,7 @@ export default function HeroVariantC() {
           <p className={`text-center text-xs uppercase tracking-widest mb-6 ${
             theme === 'dark' ? 'text-white/40' : 'text-gray-400'
           }`}>
-            Ils nous ont fait confiance
+            Ils nous font confiance
           </p>
           <div className="overflow-hidden relative">
             <div className={`absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none ${
