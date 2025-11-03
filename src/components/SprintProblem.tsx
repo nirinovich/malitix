@@ -27,7 +27,7 @@ export default function SprintProblem() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section 1: Cards à gauche, Texte à droite */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           {/* Left - Problem indicators */}
           <div className="space-y-6">
             <div className={`backdrop-blur-xl rounded-3xl p-8 border transition-all duration-300 hover:scale-105 ${
