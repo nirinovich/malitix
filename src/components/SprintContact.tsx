@@ -6,8 +6,7 @@ export default function SprintContact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    phone: '',
+    website: '',
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -25,7 +24,7 @@ export default function SprintContact() {
         },
         body: JSON.stringify({
           ...formData,
-          source: 'Sprint Commando Page'
+          source: 'LP - Sprint'
         }),
       });
 
@@ -36,7 +35,7 @@ export default function SprintContact() {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ name: '', email: '', company: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', website: '', message: '' });
       }, 5000);
     } catch (err) {
       console.error(err);
@@ -160,47 +159,24 @@ export default function SprintContact() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    Entreprise *
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    required
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all ${
-                      theme === 'dark'
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                    }`}
-                    placeholder="Votre entreprise"
-                  />
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    Téléphone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all ${
-                      theme === 'dark'
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                    }`}
-                    placeholder="+33 6 12 34 56 78"
-                  />
-                </div>
+              <div>
+                <label className={`block text-sm font-medium mb-2 ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}>
+                  Site web
+                </label>
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all ${
+                    theme === 'dark'
+                      ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                  }`}
+                  placeholder="https://votre-site.com"
+                />
               </div>
 
               <div>
