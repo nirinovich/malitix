@@ -3,10 +3,8 @@ import { CTAButtonV3 } from './CTAButtons';
 import { useABTest } from '../context/ABTestContext';
 import { 
   CountdownTimerVariant, 
-  TargetFocusVariant, 
-  RocketLaunchVariant,
+  CountdownTimer2Variant,
   ProgressRescueGaugeVariant,
-  SprintDashboardVariant,
   TeamDeploymentVariant
 } from './CPUVariants';
 
@@ -68,14 +66,10 @@ export default function HeroVariantC() {
   // Select illustration variant based on A/B test
   const IllustrationComponent = cpuVariant === 'countdown' 
     ? CountdownTimerVariant 
-    : cpuVariant === 'target'
-    ? TargetFocusVariant
-    : cpuVariant === 'rocket'
-    ? RocketLaunchVariant
+    : cpuVariant === 'countdown2'
+    ? CountdownTimer2Variant
     : cpuVariant === 'rescue'
     ? ProgressRescueGaugeVariant
-    : cpuVariant === 'dashboard'
-    ? SprintDashboardVariant
     : TeamDeploymentVariant;
 
   return (

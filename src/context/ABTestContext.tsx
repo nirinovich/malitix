@@ -6,7 +6,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
-type CPUVariant = 'countdown' | 'target' | 'rocket' | 'rescue' | 'dashboard' | 'team';
+type CPUVariant = 'countdown' | 'countdown2' | 'rescue' | 'team';
 type ButtonVariant = 'V1' | 'V2' | 'V3';
 
 interface ABTestContextType {
@@ -27,11 +27,11 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
     const savedCPU = localStorage.getItem('cpu-variant') as CPUVariant;
     const savedButton = localStorage.getItem('button-variant') as ButtonVariant;
     
-    if (savedCPU && ['countdown', 'target', 'rocket', 'rescue', 'dashboard', 'team'].includes(savedCPU)) {
+    if (savedCPU && ['countdown', 'countdown2', 'rescue', 'team'].includes(savedCPU)) {
       setCPUVariantState(savedCPU);
     } else {
       // Random assignment for new users
-      const randomCPU = (['countdown', 'target', 'rocket', 'rescue', 'dashboard', 'team'] as CPUVariant[])[Math.floor(Math.random() * 6)];
+      const randomCPU = (['countdown', 'countdown2', 'rescue', 'team'] as CPUVariant[])[Math.floor(Math.random() * 4)];
       setCPUVariantState(randomCPU);
       localStorage.setItem('cpu-variant', randomCPU);
     }

@@ -53,10 +53,8 @@ export default function ABTestPanel() {
               <div className="space-y-2">
                 {[
                   { value: 'countdown', label: 'Countdown Timer', emoji: '⏱️', desc: '14-day sprint countdown' },
-                  { value: 'target', label: 'Target Focus', emoji: '🎯', desc: 'Bullseye precision' },
-                  { value: 'rocket', label: 'Rocket Launch', emoji: '🚀', desc: 'Fast delivery' },
-                  { value: 'rescue', label: 'Progress Rescue', emoji: '🔧', desc: 'Red to green transformation' },
-                  { value: 'dashboard', label: 'Sprint Dashboard', emoji: '📊', desc: 'Live metrics' },
+                  { value: 'countdown2', label: 'Countdown + Team', emoji: '⏱️👥', desc: 'Timer avec équipe qui débarque' },
+                  { value: 'rescue', label: 'Progress Rescue', emoji: '🔧', desc: 'Sans Malitix → Avec Malitix' },
                   { value: 'team', label: 'Team Deployment', emoji: '👥', desc: 'Expert team activation' },
                 ].map((variant) => (
                   <button
