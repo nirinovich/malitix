@@ -78,16 +78,6 @@ export default function HeroVariantC() {
         ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
         : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
     }`}>
-      {/* Background avec courbes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320" opacity="0.1">
-          <path 
-            fill={theme === 'dark' ? '#2ca3bd' : '#3b82f6'} 
-            d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          ></path>
-        </svg>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Colonne gauche - Contenu */}

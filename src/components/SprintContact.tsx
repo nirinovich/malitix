@@ -80,7 +80,7 @@ export default function SprintContact() {
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Prêt à débloquer votre projet ?
+            <span className="whitespace-nowrap">Prêt à débloquer votre projet ?</span>
           </h2>
           <p className={`text-xl ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
