@@ -26,7 +26,7 @@ export default function ABTestPanel() {
       {/* Panel */}
       {isOpen && (
         <div
-          className={`fixed bottom-24 right-6 z-50 rounded-2xl shadow-2xl backdrop-blur-xl border p-6 w-80 ${
+          className={`fixed bottom-24 right-6 z-50 rounded-2xl shadow-2xl backdrop-blur-xl border p-6 w-80 max-h-[80vh] overflow-y-auto ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-slate-800/95 to-slate-900/95 border-white/10'
               : 'bg-gradient-to-br from-white/95 to-gray-50/95 border-gray-200'
@@ -52,9 +52,12 @@ export default function ABTestPanel() {
               </label>
               <div className="space-y-2">
                 {[
-                  { value: 'countdown', label: 'Countdown Timer', emoji: '⏱️' },
-                  { value: 'target', label: 'Target Focus', emoji: '🎯' },
-                  { value: 'rocket', label: 'Rocket Launch', emoji: '🚀' },
+                  { value: 'countdown', label: 'Countdown Timer', emoji: '⏱️', desc: '14-day sprint countdown' },
+                  { value: 'target', label: 'Target Focus', emoji: '🎯', desc: 'Bullseye precision' },
+                  { value: 'rocket', label: 'Rocket Launch', emoji: '🚀', desc: 'Fast delivery' },
+                  { value: 'rescue', label: 'Progress Rescue', emoji: '🔧', desc: 'Red to green transformation' },
+                  { value: 'dashboard', label: 'Sprint Dashboard', emoji: '📊', desc: 'Live metrics' },
+                  { value: 'team', label: 'Team Deployment', emoji: '👥', desc: 'Expert team activation' },
                 ].map((variant) => (
                   <button
                     key={variant.value}
@@ -71,10 +74,17 @@ export default function ABTestPanel() {
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{variant.emoji}</span>
-                      <div>
+                      <div className="flex-1">
                         <div className="font-semibold">{variant.label}</div>
+                        <div className={`text-xs ${
+                          cpuVariant === variant.value 
+                            ? 'opacity-90' 
+                            : theme === 'dark' ? 'opacity-60' : 'opacity-70'
+                        }`}>
+                          {variant.desc}
+                        </div>
                         {cpuVariant === variant.value && (
-                          <div className="text-xs opacity-80">Currently active</div>
+                          <div className="text-xs opacity-90 font-bold mt-1">✓ Active</div>
                         )}
                       </div>
                     </div>

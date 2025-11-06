@@ -1,7 +1,14 @@
 import { useTheme } from '../context/ThemeContext';
 import { CTAButtonV3 } from './CTAButtons';
 import { useABTest } from '../context/ABTestContext';
-import { CountdownTimerVariant, TargetFocusVariant, RocketLaunchVariant } from './CPUVariants';
+import { 
+  CountdownTimerVariant, 
+  TargetFocusVariant, 
+  RocketLaunchVariant,
+  ProgressRescueGaugeVariant,
+  SprintDashboardVariant,
+  TeamDeploymentVariant
+} from './CPUVariants';
 
 const companyLogos = [
   {
@@ -63,7 +70,13 @@ export default function HeroVariantC() {
     ? CountdownTimerVariant 
     : cpuVariant === 'target'
     ? TargetFocusVariant
-    : RocketLaunchVariant;
+    : cpuVariant === 'rocket'
+    ? RocketLaunchVariant
+    : cpuVariant === 'rescue'
+    ? ProgressRescueGaugeVariant
+    : cpuVariant === 'dashboard'
+    ? SprintDashboardVariant
+    : TeamDeploymentVariant;
 
   return (
     <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${

@@ -1,12 +1,12 @@
 /* ============================================
    A/B TESTING CONTEXT - HERO ILLUSTRATION VARIANTS
-   Testing 3 different hero illustration styles
+   Testing 5 different hero illustration styles
    ============================================ */
 
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
-type CPUVariant = 'countdown' | 'target' | 'rocket';
+type CPUVariant = 'countdown' | 'target' | 'rocket' | 'rescue' | 'dashboard' | 'team';
 type ButtonVariant = 'V1' | 'V2' | 'V3';
 
 interface ABTestContextType {
@@ -27,11 +27,11 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
     const savedCPU = localStorage.getItem('cpu-variant') as CPUVariant;
     const savedButton = localStorage.getItem('button-variant') as ButtonVariant;
     
-    if (savedCPU && ['countdown', 'target', 'rocket'].includes(savedCPU)) {
+    if (savedCPU && ['countdown', 'target', 'rocket', 'rescue', 'dashboard', 'team'].includes(savedCPU)) {
       setCPUVariantState(savedCPU);
     } else {
       // Random assignment for new users
-      const randomCPU = (['countdown', 'target', 'rocket'] as CPUVariant[])[Math.floor(Math.random() * 3)];
+      const randomCPU = (['countdown', 'target', 'rocket', 'rescue', 'dashboard', 'team'] as CPUVariant[])[Math.floor(Math.random() * 6)];
       setCPUVariantState(randomCPU);
       localStorage.setItem('cpu-variant', randomCPU);
     }
