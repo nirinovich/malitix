@@ -1,6 +1,7 @@
 import { useTheme } from '../context/ThemeContext';
 import { CTAButtonV3 } from './CTAButtons';
-// import { useABTest } from '../context/ABTestContext'; // A/B Testing désactivé
+import { useABTest } from '../context/ABTestContext';
+import { CPUCircuitVariant, CPUChipVariant, CPUNeuralVariant } from './CPUVariants';
 
 const companyLogos = [
   {
@@ -48,15 +49,21 @@ const companyLogos = [
 // Variante C - Design Split avec Visual et Stats
 export default function HeroVariantC() {
   const { theme } = useTheme();
-  // const { buttonVariant } = useABTest(); // A/B Testing désactivé
+  const { cpuVariant } = useABTest();
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sprint');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // const ButtonComponent = buttonVariant === 'V1' ? CTAButtonV1 : buttonVariant === 'V2' ? CTAButtonV2 : CTAButtonV3; // A/B Testing désactivé
-  const ButtonComponent = CTAButtonV3; // Variante de bouton fixe
+  const ButtonComponent = CTAButtonV3;
+
+  // Select CPU variant based on A/B test
+  const CPUComponent = cpuVariant === 'circuit' 
+    ? CPUCircuitVariant 
+    : cpuVariant === 'chip'
+    ? CPUChipVariant
+    : CPUNeuralVariant;
 
   return (
     <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
@@ -132,148 +139,7 @@ export default function HeroVariantC() {
 
           {/* Colonne droite - Visual CPU Malitix */}
           <div className="relative flex justify-center">
-            <div className="relative h-[600px] w-full max-w-md">
-              {/* Lignes de circuit principales rayonnant du centre - TRANSPARENT */}
-              <svg className="absolute inset-0 w-full h-full animate-float" viewBox="0 0 400 600" style={{ animationDelay: '0s' }}>
-                <defs>
-                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} stopOpacity="0"/>
-                    <stop offset="50%" stopColor={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} stopOpacity="0.6"/>
-                    <stop offset="100%" stopColor={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} stopOpacity="0"/>
-                  </linearGradient>
-                </defs>
-                
-                {/* Circuits horizontaux */}
-                {[100, 160, 220, 280, 340, 400, 460, 520].map((y, i) => (
-                  <g key={`h-${i}`}>
-                    <path d={`M0 ${y} L150 ${y} L160 ${y + 5} L165 ${y}`} 
-                          stroke="url(#lineGradient)" 
-                          strokeWidth="2" 
-                          fill="none"
-                          className="animate-pulse"
-                          style={{ animationDelay: `${i * 0.2}s` }}/>
-                    <path d={`M235 ${y} L240 ${y + 5} L250 ${y} L400 ${y}`} 
-                          stroke="url(#lineGradient)" 
-                          strokeWidth="2" 
-                          fill="none"
-                          className="animate-pulse"
-                          style={{ animationDelay: `${i * 0.2}s` }}/>
-                    <circle cx="165" cy={y} r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
-                    <circle cx="235" cy={y} r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
-                  </g>
-                ))}
-                
-                {/* Circuits verticaux */}
-                {[80, 120, 160, 200, 240, 280, 320].map((x, i) => (
-                  <g key={`v-${i}`}>
-                    <path d={`M${x} 50 L${x} 220 L${x + 5} 230 L${x} 235`} 
-                          stroke="url(#lineGradient)" 
-                          strokeWidth="2" 
-                          fill="none"
-                          className="animate-pulse"
-                          style={{ animationDelay: `${i * 0.2 + 0.1}s` }}/>
-                    <path d={`M${x} 365 L${x + 5} 370 L${x} 380 L${x} 550`} 
-                          stroke="url(#lineGradient)" 
-                          strokeWidth="2" 
-                          fill="none"
-                          className="animate-pulse"
-                          style={{ animationDelay: `${i * 0.2 + 0.1}s` }}/>
-                    <circle cx={x} cy="235" r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
-                    <circle cx={x} cy="365" r="3" fill={theme === 'dark' ? '#2ca3bd' : '#60a5fa'} className="animate-pulse" opacity="0.8"/>
-                  </g>
-                ))}
-              </svg>
-
-              {/* CPU central - flottant directement sans wrapper */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float" style={{ animationDelay: '1s' }}>
-                <div className="relative">
-                  {/* Glow effect */}
-                  <div className={`absolute inset-0 blur-2xl ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-400'
-                  } opacity-20 animate-pulse`}></div>
-                  
-                  {/* Corps du CPU */}
-                  <div className={`relative w-48 h-48 rounded-2xl ${
-                    theme === 'dark' 
-                      ? 'bg-gradient-to-br from-[#1a3a3a] to-[#0d2626]' 
-                      : 'bg-gradient-to-br from-cyan-600 to-cyan-800'
-                  } shadow-2xl border-2 ${
-                    theme === 'dark' ? 'border-[#2ca3bd]' : 'border-cyan-400'
-                  } overflow-hidden`}>
-                      {/* Reflet métallique */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent"></div>
-                      
-                      {/* Centre du CPU avec effet miroir */}
-                      <div className="absolute inset-6 rounded-lg bg-gradient-to-br from-gray-300 via-gray-100 to-gray-200 shadow-inner">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-black/10"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className={`text-2xl font-black ${
-                            theme === 'dark' ? 'text-[#0d2626]' : 'text-cyan-900'
-                          } opacity-20`}>MALITIX</div>
-                        </div>
-                      </div>
-
-                      {/* Pins dorés sur les côtés */}
-                      <div className="absolute inset-0">
-                        {/* Pins gauche */}
-                        {[...Array(6)].map((_, i) => (
-                          <div key={`left-${i}`} className="absolute left-0 w-3 h-4 bg-gradient-to-r from-yellow-600 to-yellow-400 shadow-md" 
-                               style={{ top: `${20 + i * 14}%` }}></div>
-                        ))}
-                        {/* Pins droite */}
-                        {[...Array(6)].map((_, i) => (
-                          <div key={`right-${i}`} className="absolute right-0 w-3 h-4 bg-gradient-to-l from-yellow-600 to-yellow-400 shadow-md" 
-                               style={{ top: `${20 + i * 14}%` }}></div>
-                        ))}
-                        {/* Pins haut */}
-                        {[...Array(6)].map((_, i) => (
-                          <div key={`top-${i}`} className="absolute top-0 w-4 h-3 bg-gradient-to-b from-yellow-600 to-yellow-400 shadow-md" 
-                               style={{ left: `${20 + i * 14}%` }}></div>
-                        ))}
-                        {/* Pins bas */}
-                        {[...Array(6)].map((_, i) => (
-                          <div key={`bottom-${i}`} className="absolute bottom-0 w-4 h-3 bg-gradient-to-t from-yellow-600 to-yellow-400 shadow-md" 
-                               style={{ left: `${20 + i * 14}%` }}></div>
-                        ))}
-                      </div>
-
-                      {/* Détails de surface du CPU */}
-                      <div className="absolute inset-2 rounded-xl overflow-hidden">
-                        {[...Array(8)].map((_, i) => (
-                          <div key={i} 
-                               className={`absolute h-px w-full ${
-                                 theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-cyan-400'
-                               } opacity-20`}
-                               style={{ top: `${12.5 * (i + 1)}%` }}></div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Particules lumineuses autour du CPU */}
-                    {[...Array(12)].map((_, i) => {
-                      const angle = (i / 12) * 360;
-                      const radius = 110;
-                      const x = Math.cos((angle * Math.PI) / 180) * radius;
-                      const y = Math.sin((angle * Math.PI) / 180) * radius;
-                      return (
-                        <div
-                          key={`particle-${i}`}
-                          className={`absolute w-2 h-2 rounded-full ${
-                            theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-cyan-400'
-                          } animate-pulse`}
-                          style={{
-                            left: '50%',
-                            top: '50%',
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                            animationDelay: `${i * 0.1}s`,
-                            boxShadow: `0 0 10px ${theme === 'dark' ? '#2ca3bd' : '#60a5fa'}`
-                          }}
-                        ></div>
-                      );
-                    })}
-                </div>
-              </div>
-            </div>
+            <CPUComponent />
           </div>
         </div>
 

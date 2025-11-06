@@ -1,4 +1,3 @@
-// import HeroABTest from '../components/HeroABTest'; // A/B Testing désactivé
 import HeroVariantC from '../components/HeroVariantC';
 import SprintProblem from '../components/SprintProblem';
 import SprintSolution from '../components/SprintSolution';
@@ -6,11 +5,12 @@ import SprintContact from '../components/SprintContact';
 import LogoCarousel from '../components/LogoCarousel';
 import TestimonialSection from '../components/TestimonialSection';
 import PricingGrid from '../components/PricingGrid';
+import ABTestPanel from '../components/ABTestPanel';
 
 export default function SprintCommando() {
   return (
     <>
-      {/* Hero Section - Variante C fixe (A/B Testing désactivé) */}
+      {/* Hero Section with A/B Testing for CPU variants */}
       <HeroVariantC />
 
       {/* Logo Carousel / Stats */}
@@ -30,6 +30,9 @@ export default function SprintCommando() {
 
       {/* Section 5 - Contact Form */}
       <SprintContact />
+
+      {/* A/B Test Control Panel */}
+      <ABTestPanel />
     </>
   );
 }
