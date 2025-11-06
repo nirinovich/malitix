@@ -3,27 +3,27 @@ import { useTheme } from '../context/ThemeContext';
 
 const testimonials = [
   {
-    name: 'Sophie Martin',
-    role: 'CTO',
-    company: 'TechFlow',
-    image: '👩‍💼',
-    quote: "Nous étions bloqués depuis 3 mois sur une intégration API critique. Malitix a résolu le problème en 10 jours. Incroyable!",
+    name: 'Selim Saadi',
+    role: 'CEO & Co-founder',
+    company: 'Karlisolutions',
+    image: '/images/testimonials/selim-saadi.png',
+    quote: "Nous avons pu développer notre solution dans sa première version (déjà très complète) avec des équipes de Malitix qui ont parfaitement compris notre besoin et notre ambition. Elles nous ont aidé à cadrer le sujet et à organiser un suivi régulier et flexible. Nous avons eu d'excellentes relations avec le chef de projet digital, les développeurs, la business analyst et les équipes commerciales.",
     rating: 5,
   },
   {
-    name: 'Marc Dupont',
+    name: 'David Bovet',
     role: 'CEO',
-    company: 'InnovCorp',
-    image: '👨‍💼',
-    quote: "Le Sprint Commando nous a permis de livrer notre MVP en temps record. L'équipe est ultra-compétente et réactive.",
+    company: 'Bios Analytics',
+    image: '/images/testimonials/david.png',
+    quote: "Malitix has been a longstanding partner since the inception of our company's first website, contributing to our online presence and technological solutions over the years.",
     rating: 5,
   },
   {
-    name: 'Julie Bernard',
-    role: 'Product Manager',
-    company: 'DataFirst',
-    image: '👩‍💻',
-    quote: "Bug critique résolu en 1 semaine au lieu des 2 mois estimés en interne. Malitix a sauvé notre roadmap Q4!",
+    name: 'Riad Roubache',
+    role: 'CISO/CTO',
+    company: 'Tersadia',
+    image: '/images/testimonials/riad.png',
+    quote: "Nous travaillons depuis 3 ans avec Malitix à qui nous avons confié notre supervision et monitoring 24/7 sur un périmètre assez large (Système d'informations, Cyber sécurité). Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA qui nous permettent d'être confiants sur notre collaboration actuelle et future.",
     rating: 5,
   },
 ];
@@ -101,7 +101,11 @@ export default function TestimonialSection() {
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="text-4xl">{testimonial.image}</div>
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.name}
+                  className="w-16 h-16 rounded-full object-cover"
+                />
                 <div>
                   <div className={`font-semibold ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
