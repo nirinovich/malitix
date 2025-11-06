@@ -88,7 +88,7 @@ export default function HeroVariantC() {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Colonne gauche - Contenu */}
           <div className="space-y-8">
@@ -141,6 +141,29 @@ export default function HeroVariantC() {
             {/* CTA avec CTAButtonV3 */}
             <div className="pt-4">
               <ButtonComponent onClick={scrollToContact} />
+            </div>
+
+            {/* Stats de confiance */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 mt-8 border-t border-white/10">
+              {[
+                { value: '600+', label: 'Projets livrés' },
+                { value: '650+', label: 'Développeurs' },
+                { value: '15 ans', label: "D'expertise" },
+                { value: '24h', label: 'Temps de réponse' },
+              ].map((stat, idx) => (
+                <div key={idx} className="text-center">
+                  <div className={`text-2xl sm:text-3xl font-bold mb-1 ${
+                    theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
+                  }`}>
+                    {stat.value}
+                  </div>
+                  <div className={`text-xs sm:text-sm ${
+                    theme === 'dark' ? 'text-white/60' : 'text-gray-600'
+                  }`}>
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

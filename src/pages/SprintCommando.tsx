@@ -2,7 +2,6 @@ import HeroVariantC from '../components/HeroVariantC';
 import SprintProblem from '../components/SprintProblem';
 import SprintSolution from '../components/SprintSolution';
 import SprintContact from '../components/SprintContact';
-import LogoCarousel from '../components/LogoCarousel';
 import TestimonialSection from '../components/TestimonialSection';
 import PricingGrid from '../components/PricingGrid';
 import ABTestPanel from '../components/ABTestPanel';
@@ -13,8 +12,7 @@ export default function SprintCommando() {
       {/* Hero Section with A/B Testing for CPU variants */}
       <HeroVariantC />
 
-      {/* Logo Carousel / Stats */}
-      <LogoCarousel />
+      {/* Stats intégrés dans Hero Section maintenant */}
 
       {/* Section 1 - The Problem */}
       <SprintProblem />

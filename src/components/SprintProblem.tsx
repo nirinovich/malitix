@@ -115,7 +115,7 @@ export default function SprintProblem() {
         </div>
 
         {/* Section 2: Tech Stack Bento en pleine largeur */}
-        <div className={`backdrop-blur-xl rounded-3xl p-8 md:p-12 border max-w-5xl mx-auto ${
+        <div className={`backdrop-blur-xl rounded-3xl p-8 md:p-12 border max-w-5xl mx-auto mt-28 ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20'
             : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'

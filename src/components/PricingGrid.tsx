@@ -1,54 +1,5 @@
-import { Check, Zap, Shield, Users, FileCheck, MessageSquare } from 'lucide-react';
+import { Check, Users, FileCheck, MessageSquare, Zap, Shield } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-
-const offers = [
-  {
-    name: 'Sprint Starter',
-    price: 'Sur devis',
-    description: 'Idéal pour débloquer une feature clé',
-    features: [
-      'Livrable concret en 14 jours',
-      '1 développeur expert dédié',
-      'Méthodologie Sprint éprouvée',
-      'Point quotidien (15min)',
-      'Documentation technique',
-      'Passation complète',
-    ],
-    icon: Zap,
-    highlighted: false,
-  },
-  {
-    name: 'Sprint Commando',
-    price: 'Sur devis',
-    description: 'Pour accélérer drastiquement votre projet',
-    features: [
-      'Tout du Sprint Starter +',
-      '2-3 développeurs experts dédiés',
-      'Multiples livrables en parallèle',
-      'Support technique prioritaire',
-      'Architecture & code review',
-      'Garantie satisfaction à 100%',
-    ],
-    icon: Shield,
-    highlighted: true,
-    badge: 'Le plus populaire',
-  },
-  {
-    name: 'Sprint Elite',
-    price: 'Sur devis',
-    description: 'Transformation complète et accompagnement',
-    features: [
-      'Tout du Sprint Commando +',
-      'Équipe complète (4-6 experts)',
-      'Chef de projet dédié',
-      'Architecture système complète',
-      'Formation de vos équipes',
-      'Support 24/7 pendant 30 jours',
-    ],
-    icon: Users,
-    highlighted: false,
-  },
-];
 
 export default function PricingGrid() {
   const { theme } = useTheme();
@@ -68,118 +19,24 @@ export default function PricingGrid() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">
           <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-4 py-2 text-sm text-[#2ca3bd] font-medium mb-4">
-            Nos Formules Sprint
+            La Force d'une Armada
           </div>
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Choisissez votre niveau d'intervention
+            Un vivier de <span className="text-[#2ca3bd]">650+ développeurs experts</span> mobilisables en 24h
           </h2>
-          <p className={`text-lg ${
+          <p className={`text-xl ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
           }`}>
-            Du déblocage rapide à la transformation complète, nous avons la solution adaptée
+            Nos équipes commandos prêtes à déployer pour votre succès
           </p>
         </div>
 
-        {/* Pricing Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {offers.map((offer, index) => {
-            const Icon = offer.icon;
-            return (
-              <div
-                key={index}
-                className={`relative backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 ${
-                  offer.highlighted
-                    ? `scale-105 ${
-                        theme === 'dark'
-                          ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/5 border-2 border-[#2ca3bd] shadow-2xl shadow-[#2ca3bd]/30'
-                          : 'bg-gradient-to-br from-blue-50 to-white border-2 border-blue-400 shadow-2xl shadow-blue-200/50'
-                      }`
-                    : theme === 'dark'
-                      ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50'
-                      : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-blue-400'
-                }`}
-              >
-                {/* Badge */}
-                {offer.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#2ca3bd] text-white px-4 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                    {offer.badge}
-                  </div>
-                )}
-
-                {/* Icon */}
-                <div className={`inline-flex p-3 rounded-xl mb-6 ${
-                  offer.highlighted
-                    ? 'bg-[#2ca3bd]'
-                    : theme === 'dark'
-                      ? 'bg-[#2ca3bd]/10'
-                      : 'bg-blue-100'
-                }`}>
-                  <Icon 
-                    size={28} 
-                    className={offer.highlighted ? 'text-white' : 'text-[#2ca3bd]'}
-                  />
-                </div>
-
-                {/* Title & Price */}
-                <h3 className={`text-2xl font-bold mb-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {offer.name}
-                </h3>
-                <p className={`text-sm mb-4 ${
-                  theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                }`}>
-                  {offer.description}
-                </p>
-                <div className={`text-3xl font-bold mb-6 ${
-                  offer.highlighted ? 'text-[#2ca3bd]' : theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {offer.price}
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-3 mb-8">
-                  {offer.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <Check 
-                        size={20} 
-                        className={`flex-shrink-0 mt-0.5 ${
-                          offer.highlighted ? 'text-[#2ca3bd]' : theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                        }`}
-                      />
-                      <span className={`text-sm ${
-                        theme === 'dark' ? 'text-white/70' : 'text-gray-700'
-                      }`}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                <a
-                  href="#contact"
-                  className={`block w-full py-3 rounded-xl font-semibold text-center transition-all duration-300 ${
-                    offer.highlighted
-                      ? 'bg-[#2ca3bd] text-white hover:bg-[#2ca3bd]/90 shadow-lg hover:shadow-xl'
-                      : theme === 'dark'
-                        ? 'bg-white/10 text-white hover:bg-white/20'
-                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                  }`}
-                >
-                  Demander un devis
-                </a>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Benefits Section */}
-        <div className={`backdrop-blur-xl rounded-3xl p-8 md:p-12 ${
+        {/* Benefits Section - EN AVANT */}
+        <div className={`backdrop-blur-xl rounded-3xl p-8 md:p-12 mb-16 ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10'
             : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200'
@@ -187,58 +44,59 @@ export default function PricingGrid() {
           <h3 className={`text-2xl md:text-3xl font-bold mb-8 text-center ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Ce que vous obtenez avec chaque Sprint
+            Ce que vous obtenez avec chaque Sprint Commando
           </h3>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 icon: FileCheck,
-                title: 'Livrable Concret',
-                desc: 'Feature codée, bug écrasé ou API intégrée qui débloque immédiatement votre business',
+                title: 'Le livrable concret',
+                desc: 'La feature codée, le bug écrasé, l\'API intégrée qui débloque immédiatement votre business. Fini l\'attente, place à l\'action.',
               },
               {
                 icon: Users,
-                title: 'Équipe Commando Dédiée',
-                desc: 'Nos meilleurs experts focalisés uniquement sur votre succès pendant 14 jours',
+                title: 'Une Équipe d\'Experts "Commando" Dédiée à 100%',
+                desc: 'Pas de juniors, pas de temps partiel. Nos meilleurs éléments focalisés uniquement sur votre succès pendant 14 jours. Vous n\'avez rien à gérer, on s\'occupe de tout.',
               },
               {
                 icon: Zap,
-                title: 'Méthodologie Sprint',
-                desc: 'Process unique pour livrer en temps record ce qui prendrait des mois en interne',
+                title: 'Méthodologie "Sprint" Éprouvée',
+                desc: 'Notre process unique pour couper le gras, aller droit au but et livrer en un temps record ce qui prendrait des mois en interne. Zéro perte de temps.',
               },
               {
                 icon: MessageSquare,
-                title: 'Communication Transparente',
-                desc: 'Point quotidien simple. Vous savez exactement où on en est',
+                title: 'Communication Transparente et Quotidienne',
+                desc: 'Un point simple chaque jour. Vous savez exactement où on en est, sans perdre votre temps en réunions inutiles.',
               },
               {
                 icon: FileCheck,
-                title: 'Documentation & Passation',
-                desc: 'Code propre et documenté. Votre équipe reprend la main facilement',
+                title: 'Passation Claire et Documentation Concise',
+                desc: 'On ne vous laisse pas avec une boîte noire. Le code est propre, documenté, et votre équipe peut reprendre la main facilement après notre intervention.',
               },
               {
                 icon: Shield,
-                title: 'Garantie Zéro Risque',
-                desc: 'Si on ne livre pas, vous ne payez pas. Le risque est 100% pour nous',
+                title: 'Notre Garantie Zéro Risque Béton',
+                desc: 'Si on ne livre pas, vous ne payez pas. Le risque est 100% pour nous.',
               },
             ].map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <div key={index} className="flex gap-4">
-                  <div className={`flex-shrink-0 p-2 rounded-lg h-fit ${
+                  <div className={`flex-shrink-0 p-3 rounded-xl h-fit ${
                     theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-100'
                   }`}>
-                    <Icon size={24} className="text-[#2ca3bd]" />
+                    <Icon size={28} className="text-[#2ca3bd]" />
                   </div>
                   <div>
-                    <h4 className={`font-semibold mb-1 ${
+                    <h4 className={`font-bold text-lg mb-2 flex items-center gap-2 ${
                       theme === 'dark' ? 'text-white' : 'text-gray-900'
                     }`}>
+                      <Check size={20} className="text-[#2ca3bd] flex-shrink-0" />
                       {benefit.title}
                     </h4>
-                    <p className={`text-sm ${
-                      theme === 'dark' ? 'text-white/60' : 'text-gray-600'
+                    <p className={`text-sm leading-relaxed ${
+                      theme === 'dark' ? 'text-white/70' : 'text-gray-600'
                     }`}>
                       {benefit.desc}
                     </p>
