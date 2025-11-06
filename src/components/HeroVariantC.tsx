@@ -1,7 +1,7 @@
 import { useTheme } from '../context/ThemeContext';
 import { CTAButtonV3 } from './CTAButtons';
 import { useABTest } from '../context/ABTestContext';
-import { CPUCircuitVariant, CPUChipVariant, CPUNeuralVariant } from './CPUVariants';
+import { CountdownTimerVariant, TargetFocusVariant, RocketLaunchVariant } from './CPUVariants';
 
 const companyLogos = [
   {
@@ -58,12 +58,12 @@ export default function HeroVariantC() {
 
   const ButtonComponent = CTAButtonV3;
 
-  // Select CPU variant based on A/B test
-  const CPUComponent = cpuVariant === 'circuit' 
-    ? CPUCircuitVariant 
-    : cpuVariant === 'chip'
-    ? CPUChipVariant
-    : CPUNeuralVariant;
+  // Select illustration variant based on A/B test
+  const IllustrationComponent = cpuVariant === 'countdown' 
+    ? CountdownTimerVariant 
+    : cpuVariant === 'target'
+    ? TargetFocusVariant
+    : RocketLaunchVariant;
 
   return (
     <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
@@ -137,9 +137,9 @@ export default function HeroVariantC() {
             </div>
           </div>
 
-          {/* Colonne droite - Visual CPU Malitix */}
+          {/* Colonne droite - Visual Illustration */}
           <div className="relative flex justify-center">
-            <CPUComponent />
+            <IllustrationComponent />
           </div>
         </div>
 

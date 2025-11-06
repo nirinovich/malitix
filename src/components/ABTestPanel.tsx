@@ -41,20 +41,20 @@ export default function ABTestPanel() {
           </h3>
 
           <div className="space-y-4">
-            {/* CPU Variant Selection */}
+            {/* Illustration Variant Selection */}
             <div>
               <label
                 className={`block text-sm font-medium mb-2 ${
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}
               >
-                CPU Illustration Variant
+                Hero Illustration Variant
               </label>
               <div className="space-y-2">
                 {[
-                  { value: 'circuit', label: 'Circuit Board', emoji: '⚡' },
-                  { value: 'chip', label: 'Minimalist Chip', emoji: '💎' },
-                  { value: 'neural', label: 'Neural Network', emoji: '🧠' },
+                  { value: 'countdown', label: 'Countdown Timer', emoji: '⏱️' },
+                  { value: 'target', label: 'Target Focus', emoji: '🎯' },
+                  { value: 'rocket', label: 'Rocket Launch', emoji: '🚀' },
                 ].map((variant) => (
                   <button
                     key={variant.value}

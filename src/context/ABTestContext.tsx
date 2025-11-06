@@ -1,12 +1,12 @@
 /* ============================================
-   A/B TESTING CONTEXT - CPU ILLUSTRATION VARIANTS
-   Testing 3 different CPU illustration styles
+   A/B TESTING CONTEXT - HERO ILLUSTRATION VARIANTS
+   Testing 3 different hero illustration styles
    ============================================ */
 
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
-type CPUVariant = 'circuit' | 'chip' | 'neural';
+type CPUVariant = 'countdown' | 'target' | 'rocket';
 type ButtonVariant = 'V1' | 'V2' | 'V3';
 
 interface ABTestContextType {
@@ -19,7 +19,7 @@ interface ABTestContextType {
 const ABTestContext = createContext<ABTestContextType | undefined>(undefined);
 
 export function ABTestProvider({ children }: { children: ReactNode }) {
-  const [cpuVariant, setCPUVariantState] = useState<CPUVariant>('circuit');
+  const [cpuVariant, setCPUVariantState] = useState<CPUVariant>('countdown');
   const [buttonVariant, setButtonVariantState] = useState<ButtonVariant>('V3');
 
   useEffect(() => {
@@ -27,11 +27,11 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
     const savedCPU = localStorage.getItem('cpu-variant') as CPUVariant;
     const savedButton = localStorage.getItem('button-variant') as ButtonVariant;
     
-    if (savedCPU && ['circuit', 'chip', 'neural'].includes(savedCPU)) {
+    if (savedCPU && ['countdown', 'target', 'rocket'].includes(savedCPU)) {
       setCPUVariantState(savedCPU);
     } else {
       // Random assignment for new users
-      const randomCPU = (['circuit', 'chip', 'neural'] as CPUVariant[])[Math.floor(Math.random() * 3)];
+      const randomCPU = (['countdown', 'target', 'rocket'] as CPUVariant[])[Math.floor(Math.random() * 3)];
       setCPUVariantState(randomCPU);
       localStorage.setItem('cpu-variant', randomCPU);
     }
