@@ -1,5 +1,5 @@
 import { AlertTriangle, TrendingDown, Clock, Target, Code2, Server, Palette, Shield, Sparkles, Database, Laptop } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const techStack = [
   { name: 'React', icon: Code2 },

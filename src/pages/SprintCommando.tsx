@@ -1,10 +1,10 @@
-import HeroVariantC from '../components/HeroVariantC';
-import SprintProblem from '../components/SprintProblem';
-import SprintSolution from '../components/SprintSolution';
-import SprintContact from '../components/SprintContact';
-import TestimonialSection from '../components/TestimonialSection';
-import PricingGrid from '../components/PricingGrid';
-import ABTestPanel from '../components/ABTestPanel';
+import HeroVariantC from '../components/Sprint/HeroVariantC';
+import SprintProblem from '../components/Sprint/SprintProblem';
+import SprintSolution from '../components/Sprint/SprintSolution';
+import SprintContact from '../components/Sprint/SprintContact';
+import TestimonialSection from '../components/Sprint/TestimonialSection';
+import PricingGrid from '../components/Sprint/PricingGrid';
+import ABTestPanel from '../components/Sprint/ABTestPanel';
 
 export default function SprintCommando() {
   return (

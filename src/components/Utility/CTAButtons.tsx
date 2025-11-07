@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 // Variante 1 : Bouton avec animation de charge "chakra"
 export function CTAButtonV1({ onClick }: { onClick: () => void }) {

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router';
-import { CTA_TEXT } from '../utils/constants';
-import { useTheme } from '../context/ThemeContext';
+import { CTA_TEXT } from '../../utils/constants';
+import { useTheme } from '../../context/ThemeContext';
 
 interface NavbarProps {
   theme?: 'dark' | 'light';

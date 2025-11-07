@@ -1,7 +1,7 @@
-import { useTheme } from '../context/ThemeContext';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
+import { useTheme } from '../../context/ThemeContext';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import ThemeToggle from './ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TrendingUp, Users, Award, Clock } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const stats = [
   { icon: TrendingUp, value: '600+', label: 'Projets livrés' },

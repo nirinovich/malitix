@@ -1,6 +1,6 @@
 import { RefreshCcw, Smartphone, Shield, Database, Brain, ArrowRight } from 'lucide-react';
-import { SERVICES } from '../utils/constants';
-import { useTheme } from '../context/ThemeContext';
+import { SERVICES } from '../../utils/constants';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function ServicesBento() {
   const { theme } = useTheme();

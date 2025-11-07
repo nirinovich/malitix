@@ -1,7 +1,7 @@
-import Hero from '../components/Hero';
-import ServicesBento from '../components/ServicesBento';
-import TrustStats from '../components/TrustStats';
-import CTASection from '../components/CTASection';
+import Hero from '../components/Home/Hero';
+import ServicesBento from '../components/Home/ServicesBento';
+import TrustStats from '../components/Home/TrustStats';
+import CTASection from '../components/Home/CTASection';
 
 export default function Home() {
   return (

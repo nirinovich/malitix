@@ -1,7 +1,7 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { ABTestProvider } from './context/ABTestContext';
 import { Routes, Route } from 'react-router';
-import Layout from './components/Layout';
+import Layout from './components/Shared/Layout';
 import Home from './pages/Home';
 import LegalNotice from './pages/LegalNotice';
 import PrivacyPolicy from './pages/PrivacyPolicy';

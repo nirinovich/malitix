@@ -1,12 +1,12 @@
-import { useTheme } from '../context/ThemeContext';
-import { CTAButtonV3 } from './CTAButtons';
-import { useABTest } from '../context/ABTestContext';
+import { useTheme } from '../../context/ThemeContext';
+import { CTAButtonV3 } from '../Utility/CTAButtons';
+import { useABTest } from '../../context/ABTestContext';
 import { 
   CountdownTimerVariant, 
   CountdownTimer2Variant,
   ProgressRescueGaugeVariant,
   TeamDeploymentVariant
-} from './CPUVariants';
+} from '../Utility/CPUVariants';
 
 const companyLogos = [
   {

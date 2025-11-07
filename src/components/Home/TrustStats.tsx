@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Users, Clock, Award } from 'lucide-react';
-import { STATS } from '../utils/constants';
-import { useTheme } from '../context/ThemeContext';
+import { STATS } from '../../utils/constants';
+import { useTheme } from '../../context/ThemeContext';
 
 const iconMap = [TrendingUp, Users, Award, Clock];
 

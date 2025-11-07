@@ -1,7 +1,7 @@
 import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router';
-import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '../utils/constants';
-import { useTheme } from '../context/ThemeContext';
+import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '../../utils/constants';
+import { useTheme } from '../../context/ThemeContext';
 
 const iconMap = {
   Linkedin,

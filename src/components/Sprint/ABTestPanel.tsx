@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useABTest } from '../context/ABTestContext';
+import { useABTest } from '../../context/ABTestContext';
 import { Settings } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function ABTestPanel() {
   const { cpuVariant, setCPUVariant } = useABTest();

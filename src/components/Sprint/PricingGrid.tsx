@@ -1,5 +1,5 @@
 import { Check, Users, FileCheck, MessageSquare, Zap, Shield } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function PricingGrid() {
   const { theme } = useTheme();

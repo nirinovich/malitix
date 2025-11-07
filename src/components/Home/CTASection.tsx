@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Send, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
-import { CTA_TEXT, COMPANY_INFO } from '../utils/constants';
-import { useTheme } from '../context/ThemeContext';
+import { CTA_TEXT, COMPANY_INFO } from '../../utils/constants';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function CTASection() {
   const { theme } = useTheme();
