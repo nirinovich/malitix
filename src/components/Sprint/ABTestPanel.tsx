@@ -4,7 +4,7 @@ import { Settings } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function ABTestPanel() {
-  const { cpuVariant, setCPUVariant, variants, setPricingGridVariant } = useABTest();
+  const { cpuVariant, setCPUVariant, variants, setBenefitsShowcaseVariant } = useABTest();
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -94,14 +94,14 @@ export default function ABTestPanel() {
             {/* Divider */}
             <div className={`h-px ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-200'}`}></div>
 
-            {/* PricingGrid Variant Selection */}
+            {/* BenefitsShowcase Variant Selection */}
             <div>
               <label
                 className={`block text-sm font-medium mb-2 ${
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}
               >
-                PricingGrid Variant
+                Benefits Showcase Variant
               </label>
               <div className="space-y-2">
                 {[
@@ -110,9 +110,9 @@ export default function ABTestPanel() {
                 ].map((variant) => (
                   <button
                     key={variant.value}
-                    onClick={() => setPricingGridVariant(variant.value as any)}
+                    onClick={() => setBenefitsShowcaseVariant(variant.value as any)}
                     className={`w-full px-4 py-3 rounded-xl text-left transition-all duration-300 ${
-                      variants.pricingGrid === variant.value
+                      variants.benefitsShowcase === variant.value
                         ? theme === 'dark'
                           ? 'bg-[#2ca3bd] text-white shadow-lg shadow-[#2ca3bd]/30'
                           : 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
@@ -126,13 +126,13 @@ export default function ABTestPanel() {
                       <div className="flex-1">
                         <div className="font-semibold">{variant.label}</div>
                         <div className={`text-xs ${
-                          variants.pricingGrid === variant.value 
+                          variants.benefitsShowcase === variant.value 
                             ? 'opacity-90' 
                             : theme === 'dark' ? 'opacity-60' : 'opacity-70'
                         }`}>
                           {variant.desc}
                         </div>
-                        {variants.pricingGrid === variant.value && (
+                        {variants.benefitsShowcase === variant.value && (
                           <div className="text-xs opacity-90 font-bold mt-1">✓ Active</div>
                         )}
                       </div>

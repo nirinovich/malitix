@@ -8,10 +8,10 @@ import type { ReactNode } from 'react';
 
 type CPUVariant = 'countdown' | 'countdown2' | 'rescue' | 'team';
 type ButtonVariant = 'V1' | 'V2' | 'V3';
-type PricingGridVariant = 'A' | 'B';
+type BenefitsShowcaseVariant = 'A' | 'B';
 
 interface Variants {
-  pricingGrid: PricingGridVariant;
+  benefitsShowcase: BenefitsShowcaseVariant;
 }
 
 interface ABTestContextType {
@@ -20,7 +20,7 @@ interface ABTestContextType {
   buttonVariant: ButtonVariant;
   setButtonVariant: (variant: ButtonVariant) => void;
   variants: Variants;
-  setPricingGridVariant: (variant: PricingGridVariant) => void;
+  setBenefitsShowcaseVariant: (variant: BenefitsShowcaseVariant) => void;
 }
 
 const ABTestContext = createContext<ABTestContextType | undefined>(undefined);
@@ -28,13 +28,13 @@ const ABTestContext = createContext<ABTestContextType | undefined>(undefined);
 export function ABTestProvider({ children }: { children: ReactNode }) {
   const [cpuVariant, setCPUVariantState] = useState<CPUVariant>('countdown');
   const [buttonVariant, setButtonVariantState] = useState<ButtonVariant>('V3');
-  const [pricingGridVariant, setPricingGridVariantState] = useState<PricingGridVariant>('A');
+  const [benefitsShowcaseVariant, setBenefitsShowcaseVariantState] = useState<BenefitsShowcaseVariant>('A');
 
   useEffect(() => {
     // Load saved variants from localStorage
     const savedCPU = localStorage.getItem('cpu-variant') as CPUVariant;
     const savedButton = localStorage.getItem('button-variant') as ButtonVariant;
-    const savedPricingGrid = localStorage.getItem('pricing-grid-variant') as PricingGridVariant;
+    const savedBenefitsShowcase = localStorage.getItem('benefits-showcase-variant') as BenefitsShowcaseVariant;
     
     if (savedCPU && ['countdown', 'countdown2', 'rescue', 'team'].includes(savedCPU)) {
       setCPUVariantState(savedCPU);
@@ -49,13 +49,13 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
       setButtonVariantState(savedButton);
     }
 
-    if (savedPricingGrid && ['A', 'B'].includes(savedPricingGrid)) {
-      setPricingGridVariantState(savedPricingGrid);
+    if (savedBenefitsShowcase && ['A', 'B'].includes(savedBenefitsShowcase)) {
+      setBenefitsShowcaseVariantState(savedBenefitsShowcase);
     } else {
       // Random assignment for new users
-      const randomPricing = (['A', 'B'] as PricingGridVariant[])[Math.floor(Math.random() * 2)];
-      setPricingGridVariantState(randomPricing);
-      localStorage.setItem('pricing-grid-variant', randomPricing);
+      const randomBenefits = (['A', 'B'] as BenefitsShowcaseVariant[])[Math.floor(Math.random() * 2)];
+      setBenefitsShowcaseVariantState(randomBenefits);
+      localStorage.setItem('benefits-showcase-variant', randomBenefits);
     }
   }, []);
 
@@ -69,13 +69,13 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('button-variant', variant);
   };
 
-  const setPricingGridVariant = (variant: PricingGridVariant) => {
-    setPricingGridVariantState(variant);
-    localStorage.setItem('pricing-grid-variant', variant);
+  const setBenefitsShowcaseVariant = (variant: BenefitsShowcaseVariant) => {
+    setBenefitsShowcaseVariantState(variant);
+    localStorage.setItem('benefits-showcase-variant', variant);
   };
 
   const variants: Variants = {
-    pricingGrid: pricingGridVariant,
+    benefitsShowcase: benefitsShowcaseVariant,
   };
 
   return (
@@ -85,7 +85,7 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
       buttonVariant, 
       setButtonVariant,
       variants,
-      setPricingGridVariant,
+      setBenefitsShowcaseVariant,
     }}>
       {children}
     </ABTestContext.Provider>

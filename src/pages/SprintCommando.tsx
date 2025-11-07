@@ -3,7 +3,7 @@ import SprintProblem from '../components/Sprint/SprintProblem';
 import SprintSolution from '../components/Sprint/SprintSolution';
 import SprintContact from '../components/Sprint/SprintContact';
 import TestimonialSection from '../components/Sprint/TestimonialSection';
-import PricingGrid from '../components/Sprint/PricingGrid';
+import BenefitsShowcase from '../components/Sprint/BenefitsShowcase';
 import ABTestPanel from '../components/Sprint/ABTestPanel';
 
 export default function SprintCommando() {
@@ -23,8 +23,8 @@ export default function SprintCommando() {
       {/* Section 3 - Testimonials */}
       <TestimonialSection />
 
-      {/* Section 4 - Pricing Grid */}
-      <PricingGrid />
+      {/* Section 4 - Benefits Showcase */}
+      <BenefitsShowcase />
 
       {/* Section 5 - Contact Form */}
       <SprintContact />

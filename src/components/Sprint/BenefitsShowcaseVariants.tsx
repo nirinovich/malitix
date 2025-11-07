@@ -1,4 +1,4 @@
-import { Check, Users, FileCheck, MessageSquare, Zap, Shield, ArrowRight } from 'lucide-react';
+import { Check, Users, FileCheck, MessageSquare, Zap, Shield } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const benefits = [
@@ -49,7 +49,7 @@ const benefits = [
 // ==========================================
 // VARIANT A: Minimaliste & Élégant
 // ==========================================
-export function PricingGridVariantA() {
+export function BenefitsShowcaseVariantA() {
   const { theme } = useTheme();
 
   return (
@@ -135,7 +135,7 @@ export function PricingGridVariantA() {
 // ==========================================
 // VARIANT B: Interactive Cards
 // ==========================================
-export function PricingGridVariantB() {
+export function BenefitsShowcaseVariantB() {
   const { theme } = useTheme();
 
   return (
@@ -202,17 +202,11 @@ export function PricingGridVariantB() {
                     <Icon size={28} className="text-[#2ca3bd]" />
                   </div>
                   <div className="flex-1">
-                    <h4 className={`font-bold text-lg mb-2 flex items-start justify-between gap-2 ${
+                    <h4 className={`font-bold text-lg mb-2 flex items-center gap-2 ${
                       theme === 'dark' ? 'text-white' : 'text-gray-900'
                     }`}>
-                      <span className="flex items-center gap-2">
-                        <Check size={20} className="text-[#2ca3bd] flex-shrink-0" />
-                        {benefit.title}
-                      </span>
-                      <ArrowRight 
-                        size={20} 
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1 text-[#2ca3bd] flex-shrink-0" 
-                      />
+                      <Check size={20} className="text-[#2ca3bd] flex-shrink-0" />
+                      {benefit.title}
                     </h4>
                     <p className={`text-sm leading-relaxed ${
                       theme === 'dark' ? 'text-white/70' : 'text-gray-600'
