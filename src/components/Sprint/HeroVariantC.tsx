@@ -60,28 +60,28 @@ export default function HeroVariantC() {
   const IllustrationComponent = ProgressRescueGaugeVariant;
 
   return (
-    <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
+    <section className={`relative min-h-screen sm:min-h-[90vh] flex items-center overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
         : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Colonne gauche - Contenu */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             {/* Headline */}
-            <div className="space-y-3 sm:space-y-4">
-              <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight ${
+            <div className="space-y-4 sm:space-y-5">
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
                 Vos projets IT{' '}
                 <span className="relative inline-block">
                   <span className="text-[#2ca3bd]">en retard ?</span>
-                  <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+                  <svg className="absolute -bottom-2 sm:-bottom-3 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none">
                     <path 
-                      d="M0 4 Q50 0, 100 4 T200 4" 
+                      d="M0 5 Q50 0, 100 5 T200 5" 
                       stroke={theme === 'dark' ? '#2ca3bd' : '#3b82f6'} 
-                      strokeWidth="3" 
+                      strokeWidth="4" 
                       fill="none"
                       strokeLinecap="round"
                     />
@@ -89,26 +89,26 @@ export default function HeroVariantC() {
                 </span>
               </h1>
               
-              <div className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-relaxed ${
+              <div className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed ${
                 theme === 'dark' ? 'text-white/90' : 'text-gray-800'
               }`}>
-                On redresse votre roadmap <br className="hidden sm:block" />
-                en <span className={`font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl ${
+                On redresse votre roadmap <br className="hidden sm:inline" />
+                en <span className={`font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${
                   theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
                 }`}>2 semaines</span>.
               </div>
             </div>
 
             {/* Features rapides */}
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-3 sm:space-y-4">
               {['✓ Diagnostic en 48h', '✓ Équipe dédiée', '✓ Résultats mesurables'].map((feature) => (
-                <div key={feature} className={`flex items-center gap-2 sm:gap-3 text-base sm:text-lg ${
+                <div key={feature} className={`flex items-center gap-3 text-base sm:text-lg lg:text-xl ${
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}>
-                  <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
                     theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
                   }`}>
-                    <span className="text-[#2ca3bd] text-xs sm:text-sm">✓</span>
+                    <span className="text-[#2ca3bd] text-sm sm:text-base font-bold">✓</span>
                   </div>
                   {feature.replace('✓ ', '')}
                 </div>
@@ -116,12 +116,14 @@ export default function HeroVariantC() {
             </div>
 
             {/* CTA avec CTAButtonV3 */}
-            <div className="pt-2 sm:pt-4">
+            <div className="pt-4 sm:pt-6">
               <ButtonComponent onClick={scrollToContact} />
             </div>
 
             {/* Stats de confiance */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-white/10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t ${
+              theme === 'dark' ? 'border-white/10' : 'border-gray-200'
+            }">
               {[
                 { value: '600+', label: 'Projets livrés' },
                 { value: '650+', label: 'Développeurs' },
@@ -129,12 +131,12 @@ export default function HeroVariantC() {
                 { value: '24h', label: 'Temps de réponse' },
               ].map((stat, idx) => (
                 <div key={idx} className="text-center">
-                  <div className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-1 ${
+                  <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 ${
                     theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
                   }`}>
                     {stat.value}
                   </div>
-                  <div className={`text-[10px] sm:text-xs lg:text-sm ${
+                  <div className={`text-xs sm:text-sm lg:text-base ${
                     theme === 'dark' ? 'text-white/60' : 'text-gray-600'
                   }`}>
                     {stat.label}
@@ -145,35 +147,39 @@ export default function HeroVariantC() {
           </div>
 
           {/* Colonne droite - Visual Illustration */}
-          <div className="relative flex justify-center order-first lg:order-last">
-            <IllustrationComponent />
+          <div className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px]">
+            <div className="scale-75 sm:scale-90 lg:scale-100">
+              <IllustrationComponent />
+            </div>
           </div>
         </div>
 
         {/* Logo Carousel en bas */}
-        <div className="mt-12 sm:mt-16 pt-6 sm:pt-8">
-          <p className={`text-center text-[10px] sm:text-xs uppercase tracking-widest mb-4 sm:mb-6 ${
+        <div className="mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t ${
+          theme === 'dark' ? 'border-white/10' : 'border-gray-200'
+        }">
+          <p className={`text-center text-xs sm:text-sm uppercase tracking-widest mb-6 sm:mb-8 ${
             theme === 'dark' ? 'text-white/40' : 'text-gray-400'
           }`}>
             Ils nous font confiance
           </p>
           <div className="overflow-hidden relative">
-            <div className={`absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none ${
+            <div className={`absolute left-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none ${
               theme === 'dark'
                 ? 'bg-gradient-to-r from-[#060705] to-transparent'
-                : 'bg-gradient-to-r from-gray-50 to-transparent'
+                : 'bg-gradient-to-r from-white to-transparent'
             }`}></div>
-            <div className={`absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none ${
+            <div className={`absolute right-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none ${
               theme === 'dark'
                 ? 'bg-gradient-to-l from-[#060705] to-transparent'
-                : 'bg-gradient-to-l from-gray-50 to-transparent'
+                : 'bg-gradient-to-l from-white to-transparent'
             }`}></div>
             
             <div className="flex animate-scroll-left">
               {companyLogos.map((company) => (
                 <div
                   key={`first-${company.id}`}
-                  className="flex-shrink-0 mx-3 sm:mx-6 w-20 sm:w-32 h-12 sm:h-16 flex items-center justify-center"
+                  className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 w-24 sm:w-32 lg:w-36 h-14 sm:h-16 lg:h-20 flex items-center justify-center"
                 >
                   <img
                     src={company.logo}
@@ -185,7 +191,7 @@ export default function HeroVariantC() {
               {companyLogos.map((company) => (
                 <div
                   key={`second-${company.id}`}
-                  className="flex-shrink-0 mx-3 sm:mx-6 w-20 sm:w-32 h-12 sm:h-16 flex items-center justify-center"
+                  className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 w-24 sm:w-32 lg:w-36 h-14 sm:h-16 lg:h-20 flex items-center justify-center"
                 >
                   <img
                     src={company.logo}
