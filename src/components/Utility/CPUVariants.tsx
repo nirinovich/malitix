@@ -423,8 +423,8 @@ export function ProgressRescueGaugeVariant() {
             }}
           ></div>
 
-          {/* SVG gauge arc - REVERSED DIRECTION (start from left) */}
-          <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+          {/* SVG gauge arc - Full circle from left to right */}
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
             {/* Background track */}
             <circle
               cx="50"
@@ -434,7 +434,7 @@ export function ProgressRescueGaugeVariant() {
               stroke={theme === 'dark' ? '#1e293b' : '#e5e7eb'}
               strokeWidth="8"
             />
-            {/* Progress arc - STARTS FROM LEFT (180deg offset) */}
+            {/* Progress arc - Starts from left (180deg) and goes clockwise to right */}
             <circle
               cx="50"
               cy="50"
@@ -443,12 +443,11 @@ export function ProgressRescueGaugeVariant() {
               stroke={getColor(progress)}
               strokeWidth="8"
               strokeDasharray={`${(progress / 100) * 251.2} 251.2`}
-              strokeDashoffset="125.6"
               strokeLinecap="round"
               className="transition-all duration-300"
               style={{
                 filter: `drop-shadow(0 0 8px ${getColor(progress)})`,
-                transform: 'scaleX(-1)',
+                transform: 'rotate(90deg)',
                 transformOrigin: 'center'
               }}
             />
@@ -512,9 +511,9 @@ export function ProgressRescueGaugeVariant() {
             )}
           </div>
 
-          {/* Gauge markers */}
-          {[0, 50, 100].map((mark, i) => {
-            const angle = (mark / 100) * 180 - 90; // Reversed range
+          {/* Gauge markers - at 0%, 20%, 35%, 100% */}
+          {[0, 20, 35, 100].map((mark, i) => {
+            const angle = (mark / 100) * 360 - 90; // Full circle from top
             const x = 50 + Math.cos((angle * Math.PI) / 180) * 45;
             const y = 50 + Math.sin((angle * Math.PI) / 180) * 45;
             return (
