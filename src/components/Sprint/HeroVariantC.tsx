@@ -147,7 +147,7 @@ export default function HeroVariantC() {
           </div>
 
           {/* Colonne droite - Visual Illustration */}
-          <div className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px]">
+          <div className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0">
             <div className="scale-75 sm:scale-90 lg:scale-100">
               <IllustrationComponent />
             </div>

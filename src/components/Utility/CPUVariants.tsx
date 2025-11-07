@@ -533,8 +533,8 @@ export function ProgressRescueGaugeVariant() {
           })}
         </div>
 
-        {/* Labels extérieurs - REVERSED POSITIONS */}
-        <div className="absolute -left-32 top-1/2 -translate-y-1/2 text-center">
+        {/* Labels extérieurs - Masqués sur mobile pour éviter le débordement */}
+        <div className="hidden lg:block absolute -left-32 top-1/2 -translate-y-1/2 text-center">
           <div className={`text-xs font-bold uppercase mb-1 ${
             theme === 'dark' ? 'text-red-400' : 'text-red-600'
           }`}>
@@ -551,7 +551,7 @@ export function ProgressRescueGaugeVariant() {
             Lent
           </div>
         </div>
-        <div className="absolute -right-32 top-1/2 -translate-y-1/2 text-center">
+        <div className="hidden lg:block absolute -right-32 top-1/2 -translate-y-1/2 text-center">
           <div className={`text-xs font-bold uppercase mb-1 ${
             theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
           }`}>
