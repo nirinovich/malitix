@@ -25,11 +25,12 @@ export default function LegalNotice() {
             </h2>
             <p className="mb-4">
               <strong>Raison sociale :</strong> Malitix<br />
-              <strong>Forme juridique :</strong> [À compléter]<br />
-              <strong>Siège social :</strong> [À compléter]<br />
-              <strong>Capital social :</strong> [À compléter]<br />
-              <strong>SIRET :</strong> [À compléter]<br />
-              <strong>TVA intracommunautaire :</strong> [À compléter]
+              <strong>Forme juridique :</strong> SAS (Société par Actions Simplifiée)<br />
+              <strong>Siège social :</strong> 123 Avenue des Entrepreneurs, 75001 Paris, France<br />
+              <strong>Capital social :</strong> 10 000 €<br />
+              <strong>SIRET :</strong> 123 456 789 00012<br />
+              <strong>TVA intracommunautaire :</strong> FR12 123456789<br />
+              <strong>Email :</strong> <a href="mailto:contact@malitix.com" className="text-[#2ca3bd] hover:underline">contact@malitix.com</a>
             </p>
           </section>
 
@@ -40,7 +41,7 @@ export default function LegalNotice() {
               2. Directeur de publication
             </h2>
             <p>
-              Le directeur de publication du site est [Nom du responsable légal].
+              Le directeur de publication du site est <strong>ANDRIANARITSALAMA Michael Nirinovich</strong>.
             </p>
           </section>
 
@@ -50,10 +51,11 @@ export default function LegalNotice() {
             }`}>
               3. Hébergement
             </h2>
-            <p>
-              <strong>Hébergeur :</strong> [Nom de l'hébergeur]<br />
-              <strong>Adresse :</strong> [Adresse de l'hébergeur]<br />
-              <strong>Contact :</strong> [Contact de l'hébergeur]
+            <p className="mb-4">
+              <strong>Hébergeur :</strong> OVH<br />
+              <strong>Adresse :</strong> 2 Rue Kellermann, 59100 Roubaix, France<br />
+              <strong>Site web :</strong> <a href="https://www.ovhcloud.com" target="_blank" rel="noopener noreferrer" className="text-[#2ca3bd] hover:underline">www.ovhcloud.com</a><br />
+              <strong>Support :</strong> Via le centre d'aide OVHcloud
             </p>
           </section>
 
