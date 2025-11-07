@@ -32,35 +32,35 @@ export default function TestimonialSection() {
   const { theme } = useTheme();
 
   return (
-    <section className={`py-24 relative overflow-hidden ${
+    <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute top-1/2 left-1/4 w-96 h-96 rounded-full blur-3xl ${
+        <div className={`absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
           theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
         }`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
               Témoignages
             </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Ils Étaient Bloqués, <br className="hidden sm:block" />
             <span className="text-[#2ca3bd]">Nous Avons Livré</span>
           </h2>
-          <p className={`text-lg ${
+          <p className={`text-base sm:text-lg px-4 ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
           }`}>
             Des résultats concrets pour des entreprises qui nous ont fait confiance
@@ -68,21 +68,21 @@ export default function TestimonialSection() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`group relative backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
+              className={`group relative backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 theme === 'dark'
                   ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
                   : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-blue-400 hover:shadow-blue-200/50'
               }`}
             >
               {/* Quote icon */}
-              <div className={`absolute top-6 right-6 opacity-20 group-hover:opacity-30 transition-opacity ${
+              <div className={`absolute top-4 sm:top-6 right-4 sm:right-6 opacity-20 group-hover:opacity-30 transition-opacity ${
                 theme === 'dark' ? 'text-white' : 'text-gray-400'
               }`}>
-                <Quote size={48} />
+                <Quote size={40} className="sm:w-12 sm:h-12" />
               </div>
 
               {/* Rating */}
@@ -90,33 +90,33 @@ export default function TestimonialSection() {
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star
                     key={i}
-                    size={16}
-                    className="text-[#2ca3bd] fill-[#2ca3bd]"
+                    size={14}
+                    className="text-[#2ca3bd] fill-[#2ca3bd] sm:w-4 sm:h-4"
                   />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className={`text-base mb-6 leading-relaxed ${
+              <p className={`text-sm sm:text-base mb-6 leading-relaxed ${
                 theme === 'dark' ? 'text-white/80' : 'text-gray-700'
               }`}>
                 "{testimonial.quote}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 <img 
                   src={testimonial.image} 
                   alt={testimonial.name}
-                  className="w-16 h-16 rounded-full object-cover"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover flex-shrink-0"
                 />
                 <div>
-                  <div className={`font-semibold ${
+                  <div className={`font-semibold text-sm sm:text-base ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
                     {testimonial.name}
                   </div>
-                  <div className={`text-sm ${
+                  <div className={`text-xs sm:text-sm ${
                     theme === 'dark' ? 'text-white/60' : 'text-gray-600'
                   }`}>
                     {testimonial.role} • {testimonial.company}
@@ -125,14 +125,14 @@ export default function TestimonialSection() {
               </div>
 
               {/* Decorative element */}
-              <div className={`absolute bottom-0 left-0 w-full h-1 rounded-b-3xl bg-gradient-to-r from-transparent via-[#2ca3bd] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              <div className={`absolute bottom-0 left-0 w-full h-1 rounded-b-2xl sm:rounded-b-3xl bg-gradient-to-r from-transparent via-[#2ca3bd] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
             </div>
           ))}
         </div>
 
         {/* Trust badge */}
-        <div className="mt-16 text-center">
-          <p className={`text-sm ${
+        <div className="mt-12 sm:mt-16 text-center">
+          <p className={`text-xs sm:text-sm px-4 ${
             theme === 'dark' ? 'text-white/50' : 'text-gray-500'
           }`}>
             Rejoignez les 600+ entreprises qui nous font confiance

@@ -143,80 +143,80 @@ export function BenefitsShowcaseVariantB() {
   const { theme } = useTheme();
 
   return (
-    <section className={`py-24 relative overflow-hidden ${
+    <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
         : 'bg-gradient-to-b from-white to-gray-50'
     }`}>
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl ${
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] rounded-full blur-3xl ${
           theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
         }`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">
+        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 space-y-4 sm:space-y-6">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
               La Force d'une Armada
             </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Un vivier de <span className="text-[#2ca3bd]">650+ développeurs experts</span> mobilisables en 24h
           </h2>
-          <p className={`text-xl ${
+          <p className={`text-base sm:text-lg lg:text-xl px-4 ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
           }`}>
             Nos équipes commandos prêtes à déployer pour votre succès
           </p>
         </div>
 
-        <div className={`backdrop-blur-xl rounded-3xl p-8 md:p-12 mb-16 ${
+        <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 mb-12 sm:mb-16 ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10'
             : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200'
         }`}>
-          <h3 className={`text-2xl md:text-3xl font-bold mb-10 text-center ${
+          <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-8 sm:mb-10 text-center ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Ce que vous obtenez avec chaque Sprint Commando
           </h3>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <div 
                   key={index} 
-                  className={`group relative flex gap-4 p-6 rounded-2xl transition-all duration-300 border-2 cursor-pointer ${
+                  className={`group relative flex gap-3 sm:gap-4 p-5 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 border-2 cursor-pointer ${
                     theme === 'dark' 
                       ? 'border-white/5 hover:border-[#2ca3bd]/50 hover:bg-white/5 hover:shadow-xl hover:shadow-[#2ca3bd]/10' 
                       : 'border-gray-200 hover:border-[#2ca3bd]/50 hover:bg-white hover:shadow-xl'
                   } ${benefit.isHighlight ? 'ring-2 ring-[#2ca3bd]/20' : ''} hover:-translate-y-1`}
                 >
                   {benefit.isHighlight && (
-                    <div className="absolute -top-3 -right-3 bg-[#2ca3bd] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <div className="absolute -top-2 sm:-top-3 -right-2 sm:-right-3 bg-[#2ca3bd] text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-lg">
                       ⚡ Clé
                     </div>
                   )}
                   
-                  <div className={`flex-shrink-0 p-3 rounded-xl h-fit transition-all duration-300 group-hover:scale-110 ${
+                  <div className={`flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl h-fit transition-all duration-300 group-hover:scale-110 ${
                     theme === 'dark' ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20' : 'bg-blue-100 group-hover:bg-blue-200'
                   }`}>
-                    <Icon size={28} className="text-[#2ca3bd]" />
+                    <Icon size={24} className="text-[#2ca3bd] sm:w-7 sm:h-7" />
                   </div>
                   <div className="flex-1">
-                    <h4 className={`font-bold text-lg mb-2 flex items-center gap-2 ${
+                    <h4 className={`font-bold text-base sm:text-lg mb-2 flex items-center gap-2 ${
                       theme === 'dark' ? 'text-white' : 'text-gray-900'
                     }`}>
-                      <Check size={20} className="text-[#2ca3bd] flex-shrink-0" />
+                      <Check size={18} className="text-[#2ca3bd] flex-shrink-0 sm:w-5 sm:h-5" />
                       {benefit.title}
                     </h4>
-                    <p className={`text-sm leading-relaxed ${
+                    <p className={`text-xs sm:text-sm leading-relaxed ${
                       theme === 'dark' ? 'text-white/70' : 'text-gray-600'
                     }`}>
                       {benefit.desc}
