@@ -4,7 +4,7 @@ import { Settings } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function ABTestPanel() {
-  const { cpuVariant, setCPUVariant } = useABTest();
+  const { cpuVariant, setCPUVariant, variants, setPricingGridVariant } = useABTest();
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -82,6 +82,57 @@ export default function ABTestPanel() {
                           {variant.desc}
                         </div>
                         {cpuVariant === variant.value && (
+                          <div className="text-xs opacity-90 font-bold mt-1">✓ Active</div>
+                        )}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className={`h-px ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-200'}`}></div>
+
+            {/* PricingGrid Variant Selection */}
+            <div>
+              <label
+                className={`block text-sm font-medium mb-2 ${
+                  theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+                }`}
+              >
+                PricingGrid Variant
+              </label>
+              <div className="space-y-2">
+                {[
+                  { value: 'A', label: 'Minimaliste & Élégant', emoji: '✨', desc: 'Hovers subtils, design épuré' },
+                  { value: 'B', label: 'Interactive Cards', emoji: '🎯', desc: 'Bordures, badges, animations' },
+                ].map((variant) => (
+                  <button
+                    key={variant.value}
+                    onClick={() => setPricingGridVariant(variant.value as any)}
+                    className={`w-full px-4 py-3 rounded-xl text-left transition-all duration-300 ${
+                      variants.pricingGrid === variant.value
+                        ? theme === 'dark'
+                          ? 'bg-[#2ca3bd] text-white shadow-lg shadow-[#2ca3bd]/30'
+                          : 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+                        : theme === 'dark'
+                        ? 'bg-white/5 text-white/70 hover:bg-white/10'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{variant.emoji}</span>
+                      <div className="flex-1">
+                        <div className="font-semibold">{variant.label}</div>
+                        <div className={`text-xs ${
+                          variants.pricingGrid === variant.value 
+                            ? 'opacity-90' 
+                            : theme === 'dark' ? 'opacity-60' : 'opacity-70'
+                        }`}>
+                          {variant.desc}
+                        </div>
+                        {variants.pricingGrid === variant.value && (
                           <div className="text-xs opacity-90 font-bold mt-1">✓ Active</div>
                         )}
                       </div>
