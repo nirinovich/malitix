@@ -1,12 +1,6 @@
 import { useTheme } from '../../context/ThemeContext';
 import { CTAButtonV3 } from '../Utility/CTAButtons';
-import { useABTest } from '../../context/ABTestContext';
-import { 
-  CountdownTimerVariant, 
-  CountdownTimer2Variant,
-  ProgressRescueGaugeVariant,
-  TeamDeploymentVariant
-} from '../Utility/CPUVariants';
+import { ProgressRescueGaugeVariant } from '../Utility/CPUVariants';
 
 const companyLogos = [
   {
@@ -54,7 +48,6 @@ const companyLogos = [
 // Variante C - Design Split avec Visual et Stats
 export default function HeroVariantC() {
   const { theme } = useTheme();
-  const { cpuVariant } = useABTest();
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sprint');
@@ -63,14 +56,8 @@ export default function HeroVariantC() {
 
   const ButtonComponent = CTAButtonV3;
 
-  // Select illustration variant based on A/B test
-  const IllustrationComponent = cpuVariant === 'countdown' 
-    ? CountdownTimerVariant 
-    : cpuVariant === 'countdown2'
-    ? CountdownTimer2Variant
-    : cpuVariant === 'rescue'
-    ? ProgressRescueGaugeVariant
-    : TeamDeploymentVariant;
+  // Fixed illustration: Progress Rescue
+  const IllustrationComponent = ProgressRescueGaugeVariant;
 
   return (
     <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
