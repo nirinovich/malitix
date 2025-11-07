@@ -78,8 +78,12 @@ export default function SprintHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center max-w-5xl mx-auto space-y-8">
           {/* Badge */}
-          <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-6 py-2 text-sm text-[#2ca3bd] font-medium mb-4">
-            🚀 Sprint Commando - Déblocage Garanti en 14 Jours
+          <div className="inline-flex items-center justify-center gap-2 mb-4">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+              🚀 Sprint Commando - Déblocage Garanti en 14 Jours
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
 
           {/* Headline */}

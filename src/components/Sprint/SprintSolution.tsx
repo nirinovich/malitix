@@ -19,8 +19,12 @@ export default function SprintSolution() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-8">
           {/* Badge */}
-          <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-6 py-3 text-sm text-[#2ca3bd] font-medium">
-            La Solution Radicale
+          <div className="inline-flex items-center justify-center gap-2">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+              La Solution Radicale
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
 
           {/* Title */}

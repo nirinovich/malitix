@@ -78,8 +78,12 @@ export default function CTASection() {
           {/* Left Side - Content */}
           <div className="space-y-8">
             <div>
-              <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-4 py-2 text-sm text-[#2ca3bd] font-medium mb-6">
-                Contactez-nous
+              <div className="inline-flex items-center gap-2 mb-6">
+                <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+                  Contactez-nous
+                </span>
+                <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
               </div>
               <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'

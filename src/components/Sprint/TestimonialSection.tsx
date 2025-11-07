@@ -47,8 +47,12 @@ export default function TestimonialSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-block bg-[#2ca3bd]/10 border border-[#2ca3bd]/30 rounded-full px-4 py-2 text-sm text-[#2ca3bd] font-medium mb-4">
-            Témoignages
+          <div className="inline-flex items-center justify-center gap-2 mb-4">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+              Témoignages
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
