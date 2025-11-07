@@ -331,32 +331,33 @@ export function CountdownTimer2Variant() {
 
 // ==========================================
 // VARIANT 3: PROGRESS RESCUE GAUGE
-// Shows transformation: Sans Malitix (red) → Avec Malitix (green)
-// Bar starts from LEFT (slow) and accelerates to RIGHT (fast)
+// Shows transformation: Sans Malitix (red) → Avec Malitix (brand color)
+// 0-20%: Slow (Sans Malitix) → 20-35%: Transition → 35-100%: Fast (Avec Malitix) → STOP
 // ==========================================
 export function ProgressRescueGaugeVariant() {
   const { theme } = useTheme();
   const [progress, setProgress] = useState(0);
-  const [phase, setPhase] = useState<'slow' | 'pause' | 'fast'>('slow');
+  const [phase, setPhase] = useState<'slow' | 'transition' | 'fast' | 'complete'>('slow');
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
-        if (prev < 48) {
-          // Slow phase (Sans Malitix)
+        if (prev < 20) {
+          // Slow phase (Sans Malitix) - 0 to 20%
           setPhase('slow');
-          return prev + 0.4; // Very slow
-        } else if (prev < 50) {
-          // Pause at 50%
-          setPhase('pause');
-          return prev + 0.1;
+          return prev + 0.3; // Very slow
+        } else if (prev < 35) {
+          // Transition phase (Adapting to Malitix) - 20 to 35%
+          setPhase('transition');
+          return prev + 0.8; // Medium speed
         } else if (prev < 100) {
-          // Fast phase (Avec Malitix)
+          // Fast phase (Avec Malitix) - 35 to 100%
           setPhase('fast');
-          return prev + 2; // Much faster
+          return prev + 2.5; // Much faster
         } else {
-          // Reset
-          return 0;
+          // Complete - STOP at 100%
+          setPhase('complete');
+          return 100;
         }
       });
     }, 50);
@@ -364,20 +365,22 @@ export function ProgressRescueGaugeVariant() {
   }, []);
 
   const getColor = (value: number) => {
-    if (value < 50) return theme === 'dark' ? '#ef4444' : '#dc2626'; // Red
-    if (value < 75) return theme === 'dark' ? '#f59e0b' : '#d97706'; // Orange
-    return theme === 'dark' ? '#2ca3bd' : '#2ca3bd'; // Brand color instead of green!
+    if (value < 20) return theme === 'dark' ? '#ef4444' : '#dc2626'; // Red - Sans Malitix
+    if (value < 35) return theme === 'dark' ? '#f59e0b' : '#d97706'; // Orange - Transition
+    return theme === 'dark' ? '#2ca3bd' : '#2ca3bd'; // Brand color - Avec Malitix
   };
 
   const getStatus = (value: number) => {
-    if (value < 50) return 'SANS MALITIX';
-    if (value < 75) return 'TRANSITION';
-    return 'AVEC MALITIX';
+    if (value < 20) return 'SANS MALITIX';
+    if (value < 35) return 'ADAPTATION';
+    if (value < 100) return 'AVEC MALITIX';
+    return 'OBJECTIF ATTEINT';
   };
 
   const getLabel = (value: number) => {
-    if (value < 50) return '🐌 Projet en retard';
-    if (value < 75) return '⚡ Récupération...';
+    if (value < 20) return '🐌 Projet en retard';
+    if (value < 35) return '⚡ Adaptation en cours';
+    if (value < 100) return '🚀 Accélération';
     return '✅ Objectifs atteints !';
   };
 
@@ -416,7 +419,7 @@ export function ProgressRescueGaugeVariant() {
             className="absolute inset-0 rounded-full blur-3xl opacity-50 transition-all duration-500"
             style={{ 
               backgroundColor: getColor(progress),
-              animationDuration: phase === 'slow' ? '2s' : phase === 'pause' ? '1s' : '0.5s'
+              animationDuration: phase === 'slow' ? '2s' : phase === 'transition' ? '1s' : phase === 'fast' ? '0.5s' : '0.3s'
             }}
           ></div>
 
@@ -454,7 +457,7 @@ export function ProgressRescueGaugeVariant() {
           {/* Center display */}
           <div className="relative z-10 text-center px-4">
             <div className={`text-6xl font-black mb-2 transition-all duration-300 ${
-              phase === 'slow' ? 'animate-pulse' : ''
+              phase === 'slow' ? 'animate-pulse' : phase === 'complete' ? 'scale-110' : ''
             }`}
               style={{ color: getColor(progress) }}>
               {Math.floor(progress)}%
@@ -468,9 +471,9 @@ export function ProgressRescueGaugeVariant() {
             {/* Status label */}
             <div className="flex justify-center gap-2 mt-3">
               <div className={`text-xs font-bold px-3 py-1 rounded-full transition-all duration-300 ${
-                progress < 50
+                progress < 20
                   ? 'bg-red-500/20 text-red-500 animate-pulse'
-                  : progress < 75
+                  : progress < 35
                   ? 'bg-orange-500/20 text-orange-500'
                   : 'bg-[#2ca3bd]/20 text-[#2ca3bd]'
               }`}>
@@ -486,11 +489,25 @@ export function ProgressRescueGaugeVariant() {
                 Vitesse ralentie...
               </div>
             )}
+            {phase === 'transition' && (
+              <div className={`mt-2 text-[10px] ${
+                theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+              }`}>
+                Adaptation Malitix...
+              </div>
+            )}
             {phase === 'fast' && (
               <div className={`mt-2 text-[10px] ${
                 theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
               }`}>
                 Accélération ⚡
+              </div>
+            )}
+            {phase === 'complete' && (
+              <div className={`mt-2 text-[10px] font-bold ${
+                theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
+              }`}>
+                Mission accomplie! 🎉
               </div>
             )}
           </div>
