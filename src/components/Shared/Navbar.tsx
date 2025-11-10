@@ -48,21 +48,24 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
     setIsMobileMenuOpen(false);
     setIsUseCasesOpen(false);
     
-    // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
-    if (location.pathname !== '/') {
-      navigate('/' + href);
-      // Attendre que la navigation soit complète avant de scroller
-      setTimeout(() => {
+    // Si c'est un hash (ancre), gérer la navigation vers la section
+    if (href.startsWith('#')) {
+      // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+        // Attendre que la navigation soit complète avant de scroller
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Si on est déjà sur l'accueil, juste scroller
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
-    } else {
-      // Si on est déjà sur l'accueil, juste scroller
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
@@ -117,34 +120,26 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {/* Accueil */}
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#home');
-              }}
+            <button
+              onClick={() => handleNavClick('#home')}
               className={`relative group py-2 transition-colors ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               Accueil
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </button>
 
             {/* Services */}
-            <a
-              href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#services');
-              }}
+            <button
+              onClick={() => handleNavClick('#services')}
               className={`relative group py-2 transition-colors ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               Services
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </button>
 
             {/* Use Cases Dropdown - Now after Services */}
             <div 
@@ -212,48 +207,36 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             </div>
 
             {/* À propos */}
-            <a
-              href="#about"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#about');
-              }}
+            <button
+              onClick={() => handleNavClick('#about')}
               className={`relative group py-2 transition-colors ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               À propos
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </button>
 
             {/* Contact */}
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#contact');
-              }}
+            <button
+              onClick={() => handleNavClick('#contact')}
               className={`relative group py-2 transition-colors ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               Contact
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </button>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#contact');
-              }}
+            <button
+              onClick={() => handleNavClick('#contact')}
               className="bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300"
             >
               {CTA_TEXT.primary}
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -283,36 +266,28 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
       >
         <div className="px-4 py-6 space-y-4">
           {/* Accueil */}
-          <a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#home');
-            }}
-            className={`block px-4 py-3 rounded-lg transition-all ${
+          <button
+            onClick={() => handleNavClick('#home')}
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
             }`}
           >
             Accueil
-          </a>
+          </button>
 
           {/* Services */}
-          <a
-            href="#services"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#services');
-            }}
-            className={`block px-4 py-3 rounded-lg transition-all ${
+          <button
+            onClick={() => handleNavClick('#services')}
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
             }`}
           >
             Services
-          </a>
+          </button>
 
           {/* Use Cases Mobile Dropdown */}
           <div>
@@ -361,47 +336,35 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           </div>
 
           {/* À propos */}
-          <a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#about');
-            }}
-            className={`block px-4 py-3 rounded-lg transition-all ${
+          <button
+            onClick={() => handleNavClick('#about')}
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
             }`}
           >
             À propos
-          </a>
+          </button>
 
           {/* Contact */}
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#contact');
-            }}
-            className={`block px-4 py-3 rounded-lg transition-all ${
+          <button
+            onClick={() => handleNavClick('#contact')}
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
             }`}
           >
             Contact
-          </a>
+          </button>
 
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#contact');
-            }}
-            className="block bg-[#2ca3bd] hover:bg-[#248fa5] text-white text-center px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 transition-all"
+          <button
+            onClick={() => handleNavClick('#contact')}
+            className="block w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white text-center px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 transition-all"
           >
             {CTA_TEXT.primary}
-          </a>
+          </button>
         </div>
       </div>
     </nav>

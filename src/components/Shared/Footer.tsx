@@ -1,5 +1,5 @@
 import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router';
 import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '../../utils/constants';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -10,6 +10,27 @@ const iconMap = {
 export default function Footer() {
   const { theme } = useTheme();
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   return (
     <footer className={`border-t relative overflow-hidden ${
@@ -83,8 +104,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <button
+                    onClick={() => handleNavClick(link.href)}
                     className={`text-sm transition-colors ${
                       theme === 'dark'
                         ? 'text-white/70 hover:text-[#2ca3bd]'
@@ -92,7 +113,7 @@ export default function Footer() {
                     }`}
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -112,8 +133,8 @@ export default function Footer() {
                 'IA métier',
               ].map((service, i) => (
                 <li key={i}>
-                  <a
-                    href="#services"
+                  <button
+                    onClick={() => handleNavClick('#services')}
                     className={`text-sm transition-colors ${
                       theme === 'dark'
                         ? 'text-white/70 hover:text-[#2ca3bd]'
@@ -121,7 +142,7 @@ export default function Footer() {
                     }`}
                   >
                     {service}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
