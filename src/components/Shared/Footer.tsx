@@ -106,7 +106,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className={`text-sm transition-colors ${
+                    className={`text-sm transition-colors cursor-pointer ${
                       theme === 'dark'
                         ? 'text-white/70 hover:text-[#2ca3bd]'
                         : 'text-gray-600 hover:text-[#2ca3bd]'
@@ -135,7 +135,7 @@ export default function Footer() {
                 <li key={i}>
                   <button
                     onClick={() => handleNavClick('#services')}
-                    className={`text-sm transition-colors ${
+                    className={`text-sm transition-colors cursor-pointer ${
                       theme === 'dark'
                         ? 'text-white/70 hover:text-[#2ca3bd]'
                         : 'text-gray-600 hover:text-[#2ca3bd]'
@@ -205,7 +205,7 @@ export default function Footer() {
             <div className="flex gap-6">
               <Link
                 to="/mentions-legales"
-                className={`text-sm transition-colors ${
+                className={`text-sm transition-colors cursor-pointer ${
                   theme === 'dark'
                     ? 'text-white/50 hover:text-[#2ca3bd]'
                     : 'text-gray-500 hover:text-[#2ca3bd]'
@@ -215,7 +215,7 @@ export default function Footer() {
               </Link>
               <Link
                 to="/politique-de-confidentialite"
-                className={`text-sm transition-colors ${
+                className={`text-sm transition-colors cursor-pointer ${
                   theme === 'dark'
                     ? 'text-white/50 hover:text-[#2ca3bd]'
                     : 'text-gray-500 hover:text-[#2ca3bd]'

@@ -107,7 +107,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img 
                 src="/mx_light.png"
@@ -122,7 +122,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Accueil */}
             <button
               onClick={() => handleNavClick('#home')}
-              className={`relative group py-2 transition-colors ${
+              className={`relative group py-2 transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
@@ -133,7 +133,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Services */}
             <button
               onClick={() => handleNavClick('#services')}
-              className={`relative group py-2 transition-colors ${
+              className={`relative group py-2 transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
@@ -148,7 +148,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`relative py-2 transition-colors flex items-center gap-1 ${
+                className={`relative py-2 transition-colors flex items-center gap-1 cursor-pointer ${
                   theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
@@ -178,7 +178,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                       <button
                         key={useCase.href}
                         onClick={() => handleUseCaseClick(useCase.href)}
-                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item ${
+                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
                           theme === 'dark'
                             ? 'hover:bg-white/10 text-white/80 hover:text-white'
                             : 'hover:bg-gray-100 text-gray-700 hover:text-gray-900'
@@ -209,7 +209,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             {/* À propos */}
             <button
               onClick={() => handleNavClick('#about')}
-              className={`relative group py-2 transition-colors ${
+              className={`relative group py-2 transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
@@ -220,7 +220,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Contact */}
             <button
               onClick={() => handleNavClick('#contact')}
-              className={`relative group py-2 transition-colors ${
+              className={`relative group py-2 transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
@@ -233,7 +233,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <div className="hidden md:block">
             <button
               onClick={() => handleNavClick('#contact')}
-              className="bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300"
+              className="bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               {CTA_TEXT.primary}
             </button>
@@ -242,7 +242,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
+            className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer ${
               theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-100'
             }`}
             aria-label="Toggle menu"
@@ -268,7 +268,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Accueil */}
           <button
             onClick={() => handleNavClick('#home')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -280,7 +280,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Services */}
           <button
             onClick={() => handleNavClick('#services')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -293,7 +293,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <div>
             <button
               onClick={() => setIsUseCasesOpen(!isUseCasesOpen)}
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all cursor-pointer ${
                 theme === 'dark'
                   ? 'text-white/80 hover:text-white hover:bg-white/5'
                   : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -317,7 +317,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                   <button
                     key={useCase.href}
                     onClick={() => handleUseCaseClick(useCase.href)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
                       theme === 'dark'
                         ? 'bg-white/5 text-white/80 hover:text-white hover:bg-white/10'
                         : 'bg-gray-50 text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -338,7 +338,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* À propos */}
           <button
             onClick={() => handleNavClick('#about')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -350,7 +350,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Contact */}
           <button
             onClick={() => handleNavClick('#contact')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
+            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
                 : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -361,7 +361,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
 
           <button
             onClick={() => handleNavClick('#contact')}
-            className="block w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white text-center px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 transition-all"
+            className="block w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white text-center px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 transition-all cursor-pointer"
           >
             {CTA_TEXT.primary}
           </button>

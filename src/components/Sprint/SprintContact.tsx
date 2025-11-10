@@ -207,7 +207,7 @@ export default function SprintContact() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 ${
+                className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 cursor-pointer ${
                   isLoading
                     ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-[#2ca3bd] hover:bg-[#2ca3bd]/90 shadow-lg hover:shadow-xl hover:shadow-[#2ca3bd]/30'
