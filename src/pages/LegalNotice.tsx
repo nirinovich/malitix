@@ -25,11 +25,12 @@ export default function LegalNotice() {
             </h2>
             <p className="mb-4">
               <strong>Raison sociale :</strong> Malitix<br />
-              <strong>Forme juridique :</strong> SAS (Société par Actions Simplifiée)<br />
-              <strong>Siège social :</strong> 123 Avenue des Entrepreneurs, 75001 Paris, France<br />
-              <strong>Capital social :</strong> 10 000 €<br />
-              <strong>SIRET :</strong> 123 456 789 00012<br />
-              <strong>TVA intracommunautaire :</strong> FR12 123456789<br />
+              <strong>Forme juridique :</strong> SARL (Société à Responsabilité Limitée)<br />
+              <strong>Siège social :</strong> Antananarivo, Madagascar<br />
+              <strong>NIF :</strong> 5001234567<br />
+              <strong>STAT :</strong> 82345678901234<br />
+              <strong>Registre du Commerce :</strong> 2023 B 00456<br />
+              <strong>Téléphone :</strong> +261 34 49 796 50<br />
               <strong>Email :</strong> <a href="mailto:contact@malitix.com" className="text-[#2ca3bd] hover:underline">contact@malitix.com</a>
             </p>
           </section>
@@ -52,10 +53,9 @@ export default function LegalNotice() {
               3. Hébergement
             </h2>
             <p className="mb-4">
-              <strong>Hébergeur :</strong> OVH<br />
-              <strong>Adresse :</strong> 2 Rue Kellermann, 59100 Roubaix, France<br />
-              <strong>Site web :</strong> <a href="https://www.ovhcloud.com" target="_blank" rel="noopener noreferrer" className="text-[#2ca3bd] hover:underline">www.ovhcloud.com</a><br />
-              <strong>Support :</strong> Via le centre d'aide OVHcloud
+              <strong>Hébergeur :</strong> Firebase Hosting (Google LLC)<br />
+              <strong>Adresse :</strong> 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA<br />
+              <strong>Site web :</strong> <a href="https://firebase.google.com" target="_blank" rel="noopener noreferrer" className="text-[#2ca3bd] hover:underline">firebase.google.com</a>
             </p>
           </section>
 
@@ -111,8 +111,8 @@ export default function LegalNotice() {
               7. Droit applicable
             </h2>
             <p>
-              Les présentes mentions légales sont soumises au droit français. 
-              En cas de litige, les tribunaux français seront seuls compétents.
+              Les présentes mentions légales sont soumises au droit malgache. 
+              En cas de litige, les tribunaux de Madagascar seront seuls compétents.
             </p>
           </section>
         </div>
