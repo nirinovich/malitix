@@ -21,17 +21,18 @@ export default function LegalNotice() {
             <h2 className={`text-2xl font-bold mb-4 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              1. Informations légales
+              Édition du site internet
             </h2>
             <p className="mb-4">
-              <strong>Raison sociale :</strong> Malitix<br />
-              <strong>Forme juridique :</strong> SARL (Société à Responsabilité Limitée)<br />
-              <strong>Siège social :</strong> Antananarivo, Madagascar<br />
-              <strong>NIF :</strong> 5001234567<br />
-              <strong>STAT :</strong> 82345678901234<br />
-              <strong>Registre du Commerce :</strong> 2023 B 00456<br />
-              <strong>Téléphone :</strong> +33 1 84 80 62 48<br />
-              <strong>Email :</strong> <a href="mailto:contact@malitix.com" className="text-[#2ca3bd] hover:underline">contact@malitix.com</a>
+              Le site <strong>https://www.malitix.com</strong> est édité par la société{' '}
+              <strong>ETECH CONSULTING SARLU</strong> ayant son siège social au{' '}
+              <strong>2ème étage de l'Immeuble TRADE TOWER ALAROBIA</strong>, immatriculée au 
+              Registre du Commerce et des Sociétés d'Antananarivo sous le numéro{' '}
+              <strong>2001 B 00268</strong>.
+            </p>
+            <p>
+              Le site est exclusivement dédié au projet <strong>MALITIX</strong>, initiative 
+              portée par la société ETECH CONSULTING SARLU.
             </p>
           </section>
 
@@ -39,10 +40,10 @@ export default function LegalNotice() {
             <h2 className={`text-2xl font-bold mb-4 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              2. Directeur de publication
+              Directeur de publication
             </h2>
             <p>
-              Le directeur de publication du site est <strong>ANDRIANARITSALAMA Michael Nirinovich</strong>.
+              Le Directeur de publication du site est <strong>ETECH CONSULTING SARLU</strong>.
             </p>
           </section>
 
@@ -50,51 +51,39 @@ export default function LegalNotice() {
             <h2 className={`text-2xl font-bold mb-4 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              3. Hébergement
+              Hébergeur
+            </h2>
+            <p>
+              Le site est hébergé par <strong>ETECH CONSULTING SARLU</strong>.
+            </p>
+          </section>
+
+          <section>
+            <h2 className={`text-2xl font-bold mb-4 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              Propriété industrielle
+            </h2>
+            <p>
+              Le contenu de ce site y compris textes, images, graphiques, logos, est protégé par 
+              l'Ordonnance 89-019 instituant un régime pour la protection de la propriété industrielle 
+              en République Démocratique de Madagascar et est la propriété exclusive de{' '}
+              <strong>ETECH CONSULTING SARLU</strong> sauf indication contraire.
+            </p>
+          </section>
+
+          <section>
+            <h2 className={`text-2xl font-bold mb-4 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              Données personnelles
             </h2>
             <p className="mb-4">
-              <strong>Hébergeur :</strong> Firebase Hosting (Google LLC)<br />
-              <strong>Adresse :</strong> 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA<br />
-              <strong>Site web :</strong> <a href="https://firebase.google.com" target="_blank" rel="noopener noreferrer" className="text-[#2ca3bd] hover:underline">firebase.google.com</a>
+              Le traitement des données personnelles est régi par la Loi N°2014-038 en date du 
+              09 janvier 2015 sur la protection des données à caractère personnel à Madagascar.
             </p>
-          </section>
-
-          <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              4. Propriété intellectuelle
-            </h2>
             <p>
-              L'ensemble du contenu présent sur ce site (textes, images, logos, vidéos, etc.) 
-              est la propriété exclusive de Malitix ou de ses partenaires. Toute reproduction, 
-              distribution, modification, adaptation, retransmission ou publication de ces 
-              différents éléments est strictement interdite sans l'accord exprès par écrit de Malitix.
-            </p>
-          </section>
-
-          <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              5. Limitation de responsabilité
-            </h2>
-            <p>
-              Malitix s'efforce d'assurer l'exactitude et la mise à jour des informations 
-              diffusées sur ce site. Toutefois, Malitix ne peut garantir l'exactitude, 
-              la précision ou l'exhaustivité des informations mises à disposition sur ce site.
-            </p>
-          </section>
-
-          <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              6. Données personnelles
-            </h2>
-            <p>
-              Pour plus d'informations sur la collecte et le traitement de vos données personnelles, 
-              veuillez consulter notre{' '}
+              Pour plus d'informations, veuillez consulter notre{' '}
               <a 
                 href="/politique-de-confidentialite" 
                 className="text-[#2ca3bd] hover:underline"
@@ -108,11 +97,11 @@ export default function LegalNotice() {
             <h2 className={`text-2xl font-bold mb-4 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              7. Droit applicable
+              Contacts
             </h2>
             <p>
-              Les présentes mentions légales sont soumises au droit malgache. 
-              En cas de litige, les tribunaux de Madagascar seront seuls compétents.
+              <strong>Téléphone :</strong> <a href="tel:+33184806248" className="text-[#2ca3bd] hover:underline">+33 1 84 80 62 48</a><br />
+              <strong>E-mail :</strong> <a href="mailto:lola.rakotoarison@etechconsulting-mg.com" className="text-[#2ca3bd] hover:underline">lola.rakotoarison@etechconsulting-mg.com</a>
             </p>
           </section>
         </div>
