@@ -58,7 +58,7 @@ export const STATS: Stat[] = [
 
 // Social Media Links
 export const SOCIAL_LINKS: SocialLink[] = [
-  { name: 'LinkedIn', href: '#', icon: 'Linkedin' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/malitix-offshore', icon: 'Linkedin' },
 ];
 
 // Company Info
