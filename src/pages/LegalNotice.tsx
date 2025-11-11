@@ -30,7 +30,7 @@ export default function LegalNotice() {
               <strong>NIF :</strong> 5001234567<br />
               <strong>STAT :</strong> 82345678901234<br />
               <strong>Registre du Commerce :</strong> 2023 B 00456<br />
-              <strong>Téléphone :</strong> +261 34 49 796 50<br />
+              <strong>Téléphone :</strong> +33 1 84 80 62 48<br />
               <strong>Email :</strong> <a href="mailto:contact@malitix.com" className="text-[#2ca3bd] hover:underline">contact@malitix.com</a>
             </p>
           </section>
