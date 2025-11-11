@@ -115,9 +115,7 @@ export default function TrustStats() {
                     <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
                       theme === 'dark' ? 'text-white' : 'text-gray-900'
                     }`}>
-                      {isVisible && (
-                        <CountUp end={stat.value} suffix={stat.suffix || ''} />
-                      )}
+                      <CountUp end={stat.value} suffix={stat.suffix || ''} isVisible={isVisible} />
                     </div>
                     <div className={`text-sm font-medium ${
                       theme === 'dark' ? 'text-white/60' : 'text-gray-600'
@@ -200,15 +198,22 @@ export default function TrustStats() {
 }
 
 // Simple CountUp Component
-function CountUp({ end, suffix }: { end: string; suffix: string }) {
+function CountUp({ end, suffix, isVisible }: { end: string; suffix: string; isVisible: boolean }) {
   const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const numericEnd = parseFloat(end);
   
   useEffect(() => {
-    if (isNaN(numericEnd)) {
+    // Handle special case for "24/7"
+    if (end === '24/7') {
       return;
     }
 
+    if (isNaN(numericEnd) || hasAnimated || !isVisible) {
+      return;
+    }
+
+    setHasAnimated(true);
     let startTime: number;
     const duration = 2000; // 2 seconds
 
@@ -224,7 +229,7 @@ function CountUp({ end, suffix }: { end: string; suffix: string }) {
     };
 
     requestAnimationFrame(animate);
-  }, [numericEnd]);
+  }, [numericEnd, hasAnimated, end, isVisible]);
 
   // Handle special case for "24/7"
   if (end === '24/7') {
