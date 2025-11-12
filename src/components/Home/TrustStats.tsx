@@ -24,10 +24,19 @@ export default function TrustStats() {
       observer.observe(sectionRef.current);
     }
 
+    // Fallback: some translators or page wrappers (eg. Google Translate)
+    // can interfere with IntersectionObserver. If the observer doesn't
+    // trigger within a short time, start the animation anyway so stats
+    // are not stuck at 0.
+    const fallbackId = window.setTimeout(() => {
+      setIsVisible(true);
+    }, 1200);
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
+      clearTimeout(fallbackId);
     };
   }, []);
 
