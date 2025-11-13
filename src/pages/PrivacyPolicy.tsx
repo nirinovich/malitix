@@ -189,7 +189,6 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="list-none space-y-2 ml-4 mt-4">
               <li><strong>Email :</strong> <a href="mailto:infos@malitix.com" className="text-[#2ca3bd] hover:underline">infos@malitix.com</a></li>
-              <li><strong>Adresse :</strong> [Adresse postale à compléter]</li>
             </ul>
             <p className="mt-4">
               Vous avez également le droit d'introduire une réclamation auprès de la CNIL 
