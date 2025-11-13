@@ -65,7 +65,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const COMPANY_INFO = {
   name: 'Malitix',
   tagline: 'Excellence technologique, innovation continue',
-  email: 'info@malitix.com',
+  email: 'infos@malitix.com',
   phone: '+33 1 84 80 62 48',
   address: 'Antananarivo, Madagascar',
   description: 'Malitix est votre partenaire de confiance pour la transformation digitale et l\'innovation technologique.',
