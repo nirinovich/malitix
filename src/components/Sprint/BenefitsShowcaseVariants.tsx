@@ -76,7 +76,7 @@ export function BenefitsShowcaseVariantA() {
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Un vivier de <span className="text-[#2ca3bd]">650+ développeurs experts</span> mobilisables en 24h
+            Un vivier de <span className="text-[#2ca3bd]">350+ développeurs experts</span> mobilisables en 24h
           </h2>
           <p className={`text-xl ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
@@ -166,7 +166,7 @@ export function BenefitsShowcaseVariantB() {
           <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Un vivier de <span className="text-[#2ca3bd]">650+ développeurs experts</span> mobilisables en 24h
+            Un vivier de <span className="text-[#2ca3bd]">350+ développeurs experts</span> mobilisables en 24h
           </h2>
           <p className={`text-base sm:text-lg lg:text-xl px-4 ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
@@ -262,7 +262,7 @@ export function PricingGridVariantC() {
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Un vivier de <span className="text-[#2ca3bd]">650+ développeurs experts</span> mobilisables en 24h
+            Un vivier de <span className="text-[#2ca3bd]">350+ développeurs experts</span> mobilisables en 24h
           </h2>
           <p className={`text-xl ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'

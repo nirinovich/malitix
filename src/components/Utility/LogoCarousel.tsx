@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 
 const stats = [
   { icon: TrendingUp, value: '600+', label: 'Projets livrés' },
-  { icon: Users, value: '650+', label: 'Développeurs' },
+  { icon: Users, value: '350+', label: 'Développeurs' },
   { icon: Award, value: '15 ans', label: "D'expertise" },
   { icon: Clock, value: '48h', label: 'Temps de réponse' },
 ];

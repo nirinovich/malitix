@@ -126,7 +126,7 @@ export default function HeroVariantC() {
             }">
               {[
                 { value: '600+', label: 'Projets livrés' },
-                { value: '650+', label: 'Développeurs' },
+                { value: '350+', label: 'Développeurs' },
                 { value: '15 ans', label: "D'expertise" },
                 { value: '24h', label: 'Temps de réponse' },
               ].map((stat, idx) => (

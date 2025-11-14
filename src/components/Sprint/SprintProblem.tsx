@@ -126,7 +126,7 @@ export default function SprintProblem() {
               <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Un vivier de 650+ développeurs experts
+                Un vivier de 350+ développeurs experts
               </h3>
             </div>
             <p className={`text-base sm:text-lg ${
