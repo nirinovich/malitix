@@ -5,15 +5,23 @@ export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // If there's a hash, let the browser handle scrolling to it
+    // If there's a hash, scroll to the element
     if (hash) {
-      // Small delay to ensure the element is rendered
-      setTimeout(() => {
+      // Use requestAnimationFrame to ensure DOM is ready
+      const scrollToHash = () => {
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // If element not found, retry after a short delay (for lazy-loaded content)
+          setTimeout(scrollToHash, 100);
         }
-      }, 100);
+      };
+      
+      // Wait for next frame, then scroll
+      requestAnimationFrame(() => {
+        setTimeout(scrollToHash, 0);
+      });
     } else {
       // Only scroll to top if there's no hash
       window.scrollTo(0, 0);
