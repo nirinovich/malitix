@@ -53,7 +53,7 @@ export default function SprintContact() {
 
   return (
     <section 
-      id="contact-sprint"
+      id="contact"
       className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
         theme === 'dark' 
           ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'

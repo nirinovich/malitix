@@ -4,7 +4,7 @@ export default function SprintSolution() {
   const { theme } = useTheme();
 
   return (
-    <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
+    <section id="notre-sprint-commando" className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
         : 'bg-gradient-to-b from-white to-gray-50'
