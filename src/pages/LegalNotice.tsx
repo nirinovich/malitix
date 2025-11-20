@@ -121,5 +121,6 @@ export default function LegalNotice() {
         </div>
       </div>
     </div>
+    </>
   );
 }
