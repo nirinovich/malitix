@@ -232,7 +232,12 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           {/* CTA Button */}
           <div className="hidden md:block">
             <button
-              onClick={() => handleNavClick('#contact')}
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                  (window as any).gtag_report_conversion('#contact');
+                }
+                handleNavClick('#contact');
+              }}
               className="bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               {CTA_TEXT.primary}
@@ -360,7 +365,12 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           </button>
 
           <button
-            onClick={() => handleNavClick('#contact')}
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                (window as any).gtag_report_conversion('#contact');
+              }
+              handleNavClick('#contact');
+            }}
             className="block w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white text-center px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 transition-all cursor-pointer"
           >
             {CTA_TEXT.primary}

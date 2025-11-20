@@ -21,6 +21,11 @@ export default function CTASection() {
     setError(null);
 
     try {
+      // Appeler le suivi de conversion Google Ads
+      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+        (window as any).gtag_report_conversion(undefined);
+      }
+
       const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
         method: 'POST',
         headers: {

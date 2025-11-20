@@ -39,6 +39,24 @@
       gtag('config', 'G-XGEFD1FDRZ');
     </script>
 
+    <!-- Event snippet for Page vue conversion page -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-11480258743/VW8uCPmcocsaELexm-Iq',
+          'value': 1.0,
+          'currency': 'USD',
+          'event_callback': callback
+        });
+        return false;
+      }
+    </script>
+
   </head>
   <body>
     <div id="root"></div>

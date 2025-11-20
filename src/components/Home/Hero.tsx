@@ -192,6 +192,11 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#contact"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                    (window as any).gtag_report_conversion('#contact');
+                  }
+                }}
                 className="group bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 {CTA_TEXT.primary}
