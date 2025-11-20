@@ -6,9 +6,14 @@ export default function NotFound() {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen flex items-center justify-center px-4 ${
-      theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
-    }`}>
+    <>
+      <title>404 - Page introuvable | Malitix</title>
+      <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil de Malitix." />
+      <meta name="robots" content="noindex, follow" />
+      
+      <div className={`min-h-screen flex items-center justify-center px-4 ${
+        theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
+      }`}>
       <div className="max-w-2xl w-full text-center">
         {/* 404 Animation */}
         <div className="relative mb-8">
@@ -72,5 +77,6 @@ export default function NotFound() {
         </div>
       </div>
     </div>
+    </>
   );
 }

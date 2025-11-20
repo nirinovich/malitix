@@ -4,9 +4,15 @@ export default function PrivacyPolicy() {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen py-24 ${
-      theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
-    }`}>
+    <>
+      <title>Politique de Confidentialité - Malitix</title>
+      <meta name="description" content="Politique de confidentialité et protection des données personnelles chez Malitix. Conformité RGPD et législation malgache sur la protection des données." />
+      <meta name="robots" content="noindex, follow" />
+      <link rel="canonical" href="https://www.malitix.com/politique-de-confidentialite" />
+      
+      <div className={`min-h-screen py-24 ${
+        theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
+      }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className={`text-4xl sm:text-5xl font-bold mb-8 ${
           theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -207,5 +213,6 @@ export default function PrivacyPolicy() {
         </div>
       </div>
     </div>
+    </>
   );
 }

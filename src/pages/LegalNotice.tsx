@@ -4,9 +4,15 @@ export default function LegalNotice() {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen py-24 ${
-      theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
-    }`}>
+    <>
+      <title>Mentions Légales - Malitix</title>
+      <meta name="description" content="Mentions légales du site Malitix. Informations sur l'éditeur, l'hébergeur et les dispositions légales applicables selon la législation malgache." />
+      <meta name="robots" content="noindex, follow" />
+      <link rel="canonical" href="https://www.malitix.com/mentions-legales" />
+      
+      <div className={`min-h-screen py-24 ${
+        theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
+      }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className={`text-4xl sm:text-5xl font-bold mb-8 ${
           theme === 'dark' ? 'text-white' : 'text-gray-900'
