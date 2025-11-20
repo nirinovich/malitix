@@ -4,23 +4,23 @@
   <!-- Homepage -->
   <url>
     <loc>https://www.malitix.com/</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Sprint Commando Page -->
   <url>
     <loc>https://www.malitix.com/sprint-commando</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <!-- Legal Notice Page -->
   <url>
     <loc>https://www.malitix.com/mentions-legales</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -28,7 +28,7 @@
   <!-- Privacy Policy Page -->
   <url>
     <loc>https://www.malitix.com/politique-de-confidentialite</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
