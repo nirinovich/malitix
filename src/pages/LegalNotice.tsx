@@ -1,10 +1,19 @@
+import { Helmet } from 'react-helmet-async';
 import { useTheme } from '../context/ThemeContext';
 
 export default function LegalNotice() {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen py-24 ${
+    <>
+      <Helmet>
+        <title>Mentions Légales | Malitix</title>
+        <meta name="description" content="Mentions légales de Malitix - ETECH CONSULTING SARLU. Informations sur l'éditeur du site, l'hébergement et les conditions d'utilisation." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://www.malitix.com/mentions-legales" />
+      </Helmet>
+
+      <div className={`min-h-screen py-24 ${
       theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
     }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,5 +124,6 @@ export default function LegalNotice() {
         </div>
       </div>
     </div>
+    </>
   );
 }

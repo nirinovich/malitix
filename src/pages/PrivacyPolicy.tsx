@@ -1,10 +1,19 @@
+import { Helmet } from 'react-helmet-async';
 import { useTheme } from '../context/ThemeContext';
 
 export default function PrivacyPolicy() {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen py-24 ${
+    <>
+      <Helmet>
+        <title>Politique de Confidentialité | Malitix</title>
+        <meta name="description" content="Découvrez comment Malitix collecte, utilise et protège vos données personnelles conformément au RGPD. Protection et transparence garanties." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://www.malitix.com/politique-de-confidentialite" />
+      </Helmet>
+
+      <div className={`min-h-screen py-24 ${
       theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
     }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -207,5 +216,6 @@ export default function PrivacyPolicy() {
         </div>
       </div>
     </div>
+    </>
   );
 }
