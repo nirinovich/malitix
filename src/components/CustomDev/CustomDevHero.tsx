@@ -136,18 +136,18 @@ export default function CustomDevHero() {
                     }`}>
                       {/* Simulated chart bars */}
                       <div className="absolute bottom-2 left-2 right-2 flex items-end gap-1">
-                        <div className={`w-full h-8 rounded-t ${
+                        <div className={`w-full rounded-t opacity-0 ${
                           theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
-                        } animate-grow`} style={{ animationDelay: '0.5s' }}></div>
-                        <div className={`w-full h-16 rounded-t ${
+                        } animate-grow`} style={{ animationDelay: '0.5s', height: '2rem' }}></div>
+                        <div className={`w-full rounded-t opacity-0 ${
                           theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
-                        } animate-grow`} style={{ animationDelay: '0.7s' }}></div>
-                        <div className={`w-full h-12 rounded-t ${
+                        } animate-grow`} style={{ animationDelay: '0.7s', height: '4rem' }}></div>
+                        <div className={`w-full rounded-t opacity-0 ${
                           theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
-                        } animate-grow`} style={{ animationDelay: '0.9s' }}></div>
-                        <div className={`w-full h-20 rounded-t ${
+                        } animate-grow`} style={{ animationDelay: '0.9s', height: '3rem' }}></div>
+                        <div className={`w-full rounded-t opacity-0 ${
                           theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
-                        } animate-grow`} style={{ animationDelay: '1.1s' }}></div>
+                        } animate-grow`} style={{ animationDelay: '1.1s', height: '5rem' }}></div>
                       </div>
                     </div>
                   </div>
