@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { Settings, X, BarChart3, Eye } from 'lucide-react';
+import { Settings, X } from 'lucide-react';
 import { useABTest } from '../../context/ABTestContext';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function VariantSelector() {
-  const { variants, setVariant, getAnalytics, isDevMode, toggleDevMode } = useABTest();
+  const { variants, setVariant, isDevMode, toggleDevMode } = useABTest();
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [showAnalytics, setShowAnalytics] = useState(false);
 
   if (!isDevMode) {
     return (
@@ -36,16 +35,6 @@ export default function VariantSelector() {
   ] as const;
 
   const variantOptions: ('A' | 'B' | 'C')[] = ['A', 'B', 'C'];
-
-  const calculateCTR = (impressions: number, clicks: number) => {
-    if (impressions === 0) return 0;
-    return ((clicks / impressions) * 100).toFixed(2);
-  };
-
-  const calculateConversionRate = (clicks: number, conversions: number) => {
-    if (clicks === 0) return 0;
-    return ((conversions / clicks) * 100).toFixed(2);
-  };
 
   return (
     <>
@@ -81,17 +70,6 @@ export default function VariantSelector() {
               >
                 A/B Test Control Panel
               </h3>
-              <button
-                onClick={() => setShowAnalytics(!showAnalytics)}
-                className={`p-2 rounded-lg transition-colors ${
-                  theme === 'dark'
-                    ? 'hover:bg-white/10 text-white'
-                    : 'hover:bg-gray-100 text-gray-700'
-                }`}
-                title="Toggle Analytics"
-              >
-                {showAnalytics ? <Eye size={18} /> : <BarChart3 size={18} />}
-              </button>
             </div>
             <button
               onClick={toggleDevMode}
@@ -107,10 +85,7 @@ export default function VariantSelector() {
 
           {/* Content */}
           <div className="p-4 space-y-4">
-            {!showAnalytics ? (
-              // Variant Selector
-              <>
-                {components.map((component) => (
+            {components.map((component) => (
                   <div key={component.key} className="space-y-2">
                     <label
                       className={`text-sm font-semibold ${
@@ -137,96 +112,12 @@ export default function VariantSelector() {
                               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                           }`}
                         >
-                          Variant {variant}
+                          {variant}
                         </button>
                       ))}
                     </div>
                   </div>
                 ))}
-              </>
-            ) : (
-              // Analytics View
-              <>
-                {components.map((component) => {
-                  const analytics = getAnalytics(
-                    component.key as keyof typeof variants
-                  );
-                  
-                  return (
-                    <div
-                      key={component.key}
-                      className={`p-4 rounded-xl border ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10'
-                          : 'bg-gray-50 border-gray-200'
-                      }`}
-                    >
-                      <h4
-                        className={`text-sm font-bold mb-3 ${
-                          theme === 'dark' ? 'text-white' : 'text-gray-900'
-                        }`}
-                      >
-                        {component.label}
-                      </h4>
-                      {analytics.length === 0 ? (
-                        <p
-                          className={`text-xs ${
-                            theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                          }`}
-                        >
-                          No data yet
-                        </p>
-                      ) : (
-                        <div className="space-y-2">
-                          {analytics.map((data) => (
-                            <div
-                              key={data.variant}
-                              className={`text-xs space-y-1 p-2 rounded ${
-                                theme === 'dark'
-                                  ? 'bg-white/5'
-                                  : 'bg-white'
-                              }`}
-                            >
-                              <div
-                                className={`font-semibold ${
-                                  theme === 'dark'
-                                    ? 'text-[#2ca3bd]'
-                                    : 'text-blue-600'
-                                }`}
-                              >
-                                Variant {data.variant}
-                              </div>
-                              <div
-                                className={`grid grid-cols-2 gap-2 ${
-                                  theme === 'dark'
-                                    ? 'text-white/70'
-                                    : 'text-gray-600'
-                                }`}
-                              >
-                                <div>Views: {data.impressions}</div>
-                                <div>Clicks: {data.clicks}</div>
-                                <div>
-                                  CTR:{' '}
-                                  {calculateCTR(data.impressions, data.clicks)}%
-                                </div>
-                                <div>
-                                  Conv:{' '}
-                                  {calculateConversionRate(
-                                    data.clicks,
-                                    data.conversions
-                                  )}
-                                  %
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </>
-            )}
           </div>
         </div>
       )}
