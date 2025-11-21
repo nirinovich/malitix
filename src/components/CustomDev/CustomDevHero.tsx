@@ -72,36 +72,91 @@ export default function CustomDevHero() {
 
           <div className="relative hidden lg:block">
             <div className="relative h-[500px] flex items-center justify-center">
+              {/* Glow effect behind mockup */}
+              <div className={`absolute inset-0 blur-3xl -z-10 ${
+                theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-400/30'
+              } scale-90`}></div>
+              
               {/* Central mockup illustration */}
-              <div className={`relative w-full max-w-md h-96 rounded-2xl shadow-2xl ${
+              <div className={`relative w-full max-w-md h-96 rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-10 ${
                 theme === 'dark'
                   ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#060705] border border-[#2ca3bd]/30'
                   : 'bg-gradient-to-br from-blue-50 to-white border border-blue-200'
               }`}>
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-shimmer"></div>
+                
                 {/* Browser window mockup */}
-                <div className="p-4 h-full flex flex-col">
+                <div className="p-4 h-full flex flex-col relative z-10">
                   {/* Window controls */}
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400 transition-colors cursor-pointer"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
                   </div>
                   
                   {/* Content area with grid */}
                   <div className="flex-1 space-y-3">
-                    <div className={`h-8 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'}`}></div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className={`h-20 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'}`}></div>
-                      <div className={`h-20 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'}`}></div>
+                    {/* Header bar with pulse animation */}
+                    <div className={`h-8 rounded-lg animate-pulse-subtle relative overflow-hidden ${
+                      theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                    }`}>
+                      <div className={`absolute inset-0 ${
+                        theme === 'dark' ? 'bg-gradient-to-r from-[#2ca3bd]/0 via-[#2ca3bd]/40 to-[#2ca3bd]/0' : 'bg-gradient-to-r from-blue-200/0 via-blue-300/60 to-blue-200/0'
+                      } animate-slide`}></div>
                     </div>
-                    <div className={`h-32 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'}`}></div>
+                    
+                    {/* Card grid with stagger animation */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className={`h-20 rounded-lg animate-float-subtle relative overflow-hidden ${
+                        theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
+                      }`} style={{ animationDelay: '0s' }}>
+                        <div className={`absolute top-2 left-2 w-8 h-1 rounded-full ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-300'
+                        }`}></div>
+                        <div className={`absolute top-5 left-2 w-12 h-1 rounded-full ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                        }`}></div>
+                      </div>
+                      <div className={`h-20 rounded-lg animate-float-subtle relative overflow-hidden ${
+                        theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
+                      }`} style={{ animationDelay: '0.2s' }}>
+                        <div className={`absolute top-2 left-2 w-8 h-1 rounded-full ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-300'
+                        }`}></div>
+                        <div className={`absolute top-5 left-2 w-12 h-1 rounded-full ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                        }`}></div>
+                      </div>
+                    </div>
+                    
+                    {/* Large content area */}
+                    <div className={`h-32 rounded-lg relative overflow-hidden ${
+                      theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                    }`}>
+                      {/* Simulated chart bars */}
+                      <div className="absolute bottom-2 left-2 right-2 flex items-end gap-1">
+                        <div className={`w-full h-8 rounded-t ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                        } animate-grow`} style={{ animationDelay: '0.5s' }}></div>
+                        <div className={`w-full h-16 rounded-t ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                        } animate-grow`} style={{ animationDelay: '0.7s' }}></div>
+                        <div className={`w-full h-12 rounded-t ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                        } animate-grow`} style={{ animationDelay: '0.9s' }}></div>
+                        <div className={`w-full h-20 rounded-t ${
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                        } animate-grow`} style={{ animationDelay: '1.1s' }}></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Floating feature cards */}
               <div 
-                className={`absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
+                className={`absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
                     : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
@@ -120,7 +175,7 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className={`absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
+                className={`absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
                     : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
@@ -139,7 +194,7 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className={`absolute bottom-32 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
+                className={`absolute bottom-32 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
                     : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
@@ -158,7 +213,7 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className={`absolute bottom-20 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
+                className={`absolute bottom-20 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
                     : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'

@@ -121,6 +121,26 @@ button, a, .card {
   }
 }
 
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes grow {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
 /* Logo Carousel Animation */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
@@ -138,6 +158,23 @@ button, a, .card {
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+.animate-slide {
+  animation: slide 2s ease-in-out infinite;
+}
+
+.animate-grow {
+  animation: grow 1s ease-out forwards;
+  transform-origin: bottom;
 }
 
 .animate-scroll-left {
