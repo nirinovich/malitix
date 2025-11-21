@@ -1,14 +1,9 @@
-import { useABTest } from '../../context/ABTestContext';
-import { ProblemVariantA, ProblemVariantB, ProblemVariantC } from './CustomDevProblemVariants';
+import { ProblemVariantA } from './CustomDevProblemVariants';
 
 export default function CustomDevProblem() {
-  const { variants } = useABTest();
-
   return (
     <div id="problem-section">
-      {variants.problem === 'B' && <ProblemVariantB />}
-      {variants.problem === 'C' && <ProblemVariantC />}
-      {variants.problem === 'A' && <ProblemVariantA />}
+      <ProblemVariantA />
     </div>
   );
 }
