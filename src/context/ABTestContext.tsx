@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 
 // Define variant types for each component
@@ -138,7 +138,7 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
     }));
   };
 
-  const updateAnalytics = (
+  const updateAnalytics = useCallback((
     component: keyof VariantConfig,
     variant: string,
     type: 'impression' | 'click' | 'conversion'
@@ -173,13 +173,13 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
         return { ...prev, [component]: [...componentAnalytics, newData] };
       }
     });
-  };
+  }, []);
 
-  const trackImpression = (component: keyof VariantConfig, variant: string) => {
+  const trackImpression = useCallback((component: keyof VariantConfig, variant: string) => {
     updateAnalytics(component, variant, 'impression');
-  };
+  }, [updateAnalytics]);
 
-  const trackClick = (
+  const trackClick = useCallback((
     component: keyof VariantConfig,
     variant: string,
     element: string
@@ -194,9 +194,9 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
         element,
       });
     }
-  };
+  }, [updateAnalytics]);
 
-  const trackConversion = (component: keyof VariantConfig, variant: string) => {
+  const trackConversion = useCallback((component: keyof VariantConfig, variant: string) => {
     updateAnalytics(component, variant, 'conversion');
     
     // Track with Google Analytics if available
@@ -206,7 +206,7 @@ export function ABTestProvider({ children }: { children: ReactNode }) {
         variant,
       });
     }
-  };
+  }, [updateAnalytics]);
 
   const getAnalytics = (component: keyof VariantConfig): VariantAnalytics[] => {
     return analytics[component] || [];
