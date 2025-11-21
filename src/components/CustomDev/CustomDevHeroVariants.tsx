@@ -42,23 +42,10 @@ export function HeroVariantA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border" 
-                 style={{ 
-                   backgroundColor: theme === 'dark' ? 'rgba(44, 163, 189, 0.1)' : 'rgba(59, 130, 246, 0.1)',
-                   borderColor: theme === 'dark' ? 'rgba(44, 163, 189, 0.3)' : 'rgba(59, 130, 246, 0.3)'
-                 }}>
-              <Zap className="text-[#2ca3bd]" size={16} />
-              <span className={`text-xs font-semibold uppercase tracking-wider ${
-                theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
-              }`}>
-                Développement Sur Mesure
-              </span>
-            </div>
-
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] ${
+            <h1 className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Arrêtez de Tordre Votre Business pour Rentrer dans un{' '}
+              Arrêtez de Tordre Votre Business pour un{' '}
               <span className="relative inline-block">
                 <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
                   Logiciel Standard
@@ -75,42 +62,36 @@ export function HeroVariantA() {
               </span>
             </h1>
 
-            <div className="space-y-4">
-              <p className={`text-xl sm:text-2xl md:text-3xl font-semibold leading-relaxed ${
-                theme === 'dark' ? 'text-white/90' : 'text-gray-800'
-              }`}>
-                Obtenez l'Outil Exact dont Votre Entreprise a Besoin pour Scaler –{' '}
-                <span className={`font-black ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}`}>
-                  Livré en 90 Jours, Garanti Sans Bug
-                </span>
-              </p>
-              
-              <p className={`text-lg sm:text-xl ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
-                Fini les fichiers Excel ingérables et les SaaS trop rigides. Nous développons votre Application Web ou Mobile Sur Mesure pour automatiser vos process et sécuriser votre croissance.
-              </p>
-            </div>
+            <p className={`text-2xl sm:text-3xl md:text-4xl font-semibold leading-relaxed ${
+              theme === 'dark' ? 'text-white/90' : 'text-gray-800'
+            }`}>
+              Votre Application Sur Mesure, Livrée en{' '}
+              <span className={`font-black ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}`}>
+                90 Jours
+              </span>
+              , Garantie Sans Bug
+            </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center pt-4">
               <button
                 onClick={scrollToROI}
-                className={`group relative px-8 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                className={`group relative px-10 py-6 text-xl font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                   theme === 'dark'
                     ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
                     : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-[0_0_30px_rgba(59,130,246,0.3)]'
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Calculer le ROI de mon Logiciel Sur Mesure
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  Calculer Mon ROI
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={24} />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
               
-              <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
-                On parle d'investissement, pas de dépense
-              </p>
+              <div className={`flex flex-col gap-1 text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
+                <span>✓ Budget fixe garanti</span>
+                <span>✓ Sans engagement</span>
+              </div>
             </div>
           </div>
 
