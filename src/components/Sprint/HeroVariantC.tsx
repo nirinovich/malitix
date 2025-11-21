@@ -1,6 +1,6 @@
 import { useTheme } from '../../context/ThemeContext';
 import { CTAButtonV3 } from '../Utility/CTAButtons';
-import { ProgressRescueGaugeVariant } from '../Utility/CPUVariants';
+import { ProgressRescueGaugeVariant } from '../Utility/ProgressIllustration';
 
 const companyLogos = [
   {
