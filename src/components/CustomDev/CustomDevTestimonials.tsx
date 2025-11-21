@@ -23,12 +23,12 @@ const testimonials = [
 ];
 
 const techLogos = [
-  { name: 'React', color: '#61DAFB' },
-  { name: 'Python', color: '#3776AB' },
-  { name: 'Node.js', color: '#339933' },
-  { name: 'PostgreSQL', color: '#336791' },
-  { name: 'AWS', color: '#FF9900' },
-  { name: 'TypeScript', color: '#3178C6' },
+  { name: 'React', color: '#2ca3bd' },
+  { name: 'Python', color: '#3b82f6' },
+  { name: 'Node.js', color: '#0ea5e9' },
+  { name: 'PostgreSQL', color: '#1e40af' },
+  { name: 'AWS', color: '#3b8fd4' },
+  { name: 'TypeScript', color: '#2563eb' },
 ];
 
 export default function CustomDevTestimonials() {

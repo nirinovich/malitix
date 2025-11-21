@@ -33,18 +33,18 @@ export default function CustomDevGuarantee() {
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute bottom-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-green-500/10' : 'bg-green-400/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
         }`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={`max-w-4xl mx-auto mb-12 sm:mb-16 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border ${
           theme === 'dark'
-            ? 'bg-yellow-500/10 border-yellow-500/30'
-            : 'bg-yellow-50 border-yellow-200'
+            ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
+            : 'bg-blue-50 border-blue-200'
         }`}>
           <div className="flex items-start gap-4">
-            <AlertTriangle className="text-yellow-500 flex-shrink-0" size={28} />
+            <AlertTriangle className={`flex-shrink-0 ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}`} size={28} />
             <div className="space-y-2">
               <h3 className={`text-xl sm:text-2xl font-bold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -62,18 +62,18 @@ export default function CustomDevGuarantee() {
 
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-green-500"></div>
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-green-500">
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
               Garanties Béton
             </span>
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-green-500"></div>
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
           
           <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Nous Inversons{' '}
-            <span className="text-green-500">
+            <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
               le Risque
             </span>
           </h2>
@@ -87,11 +87,13 @@ export default function CustomDevGuarantee() {
                 key={index}
                 className={`group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                   theme === 'dark' 
-                    ? 'bg-gradient-to-br from-green-500/10 to-green-500/5 border-green-500/20 hover:border-green-500/40'
-                    : 'bg-gradient-to-br from-green-50 to-white border-green-200 hover:border-green-400'
+                    ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
+                    : 'bg-gradient-to-br from-blue-50 to-white border-blue-200 hover:border-blue-400'
                 }`}
               >
-                <div className="text-green-500 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+                <div className={`mb-4 group-hover:scale-110 transition-transform duration-300 inline-block ${
+                  theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
+                }`}>
                   <Icon size={36} />
                 </div>
                 

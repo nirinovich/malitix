@@ -30,8 +30,8 @@ export default function CustomDevCTA() {
             <div className="space-y-6">
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold ${
                 theme === 'dark'
-                  ? 'bg-red-500/20 text-red-400'
-                  : 'bg-red-100 text-red-700'
+                  ? 'bg-[#2ca3bd]/20 text-[#2ca3bd]'
+                  : 'bg-blue-100 text-blue-700'
               }`}>
                 <Clock size={16} />
                 2 places restantes ce mois
