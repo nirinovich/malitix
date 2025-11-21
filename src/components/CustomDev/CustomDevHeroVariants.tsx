@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowRight, Code2, TrendingUp } from 'lucide-react';
+import { ArrowRight, Code2, TrendingUp, Zap, Shield } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useABTest } from '../../context/ABTestContext';
 
@@ -80,41 +80,107 @@ export function HeroVariantA() {
           </div>
 
           <div className="relative hidden lg:block">
-            <div className="relative h-[500px]">
+            <div className="relative h-[500px] flex items-center justify-center">
+              {/* Central mockup illustration */}
+              <div className={`relative w-full max-w-md h-96 rounded-2xl shadow-2xl ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#060705] border border-[#2ca3bd]/30'
+                  : 'bg-gradient-to-br from-blue-50 to-white border border-blue-200'
+              }`}>
+                {/* Browser window mockup */}
+                <div className="p-4 h-full flex flex-col">
+                  {/* Window controls */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  
+                  {/* Content area with grid */}
+                  <div className="flex-1 space-y-3">
+                    <div className={`h-8 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'}`}></div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className={`h-20 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'}`}></div>
+                      <div className={`h-20 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'}`}></div>
+                    </div>
+                    <div className={`h-32 rounded-lg ${theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'}`}></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating feature cards */}
               <div 
-                className={`absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float ${
+                className={`absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
                     : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '0s' }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#2ca3bd] p-2 rounded-lg">
-                    <TrendingUp className="text-white" size={20} />
+                <div className="flex items-center gap-2">
+                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                    <TrendingUp className="text-white" size={16} />
                   </div>
                   <div>
-                    <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Évolutif</div>
-                    <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>100 → 1M users</div>
+                    <div className={`font-semibold text-xs ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Évolutif</div>
+                    <div className={`text-[10px] ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>100 → 1M users</div>
                   </div>
                 </div>
               </div>
 
               <div 
-                className={`absolute bottom-20 right-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float ${
+                className={`absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
+                  theme === 'dark'
+                    ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
+                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
+                }`}
+                style={{ animationDelay: '0.5s' }}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                    <Zap className="text-white" size={16} />
+                  </div>
+                  <div>
+                    <div className={`font-semibold text-xs ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Rapide</div>
+                    <div className={`text-[10px] ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>&lt; 2s chargement</div>
+                  </div>
+                </div>
+              </div>
+
+              <div 
+                className={`absolute bottom-32 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
                     : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
                 }`}
                 style={{ animationDelay: '1s' }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#2ca3bd] p-2 rounded-lg">
-                    <Code2 className="text-white" size={20} />
+                <div className="flex items-center gap-2">
+                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                    <Shield className="text-white" size={16} />
                   </div>
                   <div>
-                    <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Code Propre</div>
-                    <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>100% testé</div>
+                    <div className={`font-semibold text-xs ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Sécurisé</div>
+                    <div className={`text-[10px] ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>SOC 2 compliant</div>
+                  </div>
+                </div>
+              </div>
+
+              <div 
+                className={`absolute bottom-20 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float ${
+                  theme === 'dark'
+                    ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
+                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
+                }`}
+                style={{ animationDelay: '1.5s' }}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                    <Code2 className="text-white" size={16} />
+                  </div>
+                  <div>
+                    <div className={`font-semibold text-xs ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Testé</div>
+                    <div className={`text-[10px] ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>100% coverage</div>
                   </div>
                 </div>
               </div>
