@@ -4,12 +4,11 @@ import { ProblemVariantA, ProblemVariantB, ProblemVariantC } from './CustomDevPr
 export default function CustomDevProblem() {
   const { variants } = useABTest();
 
-  switch (variants.problem) {
-    case 'B':
-      return <ProblemVariantB />;
-    case 'C':
-      return <ProblemVariantC />;
-    default:
-      return <ProblemVariantA />;
-  }
+  return (
+    <div id="problem-section">
+      {variants.problem === 'B' && <ProblemVariantB />}
+      {variants.problem === 'C' && <ProblemVariantC />}
+      {variants.problem === 'A' && <ProblemVariantA />}
+    </div>
+  );
 }

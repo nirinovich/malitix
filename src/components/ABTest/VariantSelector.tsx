@@ -25,16 +25,28 @@ export default function VariantSelector() {
   }
 
   const components = [
-    { key: 'hero', label: 'Hero' },
-    { key: 'problem', label: 'Problem' },
-    { key: 'solution', label: 'Solution' },
-    { key: 'stack', label: 'Stack' },
-    { key: 'testimonial', label: 'Testimonials' },
-    { key: 'guarantee', label: 'Guarantee' },
-    { key: 'cta', label: 'CTA' },
+    { key: 'hero', label: 'Hero', sectionId: 'hero-section' },
+    { key: 'problem', label: 'Problem', sectionId: 'problem-section' },
+    { key: 'solution', label: 'Solution', sectionId: 'solution-section' },
+    { key: 'stack', label: 'Stack', sectionId: 'stack-section' },
+    { key: 'testimonial', label: 'Testimonials', sectionId: 'testimonials-section' },
+    { key: 'guarantee', label: 'Guarantee', sectionId: 'guarantee-section' },
+    { key: 'cta', label: 'CTA', sectionId: 'contact-customdev' },
   ] as const;
 
   const variantOptions: ('A' | 'B' | 'C')[] = ['A', 'B', 'C'];
+
+  const handleVariantChange = (componentKey: string, variant: 'A' | 'B' | 'C', sectionId: string) => {
+    setVariant(componentKey as any, variant as any);
+    
+    // Scroll to the section after a short delay to allow React to render
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+  };
 
   return (
     <>
@@ -99,7 +111,7 @@ export default function VariantSelector() {
                         <button
                           key={variant}
                           onClick={() =>
-                            setVariant(component.key as any, variant as any)
+                            handleVariantChange(component.key, variant as any, component.sectionId)
                           }
                           className={`flex-1 px-4 py-2 rounded-lg font-semibold transition-all ${
                             variants[component.key as keyof typeof variants] ===

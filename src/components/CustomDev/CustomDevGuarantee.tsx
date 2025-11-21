@@ -4,13 +4,12 @@ import { GuaranteeVariantA, GuaranteeVariantB, GuaranteeVariantC } from './Custo
 export default function CustomDevGuarantee() {
   const { variants } = useABTest();
 
-  switch (variants.guarantee) {
-    case 'B':
-      return <GuaranteeVariantB />;
-    case 'C':
-      return <GuaranteeVariantC />;
-    default:
-      return <GuaranteeVariantA />;
-  }
+  return (
+    <div id="guarantee-section">
+      {variants.guarantee === 'B' && <GuaranteeVariantB />}
+      {variants.guarantee === 'C' && <GuaranteeVariantC />}
+      {variants.guarantee === 'A' && <GuaranteeVariantA />}
+    </div>
+  );
 }
 

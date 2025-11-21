@@ -4,13 +4,12 @@ import { TestimonialVariantA, TestimonialVariantB, TestimonialVariantC } from '.
 export default function CustomDevTestimonials() {
   const { variants } = useABTest();
 
-  switch (variants.testimonial) {
-    case 'B':
-      return <TestimonialVariantB />;
-    case 'C':
-      return <TestimonialVariantC />;
-    default:
-      return <TestimonialVariantA />;
-  }
+  return (
+    <div id="testimonials-section">
+      {variants.testimonial === 'B' && <TestimonialVariantB />}
+      {variants.testimonial === 'C' && <TestimonialVariantC />}
+      {variants.testimonial === 'A' && <TestimonialVariantA />}
+    </div>
+  );
 }
 

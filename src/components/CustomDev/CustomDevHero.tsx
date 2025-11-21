@@ -4,14 +4,11 @@ import { HeroVariantA, HeroVariantB, HeroVariantC } from './CustomDevHeroVariant
 export default function CustomDevHero() {
   const { variants } = useABTest();
 
-  // Render the appropriate variant based on A/B test
-  switch (variants.hero) {
-    case 'B':
-      return <HeroVariantB />;
-    case 'C':
-      return <HeroVariantC />;
-    case 'A':
-    default:
-      return <HeroVariantA />;
-  }
+  return (
+    <div id="hero-section">
+      {variants.hero === 'B' && <HeroVariantB />}
+      {variants.hero === 'C' && <HeroVariantC />}
+      {variants.hero === 'A' && <HeroVariantA />}
+    </div>
+  );
 }

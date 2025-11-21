@@ -4,13 +4,12 @@ import { StackVariantA, StackVariantB, StackVariantC } from './CustomDevStackVar
 export default function CustomDevStack() {
   const { variants } = useABTest();
 
-  switch (variants.stack) {
-    case 'B':
-      return <StackVariantB />;
-    case 'C':
-      return <StackVariantC />;
-    default:
-      return <StackVariantA />;
-  }
+  return (
+    <div id="stack-section">
+      {variants.stack === 'B' && <StackVariantB />}
+      {variants.stack === 'C' && <StackVariantC />}
+      {variants.stack === 'A' && <StackVariantA />}
+    </div>
+  );
 }
 
