@@ -12,7 +12,15 @@
   <!-- Sprint Commando Page -->
   <url>
     <loc>https://malitix.com/sprint-commando</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Custom Development Page -->
+  <url>
+    <loc>https://malitix.com/developpement-sur-mesure</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
