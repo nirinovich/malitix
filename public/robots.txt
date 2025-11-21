@@ -3,6 +3,6 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.malitix.com/sitemap.xml
+Sitemap: https://malitix.com/sitemap.xml
 
 
