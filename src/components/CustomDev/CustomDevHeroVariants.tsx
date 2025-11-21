@@ -272,7 +272,7 @@ export function HeroVariantB() {
   );
 }
 
-// Variant C: Minimal & Bold - Ultra-focused on action
+// Variant C: Visual with 3D Mockup
 export function HeroVariantC() {
   const { theme } = useTheme();
   const { trackImpression, trackClick } = useABTest();
@@ -288,15 +288,25 @@ export function HeroVariantC() {
   };
 
   return (
-    <section className={`relative min-h-[90vh] flex items-center overflow-hidden ${
+    <section className={`relative min-h-screen flex items-center overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-[#060705]'
-        : 'bg-white'
+        ? 'bg-gradient-to-br from-[#060705] via-[#0a0e0d] to-[#060705]'
+        : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-        <div className="space-y-12">
-          <div className="space-y-6">
-            <h1 className={`text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-[0.95] tracking-tight ${
+      {/* Background grid */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className={`absolute inset-0 bg-[size:40px_40px] ${
+          theme === 'dark' 
+            ? 'bg-[linear-gradient(rgba(44,163,189,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.1)_1px,transparent_1px)]'
+            : 'bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)]'
+        }`}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
+          <div className="space-y-8">
+            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-tight ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
               Votre Logiciel.<br />
@@ -305,35 +315,112 @@ export function HeroVariantC() {
               </span>
             </h1>
             
-            <p className={`text-xl sm:text-2xl md:text-3xl font-medium max-w-3xl ${
+            <p className={`text-xl sm:text-2xl ${
               theme === 'dark' ? 'text-white/70' : 'text-gray-600'
             }`}>
               90 jours. Budget fixe. Propriété totale.
             </p>
+
+            <button
+              onClick={scrollToROI}
+              className={`group px-10 py-5 text-lg font-bold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_40px_rgba(44,163,189,0.3)]'
+                  : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-[0_0_40px_rgba(59,130,246,0.3)]'
+              }`}
+            >
+              <span className="flex items-center gap-3">
+                Calculer Mon ROI
+                <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+              </span>
+            </button>
           </div>
 
-          <button
-            onClick={scrollToROI}
-            className={`group px-12 py-7 text-2xl font-black rounded-full transition-all duration-300 hover:scale-105 ${
-              theme === 'dark'
-                ? 'bg-[#2ca3bd] text-[#060705] hover:bg-[#3bb8d4]'
-                : 'bg-gray-900 text-white hover:bg-gray-800'
-            }`}
-          >
-            <span className="flex items-center gap-4">
-              Calculer Mon ROI
-              <ArrowRight className="group-hover:translate-x-2 transition-transform" size={28} />
-            </span>
-          </button>
+          {/* Right - 3D Website Mockup */}
+          <div className="relative hidden lg:block perspective-1000">
+            <div className="relative" style={{ transform: 'rotateY(-15deg) rotateX(5deg)', transformStyle: 'preserve-3d' }}>
+              {/* Main browser window with 3D depth */}
+              <div className={`relative rounded-2xl overflow-hidden shadow-2xl ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700'
+                  : 'bg-gradient-to-br from-white to-gray-50 border border-gray-300'
+              }`}
+              style={{ 
+                boxShadow: theme === 'dark' 
+                  ? '0 50px 100px rgba(0,0,0,0.5), 0 0 80px rgba(44,163,189,0.2)' 
+                  : '0 50px 100px rgba(0,0,0,0.15), 0 0 80px rgba(59,130,246,0.15)',
+                transform: 'translateZ(50px)'
+              }}>
+                {/* Browser chrome */}
+                <div className={`flex items-center gap-2 px-4 py-3 border-b ${
+                  theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'
+                }`}>
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className={`flex-1 mx-4 px-4 py-1 rounded-md text-xs ${
+                    theme === 'dark' ? 'bg-gray-900 text-white/50' : 'bg-white text-gray-500'
+                  }`}>
+                    https://votre-app.com
+                  </div>
+                </div>
+
+                {/* Website content mockup */}
+                <div className="p-6 space-y-4">
+                  {/* Header bar */}
+                  <div className={`h-12 rounded-lg ${
+                    theme === 'dark' 
+                      ? 'bg-gradient-to-r from-[#2ca3bd]/40 to-[#2ca3bd]/20' 
+                      : 'bg-gradient-to-r from-blue-500/40 to-blue-300/20'
+                  }`}></div>
+
+                  {/* Dashboard grid */}
+                  <div className="grid grid-cols-3 gap-3">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className={`h-24 rounded-lg ${
+                        theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-200/50'
+                      }`}
+                      style={{
+                        transform: `translateZ(${i * 5}px)`,
+                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                      }}></div>
+                    ))}
+                  </div>
+
+                  {/* Main content area */}
+                  <div className="space-y-3">
+                    <div className={`h-6 w-2/3 rounded ${
+                      theme === 'dark' ? 'bg-gray-700/70' : 'bg-gray-300/70'
+                    }`} style={{ transform: 'translateZ(10px)' }}></div>
+                    <div className={`h-32 rounded-lg ${
+                      theme === 'dark' 
+                        ? 'bg-gradient-to-br from-gray-700/50 to-gray-800/50' 
+                        : 'bg-gradient-to-br from-gray-200/50 to-gray-100/50'
+                    }`} style={{ 
+                      transform: 'translateZ(15px)',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+                    }}></div>
+                  </div>
+
+                  {/* Footer actions */}
+                  <div className="flex gap-3">
+                    <div className={`h-10 flex-1 rounded-lg ${
+                      theme === 'dark' 
+                        ? 'bg-[#2ca3bd]/30' 
+                        : 'bg-blue-400/30'
+                    }`} style={{ transform: 'translateZ(8px)' }}></div>
+                    <div className={`h-10 w-24 rounded-lg ${
+                      theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-300/50'
+                    }`} style={{ transform: 'translateZ(8px)' }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Minimal decorative element */}
-      <div className={`absolute bottom-0 left-0 right-0 h-1 ${
-        theme === 'dark'
-          ? 'bg-gradient-to-r from-transparent via-[#2ca3bd] to-transparent'
-          : 'bg-gradient-to-r from-transparent via-blue-600 to-transparent'
-      }`}></div>
     </section>
   );
 }
