@@ -7,8 +7,9 @@ import LegalNotice from './pages/LegalNotice';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFound from './pages/NotFound';
 
-// Lazy load SprintCommando car elle est lourde
+// Lazy load pages for better performance
 const SprintCommando = lazy(() => import('./pages/SprintCommando'));
+const CustomDevelopment = lazy(() => import('./pages/CustomDevelopment'));
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sprint-commando" element={<SprintCommando />} />
+            <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
