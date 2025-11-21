@@ -3,7 +3,7 @@ import SprintProblem from '../components/Sprint/SprintProblem';
 import SprintSolution from '../components/Sprint/SprintSolution';
 import SprintContact from '../components/Sprint/SprintContact';
 import TestimonialSection from '../components/Sprint/TestimonialSection';
-import { BenefitsShowcaseVariantB } from '../components/Sprint/BenefitsShowcaseVariants';
+import BenefitsShowcase from '../components/Sprint/BenefitsShowcase';
 
 export default function SprintCommando() {
   return (
@@ -33,7 +33,7 @@ export default function SprintCommando() {
       <TestimonialSection />
 
       {/* Section 4 - Benefits Showcase - Interactive Cards */}
-      <BenefitsShowcaseVariantB />
+      <BenefitsShowcase />
 
       {/* Section 5 - Contact Form */}
       <SprintContact />
