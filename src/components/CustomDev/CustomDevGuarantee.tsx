@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { DollarSign, Calendar, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { useABTest } from '../../context/ABTestContext';
 
 const guarantees = [
   {
@@ -25,13 +23,7 @@ const guarantees = [
 ];
 
 export default function CustomDevGuarantee() {
-
   const { theme } = useTheme();
-  const { trackImpression } = useABTest();
-
-  useEffect(() => {
-    trackImpression('guarantee', 'A');
-  }, [trackImpression]);
 
   return (
     <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${

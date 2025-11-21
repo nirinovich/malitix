@@ -1,15 +1,8 @@
-import { useEffect } from 'react';
 import { Target, Rocket, Lock, Award } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { useABTest } from '../../context/ABTestContext';
 
 export default function CustomDevStack() {
   const { theme } = useTheme();
-  const { trackImpression } = useABTest();
-
-  useEffect(() => {
-    trackImpression('stack', 'B');
-  }, [trackImpression]);
 
   const simplifiedStack = [
     { icon: Target, title: 'Audit Stratégique', desc: 'ROI garanti dès le départ' },

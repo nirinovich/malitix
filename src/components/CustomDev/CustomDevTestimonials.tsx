@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { Quote } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { useABTest } from '../../context/ABTestContext';
 
 const testimonials = [
   {
@@ -35,11 +33,6 @@ const techLogos = [
 
 export default function CustomDevTestimonials() {
   const { theme } = useTheme();
-  const { trackImpression } = useABTest();
-
-  useEffect(() => {
-    trackImpression('testimonial', 'A');
-  }, [trackImpression]);
 
   return (
     <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${

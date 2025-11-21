@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { TrendingUp, Users, Key } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { useABTest } from '../../context/ABTestContext';
 
 const solutions = [
   {
@@ -38,11 +36,6 @@ const solutions = [
 
 export default function CustomDevSolution() {
   const { theme } = useTheme();
-  const { trackImpression } = useABTest();
-
-  useEffect(() => {
-    trackImpression('solution', 'A');
-  }, [trackImpression]);
 
   return (
     <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${

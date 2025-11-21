@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Clock, Rocket } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { useABTest } from '../../context/ABTestContext';
 
 export default function CustomDevCTA() {
   const { theme } = useTheme();
-  const { trackImpression, trackClick, trackConversion } = useABTest();
   const [email, setEmail] = useState('');
-
-  useEffect(() => {
-    trackImpression('cta', 'C');
-  }, [trackImpression]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    trackConversion('cta', 'C');
     console.log('Email submitted:', email);
   };
 
@@ -82,7 +75,6 @@ export default function CustomDevCTA() {
 
                 <button
                   type="submit"
-                  onClick={() => trackClick('cta', 'C', 'submit_button')}
                   className={`w-full py-5 px-8 text-xl font-bold rounded-xl transition-all duration-300 hover:scale-105 ${
                     theme === 'dark'
                       ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white'

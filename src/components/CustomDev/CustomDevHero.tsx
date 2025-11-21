@@ -1,18 +1,10 @@
-import { useEffect } from 'react';
 import { ArrowRight, Code2, TrendingUp, Zap, Shield } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { useABTest } from '../../context/ABTestContext';
 
 export default function CustomDevHero() {
   const { theme } = useTheme();
-  const { trackImpression, trackClick } = useABTest();
-
-  useEffect(() => {
-    trackImpression('hero', 'A');
-  }, [trackImpression]);
 
   const scrollToROI = () => {
-    trackClick('hero', 'A', 'cta_button');
     const roiSection = document.getElementById('contact-customdev');
     roiSection?.scrollIntoView({ behavior: 'smooth' });
   };
