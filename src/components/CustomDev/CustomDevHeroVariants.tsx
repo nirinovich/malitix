@@ -330,7 +330,7 @@ export function HeroVariantC() {
               }`}
             >
               <span className="flex items-center gap-3">
-                Calculer Mon ROI
+                Démarrer mon projet
                 <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
               </span>
             </button>
