@@ -62,7 +62,7 @@ export default function CustomDevSolution() {
           <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Plus qu'du Code : <br className="sm:hidden" />
+            Plus que du Code : <br className="sm:hidden" />
             Nous Construisons Votre{' '}
             <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
               Actif Numérique
