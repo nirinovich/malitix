@@ -237,7 +237,7 @@ export default function CustomDevCTA() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className={`w-full py-5 px-8 text-xl font-bold rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 ${
+                    className={`w-full py-5 px-8 text-xl font-bold rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer ${
                       theme === 'dark'
                         ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white'
                         : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
