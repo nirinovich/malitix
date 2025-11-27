@@ -48,24 +48,40 @@ export default function CustomDevHero() {
               Application web performante, adaptée à vos processus métier, livrée clé en main.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center pt-4">
-              <button
-                onClick={scrollToROI}
-                className={`group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
-                  theme === 'dark'
-                    ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
-                    : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-[0_0_30px_rgba(59,130,246,0.3)]'
-                }`}
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Démarrer Mon Projet
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-              </button>
+            <div className="flex flex-col gap-4 items-start pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full">
+                <button
+                  onClick={scrollToROI}
+                  className={`group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer ${
+                    theme === 'dark'
+                      ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
+                      : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-[0_0_30px_rgba(59,130,246,0.3)]'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Mon audit gratuit
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                </button>
+                
+                <button
+                  onClick={scrollToROI}
+                  className={`group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 border-2 cursor-pointer ${
+                    theme === 'dark'
+                      ? 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
+                      : 'border-blue-600 text-blue-600 hover:bg-blue-50'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Démarrer mon projet
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  </span>
+                </button>
+              </div>
               
-              <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>
-                Budget fixe • Sans engagement
+              <div className={`flex items-center gap-2 text-sm font-medium ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
+                <span className={`inline-block w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-600'}`}></span>
+                Audit gratuit et sans engagement
               </div>
             </div>
           </div>
