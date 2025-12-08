@@ -57,7 +57,7 @@ export default function BenefitsShowcase() {
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`}></div>
       </div>
 
@@ -112,7 +112,7 @@ export default function BenefitsShowcase() {
                   )}
                   
                   <div className={`flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl h-fit transition-all duration-300 group-hover:scale-110 ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20' : 'bg-blue-100 group-hover:bg-blue-200'
+                    theme === 'dark' ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15 group-hover:bg-[#2ca3bd]/20'
                   }`}>
                     <Icon size={24} className="text-[#2ca3bd] sm:w-7 sm:h-7" />
                   </div>

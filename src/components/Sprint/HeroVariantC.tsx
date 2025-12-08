@@ -80,7 +80,7 @@ export default function HeroVariantC() {
                   <svg className="absolute -bottom-2 sm:-bottom-3 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none">
                     <path 
                       d="M0 5 Q50 0, 100 5 T200 5" 
-                      stroke={theme === 'dark' ? '#2ca3bd' : '#3b82f6'} 
+                      stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'} 
                       strokeWidth="4" 
                       fill="none"
                       strokeLinecap="round"
@@ -94,7 +94,7 @@ export default function HeroVariantC() {
               }`}>
                 On redresse votre roadmap <br className="hidden sm:inline" />
                 en <span className={`font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${
-                  theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
+                  theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
                 }`}>2 semaines</span>.
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function HeroVariantC() {
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}>
                   <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
+                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
                   }`}>
                     <span className="text-[#2ca3bd] text-sm sm:text-base font-bold">✓</span>
                   </div>
@@ -132,7 +132,7 @@ export default function HeroVariantC() {
               ].map((stat, idx) => (
                 <div key={idx} className="text-center">
                   <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 ${
-                    theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'
+                    theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
                   }`}>
                     {stat.value}
                   </div>

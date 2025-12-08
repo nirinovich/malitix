@@ -24,11 +24,11 @@ const testimonials = [
 
 const techLogos = [
   { name: 'React', color: '#2ca3bd' },
-  { name: 'Python', color: '#3b82f6' },
-  { name: 'Node.js', color: '#0ea5e9' },
-  { name: 'PostgreSQL', color: '#1e40af' },
-  { name: 'AWS', color: '#3b8fd4' },
-  { name: 'TypeScript', color: '#2563eb' },
+  { name: 'Python', color: '#2ca3bd' },
+  { name: 'Node.js', color: '#2ca3bd' },
+  { name: 'PostgreSQL', color: '#2ca3bd' },
+  { name: 'AWS', color: '#2ca3bd' },
+  { name: 'TypeScript', color: '#2ca3bd' },
 ];
 
 export default function CustomDevTestimonials() {
@@ -42,7 +42,7 @@ export default function CustomDevTestimonials() {
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`}></div>
       </div>
 
@@ -60,7 +60,7 @@ export default function CustomDevTestimonials() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Rejoignez les Entreprises qui{' '}
-            <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
+            <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}>
               Cartonnent
             </span>
           </h2>
@@ -73,10 +73,10 @@ export default function CustomDevTestimonials() {
               className={`group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 theme === 'dark' 
                   ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
-                  : 'bg-gradient-to-br from-blue-50 to-white border-blue-200 hover:border-blue-400'
+                  : 'bg-gradient-to-br from-[#2ca3bd]/5 to-white border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
               }`}
             >
-              <Quote className={`mb-4 ${theme === 'dark' ? 'text-[#2ca3bd]/40' : 'text-blue-300'}`} size={32} />
+              <Quote className={`mb-4 ${theme === 'dark' ? 'text-[#2ca3bd]/40' : 'text-[#2ca3bd]/40'}`} size={32} />
               
               <blockquote className={`text-lg sm:text-xl leading-relaxed mb-6 ${
                 theme === 'dark' ? 'text-white/90' : 'text-gray-700'
@@ -99,7 +99,7 @@ export default function CustomDevTestimonials() {
                 </div>
 
                 <div className={`px-4 py-2 rounded-full font-semibold text-sm ${
-                  theme === 'dark' ? 'bg-[#2ca3bd]/20 text-[#2ca3bd]' : 'bg-blue-100 text-blue-600'
+                  theme === 'dark' ? 'bg-[#2ca3bd]/20 text-[#2ca3bd]' : 'bg-[#2ca3bd]/15 text-[#2ca3bd]'
                 }`}>
                   {testimonial.result}
                 </div>

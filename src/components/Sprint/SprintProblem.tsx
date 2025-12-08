@@ -118,7 +118,7 @@ export default function SprintProblem() {
         <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border max-w-5xl mx-auto mt-16 sm:mt-20 lg:mt-28 ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20'
-            : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'
+            : 'bg-gradient-to-br from-white to-[#2ca3bd]/10 border-[#2ca3bd]/30'
         }`}>
           <div className="text-center mb-6 sm:mb-8">
             <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">

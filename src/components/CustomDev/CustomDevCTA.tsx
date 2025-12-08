@@ -73,14 +73,14 @@ export default function CustomDevCTA() {
         <div className={`rounded-3xl p-8 sm:p-12 ${
           theme === 'dark' 
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-blue-50 to-white border border-blue-200'
+            : 'bg-gradient-to-r from-[#2ca3bd]/5 to-white border border-[#2ca3bd]/20'
         }`}>
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold ${
                 theme === 'dark'
                   ? 'bg-[#2ca3bd]/20 text-[#2ca3bd]'
-                  : 'bg-blue-100 text-blue-700'
+                  : 'bg-[#2ca3bd]/15 text-[#2ca3bd]'
               }`}>
                 <Clock size={16} />
                 2 places restantes ce mois
@@ -90,7 +90,7 @@ export default function CustomDevCTA() {
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
                 Votre Application en{' '}
-                <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
+                <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}>
                   90 Jours
                 </span>
               </h2>
@@ -98,7 +98,7 @@ export default function CustomDevCTA() {
               <ul className="space-y-3">
                 {['Budget fixe garanti', 'Audit gratuit de 45 min', 'Réponse sous 24h'].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <Rocket className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'} size={20} />
+                    <Rocket className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'} size={20} />
                     <span className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                       {item}
                     </span>
@@ -240,7 +240,7 @@ export default function CustomDevCTA() {
                     className={`w-full py-5 px-8 text-xl font-bold rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer ${
                       theme === 'dark'
                         ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white'
-                        : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
+                        : 'bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white'
                     }`}
                   >
                     {isLoading ? 'Envoi en cours...' : 'Réserver Ma Place'}

@@ -18,10 +18,10 @@ export default function CustomDevHero() {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-400/30'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/30'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-300/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`} style={{ animationDelay: '2s' }}></div>
         <div className={`absolute inset-0 bg-[size:50px_50px] ${
           theme === 'dark' 
@@ -37,7 +37,7 @@ export default function CustomDevHero() {
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
               Votre Logiciel Sur Mesure en{' '}
-              <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
+              <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}>
                 90 Jours
               </span>
             </h1>
@@ -55,7 +55,7 @@ export default function CustomDevHero() {
                   className={`group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer ${
                     theme === 'dark'
                       ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
-                      : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-[0_0_30px_rgba(59,130,246,0.3)]'
+                      : 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
                   }`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
@@ -69,7 +69,7 @@ export default function CustomDevHero() {
                   className={`group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 border-2 cursor-pointer ${
                     theme === 'dark'
                       ? 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
-                      : 'border-blue-600 text-blue-600 hover:bg-blue-50'
+                      : 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
                   }`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
@@ -80,7 +80,7 @@ export default function CustomDevHero() {
               </div>
               
               <div className={`flex items-center gap-2 text-sm font-medium ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
-                <span className={`inline-block w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-600'}`}></span>
+                <span className={`inline-block w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-[#2ca3bd]'}`}></span>
                 Audit gratuit et sans engagement
               </div>
             </div>
@@ -90,14 +90,14 @@ export default function CustomDevHero() {
             <div className="relative h-[500px] flex items-center justify-center">
               {/* Glow effect behind mockup */}
               <div className={`absolute inset-0 blur-3xl -z-10 ${
-                theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-400/30'
+                theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/30'
               } scale-90`}></div>
               
               {/* Central mockup illustration */}
               <div className={`relative w-full max-w-md h-96 rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-10 ${
                 theme === 'dark'
                   ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#060705] border border-[#2ca3bd]/30'
-                  : 'bg-gradient-to-br from-blue-50 to-white border border-blue-200'
+                  : 'bg-gradient-to-br from-[#2ca3bd]/10 to-white border border-[#2ca3bd]/30'
               }`}>
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-shimmer"></div>
@@ -115,54 +115,54 @@ export default function CustomDevHero() {
                   <div className="flex-1 space-y-3">
                     {/* Header bar with pulse animation */}
                     <div className={`h-8 rounded-lg animate-pulse-subtle relative overflow-hidden ${
-                      theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                      theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-[#2ca3bd]/30'
                     }`}>
                       <div className={`absolute inset-0 ${
-                        theme === 'dark' ? 'bg-gradient-to-r from-[#2ca3bd]/0 via-[#2ca3bd]/40 to-[#2ca3bd]/0' : 'bg-gradient-to-r from-blue-200/0 via-blue-300/60 to-blue-200/0'
+                        theme === 'dark' ? 'bg-gradient-to-r from-[#2ca3bd]/0 via-[#2ca3bd]/40 to-[#2ca3bd]/0' : 'bg-gradient-to-r from-[#2ca3bd]/0 via-[#2ca3bd]/60 to-[#2ca3bd]/0'
                       } animate-slide`}></div>
                     </div>
                     
                     {/* Card grid with stagger animation */}
                     <div className="grid grid-cols-2 gap-3">
                       <div className={`h-20 rounded-lg animate-float-subtle relative overflow-hidden ${
-                        theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
+                        theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
                       }`} style={{ animationDelay: '0s' }}>
                         <div className={`absolute top-2 left-2 w-8 h-1 rounded-full ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-300'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-[#2ca3bd]/40'
                         }`}></div>
                         <div className={`absolute top-5 left-2 w-12 h-1 rounded-full ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-[#2ca3bd]/25'
                         }`}></div>
                       </div>
                       <div className={`h-20 rounded-lg animate-float-subtle relative overflow-hidden ${
-                        theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-100'
+                        theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
                       }`} style={{ animationDelay: '0.2s' }}>
                         <div className={`absolute top-2 left-2 w-8 h-1 rounded-full ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-300'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-[#2ca3bd]/40'
                         }`}></div>
                         <div className={`absolute top-5 left-2 w-12 h-1 rounded-full ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-[#2ca3bd]/25'
                         }`}></div>
                       </div>
                     </div>
                     
                     {/* Large content area */}
                     <div className={`h-32 rounded-lg relative overflow-hidden ${
-                      theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-blue-200'
+                      theme === 'dark' ? 'bg-[#2ca3bd]/30' : 'bg-[#2ca3bd]/25'
                     }`}>
                       {/* Simulated chart bars */}
                       <div className="absolute bottom-2 left-2 right-2 flex items-end gap-1">
                         <div className={`w-full rounded-t opacity-0 ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-[#2ca3bd]/50'
                         } animate-grow`} style={{ animationDelay: '0.5s', height: '2rem' }}></div>
                         <div className={`w-full rounded-t opacity-0 ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-[#2ca3bd]/50'
                         } animate-grow`} style={{ animationDelay: '0.7s', height: '4rem' }}></div>
                         <div className={`w-full rounded-t opacity-0 ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-[#2ca3bd]/50'
                         } animate-grow`} style={{ animationDelay: '0.9s', height: '3rem' }}></div>
                         <div className={`w-full rounded-t opacity-0 ${
-                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-blue-400'
+                          theme === 'dark' ? 'bg-[#2ca3bd]/50' : 'bg-[#2ca3bd]/50'
                         } animate-grow`} style={{ animationDelay: '1.1s', height: '5rem' }}></div>
                       </div>
                     </div>
@@ -175,7 +175,7 @@ export default function CustomDevHero() {
                 className={`absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/10 border border-[#2ca3bd]/30 shadow-[#2ca3bd]/20'
                 }`}
                 style={{ animationDelay: '0s' }}
               >
@@ -194,7 +194,7 @@ export default function CustomDevHero() {
                 className={`absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/10 border border-[#2ca3bd]/30'
                 }`}
                 style={{ animationDelay: '0.5s' }}
               >
@@ -210,10 +210,10 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className={`absolute bottom-32 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
+                className={`absolute bottom-16 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/10 border border-[#2ca3bd]/30'
                 }`}
                 style={{ animationDelay: '1s' }}
               >
@@ -229,10 +229,10 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className={`absolute bottom-20 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
+                className={`absolute bottom-8 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/10 border border-[#2ca3bd]/30'
                 }`}
                 style={{ animationDelay: '1.5s' }}
               >

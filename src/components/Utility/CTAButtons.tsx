@@ -17,7 +17,7 @@ export function CTAButtonV1({ onClick }: { onClick: () => void }) {
         } ${
           theme === 'dark'
             ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white'
-            : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
+            : 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white'
         }`}
       >
         {/* Flux d'énergie */}
@@ -72,10 +72,10 @@ export function CTAButtonV1({ onClick }: { onClick: () => void }) {
       {/* Barre de charge */}
       {isCharging && (
         <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full overflow-hidden ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-200'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/20'
         }`}>
           <div className={`h-full animate-charge-bar ${
-            theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-600'
+            theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-[#2ca3bd]'
           }`}></div>
         </div>
       )}
@@ -108,7 +108,7 @@ export function CTAButtonV2({ onClick }: { onClick: () => void }) {
         } ${
           theme === 'dark'
             ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-lg shadow-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30'
+            : 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-lg shadow-[#2ca3bd]/30'
         }`}
       >
         {/* Shine effect */}
@@ -146,7 +146,7 @@ export function CTAButtonV3({ onClick }: { onClick: () => void }) {
         className={`group relative w-full sm:w-auto px-6 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 text-base sm:text-lg lg:text-xl font-bold rounded-xl transition-all duration-300 ${
           theme === 'dark'
             ? 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white'
-            : 'bg-blue-600 hover:bg-blue-700 text-white'
+            : 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white'
         } ${isHovered ? 'shadow-2xl' : 'shadow-lg'}`}
       >
         <div className="flex flex-col items-center gap-0.5 sm:gap-1">

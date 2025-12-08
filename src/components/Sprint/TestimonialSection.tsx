@@ -40,7 +40,7 @@ export default function TestimonialSection() {
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`}></div>
       </div>
 
@@ -75,7 +75,7 @@ export default function TestimonialSection() {
               className={`group relative backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 theme === 'dark'
                   ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-                  : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-blue-400 hover:shadow-blue-200/50'
+                  : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
               }`}
             >
               {/* Quote icon */}

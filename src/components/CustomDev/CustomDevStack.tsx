@@ -23,7 +23,7 @@ export default function CustomDevStack() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             4 Piliers Pour Votre{' '}
-            <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
+            <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}>
               Succès
             </span>
           </h2>
@@ -37,9 +37,9 @@ export default function CustomDevStack() {
                 <div className={`mx-auto w-20 h-20 rounded-2xl flex items-center justify-center ${
                   theme === 'dark' 
                     ? 'bg-[#2ca3bd]/10 border-2 border-[#2ca3bd]/30'
-                    : 'bg-blue-50 border-2 border-blue-200'
+                    : 'bg-[#2ca3bd]/5 border-2 border-[#2ca3bd]/20'
                 }`}>
-                  <Icon className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'} size={36} />
+                  <Icon className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'} size={36} />
                 </div>
                 <h3 className={`text-xl font-bold ${
                   theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -59,7 +59,7 @@ export default function CustomDevStack() {
         <div className={`mt-16 p-8 rounded-3xl text-center ${
           theme === 'dark' 
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-            : 'bg-gradient-to-r from-blue-50 to-white border border-blue-200'
+            : 'bg-gradient-to-r from-[#2ca3bd]/5 to-white border border-[#2ca3bd]/20'
         }`}>
           <h3 className={`text-2xl font-bold mb-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'

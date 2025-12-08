@@ -68,11 +68,11 @@ export default function NotFound() {
 
         {/* Decoration */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 ${
-            theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-blue-400'
+          <div className={`absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl opacity-30 ${
+            theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-[#2ca3bd]'
           }`}></div>
-          <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 ${
-            theme === 'dark' ? 'bg-[#248fa5]' : 'bg-cyan-400'
+          <div className={`absolute bottom-20 right-20 w-96 h-96 rounded-full blur-3xl opacity-20 ${
+            theme === 'dark' ? 'bg-[#248fa5]' : 'bg-[#248fa5]'
           }`}></div>
         </div>
       </div>

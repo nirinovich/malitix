@@ -53,7 +53,7 @@ export default function TrustStats() {
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-400/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`}></div>
       </div>
 
@@ -103,14 +103,14 @@ export default function TrustStats() {
                 className={`group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-blue-400 hover:shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
                 }`}
               >
                 {/* Glow effect */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br transition-all duration-500 ${
                   theme === 'dark'
                     ? 'from-[#2ca3bd]/0 to-[#2ca3bd]/0 group-hover:from-[#2ca3bd]/10 group-hover:to-transparent'
-                    : 'from-blue-400/0 to-blue-400/0 group-hover:from-blue-400/10 group-hover:to-transparent'
+                    : 'from-[#2ca3bd]/0 to-[#2ca3bd]/0 group-hover:from-[#2ca3bd]/10 group-hover:to-transparent'
                 }`}></div>
                 
                 <div className="relative z-10 space-y-4">
@@ -138,7 +138,7 @@ export default function TrustStats() {
                 <div className={`absolute top-4 right-4 w-16 h-16 border-t border-r rounded-tr-2xl transition-all duration-500 ${
                   theme === 'dark'
                     ? 'border-[#2ca3bd]/0 group-hover:border-[#2ca3bd]/30'
-                    : 'border-blue-400/0 group-hover:border-blue-400/30'
+                    : 'border-[#2ca3bd]/40/0 group-hover:border-[#2ca3bd]/40/30'
                 }`}></div>
               </div>
             );

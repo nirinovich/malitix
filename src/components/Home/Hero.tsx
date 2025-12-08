@@ -15,10 +15,10 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient orbs */}
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-400/30'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/30'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-300/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`} style={{ animationDelay: '2s' }}></div>
         
         {/* Grid pattern */}
@@ -40,7 +40,7 @@ export default function Hero() {
                 className={`absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '0s' }}
               >
@@ -67,7 +67,7 @@ export default function Hero() {
                 className={`absolute top-32 right-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '1s' }}
               >
@@ -87,7 +87,7 @@ export default function Hero() {
                 className={`absolute bottom-32 left-20 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '2s' }}
               >
@@ -111,7 +111,7 @@ export default function Hero() {
                 className={`absolute bottom-12 right-16 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-blue-50 border border-blue-200 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '1.5s' }}
               >

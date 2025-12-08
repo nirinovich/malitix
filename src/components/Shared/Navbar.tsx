@@ -97,11 +97,13 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? theme === 'dark'
-            ? 'bg-[#060705]/95 backdrop-blur-lg shadow-lg shadow-[#2ca3bd]/10'
-            : 'bg-white/95 backdrop-blur-lg shadow-lg'
+          ? 'bg-surface/95 backdrop-blur-lg shadow-lg'
           : 'bg-transparent'
       }`}
+      style={isScrolled ? { 
+        backgroundColor: theme === 'dark' ? 'rgba(6, 7, 5, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+        boxShadow: theme === 'dark' ? '0 0 40px rgba(44, 163, 189, 0.1)' : '0 10px 40px rgba(0, 0, 0, 0.1)'
+      } : undefined}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -112,7 +114,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img 
-                src="/mx_light.png"
+                src={theme === 'dark' ? '/mx_light.png' : '/mx_dark.png'}
                 alt="Malitix" 
                 className="h-10" 
               />

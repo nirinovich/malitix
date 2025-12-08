@@ -64,13 +64,13 @@ export default function CustomDevProblem() {
           }`}>
             Votre Croissance est-elle{' '}
             <span className="relative inline-block">
-              <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-blue-600'}>
+              <span className={theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}>
                 Bloquée
               </span>
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
                 <path 
                   d="M0 4 L200 4" 
-                  stroke={theme === 'dark' ? '#2ca3bd' : '#2563eb'} 
+                  stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'} 
                   strokeWidth="3" 
                   strokeLinecap="round"
                 />

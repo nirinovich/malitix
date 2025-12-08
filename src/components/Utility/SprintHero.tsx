@@ -61,10 +61,10 @@ export default function SprintHero() {
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-blue-400/30'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/30'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-blue-300/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`} style={{ animationDelay: '2s' }}></div>
         
         {/* Grid pattern */}

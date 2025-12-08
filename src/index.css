@@ -1,21 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* Malitix Brand Colors */
-  --color-dark: #060705;
-  --color-blue: #2ca3bd;
-  
-  /* Extended palette for better flexibility */
-  --color-blue-light: #3bb8d4;
-  --color-blue-dark: #248fa5;
-  
-  /* Light mode colors */
-  --color-light-bg: #f8f9fa;
-  --color-light-surface: #ffffff;
-  --color-light-text: #1a1a1a;
-  
   /* Custom font family */
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Semantic color variables that change based on theme */
+  /* These will be overridden by CSS variables below */
 }
 
 /* Base styles */
@@ -28,26 +18,134 @@ body {
   overflow-x: hidden;
 }
 
-/* Dark theme (default) */
-body,
+/* ===========================================
+   SEMANTIC COLOR SYSTEM
+   These CSS variables change based on .dark or .light class
+   =========================================== */
+
+/* Default (Dark) theme */
+:root,
 .dark {
-  background-color: var(--color-dark);
-  color: white;
+  /* Brand colors */
+  --brand-primary: #2ca3bd;
+  --brand-primary-light: #3bb8d4;
+  --brand-primary-dark: #248fa5;
+  --brand-secondary: #1e7a8f;
+  
+  /* Background colors */
+  --bg-primary: #060705;
+  --bg-secondary: #0a0e0d;
+  --bg-tertiary: #0f1412;
+  --bg-elevated: #1a1d1b;
+  
+  /* Surface colors */
+  --surface-primary: #060705;
+  --surface-secondary: #0a0e0d;
+  --surface-elevated: rgba(44, 163, 189, 0.05);
+  --surface-hover: rgba(44, 163, 189, 0.1);
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --text-muted: rgba(255, 255, 255, 0.4);
+  
+  /* Border colors */
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(44, 163, 189, 0.2);
+  --border-hover: rgba(44, 163, 189, 0.4);
+  --border-focus: #2ca3bd;
+  
+  /* Accent colors */
+  --accent-primary: rgba(44, 163, 189, 0.1);
+  --accent-secondary: rgba(44, 163, 189, 0.05);
+  --accent-glow: rgba(44, 163, 189, 0.3);
 }
 
 /* Light theme */
 .light {
-  background-color: #f8f9fa;
-  color: #060705;
+  /* Brand colors (same) */
+  --brand-primary: #2ca3bd;
+  --brand-primary-light: #3bb8d4;
+  --brand-primary-dark: #248fa5;
+  --brand-secondary: #1e7a8f;
+  
+  /* Background colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f0f1f3;
+  --bg-elevated: #ffffff;
+  
+  /* Surface colors */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f8f9fa;
+  --surface-elevated: rgba(44, 163, 189, 0.05);
+  --surface-hover: rgba(44, 163, 189, 0.08);
+  
+  /* Text colors */
+  --text-primary: #060705;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --text-muted: #a0aec0;
+  
+  /* Border colors */
+  --border-primary: #e2e8f0;
+  --border-secondary: rgba(44, 163, 189, 0.3);
+  --border-hover: rgba(44, 163, 189, 0.5);
+  --border-focus: #2ca3bd;
+  
+  /* Accent colors */
+  --accent-primary: rgba(44, 163, 189, 0.08);
+  --accent-secondary: rgba(44, 163, 189, 0.05);
+  --accent-glow: rgba(44, 163, 189, 0.2);
+}
+
+/* Apply theme to body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .light section {
-  background-color: #ffffff;
+  background-color: var(--surface-primary);
 }
 
 .light section:nth-child(even) {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
 }
+
+/* ===========================================
+   CUSTOM UTILITY CLASSES FOR SEMANTIC COLORS
+   =========================================== */
+
+/* Background utilities */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+.bg-surface { background-color: var(--surface-primary); }
+.bg-surface-elevated { background-color: var(--surface-elevated); }
+.bg-surface-hover { background-color: var(--surface-hover); }
+
+/* Text utilities */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-muted { color: var(--text-muted); }
+
+/* Border utilities */
+.border-primary { border-color: var(--border-primary); }
+.border-secondary { border-color: var(--border-secondary); }
+.border-hover:hover { border-color: var(--border-hover); }
+.border-focus:focus { border-color: var(--border-focus); }
+
+/* Brand color utilities */
+.bg-brand { background-color: var(--brand-primary); }
+.text-brand { color: var(--brand-primary); }
+.border-brand { border-color: var(--brand-primary); }
+
+/* Accent utilities */
+.bg-accent { background-color: var(--accent-primary); }
+.bg-accent-secondary { background-color: var(--accent-secondary); }
 
 /* Custom utility classes */
 .text-balance {
