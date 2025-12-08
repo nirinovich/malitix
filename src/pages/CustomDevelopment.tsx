@@ -9,18 +9,23 @@ import CustomDevCTA from '../components/CustomDev/CustomDevCTA';
 
 export default function CustomDevelopment() {
   useEffect(() => {
-    // Set page title
     document.title = 'Développement Sur Mesure | Application Web & Mobile en 90 Jours - Malitix';
-    
-    // Set meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Arrêtez de tordre votre business pour rentrer dans un logiciel standard. Obtenez votre application web ou mobile sur mesure en 90 jours, garantie sans bug. Budget fixe, propriété totale du code.');
-    }
   }, []);
 
   return (
     <>
+      <title>Développement Sur Mesure | Application Web & Mobile en 90 Jours - Malitix</title>
+      <meta name="description" content="Arrêtez de tordre votre business pour rentrer dans un logiciel standard. Obtenez votre application web ou mobile sur mesure en 90 jours, garantie sans bug. Budget fixe, propriété totale du code." />
+      <meta property="og:title" content="Développement Sur Mesure | Application Web & Mobile en 90 Jours - Malitix" />
+      <meta property="og:description" content="Obtenez votre application web ou mobile sur mesure en 90 jours, garantie sans bug. Budget fixe, propriété totale du code." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.malitix.com/developpement-sur-mesure" />
+      <meta property="og:image" content="https://www.malitix.com/images/custom-dev-og.jpg" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Développement Sur Mesure | Application Web & Mobile en 90 Jours" />
+      <meta name="twitter:description" content="Application sur mesure en 90 jours, garantie sans bug. Budget fixe, propriété totale du code." />
+      <link rel="canonical" href="https://www.malitix.com/developpement-sur-mesure" />
+
 
       {/* Hero Section */}
       <CustomDevHero />
