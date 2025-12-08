@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Mail, Building, User, Phone, CheckCircle } from 'lucide-react';
+import { ArrowRight, Mail, Globe, User, Phone, CheckCircle } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 // Variant A: Split Layout - Form + Benefits
@@ -8,15 +8,48 @@ export default function SIRefonteContactA() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
+    website: '',
     phone: '',
     message: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setIsLoading(true);
+
+    try {
+      // Call Google Ads conversion tracking
+      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+        (window as any).gtag_report_conversion(undefined);
+      }
+
+      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: 'LP - SI Refonte'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi du formulaire');
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', email: '', website: '', phone: '', message: '' });
+      }, 5000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -107,26 +140,25 @@ export default function SIRefonteContactA() {
                   </div>
                 </div>
 
-                {/* Company */}
+                {/* Website */}
                 <div>
                   <label className={`block text-sm font-semibold mb-2 ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Société *
+                    Votre site web
                   </label>
                   <div className="relative">
-                    <Building className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
+                    <Globe className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
                     <input
                       type="text"
-                      required
-                      value={formData.company}
-                      onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      value={formData.website}
+                      onChange={(e) => setFormData({...formData, website: e.target.value})}
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
                         theme === 'dark'
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
                           : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400'
                       }`}
-                      placeholder="Votre entreprise"
+                      placeholder="https://votre-site.com"
                     />
                   </div>
                 </div>
@@ -177,10 +209,13 @@ export default function SIRefonteContactA() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2"
+                  disabled={isLoading || isSubmitted}
+                  className={`group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 ${
+                    isLoading || isSubmitted ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
                 >
-                  Je demande mon Audit Express offert
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  {isLoading ? 'Envoi en cours...' : isSubmitted ? 'Demande envoyée !' : 'Je demande mon Audit Express offert'}
+                  {!isLoading && !isSubmitted && <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />}
                 </button>
 
                 <p className={`text-xs text-center ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
