@@ -73,7 +73,7 @@ export default function CustomDevCTA() {
         <div className={`rounded-3xl p-8 sm:p-12 ${
           theme === 'dark' 
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-[#2ca3bd]/5 to-white border border-[#2ca3bd]/20'
+            : 'bg-gradient-to-r from-white to-slate-50/50 border border-[#2ca3bd]/20'
         }`}>
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">

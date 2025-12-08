@@ -64,7 +64,7 @@ export function ProgressRescueGaugeVariant() {
           <div
             key={`grid-${i}`}
             className={`absolute h-px ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
             } animate-pulse`}
             style={{
               top: `${i * 5}%`,

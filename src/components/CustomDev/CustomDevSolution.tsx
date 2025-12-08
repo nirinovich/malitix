@@ -45,7 +45,7 @@ export default function CustomDevSolution() {
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 right-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
         }`}></div>
       </div>
 

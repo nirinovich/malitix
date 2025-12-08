@@ -139,7 +139,7 @@ export default function SIRefonteBenefitsC() {
         <div className={`mt-16 max-w-5xl mx-auto p-10 rounded-3xl text-center backdrop-blur-sm border-2 ${
           theme === 'dark'
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 via-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-[#2ca3bd]/5 via-[#2ca3bd]/5 to-[#2ca3bd]/5 border-[#2ca3bd]/30'
+            : 'bg-gradient-to-r from-white via-slate-50 to-white border-[#2ca3bd]/30'
         }`}>
           <div className="text-5xl mb-4">🚀</div>
           <h3 className={`text-3xl font-black mb-4 ${

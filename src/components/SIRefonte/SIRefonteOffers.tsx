@@ -107,7 +107,7 @@ export default function SIRefonteOffersA() {
                   offer.highlighted
                     ? theme === 'dark'
                       ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/10 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.3)]'
-                      : 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.2)]'
+                      : 'bg-gradient-to-br from-white to-slate-50 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.2)]'
                     : theme === 'dark'
                       ? 'bg-white/5 border-white/10'
                       : 'bg-white border-gray-200'

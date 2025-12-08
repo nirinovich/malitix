@@ -41,7 +41,7 @@ export default function Footer() {
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
         }`}></div>
       </div>
 

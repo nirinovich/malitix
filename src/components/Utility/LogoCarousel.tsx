@@ -38,7 +38,7 @@ export default function LogoCarousel() {
                 <div className={`p-3 rounded-xl transition-all duration-300 ${
                   theme === 'dark'
                     ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20'
-                    : 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20'
+                    : 'bg-slate-100 group-hover:bg-slate-200/70'
                 }`}>
                   <Icon className="text-[#2ca3bd]" size={24} />
                 </div>
@@ -78,7 +78,7 @@ export default function LogoCarousel() {
                   <div className={`p-3 rounded-xl ${
                     theme === 'dark'
                       ? 'bg-[#2ca3bd]/10'
-                      : 'bg-[#2ca3bd]/10'
+                      : 'bg-slate-100'
                   }`}>
                     <Icon className="text-[#2ca3bd]" size={24} />
                   </div>

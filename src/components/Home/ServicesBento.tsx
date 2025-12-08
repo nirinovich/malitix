@@ -14,7 +14,7 @@ export default function ServicesBento() {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/2 right-0 w-96 h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
         }`}></div>
       </div>
 
@@ -47,10 +47,10 @@ export default function ServicesBento() {
           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
+              : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
           }`}>
             <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
             }`}></div>
             
             <div className="relative z-10 h-full flex flex-col">
@@ -81,10 +81,10 @@ export default function ServicesBento() {
           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
+              : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
           }`}>
             <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
             }`}></div>
             
             <div className="relative z-10 h-full flex flex-col">
@@ -118,10 +118,10 @@ export default function ServicesBento() {
           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
+              : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
           }`}>
             <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
             }`}></div>
             
             <div className="relative z-10 h-full flex flex-col">
@@ -156,10 +156,10 @@ export default function ServicesBento() {
           <div className={`md:col-span-2 group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
+              : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
           }`}>
             <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
             }`}></div>
             
             <div className="relative z-10 h-full flex flex-col">
@@ -208,10 +208,10 @@ export default function ServicesBento() {
           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-white to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
+              : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
           }`}>
             <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
             }`}></div>
             
             <div className="relative z-10 h-full flex flex-col">

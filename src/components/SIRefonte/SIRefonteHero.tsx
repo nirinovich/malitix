@@ -24,10 +24,10 @@ export default function SIRefonteHeroA() {
             : 'bg-[linear-gradient(rgba(44,163,189,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.1)_1px,transparent_1px)]'
         }`}></div>
         <div className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
         }`} style={{ animationDuration: '4s' }}></div>
         <div className={`absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
         }`} style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
       </div>
 

@@ -59,7 +59,7 @@ export default function CustomDevStack() {
         <div className={`mt-16 p-8 rounded-3xl text-center ${
           theme === 'dark' 
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-            : 'bg-gradient-to-r from-[#2ca3bd]/5 to-white border border-[#2ca3bd]/20'
+            : 'bg-gradient-to-r from-white to-slate-50/50 border border-[#2ca3bd]/20'
         }`}>
           <h3 className={`text-2xl font-bold mb-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'

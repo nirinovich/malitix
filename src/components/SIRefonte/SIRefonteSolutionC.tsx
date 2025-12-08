@@ -139,7 +139,7 @@ export default function SIRefonteSolutionC() {
           <div className={`p-8 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
               ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
+              : 'bg-slate-100 border-[#2ca3bd]/30'
           }`}>
             <div className="text-5xl font-black text-[#2ca3bd] mb-3">99.9%</div>
             <div className={`text-base font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>

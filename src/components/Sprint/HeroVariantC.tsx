@@ -106,7 +106,7 @@ export default function HeroVariantC() {
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}>
                   <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
+                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-slate-100'
                   }`}>
                     <span className="text-[#2ca3bd] text-sm sm:text-base font-bold">✓</span>
                   </div>

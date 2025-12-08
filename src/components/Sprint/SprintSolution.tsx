@@ -12,7 +12,7 @@ export default function SprintSolution() {
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[1000px] h-[500px] sm:h-[1000px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
         }`}></div>
       </div>
 
@@ -87,7 +87,7 @@ export default function SprintSolution() {
             </p>
 
             <div className={`mt-6 sm:mt-8 p-4 sm:p-6 rounded-lg sm:rounded-xl border-l-4 border-[#2ca3bd] ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
+              theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
             }`}>
               <p className={`text-base sm:text-lg font-semibold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'

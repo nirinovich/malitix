@@ -47,10 +47,10 @@ export default function SIRefonteSolutionA() {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
         }`}></div>
       </div>
 
@@ -123,7 +123,7 @@ export default function SIRefonteSolutionA() {
           <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
               ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
+              : 'bg-slate-50 border-[#2ca3bd]/30'
           }`}>
             <div className="text-4xl font-black text-[#2ca3bd] mb-2">0</div>
             <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -136,7 +136,7 @@ export default function SIRefonteSolutionA() {
           <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
               ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
+              : 'bg-slate-50 border-[#2ca3bd]/30'
           }`}>
             <div className="text-4xl font-black text-[#2ca3bd] mb-2">6-8</div>
             <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -149,7 +149,7 @@ export default function SIRefonteSolutionA() {
           <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
               ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
+              : 'bg-slate-50 border-[#2ca3bd]/30'
           }`}>
             <div className="text-4xl font-black text-[#2ca3bd] mb-2">30-90j</div>
             <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>

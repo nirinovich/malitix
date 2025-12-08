@@ -42,7 +42,7 @@ export default function CustomDevTestimonials() {
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
         }`}></div>
       </div>
 
@@ -73,7 +73,7 @@ export default function CustomDevTestimonials() {
               className={`group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 theme === 'dark' 
                   ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
-                  : 'bg-gradient-to-br from-[#2ca3bd]/5 to-white border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
+                  : 'bg-gradient-to-br from-white to-slate-50/50 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
               }`}
             >
               <Quote className={`mb-4 ${theme === 'dark' ? 'text-[#2ca3bd]/40' : 'text-[#2ca3bd]/40'}`} size={32} />

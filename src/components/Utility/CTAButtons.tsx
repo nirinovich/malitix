@@ -72,7 +72,7 @@ export function CTAButtonV1({ onClick }: { onClick: () => void }) {
       {/* Barre de charge */}
       {isCharging && (
         <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full overflow-hidden ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-slate-200/40'
         }`}>
           <div className={`h-full animate-charge-bar ${
             theme === 'dark' ? 'bg-[#2ca3bd]' : 'bg-[#2ca3bd]'

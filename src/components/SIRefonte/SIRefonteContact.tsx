@@ -61,7 +61,7 @@ export default function SIRefonteContactA() {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
         }`}></div>
       </div>
 
