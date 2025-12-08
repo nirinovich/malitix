@@ -161,8 +161,8 @@ export default function TrustStats() {
               <img 
                 src="/images/GCP.webp" 
                 alt="Google Cloud Platform" 
-                className={`h-8 w-auto object-contain transition-all duration-300 ${
-                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
+                  theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
               />
             </div>
@@ -172,8 +172,8 @@ export default function TrustStats() {
               <img 
                 src="/images/Cisco.webp" 
                 alt="Cisco" 
-                className={`h-8 w-auto object-contain transition-all duration-300 ${
-                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
+                  theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
               />
             </div>
@@ -183,8 +183,8 @@ export default function TrustStats() {
               <img 
                 src="/images/Hubspot.webp" 
                 alt="HubSpot" 
-                className={`h-8 w-auto object-contain transition-all duration-300 ${
-                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
+                  theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
               />
             </div>
@@ -194,8 +194,8 @@ export default function TrustStats() {
               <img 
                 src="/images/Salesforce.webp" 
                 alt="Salesforce" 
-                className={`h-8 w-auto object-contain transition-all duration-300 ${
-                  theme === 'dark' ? 'opacity-70 group-hover:opacity-100 brightness-0 invert' : 'opacity-70 group-hover:opacity-100'
+                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
+                  theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
               />
             </div>
