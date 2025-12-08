@@ -70,34 +70,34 @@ body {
   --brand-primary-dark: #248fa5;
   --brand-secondary: #1e7a8f;
   
-  /* Background colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f0f1f3;
-  --bg-elevated: #ffffff;
+  /* Background colors - Soft neutrals with blue undertones */
+  --bg-primary: #f5f7f9;
+  --bg-secondary: #edf1f4;
+  --bg-tertiary: #e4eaee;
+  --bg-elevated: #fafbfc;
   
   /* Surface colors */
-  --surface-primary: #ffffff;
-  --surface-secondary: #f8f9fa;
-  --surface-elevated: rgba(44, 163, 189, 0.05);
-  --surface-hover: rgba(44, 163, 189, 0.08);
+  --surface-primary: #fafbfc;
+  --surface-secondary: #f5f7f9;
+  --surface-elevated: rgba(44, 163, 189, 0.04);
+  --surface-hover: rgba(44, 163, 189, 0.06);
   
-  /* Text colors */
-  --text-primary: #060705;
-  --text-secondary: #4a5568;
-  --text-tertiary: #718096;
-  --text-muted: #a0aec0;
+  /* Text colors - Deeper for better contrast */
+  --text-primary: #1a2332;
+  --text-secondary: #3d4f5f;
+  --text-tertiary: #5d7284;
+  --text-muted: #8798a8;
   
-  /* Border colors */
-  --border-primary: #e2e8f0;
-  --border-secondary: rgba(44, 163, 189, 0.3);
-  --border-hover: rgba(44, 163, 189, 0.5);
+  /* Border colors - Subtle with blue hints */
+  --border-primary: #d5dfe6;
+  --border-secondary: rgba(44, 163, 189, 0.25);
+  --border-hover: rgba(44, 163, 189, 0.4);
   --border-focus: #2ca3bd;
   
   /* Accent colors */
-  --accent-primary: rgba(44, 163, 189, 0.08);
-  --accent-secondary: rgba(44, 163, 189, 0.05);
-  --accent-glow: rgba(44, 163, 189, 0.2);
+  --accent-primary: rgba(44, 163, 189, 0.06);
+  --accent-secondary: rgba(44, 163, 189, 0.03);
+  --accent-glow: rgba(44, 163, 189, 0.15);
 }
 
 /* Apply theme to body */

@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-[#060705]' : 'bg-white'}`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-[#060705]' : 'bg-[#f5f7f9]'}`}>
       <Navbar theme={theme} />
       <main>{children}</main>
       <Footer />
