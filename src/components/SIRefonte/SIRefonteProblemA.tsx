@@ -1,4 +1,4 @@
-import { AlertTriangle, TrendingDown, Server, Lock, Database, Wrench } from 'lucide-react';
+import { TrendingDown, Server, Lock, Database, Wrench } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 // Variant A: Card Grid with Icons
@@ -52,13 +52,6 @@ export default function SIRefonteProblemA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 mb-6">
-            <AlertTriangle className="text-red-500" size={20} />
-            <span className={`text-sm font-bold ${theme === 'dark' ? 'text-red-400' : 'text-red-600'}`}>
-              Le Constat 2026
-            </span>
-          </div>
-          
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>

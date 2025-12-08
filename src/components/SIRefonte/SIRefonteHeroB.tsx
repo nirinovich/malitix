@@ -139,14 +139,6 @@ export default function SIRefonteHeroB() {
             <div className={`text-lg ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
               Diagnostic 8h → Vision claire + 3 quick wins + Roadmap 90 jours → Livré en 72h
             </div>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <div className={`text-3xl font-black ${theme === 'dark' ? 'text-white line-through' : 'text-gray-400 line-through'}`}>
-                3 500€
-              </div>
-              <div className="text-4xl font-black text-[#2ca3bd]">
-                OFFERT
-              </div>
-            </div>
           </div>
 
           {/* CTA */}

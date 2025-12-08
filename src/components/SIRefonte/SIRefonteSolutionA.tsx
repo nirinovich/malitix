@@ -1,4 +1,4 @@
-import { CheckCircle, Zap, Shield, Target, GitBranch, Eye } from 'lucide-react';
+import { Zap, Shield, Target, GitBranch, Eye } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 // Variant A: Feature Cards with Icons
@@ -57,13 +57,6 @@ export default function SIRefonteSolutionA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2ca3bd]/20 to-[#2ca3bd]/20 border border-[#2ca3bd]/30 mb-6">
-            <CheckCircle className="text-[#2ca3bd]" size={20} />
-            <span className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Notre Approche
-            </span>
-          </div>
-          
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>

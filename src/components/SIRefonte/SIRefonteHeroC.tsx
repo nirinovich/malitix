@@ -31,14 +31,6 @@ export default function SIRefonteHeroC() {
         <div className="grid lg:grid-cols-5 gap-12 items-center">
           {/* Left: Content (3 columns) */}
           <div className="lg:col-span-3 space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-[#2ca3bd]/20 via-[#2ca3bd]/20 to-[#2ca3bd]/20 border-2 border-[#2ca3bd]/40 shadow-lg">
-              <div className="w-2 h-2 rounded-full bg-[#2ca3bd] animate-pulse"></div>
-              <span className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                Offre Limitée — Audit Express 8h (Valeur 3 500€)
-              </span>
-            </div>
-
             {/* Headline with split design */}
             <div className="space-y-6">
               <h1 className={`text-5xl sm:text-7xl font-black leading-[1.05] ${

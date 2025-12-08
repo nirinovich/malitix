@@ -35,14 +35,6 @@ export default function SIRefonteHeroA() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2ca3bd]/20 to-[#2ca3bd]/20 border border-[#2ca3bd]/30">
-              <Sparkles className="text-[#2ca3bd]" size={16} />
-              <span className={`text-sm font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                Audit Express 8h — Offert
-              </span>
-            </div>
-
             {/* Main Headline */}
             <div className="space-y-4">
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] ${
