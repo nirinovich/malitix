@@ -1,7 +1,6 @@
 import { useTheme } from '../../context/ThemeContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import ThemeToggle from './ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,7 +14,6 @@ export default function Layout({ children }: LayoutProps) {
       <Navbar theme={theme} />
       <main>{children}</main>
       <Footer />
-      <ThemeToggle />
     </div>
   );
 }

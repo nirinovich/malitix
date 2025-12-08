@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { CTA_TEXT } from '../../utils/constants';
 import { useTheme } from '../../context/ThemeContext';
@@ -16,7 +16,7 @@ const USE_CASES = [
 ];
 
 export default function Navbar({ theme: propTheme }: NavbarProps) {
-  const { theme: contextTheme } = useTheme();
+  const { theme: contextTheme, toggleTheme } = useTheme();
   const theme = propTheme || contextTheme;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -233,8 +233,22 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             </button>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Theme Toggle and CTA Button */}
+          <div className="hidden md:flex items-center gap-4">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
+                theme === 'dark' 
+                  ? 'bg-white/10 hover:bg-white/20 text-white' 
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+              }`}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
+            {/* CTA Button */}
             <button
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
