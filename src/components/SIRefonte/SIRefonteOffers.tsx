@@ -97,13 +97,13 @@ export default function SIRefonteOffersA() {
         </div>
 
         {/* Offers Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid lg:grid-cols-3 gap-8 mb-12 items-stretch">
           {offers.map((offer, idx) => {
             const Icon = offer.icon;
             return (
               <div
                 key={idx}
-                className={`relative p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 ${
+                className={`relative p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 flex flex-col h-full ${
                   offer.highlighted
                     ? theme === 'dark'
                       ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/10 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.3)]'
@@ -196,19 +196,21 @@ export default function SIRefonteOffersA() {
                 </ul>
 
                 {/* CTA Button */}
-                <button
-                  onClick={scrollToContact}
-                  className={`group w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 ${
-                    offer.highlighted
-                      ? 'bg-[#2ca3bd] text-white shadow-lg hover:shadow-2xl'
-                      : theme === 'dark'
-                        ? 'bg-white/10 text-white border-2 border-white/20 hover:bg-white/20'
-                        : 'bg-gray-100 text-gray-900 border-2 border-gray-300 hover:bg-gray-200'
-                  }`}
-                >
-                  {offer.cta}
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                </button>
+                <div className="mt-auto flex items-end justify-center">
+                  <button
+                    onClick={scrollToContact}
+                    className={`group w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 ${
+                      offer.highlighted
+                        ? 'bg-[#2ca3bd] text-white shadow-lg hover:shadow-2xl'
+                        : theme === 'dark'
+                          ? 'bg-white/10 text-white border-2 border-white/20 hover:bg-white/20'
+                          : 'bg-gray-100 text-gray-900 border-2 border-gray-300 hover:bg-gray-200'
+                    }`}
+                  >
+                    {offer.cta}
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+                  </button>
+                </div>
               </div>
             );
           })}
