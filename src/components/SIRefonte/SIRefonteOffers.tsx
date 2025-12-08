@@ -196,10 +196,10 @@ export default function SIRefonteOffersA() {
                 </ul>
 
                 {/* CTA Button */}
-                <div className="mt-auto flex items-end justify-center">
+                <div className="mt-auto flex items-end justify-center cursor-pointer">
                   <button
                     onClick={scrollToContact}
-                    className={`group w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 ${
+                    className={`group cursor-pointer w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 ${
                       offer.highlighted
                         ? 'bg-[#2ca3bd] text-white shadow-lg hover:shadow-2xl'
                         : theme === 'dark'

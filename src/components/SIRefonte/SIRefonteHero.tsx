@@ -110,7 +110,7 @@ export default function SIRefonteHeroA() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={scrollToContact}
-                className="group relative px-8 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white shadow-[0_0_40px_rgba(44,163,189,0.3)]"
+                className="group cursor-pointer relative px-8 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white shadow-[0_0_40px_rgba(44,163,189,0.3)]"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Je demande mon Audit Express offert

@@ -177,7 +177,7 @@ export default function SIRefonteContactA() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="group w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2"
+                  className="group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2"
                 >
                   Je demande mon Audit Express offert
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
