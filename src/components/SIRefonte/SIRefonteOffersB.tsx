@@ -36,7 +36,7 @@ export default function SIRefonteOffersB() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Choisissez votre niveau{' '}
-            <span className="text-[#a0c801]">d'engagement</span>
+            <span className="text-[#2ca3bd]">d'engagement</span>
           </h2>
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
             De la simple clarification à la transformation complète
@@ -55,10 +55,10 @@ export default function SIRefonteOffersB() {
               </div>
               <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
                 theme === 'dark'
-                  ? 'bg-[#a0c801]/10 border-[#a0c801]/40'
-                  : 'bg-[#a0c801]/5 border-[#a0c801]/40'
+                  ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/40'
+                  : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/40'
               }`}>
-                <div className="inline-block px-4 py-1 rounded-full bg-[#a0c801] text-white text-xs font-bold mb-2">
+                <div className="inline-block px-4 py-1 rounded-full bg-[#2ca3bd] text-white text-xs font-bold mb-2">
                   OFFERT
                 </div>
                 <div className={`text-2xl font-black mb-1 ${
@@ -66,7 +66,7 @@ export default function SIRefonteOffersB() {
                 }`}>
                   Audit Express
                 </div>
-                <div className="text-lg font-black text-[#a0c801] mb-2">Gratuit</div>
+                <div className="text-lg font-black text-[#2ca3bd] mb-2">Gratuit</div>
                 <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
                   8h • 72h livraison
                 </div>
@@ -76,7 +76,7 @@ export default function SIRefonteOffersB() {
                   ? 'bg-white/5 border-white/10'
                   : 'bg-white border-gray-200'
               }`}>
-                <div className="inline-block px-4 py-1 rounded-full bg-[#2fa8cf] text-white text-xs font-bold mb-2">
+                <div className="inline-block px-4 py-1 rounded-full bg-[#2ca3bd] text-white text-xs font-bold mb-2">
                   RAPIDE
                 </div>
                 <div className={`text-2xl font-black mb-1 ${
@@ -84,7 +84,7 @@ export default function SIRefonteOffersB() {
                 }`}>
                   Pack Modernisation
                 </div>
-                <div className="text-lg font-black text-[#2fa8cf] mb-2">Sur devis</div>
+                <div className="text-lg font-black text-[#2ca3bd] mb-2">Sur devis</div>
                 <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
                   6-8 semaines
                 </div>
@@ -94,7 +94,7 @@ export default function SIRefonteOffersB() {
                   ? 'bg-white/5 border-white/10'
                   : 'bg-white border-gray-200'
               }`}>
-                <div className="inline-block px-4 py-1 rounded-full bg-[#2fa8cf] text-white text-xs font-bold mb-2">
+                <div className="inline-block px-4 py-1 rounded-full bg-[#2ca3bd] text-white text-xs font-bold mb-2">
                   COMPLET
                 </div>
                 <div className={`text-2xl font-black mb-1 ${
@@ -102,7 +102,7 @@ export default function SIRefonteOffersB() {
                 }`}>
                   Plateforme RefonteSI
                 </div>
-                <div className="text-lg font-black text-[#2fa8cf] mb-2">Sur mesure</div>
+                <div className="text-lg font-black text-[#2ca3bd] mb-2">Sur mesure</div>
                 <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
                   12-36 mois
                 </div>
@@ -126,21 +126,21 @@ export default function SIRefonteOffersB() {
                 </div>
                 <div className="p-4 flex items-center justify-center">
                   {feature.audit ? (
-                    <Check className="text-[#a0c801]" size={24} />
+                    <Check className="text-[#2ca3bd]" size={24} />
                   ) : (
                     <div className={`w-6 h-0.5 ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-300'}`}></div>
                   )}
                 </div>
                 <div className="p-4 flex items-center justify-center">
                   {feature.pack ? (
-                    <Check className="text-[#2fa8cf]" size={24} />
+                    <Check className="text-[#2ca3bd]" size={24} />
                   ) : (
                     <div className={`w-6 h-0.5 ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-300'}`}></div>
                   )}
                 </div>
                 <div className="p-4 flex items-center justify-center">
                   {feature.platform ? (
-                    <Check className="text-[#2fa8cf]" size={24} />
+                    <Check className="text-[#2ca3bd]" size={24} />
                   ) : (
                     <div className={`w-6 h-0.5 ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-300'}`}></div>
                   )}
@@ -153,7 +153,7 @@ export default function SIRefonteOffersB() {
               <div></div>
               <button
                 onClick={scrollToContact}
-                className="p-4 rounded-xl font-bold bg-[#a0c801] text-white transition-all hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
+                className="p-4 rounded-xl font-bold bg-[#2ca3bd] text-white transition-all hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
               >
                 Je demande
                 <ArrowRight size={16} />
@@ -162,8 +162,8 @@ export default function SIRefonteOffersB() {
                 onClick={scrollToContact}
                 className={`p-4 rounded-xl font-bold border-2 transition-all hover:scale-105 flex items-center justify-center gap-2 ${
                   theme === 'dark'
-                    ? 'border-[#2fa8cf] text-[#2fa8cf] hover:bg-[#2fa8cf]/10'
-                    : 'border-[#2fa8cf] text-[#2fa8cf] hover:bg-[#2fa8cf]/5'
+                    ? 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
+                    : 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/5'
                 }`}
               >
                 Devis
@@ -173,8 +173,8 @@ export default function SIRefonteOffersB() {
                 onClick={scrollToContact}
                 className={`p-4 rounded-xl font-bold border-2 transition-all hover:scale-105 flex items-center justify-center gap-2 ${
                   theme === 'dark'
-                    ? 'border-[#2fa8cf] text-[#2fa8cf] hover:bg-[#2fa8cf]/10'
-                    : 'border-[#2fa8cf] text-[#2fa8cf] hover:bg-[#2fa8cf]/5'
+                    ? 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
+                    : 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/5'
                 }`}
               >
                 Échanger

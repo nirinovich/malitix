@@ -51,7 +51,7 @@ export default function SIRefonteSolutionC() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             <span className="text-red-500">Avant</span> vs{' '}
-            <span className="text-[#a0c801]">Après</span> Refonte SI
+            <span className="text-[#2ca3bd]">Après</span> Refonte SI
           </h2>
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
             Transformation concrète de votre infrastructure IT
@@ -76,7 +76,7 @@ export default function SIRefonteSolutionC() {
             </div>
             <div className={`p-4 rounded-xl font-bold text-center ${
               theme === 'dark'
-                ? 'bg-[#a0c801]/10 text-[#a0c801]'
+                ? 'bg-[#2ca3bd]/10 text-[#2ca3bd]'
                 : 'bg-green-50 text-green-700'
             }`}>
               ✅ SI Modernisé
@@ -116,10 +116,10 @@ export default function SIRefonteSolutionC() {
               {/* After */}
               <div className={`p-6 rounded-xl flex items-center gap-3 backdrop-blur-sm border-2 ${
                 theme === 'dark'
-                  ? 'bg-[#a0c801]/5 border-[#a0c801]/20 text-white/80'
+                  ? 'bg-[#2ca3bd]/5 border-[#2ca3bd]/20 text-white/80'
                   : 'bg-green-50/50 border-green-200 text-gray-700'
               }`}>
-                <Check className="text-[#a0c801] flex-shrink-0" size={20} />
+                <Check className="text-[#2ca3bd] flex-shrink-0" size={20} />
                 <span className="text-sm font-semibold">{comp.after}</span>
               </div>
             </div>
@@ -130,30 +130,30 @@ export default function SIRefonteSolutionC() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className={`p-8 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
-              ? 'bg-[#a0c801]/10 border-[#a0c801]/30'
+              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
               : 'bg-green-50 border-green-300'
           }`}>
-            <div className="text-5xl font-black text-[#a0c801] mb-3">-30%</div>
+            <div className="text-5xl font-black text-[#2ca3bd] mb-3">-30%</div>
             <div className={`text-base font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Coûts infrastructure
             </div>
           </div>
           <div className={`p-8 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
-              ? 'bg-[#2fa8cf]/10 border-[#2fa8cf]/30'
+              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
               : 'bg-blue-50 border-blue-300'
           }`}>
-            <div className="text-5xl font-black text-[#2fa8cf] mb-3">99.9%</div>
+            <div className="text-5xl font-black text-[#2ca3bd] mb-3">99.9%</div>
             <div className={`text-base font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Disponibilité garantie
             </div>
           </div>
           <div className={`p-8 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
-              ? 'bg-[#a0c801]/10 border-[#a0c801]/30'
+              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
               : 'bg-green-50 border-green-300'
           }`}>
-            <div className="text-5xl font-black text-[#a0c801] mb-3">x5</div>
+            <div className="text-5xl font-black text-[#2ca3bd] mb-3">x5</div>
             <div className={`text-base font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Vélocité delivery
             </div>

@@ -20,14 +20,14 @@ export default function SIRefonteHeroA() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute inset-0 bg-[size:60px_60px] opacity-30 ${
           theme === 'dark' 
-            ? 'bg-[linear-gradient(rgba(160,200,1,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(47,168,207,0.05)_1px,transparent_1px)]'
-            : 'bg-[linear-gradient(rgba(160,200,1,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(47,168,207,0.1)_1px,transparent_1px)]'
+            ? 'bg-[linear-gradient(rgba(44,163,189,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.05)_1px,transparent_1px)]'
+            : 'bg-[linear-gradient(rgba(44,163,189,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.1)_1px,transparent_1px)]'
         }`}></div>
         <div className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#a0c801]/10' : 'bg-[#a0c801]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`} style={{ animationDuration: '4s' }}></div>
         <div className={`absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2fa8cf]/10' : 'bg-[#2fa8cf]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`} style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
       </div>
 
@@ -36,8 +36,8 @@ export default function SIRefonteHeroA() {
           {/* Left Column - Content */}
           <div className="space-y-8">
             {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#a0c801]/20 to-[#2fa8cf]/20 border border-[#a0c801]/30">
-              <Sparkles className="text-[#a0c801]" size={16} />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2ca3bd]/20 to-[#2ca3bd]/20 border border-[#2ca3bd]/30">
+              <Sparkles className="text-[#2ca3bd]" size={16} />
               <span className={`text-sm font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 Audit Express 8h — Offert
               </span>
@@ -50,11 +50,11 @@ export default function SIRefonteHeroA() {
               }`}>
                 Votre SI doit{' '}
                 <span className="relative inline-block">
-                  <span className="text-[#a0c801]">accélérer</span>
+                  <span className="text-[#2ca3bd]">accélérer</span>
                   <svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" fill="none">
                     <path 
                       d="M0 6 Q50 2, 100 6 T200 6" 
-                      stroke="#a0c801" 
+                      stroke="#2ca3bd" 
                       strokeWidth="5" 
                       fill="none"
                       strokeLinecap="round"
@@ -77,8 +77,8 @@ export default function SIRefonteHeroA() {
                   key={idx}
                   className={`px-5 py-2.5 rounded-xl font-semibold text-sm backdrop-blur-sm ${
                     theme === 'dark'
-                      ? 'bg-[#2fa8cf]/20 text-[#2fa8cf] border border-[#2fa8cf]/30'
-                      : 'bg-[#2fa8cf]/10 text-[#2fa8cf] border border-[#2fa8cf]/30'
+                      ? 'bg-[#2ca3bd]/20 text-[#2ca3bd] border border-[#2ca3bd]/30'
+                      : 'bg-[#2ca3bd]/10 text-[#2ca3bd] border border-[#2ca3bd]/30'
                   }`}
                 >
                   {item}
@@ -94,19 +94,19 @@ export default function SIRefonteHeroA() {
             }`}>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="text-[#a0c801] mt-0.5 flex-shrink-0" size={20} />
+                  <CheckCircle2 className="text-[#2ca3bd] mt-0.5 flex-shrink-0" size={20} />
                   <p className={`text-base ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
                     <strong>Une vision claire</strong> de votre SI actuel
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="text-[#a0c801] mt-0.5 flex-shrink-0" size={20} />
+                  <CheckCircle2 className="text-[#2ca3bd] mt-0.5 flex-shrink-0" size={20} />
                   <p className={`text-base ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
                     <strong>3 quick wins</strong> à ROI immédiat
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="text-[#a0c801] mt-0.5 flex-shrink-0" size={20} />
+                  <CheckCircle2 className="text-[#2ca3bd] mt-0.5 flex-shrink-0" size={20} />
                   <p className={`text-base ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
                     <strong>Une roadmap 90 jours</strong> — en 72h
                   </p>
@@ -118,7 +118,7 @@ export default function SIRefonteHeroA() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={scrollToContact}
-                className="group relative px-8 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-[#a0c801] to-[#8ab001] text-white shadow-[0_0_40px_rgba(160,200,1,0.3)]"
+                className="group relative px-8 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white shadow-[0_0_40px_rgba(44,163,189,0.3)]"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Je demande mon Audit Express offert
@@ -150,10 +150,10 @@ export default function SIRefonteHeroA() {
 
             {/* Orbiting Modernized Components */}
             {[
-              { icon: Cloud, label: 'Cloud', color: '#2fa8cf', delay: '0s', angle: 0 },
-              { icon: Database, label: 'Data', color: '#a0c801', delay: '1s', angle: 90 },
-              { icon: Shield, label: 'Sécurité', color: '#2fa8cf', delay: '2s', angle: 180 },
-              { icon: Sparkles, label: 'IA', color: '#a0c801', delay: '3s', angle: 270 },
+              { icon: Cloud, label: 'Cloud', color: '#2ca3bd', delay: '0s', angle: 0 },
+              { icon: Database, label: 'Data', color: '#2ca3bd', delay: '1s', angle: 90 },
+              { icon: Shield, label: 'Sécurité', color: '#2ca3bd', delay: '2s', angle: 180 },
+              { icon: Sparkles, label: 'IA', color: '#2ca3bd', delay: '3s', angle: 270 },
             ].map((item, idx) => {
               const Icon = item.icon;
               const radius = 180;
@@ -210,10 +210,10 @@ export default function SIRefonteHeroA() {
 
             {/* Arrow Indicator */}
             <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-              <div className={`text-sm font-bold ${theme === 'dark' ? 'text-[#a0c801]' : 'text-[#a0c801]'}`}>
+              <div className={`text-sm font-bold ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}`}>
                 Transformation
               </div>
-              <ArrowRight className="rotate-90 text-[#a0c801]" size={24} />
+              <ArrowRight className="rotate-90 text-[#2ca3bd]" size={24} />
             </div>
           </div>
         </div>

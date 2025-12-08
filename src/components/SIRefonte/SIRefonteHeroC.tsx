@@ -21,8 +21,8 @@ export default function SIRefonteHeroC() {
         <div 
           className={`absolute top-0 left-1/2 -translate-x-1/2 w-full h-full ${
             theme === 'dark' 
-              ? 'bg-[radial-gradient(ellipse_at_top,rgba(47,168,207,0.15),transparent_50%)]'
-              : 'bg-[radial-gradient(ellipse_at_top,rgba(47,168,207,0.2),transparent_50%)]'
+              ? 'bg-[radial-gradient(ellipse_at_top,rgba(44,163,189,0.15),transparent_50%)]'
+              : 'bg-[radial-gradient(ellipse_at_top,rgba(44,163,189,0.2),transparent_50%)]'
           }`}
         ></div>
       </div>
@@ -32,8 +32,8 @@ export default function SIRefonteHeroC() {
           {/* Left: Content (3 columns) */}
           <div className="lg:col-span-3 space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-[#2fa8cf]/20 via-[#a0c801]/20 to-[#2fa8cf]/20 border-2 border-[#a0c801]/40 shadow-lg">
-              <div className="w-2 h-2 rounded-full bg-[#a0c801] animate-pulse"></div>
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-[#2ca3bd]/20 via-[#2ca3bd]/20 to-[#2ca3bd]/20 border-2 border-[#2ca3bd]/40 shadow-lg">
+              <div className="w-2 h-2 rounded-full bg-[#2ca3bd] animate-pulse"></div>
               <span className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 Offre Limitée — Audit Express 8h (Valeur 3 500€)
               </span>
@@ -55,23 +55,23 @@ export default function SIRefonteHeroC() {
               
               {/* Solution line */}
               <div className="pt-4 flex items-center gap-4">
-                <div className="h-1 flex-1 bg-gradient-to-r from-[#2fa8cf] to-[#a0c801] rounded-full"></div>
-                <ArrowRight className="text-[#a0c801]" size={32} />
+                <div className="h-1 flex-1 bg-gradient-to-r from-[#2ca3bd] to-[#2ca3bd] rounded-full"></div>
+                <ArrowRight className="text-[#2ca3bd]" size={32} />
               </div>
               
               <h2 className={`text-3xl sm:text-5xl font-bold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
                 On modernise votre SI{' '}
-                <span className="text-[#a0c801]">sans casser l'existant.</span>
+                <span className="text-[#2ca3bd]">sans casser l'existant.</span>
               </h2>
             </div>
 
             {/* Rapid Results Promise */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-[#2fa8cf]/20 flex items-center justify-center border border-[#2fa8cf]/40">
-                  <Clock className="text-[#2fa8cf]" size={24} />
+                <div className="w-12 h-12 rounded-xl bg-[#2ca3bd]/20 flex items-center justify-center border border-[#2ca3bd]/40">
+                  <Clock className="text-[#2ca3bd]" size={24} />
                 </div>
                 <div>
                   <div className={`text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -83,8 +83,8 @@ export default function SIRefonteHeroC() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-[#a0c801]/20 flex items-center justify-center border border-[#a0c801]/40">
-                  <Rocket className="text-[#a0c801]" size={24} />
+                <div className="w-12 h-12 rounded-xl bg-[#2ca3bd]/20 flex items-center justify-center border border-[#2ca3bd]/40">
+                  <Rocket className="text-[#2ca3bd]" size={24} />
                 </div>
                 <div>
                   <div className={`text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -96,8 +96,8 @@ export default function SIRefonteHeroC() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-[#2fa8cf]/20 flex items-center justify-center border border-[#2fa8cf]/40">
-                  <Shield className="text-[#2fa8cf]" size={24} />
+                <div className="w-12 h-12 rounded-xl bg-[#2ca3bd]/20 flex items-center justify-center border border-[#2ca3bd]/40">
+                  <Shield className="text-[#2ca3bd]" size={24} />
                 </div>
                 <div>
                   <div className={`text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -114,7 +114,7 @@ export default function SIRefonteHeroC() {
             <div className="pt-6">
               <button
                 onClick={scrollToContact}
-                className="group relative px-10 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-[#a0c801] via-[#8ab001] to-[#a0c801] text-white shadow-[0_0_40px_rgba(160,200,1,0.4)] bg-[length:200%_auto] hover:bg-right"
+                className="group relative px-10 py-5 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-[#2ca3bd] via-[#248fa5] to-[#2ca3bd] text-white shadow-[0_0_40px_rgba(44,163,189,0.4)] bg-[length:200%_auto] hover:bg-right"
               >
                 <span className="relative z-10 flex items-center gap-3">
                   <span>Je demande mon Audit Express offert</span>
@@ -122,7 +122,7 @@ export default function SIRefonteHeroC() {
                 </span>
               </button>
               <p className={`mt-4 text-sm flex items-center gap-2 ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
-                <CheckCircle size={16} className="text-[#a0c801]" />
+                <CheckCircle size={16} className="text-[#2ca3bd]" />
                 Réponse sous 24h • Sans engagement • Lumière garantie en 72h
               </p>
             </div>
@@ -166,7 +166,7 @@ export default function SIRefonteHeroC() {
 
               {/* Transformation Arrow */}
               <div className="absolute top-[48%] left-1/2 -translate-x-1/2 z-10">
-                <div className="bg-gradient-to-r from-[#2fa8cf] to-[#a0c801] text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl whitespace-nowrap">
+                <div className="bg-gradient-to-r from-[#2ca3bd] to-[#2ca3bd] text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl whitespace-nowrap">
                   Refonte SI ⚡
                 </div>
               </div>
@@ -175,7 +175,7 @@ export default function SIRefonteHeroC() {
               <div 
                 className={`absolute bottom-0 left-0 right-0 p-6 rounded-2xl border-2 backdrop-blur-sm transition-all hover:scale-105 ${
                   theme === 'dark'
-                    ? 'bg-[#a0c801]/10 border-[#a0c801]/40'
+                    ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/40'
                     : 'bg-green-50 border-green-300'
                 }`}
                 style={{ height: '45%' }}
@@ -183,7 +183,7 @@ export default function SIRefonteHeroC() {
                 <div className="flex items-start gap-3 mb-4">
                   <div className="text-3xl">🚀</div>
                   <div>
-                    <div className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-[#a0c801]' : 'text-green-700'}`}>
+                    <div className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-green-700'}`}>
                       APRÈS
                     </div>
                     <div className={`text-sm space-y-2 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
@@ -198,9 +198,9 @@ export default function SIRefonteHeroC() {
                 <div className={`text-xs font-mono mt-4 p-3 rounded-lg ${
                   theme === 'dark' ? 'bg-black/30' : 'bg-white/50'
                 }`}>
-                  <div className="text-[#a0c801]">$ uptime: 99.9%</div>
-                  <div className="text-[#a0c801]">$ incidents: -75%</div>
-                  <div className="text-[#a0c801]">$ IA_ready: true</div>
+                  <div className="text-[#2ca3bd]">$ uptime: 99.9%</div>
+                  <div className="text-[#2ca3bd]">$ incidents: -75%</div>
+                  <div className="text-[#2ca3bd]">$ IA_ready: true</div>
                 </div>
               </div>
             </div>

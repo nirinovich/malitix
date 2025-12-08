@@ -57,7 +57,7 @@ export default function SIRefonteBenefitsB() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Impact{' '}
-            <span className="text-[#a0c801]">mesurable</span>
+            <span className="text-[#2ca3bd]">mesurable</span>
           </h2>
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
             Métriques avant et après la Refonte SI
@@ -108,11 +108,11 @@ export default function SIRefonteBenefitsB() {
               {/* After */}
               <div className={`flex flex-col justify-center p-4 rounded-xl ${
                 theme === 'dark'
-                  ? 'bg-[#a0c801]/10'
+                  ? 'bg-[#2ca3bd]/10'
                   : 'bg-green-50'
               }`}>
                 <div className={`text-xs font-bold mb-1 uppercase ${
-                  theme === 'dark' ? 'text-[#a0c801]' : 'text-green-700'
+                  theme === 'dark' ? 'text-[#2ca3bd]' : 'text-green-700'
                 }`}>
                   Après
                 </div>
@@ -125,7 +125,7 @@ export default function SIRefonteBenefitsB() {
 
               {/* Improvement */}
               <div className="flex items-center justify-center">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#a0c801] text-white font-black text-xl">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2ca3bd] text-white font-black text-xl">
                   <TrendingUp size={20} />
                   {item.improvement}
                 </div>
@@ -137,13 +137,13 @@ export default function SIRefonteBenefitsB() {
         {/* ROI Statement */}
         <div className={`p-10 rounded-3xl text-center backdrop-blur-sm border-2 ${
           theme === 'dark'
-            ? 'bg-gradient-to-r from-[#a0c801]/10 to-[#2fa8cf]/10 border-[#a0c801]/30'
-            : 'bg-gradient-to-r from-[#a0c801]/5 to-[#2fa8cf]/5 border-[#a0c801]/30'
+            ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
+            : 'bg-gradient-to-r from-[#2ca3bd]/5 to-[#2ca3bd]/5 border-[#2ca3bd]/30'
         }`}>
           <h3 className={`text-3xl sm:text-4xl font-black mb-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            ROI moyen : <span className="text-[#a0c801]">18-24 mois</span>
+            ROI moyen : <span className="text-[#2ca3bd]">18-24 mois</span>
           </h3>
           <p className={`text-lg ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
             Avec des quick wins dès les 30-90 premiers jours

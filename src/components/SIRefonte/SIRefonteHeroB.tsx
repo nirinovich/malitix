@@ -30,8 +30,8 @@ export default function SIRefonteHeroB() {
           style={{
             backgroundImage: `repeating-linear-gradient(
               45deg,
-              ${theme === 'dark' ? '#2fa8cf' : '#2fa8cf'},
-              ${theme === 'dark' ? '#2fa8cf' : '#2fa8cf'} 2px,
+              ${theme === 'dark' ? '#2ca3bd' : '#2ca3bd'},
+              ${theme === 'dark' ? '#2ca3bd' : '#2ca3bd'} 2px,
               transparent 2px,
               transparent 20px
             )`
@@ -39,10 +39,10 @@ export default function SIRefonteHeroB() {
         ></div>
         {/* Glow orbs */}
         <div className={`absolute top-20 right-20 w-96 h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#a0c801]/10' : 'bg-[#a0c801]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`}></div>
         <div className={`absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2fa8cf]/10' : 'bg-[#2fa8cf]/20'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[#2ca3bd]/20'
         }`}></div>
       </div>
 
@@ -57,8 +57,8 @@ export default function SIRefonteHeroB() {
                   key={idx}
                   className={`p-6 rounded-2xl backdrop-blur-xl border shadow-xl transition-all hover:scale-105 ${
                     theme === 'dark'
-                      ? 'bg-gradient-to-br from-[#2fa8cf]/10 to-[#a0c801]/10 border-white/10'
-                      : 'bg-gradient-to-br from-[#2fa8cf]/5 to-[#a0c801]/5 border-gray-200'
+                      ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/10 border-white/10'
+                      : 'bg-gradient-to-br from-[#2ca3bd]/5 to-[#2ca3bd]/5 border-gray-200'
                   }`}
                   style={{
                     animation: 'fade-in-up 0.6s ease-out forwards',
@@ -66,7 +66,7 @@ export default function SIRefonteHeroB() {
                     opacity: 0
                   }}
                 >
-                  <Icon className="text-[#a0c801] mx-auto mb-3" size={32} />
+                  <Icon className="text-[#2ca3bd] mx-auto mb-3" size={32} />
                   <div className={`text-4xl font-black mb-2 ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
@@ -89,7 +89,7 @@ export default function SIRefonteHeroB() {
             }`}>
               Modernisez votre SI{' '}
               <span className="block mt-2">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2fa8cf] via-[#a0c801] to-[#2fa8cf] animate-gradient bg-[length:200%_auto]">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2ca3bd] via-[#2ca3bd] to-[#2ca3bd] animate-gradient bg-[length:200%_auto]">
                   sans big bang
                 </span>
               </span>
@@ -99,7 +99,7 @@ export default function SIRefonteHeroB() {
               theme === 'dark' ? 'text-white/80' : 'text-gray-700'
             }`}>
               En 2026, votre dette technique ne peut plus attendre. 
-              <span className="block mt-2 text-[#2fa8cf]">
+              <span className="block mt-2 text-[#2ca3bd]">
                 Refonte progressive, résultats immédiats.
               </span>
             </p>
@@ -130,10 +130,10 @@ export default function SIRefonteHeroB() {
           {/* Solution Statement */}
           <div className={`p-8 rounded-3xl backdrop-blur-xl border-2 shadow-2xl max-w-3xl mx-auto ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-[#a0c801]/20 to-[#2fa8cf]/20 border-[#a0c801]/40'
-              : 'bg-gradient-to-br from-[#a0c801]/10 to-[#2fa8cf]/10 border-[#a0c801]/30'
+              ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/20 border-[#2ca3bd]/40'
+              : 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
           }`}>
-            <div className="text-2xl sm:text-3xl font-bold mb-4 text-[#a0c801]">
+            <div className="text-2xl sm:text-3xl font-bold mb-4 text-[#2ca3bd]">
               L'Audit Express Refonte SI
             </div>
             <div className={`text-lg ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
@@ -143,7 +143,7 @@ export default function SIRefonteHeroB() {
               <div className={`text-3xl font-black ${theme === 'dark' ? 'text-white line-through' : 'text-gray-400 line-through'}`}>
                 3 500€
               </div>
-              <div className="text-4xl font-black text-[#a0c801]">
+              <div className="text-4xl font-black text-[#2ca3bd]">
                 OFFERT
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function SIRefonteHeroB() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <button
               onClick={scrollToContact}
-              className="group relative px-10 py-6 text-xl font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl bg-gradient-to-r from-[#a0c801] to-[#8ab001] text-white shadow-[0_0_50px_rgba(160,200,1,0.4)]"
+              className="group relative px-10 py-6 text-xl font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white shadow-[0_0_50px_rgba(44,163,189,0.4)]"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Je réserve mon Audit Express

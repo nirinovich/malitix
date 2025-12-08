@@ -10,31 +10,31 @@ export default function SIRefonteSolutionA() {
       icon: Eye,
       title: 'Diagnostic complet',
       description: 'Architecture, sécurité, cloud, data, dette technique analysés en profondeur.',
-      color: '#2fa8cf'
+      color: '#2ca3bd'
     },
     {
       icon: Target,
       title: 'Vision cible réaliste & moderne',
       description: 'APIs, microservices, data gouvernée, cloud optimisé, SI "IA-ready".',
-      color: '#a0c801'
+      color: '#2ca3bd'
     },
     {
       icon: Zap,
       title: 'Quick wins à impact direct',
       description: '3 actions prioritaires générant un ROI visible en 30 à 90 jours.',
-      color: '#2fa8cf'
+      color: '#2ca3bd'
     },
     {
       icon: GitBranch,
       title: 'Modernisation progressive',
       description: 'Zéro big bang : migration par modules, sprints de 6-8 semaines.',
-      color: '#a0c801'
+      color: '#2ca3bd'
     },
     {
       icon: Shield,
       title: 'Sécurité et automatisation intégrées',
       description: 'IAM, segmentation, monitoring, CI/CD, observabilité dès le départ.',
-      color: '#2fa8cf'
+      color: '#2ca3bd'
     },
   ];
 
@@ -47,18 +47,18 @@ export default function SIRefonteSolutionA() {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#a0c801]/5' : 'bg-[#a0c801]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2fa8cf]/5' : 'bg-[#2fa8cf]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
         }`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#a0c801]/20 to-[#2fa8cf]/20 border border-[#a0c801]/30 mb-6">
-            <CheckCircle className="text-[#a0c801]" size={20} />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2ca3bd]/20 to-[#2ca3bd]/20 border border-[#2ca3bd]/30 mb-6">
+            <CheckCircle className="text-[#2ca3bd]" size={20} />
             <span className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Notre Approche
             </span>
@@ -68,8 +68,8 @@ export default function SIRefonteSolutionA() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Refonte SI : une approche{' '}
-            <span className="text-[#a0c801]">globale, rapide</span> et{' '}
-            <span className="text-[#2fa8cf]">modulaire</span>
+            <span className="text-[#2ca3bd]">globale, rapide</span> et{' '}
+            <span className="text-[#2ca3bd]">modulaire</span>
           </h2>
           
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
@@ -87,8 +87,8 @@ export default function SIRefonteSolutionA() {
                 key={idx}
                 className={`group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                   theme === 'dark'
-                    ? 'bg-white/5 border-white/10 hover:border-[#a0c801]/40'
-                    : 'bg-white border-gray-200 hover:border-[#a0c801]/40'
+                    ? 'bg-white/5 border-white/10 hover:border-[#2ca3bd]/40'
+                    : 'bg-white border-gray-200 hover:border-[#2ca3bd]/40'
                 }`}
                 style={{
                   animation: 'fade-in-up 0.6s ease-out forwards',
@@ -131,10 +131,10 @@ export default function SIRefonteSolutionA() {
         }`}>
           <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
-              ? 'bg-[#2fa8cf]/10 border-[#2fa8cf]/30'
-              : 'bg-[#2fa8cf]/5 border-[#2fa8cf]/30'
+              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
+              : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
           }`}>
-            <div className="text-4xl font-black text-[#2fa8cf] mb-2">0</div>
+            <div className="text-4xl font-black text-[#2ca3bd] mb-2">0</div>
             <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Big Bang
             </div>
@@ -144,10 +144,10 @@ export default function SIRefonteSolutionA() {
           </div>
           <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
-              ? 'bg-[#a0c801]/10 border-[#a0c801]/30'
-              : 'bg-[#a0c801]/5 border-[#a0c801]/30'
+              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
+              : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
           }`}>
-            <div className="text-4xl font-black text-[#a0c801] mb-2">6-8</div>
+            <div className="text-4xl font-black text-[#2ca3bd] mb-2">6-8</div>
             <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Semaines par sprint
             </div>
@@ -157,10 +157,10 @@ export default function SIRefonteSolutionA() {
           </div>
           <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
-              ? 'bg-[#2fa8cf]/10 border-[#2fa8cf]/30'
-              : 'bg-[#2fa8cf]/5 border-[#2fa8cf]/30'
+              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
+              : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
           }`}>
-            <div className="text-4xl font-black text-[#2fa8cf] mb-2">30-90j</div>
+            <div className="text-4xl font-black text-[#2ca3bd] mb-2">30-90j</div>
             <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               ROI Quick Wins
             </div>

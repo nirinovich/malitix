@@ -8,7 +8,7 @@ export default function SIRefonteBenefitsC() {
   const categories = [
     {
       title: 'Performance & Fiabilité',
-      color: '#2fa8cf',
+      color: '#2ca3bd',
       benefits: [
         'Disponibilité 99.9% garantie',
         '75% des incidents résolus ou anticipés',
@@ -18,7 +18,7 @@ export default function SIRefonteBenefitsC() {
     },
     {
       title: 'Coûts & ROI',
-      color: '#a0c801',
+      color: '#2ca3bd',
       benefits: [
         '-20 à -40% sur les coûts cloud',
         'ROI moyen 18-24 mois',
@@ -28,7 +28,7 @@ export default function SIRefonteBenefitsC() {
     },
     {
       title: 'Agilité & Innovation',
-      color: '#2fa8cf',
+      color: '#2ca3bd',
       benefits: [
         'Time-to-market x3 à x5 plus rapide',
         'Déploiements fréquents et sûrs',
@@ -38,7 +38,7 @@ export default function SIRefonteBenefitsC() {
     },
     {
       title: 'Sécurité & Conformité',
-      color: '#a0c801',
+      color: '#2ca3bd',
       benefits: [
         'Conformité 95%+ (RGPD, NIS2)',
         'Zero-trust & segmentation réseau',
@@ -48,7 +48,7 @@ export default function SIRefonteBenefitsC() {
     },
     {
       title: 'Équipes & Productivité',
-      color: '#2fa8cf',
+      color: '#2ca3bd',
       benefits: [
         '60% du temps libéré (automatisation)',
         'Moins d\'incidents et d\'urgences',
@@ -58,7 +58,7 @@ export default function SIRefonteBenefitsC() {
     },
     {
       title: 'Data & IA',
-      color: '#a0c801',
+      color: '#2ca3bd',
       benefits: [
         'Données gouvernées et fiables',
         'Pipelines data modernes',
@@ -81,7 +81,7 @@ export default function SIRefonteBenefitsC() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Tous les bénéfices de la{' '}
-            <span className="text-[#a0c801]">Refonte SI</span>
+            <span className="text-[#2ca3bd]">Refonte SI</span>
           </h2>
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
             Impact sur l'ensemble de votre organisation
@@ -138,15 +138,15 @@ export default function SIRefonteBenefitsC() {
         {/* Bottom CTA Statement */}
         <div className={`mt-16 max-w-5xl mx-auto p-10 rounded-3xl text-center backdrop-blur-sm border-2 ${
           theme === 'dark'
-            ? 'bg-gradient-to-r from-[#2fa8cf]/10 via-[#a0c801]/10 to-[#2fa8cf]/10 border-[#a0c801]/30'
-            : 'bg-gradient-to-r from-[#2fa8cf]/5 via-[#a0c801]/5 to-[#2fa8cf]/5 border-[#a0c801]/30'
+            ? 'bg-gradient-to-r from-[#2ca3bd]/10 via-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
+            : 'bg-gradient-to-r from-[#2ca3bd]/5 via-[#2ca3bd]/5 to-[#2ca3bd]/5 border-[#2ca3bd]/30'
         }`}>
           <div className="text-5xl mb-4">🚀</div>
           <h3 className={`text-3xl font-black mb-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Votre SI devient enfin un{' '}
-            <span className="text-[#a0c801]">accélérateur stratégique</span>
+            <span className="text-[#2ca3bd]">accélérateur stratégique</span>
           </h3>
           <p className={`text-lg ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
             Au lieu de freiner l'innovation, il la propulse

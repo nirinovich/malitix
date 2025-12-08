@@ -1,4 +1,4 @@
-import { Minus, Plus } from 'lucide-react';
+import { Minus } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 // Variant C: Split Comparison - What's Blocking vs Impact

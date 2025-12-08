@@ -14,7 +14,7 @@ export default function SIRefonteOffersA() {
     {
       icon: Sparkles,
       badge: 'OFFERT',
-      badgeColor: '#a0c801',
+      badgeColor: '#2ca3bd',
       title: 'Audit Express',
       subtitle: '8 heures de diagnostic',
       price: 'Gratuit',
@@ -29,13 +29,13 @@ export default function SIRefonteOffersA() {
         'Rapport 5-7 pages actionnable'
       ],
       cta: 'Je demande mon Audit offert',
-      color: '#a0c801',
+      color: '#2ca3bd',
       highlighted: true
     },
     {
       icon: Rocket,
       badge: 'POPULAIRE',
-      badgeColor: '#2fa8cf',
+      badgeColor: '#2ca3bd',
       title: 'Pack Modernisation Rapide',
       subtitle: '6 à 8 semaines',
       price: 'Sur devis',
@@ -50,13 +50,13 @@ export default function SIRefonteOffersA() {
         'ROI rapide + réduction risques'
       ],
       cta: 'Demander un devis',
-      color: '#2fa8cf',
+      color: '#2ca3bd',
       highlighted: false
     },
     {
       icon: Building2,
       badge: 'TRANSFORMATION',
-      badgeColor: '#2fa8cf',
+      badgeColor: '#2ca3bd',
       title: 'Plateforme RefonteSI',
       subtitle: '12 à 36 mois',
       price: 'Sur mesure',
@@ -71,7 +71,7 @@ export default function SIRefonteOffersA() {
         'Transformation sur 12-36 mois'
       ],
       cta: 'Parler à un expert',
-      color: '#2fa8cf',
+      color: '#2ca3bd',
       highlighted: false
     },
   ];
@@ -89,7 +89,7 @@ export default function SIRefonteOffersA() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Nos offres{' '}
-            <span className="text-[#a0c801]">Refonte SI</span>
+            <span className="text-[#2ca3bd]">Refonte SI</span>
           </h2>
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
             De l'audit express à la transformation complète
@@ -106,8 +106,8 @@ export default function SIRefonteOffersA() {
                 className={`relative p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 ${
                   offer.highlighted
                     ? theme === 'dark'
-                      ? 'bg-gradient-to-br from-[#a0c801]/20 to-[#a0c801]/10 border-[#a0c801] shadow-[0_0_50px_rgba(160,200,1,0.3)]'
-                      : 'bg-gradient-to-br from-[#a0c801]/10 to-[#a0c801]/5 border-[#a0c801] shadow-[0_0_50px_rgba(160,200,1,0.2)]'
+                      ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/10 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.3)]'
+                      : 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.2)]'
                     : theme === 'dark'
                       ? 'bg-white/5 border-white/10'
                       : 'bg-white border-gray-200'
@@ -200,7 +200,7 @@ export default function SIRefonteOffersA() {
                   onClick={scrollToContact}
                   className={`group w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 ${
                     offer.highlighted
-                      ? 'bg-[#a0c801] text-white shadow-lg hover:shadow-2xl'
+                      ? 'bg-[#2ca3bd] text-white shadow-lg hover:shadow-2xl'
                       : theme === 'dark'
                         ? 'bg-white/10 text-white border-2 border-white/20 hover:bg-white/20'
                         : 'bg-gray-100 text-gray-900 border-2 border-gray-300 hover:bg-gray-200'

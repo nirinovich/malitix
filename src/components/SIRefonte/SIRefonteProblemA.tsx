@@ -63,7 +63,7 @@ export default function SIRefonteProblemA() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Pourquoi moderniser{' '}
-            <span className="text-[#2fa8cf]">votre SI maintenant ?</span>
+            <span className="text-[#2ca3bd]">votre SI maintenant ?</span>
           </h2>
           
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>

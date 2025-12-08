@@ -12,7 +12,7 @@ export default function SIRefonteBenefitsA() {
       stat: '75%',
       statLabel: 'des incidents résolus/anticipés',
       description: 'Réduction MTTR x2 à x5',
-      color: '#2fa8cf'
+      color: '#2ca3bd'
     },
     {
       icon: TrendingDown,
@@ -20,7 +20,7 @@ export default function SIRefonteBenefitsA() {
       stat: '-20/-40%',
       statLabel: 'de coûts cloud',
       description: 'Selon maturité initiale',
-      color: '#a0c801'
+      color: '#2ca3bd'
     },
     {
       icon: Users,
@@ -28,7 +28,7 @@ export default function SIRefonteBenefitsA() {
       stat: '60%',
       statLabel: 'temps libéré',
       description: 'Automatisation des tâches à faible valeur',
-      color: '#2fa8cf'
+      color: '#2ca3bd'
     },
     {
       icon: Brain,
@@ -36,7 +36,7 @@ export default function SIRefonteBenefitsA() {
       stat: '100%',
       statLabel: 'préparé pour l\'IA',
       description: 'Données propres, gouvernance, pipelines',
-      color: '#a0c801'
+      color: '#2ca3bd'
     },
     {
       icon: Zap,
@@ -44,7 +44,7 @@ export default function SIRefonteBenefitsA() {
       stat: 'x3-x5',
       statLabel: 'déploiements + rapides',
       description: 'Plus fréquents, plus sûrs',
-      color: '#2fa8cf'
+      color: '#2ca3bd'
     },
     {
       icon: Eye,
@@ -52,7 +52,7 @@ export default function SIRefonteBenefitsA() {
       stat: '360°',
       statLabel: 'visibilité totale',
       description: 'Cartographie, end-of-life, dépendances, risques',
-      color: '#a0c801'
+      color: '#2ca3bd'
     },
   ];
 
@@ -65,7 +65,7 @@ export default function SIRefonteBenefitsA() {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#a0c801]/5' : 'bg-[#a0c801]/10'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
         }`}></div>
       </div>
 
@@ -76,7 +76,7 @@ export default function SIRefonteBenefitsA() {
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Ce que vous{' '}
-            <span className="text-[#a0c801]">gagnez</span>
+            <span className="text-[#2ca3bd]">gagnez</span>
           </h2>
           <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
             Impact mesurable sur votre business et vos équipes
@@ -92,8 +92,8 @@ export default function SIRefonteBenefitsA() {
                 key={idx}
                 className={`group p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                   theme === 'dark'
-                    ? 'bg-white/5 border-white/10 hover:border-[#a0c801]/40'
-                    : 'bg-white border-gray-200 hover:border-[#a0c801]/40'
+                    ? 'bg-white/5 border-white/10 hover:border-[#2ca3bd]/40'
+                    : 'bg-white border-gray-200 hover:border-[#2ca3bd]/40'
                 }`}
                 style={{
                   animation: 'fade-in-up 0.6s ease-out forwards',
@@ -148,14 +148,14 @@ export default function SIRefonteBenefitsA() {
         {/* Bottom Statement */}
         <div className={`mt-16 max-w-5xl mx-auto p-10 rounded-3xl text-center backdrop-blur-sm border-2 ${
           theme === 'dark'
-            ? 'bg-gradient-to-r from-[#2fa8cf]/10 to-[#a0c801]/10 border-[#a0c801]/30'
-            : 'bg-gradient-to-r from-[#2fa8cf]/5 to-[#a0c801]/5 border-[#a0c801]/30'
+            ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
+            : 'bg-gradient-to-r from-[#2ca3bd]/5 to-[#2ca3bd]/5 border-[#2ca3bd]/30'
         }`}>
           <h3 className={`text-3xl sm:text-4xl font-black mb-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
             Un SI qui devient un{' '}
-            <span className="text-[#a0c801]">accélérateur stratégique</span>
+            <span className="text-[#2ca3bd]">accélérateur stratégique</span>
           </h3>
           <p className={`text-lg ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
             Plus fiable • Plus rapide • Plus sûr • Prêt pour l'IA
