@@ -127,86 +127,133 @@ export default function SIRefonteHeroA() {
 
           {/* Right Column - SI Architecture Illustration */}
           <div className="relative hidden lg:block h-[600px]">
-            {/* Central Node - Current SI */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-2xl flex items-center justify-center backdrop-blur-xl border-2 shadow-2xl animate-pulse ${
-              theme === 'dark'
-                ? 'bg-red-500/10 border-red-500/40'
-                : 'bg-red-50 border-red-300'
-            }`} style={{ animationDuration: '2s' }}>
-              <div className="text-center">
-                <div className={`text-xs font-bold mb-1 ${theme === 'dark' ? 'text-red-400' : 'text-red-600'}`}>SI Actuel</div>
-                <div className={`text-2xl font-black ${theme === 'dark' ? 'text-red-500' : 'text-red-600'}`}>⚠️</div>
-                <div className={`text-xs ${theme === 'dark' ? 'text-red-400/70' : 'text-red-600/70'}`}>Dette tech</div>
+            {/* Background glow effects */}
+            <div className={`absolute inset-0 flex items-center justify-center ${
+              theme === 'dark' ? 'opacity-20' : 'opacity-10'
+            }`}>
+              <div className="w-96 h-96 bg-[#2ca3bd] rounded-full blur-3xl"></div>
+            </div>
+
+            {/* Central Warning Node */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 30 }}>
+              <div className={`w-36 h-36 rounded-2xl flex flex-col items-center justify-center backdrop-blur-xl border-2 shadow-2xl animate-pulse ${
+                theme === 'dark'
+                  ? 'bg-red-900/20 border-red-500/60'
+                  : 'bg-red-100 border-red-400'
+              }`} style={{ animationDuration: '2s' }}>
+                <div className={`text-xs font-bold mb-2 ${theme === 'dark' ? 'text-red-400' : 'text-red-700'}`}>
+                  SI Actuel
+                </div>
+                <div className="text-3xl mb-2">⚠️</div>
+                <div className={`text-xs font-semibold ${theme === 'dark' ? 'text-red-400/80' : 'text-red-700/80'}`}>
+                  Dette tech
+                </div>
               </div>
             </div>
 
-            {/* Orbiting Modernized Components */}
-            {[
-              { icon: Cloud, label: 'Cloud', color: '#2ca3bd', delay: '0s', angle: 0 },
-              { icon: Database, label: 'Data', color: '#2ca3bd', delay: '1s', angle: 90 },
-              { icon: Shield, label: 'Sécurité', color: '#2ca3bd', delay: '2s', angle: 180 },
-              { icon: Sparkles, label: 'IA', color: '#2ca3bd', delay: '3s', angle: 270 },
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              const radius = 180;
-              const x = Math.cos((item.angle * Math.PI) / 180) * radius;
-              const y = Math.sin((item.angle * Math.PI) / 180) * radius;
-              
-              return (
-                <div
-                  key={idx}
-                  className="absolute top-1/2 left-1/2 w-24 h-24"
-                  style={{
-                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                    animation: `float 4s ease-in-out infinite`,
-                    animationDelay: item.delay,
-                  }}
-                >
-                  <div className={`w-full h-full rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
-                    theme === 'dark'
-                      ? 'bg-white/5 border-white/20'
-                      : 'bg-white border-gray-200'
-                  }`}>
-                    <Icon size={28} style={{ color: item.color }} />
-                    <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {item.label}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+            {/* Top - IA */}
+            <div className="absolute top-8 left-1/2 -translate-x-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '0s' }}>
+              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
+                theme === 'dark'
+                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
+                  : 'bg-white border-[#2ca3bd]/30'
+              }`}>
+                <Sparkles size={32} className="text-[#2ca3bd]" />
+                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  IA
+                </span>
+              </div>
+            </div>
+
+            {/* Right - Cloud */}
+            <div className="absolute top-1/2 right-8 -translate-y-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '1.5s' }}>
+              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
+                theme === 'dark'
+                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
+                  : 'bg-white border-[#2ca3bd]/30'
+              }`}>
+                <Cloud size={32} className="text-[#2ca3bd]" />
+                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  Cloud
+                </span>
+              </div>
+            </div>
+
+            {/* Bottom - Data */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '3s' }}>
+              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
+                theme === 'dark'
+                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
+                  : 'bg-white border-[#2ca3bd]/30'
+              }`}>
+                <Database size={32} className="text-[#2ca3bd]" />
+                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  Data
+                </span>
+              </div>
+            </div>
+
+            {/* Left - Sécurité */}
+            <div className="absolute top-1/2 left-8 -translate-y-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '4.5s' }}>
+              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
+                theme === 'dark'
+                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
+                  : 'bg-white border-[#2ca3bd]/30'
+              }`}>
+                <Shield size={32} className="text-[#2ca3bd]" />
+                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  Sécurité
+                </span>
+              </div>
+            </div>
 
             {/* Connecting Lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: -1 }}>
-              {[0, 90, 180, 270].map((angle, idx) => {
-                const radius = 180;
-                const x1 = 50;
-                const y1 = 50;
-                const x2 = 50 + (Math.cos((angle * Math.PI) / 180) * radius * 100) / 600;
-                const y2 = 50 + (Math.sin((angle * Math.PI) / 180) * radius * 100) / 600;
-                
-                return (
-                  <line
-                    key={idx}
-                    x1={`${x1}%`}
-                    y1={`${y1}%`}
-                    x2={`${x2}%`}
-                    y2={`${y2}%`}
-                    stroke={theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}
-                    strokeWidth="2"
-                    strokeDasharray="5,5"
-                  />
-                );
-              })}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 10 }}>
+              {/* Top line to IA */}
+              <line
+                x1="50%" y1="50%"
+                x2="50%" y2="15%"
+                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                opacity="0.5"
+              />
+              {/* Right line to Cloud */}
+              <line
+                x1="50%" y1="50%"
+                x2="85%" y2="50%"
+                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                opacity="0.5"
+              />
+              {/* Bottom line to Data */}
+              <line
+                x1="50%" y1="50%"
+                x2="50%" y2="85%"
+                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                opacity="0.5"
+              />
+              {/* Left line to Sécurité */}
+              <line
+                x1="50%" y1="50%"
+                x2="15%" y2="50%"
+                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                opacity="0.5"
+              />
             </svg>
 
-            {/* Arrow Indicator */}
-            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+            {/* Arrow Indicator 
+            <div className="absolute bottom-0 top-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" style={{ zIndex: 40 }}>
               <div className={`text-sm font-bold ${theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'}`}>
                 Transformation
               </div>
               <ArrowRight className="rotate-90 text-[#2ca3bd]" size={24} />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

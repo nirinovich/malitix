@@ -87,11 +87,9 @@ export default function SIRefonteSolutionC() {
           {comparisons.map((comp, idx) => (
             <div
               key={idx}
-              className="grid grid-cols-3 gap-4"
+              className="grid grid-cols-3 gap-4 animate-fade-in-up"
               style={{
-                animation: 'fade-in-up 0.5s ease-out forwards',
-                animationDelay: `${idx * 0.1}s`,
-                opacity: 0
+                animationDelay: `${idx * 0.1}s`
               }}
             >
               {/* Category */}

@@ -33,29 +33,30 @@ export default function SIRefonteContactA() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="inline-block px-4 py-2 rounded-full bg-[#2ca3bd] text-white text-sm font-bold mb-4">
+            L'Audit Express — Diagnostic 8h (offert)
+          </div>
+          <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            Votre SI peut créer plus de valeur.
+          </h2>
+          <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+            La clé du diagnostic en 8h offert par Malitix.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Form */}
           <div>
-            {/* Header */}
-            <div className="mb-8">
-              <div className="inline-block px-4 py-2 rounded-full bg-[#2ca3bd] text-white text-sm font-bold mb-4">
-                L'Audit Express — Diagnostic 8h (offert)
-              </div>
-              <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
-                Votre SI peut créer plus de valeur.
-              </h2>
-              <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-                La clé du diagnostic en 8h offert par Malitix.
-              </p>
-            </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className={`p-8 rounded-3xl backdrop-blur-sm border-2 ${
+            <form onSubmit={handleSubmit} className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
               theme === 'dark'
                 ? 'bg-white/5 border-white/10'
-                : 'bg-white border-gray-200'
+                : 'bg-white border-gray-200 shadow-lg'
             }`}>
               <div className="space-y-4">
                 {/* Name */}
@@ -190,11 +191,11 @@ export default function SIRefonteContactA() {
           </div>
 
           {/* Right: Benefits/Promise */}
-          <div className="space-y-6">
-            <div className={`p-8 rounded-3xl backdrop-blur-sm border-2 ${
+          <div className="space-y-6 lg:self-center">
+            <div className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
               theme === 'dark'
                 ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-                : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
+                : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30 shadow-lg'
             }`}>
               <h3 className={`text-2xl font-black mb-6 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -282,17 +283,6 @@ export default function SIRefonteContactA() {
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Engagement Statement */}
-        <div className={`mt-16 p-8 rounded-3xl text-center backdrop-blur-sm border-2 ${
-          theme === 'dark'
-            ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-            : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30'
-        }`}>
-          <p className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            <strong>Sans engagement, sans vente ni force:</strong> Lumière sous 72h • Sans engagement
-          </p>
         </div>
       </div>
     </section>

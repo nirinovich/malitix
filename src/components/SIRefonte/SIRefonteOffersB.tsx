@@ -26,8 +26,8 @@ export default function SIRefonteOffersB() {
   return (
     <section id="offers-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-[#060705]'
-        : 'bg-white'
+        ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
+        : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}

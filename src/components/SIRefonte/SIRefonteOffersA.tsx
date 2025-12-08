@@ -213,17 +213,6 @@ export default function SIRefonteOffersA() {
             );
           })}
         </div>
-
-        {/* Bottom Note */}
-        <div className={`text-center p-6 rounded-2xl backdrop-blur-sm border ${
-          theme === 'dark'
-            ? 'bg-white/5 border-white/10'
-            : 'bg-gray-50 border-gray-200'
-        }`}>
-          <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-            ✓ Toutes nos offres incluent un accompagnement personnalisé et un suivi régulier
-          </p>
-        </div>
       </div>
 
       <style>{`

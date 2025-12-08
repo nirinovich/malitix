@@ -21,8 +21,8 @@ export default function SIRefonteContactB() {
   return (
     <section id="contact-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-[#060705]'
-        : 'bg-white'
+        ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
+        : 'bg-gradient-to-b from-white to-gray-50'
     }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}

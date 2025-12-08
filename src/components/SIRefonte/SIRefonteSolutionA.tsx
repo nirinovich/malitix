@@ -78,15 +78,13 @@ export default function SIRefonteSolutionA() {
             return (
               <div
                 key={idx}
-                className={`group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                className={`group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up ${
                   theme === 'dark'
                     ? 'bg-white/5 border-white/10 hover:border-[#2ca3bd]/40'
                     : 'bg-white border-gray-200 hover:border-[#2ca3bd]/40'
                 }`}
                 style={{
-                  animation: 'fade-in-up 0.6s ease-out forwards',
-                  animationDelay: `${idx * 0.1}s`,
-                  opacity: 0
+                  animationDelay: `${idx * 0.1}s`
                 }}
               >
                 {/* Icon */}

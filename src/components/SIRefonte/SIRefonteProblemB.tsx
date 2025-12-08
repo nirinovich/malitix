@@ -41,8 +41,8 @@ export default function SIRefonteProblemB() {
   return (
     <section id="problem-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-[#060705]'
-        : 'bg-white'
+        ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
+        : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">

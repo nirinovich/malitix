@@ -86,6 +86,11 @@ button, a, .card {
   }
 }
 
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
