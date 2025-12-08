@@ -125,7 +125,7 @@ export default function SIRefonteProblemA() {
             ? 'bg-red-500/10 border-red-500/30'
             : 'bg-red-50 border-red-300'
         }`}>
-          <div className="text-5xl mb-4">👉</div>
+          <div className="text-5xl mb-4">👇</div>
           <p className={`text-2xl sm:text-3xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
