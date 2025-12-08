@@ -98,7 +98,7 @@ export default function SIRefonteProblemA() {
                 <h3 className={`text-xl font-bold mb-3 ${
                   theme === 'dark' ? 'text-white' : 'text-gray-900'
                 }`}>
-                  ❌ {problem.title}
+                  {problem.title}
                 </h3>
 
                 {/* Description */}

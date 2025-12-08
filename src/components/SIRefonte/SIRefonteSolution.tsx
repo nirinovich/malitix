@@ -102,7 +102,7 @@ export default function SIRefonteSolutionA() {
                 <h3 className={`text-xl font-bold mb-3 ${
                   theme === 'dark' ? 'text-white' : 'text-gray-900'
                 }`}>
-                  ✔️ {feature.title}
+                  {feature.title}
                 </h3>
 
                 {/* Description */}
