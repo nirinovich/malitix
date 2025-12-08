@@ -11,6 +11,7 @@ interface NavbarProps {
 const USE_CASES = [
   { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours' },
   { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure', description: 'Application web & mobile en 90 jours' },
+  { label: 'Refonte SI', href: '/refonte-si', description: 'Modernisation de système d\'information' },
   // Add more use cases here in the future
 ];
 
