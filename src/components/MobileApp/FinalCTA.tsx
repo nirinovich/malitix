@@ -1,321 +1,156 @@
-import { useState } from 'react';
-import { useTheme } from '../../context/ThemeContext';
+import { Mail, Phone, ArrowRight } from 'lucide-react';
 import { useABTestVariant } from '../../hooks/useABTest';
-import { ArrowRight, Mail, Phone, CheckCircle } from 'lucide-react';
 
 export default function FinalCTA() {
-  const { theme } = useTheme();
   const variant = useABTestVariant('cta');
 
   if (variant === 'A') {
-    return <FinalCTAVariantA theme={theme} />;
+    return <CTAVariantA />;
   } else if (variant === 'B') {
-    return <FinalCTAVariantB theme={theme} />;
+    return <CTAVariantB />;
   } else {
-    return <FinalCTAVariantC theme={theme} />;
+    return <CTAVariantC />;
   }
 }
 
-// =============================================
-// VARIANT A: Dual Buttons (CTA + Secondary)
-// =============================================
-function FinalCTAVariantA({ theme }: { theme: 'dark' | 'light' }) {
+function CTAVariantA() {
   return (
-    <section
-      className={`relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden ${
-        theme === 'dark'
-          ? 'bg-gradient-to-br from-[#060705] via-[#0a0e0d] to-[#060705]'
-          : 'bg-gradient-to-br from-white via-gray-50 to-white'
-      }`}
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className={`absolute -top-1/2 -right-1/4 w-96 h-96 rounded-full blur-3xl ${
-            theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
-          }`}
-        ></div>
-        <div
-          className={`absolute -bottom-1/2 -left-1/4 w-96 h-96 rounded-full blur-3xl ${
-            theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
-          }`}
-        ></div>
-      </div>
-
-      <div className="max-w-4xl mx-auto text-center relative z-10 space-y-8">
-        {/* Headline */}
-        <h2
-          className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-tight ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}
-        >
-          Ready to Build Your{' '}
-          <span className="text-[#2ca3bd]">Mobile Success?</span>
+    <section className="py-24 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6">
+          Ne me croyez pas sur parole.
         </h2>
-
-        {/* Subheading */}
-        <p
-          className={`text-xl sm:text-2xl max-w-2xl mx-auto ${
-            theme === 'dark' ? 'text-white/75' : 'text-gray-700'
-          }`}
-        >
-          Get a free 30-minute consultation with our mobile experts. We'll discuss your vision and create a roadmap to success.
+        <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
+          Je ne veux pas vous vendre un devis maintenant. Je veux voir si votre projet tient la route.
         </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <button
-            className={`group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg ${
-              theme === 'dark'
-                ? 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
-                : 'bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]'
-            }`}
-          >
-            <span className="relative z-10 flex items-center gap-2 justify-center">
-              Schedule Your Consultation
-              <ArrowRight size={20} />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <button className="group px-8 py-5 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+            Faire auditer mon projet
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
-
-          <button
-            className={`px-8 py-4 text-lg font-bold rounded-2xl transition-all duration-300 border-2 ${
-              theme === 'dark'
-                ? 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
-                : 'border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10'
-            }`}
-          >
-            <span className="flex items-center gap-2 justify-center">
-              View Pricing
-            </span>
+          <button className="px-8 py-5 border-2 border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd] hover:text-white font-bold rounded-lg transition-all">
+            Voir nos Tarifs
           </button>
         </div>
 
-        {/* Trust Badges */}
-        <div className="flex flex-col sm:flex-row justify-center gap-6 pt-8 flex-wrap">
-          {['50+ Apps Launched', '4.8★ Client Rating', '98% Retention Rate'].map((badge) => (
-            <div key={badge} className="flex items-center gap-2">
-              <CheckCircle size={20} className="text-[#2ca3bd]" />
-              <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {badge}
-              </span>
-            </div>
-          ))}
+        <div className="space-y-4 mt-12">
+          <h3 className="text-lg font-semibold text-[var(--text-primary)]">✓ Audit gratuit</h3>
+          <h3 className="text-lg font-semibold text-[var(--text-primary)]">✓ 30 minutes de consultation</h3>
+          <h3 className="text-lg font-semibold text-[var(--text-primary)]">✓ Sans engagement</h3>
         </div>
       </div>
     </section>
   );
 }
 
-// =============================================
-// VARIANT B: Single Prominent CTA with Benefits
-// =============================================
-function FinalCTAVariantB({ theme }: { theme: 'dark' | 'light' }) {
+function CTAVariantB() {
   return (
-    <section
-      className={`relative py-20 px-4 sm:px-6 lg:px-8 ${
-        theme === 'dark'
-          ? 'bg-gradient-to-br from-[#0a0e0d] to-[#060705]'
-          : 'bg-gradient-to-br from-gray-50 to-white'
-      }`}
-    >
-      <div className="max-w-5xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Content */}
-          <div className="space-y-6">
-            <h2
-              className={`text-5xl sm:text-6xl font-black leading-tight ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              Let's Build Something <span className="text-[#2ca3bd]">Amazing</span>
+    <section className="py-24 bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              Testez-nous dès maintenant.
             </h2>
-
-            <p
-              className={`text-xl ${
-                theme === 'dark' ? 'text-white/75' : 'text-gray-700'
-              }`}
-            >
-              Your vision deserves world-class execution. Let's turn your mobile app idea into a thriving product.
+            <p className="text-lg text-blue-100 mb-8 leading-relaxed">
+              Vous validez le projet le lundi, nous commençons à coder le mardi. Une équipe complète (Tech Lead, Développeurs, QA) dédiée à 100% à votre succès.
             </p>
-
-            <ul className="space-y-4">
-              {[
-                'Expert team with 50+ successful launches',
-                'Fixed pricing, no surprises',
-                '6-month post-launch support included',
-                'Agile development with weekly updates',
-              ].map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3">
-                  <CheckCircle size={24} className="text-[#2ca3bd] flex-shrink-0 mt-1" />
-                  <span className={`text-lg ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
-                    {benefit}
-                  </span>
-                </li>
-              ))}
+            <ul className="space-y-4 mb-12">
+              <li className="flex items-center gap-3">
+                <span className="text-white font-bold">✓</span>
+                <span className="text-blue-100">Audit techniquement faisable</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-white font-bold">✓</span>
+                <span className="text-blue-100">Délai réaliste</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-white font-bold">✓</span>
+                <span className="text-blue-100">Évaluation du bon partenaire</span>
+              </li>
             </ul>
-          </div>
-
-          {/* Right: CTA Card */}
-          <div
-            className={`p-12 rounded-3xl backdrop-blur-xl ${
-              theme === 'dark'
-                ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#1e7a8f]/10 border-2 border-[#2ca3bd]'
-                : 'bg-gradient-to-br from-[#2ca3bd]/15 to-[#1e7a8f]/5 border-2 border-[#2ca3bd]'
-            } space-y-6`}
-          >
-            <h3 className={`text-3xl font-black ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Start Your Journey Today
-            </h3>
-
-            <p className={`text-lg ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-              Get a free consultation with our mobile experts. No commitment, just great advice.
-            </p>
-
-            <div className="space-y-4">
-              <button className="w-full px-6 py-4 bg-[#2ca3bd] text-white rounded-xl font-bold hover:bg-[#1e7a8f] transition-all text-lg flex items-center justify-center gap-2">
-                Schedule Free Call
-                <ArrowRight size={20} />
-              </button>
-
-              <div className="flex gap-2">
-                <button className="flex-1 px-4 py-3 border-2 border-[#2ca3bd] text-[#2ca3bd] rounded-lg font-semibold hover:bg-[#2ca3bd]/10 transition-all flex items-center justify-center gap-2">
-                  <Mail size={18} />
-                  Email Us
-                </button>
-                <button className="flex-1 px-4 py-3 border-2 border-[#2ca3bd] text-[#2ca3bd] rounded-lg font-semibold hover:bg-[#2ca3bd]/10 transition-all flex items-center justify-center gap-2">
-                  <Phone size={18} />
-                  Call
-                </button>
-              </div>
-            </div>
-
-            <p className={`text-xs text-center ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
-              We typically respond within 2 hours during business hours
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// =============================================
-// VARIANT C: Form Integration (Email Signup)
-// =============================================
-function FinalCTAVariantC({ theme }: { theme: 'dark' | 'light' }) {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setEmail('');
-      setSubmitted(false);
-    }, 3000);
-  };
-
-  return (
-    <section
-      className={`relative py-20 px-4 sm:px-6 lg:px-8 ${
-        theme === 'dark'
-          ? 'bg-gradient-to-br from-[#060705] via-[#0a0e0d] to-[#0f1412]'
-          : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
-      }`}
-    >
-      {/* Animated Orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl ${
-            theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[#2ca3bd]/15'
-          }`}
-        ></div>
-        <div
-          className={`absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl ${
-            theme === 'dark' ? 'bg-[#2ca3bd]/15' : 'bg-[#2ca3bd]/10'
-          }`}
-        ></div>
-      </div>
-
-      <div className="max-w-3xl mx-auto text-center relative z-10 space-y-8">
-        {/* Headline */}
-        <h2
-          className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-tight ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}
-        >
-          Transform Your{' '}
-          <span className="text-[#2ca3bd]">Mobile Vision</span>
-        </h2>
-
-        {/* Subheading */}
-        <p
-          className={`text-xl max-w-2xl mx-auto ${
-            theme === 'dark' ? 'text-white/75' : 'text-gray-700'
-          }`}
-        >
-          Join 50+ companies that trust us to build world-class mobile apps. Get your free mobile strategy guide today.
-        </p>
-
-        {/* Email Form */}
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
-          <div
-            className={`relative flex rounded-2xl overflow-hidden backdrop-blur-xl ${
-              theme === 'dark'
-                ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                : 'bg-gradient-to-br from-white to-slate-50 border border-[#2ca3bd]/20'
-            }`}
-          >
-            <input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={`flex-1 px-6 py-4 bg-transparent outline-none ${
-                theme === 'dark' ? 'text-white placeholder-white/50' : 'text-gray-900 placeholder-gray-600'
-              }`}
-            />
-            <button
-              type="submit"
-              className="px-6 py-4 bg-[#2ca3bd] text-white font-bold hover:bg-[#1e7a8f] transition-all flex items-center gap-2"
-            >
-              {submitted ? '✓' : <ArrowRight size={20} />}
+            <button className="px-10 py-5 bg-white text-[#1e7a8f] font-bold rounded-lg hover:bg-blue-50 transition-all text-lg">
+              Réserver un Audit Gratuit
             </button>
           </div>
-          {submitted && (
-            <p className="text-[#2ca3bd] font-semibold mt-3">Check your email for the strategy guide!</p>
-          )}
-        </form>
 
-        {/* Benefits */}
-        <div className="grid sm:grid-cols-3 gap-6 pt-8">
-          {[
-            { icon: '📊', text: 'Mobile Strategy Guide' },
-            { icon: '💡', text: 'Tech Stack Recommendations' },
-            { icon: '🎯', text: 'Cost & Timeline Estimates' },
-          ].map((benefit) => (
-            <div
-              key={benefit.text}
-              className={`p-6 rounded-xl backdrop-blur-xl ${
-                theme === 'dark'
-                  ? 'bg-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                  : 'bg-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-              }`}
-            >
-              <div className="text-4xl mb-2">{benefit.icon}</div>
-              <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {benefit.text}
-              </p>
-            </div>
-          ))}
+          <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-white mb-6">Vous découvrirez immédiatement :</h3>
+            <ul className="space-y-4">
+              <li className="text-blue-100 flex items-start gap-3">
+                <span className="text-white font-bold mt-1">1</span>
+                <span>Si c'est faisable techniquement</span>
+              </li>
+              <li className="text-blue-100 flex items-start gap-3">
+                <span className="text-white font-bold mt-1">2</span>
+                <span>Combien de temps cela prendra réellement</span>
+              </li>
+              <li className="text-blue-100 flex items-start gap-3">
+                <span className="text-white font-bold mt-1">3</span>
+                <span>Si nous sommes le bon partenaire pour vous (ou non)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTAVariantC() {
+  return (
+    <section className="py-24 bg-[var(--bg-primary)]">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
+            Prêt à démarrer ?
+          </h2>
+          <p className="text-lg text-[var(--text-secondary)]">
+            Réservez votre audit gratuit de 30 minutes
+          </p>
         </div>
 
-        {/* Trust */}
-        <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
-          No spam. We respect your privacy. 50+ companies trust us with their mobile apps.
+        <div className="bg-gradient-to-br from-[#2ca3bd]/20 to-[#1e7a8f]/20 border-2 border-[#2ca3bd] rounded-2xl p-8 mb-8">
+          <form className="space-y-4">
+            <input
+              type="email"
+              placeholder="votre@email.com"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            />
+            <input
+              type="text"
+              placeholder="Votre nom"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            />
+            <input
+              type="text"
+              placeholder="Votre numéro de téléphone"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            />
+            <button className="w-full px-8 py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white font-bold rounded-lg transition-all">
+              Faire auditer mon projet
+            </button>
+          </form>
+        </div>
+
+        <p className="text-center text-sm text-[var(--text-secondary)]">
+          ✓ Pas de spam • ✓ Audit gratuit • ✓ Sans engagement
         </p>
+
+        <div className="mt-12 pt-8 border-t border-[var(--border-primary)]">
+          <p className="text-center text-[var(--text-secondary)] mb-6">Ou contactez-nous directement :</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:contact@malitix.com" className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg hover:border-[#2ca3bd] transition-all">
+              <Mail size={20} className="text-[#2ca3bd]" />
+              <span className="text-[var(--text-primary)] font-semibold">Email</span>
+            </a>
+            <a href="tel:+33123456789" className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg hover:border-[#2ca3bd] transition-all">
+              <Phone size={20} className="text-[#2ca3bd]" />
+              <span className="text-[var(--text-primary)] font-semibold">Téléphone</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -33,63 +33,23 @@ const AB_TESTS: Record<string, ABTestConfig> = {
     variants: {
       A: 'Three-column service cards',
       B: 'Tabbed interface with features',
-      C: 'Timeline/carousel layout',
-    },
-  },
-  techStack: {
-    testName: 'techstack_section_variant',
-    variants: {
-      A: '2x3 grid badges',
-      B: 'Horizontal scrollable list',
-      C: 'Categorized columns',
-    },
-  },
-  features: {
-    testName: 'features_section_variant',
-    variants: {
-      A: '2x2 grid cards',
-      B: 'Bento-style layout',
-      C: 'Numbered feature list',
-    },
-  },
-  caseStudies: {
-    testName: 'casestudies_section_variant',
-    variants: {
-      A: 'Card grid with images',
-      B: 'Carousel slider',
-      C: 'Horizontal scroll cards',
-    },
-  },
-  testimonials: {
-    testName: 'testimonials_section_variant',
-    variants: {
-      A: 'Static grid (3-4 cards)',
-      B: 'Auto-rotating carousel',
-      C: 'Side-scrolling cards',
-    },
-  },
-  process: {
-    testName: 'process_section_variant',
-    variants: {
-      A: 'Vertical timeline',
-      B: 'Horizontal step indicators',
-      C: 'Accordion-style steps',
-    },
-  },
-  pricing: {
-    testName: 'pricing_section_variant',
-    variants: {
-      A: 'Three-tier cards',
-      B: 'Toggle annual/monthly pricing',
       C: 'Comparison table layout',
     },
   },
-  faq: {
-    testName: 'faq_section_variant',
+  speed: {
+    testName: 'speed_section_variant',
     variants: {
-      A: 'Traditional accordion',
-      B: 'Tabs with content panels',
-      C: 'FAQ grid + search',
+      A: 'Icon cards grid',
+      B: 'Timeline/visual flow',
+      C: 'Comparison table',
+    },
+  },
+  proof: {
+    testName: 'proof_section_variant',
+    variants: {
+      A: 'Logo grid with statement',
+      B: 'Stats-focused with client types',
+      C: 'Minimal statement',
     },
   },
   cta: {

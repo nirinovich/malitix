@@ -2,13 +2,8 @@ import { useState } from 'react';
 import MobileAppHero from '../components/MobileApp/MobileAppHero';
 import MobileAppProblem from '../components/MobileApp/MobileAppProblem';
 import MobileAppSolution from '../components/MobileApp/MobileAppSolution';
-import TechStack from '../components/MobileApp/TechStack';
-import Features from '../components/MobileApp/Features';
-import CaseStudies from '../components/MobileApp/CaseStudies';
-import Testimonials from '../components/MobileApp/Testimonials';
-import Process from '../components/MobileApp/Process';
-import Pricing from '../components/MobileApp/Pricing';
-import FAQ from '../components/MobileApp/FAQ';
+import SpeedAdvantage from '../components/MobileApp/SpeedAdvantage';
+import SocialProof from '../components/MobileApp/SocialProof';
 import FinalCTA from '../components/MobileApp/FinalCTA';
 import ABTestControls from '../components/MobileApp/ABTestControls';
 
@@ -46,13 +41,8 @@ function MobileAppDevelopment() {
         <MobileAppHero />
         <MobileAppProblem />
         <MobileAppSolution />
-        <TechStack />
-        <Features />
-        <CaseStudies />
-        <Testimonials />
-        <Process />
-        <Pricing />
-        <FAQ />
+        <SpeedAdvantage />
+        <SocialProof />
         <FinalCTA />
       </div>
       <ABTestControls onVariantChange={handleVariantChange} />
