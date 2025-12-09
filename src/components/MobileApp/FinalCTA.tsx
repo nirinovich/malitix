@@ -1,104 +1,36 @@
-import { Mail, Phone, ArrowRight } from 'lucide-react';
-import { useABTestVariant } from '../../hooks/useABTest';
+import React, { useState } from 'react';
+import { Mail, Phone } from 'lucide-react';
 
-export default function FinalCTA() {
-  const variant = useABTestVariant('cta');
-
-  if (variant === 'A') {
-    return <CTAVariantA />;
-  } else if (variant === 'B') {
-    return <CTAVariantB />;
-  } else {
-    return <CTAVariantC />;
-  }
+interface CTAFormData {
+  email: string;
+  name: string;
+  phone: string;
 }
 
-function CTAVariantA() {
-  return (
-    <section className="py-24 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6">
-          Ne me croyez pas sur parole.
-        </h2>
-        <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-          Je ne veux pas vous vendre un devis maintenant. Je veux voir si votre projet tient la route.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <button className="group px-8 py-5 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2">
-            Faire auditer mon projet
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button className="px-8 py-5 border-2 border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd] hover:text-white font-bold rounded-lg transition-all">
-            Voir nos Tarifs
-          </button>
-        </div>
+interface FinalCTAProps {}
 
-        <div className="space-y-4 mt-12">
-          <h3 className="text-lg font-semibold text-[var(--text-primary)]">✓ Audit gratuit</h3>
-          <h3 className="text-lg font-semibold text-[var(--text-primary)]">✓ 30 minutes de consultation</h3>
-          <h3 className="text-lg font-semibold text-[var(--text-primary)]">✓ Sans engagement</h3>
-        </div>
-      </div>
-    </section>
-  );
-}
+const FinalCTA: React.FC<FinalCTAProps> = React.memo(() => {
+  const [formData, setFormData] = useState<CTAFormData>({
+    email: '',
+    name: '',
+    phone: ''
+  });
 
-function CTAVariantB() {
-  return (
-    <section className="py-24 bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Testez-nous dès maintenant.
-            </h2>
-            <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-              Vous validez le projet le lundi, nous commençons à coder le mardi. Une équipe complète (Tech Lead, Développeurs, QA) dédiée à 100% à votre succès.
-            </p>
-            <ul className="space-y-4 mb-12">
-              <li className="flex items-center gap-3">
-                <span className="text-white font-bold">✓</span>
-                <span className="text-blue-100">Audit techniquement faisable</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-white font-bold">✓</span>
-                <span className="text-blue-100">Délai réaliste</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-white font-bold">✓</span>
-                <span className="text-blue-100">Évaluation du bon partenaire</span>
-              </li>
-            </ul>
-            <button className="px-10 py-5 bg-white text-[#1e7a8f] font-bold rounded-lg hover:bg-blue-50 transition-all text-lg">
-              Réserver un Audit Gratuit
-            </button>
-          </div>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-          <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6">Vous découvrirez immédiatement :</h3>
-            <ul className="space-y-4">
-              <li className="text-blue-100 flex items-start gap-3">
-                <span className="text-white font-bold mt-1">1</span>
-                <span>Si c'est faisable techniquement</span>
-              </li>
-              <li className="text-blue-100 flex items-start gap-3">
-                <span className="text-white font-bold mt-1">2</span>
-                <span>Combien de temps cela prendra réellement</span>
-              </li>
-              <li className="text-blue-100 flex items-start gap-3">
-                <span className="text-white font-bold mt-1">3</span>
-                <span>Si nous sommes le bon partenaire pour vous (ou non)</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    // TODO: Add form submission logic here
+    setFormData({ email: '', name: '', phone: '' });
+  };
 
-function CTAVariantC() {
   return (
     <section className="py-24 bg-[var(--bg-primary)]">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,23 +44,35 @@ function CTAVariantC() {
         </div>
 
         <div className="bg-gradient-to-br from-[#2ca3bd]/20 to-[#1e7a8f]/20 border-2 border-[#2ca3bd] rounded-2xl p-8 mb-8">
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="votre@email.com"
+              required
               className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
             />
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Votre nom"
+              required
               className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
             />
             <input
-              type="text"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Votre numéro de téléphone"
+              required
               className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
             />
-            <button className="w-full px-8 py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white font-bold rounded-lg transition-all">
+            <button type="submit" className="w-full px-8 py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white font-bold rounded-lg transition-all">
               Faire auditer mon projet
             </button>
           </form>
@@ -154,4 +98,8 @@ function CTAVariantC() {
       </div>
     </section>
   );
-}
+});
+
+FinalCTA.displayName = 'FinalCTA';
+
+export default FinalCTA;
