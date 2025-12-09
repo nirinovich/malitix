@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound';
 const SprintCommando = lazy(() => import('./pages/SprintCommando'));
 const CustomDevelopment = lazy(() => import('./pages/CustomDevelopment'));
 const SIRefonte = lazy(() => import('./pages/SIRefonte'));
+const MobileAppDevelopment = lazy(() => import('./pages/MobileAppDevelopment'));
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/sprint-commando" element={<SprintCommando />} />
             <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/refonte-si" element={<SIRefonte />} />
+            <Route path="/mobile-app-development" element={<MobileAppDevelopment />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
