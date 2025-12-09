@@ -34,36 +34,36 @@ const MobileAppHero = React.memo(() => {
       ref={sectionRef}
       className="min-h-screen bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden flex items-center pt-20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left: Minimal Headline */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
-              <h1 className="text-5xl lg:text-6xl font-black text-[var(--text-primary)] leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[var(--text-primary)] leading-tight">
                 Catapultez votre appli mobile.
               </h1>
-              <h2 className="text-2xl font-semibold text-[#2ca3bd] mt-4">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#2ca3bd] mt-3 sm:mt-4">
                 Construisez une application que vous possédez vraiment. Rapide. Sécurisée. Et prête pour la guerre.
               </h2>
             </div>
-            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
               Une équipe complète de spécialistes mobiles. Pas de freelance débordé. Pas d'outils automatiques fragiles.
             </p>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="text-[#2ca3bd]" size={24} />
-                <span className="text-[var(--text-primary)]">Propriétaire du code à 100%</span>
+            <div className="space-y-2 sm:space-y-3">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <CheckCircle2 className="text-[#2ca3bd] flex-shrink-0" size={20} />
+                <span className="text-sm sm:text-base text-[var(--text-primary)]">Propriétaire du code à 100%</span>
               </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="text-[#2ca3bd]" size={24} />
-                <span className="text-[var(--text-primary)]">Rapide, même avec des millions d'utilisateurs</span>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <CheckCircle2 className="text-[#2ca3bd] flex-shrink-0" size={20} />
+                <span className="text-sm sm:text-base text-[var(--text-primary)]">Rapide, même avec des millions d'utilisateurs</span>
               </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="text-[#2ca3bd]" size={24} />
-                <span className="text-[var(--text-primary)]">Sécurisé (DORA/RGAA compliant)</span>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <CheckCircle2 className="text-[#2ca3bd] flex-shrink-0" size={20} />
+                <span className="text-sm sm:text-base text-[var(--text-primary)]">Sécurisé (DORA/RGAA compliant)</span>
               </div>
             </div>
-            <button className="mt-8 px-8 py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white font-bold rounded-lg transition-all">
+            <button className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white text-sm sm:text-base font-bold rounded-lg transition-all w-full sm:w-auto">
               Faire auditer mon projet
             </button>
           </div>
@@ -71,6 +71,13 @@ const MobileAppHero = React.memo(() => {
           {/* Right: Animated Catapult Illustration */}
           <CatapultIllustration isAnimating={isAnimating} />
         </div>
+      </div>
+      
+      {/* Wave divider */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <svg className="relative block w-full h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="var(--bg-secondary)" fillOpacity="0.3"></path>
+        </svg>
       </div>
     </section>
   );
@@ -88,7 +95,7 @@ const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating
   const motionClass = `${styles.motionLines} ${!isAnimating ? styles.paused : ''}`;
 
   return (
-    <div className="relative h-[460px] lg:h-[520px] flex items-center justify-center p-4 overflow-visible">
+    <div className="relative h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] flex items-center justify-center p-2 sm:p-4 overflow-visible">
       <svg
         className="w-full h-full overflow-visible"
         viewBox="-20 0 450 420"
