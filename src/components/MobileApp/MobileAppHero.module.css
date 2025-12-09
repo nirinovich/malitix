@@ -1,0 +1,181 @@
+.catapultArm {
+  animation: catapultArm 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  backface-visibility: hidden;
+}
+
+.phoneLaunch {
+  animation: phoneTrajectory 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  transform-origin: 120px 110px;
+  backface-visibility: hidden;
+}
+
+.motionLines {
+  animation: motionStreak 5s ease-out infinite;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes catapultArm {
+  0%,
+  5% {
+    transform: rotate(0deg);
+    transform-origin: 120px 280px;
+  }
+  28% {
+    transform: rotate(-85deg);
+    transform-origin: 120px 280px;
+  }
+  35% {
+    transform: rotate(-85deg);
+    transform-origin: 120px 280px;
+  }
+  48% {
+    transform: rotate(0deg);
+    transform-origin: 120px 280px;
+  }
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 120px 280px;
+  }
+}
+
+@keyframes phoneTrajectory {
+  0%,
+  35% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  36% {
+    opacity: 1;
+    transform: translate(3px, -5px) rotate(-2deg) scale(0.995);
+  }
+  37% {
+    opacity: 1;
+    transform: translate(6px, -10px) rotate(-4deg) scale(0.998);
+  }
+  38% {
+    opacity: 1;
+    transform: translate(10px, -15px) rotate(-5deg) scale(0.998);
+  }
+  39% {
+    opacity: 1;
+    transform: translate(15px, -23px) rotate(-7deg) scale(0.997);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(22px, -32px) rotate(-10deg) scale(0.98);
+  }
+  42% {
+    opacity: 1;
+    transform: translate(35px, -48px) rotate(-14deg) scale(0.985);
+  }
+  44% {
+    opacity: 1;
+    transform: translate(50px, -62px) rotate(-18deg) scale(0.987);
+  }
+  46% {
+    opacity: 1;
+    transform: translate(65px, -74px) rotate(-21deg) scale(0.988);
+  }
+  48% {
+    opacity: 1;
+    transform: translate(80px, -84px) rotate(-25deg) scale(0.99);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(95px, -92px) rotate(-27deg) scale(0.991);
+  }
+  52% {
+    opacity: 1;
+    transform: translate(110px, -98px) rotate(-30deg) scale(0.992);
+  }
+  54% {
+    opacity: 1;
+    transform: translate(125px, -100px) rotate(-32deg) scale(0.992);
+  }
+  56% {
+    opacity: 1;
+    transform: translate(140px, -100px) rotate(-33deg) scale(0.993);
+  }
+  58% {
+    opacity: 1;
+    transform: translate(154px, -100px) rotate(-34deg) scale(0.994);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(168px, -100px) rotate(-33deg) scale(0.995);
+  }
+  62% {
+    opacity: 1;
+    transform: translate(180px, -100px) rotate(-31deg) scale(0.996);
+  }
+  64% {
+    opacity: 1;
+    transform: translate(191px, -100px) rotate(-28deg) scale(0.997);
+  }
+  66% {
+    opacity: 1;
+    transform: translate(200px, -100px) rotate(-24deg) scale(0.998);
+  }
+  68% {
+    opacity: 1;
+    transform: translate(208px, -100px) rotate(-19deg) scale(0.999);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(215px, -100px) rotate(-13deg) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(230px, -100px) rotate(-2deg) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(242px, -100px) rotate(0deg) scale(0.99);
+  }
+  85% {
+    opacity: 0.8;
+    transform: translate(251px, -100px) rotate(2deg) scale(0.97);
+  }
+  90% {
+    opacity: 0.5;
+    transform: translate(258px, -100px) rotate(3deg) scale(0.95);
+  }
+  95% {
+    opacity: 0.2;
+    transform: translate(265px, -100px) rotate(4deg) scale(0.93);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(280px, -100px) rotate(5deg) scale(0.9);
+  }
+}
+
+@keyframes motionStreak {
+  0%,
+  35% {
+    opacity: 0;
+  }
+  38% {
+    opacity: 0.3;
+  }
+  65% {
+    opacity: 0.5;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catapultArm,
+  .phoneLaunch,
+  .motionLines {
+    animation: none;
+  }
+}
