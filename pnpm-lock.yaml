@@ -11,6 +11,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.15
         version: 4.1.15(vite@7.1.11(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2))
+      gsap:
+        specifier: ^3.14.1
+        version: 3.14.1
       lucide-react:
         specifier: ^0.546.0
         version: 0.546.0(react@19.2.0)
@@ -878,6 +881,9 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  gsap@3.14.1:
+    resolution: {integrity: sha512-nOFRJpVu+U0IPgKzfC5MEdZrJ1iVidGaOuxK0+Un+7vMOHa5rw/SKOaMaRRyHZiJKaeAEALTBwnj6R3gifyGBw==}
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -1973,6 +1979,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphemer@1.4.0: {}
+
+  gsap@3.14.1: {}
 
   has-flag@4.0.0: {}
 

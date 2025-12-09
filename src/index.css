@@ -32,6 +32,11 @@ body {
   --brand-primary-dark: #248fa5;
   --brand-secondary: #1e7a8f;
   
+  /* iPhone Frame */
+  --iphone-frame: #ffffff;
+  --iphone-notch: #1a1a1a;
+  --iphone-camera-border: #333333;
+  
   /* Background colors */
   --bg-primary: #060705;
   --bg-secondary: #0a0e0d;
@@ -69,6 +74,11 @@ body {
   --brand-primary-light: #3bb8d4;
   --brand-primary-dark: #248fa5;
   --brand-secondary: #1e7a8f;
+  
+  /* iPhone Frame */
+  --iphone-frame: #000000;
+  --iphone-notch: #000000;
+  --iphone-camera-border: #1a1a1a;
   
   /* Background colors - Soft neutrals with blue undertones */
   --bg-primary: #f5f7f9;
@@ -288,6 +298,15 @@ button, a, .card {
 
 .animate-scroll-left {
   animation: scroll-left 30s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Responsive utilities */
