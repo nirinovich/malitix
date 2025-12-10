@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface ProblemVariantCProps {}
-
-const MobileAppProblem: React.FC<ProblemVariantCProps> = React.memo(() => {
+const MobileAppProblem: React.FC = React.memo(() => {
   return (
     <section className="py-16 md:py-24 bg-[var(--bg-primary)] relative overflow-hidden">
       {/* Background decoration */}

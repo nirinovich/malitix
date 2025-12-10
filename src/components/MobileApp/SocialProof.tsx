@@ -1,9 +1,7 @@
 import React from 'react';
 import { Building2, TrendingUp, Award } from 'lucide-react';
 
-interface SocialProofProps {}
-
-const SocialProof: React.FC<SocialProofProps> = React.memo(() => {
+const SocialProof: React.FC = React.memo(() => {
   return (
     <section className="py-16 md:py-24 bg-[var(--bg-primary)] relative">
       {/* Top decorative line */}

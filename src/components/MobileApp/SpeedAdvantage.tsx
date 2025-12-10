@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface SpeedAdvantageProps {}
-
-const SpeedAdvantage: React.FC<SpeedAdvantageProps> = React.memo(() => {
+const SpeedAdvantage: React.FC = React.memo(() => {
   return (
     <section className="py-16 md:py-24 bg-[var(--bg-primary)] border-t border-[var(--border-primary)]/30 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
