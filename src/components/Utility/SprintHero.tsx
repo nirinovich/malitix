@@ -57,7 +57,7 @@ export default function SprintHero() {
       theme === 'dark' 
         ? 'from-[#060705] via-[#060705] to-[#0a0e0d]'
         : 'from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>>
+    }`}>
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
