@@ -1,15 +1,25 @@
 .catapultArm {
-  animation: catapultArm 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  animation: catapultArm 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
   transform-origin: 120px 280px;
   backface-visibility: hidden;
   will-change: transform;
 }
 
 .phoneLaunch {
-  animation: phoneArc 4s linear infinite;
+  animation: phoneArc 5s linear infinite;
   transform-origin: 120px 110px;
   backface-visibility: hidden;
   will-change: transform, opacity;
+}
+
+.targetGlow {
+  animation: targetGlow 5s ease-in-out infinite;
+  transform-origin: 405px 130px;
+}
+
+.successText {
+  animation: successFadeIn 5s ease-in-out infinite;
+  opacity: 0;
 }
 
 .motionLines {
@@ -132,7 +142,68 @@
   }
 }
 
-/* Motion lines synchronized with phone flight */
+/* Target glow animation - synced with phone landing */
+@keyframes targetGlow {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(44, 163, 189, 0));
+  }
+  
+  /* Wait for phone to land */
+  80% {
+    filter: drop-shadow(0 0 0px rgba(44, 163, 189, 0));
+  }
+  
+  /* Glow starts building */
+  85% {
+    filter: drop-shadow(0 0 12px rgba(44, 163, 189, 0.8)) drop-shadow(0 0 20px rgba(44, 163, 189, 0.5));
+  }
+  
+  /* Stronger glow */
+  90% {
+    filter: drop-shadow(0 0 20px rgba(44, 163, 189, 1)) drop-shadow(0 0 35px rgba(44, 163, 189, 0.7));
+  }
+  
+  /* Peak glow - very prominent */
+  95% {
+    filter: drop-shadow(0 0 28px rgba(44, 163, 189, 1)) drop-shadow(0 0 50px rgba(44, 163, 189, 0.8)) drop-shadow(0 0 70px rgba(44, 163, 189, 0.5));
+  }
+  
+  100% {
+    filter: drop-shadow(0 0 0px rgba(44, 163, 189, 0));
+  }
+}
+
+/* Success text animation - appears only when phone lands */
+@keyframes successFadeIn {
+  0% {
+    opacity: 0;
+  }
+  
+  /* Wait for phone to land at ~80% */
+  80% {
+    opacity: 0;
+  }
+  
+  /* Text fades in as phone lands */
+  82% {
+    opacity: 0.3;
+  }
+  
+  85% {
+    opacity: 1;
+  }
+  
+  /* Stay visible briefly */
+  95% {
+    opacity: 1;
+  }
+  
+  /* Fade out before loop */
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes motionLines {
   0%, 32% {
     opacity: 0;

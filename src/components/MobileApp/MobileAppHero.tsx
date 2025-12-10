@@ -92,6 +92,7 @@ type CatapultIllustrationProps = {
 const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating }) => {
   const armClass = `${styles.catapultArm} ${!isAnimating ? styles.paused : ''}`;
   const phoneClass = `${styles.phoneLaunch} ${!isAnimating ? styles.paused : ''}`;
+  const targetClass = `${styles.targetGlow} ${!isAnimating ? styles.paused : ''}`;
 
   return (
     <div className="relative h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] flex items-center justify-center p-2 sm:p-4 overflow-visible">
@@ -159,15 +160,28 @@ const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating
           <circle cx="120" cy="137" r="2.5" fill="#ffffff" opacity="0.4" />
         </g>
 
-        {/* Target Indicator */}
-        <g opacity="0.5">
-          <circle cx="340" cy="100" r="30" fill="none" stroke="#2ca3bd" strokeWidth="2" strokeDasharray="5,5" />
-          <circle cx="340" cy="100" r="40" fill="none" stroke="#2ca3bd" strokeWidth="1" strokeDasharray="8,8" opacity="0.5" />
-          <line x1="335" y1="100" x2="325" y2="100" stroke="#2ca3bd" strokeWidth="1.5" />
-          <line x1="345" y1="100" x2="355" y2="100" stroke="#2ca3bd" strokeWidth="1.5" />
-          <line x1="340" y1="95" x2="340" y2="85" stroke="#2ca3bd" strokeWidth="1.5" />
-          <line x1="340" y1="105" x2="340" y2="115" stroke="#2ca3bd" strokeWidth="1.5" />
+        {/* Target Indicator - positioned at actual phone landing coordinates */}
+        <g className={targetClass}>
+          <circle cx="405" cy="130" r="25" fill="none" stroke="#2ca3bd" strokeWidth="2" strokeDasharray="5,5" />
+          <circle cx="405" cy="130" r="35" fill="none" stroke="#2ca3bd" strokeWidth="1" strokeDasharray="8,8" opacity="0.5" />
+          <line x1="400" y1="130" x2="390" y2="130" stroke="#2ca3bd" strokeWidth="1.5" />
+          <line x1="410" y1="130" x2="420" y2="130" stroke="#2ca3bd" strokeWidth="1.5" />
+          <line x1="405" y1="125" x2="405" y2="115" stroke="#2ca3bd" strokeWidth="1.5" />
+          <line x1="405" y1="135" x2="405" y2="145" stroke="#2ca3bd" strokeWidth="1.5" />
         </g>
+        
+        {/* "Succès" text - no glow effect */}
+        <text 
+          x="405" 
+          y="190" 
+          textAnchor="middle" 
+          fill="#2ca3bd" 
+          fontSize="16" 
+          fontWeight="bold"
+          className={styles.successText}
+        >
+          Succès
+        </text>
       </svg>
     </div>
   );
