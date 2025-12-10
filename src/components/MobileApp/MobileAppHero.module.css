@@ -1,97 +1,159 @@
 .catapultArm {
   animation: catapultArm 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  transform-origin: 120px 280px;
   backface-visibility: hidden;
+  will-change: transform;
 }
 
 .phoneLaunch {
-  animation: phoneTrajectory 4s cubic-bezier(0.25, 0.8, 0.3, 1) infinite;
+  animation: phoneArc 4s linear infinite;
   transform-origin: 120px 110px;
   backface-visibility: hidden;
   will-change: transform, opacity;
 }
 
 .motionLines {
-  animation: motionStreak 4s ease-out infinite;
+  animation: motionLines 5s ease-out infinite;
+  opacity: 0;
 }
 
 .paused {
   animation-play-state: paused;
 }
 
+/* Arm swing: 4s duration */
 @keyframes catapultArm {
-  0%,
-  5% {
+  0%, 5% {
     transform: rotate(0deg);
-    transform-origin: 120px 280px;
   }
-  28% {
-    transform: rotate(-85deg);
-    transform-origin: 120px 280px;
+  25% {
+    transform: rotate(-95deg);
   }
-  35% {
-    transform: rotate(-85deg);
-    transform-origin: 120px 280px;
-  }
-  48% {
-    transform: rotate(0deg);
-    transform-origin: 120px 280px;
-  }
-  100% {
-    transform: rotate(0deg);
-    transform-origin: 120px 280px;
-  }
-}
-
-@keyframes phoneTrajectory {
-  0%,
-  35% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+  30% {
+    transform: rotate(-95deg);
   }
   40% {
-    opacity: 0.95;
-    transform: translate3d(10px, -14px, 0) rotate(-10deg) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate3d(70px, -90px, 0) rotate(-16deg) scale(1);
-  }
-  60% {
-    opacity: 1;
-    transform: translate3d(140px, -135px, 0) rotate(-14deg) scale(1);
-  }
-  72% {
-    opacity: 0.8;
-    transform: translate3d(210px, -115px, 0) rotate(-4deg) scale(1);
-  }
-  82% {
-    opacity: 0.55;
-    transform: translate3d(255px, -90px, 0) rotate(0deg) scale(1);
-  }
-  92% {
-    opacity: 0.2;
-    transform: translate3d(285px, -70px, 0) rotate(8deg) scale(1);
+    transform: rotate(0deg);
   }
   100% {
-    opacity: 0;
-    transform: translate3d(300px, -60px, 0) rotate(10deg) scale(1);
+    transform: rotate(0deg);
   }
 }
 
-@keyframes motionStreak {
-  0%,
-  44% {
+/* Phone trajectory: 4s duration - shock at launch, then smooth 180° rotation */
+@keyframes phoneArc {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotateZ(0deg) scale(1);
+  }
+  
+  32% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotateZ(0deg) scale(1);
+  }
+  
+  /* Pre-launch - visible but not moving */
+  35% {
+    opacity: 0.5;
+    transform: translate3d(3px, -3px, 0) rotateZ(0deg) scale(1);
+  }
+  
+  /* SHOCK at launch - sudden rotation jolt from catapult */
+  37% {
+    opacity: 1;
+    transform: translate3d(12px, -12px, 0) rotateZ(-45deg) scale(1);
+  }
+  
+  /* After shock - smooth continuous rotation from 45° to 180° */
+  42% {
+    opacity: 1;
+    transform: translate3d(32px, -40px, 0) rotateZ(-63deg) scale(0.998);
+  }
+  
+  47% {
+    opacity: 1;
+    transform: translate3d(55px, -75px, 0) rotateZ(-81deg) scale(0.998);
+  }
+  
+  /* Peak of arc */
+  52% {
+    opacity: 1;
+    transform: translate3d(100px, -150px, 0) rotateZ(-99deg) scale(0.99);
+  }
+  
+  /* Continuing smooth rotation */
+  57% {
+    opacity: 0.98;
+    transform: translate3d(125px, -160px, 0) rotateZ(-117deg) scale(0.989);
+  }
+  
+  /* Mid-descent */
+  62% {
+    opacity: 0.95;
+    transform: translate3d(150px, -145px, 0) rotateZ(-135deg) scale(0.985);
+  }
+  
+  67% {
+    opacity: 0.8;
+    transform: translate3d(170px, -130px, 0) rotateZ(-153deg) scale(0.97);
+  }
+  
+  /* Lower descent - approaching 180° */
+  72% {
+    opacity: 0.7;
+    transform: translate3d(200px, -95px, 0) rotateZ(-162deg) scale(0.96);
+  }
+  
+  /* Further descent */
+  76% {
+    opacity: 0.6;
+    transform: translate3d(225px, -65px, 0) rotateZ(-171deg) scale(0.945);
+  }
+  
+  80% {
+    opacity: 0.5;
+    transform: translate3d(250px, -40px, 0) rotateZ(-180deg) scale(0.93);
+  }
+  
+  /* Final descent - maintain 180° flip */
+  85% {
+    opacity: 0.3;
+    transform: translate3d(280px, -15px, 0) rotateZ(-180deg) scale(0.91);
+  }
+  
+  92% {
+    opacity: 0.1;
+    transform: translate3d(300px, 10px, 0) rotateZ(-180deg) scale(0.9);
+  }
+  
+  100% {
+    opacity: 0;
+    transform: translate3d(310px, 20px, 0) rotateZ(-180deg) scale(0.9);
+  }
+}
+
+/* Motion lines synchronized with phone flight */
+@keyframes motionLines {
+  0%, 32% {
     opacity: 0;
   }
-  52% {
+  
+  38% {
+    opacity: 0.2;
+  }
+  
+  55% {
+    opacity: 0.6;
+  }
+  
+  70% {
     opacity: 0.3;
   }
-  72% {
-    opacity: 0.5;
-  }
-  92% {
+  
+  85% {
     opacity: 0;
   }
+  
   100% {
     opacity: 0;
   }

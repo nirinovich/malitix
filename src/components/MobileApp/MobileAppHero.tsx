@@ -92,7 +92,6 @@ type CatapultIllustrationProps = {
 const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating }) => {
   const armClass = `${styles.catapultArm} ${!isAnimating ? styles.paused : ''}`;
   const phoneClass = `${styles.phoneLaunch} ${!isAnimating ? styles.paused : ''}`;
-  const motionClass = `${styles.motionLines} ${!isAnimating ? styles.paused : ''}`;
 
   return (
     <div className="relative h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] flex items-center justify-center p-2 sm:p-4 overflow-visible">
@@ -158,13 +157,6 @@ const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating
 
           {/* Home Button */}
           <circle cx="120" cy="137" r="2.5" fill="#ffffff" opacity="0.4" />
-        </g>
-
-        {/* Motion Lines */}
-        <g className={motionClass} style={isAnimating ? { willChange: 'opacity' } : undefined}>
-          <line x1="90" y1="160" x2="60" y2="155" stroke="#2ca3bd" strokeWidth="2" strokeLinecap="round" />
-          <line x1="100" y1="180" x2="65" y2="185" stroke="#2ca3bd" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-          <line x1="110" y1="200" x2="70" y2="210" stroke="#2ca3bd" strokeWidth="2" strokeLinecap="round" opacity="0.3" />
         </g>
 
         {/* Target Indicator */}
