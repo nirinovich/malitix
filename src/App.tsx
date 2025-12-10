@@ -27,7 +27,7 @@ function App() {
             <Route path="/sprint-commando" element={<SprintCommando />} />
             <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/refonte-si" element={<SIRefonte />} />
-            <Route path="/mobile-app-development" element={<MobileAppDevelopment />} />
+            <Route path="/developpement-mobile" element={<MobileAppDevelopment />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />

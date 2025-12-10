@@ -8,25 +8,25 @@ import FinalCTA from '../components/MobileApp/FinalCTA';
 function MobileAppDevelopment() {
   return (
     <>
-      <title>Mobile App Development | iOS & Android | Malitix</title>
+      <title>Développement Mobile | iOS & Android | Malitix</title>
       <meta
         name="description"
-        content="Expert mobile app development for iOS, Android, and cross-platform. Native and React Native solutions. 50+ apps launched with 4.8★ rating."
+        content="Expert en développement mobile pour iOS, Android et cross-platform. Solutions natives et React Native. 50+ applications lancées avec une note de 4.8★."
       />
-      <meta property="og:title" content="Mobile App Development | iOS & Android | Malitix" />
+      <meta property="og:title" content="Développement Mobile | iOS & Android | Malitix" />
       <meta
         property="og:description"
-        content="Expert mobile app development. Native iOS & Android, React Native, and Flutter specialists. From concept to App Store."
+        content="Expert en développement mobile. Spécialistes iOS & Android natifs, React Native et Flutter. Du concept à l'App Store."
       />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://www.malitix.com/mobile-app-development" />
+      <meta property="og:url" content="https://www.malitix.com/developpement-mobile" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Mobile App Development | iOS & Android | Malitix" />
+      <meta name="twitter:title" content="Développement Mobile | iOS & Android | Malitix" />
       <meta
         name="twitter:description"
-        content="Expert mobile app development. Native iOS & Android, React Native, and Flutter specialists."
+        content="Expert en développement mobile. Spécialistes iOS & Android natifs, React Native et Flutter."
       />
-      <link rel="canonical" href="https://www.malitix.com/mobile-app-development" />
+      <link rel="canonical" href="https://www.malitix.com/developpement-mobile" />
 
       {/* Page Sections */}
       <MobileAppHero />
