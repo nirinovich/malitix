@@ -6,6 +6,7 @@ const MobileAppHero = React.memo(() => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [animationCycle, setAnimationCycle] = useState(0);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
@@ -20,13 +21,23 @@ const MobileAppHero = React.memo(() => {
     if (!sectionRef.current || typeof IntersectionObserver === 'undefined') return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsAnimating(entry.isIntersecting && !prefersReducedMotion);
+        const shouldAnimate = entry.isIntersecting && !prefersReducedMotion;
+        setIsAnimating(shouldAnimate);
+        if (shouldAnimate) {
+          setAnimationCycle(prev => prev + 1);
+        }
       },
       { threshold: 0.2 }
     );
 
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setIsAnimating(false);
+    }
   }, [prefersReducedMotion]);
 
   return (
@@ -69,7 +80,7 @@ const MobileAppHero = React.memo(() => {
           </div>
 
           {/* Right: Animated Catapult Illustration */}
-          <CatapultIllustration isAnimating={isAnimating} />
+          <CatapultIllustration key={animationCycle} isAnimating={isAnimating} />
         </div>
       </div>
       
@@ -93,6 +104,7 @@ const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating
   const armClass = `${styles.catapultArm} ${!isAnimating ? styles.paused : ''}`;
   const phoneClass = `${styles.phoneLaunch} ${!isAnimating ? styles.paused : ''}`;
   const targetClass = `${styles.targetGlow} ${!isAnimating ? styles.paused : ''}`;
+  const successClass = `${styles.successText} ${!isAnimating ? styles.paused : ''}`;
 
   return (
     <div className="relative h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] flex items-center justify-center p-2 sm:p-4 overflow-visible">
@@ -178,7 +190,7 @@ const CatapultIllustration: React.FC<CatapultIllustrationProps> = ({ isAnimating
           fill="#2ca3bd" 
           fontSize="16" 
           fontWeight="bold"
-          className={styles.successText}
+          className={successClass}
         >
           Succès
         </text>

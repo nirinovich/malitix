@@ -2,14 +2,12 @@
   animation: catapultArm 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
   transform-origin: 120px 280px;
   backface-visibility: hidden;
-  will-change: transform;
 }
 
 .phoneLaunch {
   animation: phoneArc 5s linear infinite;
   transform-origin: 120px 110px;
   backface-visibility: hidden;
-  will-change: transform, opacity;
 }
 
 .targetGlow {
@@ -19,11 +17,6 @@
 
 .successText {
   animation: successFadeIn 5s ease-in-out infinite;
-  opacity: 0;
-}
-
-.motionLines {
-  animation: motionLines 5s ease-out infinite;
   opacity: 0;
 }
 
@@ -204,36 +197,11 @@
   }
 }
 
-@keyframes motionLines {
-  0%, 32% {
-    opacity: 0;
-  }
-  
-  38% {
-    opacity: 0.2;
-  }
-  
-  55% {
-    opacity: 0.6;
-  }
-  
-  70% {
-    opacity: 0.3;
-  }
-  
-  85% {
-    opacity: 0;
-  }
-  
-  100% {
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .catapultArm,
   .phoneLaunch,
-  .motionLines {
+  .targetGlow,
+  .successText {
     animation: none;
   }
 }
