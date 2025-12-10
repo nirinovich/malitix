@@ -32,7 +32,7 @@ const MobileAppHero = React.memo(() => {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden flex items-center pt-20"
+      className="min-h-screen bg-[var(--bg-primary)] relative overflow-hidden flex items-center pt-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">

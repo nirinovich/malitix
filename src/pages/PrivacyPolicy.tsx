@@ -1,7 +1,7 @@
 import { useTheme } from '../context/ThemeContext';
 
 export default function PrivacyPolicy() {
-  const { theme } = useTheme();
+  useTheme(); // Keeps theme context initialized
 
   return (
     <>
@@ -10,23 +10,15 @@ export default function PrivacyPolicy() {
       <meta name="robots" content="noindex, follow" />
       <link rel="canonical" href="https://www.malitix.com/politique-de-confidentialite" />
       
-      <div className={`min-h-screen py-24 ${
-        theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
-      }`}>
+      <div className="min-h-screen py-24 bg-[var(--bg-primary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className={`text-4xl sm:text-5xl font-bold mb-8 ${
-          theme === 'dark' ? 'text-white' : 'text-gray-900'
-        }`}>
+        <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-[var(--text-primary)]">
           Politique de Confidentialité
         </h1>
 
-        <div className={`space-y-8 ${
-          theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-        }`}>
+        <div className="space-y-8 text-[var(--text-secondary)]">
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               1. Introduction
             </h2>
             <p>
@@ -38,9 +30,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               2. Données collectées
             </h2>
             <p className="mb-4">
@@ -56,9 +46,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               3. Finalités du traitement
             </h2>
             <p className="mb-4">
@@ -74,9 +62,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               4. Base légale du traitement
             </h2>
             <p>
@@ -91,9 +77,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               5. Durée de conservation
             </h2>
             <p>
@@ -108,9 +92,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               6. Destinataires des données
             </h2>
             <p>
@@ -122,9 +104,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               7. Vos droits
             </h2>
             <p className="mb-4">
@@ -145,9 +125,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               8. Sécurité des données
             </h2>
             <p>
@@ -158,9 +136,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               9. Cookies
             </h2>
             <p>
@@ -171,9 +147,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               10. Modifications de la politique
             </h2>
             <p>
@@ -184,9 +158,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               11. Contact
             </h2>
             <p>
@@ -204,10 +176,8 @@ export default function PrivacyPolicy() {
           </section>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/10">
-          <p className={`text-sm ${
-            theme === 'dark' ? 'text-white/60' : 'text-gray-500'
-          }`}>
+        <div className="mt-12 pt-8 border-t border-[var(--border-primary)]">
+          <p className="text-sm text-[var(--text-secondary)] opacity-80">
             Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
           </p>
         </div>

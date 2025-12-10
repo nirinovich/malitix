@@ -47,7 +47,7 @@ export default function SIRefonteProblemA() {
     <section id="problem-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-white to-gray-50'
+        : 'bg-gradient-to-b from-\[var(--bg-primary)\] to-\[var(--bg-primary)\]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -146,3 +146,4 @@ export default function SIRefonteProblemA() {
     </section>
   );
 }
+

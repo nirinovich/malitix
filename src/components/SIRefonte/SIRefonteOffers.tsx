@@ -80,7 +80,7 @@ export default function SIRefonteOffersA() {
     <section id="offers-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-gray-50 to-white'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -107,10 +107,10 @@ export default function SIRefonteOffersA() {
                   offer.highlighted
                     ? theme === 'dark'
                       ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/10 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.3)]'
-                      : 'bg-gradient-to-br from-white to-slate-50 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.2)]'
+                      : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.2)]'
                     : theme === 'dark'
                       ? 'bg-white/5 border-white/10'
-                      : 'bg-white border-gray-200'
+                      : 'bg-[var(--surface-primary)] border-gray-200'
                 }`}
                 style={{
                   animation: 'fade-in-up 0.6s ease-out forwards',
@@ -204,7 +204,7 @@ export default function SIRefonteOffersA() {
                         ? 'bg-[#2ca3bd] text-white shadow-lg hover:shadow-2xl'
                         : theme === 'dark'
                           ? 'bg-white/10 text-white border-2 border-white/20 hover:bg-white/20'
-                          : 'bg-gray-100 text-gray-900 border-2 border-gray-300 hover:bg-gray-200'
+                          : 'bg-[var(--bg-secondary)] text-gray-900 border-2 border-gray-300 hover:bg-gray-300'
                     }`}
                   >
                     {offer.cta}

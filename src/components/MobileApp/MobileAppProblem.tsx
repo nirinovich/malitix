@@ -4,7 +4,7 @@ interface ProblemVariantCProps {}
 
 const MobileAppProblem: React.FC<ProblemVariantCProps> = React.memo(() => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-[var(--bg-primary)] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-red-500 opacity-5 rounded-full blur-3xl -translate-y-1/2"></div>
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#2ca3bd] opacity-5 rounded-full blur-3xl -translate-y-1/2"></div>

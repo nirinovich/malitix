@@ -62,7 +62,7 @@ export default function SprintContact() {
       className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
         theme === 'dark' 
           ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-          : 'bg-gradient-to-b from-gray-50 to-white'
+          : 'bg-[var(--bg-primary)]'
       }`}
     >
       {/* Background decoration */}
@@ -73,7 +73,7 @@ export default function SprintContact() {
             : 'bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)]'
         }`}></div>
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -102,7 +102,7 @@ export default function SprintContact() {
         <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10'
-            : 'bg-gradient-to-br from-white to-gray-50 border-gray-200'
+            : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-gray-200'
         }`}>
           {isSubmitted ? (
             <div className="text-center py-8 sm:py-12">
@@ -140,7 +140,7 @@ export default function SprintContact() {
                     className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all text-sm sm:text-base ${
                       theme === 'dark'
                         ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                        : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                     }`}
                     placeholder="Jean Dupont"
                   />
@@ -161,7 +161,7 @@ export default function SprintContact() {
                     className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all text-sm sm:text-base ${
                       theme === 'dark'
                         ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                        : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                     }`}
                     placeholder="jean@entreprise.com"
                   />
@@ -182,7 +182,7 @@ export default function SprintContact() {
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all text-sm sm:text-base ${
                     theme === 'dark'
                       ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                   }`}
                   placeholder="https://votre-site.com"
                 />
@@ -203,7 +203,7 @@ export default function SprintContact() {
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent transition-all resize-none text-sm sm:text-base ${
                     theme === 'dark'
                       ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                   }`}
                   placeholder="Parlez-nous de votre projet bloqué, du bug critique, ou de la feature urgente à livrer..."
                 />

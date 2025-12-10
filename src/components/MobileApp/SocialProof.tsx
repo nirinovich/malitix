@@ -5,7 +5,7 @@ interface SocialProofProps {}
 
 const SocialProof: React.FC<SocialProofProps> = React.memo(() => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] relative">
+    <section className="py-16 md:py-24 bg-[var(--bg-primary)] relative">
       {/* Top decorative line */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#2ca3bd]/50 to-transparent"></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

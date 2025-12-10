@@ -23,7 +23,7 @@ export default function LogoCarousel() {
 
   return (
     <div className={`py-12 border-y ${
-      theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'
+      theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-[var(--bg-secondary)]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop view - All visible */}
@@ -38,7 +38,7 @@ export default function LogoCarousel() {
                 <div className={`p-3 rounded-xl transition-all duration-300 ${
                   theme === 'dark'
                     ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20'
-                    : 'bg-slate-100 group-hover:bg-slate-200/70'
+                    : 'bg-[var(--bg-secondary)] group-hover:bg-[var(--border-primary)]'
                 }`}>
                   <Icon className="text-[#2ca3bd]" size={24} />
                 </div>
@@ -78,7 +78,7 @@ export default function LogoCarousel() {
                   <div className={`p-3 rounded-xl ${
                     theme === 'dark'
                       ? 'bg-[#2ca3bd]/10'
-                      : 'bg-slate-100'
+                      : 'bg-[var(--bg-secondary)]'
                   }`}>
                     <Icon className="text-[#2ca3bd]" size={24} />
                   </div>
@@ -110,7 +110,7 @@ export default function LogoCarousel() {
                     ? 'bg-[#2ca3bd] w-8'
                     : theme === 'dark'
                       ? 'bg-white/20'
-                      : 'bg-gray-300'
+                      : 'bg-[var(--border-primary)]'
                 }`}
               />
             ))}

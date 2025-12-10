@@ -42,7 +42,7 @@ export default function SIRefonteSolutionC() {
     <section id="solution-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-white to-gray-50'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -96,7 +96,7 @@ export default function SIRefonteSolutionC() {
               <div className={`p-6 rounded-xl font-bold flex items-center backdrop-blur-sm border-2 ${
                 theme === 'dark'
                   ? 'bg-white/5 border-white/10 text-white'
-                  : 'bg-white border-gray-200 text-gray-900'
+                  : 'bg-[var(--surface-primary)] border-gray-200 text-gray-900'
               }`}>
                 {comp.category}
               </div>
@@ -139,7 +139,7 @@ export default function SIRefonteSolutionC() {
           <div className={`p-8 rounded-2xl text-center backdrop-blur-sm border-2 ${
             theme === 'dark'
               ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-slate-100 border-[#2ca3bd]/30'
+              : 'bg-[var(--bg-secondary)] border-[#2ca3bd]/30'
           }`}>
             <div className="text-5xl font-black text-[#2ca3bd] mb-3">99.9%</div>
             <div className={`text-base font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>

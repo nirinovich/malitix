@@ -36,12 +36,12 @@ export default function Footer() {
     <footer className={`border-t relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-[#060705] border-white/10'
-        : 'bg-white border-gray-200'
+        : 'bg-[var(--surface-primary)] border-gray-200'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
                     className={`p-3 rounded-full transition-all duration-300 group ${
                       theme === 'dark'
                         ? 'bg-white/5 hover:bg-[#2ca3bd]/20 border border-white/10 hover:border-[#2ca3bd]/50'
-                        : 'bg-gray-100 hover:bg-[#2ca3bd]/5 border border-gray-200 hover:border-[#2ca3bd]/30'
+                        : 'bg-[var(--bg-secondary)] hover:bg-[#2ca3bd]/5 border border-gray-200 hover:border-[#2ca3bd]/30'
                     }`}
                     aria-label={social.name}
                   >

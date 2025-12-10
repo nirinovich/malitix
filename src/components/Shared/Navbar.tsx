@@ -177,7 +177,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                 <div className={`w-72 rounded-2xl shadow-2xl border overflow-hidden ${
                   theme === 'dark'
                     ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-                    : 'bg-white/98 backdrop-blur-xl border-gray-200'
+                    : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
                 }`}>
                   <div className="p-2">
                     {USE_CASES.map((useCase) => (
@@ -187,7 +187,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                         className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
                           theme === 'dark'
                             ? 'hover:bg-white/10 text-white/80 hover:text-white'
-                            : 'hover:bg-gray-100 text-gray-700 hover:text-gray-900'
+                            : 'hover:bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900'
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -243,7 +243,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
                 theme === 'dark' 
                   ? 'bg-white/10 hover:bg-white/20 text-white' 
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                  : 'bg-[var(--bg-secondary)] hover:bg-[var(--surface-primary)] text-gray-900'
               }`}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
@@ -268,7 +268,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer ${
-              theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-100'
+              theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
             aria-label="Toggle menu"
           >
@@ -282,7 +282,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
         className={`md:hidden absolute top-full left-0 right-0 border-t transition-all duration-300 ${
           theme === 'dark'
             ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-            : 'bg-white/98 backdrop-blur-xl border-gray-200'
+            : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
         } ${
           isMobileMenuOpen
             ? 'opacity-100 translate-y-0'
@@ -296,7 +296,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
           >
             Accueil
@@ -308,7 +308,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
           >
             Services
@@ -321,7 +321,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all cursor-pointer ${
                 theme === 'dark'
                   ? 'text-white/80 hover:text-white hover:bg-white/5'
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
               }`}
             >
               <span>Use Cases</span>
@@ -345,7 +345,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                     className={`w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
                       theme === 'dark'
                         ? 'bg-white/5 text-white/80 hover:text-white hover:bg-white/10'
-                        : 'bg-gray-50 text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                        : 'bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900 hover:bg-[var(--surface-primary)]'
                     }`}
                   >
                     <div className="font-semibold text-sm mb-1">{useCase.label}</div>
@@ -366,7 +366,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
           >
             À propos
@@ -378,7 +378,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
           >
             Contact

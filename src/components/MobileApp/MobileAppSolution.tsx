@@ -37,7 +37,7 @@ interface MobileAppSolutionProps {}
 
 const MobileAppSolution: React.FC<MobileAppSolutionProps> = React.memo(() => {
   return (
-    <section className="py-16 md:py-24 bg-[var(--bg-secondary)] relative overflow-hidden border-t border-[var(--border-primary)]/30">
+    <section className="py-16 md:py-24 bg-[var(--bg-primary)] relative overflow-hidden border-t border-[var(--border-primary)]/30">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#2ca3bd] opacity-5 rounded-full blur-3xl"></div>
       

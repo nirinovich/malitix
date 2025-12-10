@@ -7,12 +7,12 @@ export default function SprintSolution() {
     <section id="notre-sprint-commando" className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-white to-gray-50'
+        : 'bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)]'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[1000px] h-[500px] sm:h-[1000px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -45,7 +45,7 @@ export default function SprintSolution() {
           <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10'
-              : 'bg-gradient-to-br from-white to-gray-50 border-gray-200'
+              : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-gray-200'
           }`}>
             <p className={`text-base sm:text-lg lg:text-xl leading-relaxed mb-6 ${
               theme === 'dark' ? 'text-white/80' : 'text-gray-700'
@@ -55,7 +55,7 @@ export default function SprintSolution() {
             </p>
 
             <div className={`grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl sm:rounded-2xl ${
-              theme === 'dark' ? 'bg-white/5' : 'bg-gray-100'
+              theme === 'dark' ? 'bg-white/5' : 'bg-[var(--bg-secondary)]'
             }`}>
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-[#2ca3bd] mb-2">14</div>
@@ -87,7 +87,7 @@ export default function SprintSolution() {
             </p>
 
             <div className={`mt-6 sm:mt-8 p-4 sm:p-6 rounded-lg sm:rounded-xl border-l-4 border-[#2ca3bd] ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
+              theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[var(--bg-secondary)]'
             }`}>
               <p className={`text-base sm:text-lg font-semibold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'

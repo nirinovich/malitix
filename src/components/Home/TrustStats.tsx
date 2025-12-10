@@ -47,13 +47,13 @@ export default function TrustStats() {
       className={`py-24 bg-gradient-to-b relative overflow-hidden ${
         theme === 'dark' 
           ? 'from-[#060705] to-[#0a0e0d]'
-          : 'from-white to-gray-50'
+          : 'from-[var(--bg-primary)] to-[var(--bg-primary)]'
       }`}
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -103,7 +103,7 @@ export default function TrustStats() {
                 className={`group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
+                    : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border border-gray-200 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
                 }`}
               >
                 {/* Glow effect */}
@@ -150,7 +150,7 @@ export default function TrustStats() {
           <div className={`inline-flex flex-wrap items-center justify-center gap-8 backdrop-blur-xl rounded-3xl px-12 py-8 ${
             theme === 'dark'
               ? 'bg-white/5 border border-white/10'
-              : 'bg-gray-50 border border-gray-200'
+              : 'bg-[var(--bg-secondary)] border border-gray-200'
           }`}>
             <div className={`font-semibold ${
               theme === 'dark' ? 'text-white/70' : 'text-gray-700'

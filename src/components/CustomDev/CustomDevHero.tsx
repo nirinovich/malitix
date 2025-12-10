@@ -13,15 +13,15 @@ export default function CustomDevHero() {
     <section className={`relative min-h-screen flex items-center overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
+        : 'bg-gradient-to-br from-\[var(--bg-primary)\] via-\[var(--bg-primary)\] to-\[var(--bg-primary)\]'
     }`}>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-slate-200/50'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[var(--bg-secondary)]'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`} style={{ animationDelay: '2s' }}></div>
         <div className={`absolute inset-0 bg-[size:50px_50px] ${
           theme === 'dark' 
@@ -175,7 +175,7 @@ export default function CustomDevHero() {
                 className={`absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50 border border-[#2ca3bd]/30 shadow-[#2ca3bd]/20'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/30 shadow-[#2ca3bd]/20'
                 }`}
                 style={{ animationDelay: '0s' }}
               >
@@ -194,7 +194,7 @@ export default function CustomDevHero() {
                 className={`absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50 border border-[#2ca3bd]/30'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/30'
                 }`}
                 style={{ animationDelay: '0.5s' }}
               >
@@ -213,7 +213,7 @@ export default function CustomDevHero() {
                 className={`absolute bottom-16 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50 border border-[#2ca3bd]/30'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/30'
                 }`}
                 style={{ animationDelay: '1s' }}
               >
@@ -232,7 +232,7 @@ export default function CustomDevHero() {
                 className={`absolute bottom-8 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50 border border-[#2ca3bd]/30'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/30'
                 }`}
                 style={{ animationDelay: '1.5s' }}
               >
@@ -253,3 +253,5 @@ export default function CustomDevHero() {
     </section>
   );
 }
+
+

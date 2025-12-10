@@ -64,7 +64,7 @@ export function ProgressRescueGaugeVariant() {
           <div
             key={`grid-${i}`}
             className={`absolute h-px ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
             } animate-pulse`}
             style={{
               top: `${i * 5}%`,
@@ -81,7 +81,7 @@ export function ProgressRescueGaugeVariant() {
         <div className={`relative w-80 h-80 rounded-full ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-slate-800 to-slate-900'
-            : 'bg-gradient-to-br from-white to-gray-50'
+            : 'bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-primary)]'
         } shadow-2xl border-4 ${
           theme === 'dark' ? 'border-slate-700' : 'border-gray-300'
         } flex items-center justify-center overflow-hidden backdrop-blur-xl`}>
@@ -103,7 +103,7 @@ export function ProgressRescueGaugeVariant() {
               cy="50"
               r="40"
               fill="none"
-              stroke={theme === 'dark' ? '#1e293b' : '#e5e7eb'}
+              stroke={theme === 'dark' ? '#1e293b' : '#d1d5db'}
               strokeWidth="8"
             />
             {/* Progress arc - Starts from left (180deg) and goes clockwise to right */}

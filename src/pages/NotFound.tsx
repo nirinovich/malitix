@@ -11,9 +11,7 @@ export default function NotFound() {
       <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil de Malitix." />
       <meta name="robots" content="noindex, follow" />
       
-      <div className={`min-h-screen flex items-center justify-center px-4 ${
-        theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
-      }`}>
+      <div className="min-h-screen flex items-center justify-center px-4 bg-[var(--bg-primary)]">
       <div className="max-w-2xl w-full text-center">
         {/* 404 Animation */}
         <div className="relative mb-8">
@@ -58,7 +56,7 @@ export default function NotFound() {
             className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border-2 transition-all duration-300 ${
               theme === 'dark'
                 ? 'border-white/20 text-white hover:bg-white/10'
-                : 'border-gray-300 text-gray-900 hover:bg-gray-100'
+                : 'border-gray-300 text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
           >
             <ArrowLeft size={20} />

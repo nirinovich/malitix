@@ -72,7 +72,7 @@ export default function SIRefonteBenefitsC() {
     <section id="benefits-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-        : 'bg-gradient-to-b from-white to-gray-50'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -96,7 +96,7 @@ export default function SIRefonteBenefitsC() {
               className={`p-8 rounded-3xl backdrop-blur-sm border-2 transition-all hover:scale-105 ${
                 theme === 'dark'
                   ? 'bg-white/5 border-white/10'
-                  : 'bg-white border-gray-200'
+                  : 'bg-[var(--surface-primary)] border-gray-200'
               }`}
               style={{
                 animation: 'fade-in-up 0.6s ease-out forwards',
@@ -139,7 +139,7 @@ export default function SIRefonteBenefitsC() {
         <div className={`mt-16 max-w-5xl mx-auto p-10 rounded-3xl text-center backdrop-blur-sm border-2 ${
           theme === 'dark'
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 via-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-white via-slate-50 to-white border-[#2ca3bd]/30'
+            : 'bg-gradient-to-r from-[var(--surface-primary)] via-[var(--surface-primary)] to-[var(--surface-primary)] border-[#2ca3bd]/30'
         }`}>
           <div className="text-5xl mb-4">🚀</div>
           <h3 className={`text-3xl font-black mb-4 ${

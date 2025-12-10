@@ -66,14 +66,14 @@ export default function CustomDevCTA() {
       className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
         theme === 'dark' 
           ? 'bg-gradient-to-br from-[#0a0e0d] to-[#060705]'
-          : 'bg-gradient-to-br from-gray-50 to-white'
+          : 'bg-[var(--bg-primary)]'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={`rounded-3xl p-8 sm:p-12 ${
           theme === 'dark' 
             ? 'bg-gradient-to-r from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-white to-slate-50/50 border border-[#2ca3bd]/20'
+            : 'bg-gradient-to-r from-[var(--surface-primary)] to-[var(--surface-primary)] border border-[#2ca3bd]/20'
         }`}>
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">
@@ -134,7 +134,7 @@ export default function CustomDevCTA() {
                       className={`w-full px-6 py-3 rounded-xl border ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                       } focus:outline-none focus:ring-2 focus:ring-[#2ca3bd] disabled:opacity-50 disabled:cursor-not-allowed`}
                       placeholder="Jean Dupont"
                     />
@@ -158,7 +158,7 @@ export default function CustomDevCTA() {
                       className={`w-full px-6 py-3 rounded-xl border ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                       } focus:outline-none focus:ring-2 focus:ring-[#2ca3bd] disabled:opacity-50 disabled:cursor-not-allowed`}
                       placeholder="jean@entreprise.fr"
                     />
@@ -181,7 +181,7 @@ export default function CustomDevCTA() {
                       className={`w-full px-6 py-3 rounded-xl border ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                       } focus:outline-none focus:ring-2 focus:ring-[#2ca3bd] disabled:opacity-50 disabled:cursor-not-allowed`}
                       placeholder="+33 6 12 34 56 78"
                     />
@@ -204,7 +204,7 @@ export default function CustomDevCTA() {
                       className={`w-full px-6 py-3 rounded-xl border ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                       } focus:outline-none focus:ring-2 focus:ring-[#2ca3bd] disabled:opacity-50 disabled:cursor-not-allowed`}
                       placeholder="https://votre-site.com"
                     />
@@ -228,7 +228,7 @@ export default function CustomDevCTA() {
                       className={`w-full px-6 py-3 rounded-xl border resize-none ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400'
                       } focus:outline-none focus:ring-2 focus:ring-[#2ca3bd] disabled:opacity-50 disabled:cursor-not-allowed`}
                       placeholder="Décrivez votre projet, vos besoins et vos objectifs..."
                     />

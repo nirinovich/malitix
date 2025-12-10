@@ -63,7 +63,7 @@ export default function HeroVariantC() {
     <section className={`relative min-h-screen sm:min-h-[90vh] flex items-center overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
+        : 'bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-primary)]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
@@ -106,7 +106,7 @@ export default function HeroVariantC() {
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}>
                   <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-slate-100'
+                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[var(--bg-secondary)]'
                   }`}>
                     <span className="text-[#2ca3bd] text-sm sm:text-base font-bold">✓</span>
                   </div>
@@ -167,12 +167,12 @@ export default function HeroVariantC() {
             <div className={`absolute left-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none ${
               theme === 'dark'
                 ? 'bg-gradient-to-r from-[#060705] to-transparent'
-                : 'bg-gradient-to-r from-white to-transparent'
+                : 'bg-gradient-to-r from-[var(--bg-primary)] to-transparent'
             }`}></div>
             <div className={`absolute right-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none ${
               theme === 'dark'
                 ? 'bg-gradient-to-l from-[#060705] to-transparent'
-                : 'bg-gradient-to-l from-white to-transparent'
+                : 'bg-gradient-to-l from-[var(--bg-primary)] to-transparent'
             }`}></div>
             
             <div className="flex animate-scroll-left">

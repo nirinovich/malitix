@@ -14,7 +14,7 @@ export default function SIRefonteHeroA() {
     <section className={`relative min-h-screen flex items-center overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       {/* Animated Background Grid */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -24,10 +24,10 @@ export default function SIRefonteHeroA() {
             : 'bg-[linear-gradient(rgba(44,163,189,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.1)_1px,transparent_1px)]'
         }`}></div>
         <div className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`} style={{ animationDuration: '4s' }}></div>
         <div className={`absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`} style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
       </div>
 
@@ -82,7 +82,7 @@ export default function SIRefonteHeroA() {
             <div className={`p-6 rounded-2xl backdrop-blur-sm border ${
               theme === 'dark'
                 ? 'bg-white/5 border-white/10'
-                : 'bg-white border-gray-200'
+                : 'bg-[var(--surface-primary)] border-gray-200'
             }`}>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
@@ -156,7 +156,7 @@ export default function SIRefonteHeroA() {
               <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
                 theme === 'dark'
                   ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-white border-[#2ca3bd]/30'
+                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
               }`}>
                 <Sparkles size={32} className="text-[#2ca3bd]" />
                 <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -170,7 +170,7 @@ export default function SIRefonteHeroA() {
               <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
                 theme === 'dark'
                   ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-white border-[#2ca3bd]/30'
+                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
               }`}>
                 <Cloud size={32} className="text-[#2ca3bd]" />
                 <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -184,7 +184,7 @@ export default function SIRefonteHeroA() {
               <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
                 theme === 'dark'
                   ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-white border-[#2ca3bd]/30'
+                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
               }`}>
                 <Database size={32} className="text-[#2ca3bd]" />
                 <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -198,7 +198,7 @@ export default function SIRefonteHeroA() {
               <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
                 theme === 'dark'
                   ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-white border-[#2ca3bd]/30'
+                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
               }`}>
                 <Shield size={32} className="text-[#2ca3bd]" />
                 <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>

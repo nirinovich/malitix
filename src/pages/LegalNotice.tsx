@@ -1,7 +1,7 @@
 import { useTheme } from '../context/ThemeContext';
 
 export default function LegalNotice() {
-  const { theme } = useTheme();
+  useTheme(); // Keeps theme context initialized
 
   return (
     <>
@@ -10,23 +10,15 @@ export default function LegalNotice() {
       <meta name="robots" content="noindex, follow" />
       <link rel="canonical" href="https://www.malitix.com/mentions-legales" />
       
-      <div className={`min-h-screen py-24 ${
-        theme === 'dark' ? 'bg-[#060705]' : 'bg-white'
-      }`}>
+      <div className="min-h-screen py-24 bg-[var(--bg-primary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className={`text-4xl sm:text-5xl font-bold mb-8 ${
-          theme === 'dark' ? 'text-white' : 'text-gray-900'
-        }`}>
+        <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-[var(--text-primary)]">
           Mentions Légales
         </h1>
 
-        <div className={`space-y-8 ${
-          theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-        }`}>
+        <div className="space-y-8 text-[var(--text-secondary)]">
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               Édition du site internet
             </h2>
             <p className="mb-4">
@@ -43,9 +35,7 @@ export default function LegalNotice() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               Directeur de publication
             </h2>
             <p>
@@ -54,9 +44,7 @@ export default function LegalNotice() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               Hébergeur
             </h2>
             <p>
@@ -65,9 +53,7 @@ export default function LegalNotice() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               Propriété industrielle
             </h2>
             <p>
@@ -79,9 +65,7 @@ export default function LegalNotice() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               Données personnelles
             </h2>
             <p className="mb-4">
@@ -100,9 +84,7 @@ export default function LegalNotice() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">
               Contacts
             </h2>
             <p>
@@ -112,10 +94,8 @@ export default function LegalNotice() {
           </section>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/10">
-          <p className={`text-sm ${
-            theme === 'dark' ? 'text-white/60' : 'text-gray-500'
-          }`}>
+        <div className="mt-12 pt-8 border-t border-[var(--border-primary)]">
+          <p className="text-sm text-[var(--text-secondary)] opacity-80">
             Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
           </p>
         </div>

@@ -33,7 +33,7 @@ export default function CustomDevGuarantee() {
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute bottom-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -88,7 +88,7 @@ export default function CustomDevGuarantee() {
                 className={`group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                   theme === 'dark' 
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
-                    : 'bg-gradient-to-br from-white to-slate-50/50 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\]/50 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
                 }`}
               >
                 <div className={`mb-4 group-hover:scale-110 transition-transform duration-300 inline-block ${
@@ -122,3 +122,4 @@ export default function CustomDevGuarantee() {
     </section>
   );
 }
+

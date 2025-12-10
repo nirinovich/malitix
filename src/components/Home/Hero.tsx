@@ -6,16 +6,16 @@ export default function Hero() {
   const { theme } = useTheme();
   
   return (
-    <section id="home" className={`relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br ${
+    <section id="home" className={`relative min-h-[80vh] flex items-center overflow-hidden ${
       theme === 'dark' 
-        ? 'from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'from-white via-gray-50 to-gray-100'
+        ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient orbs */}
         <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-slate-200/50'
+          theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[var(--bg-secondary)]'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
           theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
@@ -40,7 +40,7 @@ export default function Hero() {
                 className={`absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '0s' }}
               >
@@ -54,7 +54,7 @@ export default function Hero() {
                   </div>
                 </div>
                 <div className={`rounded-lg p-3 font-mono text-xs space-y-1 ${
-                  theme === 'dark' ? 'bg-[#060705]/50' : 'bg-gray-100'
+                  theme === 'dark' ? 'bg-[#060705]/50' : 'bg-[var(--bg-secondary)]'
                 }`}>
                   <div className="text-[#2ca3bd]">{'<Component>'}</div>
                   <div className={`pl-4 ${theme === 'dark' ? 'text-white/70' : 'text-gray-700'}`}>{'Innovation'}</div>
@@ -67,7 +67,7 @@ export default function Hero() {
                 className={`absolute top-32 right-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '1s' }}
               >
@@ -87,7 +87,7 @@ export default function Hero() {
                 className={`absolute bottom-32 left-20 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '2s' }}
               >
@@ -111,7 +111,7 @@ export default function Hero() {
                 className={`absolute bottom-12 right-16 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-white to-slate-50/70 border border-[#2ca3bd]/20 shadow-blue-200/50'
+                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\] border border-[#2ca3bd]/20 shadow-blue-200/50'
                 }`}
                 style={{ animationDelay: '1.5s' }}
               >
@@ -207,7 +207,7 @@ export default function Hero() {
                 className={`backdrop-blur-xl px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 ${
                   theme === 'dark'
                     ? 'bg-white/5 hover:bg-white/10 border border-white/10 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-900'
+                    : 'bg-[var(--bg-secondary)] hover:bg-[var(--surface-primary)] border border-gray-200 text-gray-900'
                 }`}
               >
                 {CTA_TEXT.secondary}
@@ -246,3 +246,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -56,12 +56,12 @@ export default function SIRefonteContactA() {
     <section id="contact-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-gray-50 to-white'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
         }`}></div>
       </div>
 
@@ -89,7 +89,7 @@ export default function SIRefonteContactA() {
             <form onSubmit={handleSubmit} className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
               theme === 'dark'
                 ? 'bg-white/5 border-white/10'
-                : 'bg-white border-gray-200 shadow-lg'
+                : 'bg-[var(--surface-primary)] border-gray-200 shadow-lg'
             }`}>
               <div className="space-y-4">
                 {/* Name */}
@@ -109,7 +109,7 @@ export default function SIRefonteContactA() {
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
                         theme === 'dark'
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
                       }`}
                       placeholder="Jean Dupont"
                     />
@@ -133,7 +133,7 @@ export default function SIRefonteContactA() {
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
                         theme === 'dark'
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
                       }`}
                       placeholder="jean.dupont@entreprise.fr"
                     />
@@ -145,7 +145,7 @@ export default function SIRefonteContactA() {
                   <label className={`block text-sm font-semibold mb-2 ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Votre site web
+                    Votre site web *
                   </label>
                   <div className="relative">
                     <Globe className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
@@ -156,7 +156,7 @@ export default function SIRefonteContactA() {
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
                         theme === 'dark'
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
                       }`}
                       placeholder="https://votre-site.com"
                     />
@@ -179,7 +179,7 @@ export default function SIRefonteContactA() {
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
                         theme === 'dark'
                           ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400'
+                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
                       }`}
                       placeholder="+33 6 12 34 56 78"
                     />
@@ -200,7 +200,7 @@ export default function SIRefonteContactA() {
                     className={`w-full px-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] resize-none ${
                       theme === 'dark'
                         ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400'
+                        : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
                     }`}
                     placeholder="Décrivez brièvement votre contexte SI..."
                   />
@@ -311,7 +311,7 @@ export default function SIRefonteContactA() {
             <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border ${
               theme === 'dark'
                 ? 'bg-white/5 border-white/10'
-                : 'bg-gray-50 border-gray-200'
+                : 'bg-[var(--bg-secondary)] border-gray-200'
             }`}>
               <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
                 "Moderniser votre SI, c'est sécuriser votre avenir."

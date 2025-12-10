@@ -53,11 +53,11 @@ export default function BenefitsShowcase() {
     <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-        : 'bg-gradient-to-b from-white to-gray-50'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -85,7 +85,7 @@ export default function BenefitsShowcase() {
         <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 mb-12 sm:mb-16 ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10'
-            : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200'
+            : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--bg-secondary)] border border-gray-200'
         }`}>
           <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-8 sm:mb-10 text-center ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -102,7 +102,7 @@ export default function BenefitsShowcase() {
                   className={`group relative flex gap-3 sm:gap-4 p-5 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 border-2 cursor-pointer ${
                     theme === 'dark' 
                       ? 'border-white/5 hover:border-[#2ca3bd]/50 hover:bg-white/5 hover:shadow-xl hover:shadow-[#2ca3bd]/10' 
-                      : 'border-gray-200 hover:border-[#2ca3bd]/50 hover:bg-white hover:shadow-xl'
+                      : 'border-gray-200 hover:border-[#2ca3bd]/50 hover:bg-[var(--surface-primary)] hover:shadow-xl'
                   } ${benefit.isHighlight ? 'ring-2 ring-[#2ca3bd]/20' : ''} hover:-translate-y-1`}
                 >
                   {benefit.isHighlight && (
@@ -112,7 +112,7 @@ export default function BenefitsShowcase() {
                   )}
                   
                   <div className={`flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl h-fit transition-all duration-300 group-hover:scale-110 ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20' : 'bg-slate-100 group-hover:bg-slate-200/70'
+                    theme === 'dark' ? 'bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20' : 'bg-[var(--bg-secondary)] group-hover:bg-[var(--border-primary)]'
                   }`}>
                     <Icon size={24} className="text-[#2ca3bd] sm:w-7 sm:h-7" />
                   </div>

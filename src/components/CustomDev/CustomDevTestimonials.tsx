@@ -38,7 +38,7 @@ export default function CustomDevTestimonials() {
     <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-white to-gray-50'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
@@ -73,7 +73,7 @@ export default function CustomDevTestimonials() {
               className={`group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 theme === 'dark' 
                   ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
-                  : 'bg-gradient-to-br from-white to-slate-50/50 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
+                  : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
               }`}
             >
               <Quote className={`mb-4 ${theme === 'dark' ? 'text-[#2ca3bd]/40' : 'text-[#2ca3bd]/40'}`} size={32} />
@@ -109,9 +109,9 @@ export default function CustomDevTestimonials() {
         </div>
 
         <div className="text-center">
-          <div className={`inline-block px-6 py-3 rounded-full text-sm font-semibold mb-6 ${
-            theme === 'dark' ? 'bg-white/5 text-white/60' : 'bg-gray-100 text-gray-600'
-          }`}>
+           <div className={`inline-block px-6 py-3 rounded-full text-sm font-semibold mb-6 ${
+             theme === 'dark' ? 'bg-white/5 text-white/60' : 'bg-[var(--bg-secondary)] text-gray-600'
+           }`}>
             Technologies de Pointe
           </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
@@ -119,7 +119,7 @@ export default function CustomDevTestimonials() {
               <div
                 key={index}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
-                  theme === 'dark' ? 'bg-white/5 text-white' : 'bg-white text-gray-900'
+                  theme === 'dark' ? 'bg-white/5 text-white' : 'bg-[var(--surface-primary)] text-gray-900'
                 }`}
                 style={{ borderLeft: `4px solid ${tech.color}` }}
               >

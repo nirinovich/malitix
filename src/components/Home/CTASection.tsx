@@ -64,7 +64,7 @@ export default function CTASection() {
     <section id="contact" className={`py-24 bg-gradient-to-b relative overflow-hidden ${
       theme === 'dark' 
         ? 'from-[#0a0e0d] to-[#060705]'
-        : 'from-gray-50 to-white'
+        : 'from-[var(--bg-primary)] to-[var(--bg-primary)]'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
@@ -74,7 +74,7 @@ export default function CTASection() {
             : 'bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)]'
         }`}></div>
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-slate-200/40'
+          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -152,7 +152,7 @@ export default function CTASection() {
             <div className={`backdrop-blur-xl rounded-3xl p-8 shadow-2xl ${
               theme === 'dark'
                 ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/10'
-                : 'bg-gradient-to-br from-white to-gray-50 border border-gray-200'
+                : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--bg-secondary)] border border-gray-200'
             }`}>
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -180,7 +180,7 @@ export default function CTASection() {
                       className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
                         theme === 'dark'
                           ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400'
+                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
                       }`}
                       placeholder="Jean Dupont"
                     />
@@ -203,7 +203,7 @@ export default function CTASection() {
                       className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
                         theme === 'dark'
                           ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400'
+                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
                       }`}
                       placeholder="jean@entreprise.fr"
                     />
@@ -225,7 +225,7 @@ export default function CTASection() {
                       className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
                         theme === 'dark'
                           ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400'
+                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
                       }`}
                       placeholder="https://votre-site.com"
                     />
@@ -248,7 +248,7 @@ export default function CTASection() {
                       className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all resize-none ${
                         theme === 'dark'
                           ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400'
+                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
                       }`}
                       placeholder="Décrivez votre projet, vos besoins et vos objectifs..."
                     />
@@ -294,3 +294,4 @@ export default function CTASection() {
     </section>
   );
 }
+

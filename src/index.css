@@ -81,14 +81,14 @@ body {
   --iphone-camera-border: #1a1a1a;
   
   /* Background colors - Soft neutrals with blue undertones */
-  --bg-primary: #f5f7f9;
-  --bg-secondary: #edf1f4;
-  --bg-tertiary: #e4eaee;
-  --bg-elevated: #fafbfc;
+  --bg-primary: #fefefe;
+  --bg-secondary: #fefefe;
+  --bg-tertiary: #fefefe;
+  --bg-elevated: #fefefe;
   
   /* Surface colors */
-  --surface-primary: #fafbfc;
-  --surface-secondary: #f5f7f9;
+  --surface-primary: #fefefe;
+  --surface-secondary: #fefefe;
   --surface-elevated: rgba(44, 163, 189, 0.04);
   --surface-hover: rgba(44, 163, 189, 0.06);
   
@@ -114,14 +114,6 @@ body {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-}
-
-.light section {
-  background-color: var(--surface-primary);
-}
-
-.light section:nth-child(even) {
-  background-color: var(--bg-secondary);
 }
 
 /* ===========================================

@@ -23,7 +23,7 @@ export default function SprintProblem() {
     <section className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-        : 'bg-gradient-to-b from-gray-50 to-white'
+        : 'bg-[var(--bg-primary)]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section 1: Cards à gauche, Texte à droite */}
@@ -118,7 +118,7 @@ export default function SprintProblem() {
         <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border max-w-5xl mx-auto mt-16 sm:mt-20 lg:mt-28 ${
           theme === 'dark'
             ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20'
-            : 'bg-gradient-to-br from-white to-slate-50 border-[#2ca3bd]/30'
+            : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--bg-secondary)] border-[#2ca3bd]/30'
         }`}>
           <div className="text-center mb-6 sm:mb-8">
             <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
@@ -145,7 +145,7 @@ export default function SprintProblem() {
                   className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 ${
                     theme === 'dark'
                       ? 'bg-white/10 text-white/80 hover:bg-white/20'
-                      : 'bg-white text-gray-700 border border-gray-200 hover:border-[#2ca3bd] hover:shadow-lg'
+                      : 'bg-[var(--surface-primary)] text-gray-700 border border-gray-200 hover:border-[#2ca3bd] hover:shadow-lg'
                   }`}
                 >
                   <Icon size={16} className="text-[#2ca3bd]" />

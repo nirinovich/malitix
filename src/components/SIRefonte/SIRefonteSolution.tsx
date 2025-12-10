@@ -42,15 +42,15 @@ export default function SIRefonteSolutionA() {
     <section id="solution-sirefonte" className={`relative py-24 overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-        : 'bg-gradient-to-b from-gray-50 to-white'
+        : 'bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)]'
     }`}>
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[var(--bg-secondary)]'
         }`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-slate-100'
+          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[var(--bg-secondary)]'
         }`}></div>
       </div>
 
@@ -81,7 +81,7 @@ export default function SIRefonteSolutionA() {
                 className={`group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up ${
                   theme === 'dark'
                     ? 'bg-white/5 border-white/10 hover:border-[#2ca3bd]/40'
-                    : 'bg-white border-gray-200 hover:border-[#2ca3bd]/40'
+                    : 'bg-[var(--surface-primary)] border-gray-200 hover:border-[#2ca3bd]/40'
                 }`}
                 style={{
                   animationDelay: `${idx * 0.1}s`
