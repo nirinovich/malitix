@@ -1,7 +1,7 @@
 {
   "name": "malitix",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.15",
-    "gsap": "^3.14.1",
     "lucide-react": "^0.546.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
