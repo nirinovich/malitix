@@ -116,10 +116,16 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
-                key={theme} // Force re-mount on theme change
-                src={theme === 'dark' ? '/mx_light.webp' : '/mx_dark.webp'}
-                alt="Malitix"
-                className="h-10"
+                src="/mx_dark.webp"
+                alt="Malitix dark logo"
+                className={`h-10 transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 absolute pointer-events-none' : 'opacity-100 relative'}`}
+                style={{ zIndex: theme === 'dark' ? 0 : 1 }}
+              />
+              <img
+                src="/mx_light.webp"
+                alt="Malitix light logo"
+                className={`h-10 transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100 relative' : 'opacity-0 absolute pointer-events-none'}`}
+                style={{ zIndex: theme === 'dark' ? 1 : 0 }}
               />
             </Link>
           </div>
