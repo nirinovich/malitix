@@ -117,7 +117,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             >
               <img
                 key={theme} // Force re-mount on theme change
-                src={theme === 'dark' ? '/mx_light.png' : '/mx_dark.png'}
+                src={theme === 'dark' ? '/mx_light.webp' : '/mx_dark.webp'}
                 alt="Malitix"
                 className="h-10"
               />
