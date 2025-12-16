@@ -7,14 +7,12 @@
     <title>Malitix | Excellence technologique, innovation continue</title>
     <meta name="description" content="Solutions innovantes en développement web, cloud et transformation digitale" />
     <link href="/src/index.css" rel="stylesheet">
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="5113a1f4-3030-41b7-8aca-f38011178575" data-blockingmode="auto" type="text/javascript"></script>
-
-    <script data-cookieconsent="ignore">
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
+        <script data-cookieconsent="ignore">
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
             dataLayer.push(arguments);
-        }
-        gtag('consent', 'default', {
+          }
+          gtag('consent', 'default', {
             'ad_personalization': 'denied',
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
@@ -23,9 +21,43 @@
             'personalization_storage': 'denied',
             'security_storage': 'granted',
             'wait_for_update': 500,
-        });
-        gtag("set", "ads_data_redaction", true);
-        gtag("set", "url_passthrough", false);
+          });
+          gtag("set", "ads_data_redaction", true);
+          gtag("set", "url_passthrough", false);
+        </script>
+    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js"></script>
+    <script>
+      var config = {
+        apiKey: '7c16bb25490d19b5d44d74997f6c71e56f08308b',
+        product: 'community',
+        optionalCookies: [
+          {
+            name: 'analytics',
+            label: 'Analytics',
+            description: '',
+            cookies: [],
+            onAccept : function(){},
+            onRevoke: function(){}
+          },{
+            name: 'marketing',
+            label: 'Marketing',
+            description: '',
+            cookies: [],
+            onAccept : function(){},
+            onRevoke: function(){}
+          },{
+            name: 'preferences',
+            label: 'Preferences',
+            description: '',
+            cookies: [],
+            onAccept : function(){},
+            onRevoke: function(){}
+          }
+        ],
+        position: 'RIGHT',
+        theme: 'DARK'
+      };
+      CookieControl.load( config );
     </script>
 
     <!-- Google Tag Manager -->
