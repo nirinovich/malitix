@@ -115,10 +115,11 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               to="/"
               className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
             >
-              <img 
+              <img
+                key={theme} // Force re-mount on theme change
                 src={theme === 'dark' ? '/mx_light.png' : '/mx_dark.png'}
-                alt="Malitix" 
-                className="h-10" 
+                alt="Malitix"
+                className="h-10"
               />
             </Link>
           </div>
