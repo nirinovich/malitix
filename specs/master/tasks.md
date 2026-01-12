@@ -24,13 +24,13 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 **Purpose**: Project initialization and baseline configuration
 
-- [ ] T001 Create React Router V7 manual routing configuration in app/routes.ts
-- [ ] T002 Enable TypeScript strict mode in tsconfig.json (strict: true)
-- [ ] T003 [P] Add ESLint config with TypeScript rules in eslint.config.js
-- [ ] T004 [P] Add Prettier config in .prettierrc and format scripts in package.json
-- [ ] T005 Add .env.example and load via Vite in vite.config.ts
-- [ ] T006 [P] Add vite-plugin-bundle-analyzer and baseline report docs/perf/bundle.md
-- [ ] T007 Document setup in README.md (scripts, dev workflow)
+- [x] T001 Create React Router V7 manual routing configuration in app/routes.ts
+- [x] T002 Enable TypeScript strict mode in tsconfig.json (strict: true)
+- [x] T003 [P] Add ESLint config with TypeScript rules in eslint.config.js
+- [x] T004 [P] Add Prettier config in .prettierrc and format scripts in package.json
+- [x] T005 Add .env.example and load via Vite in vite.config.ts
+- [x] T006 [P] Add vite-plugin-bundle-analyzer and baseline report docs/perf/bundle.md
+- [x] T007 Document setup in README.md (scripts, dev workflow)
 
 ---
 
@@ -38,12 +38,12 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 **Purpose**: Core infrastructure required before any story
 
-- [ ] T008 Create app/root.tsx with theme provider and layout shell
-- [ ] T009 Configure manual routes in app/routes.ts (define all route paths and components)
-- [ ] T010 [P] Implement utils/cn.ts utility for class name merging
-- [ ] T011 Create utils/seo.ts helpers (buildMeta, buildTitle for React Router V7 Meta)
-- [ ] T012 Set up app/app.css with design tokens and resets
-- [ ] T013 [P] Create types/index.ts for shared TS types
+- [x] T008 Create app/root.tsx with theme provider and layout shell
+- [x] T009 Configure manual routes in app/routes.ts (define all route paths and components)
+- [x] T010 [P] Implement utils/cn.ts utility for class name merging
+- [x] T011 Create utils/seo.ts helpers (buildMeta, buildTitle for React Router V7 Meta)
+- [x] T012 Set up app/app.css with design tokens and resets
+- [x] T013 [P] Create types/index.ts for shared TS types
 
 **Checkpoint**: Foundation ready; user stories can start in parallel
 

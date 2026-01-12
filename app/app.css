@@ -1,15 +1,85 @@
 @import "tailwindcss";
 
+/* Design Tokens */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* Colors */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1e40af;
+  --color-secondary: #7c3aed;
+  --color-secondary-dark: #6d28d9;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+}
+
+/* Reset and Base Styles */
+* {
+  @apply border-slate-200 dark:border-slate-800;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
+  @apply h-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50;
+  
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    @apply !animate-none !transition-none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+/* Focus Visible Ring */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-blue-500 dark:outline-blue-400;
+}
+
+/* Selection Styles */
+::selection {
+  @apply bg-blue-500 dark:bg-blue-400 text-white dark:text-slate-900;
+}
+
+/* Smooth Transitions for Theme Changes */
+body {
+  transition: background-color 200ms, color 200ms;
 }
