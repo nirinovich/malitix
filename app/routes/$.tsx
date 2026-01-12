@@ -1,16 +1,16 @@
-import { Meta } from "react-router";
 import type { Route } from "../+types/root";
+import { Layout } from "~/components/Shared/Layout";
+import { NotFound } from "~/components/Shared/NotFound";
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Legal Notice | Malitix" },
-  { name: "description", content: "Legal Notice" },
+  { title: "Page Not Found | Malitix" },
+  { name: "description", content: "The page you're looking for doesn't exist" },
 ];
 
-export default function LegalNoticePage() {
+export default function CatchAllPage(): JSX.Element {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-3xl">
-      <h1 className="text-4xl font-bold mb-8">Legal Notice</h1>
-      <p className="text-slate-600 dark:text-slate-400 mb-4">Coming soon...</p>
-    </div>
+    <Layout>
+      <NotFound />
+    </Layout>
   );
 }
