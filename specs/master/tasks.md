@@ -57,16 +57,16 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US1
 
-- [ ] T015 [US1] Create app/routes/home.tsx (/) using components/Home/*
-- [ ] T016 [P] [US1] Create app/routes/custom-dev.tsx (/custom-dev)
-- [ ] T017 [P] [US1] Create app/routes/mobile-app.tsx (/mobile-app)
-- [ ] T018 [P] [US1] Create app/routes/si-refonte.tsx (/si-refonte)
-- [ ] T019 [P] [US1] Create app/routes/sprint.tsx (/sprint)
-- [ ] T020 [US1] Create app/routes/$.tsx (404 catch-all) rendering NotFound
-- [ ] T021 [US1] Wire Navbar links in app/components/Shared/Navbar.tsx to new routes
-- [ ] T022 [US1] Ensure Layout wrapper in app/components/Shared/Layout.tsx nests routes correctly
-- [ ] T023 [US1] Add ScrollToTop behavior in app/components/Shared/ScrollToTop.tsx
-- [ ] T024 [US1] Add route-level SEO meta with React Router V7 Meta component in each route file
+- [x] T015 [US1] Create app/routes/home.tsx (/) using components/Home/*
+- [x] T016 [P] [US1] Create app/routes/custom-dev.tsx (/custom-dev)
+- [x] T017 [P] [US1] Create app/routes/mobile-app.tsx (/mobile-app)
+- [x] T018 [P] [US1] Create app/routes/si-refonte.tsx (/si-refonte)
+- [x] T019 [P] [US1] Create app/routes/sprint.tsx (/sprint)
+- [x] T020 [US1] Create app/routes/$.tsx (404 catch-all) rendering NotFound
+- [x] T021 [US1] Wire Navbar links in app/components/Shared/Navbar.tsx to new routes
+- [x] T022 [US1] Ensure Layout wrapper in app/components/Shared/Layout.tsx nests routes correctly
+- [x] T023 [US1] Add ScrollToTop behavior in app/components/Shared/ScrollToTop.tsx
+- [x] T024 [US1] Add route-level SEO meta with React Router V7 Meta component in each route file
 
 **Checkpoint**: Navigation parity achieved; routes stable and testable
 
