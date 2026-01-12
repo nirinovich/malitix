@@ -40,11 +40,10 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 - [ ] T008 Create app/root.tsx with theme provider and layout shell
 - [ ] T009 Configure manual routes in app/routes.ts (define all route paths and components)
-- [ ] T010 [P] Set up react-helmet-async provider in app/root.tsx
-- [ ] T011 [P] Implement utils/cn.ts utility for class name merging
-- [ ] T012 Create utils/seo.ts helpers (buildTitle, buildMeta)
-- [ ] T013 Set up app/app.css with design tokens and resets
-- [ ] T014 [P] Create types/index.ts for shared TS types
+- [ ] T010 [P] Implement utils/cn.ts utility for class name merging
+- [ ] T011 Create utils/seo.ts helpers (buildMeta, buildTitle for React Router V7 Meta)
+- [ ] T012 Set up app/app.css with design tokens and resets
+- [ ] T013 [P] Create types/index.ts for shared TS types
 
 **Checkpoint**: Foundation ready; user stories can start in parallel
 
@@ -67,7 +66,7 @@ description: "Tasks for React Router V7 Landing Page Migration"
 - [ ] T021 [US1] Wire Navbar links in app/components/Shared/Navbar.tsx to new routes
 - [ ] T022 [US1] Ensure Layout wrapper in app/components/Shared/Layout.tsx nests routes correctly
 - [ ] T023 [US1] Add ScrollToTop behavior in app/components/Shared/ScrollToTop.tsx
-- [ ] T024 [US1] Add route-level SEO meta with react-helmet-async in each route file
+- [ ] T024 [US1] Add route-level SEO meta with React Router V7 Meta component in each route file
 
 **Checkpoint**: Navigation parity achieved; routes stable and testable
 
