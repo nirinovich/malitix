@@ -25,7 +25,7 @@ export default function LegalNotice() {
               Le site <strong>https://www.malitix.com</strong> est édité par la société{' '}
               <strong>ETECH CONSULTING SARLU</strong> ayant son siège social au{' '}
               <strong>2ème étage de l'Immeuble TRADE TOWER ALAROBIA</strong>, immatriculée au 
-              Registre du Commerce et des Sociétés d'Antananarivo sous le numéro{' '}
+              Registre du Commerce et des Sociétés de Paris sous le numéro{' '}
               <strong>2001 B 00268</strong>.
             </p>
             <p>
@@ -59,7 +59,7 @@ export default function LegalNotice() {
             <p>
               Le contenu de ce site y compris textes, images, graphiques, logos, est protégé par 
               l'Ordonnance 89-019 instituant un régime pour la protection de la propriété industrielle 
-              en République Démocratique de Madagascar et est la propriété exclusive de{' '}
+              en République Française et est la propriété exclusive de{' '}
               <strong>ETECH CONSULTING SARLU</strong> sauf indication contraire.
             </p>
           </section>
@@ -70,7 +70,7 @@ export default function LegalNotice() {
             </h2>
             <p className="mb-4">
               Le traitement des données personnelles est régi par la Loi N°2014-038 en date du 
-              09 janvier 2015 sur la protection des données à caractère personnel à Madagascar.
+              09 janvier 2015 sur la protection des données à caractère personnel en France.
             </p>
             <p>
               Pour plus d'informations, veuillez consulter notre{' '}

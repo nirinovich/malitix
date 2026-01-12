@@ -67,7 +67,7 @@ export const COMPANY_INFO = {
   tagline: 'Excellence technologique, innovation continue',
   email: 'infos@malitix.com',
   phone: '+33 1 84 80 62 48',
-  address: 'Antananarivo, Madagascar',
+  address: 'Paris, France',
   description: 'Malitix est votre partenaire de confiance pour la transformation digitale et l\'innovation technologique.',
 };
 
