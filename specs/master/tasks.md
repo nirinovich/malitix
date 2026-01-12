@@ -80,12 +80,12 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US2
 
-- [ ] T025 [US2] Migrate app/context/ThemeContext.tsx with localStorage persistence
-- [ ] T026 [P] [US2] Create hooks/useTheme.ts for consuming theme context
-- [ ] T027 [US2] Prevent FOUC by loading theme before first paint in app/root.tsx
-- [ ] T028 [P] [US2] Wire ThemeToggle in app/components/Shared/ThemeToggle.tsx
-- [ ] T029 [US2] Apply CSS variables in app/app.css for theme tokens
-- [ ] T030 [US2] Add prefers-reduced-motion and color-scheme meta in index.html
+- [x] T025 [US2] Migrate app/context/ThemeContext.tsx with localStorage persistence
+- [x] T026 [P] [US2] Create hooks/useTheme.ts for consuming theme context
+- [x] T027 [US2] Prevent FOUC by loading theme before first paint in app/root.tsx
+- [x] T028 [P] [US2] Wire ThemeToggle in app/components/Shared/ThemeToggle.tsx
+- [x] T029 [US2] Apply CSS variables in app/app.css for theme tokens
+- [x] T030 [US2] Add prefers-reduced-motion and color-scheme meta in index.html
 
 **Checkpoint**: Theme parity and persistence verified
 

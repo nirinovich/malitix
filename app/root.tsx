@@ -34,6 +34,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
         <Meta />
         <Links />
+        {/* Prevent FOUC (Flash of Unstyled Content) by applying theme before React hydrates */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 'light';
+                const html = document.documentElement;
+                html.classList.remove('light', 'dark');
+                html.classList.add(theme);
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-200">
         <ThemeProvider>
