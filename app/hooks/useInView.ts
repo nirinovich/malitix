@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useInView as useFramerInView, UseInViewOptions } from "framer-motion";
+import { useInView as useFramerInView, type UseInViewOptions } from "framer-motion";
 
 export function useInView(options: UseInViewOptions = { once: true, margin: "-50px" }) {
   const ref = useRef(null);

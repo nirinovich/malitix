@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { RefreshCcw, Smartphone, Shield, Database, Brain, ArrowRight } from 'lucide-react';
 import { SERVICES } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
@@ -6,7 +6,7 @@ import { useTheme } from '~/context/ThemeContext';
 export function ServicesSection() {
   const { theme } = useTheme();
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,7 +16,7 @@ export function ServicesSection() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,

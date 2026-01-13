@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Users, Clock, Award } from 'lucide-react';
 import { STATS } from '~/utils/constants';
@@ -6,7 +6,7 @@ import { useTheme } from '~/context/ThemeContext';
 
 const iconMap = [TrendingUp, Users, Award, Clock];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -17,7 +17,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
