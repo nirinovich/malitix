@@ -2,6 +2,7 @@ import { motion, type Variants } from 'framer-motion';
 import { useTheme } from '~/context/ThemeContext';
 import { CTAButtonV3 } from '~/components/Utility/CTAButtons';
 import { ProgressRescueGaugeVariant } from '~/components/Utility/ProgressIllustration';
+import { LogoCarousel } from '~/components/Utility/LogoCarousel';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -194,50 +195,7 @@ export default function SprintHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className={`text-center text-xs sm:text-sm uppercase tracking-widest mb-6 sm:mb-8 ${
-            theme === 'dark' ? 'text-white/40' : 'text-gray-400'
-          }`}>
-            Ils nous font confiance
-          </p>
-          <div className="overflow-hidden relative">
-            <div className={`absolute left-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none ${
-              theme === 'dark'
-                ? 'bg-gradient-to-r from-[#060705] to-transparent'
-                : 'bg-gradient-to-r from-[var(--bg-primary)] to-transparent'
-            }`}></div>
-            <div className={`absolute right-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none ${
-              theme === 'dark'
-                ? 'bg-gradient-to-l from-[#060705] to-transparent'
-                : 'bg-gradient-to-l from-[var(--bg-primary)] to-transparent'
-            }`}></div>
-            
-            <div className="flex animate-scroll-left">
-              {companyLogos.map((company) => (
-                <div
-                  key={`first-${company.id}`}
-                  className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 w-24 sm:w-32 lg:w-36 h-14 sm:h-16 lg:h-20 flex items-center justify-center"
-                >
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="max-w-full max-h-full object-contain p-2 sm:p-3 filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-              {companyLogos.map((company) => (
-                <div
-                  key={`second-${company.id}`}
-                  className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 w-24 sm:w-32 lg:w-36 h-14 sm:h-16 lg:h-20 flex items-center justify-center"
-                >
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="max-w-full max-h-full object-contain p-2 sm:p-3 filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          <LogoCarousel logos={companyLogos} title="Ils nous font confiance" speed={40} />
         </motion.div>
       </div>
 
@@ -274,15 +232,6 @@ export default function SprintHero() {
           }
         }
 
-        @keyframes scroll-left {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
         .animate-energy-flow {
           animation: energy-flow 1.5s infinite;
         }
@@ -293,10 +242,6 @@ export default function SprintHero() {
 
         .animate-charge-bar {
           animation: charge-bar 1.5s ease-out infinite;
-        }
-
-        .animate-scroll-left {
-          animation: scroll-left 40s linear infinite;
         }
       `}</style>
     </section>

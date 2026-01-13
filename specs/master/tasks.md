@@ -142,14 +142,14 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US5
 
-- [ ] T048 [US5] Migrate components/Utility/LogoCarousel.tsx with auto-rotation
-- [ ] T049 [P] [US5] Migrate components/Sprint/TestimonialSection.tsx
-- [ ] T050 [US5] Ensure smooth transitions with CSS transforms
-- [ ] T051 [P] [US5] Add keyboard controls and ARIA roles for carousel
-- [ ] T052 [US5] Ensure pause-on-hover/focus accessibility
-- [ ] T053 [US5] Optimize images used in carousels (loading="lazy")
-- [ ] T054 [US5] Expose props for timing to match legacy cadence
-- [ ] T055 [US5] Validate performance and user interaction parity
+- [X] T048 [US5] Migrate components/Utility/LogoCarousel.tsx with auto-rotation
+- [X] T049 [P] [US5] Migrate components/Sprint/TestimonialSection.tsx
+- [X] T050 [US5] Ensure smooth transitions with CSS transforms
+- [X] T051 [P] [US5] Add keyboard controls and ARIA roles for carousel
+- [X] T052 [US5] Ensure pause-on-hover/focus accessibility
+- [X] T053 [US5] Optimize images used in carousels (loading="lazy")
+- [X] T054 [US5] Expose props for timing to match legacy cadence
+- [X] T055 [US5] Validate performance and user interaction parity
 
 **Checkpoint**: Carousels match legacy behavior and visuals
 
@@ -163,13 +163,13 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US6
 
-- [ ] T056 [US6] Create app/routes/privacy-policy.tsx with content from pages/PrivacyPolicy.tsx
-- [ ] T057 [P] [US6] Create app/routes/legal-notice.tsx with content from pages/LegalNotice.tsx
-- [ ] T058 [US6] Add Helmet meta tags in each legal route
-- [ ] T059 [US6] Ensure robots.txt and sitemap.xml remain in public/
-- [ ] T060 [US6] Add Open Graph meta images where applicable
-- [ ] T061 [US6] Add structured data (Schema.org) for organization/site
-- [ ] T062 [US6] Verify footer links in components/Shared/Footer.tsx
+- [X] T056 [US6] Create app/routes/privacy-policy.tsx with content from pages/PrivacyPolicy.tsx
+- [X] T057 [P] [US6] Create app/routes/legal-notice.tsx with content from pages/LegalNotice.tsx
+- [X] T058 [US6] Add Helmet meta tags in each legal route
+- [X] T059 [US6] Ensure robots.txt and sitemap.xml remain in public/
+- [X] T060 [US6] Add Open Graph meta images where applicable
+- [X] T061 [US6] Add structured data (Schema.org) for organization/site
+- [X] T062 [US6] Verify footer links in components/Shared/Footer.tsx
 
 **Checkpoint**: Legal + SEO correctness
 

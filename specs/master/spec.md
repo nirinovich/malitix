@@ -1,4 +1,4 @@
-# Feature Specification: React Router V7 Landing Page Migration
+git reset --hard HEAD && git clean -fd# Feature Specification: React Router V7 Landing Page Migration
 
 **Feature Branch**: `001-rr7-landing-page-migration`  
 **Created**: 2026-01-12  

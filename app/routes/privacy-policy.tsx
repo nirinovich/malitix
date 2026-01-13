@@ -1,10 +1,14 @@
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
 import { ScrollToTop } from "~/components/Shared/ScrollToTop";
+import { buildMeta } from "~/utils/seo";
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Politique de Confidentialité - Malitix" },
-  { name: "description", content: "Politique de confidentialité et protection des données personnelles chez Malitix. Conformité RGPD et législation malgache sur la protection des données." },
+  ...buildMeta({
+    title: "Politique de Confidentialité",
+    description: "Politique de confidentialité et protection des données personnelles chez Malitix. Conformité RGPD et législation malgache sur la protection des données.",
+    url: "https://www.malitix.com/politique-de-confidentialite"
+  }),
   { name: "robots", content: "noindex, follow" },
   { tagName: "link", rel: "canonical", href: "https://www.malitix.com/politique-de-confidentialite" }
 ];

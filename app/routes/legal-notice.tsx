@@ -1,10 +1,14 @@
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
 import { ScrollToTop } from "~/components/Shared/ScrollToTop";
+import { buildMeta } from "~/utils/seo";
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Mentions Légales - Malitix" },
-  { name: "description", content: "Mentions légales du site Malitix. Informations sur l'éditeur, l'hébergeur et les dispositions légales applicables selon la législation malgache." },
+  ...buildMeta({
+    title: "Mentions Légales",
+    description: "Mentions légales du site Malitix. Informations sur l'éditeur, l'hébergeur et les dispositions légales applicables selon la législation malgache.",
+    url: "https://www.malitix.com/mentions-legales"
+  }),
   { name: "robots", content: "noindex, follow" },
   { tagName: "link", rel: "canonical", href: "https://www.malitix.com/mentions-legales" }
 ];
