@@ -99,15 +99,15 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US3
 
-- [ ] T031 [US3] Add react-hook-form dependency and types in package.json
-- [ ] T032 [P] [US3] Create reusable form components in app/components/Shared/Form/
-- [ ] T033 [US3] Implement TextInput in app/components/Shared/Form/TextInput.tsx
-- [ ] T034 [US3] Implement Textarea in app/components/Shared/Form/Textarea.tsx
-- [ ] T035 [P] [US3] Migrate validation rules to hooks/forms/useContactValidation.ts
-- [ ] T036 [US3] Implement form in app/components/CustomDev/CustomDevCTA.tsx using React Hook Form
-- [ ] T037 [P] [US3] Wire submit handler and API call in app/utils/forms/submitContact.ts
-- [ ] T038 [US3] Preserve legacy messages and success UI in app/components/Shared/Form/Feedback.tsx
-- [ ] T039 [US3] Ensure form state persistence (optional) in hooks/forms/useFormPersistence.ts
+- [x] T031 [US3] Add react-hook-form dependency and types in package.json
+- [x] T032 [P] [US3] Create reusable form components in app/components/Shared/Form/
+- [x] T033 [US3] Implement TextInput in app/components/Shared/Form/TextInput.tsx
+- [x] T034 [US3] Implement Textarea in app/components/Shared/Form/Textarea.tsx
+- [x] T035 [P] [US3] Migrate validation rules to hooks/forms/useContactValidation.ts
+- [x] T036 [US3] Implement form in app/components/CustomDev/CustomDevCTA.tsx using React Hook Form
+- [x] T037 [P] [US3] Wire submit handler and API call in app/utils/forms/submitContact.ts
+- [x] T038 [US3] Preserve legacy messages and success UI in app/components/Shared/Form/Feedback.tsx
+- [x] T039 [US3] Ensure form state persistence (optional) in hooks/forms/useFormPersistence.ts
 
 **Checkpoint**: Forms behave identically; validation and submission reliable
 
@@ -121,11 +121,11 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US4
 
-- [ ] T040 [US4] Implement hooks/useInView.ts (Intersection Observer) or refine existing
-- [ ] T041 [P] [US4] Apply in-view animations in components/Home/Hero.tsx
-- [ ] T042 [P] [US4] Apply in-view animations in components/Home/ServicesBento.tsx
-- [ ] T043 [P] [US4] Apply in-view animations in components/Home/TrustStats.tsx
-- [ ] T044 [US4] Optimize parallax effect in components/Sprint/SprintHero.tsx
+- [x] T040 [US4] Implement hooks/useInView.ts (Intersection Observer) or refine existing
+- [x] T041 [P] [US4] Apply in-view animations in components/Home/Hero.tsx
+- [x] T042 [P] [US4] Apply in-view animations in components/Home/ServicesBento.tsx
+- [x] T043 [P] [US4] Apply in-view animations in components/Home/TrustStats.tsx
+- [x] T044 [US4] Optimize parallax effect in components/Sprint/SprintHero.tsx
 - [ ] T045 [US4] Lazy-load framer-motion where used
 - [ ] T046 [US4] Respect prefers-reduced-motion in all animated components
 - [ ] T047 [US4] Validate 60fps on mobile via DevTools

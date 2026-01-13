@@ -1,3 +1,4 @@
+import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Users, Clock, Award } from 'lucide-react';
 import { STATS } from '~/utils/constants';
@@ -5,40 +6,30 @@ import { useTheme } from '~/context/ThemeContext';
 
 const iconMap = [TrendingUp, Users, Award, Clock];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
 export function TrustStats() {
   const { theme } = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    // Fallback: some translators or page wrappers (eg. Google Translate)
-    // can interfere with IntersectionObserver. If the observer doesn't
-    // trigger within a short time, start the animation anyway so stats
-    // are not stuck at 0.
-    const fallbackId = window.setTimeout(() => {
-      setIsVisible(true);
-    }, 1200);
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-      clearTimeout(fallbackId);
-    };
-  }, []);
+  const sectionRef = useRef(null);
+  const isVisible = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
     <section 
@@ -57,9 +48,14 @@ export function TrustStats() {
         }`}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <motion.div 
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+      >
         {/* Section Badge */}
-        <div className="text-center mb-8">
+        <motion.div variants={itemVariants} className="text-center mb-8">
           <div className="inline-flex items-center justify-center gap-2">
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
@@ -67,10 +63,10 @@ export function TrustStats() {
             </span>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-        </div>
+        </motion.div>
 
         {/* About Malitix - Human Touch */}
-        <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">
+        <motion.div variants={itemVariants} className="text-center max-w-4xl mx-auto mb-16 space-y-6">
           <h2 className={`text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-4 leading-tight ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
@@ -85,12 +81,12 @@ export function TrustStats() {
             ambitieuse ou une entreprise établie, nous mettons notre expertise au service de votre vision pour créer 
             des expériences digitales qui marquent les esprits.
           </p>
-        </div>
+        </motion.div>
 
         {/* Divider */}
-        <div className={`max-w-xs mx-auto mb-16 h-px ${
+        <motion.div variants={itemVariants} className={`max-w-xs mx-auto mb-16 h-px ${
           theme === 'dark' ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
-        }`}></div>
+        }`}></motion.div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -98,8 +94,9 @@ export function TrustStats() {
             const Icon = iconMap[index];
             
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={itemVariants}
                 className={`group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
@@ -140,13 +137,13 @@ export function TrustStats() {
                     ? 'border-[#2ca3bd]/0 group-hover:border-[#2ca3bd]/30'
                     : 'border-[#2ca3bd]/40/0 group-hover:border-[#2ca3bd]/40/30'
                 }`}></div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Partner Logos */}
-        <div className="mt-16 text-center">
+        <motion.div variants={itemVariants} className="mt-16 text-center">
           <div className={`inline-flex flex-wrap items-center justify-center gap-8 backdrop-blur-xl rounded-3xl px-12 py-8 ${
             theme === 'dark'
               ? 'bg-white/5 border border-white/10'
@@ -200,8 +197,8 @@ export function TrustStats() {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

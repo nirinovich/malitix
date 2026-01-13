@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ArrowRight, Code, Database, Cpu, Sparkles } from 'lucide-react';
 import { HERO_CONTENT, CTA_TEXT } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
@@ -164,29 +165,42 @@ export function HeroSection() {
           </div>
 
           {/* Right Side - Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center lg:text-left space-y-8"
+          >
 
             {/* Headline */}
             <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
               {HERO_CONTENT.animated.headline.split(' ').map((word, i) => (
-                <span
+                <motion.span
                   key={i}
-                  className="inline-block opacity-0 animate-[fade-in-up_0.6s_ease-out_forwards] mr-3"
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="inline-block mr-3"
                 >
                   {word}
-                </span>
+                </motion.span>
               ))}
             </h1>
 
             {/* Subheadline */}
-            <p className={`text-lg sm:text-xl max-w-2xl leading-relaxed ${
-              theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-            }`}>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className={`text-lg sm:text-xl max-w-2xl leading-relaxed ${
+                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
+              }`}
+            >
               {HERO_CONTENT.animated.subheadline}
-            </p>
+            </motion.p>
+
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -231,7 +245,7 @@ export function HeroSection() {
                 <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Support</div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

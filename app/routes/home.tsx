@@ -22,7 +22,7 @@ export const meta: Route.MetaFunction = () => [
   { name: "twitter:description", content: "Solutions innovantes en développement web, cloud et transformation digitale pour propulser votre entreprise." },
 ];
 
-export default function Home(): JSX.Element {
+export default function Home() {
   return (
     <>
       <Layout>

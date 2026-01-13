@@ -4,7 +4,7 @@ import { Footer } from "./Footer";
 import { ScrollToTop } from "./ScrollToTop";
 import type { BaseComponentProps } from "~/types";
 
-export function Layout({ children }: BaseComponentProps): JSX.Element {
+export function Layout({ children }: BaseComponentProps) {
   const { theme } = useTheme();
 
   return (

@@ -1,6 +1,27 @@
+import { motion } from 'framer-motion';
 import { useTheme } from '~/context/ThemeContext';
 import { CTAButtonV3 } from '~/components/Utility/CTAButtons';
 import { ProgressRescueGaugeVariant } from '~/components/Utility/ProgressIllustration';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
 
 const companyLogos = [
   {
@@ -68,9 +89,14 @@ export default function SprintHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Colonne gauche - Contenu */}
-          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
+          <motion.div 
+            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Headline */}
-            <div className="space-y-4 sm:space-y-5">
+            <motion.div variants={itemVariants} className="space-y-4 sm:space-y-5">
               <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
@@ -97,10 +123,10 @@ export default function SprintHero() {
                   theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
                 }`}>2 semaines</span>.
               </div>
-            </div>
+            </motion.div>
 
             {/* Features rapides */}
-            <div className="space-y-3 sm:space-y-4">
+            <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4">
               {['✓ Diagnostic en 48h', '✓ Équipe dédiée', '✓ Résultats mesurables'].map((feature) => (
                 <div key={feature} className={`flex items-center gap-3 text-base sm:text-lg lg:text-xl ${
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
@@ -113,15 +139,15 @@ export default function SprintHero() {
                   {feature.replace('✓ ', '')}
                 </div>
               ))}
-            </div>
+            </motion.div>
 
             {/* CTA avec CTAButtonV3 */}
-            <div className="pt-4 sm:pt-6">
+            <motion.div variants={itemVariants} className="pt-4 sm:pt-6">
               <ButtonComponent onClick={scrollToContact} />
-            </div>
+            </motion.div>
 
             {/* Stats de confiance */}
-            <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t ${
+            <motion.div variants={itemVariants} className={`grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t ${
               theme === 'dark' ? 'border-white/10' : 'border-gray-200'
             }`}>
               {[
@@ -143,21 +169,31 @@ export default function SprintHero() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Colonne droite - Visual Illustration */}
-          <div className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0">
+          <motion.div 
+            className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <div className="scale-75 sm:scale-90 lg:scale-100">
               <IllustrationComponent />
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Logo Carousel en bas */}
-        <div className={`mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t ${
-          theme === 'dark' ? 'border-white/10' : 'border-gray-200'
-        }`}>
+        <motion.div 
+          className={`mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t ${
+            theme === 'dark' ? 'border-white/10' : 'border-gray-200'
+          }`}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
           <p className={`text-center text-xs sm:text-sm uppercase tracking-widest mb-6 sm:mb-8 ${
             theme === 'dark' ? 'text-white/40' : 'text-gray-400'
           }`}>
@@ -202,7 +238,7 @@ export default function SprintHero() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

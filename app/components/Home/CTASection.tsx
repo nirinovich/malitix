@@ -1,63 +1,46 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
 import { Send, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
 import { CTA_TEXT, COMPANY_INFO } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
+import { TextInput } from '~/components/Shared/Form/TextInput';
+import { Textarea } from '~/components/Shared/Form/Textarea';
+import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
+import { VALIDATION_PATTERNS } from '~/utils/validation';
+import { submitContactForm } from '~/utils/forms/submitContact';
+
+interface HomeFormData {
+  name: string;
+  email: string;
+  website?: string;
+  message: string;
+}
 
 export function CTASection() {
   const { theme } = useTheme();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    website: '',
-    message: '',
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<HomeFormData>();
 
+  const onSubmit = async (data: HomeFormData) => {
     try {
-      // Appeler le suivi de conversion Google Ads
-      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-        (window as any).gtag_report_conversion(undefined);
-      }
+      await submitContactForm({ data, source: 'Main Page' });
+      setSubmissionStatus('success');
+      reset();
 
-      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'Main Page'
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erreur lors de l\'envoi du formulaire');
-      }
-
-      setIsSubmitted(true);
       setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ name: '', email: '', website: '', message: '' });
+        setSubmissionStatus('idle');
       }, 3000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-    } finally {
-      setIsLoading(false);
+      console.error(err);
+      setSubmissionStatus('error');
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -79,7 +62,13 @@ export function CTASection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-12 items-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7 }}
+        >
           {/* Left Side - Content */}
           <div className="space-y-8">
             <div>
@@ -154,125 +143,9 @@ export function CTASection() {
                 ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/10'
                 : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--bg-secondary)] border border-gray-200'
             }`}>
-              {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Error Message */}
-                  {error && (
-                    <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500">
-                      {error}
-                    </div>
-                  )}
-
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="name" className={`block font-medium mb-2 ${
-                      theme === 'dark' ? 'text-white/90' : 'text-gray-900'
-                    }`}>
-                      Nom complet *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
-                      }`}
-                      placeholder="Jean Dupont"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="email" className={`block font-medium mb-2 ${
-                      theme === 'dark' ? 'text-white/90' : 'text-gray-900'
-                    }`}>
-                      Email professionnel *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
-                      }`}
-                      placeholder="jean@entreprise.fr"
-                    />
-                  </div>
-
-                  {/* Website */}
-                  <div>
-                    <label htmlFor="website" className={`block font-medium mb-2 ${
-                      theme === 'dark' ? 'text-white/90' : 'text-gray-900'
-                    }`}>
-                      Site web
-                    </label>
-                    <input
-                      type="text"
-                      id="website"
-                      name="website"
-                      value={formData.website}
-                      onChange={handleChange}
-                      className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
-                      }`}
-                      placeholder="https://votre-site.com"
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label htmlFor="message" className={`block font-medium mb-2 ${
-                      theme === 'dark' ? 'text-white/90' : 'text-gray-900'
-                    }`}>
-                      Parlez-nous de votre projet *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={4}
-                      className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all resize-none ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border border-white/10 text-white placeholder:text-white/40'
-                          : 'bg-[var(--bg-secondary)] border border-gray-300 text-gray-900 placeholder:text-gray-400'
-                      }`}
-                      placeholder="Décrivez votre projet, vos besoins et vos objectifs..."
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
-                  >
-                    {isLoading ? 'Envoi en cours...' : CTA_TEXT.primary}
-                    <Send size={20} className={isLoading ? 'animate-pulse' : ''} />
-                  </button>
-
-                  <p className={`text-sm text-center ${
-                    theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                  }`}>
-                    En envoyant ce formulaire, vous acceptez notre politique de confidentialité
-                  </p>
-                </form>
-              ) : (
+              {submissionStatus === 'success' ? (
                 <div className="text-center py-12 space-y-6">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full animate-in zoom-in">
                     <CheckCircle2 className="text-[#2ca3bd]" size={40} />
                   </div>
                   <div>
@@ -286,10 +159,68 @@ export function CTASection() {
                     </p>
                   </div>
                 </div>
+              ) : (
+                <>
+                  {submissionStatus === 'error' && <FormFeedback status="error" />}
+                  
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <TextInput
+                      label="Nom complet"
+                      placeholder="Jean Dupont"
+                      error={errors.name?.message}
+                      {...register('name', { required: 'Le nom est requis' })}
+                      required
+                    />
+
+                    <TextInput
+                      label="Email professionnel"
+                      type="email"
+                      placeholder="jean@entreprise.fr"
+                      error={errors.email?.message}
+                      {...register('email', { 
+                        required: 'L\'email est requis',
+                        pattern: VALIDATION_PATTERNS.EMAIL
+                      })}
+                      required
+                    />
+
+                    <TextInput
+                      label="Site web"
+                      placeholder="https://votre-site.com"
+                      error={errors.website?.message}
+                      {...register('website')}
+                    />
+
+                    <Textarea
+                      label="Parlez-nous de votre projet"
+                      placeholder="Décrivez votre projet, vos besoins et vos objectifs..."
+                      rows={4}
+                      error={errors.message?.message}
+                      {...register('message', { required: 'Le message est requis' })}
+                      required
+                    />
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
+                    >
+                      {isSubmitting ? 'Envoi en cours...' : CTA_TEXT.primary}
+                      <Send size={20} className={isSubmitting ? 'animate-pulse' : ''} />
+                    </button>
+
+                    <p className={`text-sm text-center ${
+                      theme === 'dark' ? 'text-white/50' : 'text-gray-500'
+                    }`}>
+                      En envoyant ce formulaire, vous acceptez notre politique de confidentialité
+                    </p>
+                  </form>
+                </>
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

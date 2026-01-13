@@ -1,53 +1,46 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { ArrowRight, Mail, Globe, User, Phone, CheckCircle } from 'lucide-react';
 import { useTheme } from '~/context/ThemeContext';
+import { TextInput } from '~/components/Shared/Form/TextInput';
+import { Textarea } from '~/components/Shared/Form/Textarea';
+import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
+import { VALIDATION_PATTERNS } from '~/utils/validation';
+import { submitContactForm } from '~/utils/forms/submitContact';
+
+interface SIRefonteFormData {
+  name: string;
+  email: string;
+  website: string;
+  phone?: string;
+  message?: string;
+}
 
 export default function SIRefonteContact() {
   const { theme } = useTheme();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    website: '',
-    phone: '',
-    message: ''
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<SIRefonteFormData>();
 
+  const onSubmit = async (data: SIRefonteFormData) => {
     try {
-      // Call Google Ads conversion tracking
-      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-        (window as any).gtag_report_conversion(undefined);
-      }
+      await submitContactForm({ data, source: 'LP - SI Refonte' });
+      setSubmissionStatus('success');
+      reset();
 
-      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'LP - SI Refonte'
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erreur lors de l\'envoi du formulaire');
-      }
-
-      setIsSubmitted(true);
+      // Reset status after delay to show form again (Legacy behavior)
       setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ name: '', email: '', website: '', phone: '', message: '' });
+        setSubmissionStatus('idle');
       }, 5000);
+
     } catch (err) {
       console.error(err);
-    } finally {
-      setIsLoading(false);
+      setSubmissionStatus('error');
     }
   };
 
@@ -84,144 +77,93 @@ export default function SIRefonteContact() {
           {/* Left: Form */}
           <div>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
+            {/* Form Container */}
+            <div className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
               theme === 'dark'
                 ? 'bg-white/5 border-white/10'
                 : 'bg-[var(--surface-primary)] border-gray-200 shadow-lg'
             }`}>
-              <div className="space-y-4">
-                {/* Name */}
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    Nom *
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
-                      }`}
+              {submissionStatus === 'success' ? (
+                <FormFeedback status="success" message="Demande d'Audit Express envoyée avec succès !" />
+              ) : (
+                <>
+                  {submissionStatus === 'error' && <FormFeedback status="error" />}
+                  
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    {/* Name */}
+                    <TextInput
+                      label="Nom"
                       placeholder="Jean Dupont"
-                    />
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    E-mail *
-                  </label>
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
-                    <input
-                      type="email"
+                      icon={<User size={20} />}
+                      error={errors.name?.message}
+                      {...register('name', { required: 'Le nom est requis' })}
                       required
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
-                      }`}
+                    />
+
+                    {/* Email */}
+                    <TextInput
+                      label="E-mail"
+                      type="email"
                       placeholder="jean.dupont@entreprise.fr"
+                      icon={<Mail size={20} />}
+                      error={errors.email?.message}
+                      {...register('email', { 
+                        required: 'L\'email est requis',
+                        pattern: VALIDATION_PATTERNS.EMAIL
+                      })}
+                      required
                     />
-                  </div>
-                </div>
 
-                {/* Website */}
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    Votre site web *
-                  </label>
-                  <div className="relative">
-                    <Globe className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
-                    <input
-                      type="text"
-                      value={formData.website}
-                      onChange={(e) => setFormData({...formData, website: e.target.value})}
-                      className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
-                      }`}
+                    {/* Website */}
+                    <TextInput
+                      label="Votre site web"
                       placeholder="https://votre-site.com"
+                      icon={<Globe size={20} />}
+                      error={errors.website?.message}
+                      {...register('website', { required: 'Le site web est requis' })}
+                      required
                     />
-                  </div>
-                </div>
 
-                {/* Phone */}
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    Téléphone
-                  </label>
-                  <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
-                    <input
+                    {/* Phone */}
+                    <TextInput
+                      label="Téléphone"
                       type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                          : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
-                      }`}
                       placeholder="+33 6 12 34 56 78"
+                      icon={<Phone size={20} />}
+                      error={errors.phone?.message}
+                      {...register('phone', {
+                        pattern: VALIDATION_PATTERNS.PHONE
+                      })}
                     />
-                  </div>
-                </div>
 
-                {/* Message */}
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    Message
-                  </label>
-                  <textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    rows={4}
-                    className={`w-full px-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] resize-none ${
-                      theme === 'dark'
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-[var(--bg-secondary)] border-gray-200 text-gray-900 placeholder-gray-400'
-                    }`}
-                    placeholder="Décrivez brièvement votre contexte SI..."
-                  />
-                </div>
+                    {/* Message */}
+                    <Textarea
+                      label="Message"
+                      placeholder="Décrivez brièvement votre contexte SI..."
+                      rows={4}
+                      error={errors.message?.message}
+                      {...register('message')}
+                    />
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isLoading || isSubmitted}
-                  className={`group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 ${
-                    isLoading || isSubmitted ? 'opacity-50 cursor-not-allowed' : ''
-                  }`}
-                >
-                  {isLoading ? 'Envoi en cours...' : isSubmitted ? 'Demande envoyée !' : 'Je demande mon Audit Express offert'}
-                  {!isLoading && !isSubmitted && <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />}
-                </button>
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 ${
+                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
+                    >
+                      {isSubmitting ? 'Envoi en cours...' : 'Je demande mon Audit Express offert'}
+                      {!isSubmitting && <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />}
+                    </button>
 
-                <p className={`text-xs text-center ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
-                  En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix.
-                </p>
-              </div>
-            </form>
+                    <p className={`text-xs text-center ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
+                      En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix.
+                    </p>
+                  </form>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Right: Benefits/Promise */}

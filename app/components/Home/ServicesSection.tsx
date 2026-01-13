@@ -1,9 +1,29 @@
+import { motion } from 'framer-motion';
 import { RefreshCcw, Smartphone, Shield, Database, Brain, ArrowRight } from 'lucide-react';
 import { SERVICES } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
 
 export function ServicesSection() {
   const { theme } = useTheme();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
   
   return (
     <section id="services" className={`py-24 bg-gradient-to-b relative ${
@@ -41,10 +61,16 @@ export function ServicesSection() {
         </div>
 
         {/* Bento Grid Layout - 2 rows maximum */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {/* Row 1: Three cards */}
           {/* Service 1 - Refonte de SI */}
-          <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
+          <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
               : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
@@ -75,10 +101,10 @@ export function ServicesSection() {
                 <ArrowRight size={18} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Service 2 - Développement produit */}
-          <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
+          <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
               : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
@@ -109,10 +135,10 @@ export function ServicesSection() {
                 <ArrowRight size={18} />
               </a>
             </div>
-          </div>
+          </motion.div>
           
            {/* Service 3 - Services managés */}
-           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
+           <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
               : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
@@ -143,13 +169,19 @@ export function ServicesSection() {
                 <ArrowRight size={18} />
               </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Row 2: Two wider cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"
+        >
            {/* Service 4 - Data Platform */}
-           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
+           <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
               : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
@@ -180,10 +212,10 @@ export function ServicesSection() {
                 <ArrowRight size={18} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
            {/* Service 5 - IA Métier */}
-           <div className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
+           <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
               : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
@@ -214,8 +246,8 @@ export function ServicesSection() {
                 <ArrowRight size={18} />
               </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

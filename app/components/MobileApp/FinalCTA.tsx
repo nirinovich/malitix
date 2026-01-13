@@ -1,67 +1,44 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { CheckCircle2, Mail, Phone, User } from 'lucide-react';
 import { COMPANY_INFO } from '~/utils/constants';
+import { useTheme } from '~/context/ThemeContext';
+import { TextInput } from '~/components/Shared/Form/TextInput';
+import { Textarea } from '~/components/Shared/Form/Textarea';
+import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
+import { VALIDATION_PATTERNS } from '~/utils/validation';
+import { submitContactForm } from '~/utils/forms/submitContact';
 
 interface CTAFormData {
   email: string;
   name: string;
-  phone: string;
+  phone?: string;
   message: string;
 }
 
 const FinalCTA: React.FC = React.memo(() => {
-  const [formData, setFormData] = useState<CTAFormData>({
-    email: '',
-    name: '',
-    phone: '',
-    message: '',
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { theme } = useTheme();
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.currentTarget;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<CTAFormData>();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-
+  const onSubmit = async (data: CTAFormData) => {
     try {
-      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-        (window as any).gtag_report_conversion(undefined);
-      }
+      await submitContactForm({ data, source: 'LP - Mobile App' });
+      setSubmissionStatus('success');
+      reset();
 
-      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'LP - Mobile App'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Erreur lors de l\'envoi du formulaire');
-      }
-
-      setIsSubmitted(true);
       setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ email: '', name: '', phone: '', message: '' });
-      }, 4000);
+        setSubmissionStatus('idle');
+      }, 3000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-    } finally {
-      setIsLoading(false);
+      console.error(err);
+      setSubmissionStatus('error');
     }
   };
 
@@ -81,8 +58,8 @@ const FinalCTA: React.FC = React.memo(() => {
         </div>
 
         <div className="bg-gradient-to-br from-[#2ca3bd]/12 to-[#1e7a8f]/12 border border-[#2ca3bd]/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
-          {isSubmitted ? (
-            <div className="text-center py-8 sm:py-10 space-y-3 sm:space-y-4">
+          {submissionStatus === 'success' ? (
+            <div className="text-center py-8 sm:py-10 space-y-3 sm:space-y-4 animate-in zoom-in">
               <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#2ca3bd]/15 rounded-full">
                 <CheckCircle2 className="text-[#2ca3bd]" size={32} />
               </div>
@@ -92,86 +69,77 @@ const FinalCTA: React.FC = React.memo(() => {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-              {error && (
-                <div className="bg-red-500/10 border border-red-500/30 rounded-lg sm:rounded-xl p-3 text-red-500 text-xs sm:text-sm">
-                  {error}
-                </div>
-              )}
+            <>
+              {submissionStatus === 'error' && <FormFeedback status="error" />}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="relative">
-                  <User className="absolute top-1/2 -translate-y-1/2 left-3 text-[var(--text-secondary)]" size={18} />
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Votre nom"
-                    required
-                    className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg py-3 pl-10 pr-4 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[#2ca3bd] transition-colors"
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <TextInput
+                     label=""
+                     placeholder="Votre nom"
+                     icon={<User size={18} />}
+                     error={errors.name?.message}
+                     {...register('name', { required: 'Le nom est requis' })}
+                     required
                   />
-                </div>
-                <div className="relative">
-                  <Mail className="absolute top-1/2 -translate-y-1/2 left-3 text-[var(--text-secondary)]" size={18} />
-                  <input
+                  
+                  <TextInput
+                    label=""
                     type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     placeholder="Votre email"
+                    icon={<Mail size={18} />}
+                    error={errors.email?.message}
+                    {...register('email', { 
+                      required: 'L\'email est requis',
+                      pattern: VALIDATION_PATTERNS.EMAIL
+                    })}
                     required
-                    className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg py-3 pl-10 pr-4 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[#2ca3bd] transition-colors"
                   />
                 </div>
-              </div>
 
-              <div className="relative">
-                <Phone className="absolute top-1/2 -translate-y-1/2 left-3 text-[var(--text-secondary)]" size={18} />
-                <input
+                <TextInput
+                  label=""
                   type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
                   placeholder="Téléphone (optionnel)"
-                  className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg py-3 pl-10 pr-4 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[#2ca3bd] transition-colors"
+                  icon={<Phone size={18} />}
+                  error={errors.phone?.message}
+                  {...register('phone', {
+                    pattern: VALIDATION_PATTERNS.PHONE
+                  })}
                 />
-              </div>
 
-              <div>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
+                <Textarea
+                  label=""
                   placeholder="Parlez-nous de votre projet..."
                   rows={4}
+                  error={errors.message?.message}
+                  {...register('message', { required: 'Le message est requis' })}
                   required
-                  className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg py-3 px-4 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[#2ca3bd] transition-colors resize-none"
-                ></textarea>
-              </div>
+                />
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-[#2ca3bd] hover:bg-[#1e7a8f] disabled:bg-[#2ca3bd]/50 text-white font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#2ca3bd]/20 flex items-center justify-center gap-2"
-              >
-                {isLoading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    <span>Envoi en cours...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Demander mon audit gratuit</span>
-                    <CheckCircle2 size={20} />
-                  </>
-                )}
-              </button>
-              
-              <p className="text-xs text-center text-[var(--text-muted)] mt-4">
-                En cliquant, vous acceptez d'être recontacté pour votre projet. Vos données restent confidentielles.
-              </p>
-            </form>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#2ca3bd] hover:bg-[#1e7a8f] disabled:bg-[#2ca3bd]/50 text-white font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#2ca3bd]/20 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <span>Envoi en cours...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Demander mon audit gratuit</span>
+                      <CheckCircle2 size={20} />
+                    </>
+                  )}
+                </button>
+                
+                <p className="text-xs text-center text-[var(--text-muted)] mt-4">
+                  En cliquant, vous acceptez d'être recontacté pour votre projet. Vos données restent confidentielles.
+                </p>
+              </form>
+            </>
           )}
         </div>
 

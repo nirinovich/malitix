@@ -7,7 +7,7 @@ export const meta: Route.MetaFunction = () => [
   { name: "description", content: "The page you're looking for doesn't exist" },
 ];
 
-export default function CatchAllPage(): JSX.Element {
+export default function CatchAllPage() {
   return (
     <Layout>
       <NotFound />

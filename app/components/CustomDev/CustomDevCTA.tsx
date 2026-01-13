@@ -1,63 +1,44 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Clock, Rocket, CheckCircle2 } from 'lucide-react';
 import { useTheme } from '~/context/ThemeContext';
+import { TextInput } from '~/components/Shared/Form/TextInput';
+import { Textarea } from '~/components/Shared/Form/Textarea';
+import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
+import { VALIDATION_PATTERNS } from '~/utils/validation';
+import { submitContactForm } from '~/utils/forms/submitContact';
+
+interface CustomDevFormData {
+  name: string;
+  email: string;
+  website?: string;
+  message: string;
+}
 
 export default function CustomDevCTA() {
   const { theme } = useTheme();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    website: '',
-    phone: '',
-    message: '',
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<CustomDevFormData>();
 
+  const onSubmit = async (data: CustomDevFormData) => {
     try {
-      // Appeler le suivi de conversion Google Ads
-      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-        (window as any).gtag_report_conversion(undefined);
-      }
+      await submitContactForm({ data, source: 'Développement sur mesure' });
+      setSubmissionStatus('success');
+      reset();
 
-      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'Développement sur mesure'
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erreur lors de l\'envoi du formulaire');
-      }
-
-      setIsSubmitted(true);
       setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ name: '', email: '', website: '', phone: '', message: '' });
+        setSubmissionStatus('idle');
       }, 3000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-    } finally {
-      setIsLoading(false);
+      console.error(err);
+      setSubmissionStatus('error');
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -112,9 +93,10 @@ export default function CustomDevCTA() {
                 ? 'bg-[#060705]/80 border-white/10'
                 : 'bg-white/80 border-slate-200'
             }`}>
-              {isSubmitted ? (
+              {submissionStatus === 'success' ? (
                 <div className="text-center py-12">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-500 mb-4">
+                   {/* We could use FormFeedback here, but preserving specific icon/style as requested by logic above */}
+                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-500 mb-4 animate-in zoom-in">
                     <CheckCircle2 size={32} />
                   </div>
                   <h3 className={`text-2xl font-bold mb-2 ${
@@ -125,113 +107,73 @@ export default function CustomDevCTA() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {error && (
-                    <div className="p-3 text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg">
-                      {error}
-                    </div>
-                  )}
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className={`block text-sm font-medium mb-1.5 ${
-                        theme === 'dark' ? 'text-white/70' : 'text-gray-700'
-                      }`}>Nom</label>
-                      <input
-                        type="text"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg border outline-none transition-all ${
-                          theme === 'dark'
-                            ? 'bg-white/5 border-white/10 focus:border-[#2ca3bd] text-white'
-                            : 'bg-white border-slate-200 focus:border-[#2ca3bd] text-slate-900'
-                        }`}
+                <>
+                  {submissionStatus === 'error' && <FormFeedback status="error" />}
+                  
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <TextInput
+                        label="Nom"
                         placeholder="Jean Dupont"
-                      />
-                    </div>
-                    <div>
-                      <label className={`block text-sm font-medium mb-1.5 ${
-                        theme === 'dark' ? 'text-white/70' : 'text-gray-700'
-                      }`}>Email</label>
-                      <input
-                        type="email"
-                        name="email"
+                        error={errors.name?.message}
+                        {...register('name', { required: 'Le nom est requis' })}
                         required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg border outline-none transition-all ${
-                          theme === 'dark'
-                            ? 'bg-white/5 border-white/10 focus:border-[#2ca3bd] text-white'
-                            : 'bg-white border-slate-200 focus:border-[#2ca3bd] text-slate-900'
-                        }`}
+                      />
+                      <TextInput
+                        label="Email"
                         placeholder="jean@entreprise.com"
+                        type="email" 
+                        error={errors.email?.message}
+                        {...register('email', { 
+                          required: 'L\'email est requis',
+                          pattern: VALIDATION_PATTERNS.EMAIL
+                        })}
+                        required
                       />
                     </div>
-                  </div>
 
-                  <div>
-                    <label className={`block text-sm font-medium mb-1.5 ${
-                      theme === 'dark' ? 'text-white/70' : 'text-gray-700'
-                    }`}>Site web actuel (optionnel)</label>
-                    <input
-                      type="url"
-                      name="website"
-                      value={formData.website}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg border outline-none transition-all ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10 focus:border-[#2ca3bd] text-white'
-                          : 'bg-white border-slate-200 focus:border-[#2ca3bd] text-slate-900'
-                      }`}
+                    <TextInput
+                      label="Site web actuel (optionnel)"
                       placeholder="https://"
+                      type="url"
+                      error={errors.website?.message}
+                      {...register('website')}
                     />
-                  </div>
 
-                  <div>
-                    <label className={`block text-sm font-medium mb-1.5 ${
-                      theme === 'dark' ? 'text-white/70' : 'text-gray-700'
-                    }`}>Projet</label>
-                    <textarea
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={3}
-                      className={`w-full px-4 py-3 rounded-lg border outline-none transition-all resize-none ${
-                        theme === 'dark'
-                          ? 'bg-white/5 border-white/10 focus:border-[#2ca3bd] text-white'
-                          : 'bg-white border-slate-200 focus:border-[#2ca3bd] text-slate-900'
-                      }`}
+                    <Textarea
+                      label="Projet"
                       placeholder="Décrivez votre besoin..."
-                    ></textarea>
-                  </div>
+                      rows={3}
+                      error={errors.message?.message}
+                      {...register('message', { required: 'Le message est requis' })}
+                      required
+                    />
 
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className={`w-full py-4 px-6 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed ${
-                      theme === 'dark'
-                        ? 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white shadow-lg shadow-[#2ca3bd]/25'
-                        : 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white shadow-lg shadow-[#2ca3bd]/25'
-                    }`}
-                  >
-                    {isLoading ? (
-                      <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    ) : (
-                      <>
-                        <span>Réserver mon audit gratuit</span>
-                        <Rocket size={20} />
-                      </>
-                    )}
-                  </button>
-                  <div className={`text-center text-xs ${
-                    theme === 'dark' ? 'text-white/40' : 'text-gray-400'
-                  }`}>
-                    Aucun engagement. Réponse sous 24h ouvrées.
-                  </div>
-                </form>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`w-full py-4 px-6 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed ${
+                        theme === 'dark'
+                          ? 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white shadow-lg shadow-[#2ca3bd]/25'
+                          : 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white shadow-lg shadow-[#2ca3bd]/25'
+                      }`}
+                    >
+                      {isSubmitting ? (
+                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      ) : (
+                        <>
+                          <span>Réserver mon audit gratuit</span>
+                          <Rocket size={20} />
+                        </>
+                      )}
+                    </button>
+                    <div className={`text-center text-xs ${
+                      theme === 'dark' ? 'text-white/40' : 'text-gray-400'
+                    }`}>
+                      Aucun engagement. Réponse sous 24h ouvrées.
+                    </div>
+                  </form>
+                </>
               )}
             </div>
           </div>
