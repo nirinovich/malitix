@@ -10,7 +10,7 @@ export function Layout({ children }: BaseComponentProps) {
   return (
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-[#060705]' : 'bg-[#f5f7f9]'}`}>
       <Navbar theme={theme} />
-      <main className="flex-grow">{children}</main>
+      <main id="main-content" className="flex-grow">{children}</main>
       <Footer />
       <ScrollToTop />
     </div>

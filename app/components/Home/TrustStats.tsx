@@ -158,6 +158,9 @@ export function TrustStats() {
               <img 
                 src="/images/GCP.webp" 
                 alt="Google Cloud Platform" 
+                loading="lazy"
+                width={80}
+                height={32}
                 className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
                   theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
@@ -169,6 +172,9 @@ export function TrustStats() {
               <img 
                 src="/images/Cisco.webp" 
                 alt="Cisco" 
+                loading="lazy"
+                width={80}
+                height={32}
                 className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
                   theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
@@ -180,6 +186,9 @@ export function TrustStats() {
               <img 
                 src="/images/Hubspot.webp" 
                 alt="HubSpot" 
+                loading="lazy"
+                width={80}
+                height={32}
                 className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
                   theme === 'dark' ? 'grayscale' : 'invert'
                 }`}
@@ -191,6 +200,9 @@ export function TrustStats() {
               <img 
                 src="/images/Salesforce.webp" 
                 alt="Salesforce" 
+                loading="lazy"
+                width={80}
+                height={32}
                 className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
                   theme === 'dark' ? 'grayscale' : 'invert'
                 }`}

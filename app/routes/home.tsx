@@ -1,9 +1,12 @@
+import { Suspense, lazy } from "react";
 import type { Route } from "./+types/home";
 import { HeroSection } from "~/components/Home/HeroSection";
-import { ServicesSection } from "~/components/Home/ServicesSection";
-import { TrustStats } from "~/components/Home/TrustStats";
-import { CTASection } from "~/components/Home/CTASection";
 import { Layout } from "~/components/Shared/Layout";
+
+// Lazy load below-the-fold content
+const ServicesSection = lazy(() => import("~/components/Home/ServicesSection").then(module => ({ default: module.ServicesSection })));
+const TrustStats = lazy(() => import("~/components/Home/TrustStats").then(module => ({ default: module.TrustStats })));
+const CTASection = lazy(() => import("~/components/Home/CTASection").then(module => ({ default: module.CTASection })));
 
 export const meta: Route.MetaFunction = () => [
   { title: "Malitix | Excellence technologique, innovation continue" },
@@ -27,9 +30,11 @@ export default function Home() {
     <>
       <Layout>
         <HeroSection />
-        <ServicesSection />
-        <TrustStats />
-        <CTASection />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <ServicesSection />
+          <TrustStats />
+          <CTASection />
+        </Suspense>
       </Layout>
     </>
   );

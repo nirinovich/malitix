@@ -9,7 +9,7 @@ const testimonials = [
     role: 'CEO & Co-founder',
     company: 'Karlisolutions',
     image: '/images/testimonials/selim-saadi.png',
-    quote: "Nous avons pu dÃ©velopper notre solution dans sa premiÃ¨re version (dÃ©jÃ  trÃ¨s complÃ¨te) avec des Ã©quipes de Malitix qui ont parfaitement compris notre besoin et notre ambition. Elles nous ont aidÃ© Ã  cadrer le sujet et Ã  organiser un suivi rÃ©gulier et flexible. Nous avons eu d'excellentes relations avec le chef de projet digital, les dÃ©veloppeurs, la business analyst et les Ã©quipes commerciales.",
+    quote: "Nous avons pu développer notre solution dans sa première version (déjà très complète) avec des équipes de Malitix qui ont parfaitement compris notre besoin et notre ambition. Elles nous ont aidé à cadrer le sujet et à organiser un suivi régulier et flexible. Nous avons eu d'excellentes relations avec le chef de projet digital, les développeurs, la business analyst et les équipes commerciales.",
     rating: 5,
   },
   {
@@ -25,7 +25,7 @@ const testimonials = [
     role: 'CISO/CTO',
     company: 'Tersadia',
     image: '/images/testimonials/riad.png',
-    quote: "Nous travaillons depuis 3 ans avec Malitix Ã  qui nous avons confiÃ© notre supervision et monitoring 24/7 sur un pÃ©rimÃ¨tre assez large (SystÃ¨me d'informations, Cyber sÃ©curitÃ©). Une Ã©quipe rÃ©active, qui respecte les consignes, avec un suivi commercial prÃ©cis et un respect des SLA qui nous permettent d'Ãªtre confiants sur notre collaboration actuelle et future.",
+    quote: "Nous travaillons depuis 3 ans avec Malitix à qui nous avons confié notre supervision et monitoring 24/7 sur un périmètre assez large (Système d'informations, Cyber sécurité). Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA qui nous permettent d'être confiants sur notre collaboration actuelle et future.",
     rating: 5,
   },
 ];
@@ -70,20 +70,20 @@ export default function SprintTestimonials() {
           <div className="inline-flex items-center justify-center gap-2 mb-4">
             <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
-              TÃ©moignages
+              Témoignages
             </span>
             <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
           <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Ils Ã‰taient BloquÃ©s, <br className="hidden sm:block" />
-            <span className="text-[#2ca3bd]">Nous Avons LivrÃ©</span>
+            Ils Étaient Bloqués, <br className="hidden sm:block" />
+            <span className="text-[#2ca3bd]">Nous Avons Livré</span>
           </h2>
           <p className={`text-base sm:text-lg px-4 ${
             theme === 'dark' ? 'text-white/70' : 'text-gray-600'
           }`}>
-            Des rÃ©sultats concrets pour des entreprises qui nous ont fait confiance
+            Des résultats concrets pour des entreprises qui nous ont fait confiance
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default function SprintTestimonials() {
         <div 
           className="relative max-w-4xl mx-auto outline-none"
           role="region"
-          aria-label="TÃ©moignages clients"
+          aria-label="Témoignages clients"
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === 'ArrowLeft') {

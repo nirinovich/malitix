@@ -88,7 +88,7 @@ export default function CustomDevGuarantee() {
                 className={`group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                   theme === 'dark' 
                     ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
-                    : 'bg-gradient-to-br from-\[var(--surface-primary)\] to-\[var(--surface-primary)\]/50 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
+                    : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/50 border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40'
                 }`}
               >
                 <div className={`mb-4 group-hover:scale-110 transition-transform duration-300 inline-block ${

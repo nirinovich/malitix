@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { onCLS, onINP, onLCP } from "web-vitals";
 import {
   isRouteErrorResponse,
   Links,
@@ -49,6 +51,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
       </head>
       <body className="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-200">
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-[#2ca3bd] focus:text-white focus:font-bold focus:rounded-md outline-none focus:ring-4 focus:ring-white/20 transition-all"
+        >
+          Skip to content
+        </a>
         <ThemeProvider>
           {children}
         </ThemeProvider>
@@ -60,6 +68,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Report web vitals only in development
+    if (import.meta.env.DEV) {
+      onCLS(console.log);
+      onINP(console.log);
+      onLCP(console.log);
+    }
+  }, []);
   return <Outlet />;
 }
 

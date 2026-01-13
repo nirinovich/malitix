@@ -117,13 +117,15 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
               <img
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
-                className={`h-10 transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 absolute pointer-events-none' : 'opacity-100 relative'}`}
+                fetchPriority="high"
+                className={`h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 absolute pointer-events-none' : 'opacity-100 relative'}`}
                 style={{ zIndex: theme === 'dark' ? 0 : 1 }}
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
-                className={`h-10 transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100 relative' : 'opacity-0 absolute pointer-events-none'}`}
+                fetchPriority="high"
+                className={`h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100 relative' : 'opacity-0 absolute pointer-events-none'}`}
                 style={{ zIndex: theme === 'dark' ? 1 : 0 }}
               />
             </Link>
@@ -198,7 +200,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[#2ca3bd] transition-colors">
+                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[var(--brand-text)] transition-colors">
                               {useCase.label}
                             </div>
                             <div className={`text-xs ${
@@ -232,6 +234,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Contact */}
             <button
               onClick={() => handleNavClick('#contact')}
+              aria-label="Contactez-nous"
               className={`relative group py-2 transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
@@ -258,8 +261,11 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
 
             {/* CTA Button */}
             <button
+              aria-label="Devis Gratuit - Contactez-nous"
               onClick={() => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   (window as any).gtag_report_conversion('#contact');
                 }
                 handleNavClick('#contact');
@@ -270,10 +276,10 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - 44x44px target */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer ${
+            className={`md:hidden h-11 w-11 flex items-center justify-center rounded-lg transition-colors cursor-pointer ${
               theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-[var(--bg-secondary)]'
             }`}
             aria-label="Toggle menu"
@@ -299,7 +305,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Accueil */}
            <button
             onClick={() => handleNavClick('#home')}
-            className={`block w-full text-left py-2 font-medium ${
+            className={`block w-full text-left py-3 font-medium ${
               theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
             }`}
           >
@@ -309,7 +315,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Services */}
             <button
             onClick={() => handleNavClick('#services')}
-            className={`block w-full text-left py-2 font-medium ${
+            className={`block w-full text-left py-3 font-medium ${
               theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
             }`}
           >
@@ -327,7 +333,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
                <button
                   key={useCase.href}
                   onClick={() => handleUseCaseClick(useCase.href)}
-                  className={`block w-full text-left py-2 ${
+                  className={`block w-full text-left py-3 ${
                     theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                   }`}
                 >
@@ -339,7 +345,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* À propos */}
             <button
             onClick={() => handleNavClick('#about')}
-            className={`block w-full text-left py-2 font-medium ${
+            className={`block w-full text-left py-3 font-medium ${
               theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
             }`}
           >
@@ -349,7 +355,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Contact */}
             <button
             onClick={() => handleNavClick('#contact')}
-            className={`block w-full text-left py-2 font-medium ${
+            className={`block w-full text-left py-3 font-medium ${
               theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
             }`}
           >
@@ -360,7 +366,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
            <div className="pt-4 flex items-center justify-between gap-4 border-t border-gray-200/10">
                <button
                 onClick={toggleTheme}
-                className={`p-2 rounded-lg bg-gray-100/10 ${
+                className={`p-3 rounded-lg bg-gray-100/10 ${
                   theme === 'dark' ? 'text-white' : 'text-gray-900 bg-gray-200'
                 }`}
                 aria-label="Toggle theme"

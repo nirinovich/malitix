@@ -5,9 +5,10 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "build", ".react-router", "node_modules"] },
+  { ignores: ["dist", "build", ".react-router", "node_modules", "legacy"] },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2022,
@@ -29,14 +30,20 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/explicit-function-return-types": [
-        "warn",
-        {
-          allowExpressions: true,
-          allowTypedFunctionExpressions: true,
-          allowHigherOrderFunctions: true,
-        },
-      ],
+      // "@typescript-eslint/explicit-function-return-types": [
+      //   "warn",
+      //   {
+      //     allowExpressions: true,
+      //     allowTypedFunctionExpressions: true,
+      //     allowHigherOrderFunctions: true,
+      //   },
+      // ],
+    },
+  },
+  {
+    files: ["app/routes/**/*.tsx", "app/root.tsx", "app/context/**/*.tsx"],
+    rules: {
+      "react-refresh/only-export-components": "off",
     },
   }
 );

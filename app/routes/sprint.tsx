@@ -1,10 +1,12 @@
+import { Suspense, lazy } from "react";
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
 import { ScrollToTop } from "~/components/Shared/ScrollToTop";
 import SprintHero from "~/components/Sprint/SprintHero";
 import SprintProblem from "~/components/Sprint/SprintProblem";
 import SprintSolution from "~/components/Sprint/SprintSolution";
-import SprintTestimonials from "~/components/Sprint/SprintTestimonials";
+// Lazy load Testimonials
+const SprintTestimonials = lazy(() => import("~/components/Sprint/SprintTestimonials"));
 import SprintBenefits from "~/components/Sprint/SprintBenefits";
 import SprintContact from "~/components/Sprint/SprintContact";
 
@@ -30,7 +32,9 @@ export default function SprintCommando() {
         <SprintHero />
         <SprintProblem />
         <SprintSolution />
-        <SprintTestimonials />
+        <Suspense fallback={<div className="h-96 w-full animate-pulse bg-gray-100 dark:bg-white/5" />}>
+          <SprintTestimonials />
+        </Suspense>
         <SprintBenefits />
         <SprintContact />
       </Layout>

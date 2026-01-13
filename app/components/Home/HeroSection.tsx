@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Code, Database, Cpu, Sparkles } from 'lucide-react';
 import { HERO_CONTENT, CTA_TEXT } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
 
 export function HeroSection() {
   const { theme } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
   
   return (
     <section id="home" className={`relative min-h-[80vh] flex items-center overflow-hidden ${
@@ -57,9 +58,9 @@ export function HeroSection() {
                 <div className={`rounded-lg p-3 font-mono text-xs space-y-1 ${
                   theme === 'dark' ? 'bg-[#060705]/50' : 'bg-[var(--bg-secondary)]'
                 }`}>
-                  <div className="text-[#2ca3bd]">{'<Component>'}</div>
+                  <div className="text-[var(--brand-text)]">{'<Component>'}</div>
                   <div className={`pl-4 ${theme === 'dark' ? 'text-white/70' : 'text-gray-700'}`}>{'Innovation'}</div>
-                  <div className="text-[#2ca3bd]">{'</Component>'}</div>
+                  <div className="text-[var(--brand-text)]">{'</Component>'}</div>
                 </div>
               </div>
 
@@ -78,7 +79,7 @@ export function HeroSection() {
                   </div>
                   <div>
                     <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Data Platform</div>
-                    <div className="text-[#2ca3bd] text-xs font-mono">99.9% uptime</div>
+                    <div className="text-[var(--brand-text)] text-xs font-mono">99.9% uptime</div>
                   </div>
                 </div>
               </div>
@@ -117,7 +118,7 @@ export function HeroSection() {
                 style={{ animationDelay: '1.5s' }}
               >
                 <div className="flex items-center gap-4">
-                  <Sparkles className="text-[#2ca3bd]" size={32} />
+                  <Sparkles className="text-[var(--brand-text)]" size={32} />
                   <div>
                     <div className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>600+</div>
                     <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Projets réussis</div>
@@ -166,7 +167,7 @@ export function HeroSection() {
 
           {/* Right Side - Content */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left space-y-8"
@@ -179,7 +180,7 @@ export function HeroSection() {
               {HERO_CONTENT.animated.headline.split(' ').map((word, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
                   className="inline-block mr-3"
@@ -191,7 +192,7 @@ export function HeroSection() {
 
             {/* Subheadline */}
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
               className={`text-lg sm:text-xl max-w-2xl leading-relaxed ${
@@ -207,7 +208,9 @@ export function HeroSection() {
               <a
                 href="#contact"
                 onClick={() => {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     (window as any).gtag_report_conversion('#contact');
                   }
                 }}
@@ -233,15 +236,15 @@ export function HeroSection() {
               theme === 'dark' ? 'border-white/10' : 'border-gray-200'
             }`}>
               <div>
-                <div className="text-3xl font-bold text-[#2ca3bd]">600+</div>
+                <div className="text-3xl font-bold text-[var(--brand-text)]">600+</div>
                 <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Projets</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#2ca3bd]">350+</div>
+                <div className="text-3xl font-bold text-[var(--brand-text)]">350+</div>
                 <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Ingénieurs</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#2ca3bd]">24/7</div>
+                <div className="text-3xl font-bold text-[var(--brand-text)]">24/7</div>
                 <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Support</div>
               </div>
             </div>

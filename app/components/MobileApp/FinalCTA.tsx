@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { CheckCircle2, Mail, Phone, User } from 'lucide-react';
 import { COMPANY_INFO } from '~/utils/constants';
-import { useTheme } from '~/context/ThemeContext';
+// import { useTheme } from '~/context/ThemeContext';
 import { TextInput } from '~/components/Shared/Form/TextInput';
 import { Textarea } from '~/components/Shared/Form/Textarea';
 import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
@@ -17,7 +17,7 @@ interface CTAFormData {
 }
 
 const FinalCTA: React.FC = React.memo(() => {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const {

@@ -11,7 +11,7 @@
 - ✅ **SEO Ready** - React Helmet for meta tags and structured data
 - ✅ **Fully Typed** - TypeScript strict mode, zero `any` types
 - ✅ **Performance** - Bundle analysis, code splitting, lazy loading
-- ✅ **Accessibility** - WCAG 2.1 AA compliance, keyboard navigation
+- ✅ **Accessibility** - WCAG 2.1 AA compliance, keyboard navigation, reduced motion support, high contrast mode
 
 ## Tech Stack
 

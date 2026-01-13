@@ -1,4 +1,4 @@
-import { ArrowRight, Code2, TrendingUp, Zap, Shield } from 'lucide-react';
+import { ArrowRight, Zap, Shield } from 'lucide-react';
 import { useTheme } from '~/context/ThemeContext';
 
 export default function CustomDevHero() {
@@ -13,7 +13,7 @@ export default function CustomDevHero() {
     <section className={`relative min-h-screen flex items-center overflow-hidden ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-br from-\[var(--bg-primary)\] via-\[var(--bg-primary)\] to-\[var(--bg-primary)\]'
+        : 'bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-primary)]'
     }`}>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

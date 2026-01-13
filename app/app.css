@@ -34,6 +34,9 @@ body {
   --brand-primary-light: #3bb8d4;
   --brand-primary-dark: #248fa5;
   --brand-secondary: #1e7a8f;
+
+  /* Accessible Text Color for Brand */
+  --brand-text: #2ca3bd;
   
   /* iPhone Frame */
   --iphone-frame: #ffffff;
@@ -79,6 +82,9 @@ body {
   --brand-primary-light: #3bb8d4;
   --brand-primary-dark: #248fa5;
   --brand-secondary: #1e7a8f;
+
+  /* Accessible Text Color for Brand (Darker for Light Mode) */
+  --brand-text: #0e8aa5;
   
   /* iPhone Frame */
   --iphone-frame: #000000;
@@ -163,4 +169,9 @@ body {
 
 .animate-scroll-left {
   animation: scroll-left 40s linear infinite;
+}
+/* Accessibility - Focus rings */
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
 }

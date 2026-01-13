@@ -183,14 +183,14 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US7
 
-- [ ] T063 [US7] Ensure global breakpoints in app/app.css reflect legacy
-- [ ] T064 [US7] Verify mobile layout for Home components/Home/*
-- [ ] T065 [P] [US7] Verify tablet layout for components/Home/*
-- [ ] T066 [P] [US7] Verify desktop layout for components/Home/*
-- [ ] T067 [US7] Validate responsive styles for service pages components/*/*
-- [ ] T068 [US7] Ensure buttons meet 44x44px tap target on mobile
-- [ ] T069 [US7] Ensure no horizontal scroll across routes
-- [ ] T070 [US7] Validate CLS stability across breakpoints
+- [X] T063 [US7] Ensure global breakpoints in app/app.css reflect legacy
+- [X] T064 [US7] Verify mobile layout for Home components/Home/*
+- [X] T065 [P] [US7] Verify tablet layout for components/Home/*
+- [X] T066 [P] [US7] Verify desktop layout for components/Home/*
+- [X] T067 [US7] Validate responsive styles for service pages components/*/*
+- [X] T068 [US7] Ensure buttons meet 44x44px tap target on mobile
+- [X] T069 [US7] Ensure no horizontal scroll across routes
+- [X] T070 [US7] Validate CLS stability across breakpoints
 
 **Checkpoint**: Responsive parity achieved
 
@@ -204,13 +204,13 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US9
 
-- [ ] T071 [US9] Ensure route-level code splitting (confirm in build output)
-- [ ] T072 [P] [US9] Lazy-load heavy components with React.lazy() where safe
-- [ ] T073 [US9] Analyze bundle with vite-plugin-bundle-analyzer
-- [ ] T074 [P] [US9] Optimize above-the-fold images (vite imports) and below-the-fold (loading="lazy")
-- [ ] T075 [US9] Add web-vitals reporting in app/main.tsx
-- [ ] T076 [US9] Remove unused dependencies and dead code
-- [ ] T077 [US9] Ensure minimal CLS with fixed image dimensions and fonts
+- [x] T071 [US9] Ensure route-level code splitting (confirm in build output)
+- [x] T072 [P] [US9] Lazy-load heavy components with React.lazy() where safe
+- [x] T073 [US9] Analyze bundle with vite-plugin-bundle-analyzer
+- [x] T074 [P] [US9] Optimize above-the-fold images (vite imports) and below-the-fold (loading="lazy")
+- [x] T075 [US9] Add web-vitals reporting in app/main.tsx
+- [x] T076 [US9] Remove unused dependencies and dead code
+- [x] T077 [US9] Ensure minimal CLS with fixed image dimensions and fonts
 
 **Checkpoint**: Performance targets met
 
@@ -224,14 +224,14 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Implementation for US8
 
-- [ ] T078 [US8] Ensure focus states visible in app/app.css
-- [ ] T079 [P] [US8] Add aria-labels/roles for interactive elements in components/Shared/Navbar.tsx
-- [ ] T080 [P] [US8] Associate form labels with inputs in components/Shared/Form/*
-- [ ] T081 [US8] Provide alt text for images across components/*/*
-- [ ] T082 [US8] Ensure color contrast meets AA in app/app.css
-- [ ] T083 [US8] Provide skip-to-content link in app/root.tsx
-- [ ] T084 [US8] Respect prefers-reduced-motion sitewide
-- [ ] T085 [US8] Update docs/accessibility/checklist.md
+- [x] T078 [US8] Ensure focus states visible in app/app.css
+- [x] T079 [P] [US8] Add aria-labels/roles for interactive elements in components/Shared/Navbar.tsx
+- [x] T080 [P] [US8] Associate form labels with inputs in components/Shared/Form/*
+- [x] T081 [US8] Provide alt text for images across components/*/*
+- [x] T082 [US8] Ensure color contrast meets AA in app/app.css
+- [x] T083 [US8] Provide skip-to-content link in app/root.tsx
+- [x] T084 [US8] Respect prefers-reduced-motion sitewide
+- [x] T085 [US8] Update docs/accessibility/checklist.md
 
 **Checkpoint**: A11y checks passing; WCAG AA compliance
 
@@ -241,13 +241,13 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 **Purpose**: Stabilize, document, and prepare for deployment/maintenance
 
-- [ ] T086 [P] Documentation updates in README.md and docs/
-- [ ] T087 Code cleanup and dead code removal across app/**
+- [x] T086 [P] Documentation updates in README.md and docs/
+- [x] T087 Code cleanup and dead code removal across app/**
 - [ ] T088 [P] Add Storybook stories for shared components (optional) .storybook/
-- [ ] T089 Improve error handling and logging in utils/*
-- [ ] T090 Security review of dependencies (pnpm audit) and updates
-- [ ] T091 [P] Archive legacy/ code after parity confirmed
-- [ ] T092 Release notes and post-launch monitoring docs in docs/ops/release-notes.md
+- [x] T089 Improve error handling and logging in utils/*
+- [x] T090 Security review of dependencies (pnpm audit) and updates
+- [x] T091 [P] Archive legacy/ code after parity confirmed
+- [x] T092 Release notes and post-launch monitoring docs in docs/ops/release-notes.md
 
 ---
 

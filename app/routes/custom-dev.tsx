@@ -1,13 +1,15 @@
+import { Suspense, lazy } from "react";
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
 import { ScrollToTop } from "~/components/Shared/ScrollToTop";
 import CustomDevHero from "~/components/CustomDev/CustomDevHero";
 import CustomDevProblem from "~/components/CustomDev/CustomDevProblem";
-import CustomDevSolution from "~/components/CustomDev/CustomDevSolution";
-import CustomDevStack from "~/components/CustomDev/CustomDevStack";
-import CustomDevTestimonials from "~/components/CustomDev/CustomDevTestimonials";
-import CustomDevGuarantee from "~/components/CustomDev/CustomDevGuarantee";
-import CustomDevCTA from "~/components/CustomDev/CustomDevCTA";
+
+const CustomDevSolution = lazy(() => import("~/components/CustomDev/CustomDevSolution"));
+const CustomDevStack = lazy(() => import("~/components/CustomDev/CustomDevStack"));
+const CustomDevTestimonials = lazy(() => import("~/components/CustomDev/CustomDevTestimonials"));
+const CustomDevGuarantee = lazy(() => import("~/components/CustomDev/CustomDevGuarantee"));
+const CustomDevCTA = lazy(() => import("~/components/CustomDev/CustomDevCTA"));
 
 export const meta: Route.MetaFunction = () => [
   { title: "Développement Sur Mesure | Application Web & Mobile en 90 Jours - Malitix" },
@@ -30,11 +32,13 @@ export default function CustomDevelopment() {
       <Layout>
         <CustomDevHero />
         <CustomDevProblem />
-        <CustomDevSolution />
-        <CustomDevStack />
-        <CustomDevTestimonials />
-        <CustomDevGuarantee />
-        <CustomDevCTA />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <CustomDevSolution />
+          <CustomDevStack />
+          <CustomDevTestimonials />
+          <CustomDevGuarantee />
+          <CustomDevCTA />
+        </Suspense>
       </Layout>
     </>
   );
