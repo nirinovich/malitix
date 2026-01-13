@@ -1,26 +1,38 @@
-import { Meta } from "react-router";
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
 import { ScrollToTop } from "~/components/Shared/ScrollToTop";
+import SprintHero from "~/components/Sprint/SprintHero";
+import SprintProblem from "~/components/Sprint/SprintProblem";
+import SprintSolution from "~/components/Sprint/SprintSolution";
+import SprintTestimonials from "~/components/Sprint/SprintTestimonials";
+import SprintBenefits from "~/components/Sprint/SprintBenefits";
+import SprintContact from "~/components/Sprint/SprintContact";
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Sprint Commando | Malitix" },
-  { name: "description", content: "Sprint Commando Services" },
+  { title: "Sprint Commando | Développement Web Ultra-Rapide en 2 Semaines - Malitix" },
+  { name: "description", content: "Obtenez votre site web professionnel en seulement 2 semaines avec Sprint Commando. Développement agile, qualité premium et mise en ligne garantie. Idéal pour les startups et PME qui veulent avancer vite." },
+  { property: "og:title", content: "Sprint Commando | Site Web en 2 Semaines - Malitix" },
+  { property: "og:description", content: "Développement web ultra-rapide en 2 semaines. Méthodologie agile, qualité premium et mise en ligne garantie pour votre projet digital." },
+  { property: "og:type", content: "website" },
+  { property: "og:url", content: "https://www.malitix.com/sprint-commando" },
+  { property: "og:image", content: "https://www.malitix.com/images/sprint-commando-og.jpg" },
+  { name: "twitter:card", content: "summary_large_image" },
+  { name: "twitter:title", content: "Sprint Commando | Site Web en 2 Semaines" },
+  { name: "twitter:description", content: "Développement web ultra-rapide. Obtenez votre site professionnel en 2 semaines avec Sprint Commando." },
+  { tagName: "link", rel: "canonical", href: "https://www.malitix.com/sprint-commando" }
 ];
 
-export default function SprintPage(): JSX.Element {
+export default function SprintCommando() {
   return (
     <>
       <ScrollToTop />
       <Layout>
-        <div className="container mx-auto px-4 py-24 pt-32">
-          <h1 className="text-5xl font-bold mb-4 text-slate-900 dark:text-white">
-            Sprint Commando
-          </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
-            Coming soon - Fast-track development sprints.
-          </p>
-        </div>
+        <SprintHero />
+        <SprintProblem />
+        <SprintSolution />
+        <SprintTestimonials />
+        <SprintBenefits />
+        <SprintContact />
       </Layout>
     </>
   );

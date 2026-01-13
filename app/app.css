@@ -1,85 +1,157 @@
 @import "tailwindcss";
 
-/* Design Tokens */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
-  /* Colors */
-  --color-primary: #2563eb;
-  --color-primary-dark: #1e40af;
-  --color-secondary: #7c3aed;
-  --color-secondary-dark: #6d28d9;
-  
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  
-  /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
-  
-  /* Transitions */
-  --duration-fast: 150ms;
-  --duration-base: 200ms;
-  --duration-slow: 300ms;
+  /* Custom font family */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Reset and Base Styles */
+/* Base styles */
 * {
-  @apply border-slate-200 dark:border-slate-800;
-}
-
-html {
   scroll-behavior: smooth;
 }
 
-html,
 body {
-  @apply h-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50;
-  
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
-
-/* Respect prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    @apply !animate-none !transition-none;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Accessibility */
-.sr-only {
-  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
-}
-
-/* Focus Visible Ring */
-:focus-visible {
-  @apply outline-2 outline-offset-2 outline-blue-500 dark:outline-blue-400;
-}
-
-/* Selection Styles */
-::selection {
-  @apply bg-blue-500 dark:bg-blue-400 text-white dark:text-slate-900;
-}
-
-/* Smooth Transitions for Theme Changes */
-body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  /* Use variables for background and text color to ensure theme switching works immediately */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   transition: background-color 200ms, color 200ms;
 }
+
+/* ===========================================
+   SEMANTIC COLOR SYSTEM
+   These CSS variables change based on .dark or .light class
+   =========================================== */
+
+/* Default (Dark) theme */
+:root,
+.dark {
+  color-scheme: dark;
+
+  /* Brand colors */
+  --brand-primary: #2ca3bd;
+  --brand-primary-light: #3bb8d4;
+  --brand-primary-dark: #248fa5;
+  --brand-secondary: #1e7a8f;
+  
+  /* iPhone Frame */
+  --iphone-frame: #ffffff;
+  --iphone-notch: #1a1a1a;
+  --iphone-camera-border: #333333;
+  
+  /* Background colors */
+  --bg-primary: #060705;
+  --bg-secondary: #0a0e0d;
+  --bg-tertiary: #0f1412;
+  --bg-elevated: #1a1d1b;
+  
+  /* Surface colors */
+  --surface-primary: #060705;
+  --surface-secondary: #0a0e0d;
+  --surface-elevated: rgba(44, 163, 189, 0.05);
+  --surface-hover: rgba(44, 163, 189, 0.1);
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --text-muted: rgba(255, 255, 255, 0.4);
+  
+  /* Border colors */
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(44, 163, 189, 0.2);
+  --border-hover: rgba(44, 163, 189, 0.4);
+  --border-focus: #2ca3bd;
+  
+  /* Accent colors */
+  --accent-primary: rgba(44, 163, 189, 0.1);
+  --accent-secondary: rgba(44, 163, 189, 0.05);
+  --accent-glow: rgba(44, 163, 189, 0.3);
+}
+
+/* Light theme */
+.light {
+  color-scheme: light;
+
+  /* Brand colors (same) */
+  --brand-primary: #2ca3bd;
+  --brand-primary-light: #3bb8d4;
+  --brand-primary-dark: #248fa5;
+  --brand-secondary: #1e7a8f;
+  
+  /* iPhone Frame */
+  --iphone-frame: #000000;
+  --iphone-notch: #000000;
+  --iphone-camera-border: #1a1a1a;
+  
+  /* Background colors - Soft neutrals with blue undertones */
+  --bg-primary: #fefefe;
+  --bg-secondary: #fefefe;
+  --bg-tertiary: #fefefe;
+  --bg-elevated: #fefefe;
+  
+  /* Surface colors */
+  --surface-primary: #fefefe;
+  --surface-secondary: #fefefe;
+  --surface-elevated: rgba(44, 163, 189, 0.04);
+  --surface-hover: rgba(44, 163, 189, 0.06);
+  
+  /* Text colors - Deeper for better contrast */
+  --text-primary: #1a2332;
+  --text-secondary: #3d4f5f;
+  --text-tertiary: #5d7284;
+  --text-muted: #8798a8;
+  
+  /* Border colors */
+  --border-primary: rgba(0, 0, 0, 0.1);
+  --border-secondary: rgba(44, 163, 189, 0.15);
+  --border-hover: rgba(44, 163, 189, 0.3);
+  --border-focus: #2ca3bd;
+  
+  /* Accent colors */
+  --accent-primary: rgba(44, 163, 189, 0.1);
+  --accent-secondary: rgba(44, 163, 189, 0.05);
+  --accent-glow: rgba(44, 163, 189, 0.2);
+}
+
+/* Utilities */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--brand-primary), var(--brand-primary-light));
+}
+
+.text-gradient-dark {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #ffffff, #a5a5a5);
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+

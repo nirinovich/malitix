@@ -1,5 +1,37 @@
 /* Theme Types */
 export type Theme = "light" | "dark";
+export type ThemeMode = Theme; // Alias for legacy compatibility
+
+/* Legacy Types for Pixel Perfect Migration */
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  fullDescription?: string;
+}
+
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
+export interface Stat {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+
+export interface SocialLink {
+  name: string;
+  href: string;
+  icon: string;
+}
+
+export type HeroVariant = 'animated' | 'clean';
+export type ServicesVariant = 'bento' | 'reference';
+export type NavbarVariant = 'default' | 'centered' | 'minimal';
+
 
 /* Common Component Props */
 export interface BaseComponentProps {
@@ -53,21 +85,37 @@ export interface FormSubmitResponse {
   error?: string;
 }
 
-/* Service Types */
+/* Legacy Types Support */
 export interface Service {
   id: string;
-  name: string;
+  title: string; // Legacy used title, new used name. Keeping title as primary from legacy.
   description: string;
-  icon?: React.ReactNode;
+  icon: string | React.ReactNode; // Support both string (legacy) and Node (new)
+  fullDescription?: string;
   href?: string;
 }
 
-/* Navigation Types */
 export interface NavLink {
   label: string;
   href: string;
   external?: boolean;
 }
+
+export interface Stat {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+
+export interface SocialLink {
+  name: string;
+  href: string;
+  icon: string;
+}
+
+export type HeroVariant = 'animated' | 'clean';
+export type ServicesVariant = 'bento' | 'reference';
+export type NavbarVariant = 'default' | 'centered' | 'minimal';
 
 /* SEO Types */
 export interface SEOConfig {
