@@ -92,7 +92,7 @@ export default function LegalNotice() {
             </h2>
             <p>
               <strong>Téléphone :</strong> <a href="tel:+33184806248" className="text-[#2ca3bd] hover:underline">+33 1 84 80 62 48</a><br />
-              <strong>E-mail :</strong> <a href="mailto:lola.rakotoarison@etechconsulting-mg.com" className="text-[#2ca3bd] hover:underline">lola.rakotoarison@etechconsulting-mg.com</a>
+              <strong>E-mail :</strong> <a href="mailto:infos@malitix.com" className="text-[#2ca3bd] hover:underline">infos@malitix.com</a>
             </p>
           </section>
         </div>
