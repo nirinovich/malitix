@@ -23,14 +23,14 @@ export default function LegalNotice() {
             </h2>
             <p className="mb-4">
               Le site <strong>https://www.malitix.com</strong> est édité par la société{' '}
-              <strong>ETECH CONSULTING SARLU</strong> ayant son siège social au{' '}
-              <strong>2ème étage de l'Immeuble TRADE TOWER ALAROBIA</strong>, immatriculée au 
-              Registre du Commerce et des Sociétés de Paris sous le numéro{' '}
-              <strong>2001 B 00268</strong>.
+              <strong>TOGETH'UP, SARL</strong> ayant son siège social au{' '}
+              <strong>26 rue de Londres, 75009 PARIS, France</strong>, immatriculée au 
+              Registre du Commerce et des Sociétés de Paris, France, sous le numéro{' '}
+              <strong>B 432 872 323</strong>.
             </p>
             <p>
               Le site est exclusivement dédié au projet <strong>MALITIX</strong>, initiative 
-              portée par la société ETECH CONSULTING SARLU.
+              portée par la société TOGETH'UP, SARL.
             </p>
           </section>
 
@@ -39,7 +39,7 @@ export default function LegalNotice() {
               Directeur de publication
             </h2>
             <p>
-              Le Directeur de publication du site est <strong>ETECH CONSULTING SARLU</strong>.
+              Le Directeur de publication du site est <strong>TOGETH'UP, SARL</strong>.
             </p>
           </section>
 
@@ -48,7 +48,7 @@ export default function LegalNotice() {
               Hébergeur
             </h2>
             <p>
-              Le site est hébergé par <strong>ETECH CONSULTING SARLU</strong>.
+              Le site est hébergé par <strong>TOGETH'UP, SARL</strong>.
             </p>
           </section>
 
@@ -57,10 +57,12 @@ export default function LegalNotice() {
               Propriété industrielle
             </h2>
             <p>
-              Le contenu de ce site y compris textes, images, graphiques, logos, est protégé par 
-              l'Ordonnance 89-019 instituant un régime pour la protection de la propriété industrielle 
-              en République Française et est la propriété exclusive de{' '}
-              <strong>ETECH CONSULTING SARLU</strong> sauf indication contraire.
+              L'ensemble du contenu du site (textes, images, graphismes, logos, vidéos, éléments sonores, etc.) 
+              est protégé par les lois en vigueur relatives à la propriété intellectuelle.
+            </p>
+            <p className="mt-4">
+              Toute reproduction, représentation, diffusion, modification ou exploitation, totale ou partielle, 
+              sans autorisation écrite préalable de l'éditeur est strictement interdite.
             </p>
           </section>
 
@@ -69,8 +71,9 @@ export default function LegalNotice() {
               Données personnelles
             </h2>
             <p className="mb-4">
-              Le traitement des données personnelles est régi par la Loi N°2014-038 en date du 
-              09 janvier 2015 sur la protection des données à caractère personnel en France.
+              Le traitement des données personnelles est régi par le règlement (UE) 2016/679 du Parlement 
+              européen et du Conseil du 27 avril 2016, relatif à la protection des personnes physiques à l'égard 
+              du traitement des données à caractère personnel et à la libre circulation de ces données.
             </p>
             <p>
               Pour plus d'informations, veuillez consulter notre{' '}
