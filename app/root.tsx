@@ -41,10 +41,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const theme = localStorage.getItem('theme') || 'light';
-                const html = document.documentElement;
-                html.classList.remove('light', 'dark');
-                html.classList.add(theme);
+                try {
+                  // Priority: localStorage (user preference) > system preference > default
+                  let theme = localStorage.getItem('theme');
+                  if (theme !== 'light' && theme !== 'dark') {
+                    // Check system preference
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  const html = document.documentElement;
+                  html.classList.remove('light', 'dark');
+                  html.classList.add(theme);
+                } catch (e) {
+                  // Fallback: safe to ignore errors in script
+                }
               })();
             `,
           }}

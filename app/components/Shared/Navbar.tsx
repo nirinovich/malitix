@@ -4,10 +4,6 @@ import { Link, useNavigate, useLocation } from 'react-router';
 import { CTA_TEXT } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
 
-interface NavbarProps {
-  theme?: 'dark' | 'light';
-}
-
 const USE_CASES = [
   { label: 'Sprint Commando', href: '/sprint', description: 'Déblocage garanti en 14 jours' },
   { label: 'Développement Sur Mesure', href: '/custom-dev', description: 'Application web & mobile en 90 jours' },
@@ -15,9 +11,8 @@ const USE_CASES = [
   { label: 'Refonte SI', href: '/si-refonte', description: 'Modernisation de système d\'information' },
 ];
 
-export function Navbar({ theme: propTheme }: NavbarProps) {
-  const { theme: contextTheme, toggleTheme } = useTheme();
-  const theme = propTheme || contextTheme;
+export function Navbar() {
+  const { toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
@@ -98,13 +93,9 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
       data-app-navbar
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-surface/95 backdrop-blur-lg shadow-lg'
+          ? 'navbar-scrolled backdrop-blur-lg shadow-lg'
           : 'bg-transparent'
       }`}
-      style={isScrolled ? { 
-        backgroundColor: theme === 'dark' ? 'rgba(6, 7, 5, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-        boxShadow: theme === 'dark' ? '0 0 40px rgba(44, 163, 189, 0.1)' : '0 10px 40px rgba(0, 0, 0, 0.1)'
-      } : undefined}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -118,15 +109,13 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
                 fetchPriority="high"
-                className={`h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 absolute pointer-events-none' : 'opacity-100 relative'}`}
-                style={{ zIndex: theme === 'dark' ? 0 : 1 }}
+                className="logo-dark h-10 w-auto transition-opacity duration-200"
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
                 fetchPriority="high"
-                className={`h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100 relative' : 'opacity-0 absolute pointer-events-none'}`}
-                style={{ zIndex: theme === 'dark' ? 1 : 0 }}
+                className="logo-light h-10 w-auto transition-opacity duration-200"
               />
             </Link>
           </div>
@@ -136,9 +125,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Accueil */}
             <button
               onClick={() => handleNavClick('#home')}
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+              className="nav-link relative group py-2 transition-colors cursor-pointer"
             >
               Accueil
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
@@ -147,9 +134,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Services */}
             <button
               onClick={() => handleNavClick('#services')}
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+              className="nav-link relative group py-2 transition-colors cursor-pointer"
             >
               Services
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
@@ -162,9 +147,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`relative py-2 transition-colors flex items-center gap-1 cursor-pointer ${
-                  theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
+                className="nav-link relative py-2 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 Use Cases
                 <ChevronDown 
@@ -182,30 +165,20 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
                     : 'opacity-0 invisible -translate-y-2'
                 }`}
               >
-                <div className={`w-72 rounded-2xl shadow-2xl border overflow-hidden ${
-                  theme === 'dark'
-                    ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-                    : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
-                }`}>
+                <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border overflow-hidden">
                   <div className="p-2">
                     {USE_CASES.map((useCase) => (
                       <button
                         key={useCase.href}
                         onClick={() => handleUseCaseClick(useCase.href)}
-                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
-                          theme === 'dark'
-                            ? 'hover:bg-white/10 text-white/80 hover:text-white'
-                            : 'hover:bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900'
-                        }`}
+                        className="dropdown-item w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
                       >
                         <div className="flex items-center justify-between">
                           <div>
                             <div className="font-semibold text-sm mb-1 group-hover/item:text-[var(--brand-text)] transition-colors">
                               {useCase.label}
                             </div>
-                            <div className={`text-xs ${
-                              theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                            }`}>
+                            <div className="dropdown-desc text-xs">
                               {useCase.description}
                             </div>
                           </div>
@@ -223,9 +196,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* À propos */}
             <button
               onClick={() => handleNavClick('#about')}
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+              className="nav-link relative group py-2 transition-colors cursor-pointer"
             >
               À propos
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
@@ -235,9 +206,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             <button
               onClick={() => handleNavClick('#contact')}
               aria-label="Contactez-nous"
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+              className="nav-link relative group py-2 transition-colors cursor-pointer"
             >
               Contact
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
@@ -249,14 +218,11 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
-                theme === 'dark' 
-                  ? 'bg-white/10 hover:bg-white/20 text-white' 
-                  : 'bg-[var(--bg-secondary)] hover:bg-[var(--surface-primary)] text-gray-900'
-              }`}
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              className="theme-toggle p-2 rounded-lg transition-all duration-300 hover:scale-110"
+              aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {<Sun size={20} className="hidden dark:inline" />}
+              {<Moon size={20} className="inline dark:hidden" />}
             </button>
 
             {/* CTA Button */}
@@ -279,9 +245,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Mobile Menu Button - 44x44px target */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden h-11 w-11 flex items-center justify-center rounded-lg transition-colors cursor-pointer ${
-              theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-[var(--bg-secondary)]'
-            }`}
+            className="mobile-menu-btn md:hidden h-11 w-11 flex items-center justify-center rounded-lg transition-colors cursor-pointer"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -291,11 +255,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 border-t transition-all duration-300 ${
-          theme === 'dark'
-            ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-            : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
-        } ${
+        className={`md:hidden absolute top-full left-0 right-0 border-t mobile-menu transition-all duration-300 ${
           isMobileMenuOpen
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -305,9 +265,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
           {/* Accueil */}
            <button
             onClick={() => handleNavClick('#home')}
-            className={`block w-full text-left py-3 font-medium ${
-              theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
-            }`}
+            className="mobile-nav-item block w-full text-left py-3 font-medium"
           >
             Accueil
           </button>
@@ -315,27 +273,21 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Services */}
             <button
             onClick={() => handleNavClick('#services')}
-            className={`block w-full text-left py-3 font-medium ${
-              theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
-            }`}
+            className="mobile-nav-item block w-full text-left py-3 font-medium"
           >
             Services
           </button>
 
            {/* Use Cases Mobile */}
            <div className="py-2 space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
-            <div className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
-                theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-              }`}>
+            <div className="mobile-nav-label text-xs font-semibold uppercase tracking-wider mb-2">
               Use Cases
             </div>
             {USE_CASES.map((useCase) => (
                <button
                   key={useCase.href}
                   onClick={() => handleUseCaseClick(useCase.href)}
-                  className={`block w-full text-left py-3 ${
-                    theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                  }`}
+                  className="mobile-nav-item block w-full text-left py-3"
                 >
                   {useCase.label}
                 </button>
@@ -345,9 +297,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* À propos */}
             <button
             onClick={() => handleNavClick('#about')}
-            className={`block w-full text-left py-3 font-medium ${
-              theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
-            }`}
+            className="mobile-nav-item block w-full text-left py-3 font-medium"
           >
             À propos
           </button>
@@ -355,9 +305,7 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Contact */}
             <button
             onClick={() => handleNavClick('#contact')}
-            className={`block w-full text-left py-3 font-medium ${
-              theme === 'dark' ? 'text-white hover:text-[#2ca3bd]' : 'text-gray-900 hover:text-[#2ca3bd]'
-            }`}
+            className="mobile-nav-item block w-full text-left py-3 font-medium"
           >
             Contact
           </button>
@@ -366,13 +314,13 @@ export function Navbar({ theme: propTheme }: NavbarProps) {
            <div className="pt-4 flex items-center justify-between gap-4 border-t border-gray-200/10">
                <button
                 onClick={toggleTheme}
-                className={`p-3 rounded-lg bg-gray-100/10 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900 bg-gray-200'
-                }`}
+                className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2"
                 aria-label="Toggle theme"
               >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                  <span className="ml-2 text-sm">{theme === 'dark' ? 'Mode clair' : 'Mode sombre'}</span>
+                  {<Sun size={20} className="hidden dark:inline" />}
+                  {<Moon size={20} className="inline dark:hidden" />}
+                  <span className="text-sm hidden dark:inline">Mode clair</span>
+                  <span className="text-sm inline dark:hidden">Mode sombre</span>
               </button>
 
              <button

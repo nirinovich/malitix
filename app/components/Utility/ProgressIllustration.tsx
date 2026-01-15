@@ -63,9 +63,7 @@ export function ProgressRescueGaugeVariant() {
         {[...Array(20)].map((_, i) => (
           <div
             key={`grid-${i}`}
-            className={`absolute h-px ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-            } animate-pulse`}
+            className="progress-grid-line absolute h-px animate-pulse"
             style={{
               top: `${i * 5}%`,
               left: 0,
@@ -78,13 +76,7 @@ export function ProgressRescueGaugeVariant() {
 
       <div className="relative animate-float">
         {/* Main gauge container */}
-        <div className={`relative w-80 h-80 rounded-full ${
-          theme === 'dark'
-            ? 'bg-gradient-to-br from-slate-800 to-slate-900'
-            : 'bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-primary)]'
-        } shadow-2xl border-4 ${
-          theme === 'dark' ? 'border-slate-700' : 'border-gray-300'
-        } flex items-center justify-center overflow-hidden backdrop-blur-xl`}>
+        <div className="progress-gauge-container relative w-80 h-80 rounded-full shadow-2xl border-4 flex items-center justify-center overflow-hidden backdrop-blur-xl">
           
           {/* Pulsing glow effect */}
           <div 
@@ -103,8 +95,9 @@ export function ProgressRescueGaugeVariant() {
               cy="50"
               r="40"
               fill="none"
-              stroke={theme === 'dark' ? '#1e293b' : '#d1d5db'}
+              stroke="currentColor"
               strokeWidth="8"
+              className="progress-track"
             />
             {/* Progress arc - Starts from left (180deg) and goes clockwise to right */}
             <circle
@@ -133,9 +126,7 @@ export function ProgressRescueGaugeVariant() {
               style={{ color: getColor(progress) }}>
               {Math.floor(progress)}%
             </div>
-            <div className={`text-xs uppercase tracking-widest font-bold mb-2 ${
-              theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-            }`}>
+            <div className="progress-status text-xs uppercase tracking-widest font-bold mb-2">
               {getStatus(progress)}
             </div>
             
@@ -154,30 +145,22 @@ export function ProgressRescueGaugeVariant() {
 
             {/* Speed indicator */}
             {phase === 'slow' && (
-              <div className={`mt-2 text-[10px] ${
-                theme === 'dark' ? 'text-red-400' : 'text-red-600'
-              }`}>
+              <div className="progress-speed-slow mt-2 text-[10px]">
                 Vitesse ralentie...
               </div>
             )}
             {phase === 'transition' && (
-              <div className={`mt-2 text-[10px] ${
-                theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-              }`}>
+              <div className="progress-speed-transition mt-2 text-[10px]">
                 Adaptation Malitix...
               </div>
             )}
             {phase === 'fast' && (
-              <div className={`mt-2 text-[10px] ${
-                theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
-              }`}>
+              <div className="progress-speed-fast mt-2 text-[10px]">
                 Accélération ⚡
               </div>
             )}
             {phase === 'complete' && (
-              <div className={`mt-2 text-[10px] font-bold ${
-                theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
-              }`}>
+              <div className="progress-speed-complete mt-2 text-[10px] font-bold">
                 Mission accomplie! 🎉
               </div>
             )}
@@ -190,9 +173,7 @@ export function ProgressRescueGaugeVariant() {
             return (
               <div
                 key={`marker-${i}`}
-                className={`absolute w-2 h-6 ${
-                  theme === 'dark' ? 'bg-slate-600' : 'bg-gray-400'
-                }`}
+                className="progress-marker absolute w-2 h-6"
                 style={{
                   left: `${x}%`,
                   top: `${y}%`,
