@@ -74,7 +74,15 @@ const MobileAppHero = React.memo(() => {
                 <span className="text-sm sm:text-base text-[var(--text-primary)]">Sécurisé (DORA/RGAA compliant)</span>
               </div>
             </div>
-            <button className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white text-sm sm:text-base font-bold rounded-lg transition-all w-full sm:w-auto">
+            <button 
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white text-sm sm:text-base font-bold rounded-lg transition-all w-full sm:w-auto cursor-pointer"
+            >
               Faire auditer mon projet
             </button>
           </div>

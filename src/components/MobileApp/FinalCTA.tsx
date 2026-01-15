@@ -176,7 +176,7 @@ const FinalCTA: React.FC = React.memo(() => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white text-sm sm:text-base font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-[#2ca3bd]/25 disabled:opacity-60 disabled:cursor-not-allowed group"
+                className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white text-sm sm:text-base font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-[#2ca3bd]/25 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer group"
               >
                 {isLoading ? 'Envoi en cours...' : 'Je demande mon Audit Express offert'}
               </button>
