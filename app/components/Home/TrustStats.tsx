@@ -2,7 +2,6 @@ import { motion, useInView, type Variants } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Users, Clock, Award } from 'lucide-react';
 import { STATS } from '~/utils/constants';
-import { useTheme } from '~/context/ThemeContext';
 
 const iconMap = [TrendingUp, Users, Award, Clock];
 
@@ -27,7 +26,6 @@ const itemVariants: Variants = {
 };
 
 export function TrustStats() {
-  const { theme } = useTheme();
   const sectionRef = useRef(null);
   const isVisible = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -35,17 +33,11 @@ export function TrustStats() {
     <section 
       ref={sectionRef}
       id="about" 
-      className={`py-24 bg-gradient-to-b relative overflow-hidden ${
-        theme === 'dark' 
-          ? 'from-[#060705] to-[#0a0e0d]'
-          : 'from-[var(--bg-primary)] to-[var(--bg-primary)]'
-      }`}
+      className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl bg-[var(--bg-secondary)]"></div>
       </div>
 
       <motion.div 
@@ -67,15 +59,11 @@ export function TrustStats() {
 
         {/* About Malitix - Human Touch */}
         <motion.div variants={itemVariants} className="text-center max-w-4xl mx-auto mb-16 space-y-6">
-          <h2 className={`text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-4 leading-tight ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-4 leading-tight text-[var(--text-primary)]">
             Chez Malitix, nous ne construisons pas que du code,{' '}
             <span className="text-[#2ca3bd]">nous créons des solutions qui changent la donne</span>
           </h2>
-          <p className={`text-lg leading-relaxed ${
-            theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-          }`}>
+          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
             Nous sommes une équipe passionnée qui croit que la technologie doit servir l'humain, pas l'inverse. 
             Chaque projet est une opportunité de transformer vos défis en succès concrets. Que vous soyez une startup 
             ambitieuse ou une entreprise établie, nous mettons notre expertise au service de votre vision pour créer 
@@ -84,9 +72,7 @@ export function TrustStats() {
         </motion.div>
 
         {/* Divider */}
-        <motion.div variants={itemVariants} className={`max-w-xs mx-auto mb-16 h-px ${
-          theme === 'dark' ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
-        }`}></motion.div>
+        <motion.div variants={itemVariants} className="max-w-xs mx-auto mb-16 h-px bg-gradient-to-r from-transparent via-[var(--divider-gradient)] to-transparent"></motion.div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -97,18 +83,10 @@ export function TrustStats() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
-                  theme === 'dark'
-                    ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-                    : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border border-gray-200 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
-                }`}
+                className="group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20"
               >
                 {/* Glow effect */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br transition-all duration-500 ${
-                  theme === 'dark'
-                    ? 'from-[#2ca3bd]/0 to-[#2ca3bd]/0 group-hover:from-[#2ca3bd]/10 group-hover:to-transparent'
-                    : 'from-[#2ca3bd]/0 to-[#2ca3bd]/0 group-hover:from-[#2ca3bd]/10 group-hover:to-transparent'
-                }`}></div>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#2ca3bd]/0 to-[#2ca3bd]/0 transition-all duration-500 group-hover:from-[#2ca3bd]/10 group-hover:to-transparent"></div>
                 
                 <div className="relative z-10 space-y-4">
                   {/* Icon */}
@@ -118,25 +96,17 @@ export function TrustStats() {
 
                   {/* Stat Value */}
                   <div>
-                    <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
+                    <div className="text-4xl lg:text-5xl font-bold mb-2 text-[var(--text-primary)]">
                       <CountUp end={stat.value} suffix={stat.suffix || ''} isVisible={isVisible} />
                     </div>
-                    <div className={`text-sm font-medium ${
-                      theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                    }`}>
+                    <div className="text-sm font-medium text-[var(--text-secondary)]">
                       {stat.label}
                     </div>
                   </div>
                 </div>
 
                 {/* Corner decoration */}
-                <div className={`absolute top-4 right-4 w-16 h-16 border-t border-r rounded-tr-2xl transition-all duration-500 ${
-                  theme === 'dark'
-                    ? 'border-[#2ca3bd]/0 group-hover:border-[#2ca3bd]/30'
-                    : 'border-[#2ca3bd]/40/0 group-hover:border-[#2ca3bd]/40/30'
-                }`}></div>
+                <div className="absolute top-4 right-4 w-16 h-16 border-t border-r rounded-tr-2xl transition-all duration-500 border-[#2ca3bd]/0 group-hover:border-[#2ca3bd]/30"></div>
               </motion.div>
             );
           })}
@@ -144,14 +114,8 @@ export function TrustStats() {
 
         {/* Partner Logos */}
         <motion.div variants={itemVariants} className="mt-16 text-center">
-          <div className={`inline-flex flex-wrap items-center justify-center gap-8 backdrop-blur-xl rounded-3xl px-12 py-8 ${
-            theme === 'dark'
-              ? 'bg-white/5 border border-white/10'
-              : 'bg-[var(--bg-secondary)] border border-gray-200'
-          }`}>
-            <div className={`font-semibold ${
-              theme === 'dark' ? 'text-white/70' : 'text-gray-700'
-            }`}>Certifié par :</div>
+          <div className="inline-flex flex-wrap items-center justify-center gap-8 backdrop-blur-xl rounded-3xl px-12 py-8 bg-[var(--card-bg)] border border-[var(--card-border)]">
+            <div className="font-semibold text-[var(--text-secondary)]">Certifié par :</div>
             
             {/* GCP Logo */}
             <div className="group cursor-default transition-all duration-300 hover:scale-110">
@@ -161,9 +125,8 @@ export function TrustStats() {
                 loading="lazy"
                 width={80}
                 height={32}
-                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
-                  theme === 'dark' ? 'grayscale' : 'invert'
-                }`}
+                className="h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 dark:grayscale light:invert"
+                style={{ filter: 'var(--logo-filter)' }}
               />
             </div>
 
@@ -175,9 +138,8 @@ export function TrustStats() {
                 loading="lazy"
                 width={80}
                 height={32}
-                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
-                  theme === 'dark' ? 'grayscale' : 'invert'
-                }`}
+                className="h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 dark:grayscale light:invert"
+                style={{ filter: 'var(--logo-filter)' }}
               />
             </div>
 
@@ -189,9 +151,8 @@ export function TrustStats() {
                 loading="lazy"
                 width={80}
                 height={32}
-                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
-                  theme === 'dark' ? 'grayscale' : 'invert'
-                }`}
+                className="h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 dark:grayscale light:invert"
+                style={{ filter: 'var(--logo-filter)' }}
               />
             </div>
 
@@ -203,9 +164,8 @@ export function TrustStats() {
                 loading="lazy"
                 width={80}
                 height={32}
-                className={`h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 ${
-                  theme === 'dark' ? 'grayscale' : 'invert'
-                }`}
+                className="h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 dark:grayscale light:invert"
+                style={{ filter: 'var(--logo-filter)' }}
               />
             </div>
           </div>

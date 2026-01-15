@@ -1,10 +1,8 @@
 import { motion, type Variants } from 'framer-motion';
 import { RefreshCcw, Smartphone, Shield, Database, Brain, ArrowRight } from 'lucide-react';
 import { SERVICES } from '~/utils/constants';
-import { useTheme } from '~/context/ThemeContext';
 
 export function ServicesSection() {
-  const { theme } = useTheme();
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -26,16 +24,10 @@ export function ServicesSection() {
   };
   
   return (
-    <section id="services" className={`py-24 bg-gradient-to-b relative ${
-      theme === 'dark' 
-        ? 'from-[#0a0e0d] to-[#060705]'
-        : 'from-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>
+    <section id="services" className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary-dark)] relative">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/2 right-0 w-96 h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
+        <div className="absolute top-1/2 right-0 w-96 h-96 rounded-full blur-3xl bg-[var(--bg-secondary)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -48,14 +40,10 @@ export function ServicesSection() {
             </span>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)]">
             Une expertise complète pour tous vos besoins tech
           </h2>
-          <p className={`text-lg ${
-            theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-          }`}>
+          <p className="text-lg text-[var(--text-secondary)]">
             De la conception à la mise en production, nous accompagnons votre transformation digitale
           </p>
         </div>
@@ -70,29 +58,19 @@ export function ServicesSection() {
         >
           {/* Row 1: Three cards */}
           {/* Service 1 - Refonte de SI */}
-          <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
-            theme === 'dark'
-              ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
-          }`}>
-            <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-            }`}></div>
+          <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
             
             <div className="relative z-10 h-full flex flex-col">
               <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <RefreshCcw className="text-white" size={28} />
               </div>
               
-              <h3 className={`text-xl font-bold mb-3 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                 {SERVICES[0].title}
               </h3>
               
-              <p className={`mb-6 flex-grow text-sm ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <p className="mb-6 flex-grow text-sm text-[var(--text-secondary)]">
                 {SERVICES[0].description}
               </p>
               
@@ -104,29 +82,19 @@ export function ServicesSection() {
           </motion.div>
 
           {/* Service 2 - Développement produit */}
-          <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
-            theme === 'dark'
-              ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
-          }`}>
-            <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-            }`}></div>
+          <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
             
             <div className="relative z-10 h-full flex flex-col">
               <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Smartphone className="text-white" size={28} />
               </div>
               
-              <h3 className={`text-xl font-bold mb-3 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                 {SERVICES[1].title}
               </h3>
               
-              <p className={`mb-6 flex-grow text-sm ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <p className="mb-6 flex-grow text-sm text-[var(--text-secondary)]">
                 {SERVICES[1].description}
               </p>
               
@@ -138,29 +106,19 @@ export function ServicesSection() {
           </motion.div>
           
            {/* Service 3 - Services managés */}
-           <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
-            theme === 'dark'
-              ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
-          }`}>
-            <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-            }`}></div>
+           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
             
             <div className="relative z-10 h-full flex flex-col">
               <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Shield className="text-white" size={28} />
               </div>
               
-              <h3 className={`text-xl font-bold mb-3 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                 {SERVICES[2].title}
               </h3>
               
-              <p className={`mb-6 flex-grow text-sm ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <p className="mb-6 flex-grow text-sm text-[var(--text-secondary)]">
                 {SERVICES[2].description}
               </p>
               
@@ -181,29 +139,19 @@ export function ServicesSection() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"
         >
            {/* Service 4 - Data Platform */}
-           <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
-            theme === 'dark'
-              ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
-          }`}>
-            <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-            }`}></div>
+           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
             
             <div className="relative z-10 h-full flex flex-col">
               <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Database className="text-white" size={28} />
               </div>
               
-              <h3 className={`text-xl font-bold mb-3 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                 {SERVICES[3].title}
               </h3>
               
-              <p className={`mb-6 flex-grow text-sm ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <p className="mb-6 flex-grow text-sm text-[var(--text-secondary)]">
                 {SERVICES[3].description}
               </p>
               
@@ -215,29 +163,19 @@ export function ServicesSection() {
           </motion.div>
 
            {/* Service 5 - IA Métier */}
-           <motion.div variants={itemVariants} className={`group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${
-            theme === 'dark'
-              ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-              : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)]/70 border border-[#2ca3bd]/20 hover:border-[#2ca3bd]/40 hover:shadow-[#2ca3bd]/20'
-          }`}>
-            <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 ${
-              theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-            }`}></div>
+           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
             
             <div className="relative z-10 h-full flex flex-col">
               <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Brain className="text-white" size={28} />
               </div>
               
-              <h3 className={`text-xl font-bold mb-3 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                 {SERVICES[4].title}
               </h3>
               
-              <p className={`mb-6 flex-grow text-sm ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <p className="mb-6 flex-grow text-sm text-[var(--text-secondary)]">
                 {SERVICES[4].description}
               </p>
               

@@ -1,6 +1,8 @@
 .DS_Store
+Thumbs.db
+.idea/
 .env
-/ .env.*
+/.env.*
 /node_modules/
 /legacy/
 /.github/

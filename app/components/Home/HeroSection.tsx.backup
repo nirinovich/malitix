@@ -25,7 +25,15 @@ export function HeroSection() {
             <div className="relative h-[600px]">
               {/* Main floating card - Code snippet */}
               <div 
-                className="absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className={`absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float ${
+                  theme === 'dark'
+                    ? 'bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20'
+                    : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border border-[#2ca3bd]/20 shadow-blue-200/50'
+                }`}
+                style={{ animationDelay: '0s' }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div cla"absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
                 style={{ animationDelay: '0s' }}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -89,14 +97,7 @@ export function HeroSection() {
                   <Sparkles className="text-[var(--brand-text)]" size={32} />
                   <div>
                     <div className="text-3xl font-bold text-[var(--text-primary)]">600+</div>
-                    <div className="text-xs text-[var(--text-tertiary)]">Projets réussis</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Connecting lines that float with cards */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none animate-float" style={{ zIndex: -1, animationDelay: '0s' }}>
-                <line x1="35%" y1="25%" x2="65%" y2="30%" stroke="url(#gradient1)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
+                    <div className="text-xs text-[var(--text-tertiary)]"okeDasharray="5,5" className="animate-pulse" />
                 <defs>
                   <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="rgba(44,163,189,0)" />
@@ -106,6 +107,7 @@ export function HeroSection() {
                 </defs>
               </svg>
               
+              {/* Line 2: Floats with Data Platform card */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none animate-float" style={{ zIndex: -1, animationDelay: '1s' }}>
                 <line x1="65%" y1="35%" x2="32%" y2="68%" stroke="url(#gradient2)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
                 <defs>
@@ -117,6 +119,7 @@ export function HeroSection() {
                 </defs>
               </svg>
               
+              {/* Line 3: Floats with IA Métier card */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none animate-float" style={{ zIndex: -1, animationDelay: '2s' }}>
                 <line x1="40%" y1="70%" x2="65%" y2="75%" stroke="url(#gradient3)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
                 <defs>
@@ -137,8 +140,11 @@ export function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left space-y-8"
           >
+
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-[var(--text-primary)]">
+            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
               {HERO_CONTENT.animated.headline.split(' ').map((word, i) => (
                 <motion.span
                   key={i}
@@ -157,10 +163,13 @@ export function HeroSection() {
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-lg sm:text-xl max-w-2xl leading-relaxed text-[var(--text-secondary)]"
+              className={`text-lg sm:text-xl max-w-2xl leading-relaxed ${
+                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
+              }`}
             >
               {HERO_CONTENT.animated.subheadline}
             </motion.p>
+
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -180,25 +189,31 @@ export function HeroSection() {
               </a>
               <a
                 href="#services"
-                className="backdrop-blur-xl px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] border border-[var(--border-primary)] text-[var(--text-primary)]"
+                className={`backdrop-blur-xl px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 ${
+                  theme === 'dark'
+                    ? 'bg-white/5 hover:bg-white/10 border border-white/10 text-white'
+                    : 'bg-[var(--bg-secondary)] hover:bg-[var(--surface-primary)] border border-gray-200 text-gray-900'
+                }`}
               >
                 {CTA_TEXT.secondary}
               </a>
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap gap-8 justify-center lg:justify-start pt-8 border-t border-[var(--border-primary)]">
+            <div className={`flex flex-wrap gap-8 justify-center lg:justify-start pt-8 border-t ${
+              theme === 'dark' ? 'border-white/10' : 'border-gray-200'
+            }`}>
               <div>
                 <div className="text-3xl font-bold text-[var(--brand-text)]">600+</div>
-                <div className="text-sm text-[var(--text-tertiary)]">Projets</div>
+                <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Projets</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[var(--brand-text)]">350+</div>
-                <div className="text-sm text-[var(--text-tertiary)]">Ingénieurs</div>
+                <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Ingénieurs</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[var(--brand-text)]">24/7</div>
-                <div className="text-sm text-[var(--text-tertiary)]">Support</div>
+                <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>Support</div>
               </div>
             </div>
           </motion.div>
@@ -207,7 +222,9 @@ export function HeroSection() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 rounded-full flex items-start justify-center p-2 border-[var(--scroll-border)]">
+        <div className={`w-6 h-10 border-2 rounded-full flex items-start justify-center p-2 ${
+          theme === 'dark' ? 'border-white/30' : 'border-gray-400'
+        }`}>
           <div className="w-1 h-2 bg-[#2ca3bd] rounded-full animate-pulse"></div>
         </div>
       </div>

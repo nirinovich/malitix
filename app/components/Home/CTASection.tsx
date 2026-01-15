@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { Send, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
 import { CTA_TEXT, COMPANY_INFO } from '~/utils/constants';
-import { useTheme } from '~/context/ThemeContext';
 import { TextInput } from '~/components/Shared/Form/TextInput';
 import { Textarea } from '~/components/Shared/Form/Textarea';
 import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
@@ -18,7 +17,6 @@ interface HomeFormData {
 }
 
 export function CTASection() {
-  const { theme } = useTheme();
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const {
@@ -44,21 +42,11 @@ export function CTASection() {
   };
 
   return (
-    <section id="contact" className={`py-24 bg-gradient-to-b relative overflow-hidden ${
-      theme === 'dark' 
-        ? 'from-[#0a0e0d] to-[#060705]'
-        : 'from-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>
+    <section id="contact" className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary-dark)] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute top-0 left-0 w-full h-full bg-[size:50px_50px] ${
-          theme === 'dark'
-            ? 'bg-[linear-gradient(rgba(44,163,189,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.03)_1px,transparent_1px)]'
-            : 'bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)]'
-        }`}></div>
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[size:50px_50px] bg-[linear-gradient(rgba(44,163,189,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(44,163,189,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.05)_1px,transparent_1px)]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl bg-[var(--bg-secondary)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -79,14 +67,10 @@ export function CTASection() {
                 </span>
                 <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
               </div>
-              <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-[var(--text-primary)]">
                 Prêt à propulser votre entreprise ?
               </h2>
-              <p className={`text-xl leading-relaxed ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <p className="text-xl leading-relaxed text-[var(--text-secondary)]">
                 Discutons de votre projet et découvrons comment Malitix peut vous aider à atteindre vos objectifs technologiques.
               </p>
             </div>
@@ -102,34 +86,26 @@ export function CTASection() {
                   <div className="bg-[#2ca3bd]/20 p-2 rounded-full">
                     <CheckCircle2 className="text-[#2ca3bd]" size={20} />
                   </div>
-                  <span className={theme === 'dark' ? 'text-white/90' : 'text-gray-800'}>{benefit}</span>
+                  <span className="text-[var(--text-secondary)]">{benefit}</span>
                 </div>
               ))}
             </div>
 
             {/* Contact Info */}
-            <div className={`pt-8 border-t space-y-4 ${
-              theme === 'dark' ? 'border-white/10' : 'border-gray-200'
-            }`}>
-              <div className={`flex items-center gap-3 ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+            <div className="pt-8 border-t border-[var(--border-primary)] space-y-4">
+              <div className="flex items-center gap-3 text-[var(--text-secondary)]">
                 <Mail className="text-[#2ca3bd]" size={20} />
                 <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-[#2ca3bd] transition-colors">
                   {COMPANY_INFO.email}
                 </a>
               </div>
-              <div className={`flex items-center gap-3 ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <div className="flex items-center gap-3 text-[var(--text-secondary)]">
                 <Phone className="text-[#2ca3bd]" size={20} />
                 <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-[#2ca3bd] transition-colors">
                   {COMPANY_INFO.phone}
                 </a>
               </div>
-              <div className={`flex items-center gap-3 ${
-                theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-              }`}>
+              <div className="flex items-center gap-3 text-[var(--text-secondary)]">
                 <MapPin className="text-[#2ca3bd]" size={20} />
                 <span>{COMPANY_INFO.address}</span>
               </div>
@@ -138,23 +114,17 @@ export function CTASection() {
 
           {/* Right Side - Form */}
           <div className="relative">
-            <div className={`backdrop-blur-xl rounded-3xl p-8 shadow-2xl ${
-              theme === 'dark'
-                ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/10'
-                : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--bg-secondary)] border border-gray-200'
-            }`}>
+            <div className="backdrop-blur-xl rounded-3xl p-8 shadow-2xl bg-[var(--card-bg)] border border-[var(--card-border)]">
               {submissionStatus === 'success' ? (
                 <div className="text-center py-12 space-y-6">
                   <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full animate-in zoom-in">
                     <CheckCircle2 className="text-[#2ca3bd]" size={40} />
                   </div>
                   <div>
-                    <h3 className={`text-2xl font-bold mb-2 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
+                    <h3 className="text-2xl font-bold mb-2 text-[var(--text-primary)]">
                       Message envoyé !
                     </h3>
-                    <p className={theme === 'dark' ? 'text-white/70' : 'text-gray-600'}>
+                    <p className="text-[var(--text-secondary)]">
                       Nous reviendrons vers vous sous 24 heures.
                     </p>
                   </div>
@@ -210,9 +180,7 @@ export function CTASection() {
                       <Send size={20} className={isSubmitting ? 'animate-pulse' : ''} />
                     </button>
 
-                    <p className={`text-sm text-center ${
-                      theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                    }`}>
+                    <p className="text-sm text-center text-[var(--text-muted)]">
                       En envoyant ce formulaire, vous acceptez notre politique de confidentialité
                     </p>
                   </form>

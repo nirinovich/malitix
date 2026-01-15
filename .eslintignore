@@ -4,5 +4,6 @@ build/
 coverage/
 .react-router/
 .legacy/
+legacy/
 .specify/
 .vscode/

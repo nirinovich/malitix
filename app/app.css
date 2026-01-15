@@ -53,6 +53,7 @@ body {
   
   /* Background colors */
   --bg-primary: #060705;
+  --bg-primary-dark: #060705;
   --bg-secondary: #0a0e0d;
   --bg-tertiary: #0f1412;
   --bg-elevated: #1a1d1b;
@@ -67,7 +68,10 @@ body {
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --text-tertiary: rgba(255, 255, 255, 0.6);
+  --text-quaternary: rgba(255, 255, 255, 0.5);
   --text-muted: rgba(255, 255, 255, 0.4);
+  --text-emphasis: rgba(255, 255, 255, 0.9);
+  --text-subtle: rgba(255, 255, 255, 0.8);
   
   /* Border colors */
   --border-primary: rgba(255, 255, 255, 0.1);
@@ -79,6 +83,43 @@ body {
   --accent-primary: rgba(44, 163, 189, 0.1);
   --accent-secondary: rgba(44, 163, 189, 0.05);
   --accent-glow: rgba(44, 163, 189, 0.3);
+  
+  /* Hero gradient colors */
+  --hero-gradient-bg: linear-gradient(to bottom right, #060705, #060705, #0a0e0d);
+  --hero-orb-primary: rgba(44, 163, 189, 0.2);
+  --hero-orb-secondary: rgba(44, 163, 189, 0.1);
+  --hero-grid-pattern: linear-gradient(rgba(44,163,189,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(44,163,189,0.03) 1px, transparent 1px);
+  
+  /* Card colors */
+  --card-bg: linear-gradient(to bottom right, rgba(44, 163, 189, 0.1), rgba(44, 163, 189, 0.05));
+  --card-border: rgba(44, 163, 189, 0.2);
+  --card-shadow: rgba(44, 163, 189, 0.2);
+  --card-code-bg: rgba(6, 7, 5, 0.5);
+  
+  /* Scroll indicator */
+  --scroll-border: rgba(255, 255, 255, 0.3);
+  
+  /* Divider line */
+  --divider-gradient: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  
+  /* Logo filter */
+  --logo-filter: grayscale(1);
+  
+  /* Additional component-specific colors */
+  --quote-color: rgba(44, 163, 189, 0.4);
+  --stat-bg: rgba(44, 163, 189, 0.1);
+  --feature-card-bg: rgba(44, 163, 189, 0.05);
+  --feature-card-hover-bg: rgba(44, 163, 189, 0.1);
+  --icon-stroke: #2ca3bd;
+  
+  /* Progress colors */
+  --progress-danger: #ef4444;
+  --progress-warning: #f59e0b;
+  --progress-success: #2ca3bd;
+  
+  /* Error colors */
+  --error-text: #f87171;
+  --error-border: rgba(248, 113, 113, 0.2);
 }
 
 /* Light theme */
@@ -101,6 +142,7 @@ body {
   
   /* Background colors - Soft neutrals with blue undertones */
   --bg-primary: #fefefe;
+  --bg-primary-dark: #fefefe;
   --bg-secondary: #fefefe;
   --bg-tertiary: #fefefe;
   --bg-elevated: #fefefe;
@@ -115,7 +157,10 @@ body {
   --text-primary: #1a2332;
   --text-secondary: #3d4f5f;
   --text-tertiary: #5d7284;
+  --text-quaternary: #6b7280;
   --text-muted: #8798a8;
+  --text-emphasis: #1f2937;
+  --text-subtle: #374151;
   
   /* Border colors */
   --border-primary: rgba(0, 0, 0, 0.1);
@@ -127,6 +172,43 @@ body {
   --accent-primary: rgba(44, 163, 189, 0.1);
   --accent-secondary: rgba(44, 163, 189, 0.05);
   --accent-glow: rgba(44, 163, 189, 0.2);
+  
+  /* Hero gradient colors */
+  --hero-gradient-bg: var(--bg-primary);
+  --hero-orb-primary: var(--bg-secondary);
+  --hero-orb-secondary: rgba(226, 232, 240, 0.4);
+  
+  /* Additional component-specific colors */
+  --quote-color: rgba(44, 163, 189, 0.4);
+  --stat-bg: rgba(226, 232, 240, 0.4);
+  --feature-card-bg: var(--bg-secondary);
+  --feature-card-hover-bg: rgba(44, 163, 189, 0.06);
+  --icon-stroke: #2ca3bd;
+  
+  /* Progress colors */
+  --progress-danger: #dc2626;
+  --progress-warning: #d97706;
+  --progress-success: #2ca3bd;
+  
+  /* Error colors */
+  --error-text: #dc2626;
+  --error-border: rgba(220, 38, 38, 0.2);
+  --hero-grid-pattern: linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
+  
+  /* Card colors */
+  --card-bg: linear-gradient(to bottom right, var(--surface-primary), var(--surface-primary));
+  --card-border: rgba(44, 163, 189, 0.2);
+  --card-shadow: rgba(59, 130, 246, 0.5);
+  --card-code-bg: var(--bg-secondary);
+  
+  /* Scroll indicator */
+  --scroll-border: rgba(156, 163, 175, 1);
+  
+  /* Divider line */
+  --divider-gradient: linear-gradient(to right, transparent, rgba(209, 213, 219, 1), transparent);
+  
+  /* Logo filter */
+  --logo-filter: invert(1);
 }
 
 /* Utilities */
@@ -209,9 +291,15 @@ body {
 }
 
 .dropdown-menu {
-  background-color: rgba(var(--bg-primary-rgb), 0.98);
-  backdrop-filter: blur(12px);
+  background-color: var(--surface-primary);
   border-color: var(--border-primary);
+  backdrop-filter: none;
+}
+
+.dark .dropdown-menu {
+  background-color: rgba(6, 7, 5, 0.98);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
 }
 
 .dropdown-item {
@@ -238,9 +326,15 @@ body {
 }
 
 .mobile-menu {
-  background-color: rgba(var(--bg-primary-rgb), 0.98);
-  backdrop-filter: blur(12px);
+  background-color: var(--surface-primary);
   border-color: var(--border-primary);
+  backdrop-filter: none;
+}
+
+.dark .mobile-menu {
+  background-color: rgba(6, 7, 5, 0.98);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
 }
 
 .mobile-menu-btn {
@@ -270,31 +364,31 @@ body {
 
 /* Logo Switching */
 .logo-dark {
-  opacity: 0;
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 .dark .logo-dark {
-  opacity: 100;
-  position: relative;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.logo-light {
-  opacity: 100;
-  position: relative;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.dark .logo-light {
   opacity: 0;
   position: absolute;
   pointer-events: none;
   z-index: 0;
+}
+
+.logo-light {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .logo-light {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 /* Progress Illustration Utility Classes */
