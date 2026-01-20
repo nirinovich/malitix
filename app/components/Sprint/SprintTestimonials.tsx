@@ -1,5 +1,4 @@
 ﻿import { Star, Quote, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -31,7 +30,6 @@ const testimonials = [
 ];
 
 export default function SprintTestimonials() {
-  const { theme } = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -52,16 +50,10 @@ export default function SprintTestimonials() {
   }, [isPlaying, nextTestimonial]);
 
   return (
-    <section id="nos-partenaires" className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>
+    <section id="nos-partenaires" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
+        <div className="absolute top-1/2 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl bg-[var(--accent-secondary)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -74,15 +66,11 @@ export default function SprintTestimonials() {
             </span>
             <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 text-[var(--text-primary)]">
             Ils Étaient Bloqués, <br className="hidden sm:block" />
             <span className="text-[#2ca3bd]">Nous Avons Livré</span>
           </h2>
-          <p className={`text-base sm:text-lg px-4 ${
-            theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-          }`}>
+          <p className="text-base sm:text-lg px-4 text-[var(--text-secondary)]">
             Des résultats concrets pour des entreprises qui nous ont fait confiance
           </p>
         </div>
@@ -118,16 +106,10 @@ export default function SprintTestimonials() {
                 className="w-full"
               >
                 <div
-                  className={`group relative backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 mx-4 transition-all duration-500 hover:shadow-2xl ${
-                    theme === 'dark'
-                      ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-                      : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border border-gray-200 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20'
-                  }`}
+                  className="group relative backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 mx-4 transition-all duration-500 hover:shadow-2xl bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border border-[var(--border-primary)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20"
                 >
                    {/* Quote icon */}
-                  <div className={`absolute top-4 sm:top-6 right-4 sm:right-6 opacity-20 group-hover:opacity-30 transition-opacity ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-400'
-                  }`}>
+                  <div className="absolute top-4 sm:top-6 right-4 sm:right-6 opacity-20 group-hover:opacity-30 transition-opacity text-[var(--text-muted)]">
                     <Quote size={40} className="sm:w-16 sm:h-16" />
                   </div>
 
@@ -143,9 +125,7 @@ export default function SprintTestimonials() {
                   </div>
 
                   {/* Quote */}
-                  <p className={`text-lg sm:text-xl mb-8 leading-relaxed italic ${
-                    theme === 'dark' ? 'text-white/90' : 'text-gray-700'
-                  }`}>
+                  <p className="text-lg sm:text-xl mb-8 leading-relaxed italic text-[var(--text-secondary)]">
                     "{testimonials[activeIndex].quote}"
                   </p>
 
@@ -158,16 +138,12 @@ export default function SprintTestimonials() {
                     />
                     {/* Author Info */}
                     <div>
-                    <h4 className={`font-bold text-lg ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
+                      <h4 className="font-bold text-lg text-[var(--text-primary)]">
                         {testimonials[activeIndex].name}
-                    </h4>
-                    <p className={`text-sm ${
-                        theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                    }`}>
+                      </h4>
+                      <p className="text-sm text-[var(--text-tertiary)]">
                         {testimonials[activeIndex].role}, {testimonials[activeIndex].company}
-                    </p>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -178,13 +154,9 @@ export default function SprintTestimonials() {
           {/* Controls */}
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
-                onClick={prevTestimonial}
-                className={`p-3 rounded-full transition-all cursor-pointer ${
-                    theme === 'dark' 
-                    ? 'bg-white/5 hover:bg-white/10 text-white' 
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                }`}
-                aria-label="Previous testimonial"
+              onClick={prevTestimonial}
+              className="p-3 rounded-full transition-all cursor-pointer bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] text-[var(--text-primary)]"
+              aria-label="Previous testimonial"
             >
                 <ChevronLeft size={24} />
             </button>
@@ -192,25 +164,21 @@ export default function SprintTestimonials() {
             <div className="flex gap-2">
                 {testimonials.map((_, idx) => (
                 <button
-                    key={idx}
-                    onClick={() => setActiveIndex(idx)}
-                    className={`h-2 rounded-full cursor-pointer transition-all duration-300 ${
-                    activeIndex === idx 
-                        ? 'w-8 bg-[#2ca3bd]' 
-                        : theme === 'dark' ? 'w-2 bg-white/20' : 'w-2 bg-gray-300'
-                    }`}
-                    aria-label={`Go to testimonial ${idx + 1}`}
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`h-2 rounded-full cursor-pointer transition-all duration-300 ${
+                  activeIndex === idx 
+                    ? 'w-8 bg-[#2ca3bd]' 
+                    : 'w-2 bg-[var(--border-primary)]'
+                  }`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
                 />
                 ))}
             </div>
 
             <button
                 onClick={nextTestimonial}
-                className={`p-3 rounded-full transition-all cursor-pointer ${
-                    theme === 'dark' 
-                    ? 'bg-white/5 hover:bg-white/10 text-white' 
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                }`}
+                className="p-3 rounded-full transition-all cursor-pointer bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] text-[var(--text-primary)]"
                 aria-label="Next testimonial"
             >
                 <ChevronRight size={24} />
@@ -218,11 +186,7 @@ export default function SprintTestimonials() {
 
             <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className={`p-3 rounded-full transition-all ml-2 cursor-pointer ${
-                    theme === 'dark' 
-                    ? 'bg-white/5 hover:bg-white/10 text-white' 
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                }`}
+                className="p-3 rounded-full transition-all ml-2 cursor-pointer bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] text-[var(--text-primary)]"
                 aria-label={isPlaying ? "Pause" : "Play"}
             >
                 {isPlaying ? <Pause size={20} /> : <Play size={20} />}

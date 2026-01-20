@@ -1,9 +1,6 @@
 import { Zap, Shield, Target, GitBranch, Eye } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 
 export default function SIRefonteSolution() {
-  const { theme } = useTheme();
-
   const features = [
     {
       icon: Eye,
@@ -38,33 +35,23 @@ export default function SIRefonteSolution() {
   ];
 
   return (
-    <section id="solution-sirefonte" className={`relative py-24 overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-        : 'bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>
+    <section id="solution-sirefonte" className="relative py-24 overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
-        <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl bg-[var(--accent-secondary)]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl bg-[var(--accent-secondary)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-[var(--text-primary)]">
             Refonte SI : une approche{' '}
             <span className="text-[#2ca3bd]">globale, rapide</span> et{' '}
             <span className="text-[#2ca3bd]">modulaire</span>
           </h2>
           
-          <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+          <p className="text-xl text-[var(--text-secondary)]">
             Notre approche combine <strong>vision stratégique</strong>,{' '}
             <strong>exécution rapide</strong> et <strong>valorisation immédiate</strong>.
           </p>
@@ -77,11 +64,7 @@ export default function SIRefonteSolution() {
             return (
               <div
                 key={idx}
-                className={`group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up ${
-                  theme === 'dark'
-                    ? 'bg-white/5 border-white/10 hover:border-[#2ca3bd]/40'
-                    : 'bg-[var(--surface-primary)] border-gray-200 hover:border-[#2ca3bd]/40'
-                }`}
+                className="group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up bg-[var(--surface-primary)] border-[var(--border-primary)] hover:border-[#2ca3bd]/40"
                 style={{
                   animationDelay: `${idx * 0.1}s`
                 }}
@@ -98,16 +81,12 @@ export default function SIRefonteSolution() {
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-xl font-bold mb-3 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
+                <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-                }`}>
+                <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
                   {feature.description}
                 </p>
               </div>
@@ -116,45 +95,31 @@ export default function SIRefonteSolution() {
         </div>
 
         {/* Bottom Value Statement */}
-        <div className={`max-w-5xl mx-auto grid md:grid-cols-3 gap-6 ${
-          theme === 'dark' ? '' : ''
-        }`}>
-          <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
-            theme === 'dark'
-              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-slate-50 border-[#2ca3bd]/30'
-          }`}>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30">
             <div className="text-4xl font-black text-[#2ca3bd] mb-2">0</div>
-            <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <div className="text-sm font-bold text-[var(--text-primary)]">
               Big Bang
             </div>
-            <div className={`text-xs mt-2 ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+            <div className="text-xs mt-2 text-[var(--text-tertiary)]">
               Migration progressive
             </div>
           </div>
-          <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
-            theme === 'dark'
-              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-slate-50 border-[#2ca3bd]/30'
-          }`}>
+          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30">
             <div className="text-4xl font-black text-[#2ca3bd] mb-2">6-8</div>
-            <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <div className="text-sm font-bold text-[var(--text-primary)]">
               Semaines par sprint
             </div>
-            <div className={`text-xs mt-2 ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+            <div className="text-xs mt-2 text-[var(--text-tertiary)]">
               Résultats rapides et mesurables
             </div>
           </div>
-          <div className={`p-6 rounded-2xl text-center backdrop-blur-sm border-2 ${
-            theme === 'dark'
-              ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-              : 'bg-slate-50 border-[#2ca3bd]/30'
-          }`}>
+          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30">
             <div className="text-4xl font-black text-[#2ca3bd] mb-2">30-90j</div>
-            <div className={`text-sm font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <div className="text-sm font-bold text-[var(--text-primary)]">
               ROI Quick Wins
             </div>
-            <div className={`text-xs mt-2 ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+            <div className="text-xs mt-2 text-[var(--text-tertiary)]">
               Impact business immédiat
             </div>
           </div>

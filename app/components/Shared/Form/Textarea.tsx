@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import { useTheme } from '~/context/ThemeContext';
 import { cn } from '~/utils/cn';
 
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -9,7 +8,6 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, className, id, ...props }, ref) => {
-    const { theme } = useTheme();
     const inputId = id || props.name;
 
     return (
@@ -18,7 +16,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           htmlFor={inputId}
           className={cn(
             "block text-sm font-medium mb-2",
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
+            'text-[var(--text-primary)]'
           )}
         >
           {label} {props.required && '*'}
@@ -29,9 +27,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={cn(
             "w-full px-4 py-3 rounded-lg sm:rounded-xl border transition-all text-sm sm:text-base outline-none resize-none",
             "focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent",
-            theme === 'dark'
-              ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-              : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400',
+            'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-muted)]',
             error ? "border-red-500 focus:ring-red-500" : ""
           )}
           {...props}

@@ -1,10 +1,7 @@
 import { Check } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 
 // Variant C: Checklist Style with Categories
 export default function SIRefonteBenefits() {
-  const { theme } = useTheme();
-
   const categories = [
     {
       title: 'Performance & Fiabilité',
@@ -69,21 +66,15 @@ export default function SIRefonteBenefits() {
   ];
 
   return (
-    <section id="benefits-sirefonte" className={`relative py-24 overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-[#0a0e0d] to-[#0a0e0d]'
-        : 'bg-[var(--bg-primary)]'
-    }`}>
+    <section id="benefits-sirefonte" className="relative py-24 overflow-hidden bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className={`text-5xl sm:text-6xl font-black mb-6 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-5xl sm:text-6xl font-black mb-6 text-[var(--text-primary)]">
             Tous les bénéfices de la{' '}
             <span className="text-[#2ca3bd]">Refonte SI</span>
           </h2>
-          <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+          <p className="text-xl text-[var(--text-secondary)]">
             Impact sur l'ensemble de votre organisation
           </p>
         </div>
@@ -93,11 +84,7 @@ export default function SIRefonteBenefits() {
           {categories.map((category, idx) => (
             <div
               key={idx}
-              className={`p-8 rounded-3xl backdrop-blur-sm border-2 transition-all hover:scale-105 ${
-                theme === 'dark'
-                  ? 'bg-white/5 border-white/10'
-                  : 'bg-[var(--surface-primary)] border-gray-200'
-              }`}
+              className="p-8 rounded-3xl backdrop-blur-sm border-2 transition-all hover:scale-105 bg-[var(--surface-primary)] border-[var(--border-primary)]"
               style={{
                 animation: 'fade-in-up 0.6s ease-out forwards',
                 animationDelay: `${idx * 0.1}s`,
@@ -123,9 +110,7 @@ export default function SIRefonteBenefits() {
                       className="flex-shrink-0 mt-0.5" 
                       style={{ color: category.color }}
                     />
-                    <span className={`text-sm ${
-                      theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-                    }`}>
+                    <span className="text-sm text-[var(--text-secondary)]">
                       {benefit}
                     </span>
                   </li>
@@ -136,19 +121,13 @@ export default function SIRefonteBenefits() {
         </div>
 
         {/* Bottom CTA Statement */}
-        <div className={`mt-16 max-w-5xl mx-auto p-10 rounded-3xl text-center backdrop-blur-sm border-2 ${
-          theme === 'dark'
-            ? 'bg-gradient-to-r from-[#2ca3bd]/10 via-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30'
-            : 'bg-gradient-to-r from-[var(--surface-primary)] via-[var(--surface-primary)] to-[var(--surface-primary)] border-[#2ca3bd]/30'
-        }`}>
+        <div className="mt-16 max-w-5xl mx-auto p-10 rounded-3xl text-center backdrop-blur-sm border-2 bg-gradient-to-r from-[#2ca3bd]/10 via-[#2ca3bd]/10 to-[#2ca3bd]/10 border-[#2ca3bd]/30">
           <div className="text-5xl mb-4">🚀</div>
-          <h3 className={`text-3xl font-black mb-4 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h3 className="text-3xl font-black mb-4 text-[var(--text-primary)]">
             Votre SI devient enfin un{' '}
             <span className="text-[#2ca3bd]">accélérateur stratégique</span>
           </h3>
-          <p className={`text-lg ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
+          <p className="text-lg text-[var(--text-secondary)]">
             Au lieu de freiner l'innovation, il la propulse
           </p>
         </div>

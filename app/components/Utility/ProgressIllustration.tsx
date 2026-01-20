@@ -1,4 +1,3 @@
-import { useTheme } from '~/context/ThemeContext';
 import { useEffect, useState } from 'react';
 
 // ==========================================
@@ -7,7 +6,6 @@ import { useEffect, useState } from 'react';
 // 0-20%: Slow (Sans Malitix) → 20-35%: Transition → 35-100%: Fast (Avec Malitix) → STOP
 // ==========================================
 export function ProgressRescueGaugeVariant() {
-  const { theme } = useTheme();
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<'slow' | 'transition' | 'fast' | 'complete'>('slow');
 
@@ -37,9 +35,9 @@ export function ProgressRescueGaugeVariant() {
   }, []);
 
   const getColor = (value: number) => {
-    if (value < 20) return theme === 'dark' ? '#ef4444' : '#dc2626'; // Red - Sans Malitix
-    if (value < 35) return theme === 'dark' ? '#f59e0b' : '#d97706'; // Orange - Transition
-    return theme === 'dark' ? '#2ca3bd' : '#2ca3bd'; // Brand color - Avec Malitix
+    if (value < 20) return 'var(--progress-danger)'; // Red - Sans Malitix
+    if (value < 35) return 'var(--progress-warning)'; // Orange - Transition
+    return 'var(--progress-success)'; // Brand color - Avec Malitix
   };
 
   const getStatus = (value: number) => {

@@ -1,10 +1,7 @@
 import { TrendingDown, Server, Lock, Database, Wrench } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 
 // Variant A: Card Grid with Icons
 export default function SIRefonteProblem() {
-  const { theme } = useTheme();
-
   const problems = [
     {
       icon: Server,
@@ -44,22 +41,16 @@ export default function SIRefonteProblem() {
   ];
 
   return (
-    <section id="problem-sirefonte" className={`relative py-24 overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>
+    <section id="problem-sirefonte" className="relative py-24 overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-[var(--text-primary)]">
             Pourquoi moderniser{' '}
             <span className="text-[#2ca3bd]">votre SI maintenant ?</span>
           </h2>
           
-          <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+          <p className="text-xl text-[var(--text-secondary)]">
             En 2026, les entreprises doivent composer avec un SI devenu{' '}
             <span className="font-bold text-red-500">trop complexe</span> pour suivre la stratégie.
           </p>
@@ -72,11 +63,7 @@ export default function SIRefonteProblem() {
             return (
               <div
                 key={idx}
-                className={`group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
-                  theme === 'dark'
-                    ? 'bg-red-500/5 border-red-500/20 hover:border-red-500/40'
-                    : 'bg-red-50/50 border-red-200 hover:border-red-400'
-                }`}
+                className="group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-red-500/5 border-red-500/20 hover:border-red-500/40"
                 style={{
                   animation: 'fade-in-up 0.6s ease-out forwards',
                   animationDelay: `${idx * 0.1}s`,
@@ -95,23 +82,17 @@ export default function SIRefonteProblem() {
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-xl font-bold mb-3 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
+                <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
                   {problem.title}
                 </h3>
 
                 {/* Description */}
-                <p className={`text-sm mb-4 leading-relaxed ${
-                  theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-                }`}>
+                <p className="text-sm mb-4 leading-relaxed text-[var(--text-secondary)]">
                   {problem.description}
                 </p>
 
                 {/* Impact */}
-                <div className={`text-sm font-bold pt-4 border-t ${
-                  theme === 'dark' ? 'border-white/10 text-red-400' : 'border-gray-200 text-red-600'
-                }`}>
+                <div className="text-sm font-bold pt-4 border-t border-[var(--border-primary)] text-red-600">
                   {problem.impact}
                 </div>
               </div>
@@ -120,15 +101,9 @@ export default function SIRefonteProblem() {
         </div>
 
         {/* Bottom Statement */}
-        <div className={`max-w-4xl mx-auto p-8 rounded-3xl backdrop-blur-sm border-2 text-center ${
-          theme === 'dark'
-            ? 'bg-red-500/10 border-red-500/30'
-            : 'bg-red-50 border-red-300'
-        }`}>
+        <div className="max-w-4xl mx-auto p-8 rounded-3xl backdrop-blur-sm border-2 text-center bg-red-500/10 border-red-500/30">
           <div className="text-5xl mb-4">👇</div>
-          <p className={`text-2xl sm:text-3xl font-bold ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <p className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
             Résultat : votre SI fonctionne,{' '}
             <span className="text-red-500">mais empêche l'entreprise d'avancer.</span>
           </p>

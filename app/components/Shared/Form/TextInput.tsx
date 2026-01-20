@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import { useTheme } from '~/context/ThemeContext';
 import { cn } from '~/utils/cn';
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -10,7 +9,6 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, error, icon, className, id, ...props }, ref) => {
-    const { theme } = useTheme();
     const inputId = id || props.name;
 
     return (
@@ -19,7 +17,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           htmlFor={inputId}
           className={cn(
             "block text-sm font-medium mb-2",
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
+            'text-[var(--text-primary)]'
           )}
         >
           {label} {props.required && '*'}
@@ -38,9 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               "focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent",
               icon ? "pl-12 pr-4" : "px-4",
               "py-2.5 sm:py-3",
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                : 'bg-[var(--bg-secondary)] border-gray-300 text-gray-900 placeholder-gray-400',
+              'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-muted)]',
               error ? "border-red-500 focus:ring-red-500" : ""
             )}
             {...props}

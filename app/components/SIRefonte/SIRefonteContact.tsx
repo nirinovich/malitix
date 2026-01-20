@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ArrowRight, Mail, Globe, User, Phone, CheckCircle } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 import { TextInput } from '~/components/Shared/Form/TextInput';
 import { Textarea } from '~/components/Shared/Form/Textarea';
 import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
@@ -17,7 +16,6 @@ interface SIRefonteFormData {
 }
 
 export default function SIRefonteContact() {
-  const { theme } = useTheme();
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const {
@@ -45,16 +43,10 @@ export default function SIRefonteContact() {
   };
 
   return (
-    <section id="contact-sirefonte" className={`relative py-24 overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-[#0a0e0d] to-[#0a0e0d]'
-        : 'bg-[var(--bg-primary)]'
-    }`}>
+    <section id="contact-sirefonte" className="relative py-24 overflow-hidden bg-[var(--bg-primary)]">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/10'
-        }`}></div>
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl bg-[#2ca3bd]/10"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -63,12 +55,10 @@ export default function SIRefonteContact() {
           <div className="inline-block px-4 py-2 rounded-full bg-[#2ca3bd] text-white text-sm font-bold mb-4">
             L'Audit Express — Diagnostic 8h (offert)
           </div>
-          <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-4xl sm:text-5xl font-black mb-4 text-[var(--text-primary)]">
             Votre SI peut créer plus de valeur.
           </h2>
-          <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+          <p className="text-xl text-[var(--text-secondary)]">
             La clé du diagnostic en 8h offert par Malitix.
           </p>
         </div>
@@ -78,11 +68,7 @@ export default function SIRefonteContact() {
           <div>
 
             {/* Form Container */}
-            <div className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10'
-                : 'bg-[var(--surface-primary)] border-gray-200 shadow-lg'
-            }`}>
+            <div className="p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 bg-[var(--surface-primary)] border-[var(--border-primary)] shadow-lg">
               {submissionStatus === 'success' ? (
                 <FormFeedback status="success" message="Demande d'Audit Express envoyée avec succès !" />
               ) : (
@@ -157,7 +143,7 @@ export default function SIRefonteContact() {
                       {!isSubmitting && <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />}
                     </button>
 
-                    <p className={`text-xs text-center ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
+                    <p className="text-xs text-center text-[var(--text-muted)]">
                       En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix.
                     </p>
                   </form>
@@ -168,24 +154,18 @@ export default function SIRefonteContact() {
 
           {/* Right: Benefits/Promise */}
           <div className="space-y-6 lg:self-center">
-            <div className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
-              theme === 'dark'
-                ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-                : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30 shadow-lg'
-            }`}>
-              <h3 className={`text-2xl font-black mb-6 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+            <div className="p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30 shadow-lg">
+              <h3 className="text-2xl font-black mb-6 text-[var(--text-primary)]">
                 L'Audit Express — Diagnostic 8h (offert)
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="text-[#2ca3bd] flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <div className={`font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-bold mb-1 text-[var(--text-primary)]">
                       1) Une vision claire de votre SI actuel
                     </div>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className="text-sm text-[var(--text-secondary)]">
                       Cartographie infra / application / data / sécurité<br />
                       Détermination du niveau de maturité décisionnelle
                     </p>
@@ -194,10 +174,10 @@ export default function SIRefonteContact() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="text-[#2ca3bd] flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <div className={`font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-bold mb-1 text-[var(--text-primary)]">
                       2) Vos risques majeurs & leurs impacts
                     </div>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className="text-sm text-[var(--text-secondary)]">
                       Cybersécurité, disponibilité, conformité<br />
                       Cartographie des risques à prioriser
                     </p>
@@ -206,10 +186,10 @@ export default function SIRefonteContact() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="text-[#2ca3bd] flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <div className={`font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-bold mb-1 text-[var(--text-primary)]">
                       3) Votre potentiel d'optimisation cloud
                     </div>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className="text-sm text-[var(--text-secondary)]">
                       Analyse coûts + gigantesques économies (-20% -40%)
                     </p>
                   </div>
@@ -217,10 +197,10 @@ export default function SIRefonteContact() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="text-[#2ca3bd] flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <div className={`font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-bold mb-1 text-[var(--text-primary)]">
                       4) Vos quick wins à ROI immédiat
                     </div>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className="text-sm text-[var(--text-secondary)]">
                       Actions réalisables en 90 jours<br />
                       Gains de coûts, sécu, performance
                     </p>
@@ -229,10 +209,10 @@ export default function SIRefonteContact() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="text-[#2ca3bd] flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <div className={`font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-bold mb-1 text-[var(--text-primary)]">
                       5) Votre roadmap 90 jours
                     </div>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className="text-sm text-[var(--text-secondary)]">
                       3 objectifs prioritaires<br />
                       Impacts, composante, budget indicatif
                     </p>

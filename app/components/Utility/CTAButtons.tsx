@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { useTheme } from '~/context/ThemeContext';
 
 // Bouton minimaliste avec timer
 export function CTAButtonV3({ onClick }: { onClick: () => void }) {
-  const { theme } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -12,11 +10,7 @@ export function CTAButtonV3({ onClick }: { onClick: () => void }) {
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`group relative w-full sm:w-auto px-6 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 text-base sm:text-lg lg:text-xl font-bold rounded-xl transition-all duration-300 ${
-          theme === 'dark'
-            ? 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white'
-            : 'bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white'
-        } ${isHovered ? 'shadow-2xl' : 'shadow-lg'}`}
+        className={`group relative w-full sm:w-auto px-6 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 text-base sm:text-lg lg:text-xl font-bold rounded-xl transition-all duration-300 bg-[#2ca3bd] hover:bg-[#1e7a8f] text-white ${isHovered ? 'shadow-2xl' : 'shadow-lg'}`}
       >
         <div className="flex flex-col items-center gap-0.5 sm:gap-1">
           <span className="text-lg sm:text-xl lg:text-2xl font-black">Lancer mon Sprint</span>

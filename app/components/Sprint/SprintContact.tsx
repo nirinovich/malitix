@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useTheme } from '~/context/ThemeContext';
 import { TextInput } from '~/components/Shared/Form/TextInput';
 import { Textarea } from '~/components/Shared/Form/Textarea';
 import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
@@ -16,7 +15,6 @@ interface SprintFormData {
 }
 
 export default function SprintContact() {
-  const { theme } = useTheme();
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   const { 
@@ -44,22 +42,12 @@ export default function SprintContact() {
   return (
     <section 
       id="contact-sprint"
-      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden ${
-        theme === 'dark' 
-          ? 'bg-gradient-to-b from-[#0a0e0d] to-[#060705]'
-          : 'bg-[var(--bg-primary)]'
-      }`}
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)]"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute inset-0 bg-[size:40px_40px] sm:bg-[size:50px_50px] ${
-          theme === 'dark'
-            ? 'bg-[linear-gradient(rgba(44,163,189,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.03)_1px,transparent_1px)]'
-            : 'bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)]'
-        }`}></div>
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] rounded-full blur-3xl ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`}></div>
+        <div className="absolute inset-0 bg-[size:40px_40px] sm:bg-[size:50px_50px] bg-[image:var(--hero-grid-pattern)]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] rounded-full blur-3xl bg-[var(--accent-secondary)]"></div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -71,24 +59,16 @@ export default function SprintContact() {
             </span>
             <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 text-[var(--text-primary)]">
             <span className="block sm:inline">Prêt à débloquer votre projet ?</span>
           </h2>
-          <p className={`text-base sm:text-lg lg:text-xl px-4 ${
-            theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-          }`}>
+          <p className="text-base sm:text-lg lg:text-xl px-4 text-[var(--text-secondary)]">
             Parlez-nous de votre situation. Réponse sous 24h.
           </p>
         </div>
 
         {/* Form */}
-        <div className={`backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border ${
-          theme === 'dark'
-            ? 'bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10'
-            : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-gray-200'
-        }`}>
+        <div className="backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-[var(--border-primary)]">
           {submissionStatus === 'success' ? (
              <FormFeedback status="success" message="Nous vous recontactons sous 24h pour démarrer votre Sprint Commando." />
           ) : (
@@ -145,9 +125,7 @@ export default function SprintContact() {
                   {!isSubmitting && <ArrowRight size={20} />}
                 </button>
 
-                <p className={`text-xs text-center ${
-                  theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                }`}>
+                <p className="text-xs text-center text-[var(--text-muted)]">
                   En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix dans le cadre de votre demande.
                 </p>
               </form>

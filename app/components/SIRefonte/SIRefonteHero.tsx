@@ -1,34 +1,19 @@
 import { Shield, Cloud, Database, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 
 // Variant A: Split Screen with Animated SI Diagram
 export default function SIRefonteHero() {
-  const { theme } = useTheme();
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sirefonte');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className={`relative min-h-screen flex items-center overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'bg-[var(--bg-primary)]'
-    }`}>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-secondary)]">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute inset-0 bg-[size:60px_60px] opacity-30 ${
-          theme === 'dark' 
-            ? 'bg-[linear-gradient(rgba(44,163,189,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.05)_1px,transparent_1px)]'
-            : 'bg-[linear-gradient(rgba(44,163,189,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.1)_1px,transparent_1px)]'
-        }`}></div>
-        <div className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`} style={{ animationDuration: '4s' }}></div>
-        <div className={`absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2ca3bd]/10' : 'bg-[var(--bg-secondary)]'
-        }`} style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
+        <div className="absolute inset-0 bg-[size:60px_60px] opacity-30 bg-[image:var(--hero-grid-pattern)]"></div>
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-pulse bg-[var(--accent-secondary)]" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl animate-pulse bg-[var(--accent-secondary)]" style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10 w-full">
@@ -37,9 +22,7 @@ export default function SIRefonteHero() {
           <div className="space-y-8">
             {/* Main Headline */}
             <div className="space-y-4">
-              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] text-[var(--text-primary)]">
                 Votre SI doit{' '}
                 <span className="relative inline-block">
                   <span className="text-[#2ca3bd]">accélérer</span>
@@ -55,9 +38,7 @@ export default function SIRefonteHero() {
                 </span>
                 {' '}votre business.
               </h1>
-              <h2 className={`text-2xl sm:text-3xl font-semibold ${
-                theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-              }`}>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[var(--text-secondary)]">
                 Pas le freiner.
               </h2>
             </div>
@@ -67,11 +48,7 @@ export default function SIRefonteHero() {
               {['Cloud', 'Data', 'Sécurité', 'IA'].map((item, idx) => (
                 <div 
                   key={idx}
-                  className={`px-5 py-2.5 rounded-xl font-semibold text-sm backdrop-blur-sm ${
-                    theme === 'dark'
-                      ? 'bg-[#2ca3bd]/20 text-[#2ca3bd] border border-[#2ca3bd]/30'
-                      : 'bg-[#2ca3bd]/10 text-[#2ca3bd] border border-[#2ca3bd]/30'
-                  }`}
+                  className="px-5 py-2.5 rounded-xl font-semibold text-sm backdrop-blur-sm bg-[#2ca3bd]/20 text-[#2ca3bd] border border-[#2ca3bd]/30"
                 >
                   {item}
                 </div>
@@ -79,27 +56,23 @@ export default function SIRefonteHero() {
             </div>
 
             {/* Value Prop */}
-            <div className={`p-6 rounded-2xl backdrop-blur-sm border ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10'
-                : 'bg-[var(--surface-primary)] border-gray-200'
-            }`}>
+            <div className="p-6 rounded-2xl backdrop-blur-sm border bg-[var(--surface-primary)] border-[var(--border-primary)]">
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-[#2ca3bd] mt-0.5 flex-shrink-0" size={20} />
-                  <p className={`text-base ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
+                  <p className="text-base text-[var(--text-secondary)]">
                     <strong>Une vision claire</strong> de votre SI actuel
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-[#2ca3bd] mt-0.5 flex-shrink-0" size={20} />
-                  <p className={`text-base ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
+                  <p className="text-base text-[var(--text-secondary)]">
                     <strong>3 quick wins</strong> à ROI immédiat
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-[#2ca3bd] mt-0.5 flex-shrink-0" size={20} />
-                  <p className={`text-base ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}>
+                  <p className="text-base text-[var(--text-secondary)]">
                     <strong>Une roadmap 90 jours</strong> — en 72h
                   </p>
                 </div>
@@ -120,7 +93,7 @@ export default function SIRefonteHero() {
               </button>
             </div>
 
-            <p className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+            <p className="text-sm text-[var(--text-tertiary)]">
               ⚡ Réponse sous 24h • Lumière sous 72h • Sans engagement
             </p>
           </div>
@@ -128,24 +101,18 @@ export default function SIRefonteHero() {
           {/* Right Column - SI Architecture Illustration */}
           <div className="relative hidden lg:block h-[600px]">
             {/* Background glow effects */}
-            <div className={`absolute inset-0 flex items-center justify-center ${
-              theme === 'dark' ? 'opacity-20' : 'opacity-10'
-            }`}>
+            <div className="absolute inset-0 flex items-center justify-center opacity-20">
               <div className="w-96 h-96 bg-[#2ca3bd] rounded-full blur-3xl"></div>
             </div>
 
             {/* Central Warning Node */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 30 }}>
-              <div className={`w-36 h-36 rounded-2xl flex flex-col items-center justify-center backdrop-blur-xl border-2 shadow-2xl animate-pulse ${
-                theme === 'dark'
-                  ? 'bg-red-900/20 border-red-500/60'
-                  : 'bg-red-100 border-red-400'
-              }`} style={{ animationDuration: '2s' }}>
-                <div className={`text-xs font-bold mb-2 ${theme === 'dark' ? 'text-red-400' : 'text-red-700'}`}>
+              <div className="w-36 h-36 rounded-2xl flex flex-col items-center justify-center backdrop-blur-xl border-2 shadow-2xl animate-pulse bg-red-500/10 border-red-500/50" style={{ animationDuration: '2s' }}>
+                <div className="text-xs font-bold mb-2 text-red-500">
                   SI Actuel
                 </div>
                 <div className="text-3xl mb-2">⚠️</div>
-                <div className={`text-xs font-semibold ${theme === 'dark' ? 'text-red-400/80' : 'text-red-700/80'}`}>
+                <div className="text-xs font-semibold text-red-500/80">
                   Dette tech
                 </div>
               </div>
@@ -153,13 +120,9 @@ export default function SIRefonteHero() {
 
             {/* Top - IA */}
             <div className="absolute top-8 left-1/2 -translate-x-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '0s' }}>
-              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
-                theme === 'dark'
-                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
-              }`}>
+              <div className="w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 bg-[var(--surface-primary)] border-[#2ca3bd]/30">
                 <Sparkles size={32} className="text-[#2ca3bd]" />
-                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                <span className="text-xs font-bold text-[var(--text-primary)]">
                   IA
                 </span>
               </div>
@@ -167,13 +130,9 @@ export default function SIRefonteHero() {
 
             {/* Right - Cloud */}
             <div className="absolute top-1/2 right-8 -translate-y-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '1.5s' }}>
-              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
-                theme === 'dark'
-                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
-              }`}>
+              <div className="w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 bg-[var(--surface-primary)] border-[#2ca3bd]/30">
                 <Cloud size={32} className="text-[#2ca3bd]" />
-                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                <span className="text-xs font-bold text-[var(--text-primary)]">
                   Cloud
                 </span>
               </div>
@@ -181,13 +140,9 @@ export default function SIRefonteHero() {
 
             {/* Bottom - Data */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '3s' }}>
-              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
-                theme === 'dark'
-                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
-              }`}>
+              <div className="w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 bg-[var(--surface-primary)] border-[#2ca3bd]/30">
                 <Database size={32} className="text-[#2ca3bd]" />
-                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                <span className="text-xs font-bold text-[var(--text-primary)]">
                   Data
                 </span>
               </div>
@@ -195,13 +150,9 @@ export default function SIRefonteHero() {
 
             {/* Left - Sécurité */}
             <div className="absolute top-1/2 left-8 -translate-y-1/2" style={{ zIndex: 20, animation: 'float 6s ease-in-out infinite', animationDelay: '4.5s' }}>
-              <div className={`w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 ${
-                theme === 'dark'
-                  ? 'bg-[#0a0e0d]/80 border-[#2ca3bd]/40'
-                  : 'bg-[var(--surface-primary)] border-[#2ca3bd]/30'
-              }`}>
+              <div className="w-28 h-28 rounded-xl backdrop-blur-xl flex flex-col items-center justify-center gap-2 shadow-xl border-2 bg-[var(--surface-primary)] border-[#2ca3bd]/30">
                 <Shield size={32} className="text-[#2ca3bd]" />
-                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                <span className="text-xs font-bold text-[var(--text-primary)]">
                   Sécurité
                 </span>
               </div>
@@ -213,7 +164,7 @@ export default function SIRefonteHero() {
               <line
                 x1="50%" y1="50%"
                 x2="50%" y2="15%"
-                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                stroke="#2ca3bd"
                 strokeWidth="2"
                 strokeDasharray="8,8"
                 opacity="0.5"
@@ -222,7 +173,7 @@ export default function SIRefonteHero() {
               <line
                 x1="50%" y1="50%"
                 x2="85%" y2="50%"
-                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                stroke="#2ca3bd"
                 strokeWidth="2"
                 strokeDasharray="8,8"
                 opacity="0.5"
@@ -231,7 +182,7 @@ export default function SIRefonteHero() {
               <line
                 x1="50%" y1="50%"
                 x2="50%" y2="85%"
-                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                stroke="#2ca3bd"
                 strokeWidth="2"
                 strokeDasharray="8,8"
                 opacity="0.5"
@@ -240,7 +191,7 @@ export default function SIRefonteHero() {
               <line
                 x1="50%" y1="50%"
                 x2="15%" y2="50%"
-                stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'}
+                stroke="#2ca3bd"
                 strokeWidth="2"
                 strokeDasharray="8,8"
                 opacity="0.5"

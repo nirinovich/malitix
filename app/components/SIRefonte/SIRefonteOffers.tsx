@@ -1,10 +1,7 @@
 import { Sparkles, Rocket, Building2, ArrowRight, Check } from 'lucide-react';
-import { useTheme } from '~/context/ThemeContext';
 
 // Variant A: Pricing Cards with Features
 export default function SIRefonteOffers() {
-  const { theme } = useTheme();
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sirefonte');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
@@ -77,21 +74,15 @@ export default function SIRefonteOffers() {
   ];
 
   return (
-    <section id="offers-sirefonte" className={`relative py-24 overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-[#060705] to-[#0a0e0d]'
-        : 'bg-[var(--bg-primary)]'
-    }`}>
+    <section id="offers-sirefonte" className="relative py-24 overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-[var(--text-primary)]">
             Nos offres{' '}
             <span className="text-[#2ca3bd]">Refonte SI</span>
           </h2>
-          <p className={`text-xl ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+          <p className="text-xl text-[var(--text-secondary)]">
             De l'audit express à la transformation complète
           </p>
         </div>
@@ -105,12 +96,8 @@ export default function SIRefonteOffers() {
                 key={idx}
                 className={`relative p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 flex flex-col h-full ${
                   offer.highlighted
-                    ? theme === 'dark'
-                      ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/10 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.3)]'
-                      : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.2)]'
-                    : theme === 'dark'
-                      ? 'bg-white/5 border-white/10'
-                      : 'bg-[var(--surface-primary)] border-gray-200'
+                    ? 'bg-gradient-to-br from-[#2ca3bd]/20 to-[#2ca3bd]/10 border-[#2ca3bd] shadow-[0_0_50px_rgba(44,163,189,0.3)]'
+                    : 'bg-[var(--surface-primary)] border-[var(--border-primary)]'
                 }`}
                 style={{
                   animation: 'fade-in-up 0.6s ease-out forwards',
@@ -141,14 +128,10 @@ export default function SIRefonteOffers() {
 
                 {/* Title */}
                 <div className="text-center mb-6">
-                  <h3 className={`text-2xl font-black mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
+                  <h3 className="text-2xl font-black mb-2 text-[var(--text-primary)]">
                     {offer.title}
                   </h3>
-                  <div className={`text-sm font-semibold ${
-                    theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                  }`}>
+                  <div className="text-sm font-semibold text-[var(--text-tertiary)]">
                     {offer.subtitle}
                   </div>
                 </div>
@@ -156,9 +139,7 @@ export default function SIRefonteOffers() {
                 {/* Price */}
                 <div className="text-center mb-6">
                   {offer.originalPrice && (
-                    <div className={`text-2xl font-bold line-through mb-2 ${
-                      theme === 'dark' ? 'text-white/40' : 'text-gray-400'
-                    }`}>
+                    <div className="text-2xl font-bold line-through mb-2 text-[var(--text-muted)]">
                       {offer.originalPrice}
                     </div>
                   )}
@@ -171,9 +152,7 @@ export default function SIRefonteOffers() {
                 </div>
 
                 {/* Description */}
-                <p className={`text-center mb-8 text-sm ${
-                  theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-                }`}>
+                <p className="text-center mb-8 text-sm text-[var(--text-secondary)]">
                   {offer.description}
                 </p>
 
@@ -186,9 +165,7 @@ export default function SIRefonteOffers() {
                         className="flex-shrink-0 mt-0.5" 
                         style={{ color: offer.color }}
                       />
-                      <span className={`text-sm ${
-                        theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-                      }`}>
+                      <span className="text-sm text-[var(--text-secondary)]">
                         {feature}
                       </span>
                     </li>
@@ -202,9 +179,7 @@ export default function SIRefonteOffers() {
                     className={`group cursor-pointer w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 ${
                       offer.highlighted
                         ? 'bg-[#2ca3bd] text-white shadow-lg hover:shadow-2xl'
-                        : theme === 'dark'
-                          ? 'bg-white/10 text-white border-2 border-white/20 hover:bg-white/20'
-                          : 'bg-[var(--bg-secondary)] text-gray-900 border-2 border-gray-300 hover:bg-gray-300'
+                        : 'bg-[var(--surface-elevated)] text-[var(--text-primary)] border-2 border-[var(--border-primary)] hover:bg-[var(--surface-hover)]'
                     }`}
                   >
                     {offer.cta}

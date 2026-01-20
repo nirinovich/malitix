@@ -1,5 +1,4 @@
 import { motion, type Variants } from 'framer-motion';
-import { useTheme } from '~/context/ThemeContext';
 import { CTAButtonV3 } from '~/components/Utility/CTAButtons';
 import { ProgressRescueGaugeVariant } from '~/components/Utility/ProgressIllustration';
 import { LogoCarousel } from '~/components/Utility/LogoCarousel';
@@ -69,8 +68,6 @@ const companyLogos = [
 
 // Variante C - Design Split avec Visual et Stats
 export default function SprintHero() {
-  const { theme } = useTheme();
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-sprint');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
@@ -82,11 +79,7 @@ export default function SprintHero() {
   const IllustrationComponent = ProgressRescueGaugeVariant;
 
   return (
-    <section className={`relative min-h-screen sm:min-h-[90vh] flex items-center overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-br from-[#060705] via-[#060705] to-[#0a0e0d]'
-        : 'bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-primary)]'
-    }`}>
+    <section className="relative min-h-screen sm:min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Colonne gauche - Contenu */}
@@ -98,16 +91,14 @@ export default function SprintHero() {
           >
             {/* Headline */}
             <motion.div variants={itemVariants} className="space-y-4 sm:space-y-5">
-              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-[var(--text-primary)]">
                 Vos projets IT{' '}
                 <span className="relative inline-block">
                   <span className="text-[#2ca3bd]">en retard ?</span>
                   <svg className="absolute -bottom-2 sm:-bottom-3 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none">
                     <path 
                       d="M0 5 Q50 0, 100 5 T200 5" 
-                      stroke={theme === 'dark' ? '#2ca3bd' : '#2ca3bd'} 
+                      stroke="#2ca3bd" 
                       strokeWidth="4" 
                       fill="none"
                       strokeLinecap="round"
@@ -116,25 +107,17 @@ export default function SprintHero() {
                 </span>
               </h1>
               
-              <div className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed ${
-                theme === 'dark' ? 'text-white/90' : 'text-gray-800'
-              }`}>
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed text-[var(--text-secondary)]">
                 On redresse votre roadmap <br className="hidden sm:inline" />
-                en <span className={`font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${
-                  theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
-                }`}>2 semaines</span>.
+                en <span className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2ca3bd]">2 semaines</span>.
               </div>
             </motion.div>
 
             {/* Features rapides */}
             <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4">
               {['✓ Diagnostic en 48h', '✓ Équipe dédiée', '✓ Résultats mesurables'].map((feature) => (
-                <div key={feature} className={`flex items-center gap-3 text-base sm:text-lg lg:text-xl ${
-                  theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-                }`}>
-                  <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    theme === 'dark' ? 'bg-[#2ca3bd]/20' : 'bg-[var(--bg-secondary)]'
-                  }`}>
+                <div key={feature} className="flex items-center gap-3 text-base sm:text-lg lg:text-xl text-[var(--text-secondary)]">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-[#2ca3bd]/20">
                     <span className="text-[#2ca3bd] text-sm sm:text-base font-bold">✓</span>
                   </div>
                   {feature.replace('✓ ', '')}
@@ -148,9 +131,7 @@ export default function SprintHero() {
             </motion.div>
 
             {/* Stats de confiance */}
-            <motion.div variants={itemVariants} className={`grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t ${
-              theme === 'dark' ? 'border-white/10' : 'border-gray-200'
-            }`}>
+            <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t border-[var(--border-primary)]">
               {[
                 { value: '600+', label: 'Projets livrés' },
                 { value: '350+', label: 'Développeurs' },
@@ -158,14 +139,10 @@ export default function SprintHero() {
                 { value: '24h', label: 'Temps de réponse' },
               ].map((stat, idx) => (
                 <div key={idx} className="text-center">
-                  <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 ${
-                    theme === 'dark' ? 'text-[#2ca3bd]' : 'text-[#2ca3bd]'
-                  }`}>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-[#2ca3bd]">
                     {stat.value}
                   </div>
-                  <div className={`text-xs sm:text-sm lg:text-base ${
-                    theme === 'dark' ? 'text-white/60' : 'text-gray-600'
-                  }`}>
+                  <div className="text-xs sm:text-sm lg:text-base text-[var(--text-tertiary)]">
                     {stat.label}
                   </div>
                 </div>
@@ -188,9 +165,7 @@ export default function SprintHero() {
 
         {/* Logo Carousel en bas */}
         <motion.div 
-          className={`mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t ${
-            theme === 'dark' ? 'border-white/10' : 'border-gray-200'
-          }`}
+          className="mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t border-[var(--border-primary)]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
