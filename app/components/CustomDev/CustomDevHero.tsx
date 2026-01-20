@@ -13,7 +13,7 @@ export default function CustomDevHero() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute inset-0 bg-[size:50px_50px] dark:bg-[linear-gradient(rgba(44,163,189,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.03)_1px,transparent_1px)] light:bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)]"></div>
+        <div className="absolute inset-0 bg-[size:50px_50px] bg-[image:var(--hero-grid-pattern)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
@@ -63,10 +63,10 @@ export default function CustomDevHero() {
           <div className="relative hidden lg:block">
             <div className="relative h-[500px] flex items-center justify-center">
               {/* Glow effect behind mockup */}
-              <div className="absolute inset-0 blur-3xl -z-10 bg-slate-200/50 dark:bg-[#2ca3bd]/20 scale-90"></div>
+              <div className="absolute inset-0 blur-3xl -z-10 bg-[var(--accent-secondary)] scale-90"></div>
               
               {/* Central mockup illustration */}
-              <div className="relative w-full max-w-md h-96 rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-10 bg-gradient-to-br from-[#2ca3bd]/10 to-white dark:from-[#2ca3bd]/20 dark:to-[#060705] border border-[#2ca3bd]/30">
+              <div className="relative w-full max-w-md h-96 rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-10 bg-[image:var(--card-bg)] border border-[var(--card-border)]">
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-shimmer"></div>
                 
@@ -82,30 +82,30 @@ export default function CustomDevHero() {
                   {/* Content area with grid */}
                   <div className="flex-1 space-y-3">
                     {/* Header bar with pulse animation */}
-                    <div className="h-8 rounded-lg animate-pulse-subtle relative overflow-hidden bg-slate-200/50 dark:bg-[#2ca3bd]/30">
-                      <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-[#2ca3bd]/0 dark:via-[#2ca3bd]/40 dark:to-[#2ca3bd]/0 light:bg-gradient-to-r light:from-[#2ca3bd]/0 light:via-[#2ca3bd]/60 light:to-[#2ca3bd]/0 animate-slide"></div>
+                    <div className="h-8 rounded-lg animate-pulse-subtle relative overflow-hidden bg-[var(--surface-elevated)]">
+                      <div className="absolute inset-0 bg-[image:linear-gradient(to_right,transparent,var(--accent-glow),transparent)] animate-slide"></div>
                     </div>
                     
                     {/* Card grid with stagger animation */}
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-slate-100 dark:bg-[#2ca3bd]/20" style={{ animationDelay: '0s' }}>
-                        <div className="absolute top-2 left-2 w-8 h-1 rounded-full bg-[#2ca3bd]/40 dark:bg-[#2ca3bd]/50"></div>
-                        <div className="absolute top-5 left-2 w-12 h-1 rounded-full bg-[#2ca3bd]/25 dark:bg-[#2ca3bd]/30"></div>
+                      <div className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-[var(--surface-elevated)]" style={{ animationDelay: '0s' }}>
+                        <div className="absolute top-2 left-2 w-8 h-1 rounded-full bg-[var(--brand-primary)] opacity-50"></div>
+                        <div className="absolute top-5 left-2 w-12 h-1 rounded-full bg-[var(--brand-primary)] opacity-30"></div>
                       </div>
-                      <div className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-slate-100 dark:bg-[#2ca3bd]/20" style={{ animationDelay: '0.2s' }}>
-                        <div className="absolute top-2 left-2 w-8 h-1 rounded-full bg-[#2ca3bd]/40 dark:bg-[#2ca3bd]/50"></div>
-                        <div className="absolute top-5 left-2 w-12 h-1 rounded-full bg-[#2ca3bd]/25 dark:bg-[#2ca3bd]/30"></div>
+                      <div className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-[var(--surface-elevated)]" style={{ animationDelay: '0.2s' }}>
+                        <div className="absolute top-2 left-2 w-8 h-1 rounded-full bg-[var(--brand-primary)] opacity-50"></div>
+                        <div className="absolute top-5 left-2 w-12 h-1 rounded-full bg-[var(--brand-primary)] opacity-30"></div>
                       </div>
                     </div>
                     
                     {/* Large content area */}
-                    <div className="h-32 rounded-lg relative overflow-hidden bg-[#2ca3bd]/25 dark:bg-[#2ca3bd]/30">
+                    <div className="h-32 rounded-lg relative overflow-hidden bg-[var(--accent-primary)]">
                       {/* Simulated chart bars */}
                       <div className="absolute bottom-2 left-2 right-2 flex items-end gap-1">
-                        <div className="w-full rounded-t opacity-0 bg-[#2ca3bd]/50 dark:bg-[#2ca3bd]/50 animate-grow" style={{ animationDelay: '0.5s', height: '2rem' }}></div>
-                        <div className="w-full rounded-t opacity-0 bg-[#2ca3bd]/50 dark:bg-[#2ca3bd]/50 animate-grow" style={{ animationDelay: '0.7s', height: '4rem' }}></div>
-                        <div className="w-full rounded-t opacity-0 bg-[#2ca3bd]/50 dark:bg-[#2ca3bd]/50 animate-grow" style={{ animationDelay: '0.9s', height: '3rem' }}></div>
-                        <div className="w-full rounded-t opacity-0 bg-[#2ca3bd]/50 dark:bg-[#2ca3bd]/50 animate-grow" style={{ animationDelay: '1.1s', height: '5rem' }}></div>
+                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '0.5s', height: '2rem' }}></div>
+                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '0.7s', height: '4rem' }}></div>
+                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '0.9s', height: '3rem' }}></div>
+                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '1.1s', height: '5rem' }}></div>
                       </div>
                     </div>
                   </div>
