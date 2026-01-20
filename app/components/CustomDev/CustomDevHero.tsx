@@ -64,9 +64,11 @@ export default function CustomDevHero() {
             <div className="relative h-[500px] flex items-center justify-center">
               {/* Glow effect behind mockup */}
               <div className="absolute inset-0 blur-3xl -z-10 bg-[var(--accent-secondary)] scale-90"></div>
+              <div className="absolute inset-0 -z-10 rounded-3xl opacity-70 blur-2xl bg-[radial-gradient(circle_at_50%_50%,var(--accent-glow),transparent_60%)]"></div>
               
               {/* Central mockup illustration */}
               <div className="relative w-full max-w-md h-96 rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-10 bg-[image:var(--card-bg)] border border-[var(--card-border)]">
+                <div className="absolute -inset-4 rounded-[28px] opacity-50 blur-2xl bg-[radial-gradient(circle_at_30%_20%,var(--accent-glow),transparent_60%)]"></div>
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-shimmer"></div>
                 
@@ -114,7 +116,7 @@ export default function CustomDevHero() {
 
               {/* Floating feature cards */}
               <div 
-                className="absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20"
+                className="absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
                 style={{ animationDelay: '0s' }}
               >
                 <div className="flex items-center gap-2">
@@ -129,7 +131,7 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className="absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20"
+                className="absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
                 style={{ animationDelay: '0.5s' }}
               >
                 <div className="flex items-center gap-2">
@@ -144,7 +146,7 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className="absolute bottom-16 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20"
+                className="absolute bottom-16 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
                 style={{ animationDelay: '1s' }}
               >
                 <div className="flex items-center gap-2">
@@ -159,7 +161,7 @@ export default function CustomDevHero() {
               </div>
 
               <div 
-                className="absolute bottom-8 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20"
+                className="absolute bottom-8 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
                 style={{ animationDelay: '1.5s' }}
               >
                 <div className="flex items-center gap-2">

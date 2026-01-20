@@ -26,8 +26,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={inputId}
           className={cn(
             "w-full px-4 py-3 rounded-lg sm:rounded-xl border transition-all text-sm sm:text-base outline-none resize-none",
-            "focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent",
-            'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-muted)]',
+            "focus:ring-2 focus:ring-[var(--form-input-focus-ring)] focus:border-[var(--form-input-focus-border)]",
+            'bg-[var(--form-input-bg)] border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]',
             error ? "border-red-500 focus:ring-red-500" : ""
           )}
           {...props}

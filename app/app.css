@@ -83,6 +83,32 @@ body {
   --accent-primary: rgba(44, 163, 189, 0.1);
   --accent-secondary: rgba(44, 163, 189, 0.05);
   --accent-glow: rgba(44, 163, 189, 0.3);
+
+  /* CTA colors */
+  --cta-accent: var(--brand-primary);
+  --cta-accent-dark: var(--brand-primary-dark);
+  --cta-accent-soft: rgba(44, 163, 189, 0.2);
+  --cta-button-shadow: rgba(44, 163, 189, 0.3);
+  --cta-button-shadow-strong: rgba(44, 163, 189, 0.5);
+  --cta-grid-pattern: var(--hero-grid-pattern);
+  --cta-orb-bg: rgba(44, 163, 189, 0.1);
+  --cta-card-bg: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  --cta-card-border: rgba(255, 255, 255, 0.1);
+  --cta-input-bg: rgba(255, 255, 255, 0.05);
+  --cta-input-border: rgba(255, 255, 255, 0.1);
+  --cta-input-text: rgba(255, 255, 255, 0.9);
+  --cta-input-placeholder: rgba(255, 255, 255, 0.4);
+  --cta-input-focus-border: var(--cta-accent);
+  --cta-input-focus-ring: rgba(44, 163, 189, 0.2);
+
+  /* Form input defaults */
+  --form-input-bg: var(--bg-secondary);
+  --form-input-border: var(--border-primary);
+  --form-input-text: var(--text-primary);
+  --form-input-placeholder: var(--text-muted);
+  --form-input-focus-border: var(--brand-primary);
+  --form-input-focus-ring: rgba(44, 163, 189, 0.2);
+  --form-icon-color: var(--brand-primary);
   
   /* Hero gradient colors */
   --hero-gradient-bg: linear-gradient(to bottom right, #060705, #060705, #0a0e0d);
@@ -172,6 +198,16 @@ body {
   --accent-primary: rgba(44, 163, 189, 0.1);
   --accent-secondary: rgba(44, 163, 189, 0.05);
   --accent-glow: rgba(44, 163, 189, 0.2);
+
+  /* CTA colors */
+  --cta-accent-soft: rgba(44, 163, 189, 0.16);
+  --cta-orb-bg: var(--bg-secondary);
+  --cta-card-bg: linear-gradient(to bottom right, var(--surface-primary), var(--bg-secondary));
+  --cta-card-border: var(--border-primary);
+  --cta-input-bg: var(--bg-secondary);
+  --cta-input-border: var(--border-primary);
+  --cta-input-text: var(--text-primary);
+  --cta-input-placeholder: var(--text-muted);
   
   /* Hero gradient colors */
   --hero-gradient-bg: var(--bg-primary);
@@ -224,6 +260,27 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(to right, #ffffff, #a5a5a5);
+}
+
+/* CTA helpers */
+.cta-grid-pattern {
+  background-image: var(--cta-grid-pattern);
+  background-size: 50px 50px;
+}
+
+.cta-form-surface {
+  background: var(--cta-card-bg);
+  border-color: var(--cta-card-border);
+}
+
+.cta-form {
+  --form-input-bg: var(--cta-input-bg);
+  --form-input-border: var(--cta-input-border);
+  --form-input-text: var(--cta-input-text);
+  --form-input-placeholder: var(--cta-input-placeholder);
+  --form-input-focus-border: var(--cta-input-focus-border);
+  --form-input-focus-ring: var(--cta-input-focus-ring);
+  --form-icon-color: var(--cta-accent);
 }
 
 /* Animations */

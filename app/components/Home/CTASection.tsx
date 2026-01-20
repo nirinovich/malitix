@@ -42,11 +42,11 @@ export function CTASection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary-dark)] relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[size:50px_50px] bg-[linear-gradient(rgba(44,163,189,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(44,163,189,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(44,163,189,0.05)_1px,transparent_1px)]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl bg-[var(--bg-secondary)]"></div>
+        <div className="absolute top-0 left-0 w-full h-full cta-grid-pattern"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl bg-[var(--cta-orb-bg)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -61,11 +61,11 @@ export function CTASection() {
           <div className="space-y-8">
             <div>
               <div className="inline-flex items-center gap-2 mb-6">
-                <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+                <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--cta-accent)]"></div>
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--cta-accent)]">
                   Contactez-nous
                 </span>
-                <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+                <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--cta-accent)]"></div>
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-[var(--text-primary)]">
                 Prêt à propulser votre entreprise ?
@@ -83,8 +83,8 @@ export function CTASection() {
                 'Devis personnalisé et détaillé',
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="bg-[#2ca3bd]/20 p-2 rounded-full">
-                    <CheckCircle2 className="text-[#2ca3bd]" size={20} />
+                  <div className="bg-[var(--cta-accent-soft)] p-2 rounded-full">
+                    <CheckCircle2 className="text-[var(--cta-accent)]" size={20} />
                   </div>
                   <span className="text-[var(--text-secondary)]">{benefit}</span>
                 </div>
@@ -94,19 +94,19 @@ export function CTASection() {
             {/* Contact Info */}
             <div className="pt-8 border-t border-[var(--border-primary)] space-y-4">
               <div className="flex items-center gap-3 text-[var(--text-secondary)]">
-                <Mail className="text-[#2ca3bd]" size={20} />
-                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-[#2ca3bd] transition-colors">
+                <Mail className="text-[var(--cta-accent)]" size={20} />
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-[var(--cta-accent)] transition-colors">
                   {COMPANY_INFO.email}
                 </a>
               </div>
               <div className="flex items-center gap-3 text-[var(--text-secondary)]">
-                <Phone className="text-[#2ca3bd]" size={20} />
-                <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-[#2ca3bd] transition-colors">
+                <Phone className="text-[var(--cta-accent)]" size={20} />
+                <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-[var(--cta-accent)] transition-colors">
                   {COMPANY_INFO.phone}
                 </a>
               </div>
               <div className="flex items-center gap-3 text-[var(--text-secondary)]">
-                <MapPin className="text-[#2ca3bd]" size={20} />
+                <MapPin className="text-[var(--cta-accent)]" size={20} />
                 <span>{COMPANY_INFO.address}</span>
               </div>
             </div>
@@ -114,11 +114,11 @@ export function CTASection() {
 
           {/* Right Side - Form */}
           <div className="relative">
-            <div className="backdrop-blur-xl rounded-3xl p-8 shadow-2xl bg-[var(--card-bg)] border border-[var(--card-border)]">
+            <div className="backdrop-blur-xl rounded-3xl p-8 shadow-2xl border cta-form-surface cta-form">
               {submissionStatus === 'success' ? (
                 <div className="text-center py-12 space-y-6">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full animate-in zoom-in">
-                    <CheckCircle2 className="text-[#2ca3bd]" size={40} />
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-[var(--cta-accent-soft)] rounded-full animate-in zoom-in">
+                    <CheckCircle2 className="text-[var(--cta-accent)]" size={40} />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-2 text-[var(--text-primary)]">
@@ -174,7 +174,7 @@ export function CTASection() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
+                      className="w-full bg-[var(--cta-accent)] hover:bg-[var(--cta-accent-dark)] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_20px_40px_-20px_var(--cta-button-shadow)] hover:shadow-[0_24px_48px_-20px_var(--cta-button-shadow-strong)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
                     >
                       {isSubmitting ? 'Envoi en cours...' : CTA_TEXT.primary}
                       <Send size={20} className={isSubmitting ? 'animate-pulse' : ''} />

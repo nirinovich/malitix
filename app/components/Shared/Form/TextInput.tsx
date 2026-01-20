@@ -24,7 +24,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         </label>
         <div className="relative">
           {icon && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--form-icon-color)]">
               {icon}
             </div>
           )}
@@ -33,10 +33,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             id={inputId}
             className={cn(
               "w-full rounded-lg sm:rounded-xl border transition-all text-sm sm:text-base outline-none",
-              "focus:ring-2 focus:ring-[#2ca3bd] focus:border-transparent",
+              "focus:ring-2 focus:ring-[var(--form-input-focus-ring)] focus:border-[var(--form-input-focus-border)]",
               icon ? "pl-12 pr-4" : "px-4",
               "py-2.5 sm:py-3",
-              'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-muted)]',
+              'bg-[var(--form-input-bg)] border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]',
               error ? "border-red-500 focus:ring-red-500" : ""
             )}
             {...props}
