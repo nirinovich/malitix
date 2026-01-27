@@ -9,6 +9,7 @@ interface NavbarProps {
 }
 
 const USE_CASES = [
+  { label: 'Externalisation', href: '/externalisation', description: 'Équipe senior opérationnelle en 72h' },
   { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours' },
   { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure', description: 'Application web & mobile en 90 jours' },
   { label: 'Développement Mobile', href: '/developpement-mobile', description: 'iOS & Android native & cross-platform' },

@@ -32,7 +32,7 @@ export default function ValueStackVariantB() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-start">
           <div className="space-y-4">
-            <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Value Stack</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Ce que vous gagnez</div>
             <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Ce n'est pas juste de l'externalisation.
             </h2>

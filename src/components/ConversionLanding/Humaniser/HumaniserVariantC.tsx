@@ -13,7 +13,7 @@ export default function HumaniserVariantC() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#2ca3bd]">
               <Users size={16} />
-              Humaniser
+              Notre équipe
             </div>
             <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Une équipe déjà soudée, plug-and-play.
@@ -26,7 +26,7 @@ export default function HumaniserVariantC() {
                 <PlugZap className="text-[#2ca3bd]" size={20} aria-hidden="true" />
                 <div>
                   <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    Illustration "bite-sized"
+                    Aperçu rapide
                   </div>
                   <div className="text-sm">Connexion → Coordination → Livraison</div>
                 </div>

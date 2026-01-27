@@ -129,7 +129,7 @@ export default function LeadFormVariantC() {
           </div>
 
           <div className="space-y-6">
-            <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Lead Form</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Audit gratuit</div>
             <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Transformez votre roadmap en livraison.
             </h2>

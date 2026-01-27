@@ -24,7 +24,7 @@ export default function FaqVariantA() {
         <div className="text-center">
           <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">FAQ</div>
           <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            Traitement des objections
+            Questions fréquentes
           </h2>
         </div>
 

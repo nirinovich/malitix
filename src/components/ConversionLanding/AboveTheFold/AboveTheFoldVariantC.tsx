@@ -2,8 +2,8 @@ import { ArrowRight, Rocket, ShieldCheck, Users } from 'lucide-react';
 import { useTheme } from '../../../context/ThemeContext';
 
 const headlinePrimary = 'Arrêtez de Recruter. Commencez à Livrer.';
-const headlineSecondary = 'Votre Équipe de Développement Senior, Opérationnelle dans Vos Sprints en 72h Chrono.';
-const subHeadline = 'Ne perdez plus 3 mois à chasser des talents. Accédez immédiatement au top 1% des ingénieurs React Native & Web. Sans les coûts de recrutement. Sans la gestion RH. Garantie de remplacement sous 7 jours.';
+const headlineSecondary = 'Votre équipe senior opérationnelle en 72h.';
+const subHeadline = 'Accédez au top 1% React Native & Web sans coût de recrutement, sans gestion RH, avec remplacement garanti.';
 const ctaLabel = 'VOIR LES PROFILS DISPONIBLES MAINTENANT';
 const ctaSubtext = 'Audit de besoin gratuit - Aucune carte bancaire requise';
 
@@ -11,9 +11,9 @@ export default function AboveTheFoldVariantC() {
   const { theme } = useTheme();
 
   return (
-    <section id="above-the-fold" className={`pt-28 pb-20 ${theme === 'dark' ? 'bg-[#060705]' : 'bg-[#f5f7f9]'}`}>
+    <section id="above-the-fold" className={`pt-28 pb-20 overflow-hidden ${theme === 'dark' ? 'bg-[#060705]' : 'bg-[#f5f7f9]'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
           <div className="space-y-6">
             <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               {headlinePrimary}
@@ -37,7 +37,7 @@ export default function AboveTheFoldVariantC() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid gap-4">
             {[
               { icon: Rocket, title: 'Démarrage en 72h', desc: 'Une équipe senior prête à livrer rapidement.' },
               { icon: Users, title: 'Top 1% des ingénieurs', desc: 'React Native & Web, déjà validés.' },
@@ -45,7 +45,7 @@ export default function AboveTheFoldVariantC() {
             ].map((item) => (
               <div
                 key={item.title}
-                className={`rounded-2xl border p-5 flex gap-4 ${
+                className={`rounded-2xl border p-5 flex gap-4 transition-all duration-500 hover:-translate-y-1 ${
                   theme === 'dark' ? 'border-white/10 bg-white/5 text-white/70' : 'border-gray-200 bg-white text-gray-700'
                 }`}
               >
@@ -58,6 +58,21 @@ export default function AboveTheFoldVariantC() {
                 </div>
               </div>
             ))}
+            <div className={`rounded-2xl border p-5 transition-all duration-500 ${theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-2xl bg-[#2ca3bd]/15 flex items-center justify-center">
+                  <ShieldCheck className="text-[#2ca3bd]" size={20} />
+                </div>
+                <div>
+                  <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    Sécurité opérationnelle
+                  </div>
+                  <div className={`text-sm ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+                    Tech Lead dédié + reporting hebdo.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

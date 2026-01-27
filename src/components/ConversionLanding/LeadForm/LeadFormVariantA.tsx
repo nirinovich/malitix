@@ -12,7 +12,7 @@ export default function LeadFormVariantA() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
-              Lead Form
+              Audit gratuit
             </div>
             <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Accédez aux profils disponibles dès maintenant

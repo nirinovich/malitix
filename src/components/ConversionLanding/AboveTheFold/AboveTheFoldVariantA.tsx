@@ -2,8 +2,8 @@ import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { useTheme } from '../../../context/ThemeContext';
 
 const headlinePrimary = 'Arrêtez de Recruter. Commencez à Livrer.';
-const headlineSecondary = 'Votre Équipe de Développement Senior, Opérationnelle dans Vos Sprints en 72h Chrono.';
-const subHeadline = 'Ne perdez plus 3 mois à chasser des talents. Accédez immédiatement au top 1% des ingénieurs React Native & Web. Sans les coûts de recrutement. Sans la gestion RH. Garantie de remplacement sous 7 jours.';
+const headlineSecondary = 'Votre équipe senior opérationnelle en 72h.';
+const subHeadline = 'Accédez au top 1% React Native & Web sans coût de recrutement, sans gestion RH, avec remplacement garanti.';
 const ctaLabel = 'VOIR LES PROFILS DISPONIBLES MAINTENANT';
 const ctaSubtext = 'Audit de besoin gratuit - Aucune carte bancaire requise';
 
@@ -17,7 +17,7 @@ export default function AboveTheFoldVariantA() {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd] border-[#2ca3bd]/30 bg-[#2ca3bd]/10">
               <Sparkles size={14} />
-              Above the Fold
+              Équipe commando prête à livrer
             </div>
 
             <div className="space-y-4">
@@ -69,7 +69,7 @@ export default function AboveTheFoldVariantA() {
             }`}>
               <div className="space-y-6">
                 <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Résultats rapides</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Résultats immédiats</div>
                   <h2 className={`text-2xl font-bold mt-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                     Vos sprints accélèrent dès la première semaine.
                   </h2>

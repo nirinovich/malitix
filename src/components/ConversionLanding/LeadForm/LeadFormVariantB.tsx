@@ -9,7 +9,7 @@ export default function LeadFormVariantB() {
   return (
     <section id="lead-form" className={`py-24 ${theme === 'dark' ? 'bg-[#0a0e0d]' : 'bg-white'}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Lead Form</div>
+        <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Audit gratuit</div>
         <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
           Recevez vos profils disponibles
         </h2>

@@ -26,7 +26,7 @@ export default function ValueStackVariantC() {
     <section id="value-stack" className={`py-20 ${theme === 'dark' ? 'bg-[#060705]' : 'bg-[#f5f7f9]'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Value Stack</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">Ce que vous gagnez</div>
           <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             Ce n'est pas juste de l'externalisation. C'est votre accélérateur de croissance.
           </h2>

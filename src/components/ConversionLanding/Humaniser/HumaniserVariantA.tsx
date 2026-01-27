@@ -21,7 +21,7 @@ export default function HumaniserVariantA() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#2ca3bd]">
               <Users size={16} />
-              Humaniser
+              Notre équipe
             </div>
             <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Des humains, pas des prestas anonymes.

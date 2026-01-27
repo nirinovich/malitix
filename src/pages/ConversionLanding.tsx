@@ -29,14 +29,30 @@ export default function ConversionLanding() {
 
       {showControls && <VariantControls variants={variants} onChange={handleVariantChange} />}
 
-      <AboveTheFold variant={variants.aboveTheFold} />
-      <Humaniser variant={variants.humaniser} />
-      <ValueStack variant={variants.valueStack} />
-      <SocialProof variant={variants.socialProof} />
-      <GrandSlamOffer variant={variants.grandSlamOffer} />
-      <LeadMagnet variant={variants.leadMagnet} />
-      <Faq variant={variants.faq} />
-      <LeadForm variant={variants.leadForm} />
+      <div className="lp-section" style={{ animationDelay: '0.05s' }}>
+        <AboveTheFold variant={variants.aboveTheFold} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.1s' }}>
+        <Humaniser variant={variants.humaniser} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.15s' }}>
+        <ValueStack variant={variants.valueStack} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.2s' }}>
+        <SocialProof variant={variants.socialProof} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.25s' }}>
+        <GrandSlamOffer variant={variants.grandSlamOffer} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.3s' }}>
+        <LeadMagnet variant={variants.leadMagnet} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.35s' }}>
+        <Faq variant={variants.faq} />
+      </div>
+      <div className="lp-section" style={{ animationDelay: '0.4s' }}>
+        <LeadForm variant={variants.leadForm} />
+      </div>
     </>
   );
 }

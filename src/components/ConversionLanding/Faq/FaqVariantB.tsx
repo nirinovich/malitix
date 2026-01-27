@@ -1,4 +1,3 @@
-import { HelpCircle } from 'lucide-react';
 import { useTheme } from '../../../context/ThemeContext';
 
 const items = [
@@ -22,19 +21,20 @@ export default function FaqVariantB() {
   return (
     <section id="faq" className={`py-20 ${theme === 'dark' ? 'bg-[#0a0e0d]' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
-          <HelpCircle size={16} />
-          FAQ
+        <div className="text-center">
+          <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">FAQ</div>
+          <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            Questions fréquentes
+          </h2>
         </div>
-        <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-          Traitement des objections
-        </h2>
 
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
+        <div className="mt-10 grid md:grid-cols-2 gap-6">
           {items.map((item) => (
             <div
               key={item.question}
-              className={`rounded-3xl border p-6 ${theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}
+              className={`rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 ${
+                theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white'
+              }`}
             >
               <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 {item.question}
