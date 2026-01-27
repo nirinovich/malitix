@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound';
 
 // Lazy load pages for better performance
 const SprintCommando = lazy(() => import('./pages/SprintCommando'));
+const ConversionLanding = lazy(() => import('./pages/ConversionLanding'));
 const CustomDevelopment = lazy(() => import('./pages/CustomDevelopment'));
 const SIRefonte = lazy(() => import('./pages/SIRefonte'));
 const MobileAppDevelopment = lazy(() => import('./pages/MobileAppDevelopment'));
@@ -24,6 +25,7 @@ function App() {
         }>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/conversion-landing" element={<ConversionLanding />} />
             <Route path="/sprint-commando" element={<SprintCommando />} />
             <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/refonte-si" element={<SIRefonte />} />
