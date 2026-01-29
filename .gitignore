@@ -7,7 +7,12 @@ Thumbs.db
 /legacy/
 /.github/
 /.specify/
+.husky/
 /.vscode/
+specs/
+/specs/
+/docs/
+
 
 # Logs
 *.log
