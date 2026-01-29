@@ -87,7 +87,7 @@ export default function LeadMagnetVariantA() {
 
               <a
                 href="#lead-form"
-                className="mt-6 block text-center bg-white text-[#2ca3bd] font-semibold py-3 rounded-full hover:scale-[1.02] transition-all"
+                className="mt-6 block text-center bg-white text-[#2ca3bd] font-semibold py-3 rounded-full hover:scale-[1.02] transition-all cursor-pointer"
               >
                 🚀 Je me lance
               </a>

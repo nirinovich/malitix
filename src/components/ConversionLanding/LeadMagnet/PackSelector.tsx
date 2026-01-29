@@ -33,18 +33,18 @@ export default function PackSelector({ selectedPack, onSelectPack, accentClassNa
                 isActive
                   ? 'border-[#2ca3bd] bg-[#2ca3bd]/10 shadow-lg shadow-[#2ca3bd]/20'
                   : 'border-gray-200 dark:border-white/10 hover:-translate-y-1 hover:border-[#2ca3bd]/60'
-              }`}
+              } cursor-pointer`}
             >
-              <div className={`mb-2 ${isActive ? accentClassName : 'text-gray-400 dark:text-white/40'}`}>
+              <div className={`mb-2 ${isActive ? accentClassName : 'text-white-400 dark:text-white/80'}`}>
                 <Icon size={18} />
               </div>
-              <div className={`font-semibold ${isActive ? 'text-[#2ca3bd]' : 'text-gray-900 dark:text-white'}`}>
+              <div className={`font-semibold ${isActive ? 'text-[#2ca3bd]' : 'text-white-900 dark:text-white/90'}`}>
                 {pack.name}
               </div>
-              <div className="text-xs text-gray-500 dark:text-white/60 mt-1">
+              <div className="text-xs text-gray-500 dark:text-white/70 mt-1">
                 {pack.description}
               </div>
-              <div className={`mt-3 text-sm font-bold ${isActive ? 'text-[#2ca3bd]' : 'text-gray-900 dark:text-white'}`}>
+              <div className={`mt-3 text-sm font-bold ${isActive ? 'text-[#2ca3bd]' : 'text-white-900 dark:text-white/90'}`}>
                 {pack.basePrice}€/jour
               </div>
             </button>
