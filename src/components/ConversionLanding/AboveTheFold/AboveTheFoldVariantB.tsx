@@ -4,8 +4,8 @@ import { useTheme } from '../../../context/ThemeContext';
 const headlinePrimary = 'Arrêtez de Recruter. Commencez à Livrer.';
 const headlineSecondary = 'Votre équipe senior opérationnelle en 72h.';
 const subHeadline = "Accédez au top 1% d'ingénieurs sur une large sélection de technologies, sans coût de recrutement, sans gestion RH, avec remplacement garanti.";
-const ctaLabel = 'VOIR LES PROFILS DISPONIBLES MAINTENANT';
-const ctaSubtext = 'Audit de besoin gratuit - Aucune carte bancaire requise';
+const ctaLabel = 'VOIR LES PROFILS';
+const ctaSubtext = 'Audit gratuit • Sans carte bancaire';
 
 export default function AboveTheFoldVariantB() {
   const { theme } = useTheme();
