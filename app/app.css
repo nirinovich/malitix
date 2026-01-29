@@ -109,6 +109,15 @@ body {
   --form-input-focus-border: var(--brand-primary);
   --form-input-focus-ring: rgba(44, 163, 189, 0.2);
   --form-icon-color: var(--brand-primary);
+
+  /* Services colors */
+  --services-accent: var(--brand-primary);
+  --services-accent-soft: rgba(44, 163, 189, 0.2);
+  --services-hover-border: rgba(44, 163, 189, 0.5);
+  --services-hover-shadow: rgba(44, 163, 189, 0.2);
+  --services-card-bg: var(--card-bg);
+  --services-card-border: var(--card-border);
+  --services-orb-bg: var(--bg-secondary);
   
   /* Hero gradient colors */
   --hero-gradient-bg: linear-gradient(to bottom right, #060705, #060705, #0a0e0d);
@@ -208,6 +217,15 @@ body {
   --cta-input-border: var(--border-primary);
   --cta-input-text: var(--text-primary);
   --cta-input-placeholder: var(--text-muted);
+
+  /* Services colors */
+  --services-accent: var(--brand-primary);
+  --services-accent-soft: rgba(44, 163, 189, 0.16);
+  --services-hover-border: rgba(44, 163, 189, 0.4);
+  --services-hover-shadow: rgba(44, 163, 189, 0.18);
+  --services-card-bg: var(--card-bg);
+  --services-card-border: var(--card-border);
+  --services-orb-bg: var(--bg-secondary);
   
   /* Hero gradient colors */
   --hero-gradient-bg: var(--bg-primary);
@@ -281,6 +299,30 @@ body {
   --form-input-focus-border: var(--cta-input-focus-border);
   --form-input-focus-ring: var(--cta-input-focus-ring);
   --form-icon-color: var(--cta-accent);
+}
+
+/* Services helpers */
+.services-eyebrow {
+  color: var(--services-accent);
+}
+
+.services-icon-pill {
+  background-color: var(--services-accent);
+  color: #ffffff;
+}
+
+.services-card {
+  background: var(--services-card-bg);
+  border-color: var(--services-card-border);
+}
+
+.services-card:hover {
+  border-color: var(--services-hover-border);
+  box-shadow: 0 30px 60px -30px var(--services-hover-shadow);
+}
+
+.services-orb {
+  background-color: var(--services-orb-bg);
 }
 
 /* Animations */

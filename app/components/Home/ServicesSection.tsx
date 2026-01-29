@@ -27,18 +27,18 @@ export function ServicesSection() {
     <section id="services" className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary-dark)] relative">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 right-0 w-96 h-96 rounded-full blur-3xl bg-[var(--bg-secondary)]"></div>
+        <div className="absolute top-1/2 right-0 w-96 h-96 rounded-full blur-3xl services-orb"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--services-accent)]"></div>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase services-eyebrow">
               Nos Services
             </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--services-accent)]"></div>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)]">
             Une expertise complète pour tous vos besoins tech
@@ -58,11 +58,11 @@ export function ServicesSection() {
         >
           {/* Row 1: Three cards */}
           {/* Service 1 - Refonte de SI */}
-          <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
+          <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden border services-card">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 services-orb"></div>
             
             <div className="relative z-10 h-full flex flex-col">
-              <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="services-icon-pill p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <RefreshCcw className="text-white" size={28} />
               </div>
               
@@ -74,7 +74,7 @@ export function ServicesSection() {
                 {SERVICES[0].description}
               </p>
               
-              <a href="#contact" className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm">
+              <a href="#contact" className="flex items-center gap-2 text-[var(--services-accent)] font-semibold group-hover:gap-4 transition-all text-sm">
                 En savoir plus
                 <ArrowRight size={18} />
               </a>
@@ -82,11 +82,11 @@ export function ServicesSection() {
           </motion.div>
 
           {/* Service 2 - Développement produit */}
-          <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
+          <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden border services-card">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 services-orb"></div>
             
             <div className="relative z-10 h-full flex flex-col">
-              <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="services-icon-pill p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Smartphone className="text-white" size={28} />
               </div>
               
@@ -98,7 +98,7 @@ export function ServicesSection() {
                 {SERVICES[1].description}
               </p>
               
-              <a href="#contact" className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm">
+              <a href="#contact" className="flex items-center gap-2 text-[var(--services-accent)] font-semibold group-hover:gap-4 transition-all text-sm">
                 En savoir plus
                 <ArrowRight size={18} />
               </a>
@@ -106,11 +106,11 @@ export function ServicesSection() {
           </motion.div>
           
            {/* Service 3 - Services managés */}
-           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
+           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden border services-card">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 services-orb"></div>
             
             <div className="relative z-10 h-full flex flex-col">
-              <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="services-icon-pill p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Shield className="text-white" size={28} />
               </div>
               
@@ -122,7 +122,7 @@ export function ServicesSection() {
                 {SERVICES[2].description}
               </p>
               
-              <a href="#contact" className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm">
+              <a href="#contact" className="flex items-center gap-2 text-[var(--services-accent)] font-semibold group-hover:gap-4 transition-all text-sm">
                 En savoir plus
                 <ArrowRight size={18} />
               </a>
@@ -139,11 +139,11 @@ export function ServicesSection() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"
         >
            {/* Service 4 - Data Platform */}
-           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
+           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden border services-card">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 services-orb"></div>
             
             <div className="relative z-10 h-full flex flex-col">
-              <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="services-icon-pill p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Database className="text-white" size={28} />
               </div>
               
@@ -155,7 +155,7 @@ export function ServicesSection() {
                 {SERVICES[3].description}
               </p>
               
-              <a href="#contact" className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm">
+              <a href="#contact" className="flex items-center gap-2 text-[var(--services-accent)] font-semibold group-hover:gap-4 transition-all text-sm">
                 En savoir plus
                 <ArrowRight size={18} />
               </a>
@@ -163,11 +163,11 @@ export function ServicesSection() {
           </motion.div>
 
            {/* Service 5 - IA Métier */}
-           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--bg-secondary)]"></div>
+           <motion.div variants={itemVariants} className="group backdrop-blur-xl rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden border services-card">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 services-orb"></div>
             
             <div className="relative z-10 h-full flex flex-col">
-              <div className="bg-[#2ca3bd] p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="services-icon-pill p-4 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Brain className="text-white" size={28} />
               </div>
               
@@ -179,7 +179,7 @@ export function ServicesSection() {
                 {SERVICES[4].description}
               </p>
               
-              <a href="#contact" className="flex items-center gap-2 text-[#2ca3bd] font-semibold group-hover:gap-4 transition-all text-sm">
+              <a href="#contact" className="flex items-center gap-2 text-[var(--services-accent)] font-semibold group-hover:gap-4 transition-all text-sm">
                 En savoir plus
                 <ArrowRight size={18} />
               </a>
