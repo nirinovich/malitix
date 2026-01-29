@@ -3,7 +3,7 @@ import { useTheme } from '../../../context/ThemeContext';
 
 const headlinePrimary = 'Arrêtez de Recruter. Commencez à Livrer.';
 const headlineSecondary = 'Votre équipe senior opérationnelle en 72h.';
-const subHeadline = 'Accédez au top 1% React Native & Web sans coût de recrutement, sans gestion RH, avec remplacement garanti.';
+const subHeadline = "Accédez au top 1% d'ingénieurs sur une large sélection de technologies, sans coût de recrutement, sans gestion RH, avec remplacement garanti.";
 const ctaLabel = 'VOIR LES PROFILS DISPONIBLES MAINTENANT';
 const ctaSubtext = 'Audit de besoin gratuit - Aucune carte bancaire requise';
 
@@ -66,7 +66,7 @@ export default function AboveTheFoldVariantB() {
                 </div>
 
                 <div className="grid gap-4">
-                  {['Top 1% React Native & Web', 'Remplacement garanti en 7 jours', 'Pilotage par Tech Lead'].map((item) => (
+                  {['Top 1% multi-technos', 'Remplacement garanti en 7 jours', 'Pilotage par Tech Lead'].map((item) => (
                     <div
                       key={item}
                       className={`rounded-2xl px-4 py-3 border transition-all duration-300 ${

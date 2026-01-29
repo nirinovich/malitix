@@ -1,57 +1,41 @@
-import { useState } from 'react';
-import AboveTheFold from '../components/ConversionLanding/AboveTheFold';
-import Humaniser from '../components/ConversionLanding/Humaniser';
-import ValueStack from '../components/ConversionLanding/ValueStack';
-import SocialProof from '../components/ConversionLanding/SocialProof';
-import GrandSlamOffer from '../components/ConversionLanding/GrandSlamOffer';
-import LeadMagnet from '../components/ConversionLanding/LeadMagnet';
-import Faq from '../components/ConversionLanding/Faq';
-import LeadForm from '../components/ConversionLanding/LeadForm';
-import VariantControls from '../components/ConversionLanding/Shared/VariantControls';
-import type { LandingSectionKey, LandingVariant, LandingVariantConfig } from '../types';
-import { DEFAULT_LANDING_VARIANTS } from '../utils/landingVariants';
+import AboveTheFoldVariantB from '../components/ConversionLanding/AboveTheFold/AboveTheFoldVariantB';
+import HumaniserVariantB from '../components/ConversionLanding/Humaniser/HumaniserVariantB';
+import ValueStackVariantB from '../components/ConversionLanding/ValueStack/ValueStackVariantB';
+import SocialProofVariantC from '../components/ConversionLanding/SocialProof/SocialProofVariantC';
+import GrandSlamOfferVariantC from '../components/ConversionLanding/GrandSlamOffer/GrandSlamOfferVariantC';
+import LeadMagnetVariantA from '../components/ConversionLanding/LeadMagnet/LeadMagnetVariantA';
+import FaqVariantA from '../components/ConversionLanding/Faq/FaqVariantA';
+import LeadFormVariantA from '../components/ConversionLanding/LeadForm/LeadFormVariantA';
 
 export default function ConversionLanding() {
-  const [variants, setVariants] = useState<LandingVariantConfig>(DEFAULT_LANDING_VARIANTS);
-  const showControls = true;
-
-  const handleVariantChange = (section: LandingSectionKey, variant: LandingVariant) => {
-    setVariants((prev) => ({
-      ...prev,
-      [section]: variant,
-    }));
-  };
-
   return (
     <>
       <title>Malitix | Équipe Senior en 72h</title>
-      <meta name="description" content="Arrêtez de recruter. Accédez aux meilleurs ingénieurs React Native & Web en 72h avec Malitix." />
-
-      {showControls && <VariantControls variants={variants} onChange={handleVariantChange} />}
+      <meta name="description" content="Arrêtez de recruter. Accédez au top 1% d'ingénieurs sur une large sélection de technologies en 72h avec Malitix." />
 
       <div className="lp-section" style={{ animationDelay: '0.05s' }}>
-        <AboveTheFold variant={variants.aboveTheFold} />
+        <AboveTheFoldVariantB />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.1s' }}>
-        <Humaniser variant={variants.humaniser} />
+        <HumaniserVariantB />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.15s' }}>
-        <ValueStack variant={variants.valueStack} />
+        <ValueStackVariantB />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.2s' }}>
-        <SocialProof variant={variants.socialProof} />
+        <SocialProofVariantC />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.25s' }}>
-        <GrandSlamOffer variant={variants.grandSlamOffer} />
+        <GrandSlamOfferVariantC />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.3s' }}>
-        <LeadMagnet variant={variants.leadMagnet} />
+        <LeadMagnetVariantA />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.35s' }}>
-        <Faq variant={variants.faq} />
+        <FaqVariantA />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.4s' }}>
-        <LeadForm variant={variants.leadForm} />
+        <LeadFormVariantA />
       </div>
     </>
   );

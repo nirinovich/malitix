@@ -1,7 +1,7 @@
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { useTheme } from '../../../context/ThemeContext';
 
-const headline = 'OFFRE Q1 : LE "TEST DRIVE" SANS RISQUE';
+const headline = 'OFFRE Q1 : 2 SEMAINES POUR TESTER SANS RISQUE';
 const body = "Nous sommes tellement sûrs de la qualité de notre code que nous prenons le risque pour vous. Engagez un développeur Malitix pendant 2 semaines. S'il ne valide pas vos tickets ou ne s'intègre pas à votre culture : Vous ne payez rien. Nous le remplaçons immédiatement.";
 const cta = "DÉMARRER MA PÉRIODE D'ESSAI";
 
@@ -13,7 +13,7 @@ export default function GrandSlamOfferVariantC() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
           <ShieldCheck size={16} />
-          L'Offre Irrésistible
+          Offre Q1
         </div>
         <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
           {headline}

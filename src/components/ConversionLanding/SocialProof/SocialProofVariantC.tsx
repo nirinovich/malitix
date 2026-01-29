@@ -1,12 +1,33 @@
-import { Quote } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 import { useTheme } from '../../../context/ThemeContext';
 
-const title = 'Ils ont livré leurs MVPs et Scalé leurs produits avec nous.';
-const quotes = [
-  '“Malitix nous a permis de sortir notre app 2 mois avant la concurrence.” – CEO, TechStart.',
-  '“J’étais sceptique sur l’externalisation. Aujourd’hui, ils constituent 80% de ma force tech.” – CTO, ScaleUp.',
+const title = 'Ils nous ont déjà fait confiance.';
+const testimonials = [
+  {
+    name: 'Selim Saadi',
+    role: 'CEO & Co-founder',
+    company: 'Karlisolutions',
+    image: '/images/testimonials/selim-saadi.png',
+    quote: "Nous avons pu développer notre solution dans sa première version (déjà très complète) avec des équipes de Malitix qui ont parfaitement compris notre besoin et notre ambition. Elles nous ont aidé à cadrer le sujet et à organiser un suivi régulier et flexible. Nous avons eu d'excellentes relations avec le chef de projet digital, les développeurs, la business analyst et les équipes commerciales.",
+    rating: 5,
+  },
+  {
+    name: 'David Bovet',
+    role: 'CEO',
+    company: 'Bios Analytics',
+    image: '/images/testimonials/david.png',
+    quote: "Malitix has been a longstanding partner since the inception of our company's first website, contributing to our online presence and technological solutions over the years.",
+    rating: 5,
+  },
+  {
+    name: 'Riad Roubache',
+    role: 'CISO/CTO',
+    company: 'Tersadia',
+    image: '/images/testimonials/riad.png',
+    quote: "Nous travaillons depuis 3 ans avec Malitix à qui nous avons confié notre supervision et monitoring 24/7 sur un périmètre assez large (Système d'informations, Cyber sécurité). Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA qui nous permettent d'être confiants sur notre collaboration actuelle et future.",
+    rating: 5,
+  },
 ];
-const metrics = '350+ Ingénieurs prêts à coder. 98% de taux de rétention client.';
 
 export default function SocialProofVariantC() {
   const { theme } = useTheme();
@@ -21,34 +42,39 @@ export default function SocialProofVariantC() {
           </h2>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-6">
-          {quotes.map((quote) => (
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
             <div
-              key={quote}
+              key={testimonial.name}
               className={`rounded-3xl border p-6 ${theme === 'dark' ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}
             >
-              <Quote className="text-[#2ca3bd]" size={22} aria-hidden="true" />
+              <div className="flex items-center justify-between">
+                <Quote className="text-[#2ca3bd]" size={22} aria-hidden="true" />
+                <div className="flex gap-1">
+                  {[...Array(testimonial.rating)].map((_, index) => (
+                    <Star key={index} size={14} className="text-[#2ca3bd] fill-[#2ca3bd]" />
+                  ))}
+                </div>
+              </div>
               <p className={`mt-4 text-sm leading-relaxed ${theme === 'dark' ? 'text-white/70' : 'text-gray-700'}`}>
-                {quote}
+                "{testimonial.quote}"
               </p>
+              <div className="mt-6 flex items-center gap-3">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <div>
+                  <div className={`text-sm font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {testimonial.name}
+                  </div>
+                  <div className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+                    {testimonial.role} • {testimonial.company}
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-
-        <div className={`mt-10 text-center text-sm font-semibold ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-          {metrics}
-        </div>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          {['Cisco', 'Salesforce', 'GCP', 'Hubspot'].map((name) => (
-            <span
-              key={name}
-              className={`px-4 py-2 rounded-full text-xs font-semibold border ${
-                theme === 'dark' ? 'border-white/10 text-white/70' : 'border-gray-200 text-gray-600'
-              }`}
-            >
-              {name}
-            </span>
           ))}
         </div>
       </div>
