@@ -32,6 +32,14 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Conversion Landing Page -->
+  <url>
+    <loc>https://malitix.com/conversion-landing</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
   
   <!-- Legal Notice Page -->
   <url>

@@ -6,6 +6,7 @@ import { useTheme } from '~/context/ThemeContext';
 
 const USE_CASES = [
   { label: 'Sprint Commando', href: '/sprint', description: 'Déblocage garanti en 14 jours' },
+  { label: 'Conversion Landing', href: '/conversion-landing', description: 'Equipe senior opérationnelle en 72h' },
   { label: 'Développement Sur Mesure', href: '/custom-dev', description: 'Application web & mobile en 90 jours' },
   { label: 'Développement Mobile', href: '/mobile-app', description: 'iOS & Android native & cross-platform' },
   { label: 'Refonte SI', href: '/si-refonte', description: 'Modernisation de système d\'information' },

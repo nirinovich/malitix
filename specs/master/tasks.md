@@ -5,10 +5,10 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 # Tasks: React Router V7 Landing Page Migration
 
-**Input**: Design documents from `.specify/specs/001-rr7-landing-page-migration/`  
+**Input**: Design documents from specs/master/  
 **Prerequisites**: plan.md (required), spec.md (required), research.md (optional), data-model.md (optional), contracts/ (optional)
 
-**Tests**: The plan and spec call for comprehensive testing. Per your direction, unit tests are deferred for now; we will focus on e2e, visual regression, and accessibility tests.
+**Tests**: Not requested in spec or user input. No test tasks included.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -22,232 +22,179 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Project initialization and baseline configuration
+**Purpose**: Prepare ConversionLanding migration scaffolding
 
-- [x] T001 Create React Router V7 manual routing configuration in app/routes.ts
-- [x] T002 Enable TypeScript strict mode in tsconfig.json (strict: true)
-- [x] T003 [P] Add ESLint config with TypeScript rules in eslint.config.js
-- [x] T004 [P] Add Prettier config in .prettierrc and format scripts in package.json
-- [x] T005 Add .env.example and load via Vite in vite.config.ts
-- [x] T006 [P] Add vite-plugin-bundle-analyzer and baseline report docs/perf/bundle.md
-- [x] T007 Document setup in README.md (scripts, dev workflow)
+- [x] T001 Create ConversionLanding barrel exports in app/components/ConversionLanding/index.ts
+- [x] T002 Create ConversionLanding route skeleton in app/routes/conversion-landing.tsx
 
 ---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-**Purpose**: Core infrastructure required before any story
+**Purpose**: Shared content and data structures needed by all sections
 
-- [x] T008 Create app/root.tsx with theme provider and layout shell
-- [x] T009 Configure manual routes in app/routes.ts (define all route paths and components)
-- [x] T010 [P] Implement utils/cn.ts utility for class name merging
-- [x] T011 Create utils/seo.ts helpers (buildMeta, buildTitle for React Router V7 Meta)
-- [x] T012 Set up app/app.css with design tokens and resets
-- [x] T013 [P] Create types/index.ts for shared TS types
+- [x] T003 Add ConversionLanding section types in app/types/index.ts
+- [x] T004 [P] Add ConversionLanding copy constants in app/utils/constants.ts
+- [x] T005 [P] Add ConversionLanding image assets in public/images/conversion-landing/
 
-**Checkpoint**: Foundation ready; user stories can start in parallel
+**Checkpoint**: Foundation ready; user story work can begin
 
 ---
 
 ## Phase 3: User Story 1 - Browse Landing Page and Navigate Services (Priority: P1) 🎯 MVP
 
-**Goal**: Visitors can navigate across all pages with identical visual output and behavior to legacy
+**Goal**: Visitors can load the new ConversionLanding use-case page with identical legacy UI/UX
 
-**Independent Test**: Load home → open nav → navigate to service page → back to home
+**Independent Test**: Load /conversion-landing → hero renders → scroll through all sections → navigation works
 
 ### Implementation for US1
 
-- [x] T015 [US1] Create app/routes/home.tsx (/) using components/Home/*
-- [x] T016 [P] [US1] Create app/routes/custom-dev.tsx (/custom-dev)
-- [x] T017 [P] [US1] Create app/routes/mobile-app.tsx (/mobile-app)
-- [x] T018 [P] [US1] Create app/routes/si-refonte.tsx (/si-refonte)
-- [x] T019 [P] [US1] Create app/routes/sprint.tsx (/sprint)
-- [x] T020 [US1] Create app/routes/$.tsx (404 catch-all) rendering NotFound
-- [x] T021 [US1] Wire Navbar links in app/components/Shared/Navbar.tsx to new routes
-- [x] T022 [US1] Ensure Layout wrapper in app/components/Shared/Layout.tsx nests routes correctly
-- [x] T023 [US1] Add ScrollToTop behavior in app/components/Shared/ScrollToTop.tsx
-- [x] T024 [US1] Add route-level SEO meta with React Router V7 Meta component in each route file
+- [x] T006 [P] [US1] Implement AboveTheFold section in app/components/ConversionLanding/AboveTheFold.tsx
+- [x] T007 [P] [US1] Implement Humaniser section in app/components/ConversionLanding/Humaniser.tsx
+- [x] T008 [P] [US1] Implement ValueStack section in app/components/ConversionLanding/ValueStack.tsx
+- [x] T009 [P] [US1] Implement GrandSlamOffer section in app/components/ConversionLanding/GrandSlamOffer.tsx
+- [x] T010 [P] [US1] Implement LeadMagnet section in app/components/ConversionLanding/LeadMagnet.tsx
+- [x] T011 [P] [US1] Implement SocialProof section in app/components/ConversionLanding/SocialProof.tsx
+- [x] T012 [P] [US1] Implement Faq section in app/components/ConversionLanding/Faq.tsx
+- [x] T013 [US1] Compose all sections in app/routes/conversion-landing.tsx
+- [x] T014 [US1] Register /conversion-landing route in app/routes.ts
+- [x] T015 [US1] Add ConversionLanding navigation entry in app/components/Shared/Navbar.tsx
 
-**Checkpoint**: Navigation parity achieved; routes stable and testable
+**Checkpoint**: ConversionLanding page renders end-to-end and is navigable
 
 ---
 
 ## Phase 4: User Story 2 - Switch between Light and Dark Themes (Priority: P1)
 
-**Goal**: Seamless theme toggling with persistence and zero FOUC
+**Goal**: ConversionLanding respects the shared light/dark theme system without visual drift
 
-**Independent Test**: Toggle theme → persists after refresh → preserved across navigation
+**Independent Test**: Toggle theme on /conversion-landing → all sections update without layout shift
 
 ### Implementation for US2
 
-- [x] T025 [US2] Migrate app/context/ThemeContext.tsx with localStorage persistence
-- [x] T026 [P] [US2] Create hooks/useTheme.ts for consuming theme context
-- [x] T027 [US2] Prevent FOUC by loading theme before first paint in app/root.tsx
-- [x] T028 [P] [US2] Wire ThemeToggle in app/components/Shared/ThemeToggle.tsx
-- [x] T029 [US2] Apply CSS variables in app/app.css for theme tokens
-- [x] T030 [US2] Add prefers-reduced-motion and color-scheme meta in index.html
+- [x] T016 [US2] Align theme-aware classes in app/components/ConversionLanding/AboveTheFold.tsx, app/components/ConversionLanding/Humaniser.tsx, app/components/ConversionLanding/ValueStack.tsx, app/components/ConversionLanding/GrandSlamOffer.tsx, app/components/ConversionLanding/LeadMagnet.tsx, app/components/ConversionLanding/SocialProof.tsx, app/components/ConversionLanding/Faq.tsx
 
-**Checkpoint**: Theme parity and persistence verified
+**Checkpoint**: Theme parity achieved on ConversionLanding
 
 ---
 
 ## Phase 5: User Story 3 - Submit a Contact Form with Validation (Priority: P1)
 
-**Goal**: Forms validate and submit identically to legacy; UI unchanged
+**Goal**: ConversionLanding lead form validates and submits identically to legacy
 
-**Independent Test**: Fill valid data → submit → success. Invalid data → correct field errors.
+**Independent Test**: Submit invalid → errors show; submit valid → success feedback shown
 
 ### Implementation for US3
 
-- [x] T031 [US3] Add react-hook-form dependency and types in package.json
-- [x] T032 [P] [US3] Create reusable form components in app/components/Shared/Form/
-- [x] T033 [US3] Implement TextInput in app/components/Shared/Form/TextInput.tsx
-- [x] T034 [US3] Implement Textarea in app/components/Shared/Form/Textarea.tsx
-- [x] T035 [P] [US3] Migrate validation rules to hooks/forms/useContactValidation.ts
-- [x] T036 [US3] Implement form in app/components/CustomDev/CustomDevCTA.tsx using React Hook Form
-- [x] T037 [P] [US3] Wire submit handler and API call in app/utils/forms/submitContact.ts
-- [x] T038 [US3] Preserve legacy messages and success UI in app/components/Shared/Form/Feedback.tsx
-- [x] T039 [US3] Ensure form state persistence (optional) in hooks/forms/useFormPersistence.ts
+- [x] T017 [US3] Implement LeadForm using shared inputs in app/components/ConversionLanding/LeadForm.tsx
+- [x] T018 [US3] Port legacy validation rules to app/utils/validation.ts
+- [x] T019 [US3] Wire submit handler in app/utils/forms/submitContact.ts for LeadForm usage
 
-**Checkpoint**: Forms behave identically; validation and submission reliable
+**Checkpoint**: LeadForm behaves like legacy and is conversion-ready
 
 ---
 
 ## Phase 6: User Story 4 - View Smooth Scroll Animations and Parallax Effects (Priority: P2)
 
-**Goal**: Smooth, performant animations (60fps) and scroll-triggered effects
+**Goal**: ConversionLanding animations are smooth and match legacy timing
 
-**Independent Test**: Scroll through sections → animations trigger smoothly with no jank
+**Independent Test**: Scroll through sections → animations trigger smoothly, no jank
 
 ### Implementation for US4
 
-- [x] T040 [US4] Implement hooks/useInView.ts (Intersection Observer) or refine existing
-- [x] T041 [P] [US4] Apply in-view animations in components/Home/Hero.tsx
-- [x] T042 [P] [US4] Apply in-view animations in components/Home/ServicesBento.tsx
-- [x] T043 [P] [US4] Apply in-view animations in components/Home/TrustStats.tsx
-- [x] T044 [US4] Optimize parallax effect in components/Sprint/SprintHero.tsx
-- [ ] T045 [US4] Lazy-load framer-motion where used
-- [ ] T046 [US4] Respect prefers-reduced-motion in all animated components
-- [ ] T047 [US4] Validate 60fps on mobile via DevTools
+- [x] T020 [P] [US4] Add in-view animations to app/components/ConversionLanding/AboveTheFold.tsx
+- [x] T021 [P] [US4] Add scroll-triggered effects to app/components/ConversionLanding/ValueStack.tsx
+- [x] T022 [P] [US4] Add scroll-triggered effects to app/components/ConversionLanding/GrandSlamOffer.tsx
+- [x] T023 [US4] Respect prefers-reduced-motion in app/components/ConversionLanding/AboveTheFold.tsx and app/components/ConversionLanding/ValueStack.tsx
 
-**Checkpoint**: Animations smooth and accessible
+**Checkpoint**: Animation parity achieved and accessible
 
 ---
 
 ## Phase 7: User Story 5 - View Logo Carousel and Testimonials (Priority: P2)
 
-**Goal**: Carousels rotate automatically and smoothly; manual controls match legacy
+**Goal**: Social proof elements rotate smoothly and match legacy behavior
 
-**Independent Test**: Logos rotate every 3–5s; testimonials navigate via arrows/auto-rotate
+**Independent Test**: Carousel auto-rotates; manual navigation works with keyboard
 
 ### Implementation for US5
 
-- [X] T048 [US5] Migrate components/Utility/LogoCarousel.tsx with auto-rotation
-- [X] T049 [P] [US5] Migrate components/Sprint/TestimonialSection.tsx
-- [X] T050 [US5] Ensure smooth transitions with CSS transforms
-- [X] T051 [P] [US5] Add keyboard controls and ARIA roles for carousel
-- [X] T052 [US5] Ensure pause-on-hover/focus accessibility
-- [X] T053 [US5] Optimize images used in carousels (loading="lazy")
-- [X] T054 [US5] Expose props for timing to match legacy cadence
-- [X] T055 [US5] Validate performance and user interaction parity
+- [ ] T024 [US5] Implement carousel behavior in app/components/ConversionLanding/SocialProof.tsx using app/components/Utility/LogoCarousel.tsx
+- [ ] T025 [US5] Add keyboard controls and ARIA roles in app/components/ConversionLanding/SocialProof.tsx
 
-**Checkpoint**: Carousels match legacy behavior and visuals
+**Checkpoint**: Social proof parity achieved
 
 ---
 
 ## Phase 8: User Story 6 - Access Legal Pages and SEO Content (Priority: P2)
 
-**Goal**: Legal pages render correctly with per-route meta tags
+**Goal**: ConversionLanding route includes correct metadata for SEO
 
-**Independent Test**: Footer links → legal pages load with correct meta and titles
+**Independent Test**: View page source on /conversion-landing → meta tags present and correct
 
 ### Implementation for US6
 
-- [X] T056 [US6] Create app/routes/privacy-policy.tsx with content from pages/PrivacyPolicy.tsx
-- [X] T057 [P] [US6] Create app/routes/legal-notice.tsx with content from pages/LegalNotice.tsx
-- [X] T058 [US6] Add Helmet meta tags in each legal route
-- [X] T059 [US6] Ensure robots.txt and sitemap.xml remain in public/
-- [X] T060 [US6] Add Open Graph meta images where applicable
-- [X] T061 [US6] Add structured data (Schema.org) for organization/site
-- [X] T062 [US6] Verify footer links in components/Shared/Footer.tsx
+- [x] T026 [US6] Add ConversionLanding meta tags in app/routes/conversion-landing.tsx using app/utils/seo.ts
+- [x] T027 [US6] Update public/sitemap.xml to include /conversion-landing
 
-**Checkpoint**: Legal + SEO correctness
+**Checkpoint**: SEO metadata verified
 
 ---
 
-## Phase 9: User Story 7 - Experience Responsive Design (Priority: P2)
+## Phase 9: User Story 7 - Experience Responsive Design on Mobile, Tablet, and Desktop (Priority: P2)
 
-**Goal**: Layouts adapt across mobile/tablet/desktop with no horizontal scroll or layout shift
+**Goal**: ConversionLanding is fully responsive with no horizontal scroll or CLS
 
-**Independent Test**: Validate 320px, 768px, 1920px behaviors match legacy
+**Independent Test**: Validate at 320px, 768px, 1920px; no layout shift on load
 
 ### Implementation for US7
 
-- [X] T063 [US7] Ensure global breakpoints in app/app.css reflect legacy
-- [X] T064 [US7] Verify mobile layout for Home components/Home/*
-- [X] T065 [P] [US7] Verify tablet layout for components/Home/*
-- [X] T066 [P] [US7] Verify desktop layout for components/Home/*
-- [X] T067 [US7] Validate responsive styles for service pages components/*/*
-- [X] T068 [US7] Ensure buttons meet 44x44px tap target on mobile
-- [X] T069 [US7] Ensure no horizontal scroll across routes
-- [X] T070 [US7] Validate CLS stability across breakpoints
+- [ ] T028 [US7] Adjust responsive styles in app/components/ConversionLanding/AboveTheFold.tsx and app/components/ConversionLanding/LeadMagnet.tsx
+- [ ] T029 [US7] Verify responsive layout for app/components/ConversionLanding/Humaniser.tsx, app/components/ConversionLanding/ValueStack.tsx, app/components/ConversionLanding/GrandSlamOffer.tsx, app/components/ConversionLanding/SocialProof.tsx, app/components/ConversionLanding/Faq.tsx
 
 **Checkpoint**: Responsive parity achieved
 
 ---
 
-## Phase 10: User Story 9 - Experience Fast Load and Smooth Scrolling (Priority: P2)
+## Phase 10: User Story 9 - Experience Fast Page Load and Smooth Scrolling (Priority: P2)
 
-**Goal**: Meet performance budgets: <200kb gzipped, LCP<2.5s, CLS<0.1, 60fps
+**Goal**: ConversionLanding meets performance budgets and avoids CLS
 
-**Independent Test**: Lighthouse ≥90 desktop, ≥85 mobile; web-vitals in good range
+**Independent Test**: Lighthouse ≥90 desktop, ≥85 mobile; no CLS on load
 
 ### Implementation for US9
 
-- [x] T071 [US9] Ensure route-level code splitting (confirm in build output)
-- [x] T072 [P] [US9] Lazy-load heavy components with React.lazy() where safe
-- [x] T073 [US9] Analyze bundle with vite-plugin-bundle-analyzer
-- [x] T074 [P] [US9] Optimize above-the-fold images (vite imports) and below-the-fold (loading="lazy")
-- [x] T075 [US9] Add web-vitals reporting in app/main.tsx
-- [x] T076 [US9] Remove unused dependencies and dead code
-- [x] T077 [US9] Ensure minimal CLS with fixed image dimensions and fonts
+- [ ] T030 [US9] Lazy-load below-the-fold images in app/components/ConversionLanding/ValueStack.tsx and app/components/ConversionLanding/SocialProof.tsx
+- [ ] T031 [US9] Ensure route-level lazy loading for ConversionLanding in app/routes.ts
+- [ ] T032 [US9] Record bundle impact and optimizations in docs/perf/bundle.md
 
-**Checkpoint**: Performance targets met
+**Checkpoint**: Performance targets met for ConversionLanding
 
 ---
 
-## Phase 11: User Story 8 - Accessibility (WCAG 2.1 AA) (Priority: P3)
+## Phase 11: User Story 8 - Access the Site with Keyboard Navigation and Screen Reader (Priority: P3)
 
-**Goal**: Full keyboard navigation, screen reader compatibility, color contrast, reduced motion support
+**Goal**: ConversionLanding complies with WCAG 2.1 AA requirements
 
-**Independent Test**: Tab through site, screen reader announces content, forms accessible
+**Independent Test**: Tab through page → all interactive elements reachable with clear labels
 
 ### Implementation for US8
 
-- [x] T078 [US8] Ensure focus states visible in app/app.css
-- [x] T079 [P] [US8] Add aria-labels/roles for interactive elements in components/Shared/Navbar.tsx
-- [x] T080 [P] [US8] Associate form labels with inputs in components/Shared/Form/*
-- [x] T081 [US8] Provide alt text for images across components/*/*
-- [x] T082 [US8] Ensure color contrast meets AA in app/app.css
-- [x] T083 [US8] Provide skip-to-content link in app/root.tsx
-- [x] T084 [US8] Respect prefers-reduced-motion sitewide
-- [x] T085 [US8] Update docs/accessibility/checklist.md
+- [ ] T033 [US8] Add landmark regions and aria-labels in app/components/ConversionLanding/AboveTheFold.tsx and app/components/ConversionLanding/Faq.tsx
+- [ ] T034 [US8] Ensure accessible labels and error messaging in app/components/ConversionLanding/LeadForm.tsx
+- [ ] T035 [US8] Validate focus order and skip-link target in app/routes/conversion-landing.tsx
 
-**Checkpoint**: A11y checks passing; WCAG AA compliance
+**Checkpoint**: Accessibility verified for ConversionLanding
 
 ---
 
 ## Final Phase: Polish & Cross-Cutting Concerns
 
-**Purpose**: Stabilize, document, and prepare for deployment/maintenance
+**Purpose**: Documentation and cleanup for the new use-case landing page
 
-- [x] T086 [P] Documentation updates in README.md and docs/
-- [x] T087 Code cleanup and dead code removal across app/**
-- [ ] T088 [P] Add Storybook stories for shared components (optional) .storybook/
-- [x] T089 Improve error handling and logging in utils/*
-- [x] T090 Security review of dependencies (pnpm audit) and updates
-- [x] T091 [P] Archive legacy/ code after parity confirmed
-- [x] T092 Release notes and post-launch monitoring docs in docs/ops/release-notes.md
+- [ ] T036 [P] Update README.md with ConversionLanding route and usage notes
+- [ ] T037 [P] Document migration notes in docs/ops/release-notes.md
+- [ ] T038 [P] Remove obsolete references from legacy/README.md
 
 ---
 
@@ -255,51 +202,46 @@ description: "Tasks for React Router V7 Landing Page Migration"
 
 ### Phase Dependencies
 
-- Setup (Phase 1): No dependencies
-- Foundational (Phase 2): Depends on Setup completion; BLOCKS all stories
-- User Stories (Phase 3+): Depend on Foundational completion
-  - Recommended order by priority: US1 (P1) → US2 (P1) → US3 (P1) → US4/US5/US6/US7/US9 (P2) → US8 (P3)
-- Polish (Final Phase): After all targeted stories complete
+- **Setup (Phase 1)** → **Foundational (Phase 2)** → **User Stories (Phase 3+)** → **Polish (Final Phase)**
 
-### User Story Dependencies
+### User Story Dependencies (Graph)
 
-- US1 (Navigation): none (after Foundational)
-- US2 (Theme): none; integrates with shared Layout
-- US3 (Forms): depends on shared components; independent of US1
-- US4 (Animations): depends on home/service components migrated
-- US5 (Carousels): depends on utility components
-- US6 (Legal/SEO): depends on routes
-- US7 (Responsive): depends on routes + components
-- US9 (Performance): depends on routes + components
-- US8 (Accessibility): depends on components and forms
+- **US1** → **US2** → **US3** → **US4/US5/US6/US7/US9** → **US8**
 
 ### Parallel Opportunities
 
-- In Setup/Foundational: tasks marked [P] can run concurrently
-- After Foundational: service page migrations (US4/US5) can proceed in parallel with SEO/responsive (US6/US7)
-- Tests marked [P] can be implemented in parallel to features (mocked where needed)
+- Phase 1: none
+- Phase 2: T004 and T005 can run in parallel
+- US1: section components (T006–T012) can run in parallel
+- US4: animation tasks (T020–T022) can run in parallel
 
-#### Parallel Examples
+### Parallel Examples by User Story
 
-- US1: Create route files in parallel (T031–T034)
-- US2: Hook + component wiring in parallel (T044, T046)
-- US3: Form inputs + validation in parallel (T054–T056)
-- US4: Apply in-view animations to multiple sections in parallel (T064–T066)
-- US5: Carousel + a11y enhancements in parallel (T074, T076)
-- US6: Create both legal routes in parallel (T083, T084)
-- US7: Tablet/desktop verifications in parallel (T095, T096)
-- US9: Lazy-load + image optimizations in parallel (T104, T106)
-- US8: Navbar a11y + form labels in parallel (T114, T115)
+- **US1**: T006, T007, T008, T009, T010, T011, T012
+- **US2**: T016
+- **US3**: T017, T018
+- **US4**: T020, T021, T022
+- **US5**: T024, T025
+- **US6**: T026, T027
+- **US7**: T028, T029
+- **US8**: T033, T034
+- **US9**: T030, T031
 
 ---
 
 ## Implementation Strategy
 
-- MVP scope: Complete US1 (Navigation) to enable all other work
-- Incremental delivery:
-  - Phase 1–2: Baseline infrastructure + quality gates
-  - Phase 3: US1 (P1) unlocks routing backbone
-  - Phase 4: US2 (Theme) and Phase 5: US3 (Forms) complete P1 foundation
-  - Phase 6–11: Deliver P2/P3 in parallel where capacity allows
-- Tests-first: Write tests where specified before implementation; ensure failing state before making them pass
-- Acceptance gates per story: Visual parity, tests passing, performance budgets respected
+### MVP First (User Story 1 Only)
+
+1. Complete Phase 1: Setup
+2. Complete Phase 2: Foundational
+3. Complete Phase 3: US1 (ConversionLanding render + navigation)
+4. Validate UI parity against legacy ConversionLanding sections
+
+### Incremental Delivery
+
+1. US1 (page renders) → validate
+2. US2 + US3 (theme + form) → validate
+3. US4 + US5 + US6 + US7 + US9 (animations, social proof, SEO, responsive, performance) → validate
+4. US8 (accessibility) → validate
+5. Polish phase

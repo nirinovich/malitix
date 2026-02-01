@@ -96,3 +96,33 @@ export interface SEOConfig {
   url?: string;
   type?: "website" | "article";
 }
+
+/* Conversion Landing Types */
+export type IconComponent = React.ComponentType<
+  React.SVGProps<SVGSVGElement> & { size?: number }
+>;
+
+export interface ConversionLandingValueItem {
+  icon: IconComponent;
+  title: string;
+  description: string;
+}
+
+export interface ConversionLandingStat {
+  label: string;
+  value: string;
+}
+
+export interface ConversionLandingTestimonial {
+  name: string;
+  role: string;
+  company: string;
+  image: string;
+  quote: string;
+  rating: number;
+}
+
+export interface ConversionLandingFaqItem {
+  question: string;
+  answer: string;
+}
