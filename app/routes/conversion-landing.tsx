@@ -27,11 +27,11 @@ export default function ConversionLandingRoute() {
       <AboveTheFold />
       <Humaniser />
       <ValueStack />
+      <SocialProof />
       <GrandSlamOffer />
       <LeadMagnet />
-      <SocialProof />
-      <LeadForm />
       <Faq />
+      <LeadForm />
     </Layout>
   );
 }

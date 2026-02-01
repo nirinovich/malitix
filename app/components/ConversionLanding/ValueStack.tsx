@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { BadgeCheck, Rocket, Shield, Shuffle } from "lucide-react";
-import { useTheme } from "~/hooks/useTheme";
 import { CONVERSION_LANDING_VALUE_STACK } from "~/utils/constants";
 import type { ConversionLandingValueItem } from "~/types";
 
@@ -29,7 +28,6 @@ const items: ConversionLandingValueItem[] = [
 ];
 
 export function ValueStack() {
-  const { theme } = useTheme();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
   const prefersReducedMotion = useReducedMotion();
@@ -47,7 +45,7 @@ export function ValueStack() {
     <motion.section
       ref={sectionRef}
       id="value-stack"
-      className={`py-20 ${theme === "dark" ? "bg-[#0a0e0d]" : "bg-white"}`}
+      className="py-20 bg-[var(--bg-secondary)]"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -58,10 +56,10 @@ export function ValueStack() {
             <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
               {CONVERSION_LANDING_VALUE_STACK.eyebrow}
             </div>
-            <h2 className={`text-3xl sm:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
               {CONVERSION_LANDING_VALUE_STACK.title}
             </h2>
-            <p className={`text-lg ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+            <p className="text-lg text-[var(--text-secondary)]">
               {CONVERSION_LANDING_VALUE_STACK.subtitle}
             </p>
           </div>
@@ -70,18 +68,16 @@ export function ValueStack() {
             {items.map((item) => (
               <div
                 key={item.title}
-                className={`flex items-start gap-4 rounded-2xl border p-5 ${
-                  theme === "dark" ? "border-white/10 bg-white/5" : "border-gray-200 bg-gray-50"
-                }`}
+                className="flex items-start gap-4 rounded-2xl border p-5 border-[var(--border-primary)] bg-[var(--surface-elevated)]"
               >
                 <div className="h-10 w-10 rounded-xl bg-[#2ca3bd]/15 flex items-center justify-center">
                   <item.icon className="text-[#2ca3bd]" size={20} aria-hidden="true" />
                 </div>
                 <div>
-                  <div className={`font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                  <div className="font-semibold text-[var(--text-primary)]">
                     {item.title}
                   </div>
-                  <div className={`text-sm mt-1 ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+                  <div className="text-sm mt-1 text-[var(--text-secondary)]">
                     {item.description}
                   </div>
                 </div>

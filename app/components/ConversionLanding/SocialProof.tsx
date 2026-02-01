@@ -1,5 +1,4 @@
 import { Quote, Star } from "lucide-react";
-import { useTheme } from "~/hooks/useTheme";
 import { CONVERSION_LANDING_SOCIAL_PROOF } from "~/utils/constants";
 import type { ConversionLandingTestimonial } from "~/types";
 
@@ -34,16 +33,14 @@ const testimonials: ConversionLandingTestimonial[] = [
 ];
 
 export function SocialProof() {
-  const { theme } = useTheme();
-
   return (
-    <section id="social-proof" className={`py-20 ${theme === "dark" ? "bg-[#0a0e0d]" : "bg-white"}`}>
+    <section id="social-proof" className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
             {CONVERSION_LANDING_SOCIAL_PROOF.eyebrow}
           </div>
-          <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
             {CONVERSION_LANDING_SOCIAL_PROOF.title}
           </h2>
         </div>
@@ -52,7 +49,7 @@ export function SocialProof() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
-              className={`rounded-3xl border p-6 ${theme === "dark" ? "border-white/10 bg-white/5" : "border-gray-200 bg-gray-50"}`}
+              className="rounded-3xl border p-6 border-[var(--border-primary)] bg-[var(--surface-elevated)]"
             >
               <div className="flex items-center justify-between">
                 <Quote className="text-[#2ca3bd]" size={22} aria-hidden="true" />
@@ -62,7 +59,7 @@ export function SocialProof() {
                   ))}
                 </div>
               </div>
-              <p className={`mt-4 text-sm leading-relaxed ${theme === "dark" ? "text-white/70" : "text-gray-700"}`}>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--text-secondary)]">
                 "{testimonial.quote}"
               </p>
               <div className="mt-6 flex items-center gap-3">
@@ -73,10 +70,10 @@ export function SocialProof() {
                   loading="lazy"
                 />
                 <div>
-                  <div className={`text-sm font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                  <div className="text-sm font-semibold text-[var(--text-primary)]">
                     {testimonial.name}
                   </div>
-                  <div className={`text-xs ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
+                  <div className="text-xs text-[var(--text-tertiary)]">
                     {testimonial.role} • {testimonial.company}
                   </div>
                 </div>

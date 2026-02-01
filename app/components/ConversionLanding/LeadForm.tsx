@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { CheckCircle2, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useTheme } from "~/hooks/useTheme";
 import { CONVERSION_LANDING_LEAD_FORM } from "~/utils/constants";
 import { submitContactForm } from "~/utils/forms/submitContact";
 import { CONVERSION_LEAD_VALIDATION } from "~/utils/validation";
@@ -14,7 +13,6 @@ interface LeadFormData {
 }
 
 export function LeadForm() {
-  const { theme } = useTheme();
   const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
 
   const {
@@ -37,17 +35,17 @@ export function LeadForm() {
   };
 
   return (
-    <section id="lead-form" className={`py-24 ${theme === "dark" ? "bg-[#060705]" : "bg-[#f5f7f9]"}`}>
+    <section id="lead-form" className="py-24 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
               {CONVERSION_LANDING_LEAD_FORM.eyebrow}
             </div>
-            <h2 className={`text-3xl sm:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
               {CONVERSION_LANDING_LEAD_FORM.title}
             </h2>
-            <p className={`text-lg ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+            <p className="text-lg text-[var(--text-secondary)]">
               {CONVERSION_LANDING_LEAD_FORM.description}
             </p>
             <div className="space-y-3">
@@ -56,25 +54,23 @@ export function LeadForm() {
                   <div className="bg-[#2ca3bd]/20 p-2 rounded-full">
                     <CheckCircle2 className="text-[#2ca3bd]" size={20} />
                   </div>
-                  <span className={theme === "dark" ? "text-white/80" : "text-gray-700"}>{benefit}</span>
+                  <span className="text-[var(--text-secondary)]">{benefit}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className={`rounded-3xl p-8 border shadow-2xl ${
-            theme === "dark" ? "border-white/10 bg-white/5" : "border-gray-200 bg-white"
-          }`}>
+          <div className="rounded-3xl p-8 border shadow-2xl border-[var(--border-primary)] bg-[var(--surface-elevated)]">
             {submissionStatus === "success" ? (
               <div className="text-center py-12 space-y-6">
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full">
                   <CheckCircle2 className="text-[#2ca3bd]" size={40} />
                 </div>
                 <div>
-                  <h3 className={`text-2xl font-bold mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                  <h3 className="text-2xl font-bold mb-2 text-[var(--text-primary)]">
                     Message envoyé !
                   </h3>
-                  <p className={theme === "dark" ? "text-white/70" : "text-gray-600"}>
+                  <p className="text-[var(--text-secondary)]">
                     Nous reviendrons vers vous sous 24 heures.
                   </p>
                 </div>
@@ -88,18 +84,14 @@ export function LeadForm() {
                 )}
 
                 <div>
-                  <label htmlFor="name" className={`block font-medium mb-2 ${theme === "dark" ? "text-white/90" : "text-gray-900"}`}>
+                  <label htmlFor="name" className="block font-medium mb-2 text-[var(--text-primary)]">
                     Nom complet *
                   </label>
                   <input
                     type="text"
                     id="name"
                     {...register("name", CONVERSION_LEAD_VALIDATION.name)}
-                    className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
-                      theme === "dark"
-                        ? "bg-white/5 border border-white/10 text-white placeholder:text-white/40"
-                        : "bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400"
-                    }`}
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="Jean Dupont"
                   />
                   {errors.name && (
@@ -108,18 +100,14 @@ export function LeadForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className={`block font-medium mb-2 ${theme === "dark" ? "text-white/90" : "text-gray-900"}`}>
+                  <label htmlFor="email" className="block font-medium mb-2 text-[var(--text-primary)]">
                     Email professionnel *
                   </label>
                   <input
                     type="email"
                     id="email"
                     {...register("email", CONVERSION_LEAD_VALIDATION.email)}
-                    className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
-                      theme === "dark"
-                        ? "bg-white/5 border border-white/10 text-white placeholder:text-white/40"
-                        : "bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400"
-                    }`}
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="jean@entreprise.fr"
                   />
                   {errors.email && (
@@ -128,18 +116,14 @@ export function LeadForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="website" className={`block font-medium mb-2 ${theme === "dark" ? "text-white/90" : "text-gray-900"}`}>
+                  <label htmlFor="website" className="block font-medium mb-2 text-[var(--text-primary)]">
                     Site web
                   </label>
                   <input
                     type="text"
                     id="website"
                     {...register("website", CONVERSION_LEAD_VALIDATION.website)}
-                    className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all ${
-                      theme === "dark"
-                        ? "bg-white/5 border border-white/10 text-white placeholder:text-white/40"
-                        : "bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400"
-                    }`}
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="https://votre-site.com"
                   />
                   {errors.website && (
@@ -148,18 +132,14 @@ export function LeadForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className={`block font-medium mb-2 ${theme === "dark" ? "text-white/90" : "text-gray-900"}`}>
+                  <label htmlFor="message" className="block font-medium mb-2 text-[var(--text-primary)]">
                     Parlez-nous de votre projet *
                   </label>
                   <textarea
                     id="message"
                     {...register("message", CONVERSION_LEAD_VALIDATION.message)}
                     rows={4}
-                    className={`w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all resize-none ${
-                      theme === "dark"
-                        ? "bg-white/5 border border-white/10 text-white placeholder:text-white/40"
-                        : "bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400"
-                    }`}
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all resize-none bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="Décrivez votre besoin et vos sprints à venir..."
                   />
                   {errors.message && (
@@ -176,7 +156,7 @@ export function LeadForm() {
                   <Send size={20} className={isSubmitting ? "animate-pulse" : ""} />
                 </button>
 
-                <p className={`text-sm text-center ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>
+                <p className="text-sm text-center text-[var(--text-tertiary)]">
                   En envoyant ce formulaire, vous acceptez notre{" "}
                   <a href="/politique-de-confidentialite" className="text-[#2ca3bd] hover:underline">
                     {CONVERSION_LANDING_LEAD_FORM.privacyLabel}

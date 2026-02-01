@@ -1,30 +1,28 @@
 import { useState } from "react";
 import { Calculator, Clock, Sparkles } from "lucide-react";
-import { useTheme } from "~/hooks/useTheme";
 import { CONVERSION_LANDING_LEAD_MAGNET } from "~/utils/constants";
 import { PackSelector } from "./LeadMagnet/PackSelector";
 import { getPricingInfo, type PackKey } from "./LeadMagnet/pricing";
 
 export function LeadMagnet() {
-  const { theme } = useTheme();
   const [pack, setPack] = useState<PackKey>("Growth");
   const [durationInWeeks, setDurationInWeeks] = useState(8);
 
   const { tjm, total, durationInDays, discountPercentage, basePrice } = getPricingInfo(pack, durationInWeeks);
 
   return (
-    <section id="lead-magnet" className={`py-20 ${theme === "dark" ? "bg-[#0a0e0d]" : "bg-white"}`}>
+    <section id="lead-magnet" className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`rounded-3xl border p-8 lg:p-10 ${theme === "dark" ? "border-white/10 bg-white/5" : "border-gray-200 bg-gray-50"}`}>
+        <div className="rounded-3xl border p-8 lg:p-10 border-[var(--border-primary)] bg-[var(--surface-elevated)]">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
               <Calculator size={16} />
               {CONVERSION_LANDING_LEAD_MAGNET.eyebrow}
             </div>
-            <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
               <span className="text-[#2ca3bd]">Calculateur</span> de prix interactif
             </h2>
-            <p className={`mt-3 text-lg ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+            <p className="mt-3 text-lg text-[var(--text-secondary)]">
               {CONVERSION_LANDING_LEAD_MAGNET.description}
             </p>
           </div>
@@ -34,7 +32,7 @@ export function LeadMagnet() {
               <PackSelector selectedPack={pack} onSelectPack={setPack} />
 
               <div>
-                <label className={`flex items-center text-sm font-semibold ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+                <label className="flex items-center text-sm font-semibold text-[var(--text-secondary)]">
                   <Clock size={16} className="text-[#2ca3bd] mr-2" />
                   {CONVERSION_LANDING_LEAD_MAGNET.durationLabel} :
                   <span className="ml-2 text-[#2ca3bd] font-bold">
@@ -49,7 +47,7 @@ export function LeadMagnet() {
                   onChange={(event) => setDurationInWeeks(Number(event.target.value))}
                   className="mt-4 w-full accent-[#2ca3bd]"
                 />
-                <div className={`mt-2 flex justify-between text-xs ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>
+                <div className="mt-2 flex justify-between text-xs text-[var(--text-tertiary)]">
                   <span>1 sem</span>
                   <span>120 sem</span>
                 </div>

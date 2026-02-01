@@ -1,11 +1,9 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
-import { useTheme } from "~/hooks/useTheme";
 import { CONVERSION_LANDING_GRAND_SLAM } from "~/utils/constants";
 
 export function GrandSlamOffer() {
-  const { theme } = useTheme();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
   const prefersReducedMotion = useReducedMotion();
@@ -23,7 +21,7 @@ export function GrandSlamOffer() {
     <motion.section
       ref={sectionRef}
       id="grand-slam-offer"
-      className={`py-20 ${theme === "dark" ? "bg-[#060705]" : "bg-[#f5f7f9]"}`}
+      className="py-20 bg-[var(--bg-primary)]"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -33,10 +31,10 @@ export function GrandSlamOffer() {
           <ShieldCheck size={16} />
           {CONVERSION_LANDING_GRAND_SLAM.eyebrow}
         </div>
-        <h2 className={`mt-4 text-3xl sm:text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+        <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
           {CONVERSION_LANDING_GRAND_SLAM.headline}
         </h2>
-        <p className={`mt-4 text-lg leading-relaxed ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+        <p className="mt-4 text-lg leading-relaxed text-[var(--text-secondary)]">
           {CONVERSION_LANDING_GRAND_SLAM.body}
         </p>
         <div className="mt-8">
