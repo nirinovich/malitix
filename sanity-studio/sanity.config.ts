@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Malitix',
 
-  projectId: '5uv74e4h',
+  projectId: 'tuac272n',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],

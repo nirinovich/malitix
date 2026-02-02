@@ -7,7 +7,7 @@ import { schemaTypes } from "../../sanity-studio/schemaTypes";
 const studioConfig = defineConfig({
   name: "default",
   title: "Malitix",
-  projectId: "5uv74e4h",
+  projectId: "tuac272n",
   dataset: "production",
   basePath: "/admin",
   plugins: [structureTool(), visionTool()],

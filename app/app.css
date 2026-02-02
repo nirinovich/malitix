@@ -20,6 +20,28 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
+/* Embedded Sanity Studio overrides */
+html.sanity-embedded,
+body.sanity-embedded {
+  height: 100%;
+}
+
+html.sanity-embedded {
+  color-scheme: light;
+  background-color: #f6f6f6;
+}
+
+body.sanity-embedded {
+  background-color: #f6f6f6;
+  color: #1f2937;
+  overflow: hidden;
+  transition: none;
+}
+
+body.sanity-embedded > * {
+  height: 100%;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   body {

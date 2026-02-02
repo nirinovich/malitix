@@ -1,14 +1,14 @@
 export function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 px-4">
+    <div className="flex items-center justify-center min-h-[calc(100vh-var(--navbar-height)-var(--footer-height))] px-4">
       <div className="text-center">
-        <h1 className="text-7xl font-bold text-slate-900 dark:text-white mb-4">
+        <h1 className="text-7xl font-bold text-[var(--text-primary)] mb-4">
           404
         </h1>
-        <p className="text-2xl font-semibold text-slate-700 dark:text-slate-300 mb-4">
+        <p className="text-2xl font-semibold text-[var(--text-secondary)] mb-4">
           Page Not Found
         </p>
-        <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-md">
+        <p className="text-[var(--text-tertiary)] mb-8 max-w-md">
           The page you're looking for doesn't exist. It might have been moved or
           deleted.
         </p>

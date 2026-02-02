@@ -32,7 +32,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isAdminRoute = pathname.startsWith("/admin");
 
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth${isAdminRoute ? " sanity-embedded" : ""}`}
+      suppressHydrationWarning
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -65,7 +69,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           />
         )}
       </head>
-      <body>
+      <body className={isAdminRoute ? "sanity-embedded" : undefined}>
         <a 
           href="#main-content" 
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-[#2ca3bd] focus:text-white focus:font-bold focus:rounded-md outline-none focus:ring-4 focus:ring-white/20 transition-all"
