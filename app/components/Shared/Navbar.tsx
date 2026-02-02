@@ -17,6 +17,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
+  const [isThemeReady, setIsThemeReady] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +31,10 @@ export function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsThemeReady(true);
   }, []);
 
   // Gérer le scroll vers la section si il y a un hash dans l'URL
@@ -204,18 +209,21 @@ export function Navbar() {
               ></span>
             </button>
 
-            {/* Use Cases Dropdown - Now after Services */}
-            <div 
-              className="relative group"
+            {/* Use Cases */}
+            <div
+              className="relative"
               onMouseEnter={handleDropdownEnter}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 className="nav-link relative py-2 transition-colors flex items-center gap-1 cursor-pointer"
+                aria-expanded={isUseCasesOpen}
+                aria-haspopup="menu"
+                type="button"
               >
                 Use Cases
-                <ChevronDown 
-                  size={16} 
+                <ChevronDown
+                  size={16}
                   className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
                 />
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
@@ -236,6 +244,7 @@ export function Navbar() {
                         key={useCase.href}
                         onClick={() => handleUseCaseClick(useCase.href)}
                         className="dropdown-item w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
+                        type="button"
                       >
                         <div className="flex items-center justify-between">
                           <div>
@@ -299,7 +308,11 @@ export function Navbar() {
               className="theme-toggle p-2 rounded-lg transition-all duration-300 hover:scale-110"
               aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {isThemeReady ? (
+                theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
+              ) : (
+                <span className="block h-5 w-5" aria-hidden="true" />
+              )}
             </button>
 
             {/* CTA Button */}
@@ -402,7 +415,11 @@ export function Navbar() {
                 className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2"
                 aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
               >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                  {isThemeReady ? (
+                    theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
+                  ) : (
+                    <span className="block h-5 w-5" aria-hidden="true" />
+                  )}
                   <span className="text-sm">{theme === 'dark' ? 'Mode clair' : 'Mode sombre'}</span>
               </button>
 
