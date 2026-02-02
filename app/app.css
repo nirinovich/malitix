@@ -61,7 +61,7 @@ body {
   /* Surface colors */
   --surface-primary: #060705;
   --surface-secondary: #0a0e0d;
-  --surface-elevated: rgba(44, 163, 189, 0.05);
+  --surface-elevated: rgba(239, 245, 247, 0.05);
   --surface-hover: rgba(44, 163, 189, 0.1);
   
   /* Text colors */
@@ -109,6 +109,46 @@ body {
   --form-input-focus-border: var(--brand-primary);
   --form-input-focus-ring: rgba(44, 163, 189, 0.2);
   --form-icon-color: var(--brand-primary);
+
+  /* Conversion Landing */
+  --conversion-bg-primary: #f5f7f9;
+  --conversion-bg-secondary: #ffffff;
+  --conversion-panel-bg: #ffffff;
+  --conversion-card-bg: #ffffff;
+  --conversion-card-muted: #f9fafb;
+  --conversion-border: #e5e7eb;
+  --conversion-pill-bg: #ffffff;
+  --conversion-pill-text: #374151;
+  --conversion-highlight-bg: #f9fafb;
+  --conversion-highlight-hover: #ffffff;
+  --conversion-highlight-text: #374151;
+  --conversion-stat-bg: #ffffff;
+  --conversion-callout-bg: #f9fafb;
+  --conversion-callout-text: #374151;
+  --conversion-input-bg: #ffffff;
+  --conversion-input-border: #d1d5db;
+  --conversion-input-text: #111827;
+  --conversion-input-placeholder: #9ca3af;
+
+  /* Conversion Landing */
+  --conversion-bg-primary: #060705;
+  --conversion-bg-secondary: #0a0e0d;
+  --conversion-panel-bg: #0b0f0e;
+  --conversion-card-bg: rgba(255, 255, 255, 0.05);
+  --conversion-card-muted: rgba(255, 255, 255, 0.05);
+  --conversion-border: rgba(255, 255, 255, 0.1);
+  --conversion-pill-bg: rgba(255, 255, 255, 0.1);
+  --conversion-pill-text: rgba(255, 255, 255, 0.7);
+  --conversion-highlight-bg: rgba(255, 255, 255, 0.05);
+  --conversion-highlight-hover: rgba(255, 255, 255, 0.1);
+  --conversion-highlight-text: rgba(255, 255, 255, 0.7);
+  --conversion-stat-bg: rgba(255, 255, 255, 0.05);
+  --conversion-callout-bg: rgba(255, 255, 255, 0.05);
+  --conversion-callout-text: rgba(255, 255, 255, 0.7);
+  --conversion-input-bg: rgba(255, 255, 255, 0.05);
+  --conversion-input-border: rgba(255, 255, 255, 0.1);
+  --conversion-input-text: rgba(255, 255, 255, 0.9);
+  --conversion-input-placeholder: rgba(255, 255, 255, 0.4);
 
   /* Services colors */
   --services-accent: var(--brand-primary);

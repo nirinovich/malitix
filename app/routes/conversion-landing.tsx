@@ -17,7 +17,7 @@ export const meta: Route.MetaFunction = () =>
     title: "Équipe senior opérationnelle en 72h",
     description:
       "Accédez au top 1% d'ingénieurs, prêts en 72h. Zéro risque RH, flexibilité totale et intégration immédiate à vos outils.",
-    url: "https://www.malitix.com/conversion-landing",
+    url: "https://www.malitix.com/externalisation",
     image: "https://www.malitix.com/images/conversion-landing-og.jpg",
   });
 
