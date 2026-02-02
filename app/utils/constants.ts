@@ -81,7 +81,7 @@ export const CTA_TEXT = {
 // Hero Content
 export const HERO_CONTENT = {
   animated: {
-    headline: 'Transformez votre vision digitale en réalité',
+    headline: 'Transformez votre\nvision digitale\nen réalité',
     subheadline: 'Solutions technologiques de pointe pour propulser votre entreprise vers le futur. De la refonte de SI au déploiement d\'IA, nous maîtrisons l\'ensemble de la chaîne de valeur tech.',
   },
   clean: {

@@ -138,16 +138,16 @@ export function HeroSection() {
             className="text-center lg:text-left space-y-8"
           >
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-[var(--text-primary)]">
-              {HERO_CONTENT.animated.headline.split(' ').map((word, i) => (
+            <h1 className="text-5xl sm:text-6xl lg:text-6xl font-bold leading-tight text-[var(--text-primary)]">
+              {HERO_CONTENT.animated.headline.split('\n').map((line, lineIndex) => (
                 <motion.span
-                  key={i}
+                  key={line}
                   initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="inline-block mr-3"
+                  transition={{ delay: lineIndex * 0.12, duration: 0.5 }}
+                  className="block"
                 >
-                  {word}
+                  {line}
                 </motion.span>
               ))}
             </h1>
