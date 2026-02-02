@@ -17,9 +17,11 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const dropdownTimeoutRef = useRef<number | null>(null);
+  const pendingHashRef = useRef<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +35,7 @@ export function Navbar() {
   // Gérer le scroll vers la section si il y a un hash dans l'URL
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
+      pendingHashRef.current = location.hash.replace('#', '');
       setTimeout(() => {
         const element = document.querySelector(location.hash);
         if (element) {
@@ -42,6 +45,49 @@ export function Navbar() {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection(null);
+      return;
+    }
+
+    const sectionIds = ['home', 'services', 'about', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute('id');
+          if (!id) return;
+
+          if (pendingHashRef.current && pendingHashRef.current !== id) {
+            return;
+          }
+
+          if (pendingHashRef.current === id) {
+            pendingHashRef.current = null;
+          }
+
+          setActiveSection(id);
+          const newHash = `#${id}`;
+          if (window.location.hash !== newHash) {
+            window.history.replaceState(null, '', newHash);
+          }
+        });
+      },
+      {
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0.1,
+      }
+    );
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     setIsUseCasesOpen(false);
@@ -49,6 +95,7 @@ export function Navbar() {
     // Si c'est un hash (ancre), gérer la navigation vers la section
     if (href.startsWith('#')) {
       // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
+      const targetId = href.replace('#', '');
       if (location.pathname !== '/') {
         navigate('/' + href);
         // Attendre que la navigation soit complète avant de scroller
@@ -56,6 +103,7 @@ export function Navbar() {
           const element = document.querySelector(href);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
+            setActiveSection(targetId);
           }
         }, 100);
       } else {
@@ -63,6 +111,7 @@ export function Navbar() {
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection(targetId);
         }
       }
     }
@@ -126,19 +175,33 @@ export function Navbar() {
             {/* Accueil */}
             <button
               onClick={() => handleNavClick('#home')}
-              className="nav-link relative group py-2 transition-colors cursor-pointer"
+              aria-current={activeSection === 'home' ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                activeSection === 'home' ? 'text-[var(--text-primary)]' : ''
+              }`}
             >
               Accueil
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </button>
 
             {/* Services */}
             <button
               onClick={() => handleNavClick('#services')}
-              className="nav-link relative group py-2 transition-colors cursor-pointer"
+              aria-current={activeSection === 'services' ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                activeSection === 'services' ? 'text-[var(--text-primary)]' : ''
+              }`}
             >
               Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </button>
 
             {/* Use Cases Dropdown - Now after Services */}
@@ -197,20 +260,34 @@ export function Navbar() {
             {/* À propos */}
             <button
               onClick={() => handleNavClick('#about')}
-              className="nav-link relative group py-2 transition-colors cursor-pointer"
+              aria-current={activeSection === 'about' ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                activeSection === 'about' ? 'text-[var(--text-primary)]' : ''
+              }`}
             >
               À propos
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </button>
 
             {/* Contact */}
             <button
               onClick={() => handleNavClick('#contact')}
               aria-label="Contactez-nous"
-              className="nav-link relative group py-2 transition-colors cursor-pointer"
+              aria-current={activeSection === 'contact' ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                activeSection === 'contact' ? 'text-[var(--text-primary)]' : ''
+              }`}
             >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </button>
           </div>
 
@@ -265,7 +342,9 @@ export function Navbar() {
           {/* Accueil */}
            <button
             onClick={() => handleNavClick('#home')}
-            className="mobile-nav-item block w-full text-left py-3 font-medium"
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
+              activeSection === 'home' ? 'text-[var(--brand-text)]' : ''
+            }`}
           >
             Accueil
           </button>
@@ -273,7 +352,9 @@ export function Navbar() {
             {/* Services */}
             <button
             onClick={() => handleNavClick('#services')}
-            className="mobile-nav-item block w-full text-left py-3 font-medium"
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
+              activeSection === 'services' ? 'text-[var(--brand-text)]' : ''
+            }`}
           >
             Services
           </button>
@@ -297,7 +378,9 @@ export function Navbar() {
             {/* À propos */}
             <button
             onClick={() => handleNavClick('#about')}
-            className="mobile-nav-item block w-full text-left py-3 font-medium"
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
+              activeSection === 'about' ? 'text-[var(--brand-text)]' : ''
+            }`}
           >
             À propos
           </button>
@@ -305,7 +388,9 @@ export function Navbar() {
             {/* Contact */}
             <button
             onClick={() => handleNavClick('#contact')}
-            className="mobile-nav-item block w-full text-left py-3 font-medium"
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
+              activeSection === 'contact' ? 'text-[var(--brand-text)]' : ''
+            }`}
           >
             Contact
           </button>
