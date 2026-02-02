@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -27,8 +28,11 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  const isAdminRoute = pathname.startsWith("/admin");
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,28 +40,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
         <Meta />
         <Links />
-        {/* Prevent FOUC (Flash of Unstyled Content) by applying theme before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  // Priority: localStorage (user preference) > system preference > default
-                  let theme = localStorage.getItem('theme');
-                  if (theme !== 'light' && theme !== 'dark') {
-                    // Check system preference
-                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        {!isAdminRoute && (
+          // Prevent FOUC (Flash of Unstyled Content) by applying theme before React hydrates
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    // Priority: localStorage (user preference) > system preference > default
+                    let theme = localStorage.getItem('theme');
+                    if (theme !== 'light' && theme !== 'dark') {
+                      // Check system preference
+                      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    }
+                    const html = document.documentElement;
+                    html.classList.remove('light', 'dark');
+                    html.classList.add(theme);
+                  } catch (e) {
+                    // Fallback: safe to ignore errors in script
                   }
-                  const html = document.documentElement;
-                  html.classList.remove('light', 'dark');
-                  html.classList.add(theme);
-                } catch (e) {
-                  // Fallback: safe to ignore errors in script
-                }
-              })();
-            `,
-          }}
-        />
+                })();
+              `,
+            }}
+          />
+        )}
       </head>
       <body>
         <a 
@@ -66,9 +72,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         >
           Skip to content
         </a>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+          {isAdminRoute ? children : <ThemeProvider>{children}</ThemeProvider>}
         <ScrollRestoration />
         <Scripts />
       </body>
