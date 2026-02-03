@@ -126,3 +126,5 @@ export interface ConversionLandingFaqItem {
   question: string;
   answer: string;
 }
+
+export * from './blog';

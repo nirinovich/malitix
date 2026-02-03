@@ -27,7 +27,11 @@ export function Footer() {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
+      return;
     }
+
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

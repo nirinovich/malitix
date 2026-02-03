@@ -23,6 +23,7 @@ export function Navbar() {
   const location = useLocation();
   const dropdownTimeoutRef = useRef<number | null>(null);
   const pendingHashRef = useRef<string | null>(null);
+  const isBlogActive = location.pathname.startsWith('/blog');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -144,6 +145,12 @@ export function Navbar() {
           setActiveSection(targetId);
         }
       }
+      return;
+    }
+
+    if (location.pathname !== href) {
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -307,6 +314,22 @@ export function Navbar() {
               ></span>
             </button>
 
+            {/* Blog */}
+            <button
+              onClick={() => handleNavClick('/blog')}
+              aria-current={isBlogActive ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                isBlogActive ? 'text-[var(--text-primary)]' : ''
+              }`}
+            >
+              Blog
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
+            </button>
+
             {/* Contact */}
             <button
               onClick={() => handleNavClick('#contact')}
@@ -422,6 +445,16 @@ export function Navbar() {
           >
             À propos
           </button>
+
+              {/* Blog */}
+              <button
+              onClick={() => handleNavClick('/blog')}
+              className={`mobile-nav-item block w-full text-left py-3 font-medium ${
+                isBlogActive ? 'text-[var(--brand-text)]' : ''
+              }`}
+            >
+              Blog
+            </button>
 
             {/* Contact */}
             <button
