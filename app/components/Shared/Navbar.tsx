@@ -85,12 +85,37 @@ export function Navbar() {
       }
     );
 
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
+    const observed = new Set<string>();
+    const tryObserve = () => {
+      let allFound = true;
+      sectionIds.forEach((id) => {
+        if (observed.has(id)) return;
+        const element = document.getElementById(id);
+        if (element) {
+          observer.observe(element);
+          observed.add(id);
+        } else {
+          allFound = false;
+        }
+      });
+      return allFound;
+    };
 
-    return () => observer.disconnect();
+    const allFoundInitially = tryObserve();
+    const intervalId = allFoundInitially
+      ? null
+      : window.setInterval(() => {
+          if (tryObserve()) {
+            window.clearInterval(intervalId as number);
+          }
+        }, 200);
+
+    return () => {
+      if (intervalId !== null) {
+        window.clearInterval(intervalId);
+      }
+      observer.disconnect();
+    };
   }, [location.pathname]);
 
   const handleNavClick = (href: string) => {
