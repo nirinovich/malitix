@@ -18,7 +18,10 @@ async function fetchBlogSlugs(): Promise<string[]> {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(url, { headers });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 4000);
+  const response = await fetch(url, { headers, signal: controller.signal });
+  clearTimeout(timeoutId);
   if (!response.ok) {
     return [];
   }
@@ -32,6 +35,19 @@ export default {
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: false,
   async prerender() {
+    if (process.env.NODE_ENV !== "production") {
+      return [
+        "/",
+        "/custom-dev",
+        "/mobile-app",
+        "/si-refonte",
+        "/sprint",
+        "/legal-notice",
+        "/privacy-policy",
+        "/blog",
+      ];
+    }
+
     const slugs = await fetchBlogSlugs();
     return [
       "/",
