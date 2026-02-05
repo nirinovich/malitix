@@ -5,7 +5,17 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "build", ".react-router", "node_modules", "legacy"] },
+  {
+    ignores: [
+      "dist",
+      "build",
+      ".react-router",
+      "node_modules",
+      "legacy",
+      "sanity-studio/node_modules",
+      "sanity-studio/.sanity",
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

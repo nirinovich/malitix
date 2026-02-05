@@ -2,6 +2,7 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import type { SanityImage } from '~/types';
 import type { PortableTextValue } from '~/types/portableText';
 import { urlFor } from '~/utils/sanityImage';
+import { sanitizeUrl } from '~/utils/sanitizeUrl';
 
 type TextChildrenProps = { children?: React.ReactNode };
 type LinkValue = { href?: string; openInNewTab?: boolean };
@@ -33,11 +34,23 @@ const components: PortableTextComponents = {
   },
   marks: {
     link: ({ children, value }: LinkProps) => {
-      const rel = value?.href?.startsWith('/') ? undefined : 'noopener noreferrer';
+      const href = sanitizeUrl(value?.href);
+
+      if (!href) {
+        return <span>{children}</span>;
+      }
+
+      const isExternal =
+        !href.startsWith('/') &&
+        !href.startsWith('#') &&
+        !href.startsWith('mailto:') &&
+        !href.startsWith('tel:');
+      const rel = isExternal ? 'noopener noreferrer' : undefined;
       const target = value?.openInNewTab ? '_blank' : undefined;
+
       return (
         <a
-          href={value?.href}
+          href={href}
           rel={rel}
           target={target}
           className="text-[var(--brand-text)] underline"
