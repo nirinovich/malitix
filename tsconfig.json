@@ -5,6 +5,13 @@
     "**/.client/**/*",
     ".react-router/types/**/*"
   ],
+  "exclude": [
+    "legacy",
+    "sanity-studio",
+    "node_modules",
+    "build",
+    "dist"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["node", "vite/client"],

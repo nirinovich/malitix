@@ -2,7 +2,7 @@ import groq from 'groq';
 import { defineQuery } from 'groq';
 
 export const POSTS_QUERY = defineQuery(groq`
-  *[_type == "post" && defined(slug.current)]
+  *[_type == "post" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()]
     | order(publishedAt desc) {
       _id,
       title,
@@ -40,7 +40,7 @@ export const POSTS_QUERY = defineQuery(groq`
 `);
 
 export const POST_QUERY = defineQuery(groq`
-  *[_type == "post" && slug.current == $slug][0] {
+  *[_type == "post" && slug.current == $slug && defined(publishedAt) && publishedAt <= now()][0] {
     _id,
     title,
     "slug": slug.current,
@@ -54,7 +54,10 @@ export const POST_QUERY = defineQuery(groq`
           _id,
           url,
           metadata { lqip, dimensions }
-        }
+        },
+        alt,
+        crop,
+        hotspot
       }
     },
     mainImage {

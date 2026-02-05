@@ -7,7 +7,7 @@ import { POST_QUERY } from '~/utils/sanityQueries';
 import type { BlogPost as BlogPostType } from '~/types';
 import { buildMeta } from '~/utils/seo';
 
-export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const slug = params.slug;
   if (!slug) {
     throw new Response('Not Found', { status: 404 });
@@ -47,7 +47,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
 };
 
 export default function BlogDetail() {
-  const { post } = useLoaderData<typeof clientLoader>();
+  const { post } = useLoaderData<typeof loader>();
 
   return (
     <Layout>

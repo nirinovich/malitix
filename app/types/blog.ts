@@ -1,3 +1,5 @@
+import type { PortableTextValue } from './portableText';
+
 export interface SanityImageAsset {
   _id: string;
   url: string;
@@ -43,7 +45,7 @@ export interface BlogPostListItem {
 }
 
 export interface BlogPost extends BlogPostListItem {
-  body?: unknown[];
+  body?: PortableTextValue;
   seo?: {
     title?: string;
     description?: string;

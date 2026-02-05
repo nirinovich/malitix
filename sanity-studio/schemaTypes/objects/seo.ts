@@ -30,7 +30,7 @@ export const seo = defineType({
           name: 'alt',
           title: 'Alternative Text',
           type: 'string',
-          validation: (rule) => rule.required().warning('Ajoutez un texte alternatif.'),
+          validation: (rule) => rule.required().error('Ajoutez un texte alternatif.'),
         }),
       ],
     }),

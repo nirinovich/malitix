@@ -1,5 +1,5 @@
 import type { Route } from "./+types/admin";
-import { defineConfig, Studio } from "sanity";
+import { defineConfig, type SchemaTypeDefinition, Studio } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "../../sanity-studio/schemaTypes";
@@ -12,7 +12,7 @@ const studioConfig = defineConfig({
   basePath: "/admin",
   plugins: [structureTool(), visionTool()],
   schema: {
-    types: schemaTypes,
+    types: schemaTypes as unknown as SchemaTypeDefinition[],
   },
 });
 

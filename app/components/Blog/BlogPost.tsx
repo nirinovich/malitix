@@ -59,7 +59,7 @@ export function BlogPost({ post }: BlogPostProps) {
       )}
 
       <section className="max-w-3xl">
-        <PortableTextRenderer value={post.body} />
+        <PortableTextRenderer value={post.body ?? []} />
       </section>
 
       {post.tags?.length ? (
