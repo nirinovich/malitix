@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+coverage/
+.env*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.specify/
+specs/
+docs/
+legacy/
+*.log
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
