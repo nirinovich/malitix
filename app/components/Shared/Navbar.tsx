@@ -241,6 +241,55 @@ export function Navbar() {
               ></span>
             </button>
 
+            {/* À propos */}
+            <button
+              onClick={() => handleNavClick('#about')}
+              aria-current={activeSection === 'about' ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                activeSection === 'about' ? 'text-[var(--text-primary)]' : ''
+              }`}
+            >
+              À propos
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
+            </button>
+
+            {/* Contact */}
+            <button
+              onClick={() => handleNavClick('#contact')}
+              aria-label="Contactez-nous"
+              aria-current={activeSection === 'contact' ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                activeSection === 'contact' ? 'text-[var(--text-primary)]' : ''
+              }`}
+            >
+              Contact
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
+            </button>
+
+            {/* Blog */}
+            <button
+              onClick={() => handleNavClick('/blog')}
+              aria-current={isBlogActive ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
+                isBlogActive ? 'text-[var(--text-primary)]' : ''
+              }`}
+            >
+              Blog
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                  isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
+            </button>
+
             {/* Use Cases */}
             <div
               className="relative"
@@ -297,55 +346,6 @@ export function Navbar() {
                 </div>
               </div>
             </div>
-
-            {/* À propos */}
-            <button
-              onClick={() => handleNavClick('#about')}
-              aria-current={activeSection === 'about' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                activeSection === 'about' ? 'text-[var(--text-primary)]' : ''
-              }`}
-            >
-              À propos
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
-              ></span>
-            </button>
-
-            {/* Blog */}
-            <button
-              onClick={() => handleNavClick('/blog')}
-              aria-current={isBlogActive ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                isBlogActive ? 'text-[var(--text-primary)]' : ''
-              }`}
-            >
-              Blog
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
-              ></span>
-            </button>
-
-            {/* Contact */}
-            <button
-              onClick={() => handleNavClick('#contact')}
-              aria-label="Contactez-nous"
-              aria-current={activeSection === 'contact' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                activeSection === 'contact' ? 'text-[var(--text-primary)]' : ''
-              }`}
-            >
-              Contact
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
-              ></span>
-            </button>
           </div>
 
           {/* Theme Toggle and CTA Button */}
@@ -420,22 +420,6 @@ export function Navbar() {
             Services
           </button>
 
-           {/* Use Cases Mobile */}
-           <div className="py-2 space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
-            <div className="mobile-nav-label text-xs font-semibold uppercase tracking-wider mb-2">
-              Use Cases
-            </div>
-            {USE_CASES.map((useCase) => (
-               <button
-                  key={useCase.href}
-                  onClick={() => handleUseCaseClick(useCase.href)}
-                  className="mobile-nav-item block w-full text-left py-3"
-                >
-                  {useCase.label}
-                </button>
-            ))}
-           </div>
-
             {/* À propos */}
             <button
             onClick={() => handleNavClick('#about')}
@@ -455,6 +439,22 @@ export function Navbar() {
             >
               Blog
             </button>
+
+           {/* Use Cases Mobile */}
+           <div className="py-2 space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
+            <div className="mobile-nav-label text-xs font-semibold uppercase tracking-wider mb-2">
+              Use Cases
+            </div>
+            {USE_CASES.map((useCase) => (
+               <button
+                  key={useCase.href}
+                  onClick={() => handleUseCaseClick(useCase.href)}
+                  className="mobile-nav-item block w-full text-left py-3"
+                >
+                  {useCase.label}
+                </button>
+            ))}
+           </div>
 
             {/* Contact */}
             <button
