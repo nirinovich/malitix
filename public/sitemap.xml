@@ -33,6 +33,22 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Externalisation Page -->
+  <url>
+    <loc>https://malitix.com/externalisation</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Mobile App Development Page -->
+  <url>
+    <loc>https://malitix.com/developpement-mobile</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
   <!-- Legal Notice Page -->
   <url>
     <loc>https://malitix.com/mentions-legales</loc>

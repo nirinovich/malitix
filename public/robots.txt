@@ -1,6 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /politique-de-confidentialite
+Disallow: /mentions-legales
 
 # Sitemap
 Sitemap: https://malitix.com/sitemap.xml
