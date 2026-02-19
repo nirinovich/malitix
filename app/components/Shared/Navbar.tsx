@@ -4,9 +4,9 @@ import { Link, useNavigate, useLocation } from 'react-router';
 import { CTA_TEXT } from '~/utils/constants';
 import { useTheme } from '~/context/ThemeContext';
 
-const USE_CASES = [
+const SERVICES_MENU = [
   { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours' },
-  { label: 'Externalisation', href: '/externalisation', description: 'Equipe senior opérationnelle en 72h' },
+  { label: 'Externalisation', href: '/externalisation', description: 'Équipe senior opérationnelle en 72h' },
   { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure', description: 'Application web & mobile en 90 jours' },
   { label: 'Développement Mobile', href: '/developpement-mobile', description: 'iOS & Android native & cross-platform' },
   { label: 'Refonte SI', href: '/refonte-si', description: 'Modernisation de système d\'information' },
@@ -16,7 +16,7 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isThemeReady, setIsThemeReady] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -121,7 +121,7 @@ export function Navbar() {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    setIsUseCasesOpen(false);
+    setIsServicesOpen(false);
     
     // Si c'est un hash (ancre), gérer la navigation vers la section
     if (href.startsWith('#')) {
@@ -154,8 +154,8 @@ export function Navbar() {
     }
   };
 
-  const handleUseCaseClick = (href: string) => {
-    setIsUseCasesOpen(false);
+  const handleServiceClick = (href: string) => {
+    setIsServicesOpen(false);
     setIsMobileMenuOpen(false);
     navigate(href);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -166,12 +166,12 @@ export function Navbar() {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
-    setIsUseCasesOpen(true);
+    setIsServicesOpen(true);
   };
 
   const handleDropdownLeave = () => {
     dropdownTimeoutRef.current = window.setTimeout(() => {
-      setIsUseCasesOpen(false);
+      setIsServicesOpen(false);
     }, 200); // 200ms delay before closing
   };
 
@@ -213,9 +213,7 @@ export function Navbar() {
             <button
               onClick={() => handleNavClick('#home')}
               aria-current={activeSection === 'home' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                activeSection === 'home' ? 'text-[var(--text-primary)]' : ''
-              }`}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${activeSection === 'home' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}
             >
               Accueil
               <span
@@ -225,29 +223,72 @@ export function Navbar() {
               ></span>
             </button>
 
-            {/* Services */}
-            <button
-              onClick={() => handleNavClick('#services')}
-              aria-current={activeSection === 'services' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                activeSection === 'services' ? 'text-[var(--text-primary)]' : ''
-              }`}
+            {/* Services Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
             >
-              Services
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+              <button
+                className={`nav-link relative py-2 transition-colors flex items-center gap-2 cursor-pointer leading-none ${activeSection === 'services' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}
+                aria-expanded={isServicesOpen}
+                aria-haspopup="menu"
+                type="button"
+              >
+                Services
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 flex-shrink-0 ${isServicesOpen ? 'rotate-0' : '-rotate-90'}`}
+                />
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
+                    activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                ></span>
+              </button>
+
+              {/* Dropdown Menu */}
+              <div
+                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
+                  isServicesOpen
+                    ? 'opacity-100 visible translate-y-0'
+                    : 'opacity-0 invisible -translate-y-2'
                 }`}
-              ></span>
-            </button>
+              >
+                <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border overflow-hidden">
+                  <div className="p-2">
+                    {SERVICES_MENU.map((service) => (
+                      <button
+                        key={service.href}
+                        onClick={() => handleServiceClick(service.href)}
+                        className="dropdown-item w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
+                        type="button"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[var(--brand-text)] transition-colors">
+                              {service.label}
+                            </div>
+                            <div className="dropdown-desc text-xs">
+                              {service.description}
+                            </div>
+                          </div>
+                          <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                            →
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* À propos */}
             <button
               onClick={() => handleNavClick('#about')}
               aria-current={activeSection === 'about' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                activeSection === 'about' ? 'text-[var(--text-primary)]' : ''
-              }`}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${activeSection === 'about' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}
             >
               À propos
               <span
@@ -262,9 +303,7 @@ export function Navbar() {
               onClick={() => handleNavClick('#contact')}
               aria-label="Contactez-nous"
               aria-current={activeSection === 'contact' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                activeSection === 'contact' ? 'text-[var(--text-primary)]' : ''
-              }`}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${activeSection === 'contact' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}
             >
               Contact
               <span
@@ -274,13 +313,14 @@ export function Navbar() {
               ></span>
             </button>
 
+            {/* Separator */}
+            <div className="h-5 w-px bg-[var(--text-secondary)]/20"></div>
+
             {/* Blog */}
             <button
               onClick={() => handleNavClick('/blog')}
               aria-current={isBlogActive ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${
-                isBlogActive ? 'text-[var(--text-primary)]' : ''
-              }`}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isBlogActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}
             >
               Blog
               <span
@@ -289,63 +329,6 @@ export function Navbar() {
                 }`}
               ></span>
             </button>
-
-            {/* Use Cases */}
-            <div
-              className="relative"
-              onMouseEnter={handleDropdownEnter}
-              onMouseLeave={handleDropdownLeave}
-            >
-              <button
-                className="nav-link relative py-2 transition-colors flex items-center gap-1 cursor-pointer"
-                aria-expanded={isUseCasesOpen}
-                aria-haspopup="menu"
-                type="button"
-              >
-                Use Cases
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
-                />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-              </button>
-
-              {/* Dropdown Menu - Improved with proper spacing */}
-              <div
-                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
-                  isUseCasesOpen
-                    ? 'opacity-100 visible translate-y-0'
-                    : 'opacity-0 invisible -translate-y-2'
-                }`}
-              >
-                <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border overflow-hidden">
-                  <div className="p-2">
-                    {USE_CASES.map((useCase) => (
-                      <button
-                        key={useCase.href}
-                        onClick={() => handleUseCaseClick(useCase.href)}
-                        className="dropdown-item w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
-                        type="button"
-                      >
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[var(--brand-text)] transition-colors">
-                              {useCase.label}
-                            </div>
-                            <div className="dropdown-desc text-xs">
-                              {useCase.description}
-                            </div>
-                          </div>
-                          <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
-                            →
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Theme Toggle and CTA Button */}
@@ -401,93 +384,107 @@ export function Navbar() {
       >
         <div className="px-4 py-6 space-y-4">
           {/* Accueil */}
-           <button
+          <button
             onClick={() => handleNavClick('#home')}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'home' ? 'text-[var(--brand-text)]' : ''
+              activeSection === 'home' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             Accueil
           </button>
 
-            {/* Services */}
+          {/* Services Mobile Dropdown */}
+          <div>
             <button
-            onClick={() => handleNavClick('#services')}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'services' ? 'text-[var(--brand-text)]' : ''
-            }`}
-          >
-            Services
-          </button>
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              className={`mobile-nav-item block w-full text-left py-3 font-medium flex items-center justify-between ${
+                'text-[var(--text-secondary)]'
+              }`}
+            >
+              Services
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
 
-            {/* À propos */}
-            <button
+            {/* Mobile Services List */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                isServicesOpen ? 'max-h-96 mt-2' : 'max-h-0'
+              }`}
+            >
+              <div className="space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
+                {SERVICES_MENU.map((service) => (
+                  <button
+                    key={service.href}
+                    onClick={() => handleServiceClick(service.href)}
+                    className="mobile-nav-item block w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  >
+                    {service.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* À propos */}
+          <button
             onClick={() => handleNavClick('#about')}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'about' ? 'text-[var(--brand-text)]' : ''
+              activeSection === 'about' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             À propos
           </button>
 
-              {/* Blog */}
-              <button
-              onClick={() => handleNavClick('/blog')}
-              className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-                isBlogActive ? 'text-[var(--brand-text)]' : ''
-              }`}
-            >
-              Blog
-            </button>
-
-           {/* Use Cases Mobile */}
-           <div className="py-2 space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
-            <div className="mobile-nav-label text-xs font-semibold uppercase tracking-wider mb-2">
-              Use Cases
-            </div>
-            {USE_CASES.map((useCase) => (
-               <button
-                  key={useCase.href}
-                  onClick={() => handleUseCaseClick(useCase.href)}
-                  className="mobile-nav-item block w-full text-left py-3"
-                >
-                  {useCase.label}
-                </button>
-            ))}
-           </div>
-
-            {/* Contact */}
-            <button
+          {/* Contact */}
+          <button
             onClick={() => handleNavClick('#contact')}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'contact' ? 'text-[var(--brand-text)]' : ''
+              activeSection === 'contact' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             Contact
           </button>
 
-           {/* Action Buttons Mobile */}
-           <div className="pt-4 flex items-center justify-between gap-4 border-t border-gray-200/10">
-               <button
-                onClick={toggleTheme}
-                className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2"
-                aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
-              >
-                  {isThemeReady ? (
-                    theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
-                  ) : (
-                    <span className="block h-5 w-5" aria-hidden="true" />
-                  )}
-                  <span className="text-sm">{theme === 'dark' ? 'Mode clair' : 'Mode sombre'}</span>
-              </button>
+          {/* Blog */}
+          <button
+            onClick={() => handleNavClick('/blog')}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium border-t border-[var(--text-secondary)]/10 ${
+              isBlogActive ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+            }`}
+          >
+            Blog
+          </button>
 
-             <button
-              onClick={() => handleNavClick('#contact')}
-              className="flex-1 bg-[#2ca3bd] text-white py-3 rounded-xl font-semibold text-center"
-             >
-               {CTA_TEXT.primary}
-             </button>
-           </div>
+          {/* Action Buttons Mobile */}
+          <div className="pt-4 flex items-center justify-between gap-4 border-t border-[var(--text-secondary)]/10">
+            <button
+              onClick={toggleTheme}
+              className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
+            >
+              {isThemeReady ? (
+                theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
+              ) : (
+                <span className="block h-5 w-5" aria-hidden="true" />
+              )}
+              <span className="text-sm">{theme === 'dark' ? 'Mode clair' : 'Mode sombre'}</span>
+            </button>
+
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                  (window as any).gtag_report_conversion('#contact');
+                }
+                handleNavClick('#contact');
+              }}
+              className="flex-1 bg-[#2ca3bd] hover:bg-[#248fa5] text-white py-3 rounded-xl font-semibold text-center transition-all"
+            >
+              {CTA_TEXT.primary}
+            </button>
+          </div>
         </div>
       </div>
     </nav>
