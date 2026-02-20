@@ -17,15 +17,17 @@ export const meta: Route.MetaFunction = () => buildMeta({
 
 export default function Home() {
   return (
-    <>
-      <Layout>
-        <HeroSection />
-        <Suspense fallback={<div className="min-h-screen" />}>
-          <ServicesSection />
-          <TrustStats />
-          <CTASection />
-        </Suspense>
-      </Layout>
-    </>
+    <Layout>
+      <HeroSection />
+      <Suspense fallback={<div className="min-h-[400px]" />}>
+        <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<div className="min-h-[400px]" />}>
+        <TrustStats />
+      </Suspense>
+      <Suspense fallback={<div className="min-h-[300px]" />}>
+        <CTASection />
+      </Suspense>
+    </Layout>
   );
 }

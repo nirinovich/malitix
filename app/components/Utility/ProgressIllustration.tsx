@@ -10,28 +10,26 @@ export function ProgressRescueGaugeVariant() {
   const [phase, setPhase] = useState<'slow' | 'transition' | 'fast' | 'complete'>('slow');
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const id = setInterval(() => {
       setProgress(prev => {
-        if (prev < 20) {
-          // Slow phase (Sans Malitix) - 0 to 20%
-          setPhase('slow');
-          return prev + 0.3; // Very slow
-        } else if (prev < 35) {
-          // Transition phase (Adapting to Malitix) - 20 to 35%
-          setPhase('transition');
-          return prev + 0.8; // Medium speed
-        } else if (prev < 100) {
-          // Fast phase (Avec Malitix) - 35 to 100%
-          setPhase('fast');
-          return prev + 2.5; // Much faster
-        } else {
-          // Complete - STOP at 100%
+        if (prev >= 100) {
+          clearInterval(id);
           setPhase('complete');
           return 100;
         }
+        if (prev < 20) {
+          setPhase('slow');
+          return prev + 0.6; // Same speed, half the updates (was 0.3 at 50ms)
+        } else if (prev < 35) {
+          setPhase('transition');
+          return prev + 1.6; // Same speed, half the updates (was 0.8 at 50ms)
+        } else {
+          setPhase('fast');
+          return prev + 5; // Same speed, half the updates (was 2.5 at 50ms)
+        }
       });
-    }, 50);
-    return () => clearInterval(interval);
+    }, 100); // 10fps instead of 20fps — same visual result, half the re-renders
+    return () => clearInterval(id);
   }, []);
 
   const getColor = (value: number) => {
