@@ -32,25 +32,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
         {!isAdminRoute && (
-          // Prevent FOUC (Flash of Unstyled Content) by applying theme before React hydrates
+          // Prevent FOUC: apply theme + critical navbar styles before external CSS loads
           <script
             dangerouslySetInnerHTML={{
               __html: `
                 (function() {
                   try {
-                    // Priority: localStorage (user preference) > system preference > default
-                    let theme = localStorage.getItem('theme');
+                    var theme = localStorage.getItem('theme');
                     if (theme !== 'light' && theme !== 'dark') {
-                      // Check system preference
                       theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                     }
-                    const html = document.documentElement;
+                    var html = document.documentElement;
                     html.classList.remove('light', 'dark');
                     html.classList.add(theme);
-                  } catch (e) {
-                    // Fallback: safe to ignore errors in script
-                  }
+                  } catch (e) {}
                 })();
+              `,
+            }}
+          />
+        )}
+        {!isAdminRoute && (
+          // Critical inline CSS: logo + theme icon visibility + transition block — renders before external stylesheet
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                .logo-dark{opacity:1}.logo-light{opacity:0;pointer-events:none}
+                .dark .logo-dark{opacity:0;pointer-events:none}.dark .logo-light{opacity:1;pointer-events:auto}
+                .theme-icon-sun{display:none}.theme-icon-moon{display:block}
+                .dark .theme-icon-sun{display:block}.dark .theme-icon-moon{display:none}
+                html:not(.theme-ready) *{transition-duration:0s!important}
               `,
             }}
           />
