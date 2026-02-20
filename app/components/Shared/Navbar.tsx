@@ -154,13 +154,6 @@ export function Navbar() {
     }
   };
 
-  const handleServiceClick = (href: string) => {
-    setIsServicesOpen(false);
-    setIsMobileMenuOpen(false);
-    navigate(href);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   // Better dropdown handling to prevent it from closing too quickly
   const handleDropdownEnter = () => {
     if (dropdownTimeoutRef.current) {
@@ -190,6 +183,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link
               to="/"
+              prefetch="intent"
               className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
@@ -258,11 +252,16 @@ export function Navbar() {
                 <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border overflow-hidden">
                   <div className="p-2">
                     {SERVICES_MENU.map((service) => (
-                      <button
+                      <Link
                         key={service.href}
-                        onClick={() => handleServiceClick(service.href)}
-                        className="dropdown-item w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
-                        type="button"
+                        to={service.href}
+                        prefetch="intent"
+                        onClick={() => {
+                          setIsServicesOpen(false);
+                          setIsMobileMenuOpen(false);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="dropdown-item block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
                       >
                         <div className="flex items-center justify-between">
                           <div>
@@ -277,7 +276,7 @@ export function Navbar() {
                             →
                           </div>
                         </div>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -317,8 +316,9 @@ export function Navbar() {
             <div className="h-5 w-px bg-[var(--text-secondary)]/20"></div>
 
             {/* Blog */}
-            <button
-              onClick={() => handleNavClick('/blog')}
+            <Link
+              to="/blog"
+              prefetch="intent"
               aria-current={isBlogActive ? 'page' : undefined}
               className={`nav-link relative group py-2 transition-colors cursor-pointer ${isBlogActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'}`}
             >
@@ -328,7 +328,7 @@ export function Navbar() {
                   isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
               ></span>
-            </button>
+            </Link>
           </div>
 
           {/* Theme Toggle and CTA Button */}
@@ -416,13 +416,19 @@ export function Navbar() {
             >
               <div className="space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
                 {SERVICES_MENU.map((service) => (
-                  <button
+                  <Link
                     key={service.href}
-                    onClick={() => handleServiceClick(service.href)}
+                    to={service.href}
+                    prefetch="intent"
+                    onClick={() => {
+                      setIsServicesOpen(false);
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                     className="mobile-nav-item block w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   >
                     {service.label}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -449,14 +455,16 @@ export function Navbar() {
           </button>
 
           {/* Blog */}
-          <button
-            onClick={() => handleNavClick('/blog')}
+          <Link
+            to="/blog"
+            prefetch="intent"
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`mobile-nav-item block w-full text-left py-3 font-medium border-t border-[var(--text-secondary)]/10 ${
               isBlogActive ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             Blog
-          </button>
+          </Link>
 
           {/* Action Buttons Mobile */}
           <div className="pt-4 flex items-center justify-between gap-4 border-t border-[var(--text-secondary)]/10">
