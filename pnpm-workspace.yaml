@@ -1,3 +1,6 @@
 packages:
-  - '.'
-  - 'sanity-studio'
+  - .
+  - sanity-studio
+
+onlyBuiltDependencies:
+  - sharp
