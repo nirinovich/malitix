@@ -527,6 +527,12 @@ body.sanity-embedded > * {
   outline-offset: 2px;
 }
 
+/* Block ALL transitions during initial page load to prevent "loading in" animation.
+   .theme-ready is added by ThemeProvider after first paint via requestAnimationFrame. */
+html:not(.theme-ready) * {
+  transition-duration: 0s !important;
+}
+
 /* Navbar Utility Classes
    Placed in @layer components so Tailwind utilities (e.g. text-[var(--text-primary)])
    can properly override these base component styles for active states etc. */

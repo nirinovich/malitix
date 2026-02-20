@@ -166,7 +166,7 @@ export function Navbar() {
   return (
     <nav
       data-app-navbar
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
         isScrolled
           ? 'navbar-scrolled backdrop-blur-lg shadow-lg'
           : 'bg-transparent'
@@ -184,13 +184,19 @@ export function Navbar() {
               <img
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
+                width={160}
+                height={40}
                 fetchPriority="high"
+                decoding="sync"
                 className="logo-dark h-10 w-auto"
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
+                width={160}
+                height={40}
                 fetchPriority="high"
+                decoding="sync"
                 className="logo-light h-10 w-auto"
               />
             </Link>
