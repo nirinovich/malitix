@@ -40,8 +40,15 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           // Sanity Studio into its own chunk (only loaded on /admin)
-          if (id.includes("sanity") || id.includes("@sanity")) {
-            return "sanity-vendor";
+          // Exclude @sanity/client and @sanity/image-url — they're small and used by blog
+          if (
+            (id.includes("node_modules/sanity/") || id.includes("node_modules\\sanity\\")) ||
+            id.includes("@sanity/vision") ||
+            id.includes("@sanity/icons") ||
+            id.includes("@sanity/ui") ||
+            id.includes("sanity/structure")
+          ) {
+            return "sanity-studio";
           }
           // React core
           if (id.includes("react-dom") || id.includes("react/")) {

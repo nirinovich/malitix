@@ -1,25 +1,16 @@
 import type { Route } from "./+types/admin";
-import { defineConfig, type SchemaTypeDefinition, Studio } from "sanity";
-import { structureTool } from "sanity/structure";
-import { visionTool } from "@sanity/vision";
-import { schemaTypes } from "../../sanity-studio/schemaTypes";
+import { lazy, Suspense } from "react";
 
-const studioConfig = defineConfig({
-  name: "default",
-  title: "Malitix",
-  projectId: "tuac272n",
-  dataset: "production",
-  basePath: "/admin",
-  plugins: [structureTool(), visionTool()],
-  schema: {
-    types: schemaTypes as unknown as SchemaTypeDefinition[],
-  },
-});
+const SanityStudio = lazy(() => import("~/components/Admin/SanityStudio"));
 
 export const meta: Route.MetaFunction = () => [
   { title: "Malitix Admin" },
 ];
 
 export default function AdminStudio() {
-  return <Studio config={studioConfig} />;
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-lg">Loading Studio…</div>}>
+      <SanityStudio />
+    </Suspense>
+  );
 }
