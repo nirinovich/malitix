@@ -59,6 +59,37 @@ body.sanity-embedded > * {
 .dark {
   color-scheme: dark;
 
+  /* ===========================================
+     FOUNDATION COLORS
+     Base color values used throughout the theme
+     =========================================== */
+  
+  /* Base backgrounds */
+  --base-bg: #060705;
+  --base-bg-alt: #0a0e0d;
+  --base-bg-elevated: #0f1412;
+  --base-bg-surface: #1a1d1b;
+  
+  /* White opacity variants */
+  --alpha-white-5: rgba(255, 255, 255, 0.05);
+  --alpha-white-10: rgba(255, 255, 255, 0.1);
+  --alpha-white-20: rgba(255, 255, 255, 0.2);
+  --alpha-white-30: rgba(255, 255, 255, 0.3);
+  --alpha-white-40: rgba(255, 255, 255, 0.4);
+  --alpha-white-50: rgba(255, 255, 255, 0.5);
+  --alpha-white-60: rgba(255, 255, 255, 0.6);
+  --alpha-white-70: rgba(255, 255, 255, 0.7);
+  --alpha-white-80: rgba(255, 255, 255, 0.8);
+  --alpha-white-90: rgba(255, 255, 255, 0.9);
+  
+  /* Brand color opacity variants */
+  --alpha-brand-5: rgba(44, 163, 189, 0.05);
+  --alpha-brand-10: rgba(44, 163, 189, 0.1);
+  --alpha-brand-20: rgba(44, 163, 189, 0.2);
+  --alpha-brand-30: rgba(44, 163, 189, 0.3);
+  --alpha-brand-40: rgba(44, 163, 189, 0.4);
+  --alpha-brand-50: rgba(44, 163, 189, 0.5);
+
   /* Brand colors */
   --brand-primary: #2ca3bd;
   --brand-primary-light: #3bb8d4;
@@ -74,54 +105,54 @@ body.sanity-embedded > * {
   --iphone-camera-border: #333333;
   
   /* Background colors */
-  --bg-primary: #060705;
-  --bg-primary-dark: #060705;
-  --bg-secondary: #0a0e0d;
-  --bg-tertiary: #0f1412;
-  --bg-elevated: #1a1d1b;
+  --bg-primary: var(--base-bg);
+  --bg-primary-dark: var(--base-bg);
+  --bg-secondary: var(--base-bg-alt);
+  --bg-tertiary: var(--base-bg-elevated);
+  --bg-elevated: var(--base-bg-surface);
   
   /* Surface colors */
-  --surface-primary: #060705;
-  --surface-secondary: #0a0e0d;
-  --surface-elevated: rgba(239, 245, 247, 0.05);
-  --surface-hover: rgba(44, 163, 189, 0.1);
+  --surface-primary: var(--base-bg);
+  --surface-secondary: var(--base-bg-alt);
+  --surface-elevated: var(--alpha-white-5);
+  --surface-hover: var(--alpha-brand-10);
   
   /* Text colors */
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-tertiary: rgba(255, 255, 255, 0.6);
-  --text-quaternary: rgba(255, 255, 255, 0.5);
-  --text-muted: rgba(255, 255, 255, 0.4);
-  --text-emphasis: rgba(255, 255, 255, 0.9);
-  --text-subtle: rgba(255, 255, 255, 0.8);
+  --text-secondary: var(--alpha-white-70);
+  --text-tertiary: var(--alpha-white-60);
+  --text-quaternary: var(--alpha-white-50);
+  --text-muted: var(--alpha-white-40);
+  --text-emphasis: var(--alpha-white-90);
+  --text-subtle: var(--alpha-white-80);
   
   /* Border colors */
-  --border-primary: rgba(255, 255, 255, 0.1);
-  --border-secondary: rgba(44, 163, 189, 0.2);
-  --border-hover: rgba(44, 163, 189, 0.4);
+  --border-primary: var(--alpha-white-10);
+  --border-secondary: var(--alpha-brand-20);
+  --border-hover: var(--alpha-brand-40);
   --border-focus: #2ca3bd;
   
   /* Accent colors */
-  --accent-primary: rgba(44, 163, 189, 0.1);
-  --accent-secondary: rgba(44, 163, 189, 0.05);
-  --accent-glow: rgba(44, 163, 189, 0.3);
+  --accent-primary: var(--alpha-brand-10);
+  --accent-secondary: var(--alpha-brand-5);
+  --accent-glow: var(--alpha-brand-30);
 
   /* CTA colors */
   --cta-accent: var(--brand-primary);
   --cta-accent-dark: var(--brand-primary-dark);
-  --cta-accent-soft: rgba(44, 163, 189, 0.2);
-  --cta-button-shadow: rgba(44, 163, 189, 0.3);
-  --cta-button-shadow-strong: rgba(44, 163, 189, 0.5);
+  --cta-accent-soft: var(--alpha-brand-20);
+  --cta-button-shadow: var(--alpha-brand-30);
+  --cta-button-shadow-strong: var(--alpha-brand-50);
   --cta-grid-pattern: var(--hero-grid-pattern);
-  --cta-orb-bg: rgba(44, 163, 189, 0.1);
-  --cta-card-bg: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  --cta-card-border: rgba(255, 255, 255, 0.1);
-  --cta-input-bg: rgba(255, 255, 255, 0.05);
-  --cta-input-border: rgba(255, 255, 255, 0.1);
-  --cta-input-text: rgba(255, 255, 255, 0.9);
-  --cta-input-placeholder: rgba(255, 255, 255, 0.4);
+  --cta-orb-bg: var(--alpha-brand-10);
+  --cta-card-bg: linear-gradient(to bottom right, var(--alpha-white-10), var(--alpha-white-5));
+  --cta-card-border: var(--alpha-white-10);
+  --cta-input-bg: var(--alpha-white-5);
+  --cta-input-border: var(--alpha-white-10);
+  --cta-input-text: var(--alpha-white-90);
+  --cta-input-placeholder: var(--alpha-white-40);
   --cta-input-focus-border: var(--cta-accent);
-  --cta-input-focus-ring: rgba(44, 163, 189, 0.2);
+  --cta-input-focus-ring: var(--alpha-brand-20);
 
   /* Form input defaults */
   --form-input-bg: var(--bg-secondary);
@@ -129,84 +160,64 @@ body.sanity-embedded > * {
   --form-input-text: var(--text-primary);
   --form-input-placeholder: var(--text-muted);
   --form-input-focus-border: var(--brand-primary);
-  --form-input-focus-ring: rgba(44, 163, 189, 0.2);
+  --form-input-focus-ring: var(--alpha-brand-20);
   --form-icon-color: var(--brand-primary);
 
   /* Conversion Landing */
-  --conversion-bg-primary: #f5f7f9;
-  --conversion-bg-secondary: #ffffff;
-  --conversion-panel-bg: #ffffff;
-  --conversion-card-bg: #ffffff;
-  --conversion-card-muted: #f9fafb;
-  --conversion-border: #e5e7eb;
-  --conversion-pill-bg: #ffffff;
-  --conversion-pill-text: #374151;
-  --conversion-highlight-bg: #f9fafb;
-  --conversion-highlight-hover: #ffffff;
-  --conversion-highlight-text: #374151;
-  --conversion-stat-bg: #ffffff;
-  --conversion-callout-bg: #f9fafb;
-  --conversion-callout-text: #374151;
-  --conversion-input-bg: #ffffff;
-  --conversion-input-border: #d1d5db;
-  --conversion-input-text: #111827;
-  --conversion-input-placeholder: #9ca3af;
-
-  /* Conversion Landing */
-  --conversion-bg-primary: #060705;
-  --conversion-bg-secondary: #0a0e0d;
+  --conversion-bg-primary: var(--base-bg);
+  --conversion-bg-secondary: var(--base-bg-alt);
   --conversion-panel-bg: #0b0f0e;
-  --conversion-card-bg: rgba(255, 255, 255, 0.05);
-  --conversion-card-muted: rgba(255, 255, 255, 0.05);
-  --conversion-border: rgba(255, 255, 255, 0.1);
-  --conversion-pill-bg: rgba(255, 255, 255, 0.1);
-  --conversion-pill-text: rgba(255, 255, 255, 0.7);
-  --conversion-highlight-bg: rgba(255, 255, 255, 0.05);
-  --conversion-highlight-hover: rgba(255, 255, 255, 0.1);
-  --conversion-highlight-text: rgba(255, 255, 255, 0.7);
-  --conversion-stat-bg: rgba(255, 255, 255, 0.05);
-  --conversion-callout-bg: rgba(255, 255, 255, 0.05);
-  --conversion-callout-text: rgba(255, 255, 255, 0.7);
-  --conversion-input-bg: rgba(255, 255, 255, 0.05);
-  --conversion-input-border: rgba(255, 255, 255, 0.1);
-  --conversion-input-text: rgba(255, 255, 255, 0.9);
-  --conversion-input-placeholder: rgba(255, 255, 255, 0.4);
+  --conversion-card-bg: var(--alpha-white-5);
+  --conversion-card-muted: var(--alpha-white-5);
+  --conversion-border: var(--alpha-white-10);
+  --conversion-pill-bg: var(--alpha-white-10);
+  --conversion-pill-text: var(--alpha-white-70);
+  --conversion-highlight-bg: var(--alpha-white-5);
+  --conversion-highlight-hover: var(--alpha-white-10);
+  --conversion-highlight-text: var(--alpha-white-70);
+  --conversion-stat-bg: var(--alpha-white-5);
+  --conversion-callout-bg: var(--alpha-white-5);
+  --conversion-callout-text: var(--alpha-white-70);
+  --conversion-input-bg: var(--alpha-white-5);
+  --conversion-input-border: var(--alpha-white-10);
+  --conversion-input-text: var(--alpha-white-90);
+  --conversion-input-placeholder: var(--alpha-white-40);
 
   /* Services colors */
   --services-accent: var(--brand-primary);
-  --services-accent-soft: rgba(44, 163, 189, 0.2);
-  --services-hover-border: rgba(44, 163, 189, 0.5);
-  --services-hover-shadow: rgba(44, 163, 189, 0.2);
+  --services-accent-soft: var(--alpha-brand-20);
+  --services-hover-border: var(--alpha-brand-50);
+  --services-hover-shadow: var(--alpha-brand-20);
   --services-card-bg: var(--card-bg);
   --services-card-border: var(--card-border);
   --services-orb-bg: var(--bg-secondary);
   
   /* Hero gradient colors */
-  --hero-gradient-bg: linear-gradient(to bottom right, #060705, #060705, #0a0e0d);
-  --hero-orb-primary: rgba(44, 163, 189, 0.2);
-  --hero-orb-secondary: rgba(44, 163, 189, 0.1);
+  --hero-gradient-bg: linear-gradient(to bottom right, var(--base-bg), var(--base-bg), var(--base-bg-alt));
+  --hero-orb-primary: var(--alpha-brand-20);
+  --hero-orb-secondary: var(--alpha-brand-10);
   --hero-grid-pattern: linear-gradient(rgba(44,163,189,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(44,163,189,0.03) 1px, transparent 1px);
   
   /* Card colors */
-  --card-bg: linear-gradient(to bottom right, rgba(44, 163, 189, 0.1), rgba(44, 163, 189, 0.05));
-  --card-border: rgba(44, 163, 189, 0.2);
-  --card-shadow: rgba(44, 163, 189, 0.2);
+  --card-bg: linear-gradient(to bottom right, var(--alpha-brand-10), var(--alpha-brand-5));
+  --card-border: var(--alpha-brand-20);
+  --card-shadow: var(--alpha-brand-20);
   --card-code-bg: rgba(6, 7, 5, 0.5);
   
   /* Scroll indicator */
-  --scroll-border: rgba(255, 255, 255, 0.3);
+  --scroll-border: var(--alpha-white-30);
   
   /* Divider line */
-  --divider-gradient: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  --divider-gradient: linear-gradient(to right, transparent, var(--alpha-white-20), transparent);
   
   /* Logo filter */
   --logo-filter: grayscale(1);
   
   /* Additional component-specific colors */
-  --quote-color: rgba(44, 163, 189, 0.4);
-  --stat-bg: rgba(44, 163, 189, 0.1);
-  --feature-card-bg: rgba(44, 163, 189, 0.05);
-  --feature-card-hover-bg: rgba(44, 163, 189, 0.1);
+  --quote-color: var(--alpha-brand-40);
+  --stat-bg: var(--alpha-brand-10);
+  --feature-card-bg: var(--alpha-brand-5);
+  --feature-card-hover-bg: var(--alpha-brand-10);
   --icon-stroke: #2ca3bd;
   
   /* Progress colors */
@@ -223,6 +234,32 @@ body.sanity-embedded > * {
 .light {
   color-scheme: light;
 
+  /* ===========================================
+     FOUNDATION COLORS
+     Base color values used throughout the theme
+     =========================================== */
+  
+  /* Base backgrounds */
+  --base-bg: #fefefe;
+  --base-bg-alt: #f9fafb;
+  --base-bg-secondary: #f5f7f9;
+  
+  /* Brand color opacity variants */
+  --alpha-brand-4: rgba(44, 163, 189, 0.04);
+  --alpha-brand-5: rgba(44, 163, 189, 0.05);
+  --alpha-brand-6: rgba(44, 163, 189, 0.06);
+  --alpha-brand-10: rgba(44, 163, 189, 0.1);
+  --alpha-brand-15: rgba(44, 163, 189, 0.15);
+  --alpha-brand-16: rgba(44, 163, 189, 0.16);
+  --alpha-brand-18: rgba(44, 163, 189, 0.18);
+  --alpha-brand-20: rgba(44, 163, 189, 0.2);
+  --alpha-brand-30: rgba(44, 163, 189, 0.3);
+  --alpha-brand-40: rgba(44, 163, 189, 0.4);
+  
+  /* Neutral opacity variants */
+  --alpha-neutral-10: rgba(0, 0, 0, 0.1);
+  --alpha-neutral-40: rgba(226, 232, 240, 0.4);
+
   /* Brand colors (same) */
   --brand-primary: #2ca3bd;
   --brand-primary-light: #3bb8d4;
@@ -238,17 +275,17 @@ body.sanity-embedded > * {
   --iphone-camera-border: #1a1a1a;
   
   /* Background colors - Soft neutrals with blue undertones */
-  --bg-primary: #fefefe;
-  --bg-primary-dark: #fefefe;
-  --bg-secondary: #fefefe;
-  --bg-tertiary: #fefefe;
-  --bg-elevated: #fefefe;
+  --bg-primary: var(--base-bg);
+  --bg-primary-dark: var(--base-bg);
+  --bg-secondary: var(--base-bg);
+  --bg-tertiary: var(--base-bg);
+  --bg-elevated: var(--base-bg);
   
   /* Surface colors */
-  --surface-primary: #fefefe;
-  --surface-secondary: #fefefe;
-  --surface-elevated: rgba(44, 163, 189, 0.04);
-  --surface-hover: rgba(44, 163, 189, 0.06);
+  --surface-primary: var(--base-bg);
+  --surface-secondary: var(--base-bg);
+  --surface-elevated: var(--alpha-brand-4);
+  --surface-hover: var(--alpha-brand-6);
   
   /* Text colors - Deeper for better contrast */
   --text-primary: #1a2332;
@@ -260,18 +297,18 @@ body.sanity-embedded > * {
   --text-subtle: #374151;
   
   /* Border colors */
-  --border-primary: rgba(0, 0, 0, 0.1);
-  --border-secondary: rgba(44, 163, 189, 0.15);
-  --border-hover: rgba(44, 163, 189, 0.3);
+  --border-primary: var(--alpha-neutral-10);
+  --border-secondary: var(--alpha-brand-15);
+  --border-hover: var(--alpha-brand-30);
   --border-focus: #2ca3bd;
   
   /* Accent colors */
-  --accent-primary: rgba(44, 163, 189, 0.1);
-  --accent-secondary: rgba(44, 163, 189, 0.05);
-  --accent-glow: rgba(44, 163, 189, 0.2);
+  --accent-primary: var(--alpha-brand-10);
+  --accent-secondary: var(--alpha-brand-5);
+  --accent-glow: var(--alpha-brand-20);
 
   /* CTA colors */
-  --cta-accent-soft: rgba(44, 163, 189, 0.16);
+  --cta-accent-soft: var(--alpha-brand-16);
   --cta-orb-bg: var(--bg-secondary);
   --cta-card-bg: linear-gradient(to bottom right, var(--surface-primary), var(--bg-secondary));
   --cta-card-border: var(--border-primary);
@@ -282,9 +319,9 @@ body.sanity-embedded > * {
 
   /* Services colors */
   --services-accent: var(--brand-primary);
-  --services-accent-soft: rgba(44, 163, 189, 0.16);
-  --services-hover-border: rgba(44, 163, 189, 0.4);
-  --services-hover-shadow: rgba(44, 163, 189, 0.18);
+  --services-accent-soft: var(--alpha-brand-16);
+  --services-hover-border: var(--alpha-brand-40);
+  --services-hover-shadow: var(--alpha-brand-18);
   --services-card-bg: var(--card-bg);
   --services-card-border: var(--card-border);
   --services-orb-bg: var(--bg-secondary);
@@ -292,13 +329,13 @@ body.sanity-embedded > * {
   /* Hero gradient colors */
   --hero-gradient-bg: var(--bg-primary);
   --hero-orb-primary: var(--bg-secondary);
-  --hero-orb-secondary: rgba(226, 232, 240, 0.4);
+  --hero-orb-secondary: var(--alpha-neutral-40);
   
   /* Additional component-specific colors */
-  --quote-color: rgba(44, 163, 189, 0.4);
-  --stat-bg: rgba(226, 232, 240, 0.4);
+  --quote-color: var(--alpha-brand-40);
+  --stat-bg: var(--alpha-neutral-40);
   --feature-card-bg: var(--bg-secondary);
-  --feature-card-hover-bg: rgba(44, 163, 189, 0.06);
+  --feature-card-hover-bg: var(--alpha-brand-6);
   --icon-stroke: #2ca3bd;
   
   /* Progress colors */
@@ -313,7 +350,7 @@ body.sanity-embedded > * {
   
   /* Card colors */
   --card-bg: linear-gradient(to bottom right, var(--surface-primary), var(--surface-primary));
-  --card-border: rgba(44, 163, 189, 0.2);
+  --card-border: var(--alpha-brand-20);
   --card-shadow: rgba(59, 130, 246, 0.5);
   --card-code-bg: var(--bg-secondary);
   
@@ -469,7 +506,7 @@ body.sanity-embedded > * {
 }
 
 .dropdown-item:hover {
-  background-color: rgba(44, 163, 189, 0.1);
+  background-color: var(--alpha-brand-10);
   color: var(--text-primary);
 }
 
@@ -478,12 +515,12 @@ body.sanity-embedded > * {
 }
 
 .theme-toggle {
-  background-color: rgba(44, 163, 189, 0.1);
+  background-color: var(--alpha-brand-10);
   color: var(--text-primary);
 }
 
 .theme-toggle:hover {
-  background-color: rgba(44, 163, 189, 0.2);
+  background-color: var(--alpha-brand-20);
 }
 
 .mobile-menu {
@@ -503,7 +540,7 @@ body.sanity-embedded > * {
 }
 
 .mobile-menu-btn:hover {
-  background-color: rgba(44, 163, 189, 0.1);
+  background-color: var(--alpha-brand-10);
 }
 
 .mobile-nav-item {
@@ -519,7 +556,7 @@ body.sanity-embedded > * {
 }
 
 .mobile-theme-toggle {
-  background-color: rgba(44, 163, 189, 0.1);
+  background-color: var(--alpha-brand-10);
   color: var(--text-primary);
 }
 
@@ -554,7 +591,7 @@ body.sanity-embedded > * {
 
 /* Progress Illustration Utility Classes */
 .progress-grid-line {
-  background-color: rgba(44, 163, 189, 0.1);
+  background-color: var(--alpha-brand-10);
 }
 
 .light .progress-grid-line {
