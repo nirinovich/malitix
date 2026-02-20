@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { onCLS, onINP, onLCP } from "web-vitals";
 import {
   isRouteErrorResponse,
   Links,
@@ -85,14 +84,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  useEffect(() => {
-    // Report web vitals only in development
-    if (import.meta.env.DEV) {
-      onCLS(console.log);
-      onINP(console.log);
-      onLCP(console.log);
-    }
-  }, []);
   return <Outlet />;
 }
 
