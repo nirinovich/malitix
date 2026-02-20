@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
-import { ScrollToTop } from "~/components/Shared/ScrollToTop";
 import { buildMeta } from "~/utils/seo";
 import CustomDevHero from "~/components/CustomDev/CustomDevHero";
 import CustomDevProblem from "~/components/CustomDev/CustomDevProblem";
@@ -20,19 +19,16 @@ export const meta: Route.MetaFunction = () => buildMeta({
 
 export default function CustomDevelopment() {
   return (
-    <>
-      <ScrollToTop />
-      <Layout>
-        <CustomDevHero />
-        <CustomDevProblem />
-        <Suspense fallback={<div className="min-h-screen" />}>
-          <CustomDevSolution />
-          <CustomDevStack />
-          <CustomDevTestimonials />
-          <CustomDevGuarantee />
-          <CustomDevCTA />
-        </Suspense>
-      </Layout>
-    </>
+    <Layout>
+      <CustomDevHero />
+      <CustomDevProblem />
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <CustomDevSolution />
+        <CustomDevStack />
+        <CustomDevTestimonials />
+        <CustomDevGuarantee />
+        <CustomDevCTA />
+      </Suspense>
+    </Layout>
   );
 }

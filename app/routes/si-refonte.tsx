@@ -1,6 +1,5 @@
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
-import { ScrollToTop } from "~/components/Shared/ScrollToTop";
 import SIRefonteHero from "~/components/SIRefonte/SIRefonteHero";
 import SIRefonteProblem from "~/components/SIRefonte/SIRefonteProblem";
 import SIRefonteSolution from "~/components/SIRefonte/SIRefonteSolution";
@@ -18,16 +17,13 @@ export const meta: Route.MetaFunction = () => buildMeta({
 
 export default function SIRefonte() {
   return (
-    <>
-      <ScrollToTop />
-      <Layout>
-        <SIRefonteHero />
-        <SIRefonteProblem />
-        <SIRefonteSolution />
-        <SIRefonteOffers />
-        <SIRefonteBenefits />
-        <SIRefonteContact />
-      </Layout>
-    </>
+    <Layout>
+      <SIRefonteHero />
+      <SIRefonteProblem />
+      <SIRefonteSolution />
+      <SIRefonteOffers />
+      <SIRefonteBenefits />
+      <SIRefonteContact />
+    </Layout>
   );
 }

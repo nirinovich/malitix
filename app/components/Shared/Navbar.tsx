@@ -17,7 +17,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isThemeReady, setIsThemeReady] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,10 +31,6 @@ export function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsThemeReady(true);
   }, []);
 
   // Gérer le scroll vers la section si il y a un hash dans l'URL
@@ -339,11 +334,7 @@ export function Navbar() {
               className="theme-toggle p-2 rounded-lg transition-all duration-300 hover:scale-110"
               aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
             >
-              {isThemeReady ? (
-                theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
-              ) : (
-                <span className="block h-5 w-5" aria-hidden="true" />
-              )}
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
             {/* CTA Button */}
@@ -473,11 +464,7 @@ export function Navbar() {
               className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
             >
-              {isThemeReady ? (
-                theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
-              ) : (
-                <span className="block h-5 w-5" aria-hidden="true" />
-              )}
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               <span className="text-sm">{theme === 'dark' ? 'Mode clair' : 'Mode sombre'}</span>
             </button>
 

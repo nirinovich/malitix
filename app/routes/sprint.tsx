@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
-import { ScrollToTop } from "~/components/Shared/ScrollToTop";
 import { buildMeta } from "~/utils/seo";
 import SprintHero from "~/components/Sprint/SprintHero";
 import SprintProblem from "~/components/Sprint/SprintProblem";
@@ -19,18 +18,15 @@ export const meta: Route.MetaFunction = () => buildMeta({
 
 export default function SprintCommando() {
   return (
-    <>
-      <ScrollToTop />
-      <Layout>
-        <SprintHero />
-        <SprintProblem />
-        <SprintSolution />
-        <Suspense fallback={<div className="h-96 w-full animate-pulse bg-gray-100 dark:bg-white/5" />}>
-          <SprintTestimonials />
-        </Suspense>
-        <SprintBenefits />
-        <SprintContact />
-      </Layout>
-    </>
+    <Layout>
+      <SprintHero />
+      <SprintProblem />
+      <SprintSolution />
+      <Suspense fallback={<div className="h-96 w-full animate-pulse bg-gray-100 dark:bg-white/5" />}>
+        <SprintTestimonials />
+      </Suspense>
+      <SprintBenefits />
+      <SprintContact />
+    </Layout>
   );
 }

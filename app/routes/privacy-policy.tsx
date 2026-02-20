@@ -1,6 +1,5 @@
 import type { Route } from "../+types/root";
 import { Layout } from "~/components/Shared/Layout";
-import { ScrollToTop } from "~/components/Shared/ScrollToTop";
 import { buildMeta } from "~/utils/seo";
 
 export const meta: Route.MetaFunction = () => [
@@ -14,9 +13,7 @@ export const meta: Route.MetaFunction = () => [
 
 export default function PrivacyPolicy() {
   return (
-    <>
-      <ScrollToTop />
-      <Layout>
+    <Layout>
       <div className="min-h-screen py-24 bg-[var(--bg-primary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-[var(--text-primary)]">
@@ -191,6 +188,5 @@ export default function PrivacyPolicy() {
       </div>
     </div>
       </Layout>
-    </>
   );
 }
