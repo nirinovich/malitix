@@ -179,7 +179,7 @@ export function Navbar() {
             <Link
               to="/"
               prefetch="intent"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+              className="relative block h-10 w-40 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
                 src="/mx_dark.webp"
@@ -188,7 +188,7 @@ export function Navbar() {
                 height={40}
                 fetchPriority="high"
                 decoding="sync"
-                className="logo-dark h-10 w-auto"
+                className="logo-dark absolute inset-0 h-10 w-auto"
               />
               <img
                 src="/mx_light.webp"
@@ -197,7 +197,7 @@ export function Navbar() {
                 height={40}
                 fetchPriority="high"
                 decoding="sync"
-                className="logo-light h-10 w-auto"
+                className="logo-light absolute inset-0 h-10 w-auto"
               />
             </Link>
           </div>

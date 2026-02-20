@@ -650,33 +650,25 @@ html:not(.theme-ready) * {
   }
 }
 
-/* Logo Switching — no transition on initial load, smooth transition only after .theme-ready */
+/* Logo Switching — both logos are absolutely positioned inside a fixed-size container.
+   No layout shift. Correct logo shown via opacity based on .dark class. */
 .logo-dark {
   opacity: 1;
-  position: relative;
-  pointer-events: auto;
-  z-index: 1;
 }
 
 .dark .logo-dark {
   opacity: 0;
-  position: absolute;
   pointer-events: none;
-  z-index: 0;
 }
 
 .logo-light {
   opacity: 0;
-  position: absolute;
   pointer-events: none;
-  z-index: 0;
 }
 
 .dark .logo-light {
   opacity: 1;
-  position: relative;
   pointer-events: auto;
-  z-index: 1;
 }
 
 /* Enable smooth transitions only after initial theme is applied */
