@@ -1,9 +1,7 @@
-import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Code, Database, Cpu, Sparkles } from 'lucide-react';
 import { HERO_CONTENT, CTA_TEXT } from '~/utils/constants';
 
 export function HeroSection() {
-  const shouldReduceMotion = useReducedMotion();
   
   return (
     <section id="home" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[var(--hero-gradient-bg)]">
@@ -131,36 +129,27 @@ export function HeroSection() {
           </div>
 
           {/* Right Side - Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center lg:text-left space-y-8"
+          <div 
+            className="text-center lg:text-left space-y-8 animate-slide-right in-view"
           >
             {/* Headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-6xl font-bold leading-tight text-[var(--text-primary)]">
               {HERO_CONTENT.animated.headline.split('\n').map((line, lineIndex) => (
-                <motion.span
+                <span
                   key={line}
-                  initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: lineIndex * 0.12, duration: 0.5 }}
-                  className="block"
+                  className={`block animate-on-scroll in-view stagger-${lineIndex + 1}`}
                 >
                   {line}
-                </motion.span>
+                </span>
               ))}
             </h1>
 
             {/* Subheadline */}
-            <motion.p 
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-lg sm:text-xl max-w-2xl leading-relaxed text-[var(--text-secondary)]"
+            <p 
+              className="text-lg sm:text-xl max-w-2xl leading-relaxed text-[var(--text-secondary)] animate-on-scroll in-view stagger-5"
             >
               {HERO_CONTENT.animated.subheadline}
-            </motion.p>
+            </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -201,7 +190,7 @@ export function HeroSection() {
                 <div className="text-sm text-[var(--text-tertiary)]">Support</div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

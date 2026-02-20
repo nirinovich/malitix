@@ -1,27 +1,6 @@
-import { motion, type Variants } from 'framer-motion';
 import { CTAButtonV3 } from '~/components/Utility/CTAButtons';
 import { ProgressRescueGaugeVariant } from '~/components/Utility/ProgressIllustration';
 import { LogoCarousel } from '~/components/Utility/LogoCarousel';
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
-};
 
 const companyLogos = [
   {
@@ -83,14 +62,11 @@ export default function SprintHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Colonne gauche - Contenu */}
-          <motion.div 
-            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+          <div 
+            className="space-y-6 sm:space-y-8 order-2 lg:order-1 animate-slide-right in-view"
           >
             {/* Headline */}
-            <motion.div variants={itemVariants} className="space-y-4 sm:space-y-5">
+            <div className="space-y-4 sm:space-y-5 animate-on-scroll in-view stagger-1">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-[var(--text-primary)]">
                 Vos projets IT{' '}
                 <span className="relative inline-block">
@@ -111,10 +87,10 @@ export default function SprintHero() {
                 On redresse votre roadmap <br className="hidden sm:inline" />
                 en <span className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2ca3bd]">2 semaines</span>.
               </div>
-            </motion.div>
+            </div>
 
             {/* Features rapides */}
-            <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4">
+            <div className="space-y-3 sm:space-y-4 animate-on-scroll in-view stagger-2">
               {['✓ Diagnostic en 48h', '✓ Équipe dédiée', '✓ Résultats mesurables'].map((feature) => (
                 <div key={feature} className="flex items-center gap-3 text-base sm:text-lg lg:text-xl text-[var(--text-secondary)]">
                   <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-[#2ca3bd]/20">
@@ -123,15 +99,15 @@ export default function SprintHero() {
                   {feature.replace('✓ ', '')}
                 </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* CTA avec CTAButtonV3 */}
-            <motion.div variants={itemVariants} className="pt-4 sm:pt-6">
+            <div className="pt-4 sm:pt-6 animate-on-scroll in-view stagger-3">
               <ButtonComponent onClick={scrollToContact} />
-            </motion.div>
+            </div>
 
             {/* Stats de confiance */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t border-[var(--border-primary)]">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t border-[var(--border-primary)] animate-on-scroll in-view stagger-4">
               {[
                 { value: '600+', label: 'Projets livrés' },
                 { value: '350+', label: 'Développeurs' },
@@ -147,31 +123,25 @@ export default function SprintHero() {
                   </div>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Colonne droite - Visual Illustration */}
-          <motion.div 
-            className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+          <div 
+            className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0 animate-on-scroll in-view stagger-4"
           >
             <div className="scale-75 sm:scale-90 lg:scale-100">
               <IllustrationComponent />
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Logo Carousel en bas */}
-        <motion.div 
-          className="mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t border-[var(--border-primary)]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+        <div 
+          className="mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t border-[var(--border-primary)] animate-on-scroll in-view stagger-5"
         >
           <LogoCarousel logos={companyLogos} title="Ils nous font confiance" speed={40} />
-        </motion.div>
+        </div>
       </div>
 
       <style>{`

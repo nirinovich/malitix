@@ -1,12 +1,10 @@
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, Target } from "lucide-react";
 import { CONVERSION_LANDING_ABOVE_THE_FOLD } from "~/utils/constants";
+import { useInView } from "~/hooks/useInView";
 
 export function AboveTheFold() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
-  const prefersReducedMotion = useReducedMotion();
+  const { ref: sectionRef, isInView } = useInView({ once: true, margin: "-120px" });
   const {
     headlinePrimary,
     headlineSecondary,
@@ -18,23 +16,11 @@ export function AboveTheFold() {
     stats,
   } = CONVERSION_LANDING_ABOVE_THE_FOLD;
 
-  const containerVariants: Variants = {
-    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id="above-the-fold"
-      className="pt-28 pb-20 overflow-hidden bg-[var(--bg-primary)]"
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      className={`pt-28 pb-20 overflow-hidden bg-[var(--bg-primary)] animate-on-scroll ${isInView ? 'in-view' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
@@ -117,6 +103,6 @@ export function AboveTheFold() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

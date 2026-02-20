@@ -1,6 +1,6 @@
-import { motion, type Variants } from 'framer-motion';
 import { RefreshCcw, Smartphone, Zap, Cog, ArrowRight, Globe, Shield, Database, Brain } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import { useRef, useEffect } from 'react';
 import type { LucideIcon } from 'lucide-react';
 
 interface ServiceOffering {
@@ -72,20 +72,10 @@ function ServiceCard({ service, layout, onClick }: ServiceCardProps) {
   const Icon = service.icon;
   const isWide = layout.includes('col-span-2');
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-
   return (
-    <motion.button
-      variants={containerVariants}
+    <button
       onClick={onClick}
-      className={`${layout} group cursor-pointer backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden text-left border border-[#2ca3bd]/20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20`}
+      className={`${layout} group cursor-pointer backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden text-left border border-[#2ca3bd]/20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20 animate-on-scroll`}
     >
       {/* Glow */}
       <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[#2ca3bd]/10" />
@@ -117,27 +107,34 @@ function ServiceCard({ service, layout, onClick }: ServiceCardProps) {
           </div>
         </div>
       </div>
-    </motion.button>
+    </button>
   );
 }
 
 export function ServicesSection() {
   const navigate = useNavigate();
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (href: string) => {
     navigate(href);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.querySelectorAll('.animate-on-scroll').forEach((child) => child.classList.add('in-view'));
+          observer.unobserve(el);
+        }
+      },
+      { rootMargin: '-50px', threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)] relative">
@@ -165,22 +162,19 @@ export function ServicesSection() {
         </div>
 
         {/* Bento Grid */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+        <div 
+          ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {SERVICE_OFFERINGS.map((service, i) => (
             <ServiceCard
               key={service.id}
               service={service}
-              layout={BENTO_LAYOUT[i]}
+              layout={`${BENTO_LAYOUT[i]} stagger-${i + 1}`}
               onClick={() => handleClick(service.href)}
             />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

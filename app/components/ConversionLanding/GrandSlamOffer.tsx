@@ -1,30 +1,15 @@
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { CONVERSION_LANDING_GRAND_SLAM } from "~/utils/constants";
+import { useInView } from "~/hooks/useInView";
 
 export function GrandSlamOffer() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
-  const prefersReducedMotion = useReducedMotion();
-
-  const containerVariants: Variants = {
-    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const { ref: sectionRef, isInView } = useInView({ once: true, margin: "-120px" });
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id="grand-slam-offer"
-      className="py-20 bg-[var(--bg-primary)]"
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      className={`py-20 bg-[var(--bg-primary)] animate-on-scroll ${isInView ? 'in-view' : ''}`}
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
@@ -47,6 +32,6 @@ export function GrandSlamOffer() {
           </a>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

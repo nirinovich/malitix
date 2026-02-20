@@ -1,6 +1,5 @@
 ﻿import { Star, Quote, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 const testimonials = [
   {
@@ -32,13 +31,23 @@ const testimonials = [
 export default function SprintTestimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const slideRef = useRef<HTMLDivElement>(null);
 
   const nextTestimonial = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+      setIsTransitioning(false);
+    }, 300);
   }, []);
 
   const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setIsTransitioning(false);
+    }, 300);
   };
 
   useEffect(() => {
@@ -96,14 +105,9 @@ export default function SprintTestimonials() {
           onBlur={() => setIsPlaying(true)}
         >
           <div className="overflow-hidden min-h-[400px] flex justify-center items-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="w-full"
+              <div
+                ref={slideRef}
+                className={`w-full carousel-slide ${isTransitioning ? 'carousel-slide-enter' : 'carousel-slide-active'}`}
               >
                 <div
                   className="group relative backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 mx-4 transition-all duration-500 hover:shadow-2xl bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border border-[var(--border-primary)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20"
@@ -147,8 +151,7 @@ export default function SprintTestimonials() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
           </div>
           
           {/* Controls */}

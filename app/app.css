@@ -424,7 +424,70 @@ body.sanity-embedded > * {
   background-color: var(--services-orb-bg);
 }
 
-/* Animations */
+/* =============================================
+   CSS Animation System (replaces Framer Motion)
+   ============================================= */
+
+/* Base: elements start hidden, animate when .in-view is added via IntersectionObserver */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide from right (for hero content) */
+.animate-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-slide-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delays — apply to children */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* Carousel slide transitions */
+.carousel-slide {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-slide-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.carousel-slide-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-slide-right,
+  .carousel-slide {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Legacy Animations */
 @keyframes fade-in-up {
   0% {
     opacity: 0;

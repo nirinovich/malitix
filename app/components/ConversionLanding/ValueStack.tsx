@@ -1,7 +1,6 @@
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { BadgeCheck, Rocket, Shield, Shuffle } from "lucide-react";
 import { CONVERSION_LANDING_VALUE_STACK } from "~/utils/constants";
+import { useInView } from "~/hooks/useInView";
 import type { ConversionLandingValueItem } from "~/types";
 
 const items: ConversionLandingValueItem[] = [
@@ -28,27 +27,13 @@ const items: ConversionLandingValueItem[] = [
 ];
 
 export function ValueStack() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
-  const prefersReducedMotion = useReducedMotion();
-
-  const containerVariants: Variants = {
-    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const { ref: sectionRef, isInView } = useInView({ once: true, margin: "-120px" });
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id="value-stack"
-      className="py-20 bg-[var(--bg-secondary)]"
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      className={`py-20 bg-[var(--bg-secondary)] animate-on-scroll ${isInView ? 'in-view' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-start">
@@ -86,6 +71,6 @@ export function ValueStack() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

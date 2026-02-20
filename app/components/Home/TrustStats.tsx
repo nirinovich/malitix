@@ -1,33 +1,29 @@
-import { motion, useInView, type Variants } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Users, Clock, Award } from 'lucide-react';
 import { STATS } from '~/utils/constants';
 
 const iconMap = [TrendingUp, Users, Award, Clock];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
-};
-
 export function TrustStats() {
-  const sectionRef = useRef(null);
-  const isVisible = useInView(sectionRef, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          el.querySelectorAll('.animate-on-scroll').forEach((child) => child.classList.add('in-view'));
+          observer.unobserve(el);
+        }
+      },
+      { rootMargin: '-100px', threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section 
@@ -40,14 +36,11 @@ export function TrustStats() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl bg-[var(--bg-secondary)]"></div>
       </div>
 
-      <motion.div 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
+      <div 
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-opacity duration-600 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       >
         {/* Section Badge */}
-        <motion.div variants={itemVariants} className="text-center mb-8">
+        <div className="text-center mb-8 animate-on-scroll stagger-1">
           <div className="inline-flex items-center justify-center gap-2">
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
@@ -55,10 +48,10 @@ export function TrustStats() {
             </span>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
           </div>
-        </motion.div>
+        </div>
 
         {/* About Malitix - Human Touch */}
-        <motion.div variants={itemVariants} className="text-center max-w-4xl mx-auto mb-16 space-y-6">
+        <div className="text-center max-w-4xl mx-auto mb-16 space-y-6 animate-on-scroll stagger-2">
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-4 leading-tight text-[var(--text-primary)]">
             Chez Malitix, nous ne construisons pas que du code,{' '}
             <span className="text-[#2ca3bd]">nous créons des solutions qui changent la donne</span>
@@ -69,10 +62,10 @@ export function TrustStats() {
             ambitieuse ou une entreprise établie, nous mettons notre expertise au service de votre vision pour créer 
             des expériences digitales qui marquent les esprits.
           </p>
-        </motion.div>
+        </div>
 
         {/* Divider */}
-        <motion.div variants={itemVariants} className="max-w-xs mx-auto mb-16 h-px bg-gradient-to-r from-transparent via-[var(--divider-gradient)] to-transparent"></motion.div>
+        <div className="max-w-xs mx-auto mb-16 h-px bg-gradient-to-r from-transparent via-[var(--divider-gradient)] to-transparent animate-on-scroll stagger-3"></div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -80,10 +73,9 @@ export function TrustStats() {
             const Icon = iconMap[index];
             
             return (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
-                className="group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20"
+                className={`group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[#2ca3bd]/50 hover:shadow-[#2ca3bd]/20 animate-on-scroll stagger-${index + 4}`}
               >
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#2ca3bd]/0 to-[#2ca3bd]/0 transition-all duration-500 group-hover:from-[#2ca3bd]/10 group-hover:to-transparent"></div>
@@ -107,13 +99,13 @@ export function TrustStats() {
 
                 {/* Corner decoration */}
                 <div className="absolute top-4 right-4 w-16 h-16 border-t border-r rounded-tr-2xl transition-all duration-500 border-[#2ca3bd]/0 group-hover:border-[#2ca3bd]/30"></div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* Partner Logos */}
-        <motion.div variants={itemVariants} className="mt-16 text-center">
+        <div className="mt-16 text-center animate-on-scroll stagger-5">
           <div className="inline-flex flex-wrap items-center justify-center gap-8 backdrop-blur-xl rounded-3xl px-12 py-8 bg-[var(--card-bg)] border border-[var(--card-border)]">
             <div className="font-semibold text-[var(--text-secondary)]">Certifié par :</div>
             
@@ -169,8 +161,8 @@ export function TrustStats() {
               />
             </div>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

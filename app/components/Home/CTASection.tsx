@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Send, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
 import { CTA_TEXT, COMPANY_INFO } from '~/utils/constants';
@@ -18,6 +17,23 @@ interface HomeFormData {
 
 export function CTASection() {
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('in-view');
+          observer.unobserve(el);
+        }
+      },
+      { rootMargin: '-50px', threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const {
     register,
@@ -50,12 +66,9 @@ export function CTASection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
-          className="grid lg:grid-cols-2 gap-12 items-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
+        <div 
+          ref={sectionRef}
+          className="grid lg:grid-cols-2 gap-12 items-center animate-on-scroll"
         >
           {/* Left Side - Content */}
           <div className="space-y-8">
@@ -188,7 +201,7 @@ export function CTASection() {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
