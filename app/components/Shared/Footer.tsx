@@ -1,6 +1,14 @@
 import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '~/utils/constants';
+
+const FOOTER_SERVICES = [
+  { label: 'Sprint Commando', href: '/sprint-commando' },
+  { label: 'Externalisation', href: '/externalisation' },
+  { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure' },
+  { label: 'Développement Mobile', href: '/developpement-mobile' },
+  { label: 'Refonte SI', href: '/refonte-si' },
+];
 
 const iconMap = {
   Linkedin,
@@ -11,27 +19,21 @@ export function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNavClick = (href: string) => {
-    if (href.startsWith('#')) {
-      if (location.pathname !== '/') {
-        navigate('/' + href);
-        setTimeout(() => {
-          const element = document.querySelector(href);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      } else {
+  const handleHashClick = (href: string) => {
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+      setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
+      }, 100);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
-      return;
     }
-
-    navigate(href);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -86,12 +88,22 @@ export function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
-                    className="text-sm transition-colors cursor-pointer text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
-                  >
-                    {link.label}
-                  </button>
+                  {link.href.startsWith('#') ? (
+                    <button
+                      onClick={() => handleHashClick(link.href)}
+                      className="text-sm transition-colors cursor-pointer text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      prefetch="intent"
+                      className="text-sm transition-colors cursor-pointer text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -101,20 +113,15 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-6 text-lg text-[var(--text-primary)]">Services</h4>
             <ul className="space-y-3">
-              {[
-                'Refonte de SI',
-                'Développement web & mobile',
-                'Services managés',
-                'Data Platform',
-                'IA métier',
-              ].map((service, i) => (
-                <li key={i}>
-                  <button
-                    onClick={() => handleNavClick('#services')}
+              {FOOTER_SERVICES.map((service) => (
+                <li key={service.href}>
+                  <Link
+                    to={service.href}
+                    prefetch="intent"
                     className="text-sm transition-colors cursor-pointer text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
                   >
-                    {service}
-                  </button>
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -161,12 +168,14 @@ export function Footer() {
             <div className="flex gap-6">
               <Link
                 to="/mentions-legales"
+                prefetch="intent"
                 className="text-sm transition-colors cursor-pointer text-[var(--text-muted)] hover:text-[var(--brand-text)]"
               >
                 Mentions légales
               </Link>
               <Link
                 to="/politique-de-confidentialite"
+                prefetch="intent"
                 className="text-sm transition-colors cursor-pointer text-[var(--text-muted)] hover:text-[var(--brand-text)]"
               >
                 Politique de confidentialité
