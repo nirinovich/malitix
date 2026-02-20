@@ -84,11 +84,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('theme', theme);
     const html = document.documentElement;
     
-    // Only update if necessary to avoid unnecessary repaints
-    if (!html.classList.contains(theme)) {
-      html.classList.remove('light', 'dark');
-      html.classList.add(theme);
-    }
+    // Always explicitly set the correct class to guard against
+    // React hydration potentially removing the class set by the inline script
+    html.classList.remove('light', 'dark');
+    html.classList.add(theme);
   }, [theme]);
 
   // Listen for system preference changes and update localStorage-less component

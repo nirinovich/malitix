@@ -527,100 +527,121 @@ body.sanity-embedded > * {
   outline-offset: 2px;
 }
 
-/* Navbar Utility Classes */
-.navbar-scrolled {
-  background-color: rgba(var(--bg-primary-rgb), 0.95);
-  box-shadow: 0 0 40px rgba(44, 163, 189, 0.1);
-}
+/* Navbar Utility Classes
+   Placed in @layer components so Tailwind utilities (e.g. text-[var(--text-primary)])
+   can properly override these base component styles for active states etc. */
+@layer components {
+  .navbar-scrolled {
+    background-color: rgba(var(--bg-primary-rgb), 0.95);
+    box-shadow: 0 0 40px rgba(44, 163, 189, 0.1);
+  }
 
-.dark .navbar-scrolled {
-  background-color: rgba(6, 7, 5, 0.95);
-  box-shadow: 0 0 40px rgba(44, 163, 189, 0.1);
-}
+  .dark .navbar-scrolled {
+    background-color: rgba(6, 7, 5, 0.95);
+    box-shadow: 0 0 40px rgba(44, 163, 189, 0.1);
+  }
 
-.light .navbar-scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
+  .light .navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
 
-.nav-link {
-  color: var(--text-secondary);
-}
+  .nav-link {
+    color: var(--text-secondary);
+  }
 
-.nav-link:hover {
-  color: var(--text-primary);
-}
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
 
-.dropdown-menu {
-  background-color: var(--surface-primary);
-  border-color: var(--border-primary);
-  backdrop-filter: none;
-}
+  .dropdown-menu {
+    background-color: var(--surface-primary);
+    border-color: var(--border-primary);
+    backdrop-filter: none;
+  }
 
-.dark .dropdown-menu {
-  background-color: rgba(6, 7, 5, 0.98);
-  border-color: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-}
+  .dark .dropdown-menu {
+    background-color: rgba(6, 7, 5, 0.98);
+    border-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+  }
 
-.dropdown-item {
-  color: var(--text-secondary);
-  background-color: transparent;
-}
+  .dropdown-item {
+    color: var(--text-secondary);
+    background-color: transparent;
+  }
 
-.dropdown-item:hover {
-  background-color: var(--alpha-brand-10);
-  color: var(--text-primary);
-}
+  .dropdown-item:hover {
+    background-color: var(--alpha-brand-10);
+    color: var(--text-primary);
+  }
 
-.dropdown-desc {
-  color: var(--text-tertiary);
-}
+  .dropdown-desc {
+    color: var(--text-tertiary);
+  }
 
-.theme-toggle {
-  background-color: var(--alpha-brand-10);
-  color: var(--text-primary);
-}
+  .theme-toggle {
+    background-color: var(--alpha-brand-10);
+    color: var(--text-primary);
+  }
 
-.theme-toggle:hover {
-  background-color: var(--alpha-brand-20);
-}
+  .theme-toggle:hover {
+    background-color: var(--alpha-brand-20);
+  }
 
-.mobile-menu {
-  background-color: var(--surface-primary);
-  border-color: var(--border-primary);
-  backdrop-filter: none;
-}
+  .mobile-menu {
+    background-color: var(--surface-primary);
+    border-color: var(--border-primary);
+    backdrop-filter: none;
+  }
 
-.dark .mobile-menu {
-  background-color: rgba(6, 7, 5, 0.98);
-  border-color: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-}
+  .dark .mobile-menu {
+    background-color: rgba(6, 7, 5, 0.98);
+    border-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+  }
 
-.mobile-menu-btn {
-  color: var(--text-primary);
-}
+  .mobile-menu-btn {
+    color: var(--text-primary);
+  }
 
-.mobile-menu-btn:hover {
-  background-color: var(--alpha-brand-10);
-}
+  .mobile-menu-btn:hover {
+    background-color: var(--alpha-brand-10);
+  }
 
-.mobile-nav-item {
-  color: var(--text-secondary);
-}
+  .mobile-nav-item {
+    color: var(--text-secondary);
+  }
 
-.mobile-nav-item:hover {
-  color: var(--text-primary);
-}
+  .mobile-nav-item:hover {
+    color: var(--text-primary);
+  }
 
-.mobile-nav-label {
-  color: var(--text-tertiary);
-}
+  .mobile-nav-label {
+    color: var(--text-tertiary);
+  }
 
-.mobile-theme-toggle {
-  background-color: var(--alpha-brand-10);
-  color: var(--text-primary);
+  .mobile-theme-toggle {
+    background-color: var(--alpha-brand-10);
+    color: var(--text-primary);
+  }
+
+  /* Theme toggle icon visibility — CSS-driven to avoid hydration flash */
+  .theme-icon-sun {
+    display: none;
+  }
+
+  .theme-icon-moon {
+    display: block;
+  }
+
+  .dark .theme-icon-sun {
+    display: block;
+  }
+
+  .dark .theme-icon-moon {
+    display: none;
+  }
 }
 
 /* Logo Switching */

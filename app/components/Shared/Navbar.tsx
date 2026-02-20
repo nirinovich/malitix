@@ -13,7 +13,7 @@ const SERVICES_MENU = [
 ];
 
 export function Navbar() {
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -332,9 +332,11 @@ export function Navbar() {
             <button
               onClick={toggleTheme}
               className="theme-toggle p-2 rounded-lg transition-all duration-300 hover:scale-110"
-              aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
+              aria-label="Basculer le thème"
+              suppressHydrationWarning
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              <Sun size={20} className="theme-icon-sun" />
+              <Moon size={20} className="theme-icon-moon" />
             </button>
 
             {/* CTA Button */}
@@ -462,10 +464,13 @@ export function Navbar() {
             <button
               onClick={toggleTheme}
               className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
+              aria-label="Basculer le thème"
+              suppressHydrationWarning
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-              <span className="text-sm">{theme === 'dark' ? 'Mode clair' : 'Mode sombre'}</span>
+              <Sun size={20} className="theme-icon-sun" />
+              <Moon size={20} className="theme-icon-moon" />
+              <span className="text-sm theme-icon-sun">Mode clair</span>
+              <span className="text-sm theme-icon-moon">Mode sombre</span>
             </button>
 
             <button
