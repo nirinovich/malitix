@@ -185,13 +185,13 @@ export function Navbar() {
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
                 fetchPriority="high"
-                className="logo-dark h-10 w-auto transition-opacity duration-200"
+                className="logo-dark h-10 w-auto"
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
                 fetchPriority="high"
-                className="logo-light h-10 w-auto transition-opacity duration-200"
+                className="logo-light h-10 w-auto"
               />
             </Link>
           </div>

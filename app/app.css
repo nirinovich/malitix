@@ -644,7 +644,7 @@ body.sanity-embedded > * {
   }
 }
 
-/* Logo Switching */
+/* Logo Switching — no transition on initial load, smooth transition only after .theme-ready */
 .logo-dark {
   opacity: 1;
   position: relative;
@@ -671,6 +671,12 @@ body.sanity-embedded > * {
   position: relative;
   pointer-events: auto;
   z-index: 1;
+}
+
+/* Enable smooth transitions only after initial theme is applied */
+.theme-ready .logo-dark,
+.theme-ready .logo-light {
+  transition: opacity 200ms ease;
 }
 
 /* Progress Illustration Utility Classes */

@@ -83,11 +83,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useLayoutEffect(() => {
     localStorage.setItem('theme', theme);
     const html = document.documentElement;
+    const opposite = theme === 'light' ? 'dark' : 'light';
     
-    // Always explicitly set the correct class to guard against
-    // React hydration potentially removing the class set by the inline script
-    html.classList.remove('light', 'dark');
-    html.classList.add(theme);
+    // Only mutate DOM if needed — avoids blocking main thread during hydration
+    if (!html.classList.contains(theme) || html.classList.contains(opposite)) {
+      html.classList.remove(opposite);
+      if (!html.classList.contains(theme)) {
+        html.classList.add(theme);
+      }
+    }
+
+    // Enable smooth transitions for theme toggle only after first paint
+    if (!html.classList.contains('theme-ready')) {
+      requestAnimationFrame(() => html.classList.add('theme-ready'));
+    }
   }, [theme]);
 
   // Listen for system preference changes and update localStorage-less component
