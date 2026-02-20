@@ -4,57 +4,73 @@
   <!-- Homepage -->
   <url>
     <loc>https://malitix.com/</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- Sprint Commando Page -->
+  <!-- Sprint Commando -->
   <url>
     <loc>https://malitix.com/sprint-commando</loc>
-    <lastmod>2025-11-21</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Custom Development Page -->
+  <!-- Développement Sur Mesure -->
   <url>
     <loc>https://malitix.com/developpement-sur-mesure</loc>
-    <lastmod>2025-11-21</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Refonte SI Page -->
+  <!-- Développement Mobile -->
+  <url>
+    <loc>https://malitix.com/developpement-mobile</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Refonte SI -->
   <url>
     <loc>https://malitix.com/refonte-si</loc>
-    <lastmod>2025-12-08</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Conversion Landing Page -->
+  <!-- Externalisation -->
   <url>
-    <loc>https://malitix.com/conversion-landing</loc>
-    <lastmod>2026-02-01</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://malitix.com/externalisation</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://malitix.com/blog</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   
-  <!-- Legal Notice Page -->
+  <!-- Mentions Légales -->
   <url>
     <loc>https://malitix.com/mentions-legales</loc>
     <lastmod>2025-11-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
   
-  <!-- Privacy Policy Page -->
+  <!-- Politique de Confidentialité -->
   <url>
     <loc>https://malitix.com/politique-de-confidentialite</loc>
     <lastmod>2025-11-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 
 </urlset>

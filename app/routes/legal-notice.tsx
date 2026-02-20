@@ -7,10 +7,9 @@ export const meta: Route.MetaFunction = () => [
   ...buildMeta({
     title: "Mentions Légales",
     description: "Mentions légales du site Malitix. Informations sur l'éditeur, l'hébergeur et les dispositions légales applicables.",
-    url: "https://www.malitix.com/mentions-legales"
+    url: "https://malitix.com/mentions-legales"
   }),
   { name: "robots", content: "noindex, follow" },
-  { tagName: "link", rel: "canonical", href: "https://www.malitix.com/mentions-legales" }
 ];
 
 export default function LegalNotice() {
@@ -30,7 +29,7 @@ export default function LegalNotice() {
                 Édition du site internet
               </h2>
               <p className="mb-4">
-                Le site <strong>https://www.malitix.com</strong> est édité par la société <strong>TOGETH'UP</strong>, SARL ayant son siège social au <strong>26 rue de Londres, 75009 PARIS, France</strong>, immatriculée au Registre du Commerce et des Sociétés de Paris, France, sous le numéro <strong>B 432 872 323</strong>.
+                Le site <strong>https://malitix.com</strong> est édité par la société <strong>TOGETH'UP</strong>, SARL ayant son siège social au <strong>26 rue de Londres, 75009 PARIS, France</strong>, immatriculée au Registre du Commerce et des Sociétés de Paris, France, sous le numéro <strong>B 432 872 323</strong>.
               </p>
               <p>
                 Le site est exclusivement dédié au projet <strong>MALITIX</strong>, initiative portée par la société <strong>TOGETH'UP</strong>, SARL.

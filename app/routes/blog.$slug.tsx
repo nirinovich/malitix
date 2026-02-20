@@ -42,7 +42,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
       'Découvrez les insights Malitix pour accélérer vos projets digitaux.',
     image,
     type: 'article',
-    url: `https://www.malitix.com/blog/${post.slug}`,
+    url: `https://malitix.com/blog/${post.slug}`,
   });
 };
 

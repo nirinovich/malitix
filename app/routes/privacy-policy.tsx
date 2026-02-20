@@ -7,10 +7,9 @@ export const meta: Route.MetaFunction = () => [
   ...buildMeta({
     title: "Politique de Confidentialité",
     description: "Politique de confidentialité et protection des données personnelles chez Malitix. Conformité RGPD et législation malgache sur la protection des données.",
-    url: "https://www.malitix.com/politique-de-confidentialite"
+    url: "https://malitix.com/politique-de-confidentialite"
   }),
   { name: "robots", content: "noindex, follow" },
-  { tagName: "link", rel: "canonical", href: "https://www.malitix.com/politique-de-confidentialite" }
 ];
 
 export default function PrivacyPolicy() {

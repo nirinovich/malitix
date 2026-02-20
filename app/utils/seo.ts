@@ -22,15 +22,16 @@ export function buildMeta(
   return [
     { title: buildTitle([title], siteName) },
     { name: "description", content: description },
-    { name: "og:type", content: type },
-    { name: "og:title", content: buildTitle([title], siteName) },
-    { name: "og:description", content: description },
-    ...(image ? [{ name: "og:image", content: image }] : []),
-    ...(url ? [{ name: "og:url", content: url }] : []),
+    { property: "og:type", content: type },
+    { property: "og:title", content: buildTitle([title], siteName) },
+    { property: "og:description", content: description },
+    ...(image ? [{ property: "og:image", content: image }] : []),
+    ...(url ? [{ property: "og:url", content: url }] : []),
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: buildTitle([title], siteName) },
     { name: "twitter:description", content: description },
     ...(image ? [{ name: "twitter:image", content: image }] : []),
+    ...(url ? [{ tagName: "link", rel: "canonical", href: url } as unknown as Record<string, unknown>] : []),
   ];
 }
 

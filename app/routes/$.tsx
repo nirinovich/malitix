@@ -3,8 +3,9 @@ import { Layout } from "~/components/Shared/Layout";
 import { NotFound } from "~/components/Shared/NotFound";
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Page Not Found | Malitix" },
-  { name: "description", content: "The page you're looking for doesn't exist" },
+  { title: "Page introuvable | Malitix" },
+  { name: "description", content: "La page que vous recherchez n'existe pas ou a été déplacée." },
+  { name: "robots", content: "noindex, nofollow" },
 ];
 
 export default function CatchAllPage() {

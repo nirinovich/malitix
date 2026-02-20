@@ -21,7 +21,7 @@ export const meta: Route.MetaFunction = () => {
     title,
     description,
     type: 'website',
-    url: 'https://www.malitix.com/blog',
+    url: 'https://malitix.com/blog',
   });
 };
 

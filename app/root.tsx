@@ -33,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`scroll-smooth${isAdminRoute ? " sanity-embedded" : ""}`}
       suppressHydrationWarning
     >
