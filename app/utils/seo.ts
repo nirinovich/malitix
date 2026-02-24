@@ -31,18 +31,13 @@ export function buildMeta(
     { name: "twitter:title", content: buildTitle([title], siteName) },
     { name: "twitter:description", content: description },
     ...(image ? [{ name: "twitter:image", content: image }] : []),
-    ...(url ? [{ tagName: "link", rel: "canonical", href: url } as unknown as Record<string, unknown>] : []),
+    // No canonical links on dev branch
   ];
 }
 
+// Structured data (JSON-LD) disabled on dev branch — no indexing
 export function buildStructuredData(
-  data: Record<string, unknown>
+  _data: Record<string, unknown>
 ): Route.MetaDescriptors {
-  return [
-    {
-      name: "script",
-      type: "application/ld+json",
-      children: JSON.stringify(data),
-    } as unknown as Record<string, unknown>,
-  ];
+  return [];
 }

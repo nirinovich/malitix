@@ -1,9 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
+# Dev/staging branch — block all crawlers
 User-agent: *
-Allow: /
-Disallow: /admin
-
-# Sitemap
-Sitemap: https://malitix.com/sitemap.xml
-
+Disallow: /
 
