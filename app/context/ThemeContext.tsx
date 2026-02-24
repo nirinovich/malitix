@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useLayoutEffect } from 'react';
+import { createContext, useState, useLayoutEffect } from 'react';
 import type { ReactNode } from 'react';
 
 export type Theme = 'light' | 'dark';
@@ -53,25 +53,17 @@ function getInitialTheme(): Theme {
  */
 function listenToSystemPreference(callback: (theme: Theme) => void) {
   if (typeof window === 'undefined') {
-    return () => {};
+    return () => { };
   }
 
   const query = window.matchMedia('(prefers-color-scheme: dark)');
-  
-  // Modern browsers support addEventListener on MediaQueryList
-  const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+
+  const handler = (e: MediaQueryListEvent) => {
     callback(e.matches ? 'dark' : 'light');
   };
 
-  // Use the modern addEventListener if available, fallback to addListener
-  if (query.addEventListener) {
-    query.addEventListener('change', handler as EventListener);
-    return () => query.removeEventListener('change', handler as EventListener);
-  } else {
-    // Fallback for older browsers
-    query.addListener(handler);
-    return () => query.removeListener(handler);
-  }
+  query.addEventListener('change', handler);
+  return () => query.removeEventListener('change', handler);
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -84,7 +76,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('theme', theme);
     const html = document.documentElement;
     const opposite = theme === 'light' ? 'dark' : 'light';
-    
+
     // Only mutate DOM if needed — avoids blocking main thread during hydration
     if (!html.classList.contains(theme) || html.classList.contains(opposite)) {
       html.classList.remove(opposite);
@@ -119,12 +111,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within ThemeProvider');
-  }
-  return context;
 }

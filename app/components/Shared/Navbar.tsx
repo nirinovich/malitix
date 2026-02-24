@@ -1,8 +1,34 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { CTA_TEXT } from '~/utils/constants';
-import { useTheme } from '~/context/ThemeContext';
+import { useTheme } from '~/hooks/useTheme';
+
+/**
+ * Waits for a DOM element matching `selector` to appear, then calls `callback`.
+ * Uses MutationObserver instead of setTimeout/setInterval for reliability.
+ * Returns a cleanup function to disconnect the observer.
+ */
+function waitForElement(
+  selector: string,
+  callback: (el: Element) => void
+): () => void {
+  const existing = document.querySelector(selector);
+  if (existing) {
+    callback(existing);
+    return () => { };
+  }
+
+  const observer = new MutationObserver(() => {
+    const el = document.querySelector(selector);
+    if (el) {
+      observer.disconnect();
+      callback(el);
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  return () => observer.disconnect();
+}
 
 const SERVICES_MENU = [
   { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours' },
@@ -24,6 +50,11 @@ export function Navbar() {
   const pendingHashRef = useRef<string | null>(null);
   const isBlogActive = location.pathname.startsWith('/blog');
 
+  // Sync scroll state before first paint to prevent flash of transparent navbar
+  useLayoutEffect(() => {
+    setIsScrolled(window.scrollY > 20);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -33,16 +64,14 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Gérer le scroll vers la section si il y a un hash dans l'URL
+  // Scroll to hash section after navigation — uses MutationObserver to wait
+  // for the target element instead of a fragile setTimeout
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
       pendingHashRef.current = location.hash.replace('#', '');
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      return waitForElement(location.hash, (el) =>
+        el.scrollIntoView({ behavior: 'smooth' })
+      );
     }
   }, [location]);
 
@@ -97,48 +126,42 @@ export function Navbar() {
       return allFound;
     };
 
-    const allFoundInitially = tryObserve();
-    const intervalId = allFoundInitially
-      ? null
-      : window.setInterval(() => {
-          if (tryObserve()) {
-            window.clearInterval(intervalId as number);
-          }
-        }, 200);
+    // Use MutationObserver to detect lazy-loaded sections instead of polling
+    let domObserver: MutationObserver | null = null;
+    if (!tryObserve()) {
+      domObserver = new MutationObserver(() => {
+        if (tryObserve()) {
+          domObserver?.disconnect();
+          domObserver = null;
+        }
+      });
+      domObserver.observe(document.body, { childList: true, subtree: true });
+    }
 
     return () => {
-      if (intervalId !== null) {
-        window.clearInterval(intervalId);
-      }
+      domObserver?.disconnect();
       observer.disconnect();
     };
   }, [location.pathname]);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = useCallback((href: string) => {
     setIsMobileMenuOpen(false);
     setIsServicesOpen(false);
-    
-    // Si c'est un hash (ancre), gérer la navigation vers la section
+
     if (href.startsWith('#')) {
-      // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
       const targetId = href.replace('#', '');
       if (location.pathname !== '/') {
+        // Navigate home — the useEffect on `location` will handle scrolling
+        // via pendingHashRef once the target element is in the DOM
         navigate('/' + href);
-        // Attendre que la navigation soit complète avant de scroller
-        setTimeout(() => {
-          const element = document.querySelector(href);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setActiveSection(targetId);
-          }
-        }, 100);
       } else {
-        // Si on est déjà sur l'accueil, juste scroller
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+        // Already on home — scroll directly, or wait for the element
+        const cleanup = waitForElement(href, (el) => {
+          el.scrollIntoView({ behavior: 'smooth' });
           setActiveSection(targetId);
-        }
+        });
+        // cleanup is a no-op if element was found synchronously
+        return cleanup;
       }
       return;
     }
@@ -147,7 +170,7 @@ export function Navbar() {
       navigate(href);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
+  }, [location.pathname, navigate]);
 
   // Better dropdown handling to prevent it from closing too quickly
   const handleDropdownEnter = () => {
@@ -166,11 +189,10 @@ export function Navbar() {
   return (
     <nav
       data-app-navbar
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
-        isScrolled
-          ? 'navbar-scrolled backdrop-blur-lg shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${isScrolled
+        ? 'navbar-scrolled backdrop-blur-lg shadow-lg'
+        : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -212,9 +234,8 @@ export function Navbar() {
             >
               Accueil
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
               ></span>
             </button>
 
@@ -236,19 +257,17 @@ export function Navbar() {
                   className={`transition-transform duration-200 flex-shrink-0 ${isServicesOpen ? 'rotate-0' : '-rotate-90'}`}
                 />
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                    activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
                 ></span>
               </button>
 
               {/* Dropdown Menu */}
               <div
-                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
-                  isServicesOpen
-                    ? 'opacity-100 visible translate-y-0'
-                    : 'opacity-0 invisible -translate-y-2'
-                }`}
+                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${isServicesOpen
+                  ? 'opacity-100 visible translate-y-0'
+                  : 'opacity-0 invisible -translate-y-2'
+                  }`}
               >
                 <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border overflow-hidden">
                   <div className="p-2">
@@ -292,9 +311,8 @@ export function Navbar() {
             >
               À propos
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
               ></span>
             </button>
 
@@ -307,9 +325,8 @@ export function Navbar() {
             >
               Contact
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
               ></span>
             </button>
 
@@ -325,9 +342,8 @@ export function Navbar() {
             >
               Blog
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
               ></span>
             </Link>
           </div>
@@ -375,19 +391,17 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 border-t mobile-menu transition-all duration-300 ${
-          isMobileMenuOpen
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 -translate-y-4 pointer-events-none'
-        }`}
+        className={`md:hidden absolute top-full left-0 right-0 border-t mobile-menu transition-all duration-300 ${isMobileMenuOpen
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
       >
         <div className="px-4 py-6 space-y-4">
           {/* Accueil */}
           <button
             onClick={() => handleNavClick('#home')}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'home' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${activeSection === 'home' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              }`}
           >
             Accueil
           </button>
@@ -396,9 +410,8 @@ export function Navbar() {
           <div>
             <button
               onClick={() => setIsServicesOpen(!isServicesOpen)}
-              className={`mobile-nav-item block w-full text-left py-3 font-medium flex items-center justify-between ${
-                'text-[var(--text-secondary)]'
-              }`}
+              className={`mobile-nav-item block w-full text-left py-3 font-medium flex items-center justify-between ${'text-[var(--text-secondary)]'
+                }`}
             >
               Services
               <ChevronDown
@@ -409,9 +422,8 @@ export function Navbar() {
 
             {/* Mobile Services List */}
             <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isServicesOpen ? 'max-h-96 mt-2' : 'max-h-0'
-              }`}
+              className={`overflow-hidden transition-all duration-300 ${isServicesOpen ? 'max-h-96 mt-2' : 'max-h-0'
+                }`}
             >
               <div className="space-y-2 pl-4 border-l-2 border-[#2ca3bd]/20">
                 {SERVICES_MENU.map((service) => (
@@ -436,9 +448,8 @@ export function Navbar() {
           {/* À propos */}
           <button
             onClick={() => handleNavClick('#about')}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'about' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${activeSection === 'about' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              }`}
           >
             À propos
           </button>
@@ -446,9 +457,8 @@ export function Navbar() {
           {/* Contact */}
           <button
             onClick={() => handleNavClick('#contact')}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'contact' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${activeSection === 'contact' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              }`}
           >
             Contact
           </button>
@@ -458,9 +468,8 @@ export function Navbar() {
             to="/blog"
             prefetch="intent"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium border-t border-[var(--text-secondary)]/10 ${
-              isBlogActive ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium border-t border-[var(--text-secondary)]/10 ${isBlogActive ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              }`}
           >
             Blog
           </Link>
