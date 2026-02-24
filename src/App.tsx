@@ -13,6 +13,7 @@ const ConversionLanding = lazy(() => import('./pages/ConversionLanding'));
 const CustomDevelopment = lazy(() => import('./pages/CustomDevelopment'));
 const SIRefonte = lazy(() => import('./pages/SIRefonte'));
 const MobileAppDevelopment = lazy(() => import('./pages/MobileAppDevelopment'));
+const SOCMonitoring = lazy(() => import('./pages/SOCMonitoring'));
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/externalisation" element={<ConversionLanding />} />
+            <Route path="/externalisation-soc" element={<SOCMonitoring />} />
             <Route path="/sprint-commando" element={<SprintCommando />} />
             <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/refonte-si" element={<SIRefonte />} />

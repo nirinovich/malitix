@@ -14,6 +14,7 @@ const USE_CASES = [
   { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure', description: 'Application web & mobile en 90 jours' },
   { label: 'Développement Mobile', href: '/developpement-mobile', description: 'iOS & Android native & cross-platform' },
   { label: 'Refonte SI', href: '/refonte-si', description: 'Modernisation de système d\'information' },
+  { label: 'SOC Monitoring', href: '/externalisation-soc', description: '24/7 Security Operations Center' },
   // Add more services here in the future
 ];
 

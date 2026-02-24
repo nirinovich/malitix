@@ -5,7 +5,7 @@ import type { RefObject } from 'react';
  * Hook to detect when an element is visible in the viewport
  * Useful for triggering animations on scroll
  */
-export function useInView(ref: RefObject<HTMLElement>, options?: IntersectionObserverInit) {
+export function useInView(ref: RefObject<HTMLElement | null>, options?: IntersectionObserverInit) {
   const [isInView, setIsInView] = useState(false);
   const [hasBeenInView, setHasBeenInView] = useState(false);
 
