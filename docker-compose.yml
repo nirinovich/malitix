@@ -1,0 +1,40 @@
+# ──────────────────────────────────────────────────────────────
+# Malitix – Hybrid SSG + SSR deployment
+# ──────────────────────────────────────────────────────────────
+# - nginx:  serves pre-rendered pages + static assets directly
+# - app:    Node.js server for SSR routes (blog, admin, etc.)
+# ──────────────────────────────────────────────────────────────
+
+services:
+  # ── Node.js SSR server ────────────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: app                       # Stage 4
+    restart: unless-stopped
+    expose:
+      - "3000"                          # only visible to nginx, not host
+    environment:
+      - NODE_ENV=production
+      # Add your env vars here (or use .env file):
+      # - SANITY_PROJECT_ID=xxx
+      # - SANITY_DATASET=production
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── nginx reverse proxy ──────────────────────────────────
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: nginx                     # Stage 5
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      app:
+        condition: service_healthy
