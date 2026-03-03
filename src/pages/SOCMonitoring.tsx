@@ -20,7 +20,10 @@ import {
   ChevronRight,
   X,
   Check,
+  Download,
+  Loader2,
 } from 'lucide-react';
+import { jsPDF } from 'jspdf';
 import LogoCarousel from '../components/Utility/LogoCarousel';
 import { useInView } from '../hooks/useInView';
 
@@ -182,6 +185,12 @@ export default function SOCMonitoring() {
   const animatedYearlySavings = useAnimatedCounter(Math.round(yearlySavings), 1500, savingsVisible);
   const animatedROI = useAnimatedCounter(Math.round(roiPercentage), 1500, savingsVisible);
 
+  // ROI Report — email capture state
+  const [roiEmail, setRoiEmail] = useState('');
+  const [roiEmailSent, setRoiEmailSent] = useState(false);
+  const [roiLoading, setRoiLoading] = useState(false);
+  const [roiError, setRoiError] = useState('');
+
   // Active testimonial state
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   useEffect(() => {
@@ -202,11 +211,181 @@ export default function SOCMonitoring() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // TODO: Wire up actual form submission
+    setIsLoading(true);
+
+    try {
+      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+        (window as any).gtag_report_conversion(undefined);
+      }
+
+      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, source: 'SOC - Contact' }),
+      });
+
+      if (!response.ok) throw new Error('Erreur lors de l\'envoi');
+
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', companyUrl: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 6000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  /* ── Generate & download client-side PDF report ── */
+  const generatePDFReport = useCallback(() => {
+    const doc = new jsPDF();
+    const w = doc.internal.pageSize.getWidth();
+    const accent = [44, 163, 189] as const; // #2ca3bd
+    const dark = [20, 20, 30] as const;
+    const mid = [120, 120, 140] as const;
+    const today = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    // PDF-safe euro formatter (replace narrow no-break spaces with regular spaces)
+    const pdfEuro = (val: number) =>
+      new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
+        .format(val)
+        .replace(/[\u202F\u00A0]/g, ' ');
+
+    // ── Header band ──
+    doc.setFillColor(...accent);
+    doc.rect(0, 0, w, 38, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Rapport ROI — Externalisation SOC', w / 2, 18, { align: 'center' });
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Généré le ${today}  •  malitix.com`, w / 2, 30, { align: 'center' });
+
+    let y = 52;
+    const lineH = 8;
+
+    // Helper to draw a section title
+    const sectionTitle = (title: string) => {
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...accent);
+      doc.text(title, 20, y);
+      y += 2;
+      doc.setDrawColor(...accent);
+      doc.setLineWidth(0.6);
+      doc.line(20, y, w - 20, y);
+      y += lineH;
+    };
+
+    // Helper to draw a key-value row
+    const row = (label: string, value: string, bold = false) => {
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...mid);
+      doc.text(label, 24, y);
+      doc.setFont('helvetica', bold ? 'bold' : 'normal');
+      doc.setTextColor(...dark);
+      doc.text(value, w - 24, y, { align: 'right' });
+      y += lineH;
+    };
+
+    // ── Section 1 : Your parameters ──
+    sectionTitle('Vos paramètres');
+    row('Alertes / mois', `${alertsPerMonth}`);
+    row('Temps de résolution moyen', `${avgResolutionTime} h`);
+    row('TJM interne', `${internalTJM} €`);
+    row('Facteur de distraction', `+${((distractionFactor - 1) * 100).toFixed(0)} %`);
+    row('Heures nécessaires / mois', `${Math.round(totalHoursNeeded)} h`);
+    y += 6;
+
+    // ── Section 2 : Coûts comparés ──
+    sectionTitle('Coûts comparés');
+    row('Coût mensuel interne (avec distraction)', pdfEuro(internalMonthlyCost), true);
+    row('Coût mensuel externalisé (Malitix)', pdfEuro(externalMonthlyCost), true);
+    row('TJM Analyste SOC Malitix', `${socTJM} €`);
+    row('Coût horaire Malitix', `${socHourlyRate.toFixed(0)} €/h`);
+    y += 6;
+
+    // ── Section 3 : Résultats ──
+    sectionTitle('Résultats');
+    row('Économie mensuelle', `+${pdfEuro(monthlySavings)}`, true);
+    row('Économie annuelle', `+${pdfEuro(yearlySavings)}`, true);
+    row('ROI', `${Math.round(roiPercentage)} %`, true);
+    y += 12;
+
+    // ── Highlight box ──
+    doc.setFillColor(240, 250, 252);
+    doc.roundedRect(20, y, w - 40, 26, 4, 4, 'F');
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...accent);
+    doc.text(`Vous pourriez économiser ${pdfEuro(yearlySavings)} / an`, w / 2, y + 11, { align: 'center' });
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...mid);
+    doc.text('en externalisant votre monitoring SOC chez Malitix.', w / 2, y + 20, { align: 'center' });
+    y += 36;
+
+    // ── Footer ──
+    doc.setFontSize(9);
+    doc.setTextColor(160, 160, 170);
+    doc.text('Simulation indicative — Les coûts réels peuvent varier.', w / 2, y, { align: 'center' });
+    doc.text('Malitix • 26 rue de Londres, 75009 Paris • infos@malitix.com', w / 2, y + 6, { align: 'center' });
+
+    doc.save('Rapport-ROI-SOC-Malitix.pdf');
+  }, [alertsPerMonth, avgResolutionTime, internalTJM, distractionFactor, totalHoursNeeded, internalMonthlyCost, externalMonthlyCost, monthlySavings, yearlySavings, roiPercentage, socTJM, socHourlyRate]);
+
+  /* ── Send email to Arkedown then trigger download ── */
+  const handleRoiDownload = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!roiEmail) return;
+    setRoiLoading(true);
+    setRoiError('');
+
+    try {
+      // Google Ads conversion tracking
+      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+        (window as any).gtag_report_conversion(undefined);
+      }
+
+      const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: roiEmail,
+          source: 'SOC - ROI Report',
+          roiData: {
+            alertsPerMonth,
+            avgResolutionTime,
+            internalTJM,
+            distractionFactor,
+            internalMonthlyCost: Math.round(internalMonthlyCost),
+            externalMonthlyCost: Math.round(externalMonthlyCost),
+            monthlySavings: Math.round(monthlySavings),
+            yearlySavings: Math.round(yearlySavings),
+            roiPercentage: Math.round(roiPercentage),
+          },
+        }),
+      });
+
+      if (!response.ok) throw new Error('Erreur réseau');
+
+      setRoiEmailSent(true);
+      generatePDFReport();
+    } catch {
+      // Download anyway even if webhook fails
+      generatePDFReport();
+      setRoiEmailSent(true);
+    } finally {
+      setRoiLoading(false);
+    }
+  }, [roiEmail, alertsPerMonth, avgResolutionTime, internalTJM, distractionFactor, internalMonthlyCost, externalMonthlyCost, monthlySavings, yearlySavings, roiPercentage, generatePDFReport]);
 
   const scrollToCalculator = useCallback(() => {
     document.querySelector('#roi-calculator')?.scrollIntoView({ behavior: 'smooth' });
@@ -719,12 +898,49 @@ export default function SOCMonitoring() {
                         </div>
                       </div>
 
-                      <button 
-                        onClick={scrollToContact}
-                        className="mt-6 bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#2ca3bd]/20 hover:scale-[1.02]"
-                      >
-                        Obtenir un devis <ArrowRight size={16} />
-                      </button>
+                      {/* Email capture + Download report */}
+                      {roiEmailSent ? (
+                        <div className="mt-6 flex flex-col items-center gap-2 animate-fade-in-up">
+                          <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold">
+                            <CheckCircle size={16} />
+                            Rapport téléchargé !
+                          </div>
+                          <button
+                            onClick={generatePDFReport}
+                            className="text-xs text-[#2ca3bd] hover:underline"
+                          >
+                            Re-télécharger
+                          </button>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleRoiDownload} className="mt-6 w-full max-w-xs space-y-3">
+                          <div className="relative">
+                            <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
+                            <input
+                              type="email"
+                              required
+                              placeholder="votre@email.com"
+                              value={roiEmail}
+                              onChange={(e) => setRoiEmail(e.target.value)}
+                              className="w-full bg-[var(--surface-elevated)] border border-[var(--border-primary)] rounded-xl pl-10 pr-4 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all"
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            disabled={roiLoading}
+                            className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] disabled:opacity-60 text-white px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#2ca3bd]/20 hover:scale-[1.02]"
+                          >
+                            {roiLoading ? (
+                              <Loader2 size={16} className="animate-spin" />
+                            ) : (
+                              <Download size={16} />
+                            )}
+                            {roiLoading ? 'Génération...' : 'Télécharger mon rapport'}
+                          </button>
+                          {roiError && <p className="text-red-400 text-xs text-center">{roiError}</p>}
+                          <p className="text-[10px] text-[var(--text-muted)] text-center leading-relaxed">PDF généré instantanément — Sans engagement</p>
+                        </form>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1042,17 +1258,36 @@ export default function SOCMonitoring() {
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#2ca3bd]/20 hover:shadow-xl hover:shadow-[#2ca3bd]/30 hover:scale-[1.01]"
-                  >
-                    Planifier une consultation
-                    <ArrowRight size={20} />
-                  </button>
+                  {isSubmitted ? (
+                    <div className="flex flex-col items-center gap-2 py-4 animate-fade-in-up">
+                      <div className="flex items-center gap-2 text-emerald-400 font-bold text-lg">
+                        <CheckCircle size={22} />
+                        Message envoyé !
+                      </div>
+                      <p className="text-sm text-[var(--text-secondary)] text-center">
+                        Notre équipe vous répondra sous 24h.
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] disabled:opacity-60 text-white font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#2ca3bd]/20 hover:shadow-xl hover:shadow-[#2ca3bd]/30 hover:scale-[1.01]"
+                      >
+                        {isLoading ? (
+                          <Loader2 size={20} className="animate-spin" />
+                        ) : (
+                          <ArrowRight size={20} />
+                        )}
+                        {isLoading ? 'Envoi en cours...' : 'Planifier une consultation'}
+                      </button>
 
-                  <p className="text-center text-xs text-[var(--text-muted)]">
-                    Réponse sous 24h — Consultation gratuite — Sans engagement
-                  </p>
+                      <p className="text-center text-xs text-[var(--text-muted)]">
+                        Réponse sous 24h — Consultation gratuite — Sans engagement
+                      </p>
+                    </>
+                  )}
                 </form>
               </div>
             </div>
