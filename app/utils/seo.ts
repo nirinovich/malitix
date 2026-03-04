@@ -40,9 +40,7 @@ export function buildStructuredData(
 ): Route.MetaDescriptors {
   return [
     {
-      name: "script",
-      type: "application/ld+json",
-      children: JSON.stringify(data),
+      "script:ld+json": data,
     } as unknown as Record<string, unknown>,
   ];
 }

@@ -1,11 +1,13 @@
+﻿import { useEffect, useRef } from 'react';
 import type { Route } from './+types/blog';
 import { useLoaderData } from 'react-router';
 import { Layout } from '~/components/Shared/Layout';
 import { BlogList } from '~/components/Blog/BlogList';
+import { NewsletterCTA } from '~/components/Blog/NewsletterCTA';
 import { sanityClient } from '~/utils/sanityClient';
 import { POSTS_QUERY } from '~/utils/sanityQueries';
 import type { BlogPostListItem } from '~/types';
-import { buildMeta } from '~/utils/seo';
+import { buildMeta, buildStructuredData } from '~/utils/seo';
 
 export async function loader() {
   const posts = await sanityClient.fetch<BlogPostListItem[]>(POSTS_QUERY);
@@ -17,38 +19,77 @@ export const meta: Route.MetaFunction = () => {
   const description =
     'Découvrez nos analyses, conseils et retours d’expérience sur la technologie, l’IA et la transformation digitale.';
 
-  return buildMeta({
+  const meta = buildMeta({
     title,
     description,
     type: 'website',
     url: 'https://malitix.com/blog',
   });
+
+  const structuredData = buildStructuredData({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog Malitix',
+    description,
+    url: 'https://malitix.com/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Malitix',
+      url: 'https://malitix.com',
+    },
+  });
+
+  return [...meta, ...structuredData];
 };
 
 export default function BlogIndex() {
   const { posts } = useLoaderData<typeof loader>();
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = headerRef.current;
+    if (!container) return;
+
+    requestAnimationFrame(() => {
+      container.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        el.classList.add('in-view');
+      });
+    });
+  }, []);
 
   return (
     <Layout>
-      <section className="pt-28 pb-16">
+      <section className="pt-28 pb-16" ref={headerRef}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#2ca3bd]/30 bg-[#2ca3bd]/10 px-4 py-2 text-xs font-semibold text-[#2ca3bd]">
-              Journal Malitix
+            {/* Flanked eyebrow \u2014 matches site-wide pattern */}
+            <div className="animate-on-scroll flex items-center gap-3">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]/50" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#2ca3bd]">
+                Journal Malitix
+              </span>
+              <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]/50" />
             </div>
-            <h1 className="text-3xl md:text-5xl font-semibold text-[var(--text-primary)]">
+            <h1 className="animate-on-scroll stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)]">
               Insights & retours terrain
             </h1>
-            <p className="max-w-2xl text-lg text-[var(--text-secondary)]">
+            <p className="animate-on-scroll stagger-2 max-w-2xl text-lg text-[var(--text-secondary)]">
               Analyses, guides et témoignages pour accélérer vos projets digitaux.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="pb-24">
+      <section className="pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <BlogList posts={posts ?? []} />
+        </div>
+      </section>
+
+      {/* Bottom newsletter CTA */}
+      <section className="pb-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <NewsletterCTA variant="inline" />
         </div>
       </section>
     </Layout>

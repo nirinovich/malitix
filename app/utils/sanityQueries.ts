@@ -74,6 +74,7 @@ export const POST_QUERY = defineQuery(groq`
       _id,
       name,
       role,
+      bio,
       image {
         asset->{
           _id,
@@ -101,5 +102,45 @@ export const POST_QUERY = defineQuery(groq`
         hotspot
       }
     }
+  }
+`);
+
+export const RELATED_POSTS_QUERY = defineQuery(groq`
+  *[_type == "post" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()
+    && _id != $currentId
+    && count(categories[]->_id[@ in $categoryIds]) > 0
+  ] | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    publishedAt,
+    mainImage {
+      asset->{
+        _id,
+        url,
+        metadata { lqip, dimensions }
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    author->{
+      _id,
+      name,
+      role,
+      image {
+        asset->{
+          _id,
+          url,
+          metadata { lqip, dimensions }
+        },
+        alt,
+        crop,
+        hotspot
+      }
+    },
+    categories[]->{ _id, title, "slug": slug.current },
+    tags[]->{ _id, title, "slug": slug.current }
   }
 `);

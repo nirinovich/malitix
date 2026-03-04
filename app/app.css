@@ -816,3 +816,82 @@ html:not(.theme-ready) * {
   animation: grow 1s ease-out forwards;
   transform-origin: bottom;
 }
+
+/* ─── Blog overhaul ─── */
+
+/* LQIP blur-up images */
+.blur-up {
+  filter: blur(20px);
+  transition: filter 0.6s ease;
+}
+.blur-up.loaded {
+  filter: blur(0);
+}
+
+/* Table of contents active item */
+.blog-toc-item {
+  transition: color 0.2s ease, border-color 0.2s ease;
+  border-left: 2px solid transparent;
+}
+.blog-toc-item.active {
+  color: var(--brand-text);
+  border-left-color: #2ca3bd;
+}
+
+/* Sticky newsletter bar */
+@keyframes slide-up-bar {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes slide-down-bar {
+  from { transform: translateY(0);    opacity: 1; }
+  to   { transform: translateY(100%); opacity: 0; }
+}
+.sticky-newsletter-enter {
+  animation: slide-up-bar 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.sticky-newsletter-exit {
+  animation: slide-down-bar 0.3s ease-in forwards;
+}
+
+/* Code blocks */
+.blog-code-block {
+  background-color: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+.dark .blog-code-block {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.light .blog-code-block {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Featured card (blog list hero) */
+.featured-card {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(44, 163, 189, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blur-up {
+    filter: none;
+    transition: none;
+  }
+  .sticky-newsletter-enter,
+  .sticky-newsletter-exit {
+    animation: none;
+  }
+  .featured-card:hover {
+    transform: none;
+  }
+}

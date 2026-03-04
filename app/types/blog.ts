@@ -24,6 +24,7 @@ export interface BlogAuthor {
   name: string;
   role?: string;
   image?: SanityImage;
+  bio?: string | unknown[];
 }
 
 export interface BlogTaxonomy {
