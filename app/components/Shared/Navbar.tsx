@@ -26,13 +26,11 @@ export function Navbar() {
 
   // 1. Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
   useEffect(() => {
-    // Check initial state immediately on mount
     let isCurrentlyScrolled = window.scrollY > 20;
     setIsScrolled(isCurrentlyScrolled);
 
     const handleScroll = () => {
       const shouldBeScrolled = window.scrollY > 20;
-      // ONLY trigger a React re-render if the boolean actually flips
       if (shouldBeScrolled !== isCurrentlyScrolled) {
         isCurrentlyScrolled = shouldBeScrolled;
         setIsScrolled(shouldBeScrolled);
@@ -59,85 +57,97 @@ export function Navbar() {
     }
   }, [location]);
 
-  // 3. Resilient Intersection Observer (Fixes active state on first load & TBT)
+  // 3. Bulletproof Intersection Observer (Fixes first launch active state & TBT)
   useEffect(() => {
     if (location.pathname !== '/') {
       setActiveSection(null);
       return;
     }
 
-    // Default to 'home' immediately on load if we are at the top
-    if (window.scrollY < 50 && !location.hash) {
-      setActiveSection('home');
-    }
-
     const sectionIds = ['home', 'services', 'about', 'contact'];
     let timeoutId: number;
-    let intervalId: number;
+
+    // Helper: Calculate active section manually if observer is delayed on first load
+    const forceCheckActiveSection = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('home');
+        return;
+      }
+      
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const rect = sections[i]!.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.4) {
+          setActiveSection(sections[i]!.id);
+          break;
+        }
+      }
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          
-          const id = entry.target.getAttribute('id');
-          if (!id) return;
+        const visibleEntries = entries.filter(e => e.isIntersecting);
+        if (visibleEntries.length === 0) return;
 
-          if (pendingHashRef.current && pendingHashRef.current !== id) return;
-          if (pendingHashRef.current === id) pendingHashRef.current = null;
+        const entry = visibleEntries[0];
+        const id = entry.target.getAttribute('id');
+        if (!id) return;
 
-          setActiveSection(id);
-          const newHash = `#${id}`;
-          
-          clearTimeout(timeoutId);
-          timeoutId = window.setTimeout(() => {
-            if (window.location.hash !== newHash) {
-              window.history.replaceState(null, '', newHash);
-            }
-          }, 150);
-        });
+        if (pendingHashRef.current && pendingHashRef.current !== id) return;
+        if (pendingHashRef.current === id) pendingHashRef.current = null;
+
+        setActiveSection(id);
+        const newHash = `#${id}`;
+        
+        clearTimeout(timeoutId);
+        timeoutId = window.setTimeout(() => {
+          if (window.location.hash !== newHash) {
+            window.history.replaceState(null, '', newHash);
+          }
+        }, 150);
       },
       {
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0,
+        rootMargin: '-15% 0px -50% 0px',
+        threshold: 0.1,
       }
     );
 
     const observed = new Set<string>();
     
-    // Check for elements and observe them
-    const tryObserve = () => {
-      let allFound = true;
+    // Aggressive Polling: Check the DOM every 100ms until components render
+    const intervalId = window.setInterval(() => {
+      let foundNew = false;
+      
       sectionIds.forEach((id) => {
-        if (observed.has(id)) return;
-        const element = document.getElementById(id);
-        if (element) {
-          observer.observe(element);
-          observed.add(id);
-        } else {
-          allFound = false;
+        if (!observed.has(id)) {
+          const element = document.getElementById(id);
+          if (element) {
+            observer.observe(element);
+            observed.add(id);
+            foundNew = true;
+          }
         }
       });
-      return allFound;
-    };
 
-    // Run immediately, and retry if elements haven't painted yet
-    if (!tryObserve()) {
-      let attempts = 0;
-      intervalId = window.setInterval(() => {
-        attempts++;
-        if (tryObserve() || attempts > 20) { // Stop trying after 2 seconds
-          window.clearInterval(intervalId);
-        }
-      }, 100);
-    }
+      if (foundNew && observed.size === sectionIds.length) {
+        forceCheckActiveSection();
+        window.clearInterval(intervalId);
+      }
+    }, 100);
+
+    // Initial check just in case they loaded instantly
+    forceCheckActiveSection();
+
+    // Failsafe: Stop polling after 3 seconds to prevent memory leaks
+    const failsafeTimeout = setTimeout(() => window.clearInterval(intervalId), 3000);
 
     return () => {
-      if (intervalId) window.clearInterval(intervalId);
+      window.clearInterval(intervalId);
+      clearTimeout(failsafeTimeout);
       clearTimeout(timeoutId);
       observer.disconnect();
     };
-  }, [location.pathname, location.hash]);
+  }, [location.pathname]);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
