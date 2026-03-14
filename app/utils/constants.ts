@@ -7,7 +7,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Services', href: '#services' },
   { label: 'À propos', href: '#about' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 // Malitix Services
@@ -74,7 +74,7 @@ export const COMPANY_INFO = {
 
 // CTA Text
 export const CTA_TEXT = {
-  primary: 'Demander un devis',
+  primary: 'Consultation Gratuite',
   secondary: 'Découvrir nos services',
   footer: 'Démarrer votre projet',
 };

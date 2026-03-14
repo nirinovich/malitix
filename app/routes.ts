@@ -9,6 +9,7 @@ export default [
   route("externalisation", "routes/conversion-landing.tsx"),
   route("blog", "routes/blog.tsx"),
   route("blog/:slug", "routes/blog.$slug.tsx"),
+  route("contact", "routes/contact.tsx"),
   route("admin/*", "routes/admin.tsx"),
   route("politique-de-confidentialite", "routes/privacy-policy.tsx"),
   route("mentions-legales", "routes/legal-notice.tsx"),

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router'; // Adjust if using react-router-dom
 import { CTA_TEXT } from '~/utils/constants';
@@ -17,14 +17,13 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesMobileOpen, setIsServicesMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
   
   const navigate = useNavigate();
   const location = useLocation();
-  const pendingHashRef = useRef<string | null>(null);
   const isBlogActive = location.pathname.startsWith('/blog');
+  const isContactActive = location.pathname === '/contact';
 
-  // 1. Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
+  // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
   useEffect(() => {
     let isCurrentlyScrolled = window.scrollY > 20;
     setIsScrolled(isCurrentlyScrolled);
@@ -41,134 +40,23 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 2. Safe Hash Navigation (Prevents yanking back to top)
-  useEffect(() => {
-    if (location.pathname === '/' && location.hash) {
-      if (window.scrollY < 50) {
-        pendingHashRef.current = location.hash.replace('#', '');
-        
-        requestAnimationFrame(() => {
-          const element = document.querySelector(location.hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-    }
-  }, [location]);
-
-  // 3. Bulletproof Intersection Observer (Fixes first launch active state & TBT)
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      setActiveSection(null);
-      return;
-    }
-
-    const sectionIds = ['home', 'services', 'about', 'contact'];
-    let timeoutId: number;
-
-    // Helper: Calculate active section manually if observer is delayed on first load
-    const forceCheckActiveSection = () => {
-      if (window.scrollY < 100) {
-        setActiveSection('home');
-        return;
-      }
-      
-      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const rect = sections[i]!.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.4) {
-          setActiveSection(sections[i]!.id);
-          break;
-        }
-      }
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries.filter(e => e.isIntersecting);
-        if (visibleEntries.length === 0) return;
-
-        const entry = visibleEntries[0];
-        const id = entry.target.getAttribute('id');
-        if (!id) return;
-
-        if (pendingHashRef.current && pendingHashRef.current !== id) return;
-        if (pendingHashRef.current === id) pendingHashRef.current = null;
-
-        setActiveSection(id);
-        const newHash = `#${id}`;
-        
-        clearTimeout(timeoutId);
-        timeoutId = window.setTimeout(() => {
-          if (window.location.hash !== newHash) {
-            window.history.replaceState(null, '', newHash);
-          }
-        }, 150);
-      },
-      {
-        rootMargin: '-15% 0px -50% 0px',
-        threshold: 0.1,
-      }
-    );
-
-    const observed = new Set<string>();
-    
-    // Aggressive Polling: Check the DOM every 100ms until components render
-    const intervalId = window.setInterval(() => {
-      let foundNew = false;
-      
-      sectionIds.forEach((id) => {
-        if (!observed.has(id)) {
-          const element = document.getElementById(id);
-          if (element) {
-            observer.observe(element);
-            observed.add(id);
-            foundNew = true;
-          }
-        }
-      });
-
-      if (foundNew && observed.size === sectionIds.length) {
-        forceCheckActiveSection();
-        window.clearInterval(intervalId);
-      }
-    }, 100);
-
-    // Initial check just in case they loaded instantly
-    forceCheckActiveSection();
-
-    // Failsafe: Stop polling after 3 seconds to prevent memory leaks
-    const failsafeTimeout = setTimeout(() => window.clearInterval(intervalId), 3000);
-
-    return () => {
-      window.clearInterval(intervalId);
-      clearTimeout(failsafeTimeout);
-      clearTimeout(timeoutId);
-      observer.disconnect();
-    };
-  }, [location.pathname]);
-
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     setIsServicesMobileOpen(false);
     
     if (href.startsWith('#')) {
-      const targetId = href.replace('#', '');
       if (location.pathname !== '/') {
         navigate('/' + href);
         setTimeout(() => {
           const element = document.querySelector(href);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
-            setActiveSection(targetId);
           }
         }, 100);
       } else {
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
-          setActiveSection(targetId);
         }
       }
       return;
@@ -178,6 +66,12 @@ export function Navbar() {
       navigate(href);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const isActiveHash = (hash: string) => {
+    if (location.pathname === '/' && location.hash === hash) return true;
+    if (location.pathname === '/' && location.hash === '' && hash === '#home') return true;
+    return false;
   };
 
   return (
@@ -224,13 +118,13 @@ export function Navbar() {
             {/* Accueil */}
             <button
               onClick={() => handleNavClick('#home')}
-              aria-current={activeSection === 'home' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${activeSection === 'home' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+              aria-current={isActiveHash('#home') ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isActiveHash('#home') ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
             >
               Accueil
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'
+                  isActiveHash('#home') ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
               ></span>
             </button>
@@ -238,9 +132,10 @@ export function Navbar() {
             {/* Services Dropdown - Pure CSS Hover */}
             <div className="relative group">
               <button
-                className={`nav-link relative py-2 transition-colors flex items-center gap-2 cursor-pointer leading-none ${activeSection === 'services' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+                className={`nav-link relative py-2 transition-colors flex items-center gap-2 cursor-pointer leading-none ${isActiveHash('#services') ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
                 aria-haspopup="menu"
                 type="button"
+                onClick={() => handleNavClick('#services')}
               >
                 Services
                 <ChevronDown
@@ -249,7 +144,7 @@ export function Navbar() {
                 />
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                    activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+                    isActiveHash('#services') ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 ></span>
               </button>
@@ -294,31 +189,32 @@ export function Navbar() {
             {/* À propos */}
             <button
               onClick={() => handleNavClick('#about')}
-              aria-current={activeSection === 'about' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${activeSection === 'about' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+              aria-current={isActiveHash('#about') ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isActiveHash('#about') ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
             >
               À propos
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
+                  isActiveHash('#about') ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
               ></span>
             </button>
 
             {/* Contact */}
-            <button
-              onClick={() => handleNavClick('#contact')}
+            <Link
+              to="/contact"
+              prefetch="intent"
               aria-label="Contactez-nous"
-              aria-current={activeSection === 'contact' ? 'page' : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${activeSection === 'contact' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+              aria-current={isContactActive ? 'page' : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isContactActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
             >
               Contact
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[#2ca3bd] transition-all duration-300 ${
-                  activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
+                  isContactActive ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
               ></span>
-            </button>
+            </Link>
 
             {/* Separator */}
             <div className="h-5 w-px bg-[var(--text-secondary)]/20"></div>
@@ -352,12 +248,12 @@ export function Navbar() {
             </button>
 
             <button
-              aria-label="Devis Gratuit - Contactez-nous"
+              aria-label="Consultation Gratuite - Contactez-nous"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-                  (window as any).gtag_report_conversion('#contact');
+                  (window as any).gtag_report_conversion('/contact');
                 }
-                handleNavClick('#contact');
+                handleNavClick('/contact');
               }}
               className="bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
@@ -388,7 +284,7 @@ export function Navbar() {
           <button
             onClick={() => handleNavClick('#home')}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'home' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              isActiveHash('#home') ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             Accueil
@@ -435,20 +331,22 @@ export function Navbar() {
           <button
             onClick={() => handleNavClick('#about')}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'about' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              isActiveHash('#about') ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             À propos
           </button>
 
-          <button
-            onClick={() => handleNavClick('#contact')}
+          <Link
+            to="/contact"
+            prefetch="intent"
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              activeSection === 'contact' ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
+              isContactActive ? 'text-[var(--brand-text)]' : 'text-[var(--text-secondary)]'
             }`}
           >
             Contact
-          </button>
+          </Link>
 
           <Link
             to="/blog"
@@ -476,9 +374,9 @@ export function Navbar() {
             <button
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-                  (window as any).gtag_report_conversion('#contact');
+                  (window as any).gtag_report_conversion('/contact');
                 }
-                handleNavClick('#contact');
+                handleNavClick('/contact');
               }}
               className="flex-1 bg-[#2ca3bd] hover:bg-[#248fa5] text-white py-3 rounded-xl font-semibold text-center transition-all"
             >

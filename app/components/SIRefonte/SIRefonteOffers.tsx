@@ -46,7 +46,7 @@ export default function SIRefonteOffers() {
         'Formation équipes',
         'ROI rapide + réduction risques'
       ],
-      cta: 'Demander un devis',
+      cta: 'Consultation Gratuite',
       color: '#2ca3bd',
       highlighted: false
     },
