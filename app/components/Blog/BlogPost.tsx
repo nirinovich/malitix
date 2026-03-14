@@ -1,7 +1,7 @@
-import type { BlogPost } from '~/types';
-import { formatDate } from '~/utils/formatDate';
-import { urlFor } from '~/utils/sanityImage';
-import { PortableTextRenderer } from './PortableTextRenderer';
+import type { BlogPost } from "~/types";
+import { formatDate } from "~/utils/formatDate";
+import { urlFor } from "~/utils/sanityImage";
+import { PortableTextRenderer } from "./PortableTextRenderer";
 
 interface BlogPostProps {
   post: BlogPost;
@@ -9,7 +9,7 @@ interface BlogPostProps {
 
 export function BlogPost({ post }: BlogPostProps) {
   const heroImageUrl = post.mainImage?.asset?.url
-    ? urlFor(post.mainImage).width(1400).height(780).fit('crop').url()
+    ? urlFor(post.mainImage).width(1400).height(780).fit("crop").url()
     : null;
 
   return (

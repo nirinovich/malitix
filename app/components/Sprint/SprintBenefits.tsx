@@ -1,46 +1,46 @@
-import { Check, Users, FileCheck, MessageSquare, Zap, Shield } from 'lucide-react';
+import { Check, Users, FileCheck, MessageSquare, Zap, Shield } from "lucide-react";
 
 const benefits = [
   {
     icon: FileCheck,
-    title: 'Le livrable concret',
-    desc: 'La feature codée, le bug écrasé, l\'API intégrée qui débloque immédiatement votre business. Fini l\'attente, place à l\'action.',
-    category: 'Livrable',
+    title: "Le livrable concret",
+    desc: "La feature codée, le bug écrasé, l'API intégrée qui débloque immédiatement votre business. Fini l'attente, place à l'action.",
+    category: "Livrable",
     isHighlight: true,
   },
   {
     icon: Users,
     title: 'Une Équipe d\'Experts "Commando" Dédiée à 100%',
-    desc: 'Pas de juniors, pas de temps partiel. Nos meilleurs éléments focalisés uniquement sur votre succès pendant 14 jours. Vous n\'avez rien à gérer, on s\'occupe de tout.',
-    category: 'Équipe',
+    desc: "Pas de juniors, pas de temps partiel. Nos meilleurs éléments focalisés uniquement sur votre succès pendant 14 jours. Vous n'avez rien à gérer, on s'occupe de tout.",
+    category: "Équipe",
     isHighlight: false,
   },
   {
     icon: Zap,
     title: 'Méthodologie "Sprint" Éprouvée',
-    desc: 'Notre process unique pour couper le gras, aller droit au but et livrer en un temps record ce qui prendrait des mois en interne. Zéro perte de temps.',
-    category: 'Process',
+    desc: "Notre process unique pour couper le gras, aller droit au but et livrer en un temps record ce qui prendrait des mois en interne. Zéro perte de temps.",
+    category: "Process",
     isHighlight: false,
   },
   {
     icon: MessageSquare,
-    title: 'Communication Transparente et Quotidienne',
-    desc: 'Un point simple chaque jour. Vous savez exactement où on en est, sans perdre votre temps en réunions inutiles.',
-    category: 'Communication',
+    title: "Communication Transparente et Quotidienne",
+    desc: "Un point simple chaque jour. Vous savez exactement où on en est, sans perdre votre temps en réunions inutiles.",
+    category: "Communication",
     isHighlight: false,
   },
   {
     icon: FileCheck,
-    title: 'Passation Claire et Documentation Concise',
-    desc: 'On ne vous laisse pas avec une boîte noire. Le code est propre, documenté, et votre équipe peut reprendre la main facilement après notre intervention.',
-    category: 'Documentation',
+    title: "Passation Claire et Documentation Concise",
+    desc: "On ne vous laisse pas avec une boîte noire. Le code est propre, documenté, et votre équipe peut reprendre la main facilement après notre intervention.",
+    category: "Documentation",
     isHighlight: false,
   },
   {
     icon: Shield,
-    title: 'Notre Garantie Zéro Risque Béton',
-    desc: 'Si on ne livre pas, vous ne payez pas. Le risque est 100% pour nous.',
-    category: 'Garantie',
+    title: "Notre Garantie Zéro Risque Béton",
+    desc: "Si on ne livre pas, vous ne payez pas. Le risque est 100% pour nous.",
+    category: "Garantie",
     isHighlight: true,
   },
 ];
@@ -55,14 +55,15 @@ export default function SprintBenefits() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 space-y-4 sm:space-y-6">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[var(--brand-primary)]"></div>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[var(--brand-primary)]">
               La Force d'une Armada
             </span>
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[var(--brand-primary)]"></div>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 text-[var(--text-primary)]">
-            Un vivier de <span className="text-[#2ca3bd]">350+ développeurs experts</span> mobilisables en 24h
+            Un vivier de <span className="text-[var(--brand-primary)]">350+ développeurs experts</span>{" "}
+            mobilisables en 24h
           </h2>
           <p className="text-base sm:text-lg lg:text-xl px-4 text-[var(--text-secondary)]">
             Nos équipes commandos prêtes à déployer pour votre succès
@@ -78,22 +79,22 @@ export default function SprintBenefits() {
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
-                <div 
-                  key={index} 
-                  className={`group relative flex gap-3 sm:gap-4 p-5 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 border-2 cursor-pointer border-[var(--border-primary)] hover:border-[#2ca3bd]/50 hover:bg-[var(--surface-primary)] hover:shadow-xl ${benefit.isHighlight ? 'ring-2 ring-[#2ca3bd]/20' : ''} hover:-translate-y-1`}
+                <div
+                  key={index}
+                  className={`group relative flex gap-3 sm:gap-4 p-5 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 border-2 cursor-pointer border-[var(--border-primary)] hover:border-[var(--brand-primary)]/50 hover:bg-[var(--surface-primary)] hover:shadow-xl ${benefit.isHighlight ? "ring-2 ring-[var(--brand-primary)]/20" : ""} hover:-translate-y-1`}
                 >
                   {benefit.isHighlight && (
-                    <div className="absolute -top-2 sm:-top-3 -right-2 sm:-right-3 bg-[#2ca3bd] text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-lg">
+                    <div className="absolute -top-2 sm:-top-3 -right-2 sm:-right-3 bg-[var(--brand-primary)] text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-lg">
                       ⚡ Clé
                     </div>
                   )}
-                  
-                  <div className="flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl h-fit transition-all duration-300 group-hover:scale-110 bg-[#2ca3bd]/10 group-hover:bg-[#2ca3bd]/20">
-                    <Icon size={24} className="text-[#2ca3bd] sm:w-7 sm:h-7" />
+
+                  <div className="flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl h-fit transition-all duration-300 group-hover:scale-110 bg-[var(--brand-primary)]/10 group-hover:bg-[var(--brand-primary)]/20">
+                    <Icon size={24} className="text-[var(--brand-primary)] sm:w-7 sm:h-7" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-base sm:text-lg mb-2 flex items-center gap-2 text-[var(--text-primary)]">
-                      <Check size={18} className="text-[#2ca3bd] flex-shrink-0 sm:w-5 sm:h-5" />
+                      <Check size={18} className="text-[var(--brand-primary)] flex-shrink-0 sm:w-5 sm:h-5" />
                       {benefit.title}
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">

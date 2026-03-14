@@ -1,22 +1,22 @@
-import type { Route } from './+types/blog.$slug';
-import { useLoaderData } from 'react-router';
-import { Layout } from '~/components/Shared/Layout';
-import { BlogPost } from '~/components/Blog/BlogPost';
-import { sanityClient } from '~/utils/sanityClient';
-import { POST_QUERY } from '~/utils/sanityQueries';
-import type { BlogPost as BlogPostType } from '~/types';
-import { buildMeta } from '~/utils/seo';
+import type { Route } from "./+types/blog.$slug";
+import { useLoaderData } from "react-router";
+import { Layout } from "~/components/Shared/Layout";
+import { BlogPost } from "~/components/Blog/BlogPost";
+import { sanityClient } from "~/utils/sanityClient";
+import { POST_QUERY } from "~/utils/sanityQueries";
+import type { BlogPost as BlogPostType } from "~/types";
+import { buildMeta } from "~/utils/seo";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const slug = params.slug;
   if (!slug) {
-    throw new Response('Not Found', { status: 404 });
+    throw new Response("Not Found", { status: 404 });
   }
 
   const post = await sanityClient.fetch<BlogPostType>(POST_QUERY, { slug });
 
   if (!post?._id) {
-    throw new Response('Not Found', { status: 404 });
+    throw new Response("Not Found", { status: 404 });
   }
 
   return { post };
@@ -25,9 +25,9 @@ export async function loader({ params }: Route.LoaderArgs) {
 export const meta: Route.MetaFunction = ({ data }) => {
   if (!data?.post) {
     return buildMeta({
-      title: 'Article introuvable',
-      description: 'Cet article est introuvable.',
-      type: 'article',
+      title: "Article introuvable",
+      description: "Cet article est introuvable.",
+      type: "article",
     });
   }
 
@@ -39,9 +39,9 @@ export const meta: Route.MetaFunction = ({ data }) => {
     description:
       post.seo?.description ||
       post.excerpt ||
-      'Découvrez les insights Malitix pour accélérer vos projets digitaux.',
+      "Découvrez les insights Malitix pour accélérer vos projets digitaux.",
     image,
-    type: 'article',
+    type: "article",
     url: `https://malitix.com/blog/${post.slug}`,
   });
 };

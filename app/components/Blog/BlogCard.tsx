@@ -1,7 +1,7 @@
-import { Link } from 'react-router';
-import type { BlogPostListItem } from '~/types';
-import { formatDate } from '~/utils/formatDate';
-import { urlFor } from '~/utils/sanityImage';
+import { Link } from "react-router";
+import type { BlogPostListItem } from "~/types";
+import { formatDate } from "~/utils/formatDate";
+import { urlFor } from "~/utils/sanityImage";
 
 interface BlogCardProps {
   post: BlogPostListItem;
@@ -9,11 +9,7 @@ interface BlogCardProps {
 
 export function BlogCard({ post }: BlogCardProps) {
   const imageUrl = post.mainImage?.asset?.url
-    ? urlFor(post.mainImage)
-        .width(800)
-        .height(450)
-        .fit('crop')
-        .url()
+    ? urlFor(post.mainImage).width(800).height(450).fit("crop").url()
     : null;
 
   return (
@@ -27,7 +23,7 @@ export function BlogCard({ post }: BlogCardProps) {
             loading="lazy"
           />
         ) : (
-          <div className="h-56 w-full bg-gradient-to-br from-[#2ca3bd]/15 via-transparent to-[#2ca3bd]/5" />
+          <div className="h-56 w-full bg-gradient-to-br from-[var(--brand-primary)]/15 via-transparent to-[var(--brand-primary)]/5" />
         )}
       </Link>
 

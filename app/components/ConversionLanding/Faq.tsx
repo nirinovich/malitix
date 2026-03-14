@@ -5,7 +5,7 @@ export function Faq() {
     <section id="faq" className="py-20 bg-[var(--bg-primary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
+          <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-primary)] font-semibold">
             {CONVERSION_LANDING_FAQ.eyebrow}
           </div>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">

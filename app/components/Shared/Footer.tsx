@@ -1,13 +1,13 @@
-import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router';
-import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from '~/utils/constants';
+import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { NAV_LINKS, COMPANY_INFO, SOCIAL_LINKS } from "~/utils/constants";
 
 const FOOTER_SERVICES = [
-  { label: 'Sprint Commando', href: '/sprint-commando' },
-  { label: 'Externalisation', href: '/externalisation' },
-  { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure' },
-  { label: 'Développement Mobile', href: '/developpement-mobile' },
-  { label: 'Refonte SI', href: '/refonte-si' },
+  { label: "Sprint Commando", href: "/sprint-commando" },
+  { label: "Externalisation", href: "/externalisation" },
+  { label: "Développement Sur Mesure", href: "/developpement-sur-mesure" },
+  { label: "Développement Mobile", href: "/developpement-mobile" },
+  { label: "Refonte SI", href: "/refonte-si" },
 ];
 
 const iconMap = {
@@ -20,18 +20,18 @@ export function Footer() {
   const location = useLocation();
 
   const handleHashClick = (href: string) => {
-    if (location.pathname !== '/') {
-      navigate('/' + href);
+    if (location.pathname !== "/") {
+      navigate("/" + href);
       setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     } else {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
@@ -56,7 +56,7 @@ export function Footer() {
                 {COMPANY_INFO.description}
               </p>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex gap-3">
               {SOCIAL_LINKS.map((social) => {
@@ -71,9 +71,9 @@ export function Footer() {
                     aria-label={social.name}
                   >
                     {Icon && (
-                      <Icon 
+                      <Icon
                         className="transition-colors text-[var(--text-secondary)] group-hover:text-[var(--brand-text)]"
-                        size={20} 
+                        size={20}
                       />
                     )}
                   </a>
@@ -88,7 +88,7 @@ export function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  {link.href.startsWith('#') ? (
+                  {link.href.startsWith("#") ? (
                     <button
                       onClick={() => handleHashClick(link.href)}
                       className="text-sm transition-colors cursor-pointer text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
@@ -132,7 +132,7 @@ export function Footer() {
             <h4 className="font-semibold mb-6 text-lg text-[var(--text-primary)]">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="text-[#2ca3bd] flex-shrink-0 mt-0.5" size={18} />
+                <Mail className="text-[var(--brand-primary)] flex-shrink-0 mt-0.5" size={18} />
                 <a
                   href={`mailto:${COMPANY_INFO.email}`}
                   className="text-sm transition-colors text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
@@ -141,7 +141,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="text-[#2ca3bd] flex-shrink-0 mt-0.5" size={18} />
+                <Phone className="text-[var(--brand-primary)] flex-shrink-0 mt-0.5" size={18} />
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
                   className="text-sm transition-colors text-[var(--text-secondary)] hover:text-[var(--brand-text)]"
@@ -150,10 +150,8 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="text-[#2ca3bd] flex-shrink-0 mt-0.5" size={18} />
-                <span className="text-sm text-[var(--text-secondary)]">
-                  {COMPANY_INFO.address}
-                </span>
+                <MapPin className="text-[var(--brand-primary)] flex-shrink-0 mt-0.5" size={18} />
+                <span className="text-sm text-[var(--text-secondary)]">{COMPANY_INFO.address}</span>
               </li>
             </ul>
           </div>

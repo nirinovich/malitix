@@ -1,41 +1,44 @@
-import { Zap, Shield, Target, GitBranch, Eye } from 'lucide-react';
+import { Zap, Shield, Target, GitBranch, Eye } from "lucide-react";
 
 export default function SIRefonteSolution() {
   const features = [
     {
       icon: Eye,
-      title: 'Diagnostic complet',
-      description: 'Architecture, sécurité, cloud, data, dette technique analysés en profondeur.',
-      color: '#2ca3bd'
+      title: "Diagnostic complet",
+      description: "Architecture, sécurité, cloud, data, dette technique analysés en profondeur.",
+      color: "var(--brand-primary)",
     },
     {
       icon: Target,
-      title: 'Vision cible réaliste & moderne',
+      title: "Vision cible réaliste & moderne",
       description: 'APIs, microservices, data gouvernée, cloud optimisé, SI "IA-ready".',
-      color: '#2ca3bd'
+      color: "var(--brand-primary)",
     },
     {
       icon: Zap,
-      title: 'Quick wins à impact direct',
-      description: '3 actions prioritaires générant un ROI visible en 30 à 90 jours.',
-      color: '#2ca3bd'
+      title: "Quick wins à impact direct",
+      description: "3 actions prioritaires générant un ROI visible en 30 à 90 jours.",
+      color: "var(--brand-primary)",
     },
     {
       icon: GitBranch,
-      title: 'Modernisation progressive',
-      description: 'Zéro big bang : migration par modules, sprints de 6-8 semaines.',
-      color: '#2ca3bd'
+      title: "Modernisation progressive",
+      description: "Zéro big bang : migration par modules, sprints de 6-8 semaines.",
+      color: "var(--brand-primary)",
     },
     {
       icon: Shield,
-      title: 'Sécurité et automatisation intégrées',
-      description: 'IAM, segmentation, monitoring, CI/CD, observabilité dès le départ.',
-      color: '#2ca3bd'
+      title: "Sécurité et automatisation intégrées",
+      description: "IAM, segmentation, monitoring, CI/CD, observabilité dès le départ.",
+      color: "var(--brand-primary)",
     },
   ];
 
   return (
-    <section id="solution-sirefonte" className="relative py-24 overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
+    <section
+      id="solution-sirefonte"
+      className="relative py-24 overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl bg-[var(--accent-secondary)]"></div>
@@ -46,13 +49,12 @@ export default function SIRefonteSolution() {
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-[var(--text-primary)]">
-            Refonte SI : une approche{' '}
-            <span className="text-[#2ca3bd]">globale, rapide</span> et{' '}
-            <span className="text-[#2ca3bd]">modulaire</span>
+            Refonte SI : une approche <span className="text-[var(--brand-primary)]">globale, rapide</span> et{" "}
+            <span className="text-[var(--brand-primary)]">modulaire</span>
           </h2>
-          
+
           <p className="text-xl text-[var(--text-secondary)]">
-            Notre approche combine <strong>vision stratégique</strong>,{' '}
+            Notre approche combine <strong>vision stratégique</strong>,{" "}
             <strong>exécution rapide</strong> et <strong>valorisation immédiate</strong>.
           </p>
         </div>
@@ -64,17 +66,17 @@ export default function SIRefonteSolution() {
             return (
               <div
                 key={idx}
-                className="group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up bg-[var(--surface-primary)] border-[var(--border-primary)] hover:border-[#2ca3bd]/40"
+                className="group p-8 rounded-2xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up bg-[var(--surface-primary)] border-[var(--border-primary)] hover:border-[var(--brand-primary)]/40"
                 style={{
-                  animationDelay: `${idx * 0.1}s`
+                  animationDelay: `${idx * 0.1}s`,
                 }}
               >
                 {/* Icon */}
-                <div 
+                <div
                   className="w-16 h-16 rounded-xl flex items-center justify-center mb-5 transition-transform group-hover:scale-110 group-hover:rotate-3"
-                  style={{ 
+                  style={{
                     backgroundColor: `${feature.color}20`,
-                    border: `2px solid ${feature.color}40`
+                    border: `2px solid ${feature.color}40`,
                   }}
                 >
                   <Icon size={32} style={{ color: feature.color }} />
@@ -96,32 +98,22 @@ export default function SIRefonteSolution() {
 
         {/* Bottom Value Statement */}
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30">
-            <div className="text-4xl font-black text-[#2ca3bd] mb-2">0</div>
-            <div className="text-sm font-bold text-[var(--text-primary)]">
-              Big Bang
-            </div>
-            <div className="text-xs mt-2 text-[var(--text-tertiary)]">
-              Migration progressive
-            </div>
+          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30">
+            <div className="text-4xl font-black text-[var(--brand-primary)] mb-2">0</div>
+            <div className="text-sm font-bold text-[var(--text-primary)]">Big Bang</div>
+            <div className="text-xs mt-2 text-[var(--text-tertiary)]">Migration progressive</div>
           </div>
-          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30">
-            <div className="text-4xl font-black text-[#2ca3bd] mb-2">6-8</div>
-            <div className="text-sm font-bold text-[var(--text-primary)]">
-              Semaines par sprint
-            </div>
+          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30">
+            <div className="text-4xl font-black text-[var(--brand-primary)] mb-2">6-8</div>
+            <div className="text-sm font-bold text-[var(--text-primary)]">Semaines par sprint</div>
             <div className="text-xs mt-2 text-[var(--text-tertiary)]">
               Résultats rapides et mesurables
             </div>
           </div>
-          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[#2ca3bd]/10 border-[#2ca3bd]/30">
-            <div className="text-4xl font-black text-[#2ca3bd] mb-2">30-90j</div>
-            <div className="text-sm font-bold text-[var(--text-primary)]">
-              ROI Quick Wins
-            </div>
-            <div className="text-xs mt-2 text-[var(--text-tertiary)]">
-              Impact business immédiat
-            </div>
+          <div className="p-6 rounded-2xl text-center backdrop-blur-sm border-2 bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30">
+            <div className="text-4xl font-black text-[var(--brand-primary)] mb-2">30-90j</div>
+            <div className="text-sm font-bold text-[var(--text-primary)]">ROI Quick Wins</div>
+            <div className="text-xs mt-2 text-[var(--text-tertiary)]">Impact business immédiat</div>
           </div>
         </div>
       </div>

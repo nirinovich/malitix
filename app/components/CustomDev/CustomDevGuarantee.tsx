@@ -1,28 +1,29 @@
-import { DollarSign, Calendar, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { DollarSign, Calendar, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 const guarantees = [
   {
     icon: DollarSign,
-    title: 'Budget Fixe & Forfaitaire',
-    description: 'Pas de surprise à la fin du mois.',
-    details: 'Un devis clair et transparent. Vous connaissez le prix exact avant de commencer.',
+    title: "Budget Fixe & Forfaitaire",
+    description: "Pas de surprise à la fin du mois.",
+    details: "Un devis clair et transparent. Vous connaissez le prix exact avant de commencer.",
   },
   {
     icon: CheckCircle2,
-    title: 'Garantie de Fonctionnement 12 Mois',
-    description: 'Le moindre bug découvert dans l\'année suivant la livraison est corrigé gratuitement et immédiatement.',
-    details: 'Support technique inclus pendant 12 mois après la mise en production.',
+    title: "Garantie de Fonctionnement 12 Mois",
+    description:
+      "Le moindre bug découvert dans l'année suivant la livraison est corrigé gratuitement et immédiatement.",
+    details: "Support technique inclus pendant 12 mois après la mise en production.",
   },
   {
     icon: Calendar,
-    title: 'Pénalités de Retard',
-    description: 'Si nous ne livrons pas à la date convenue, nous vous payons pour chaque jour de retard.',
-    details: 'Notre engagement contractuel : vos délais sont sacrés.',
+    title: "Pénalités de Retard",
+    description:
+      "Si nous ne livrons pas à la date convenue, nous vous payons pour chaque jour de retard.",
+    details: "Notre engagement contractuel : vos délais sont sacrés.",
   },
 ];
 
 export default function CustomDevGuarantee() {
-
   return (
     <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)]">
       <div className="absolute inset-0 pointer-events-none">
@@ -30,9 +31,9 @@ export default function CustomDevGuarantee() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto mb-12 sm:mb-16 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#2ca3bd]/20 bg-[var(--card-bg)]">
+        <div className="max-w-4xl mx-auto mb-12 sm:mb-16 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[var(--brand-primary)]/20 bg-[var(--card-bg)]">
           <div className="flex items-start gap-4">
-            <AlertTriangle className="flex-shrink-0 text-[#2ca3bd]" size={28} />
+            <AlertTriangle className="flex-shrink-0 text-[var(--brand-primary)]" size={28} />
             <div className="space-y-2">
               <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
                 Nous savons que les projets informatiques ont mauvaise réputation
@@ -46,18 +47,15 @@ export default function CustomDevGuarantee() {
 
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[var(--brand-primary)]"></div>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[var(--brand-primary)]">
               Garanties Béton
             </span>
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[var(--brand-primary)]"></div>
           </div>
-          
+
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)]">
-            Nous Inversons{' '}
-            <span className="text-[#2ca3bd]">
-              le Risque
-            </span>
+            Nous Inversons <span className="text-[var(--brand-primary)]">le Risque</span>
           </h2>
         </div>
 
@@ -67,16 +65,16 @@ export default function CustomDevGuarantee() {
             return (
               <div
                 key={index}
-                className="group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#2ca3bd]/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl bg-[var(--card-bg)] hover:border-[#2ca3bd]/40"
+                className="group backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[var(--brand-primary)]/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl bg-[var(--card-bg)] hover:border-[var(--brand-primary)]/40"
               >
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 inline-block text-[#2ca3bd]">
+                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 inline-block text-[var(--brand-primary)]">
                   <Icon size={36} />
                 </div>
-                
+
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[var(--text-primary)]">
                   {guarantee.title}
                 </h3>
-                
+
                 <p className="text-base leading-relaxed mb-4 text-[var(--text-secondary)]">
                   {guarantee.description}
                 </p>

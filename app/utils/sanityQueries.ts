@@ -1,5 +1,5 @@
-import groq from 'groq';
-import { defineQuery } from 'groq';
+import groq from "groq";
+import { defineQuery } from "groq";
 
 export const POSTS_QUERY = defineQuery(groq`
   *[_type == "post" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()]

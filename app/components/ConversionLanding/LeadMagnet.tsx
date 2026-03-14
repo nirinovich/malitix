@@ -8,19 +8,22 @@ export function LeadMagnet() {
   const [pack, setPack] = useState<PackKey>("Growth");
   const [durationInWeeks, setDurationInWeeks] = useState(8);
 
-  const { tjm, total, durationInDays, discountPercentage, basePrice } = getPricingInfo(pack, durationInWeeks);
+  const { tjm, total, durationInDays, discountPercentage, basePrice } = getPricingInfo(
+    pack,
+    durationInWeeks
+  );
 
   return (
     <section id="lead-magnet" className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border p-8 lg:p-10 border-[var(--border-primary)] bg-[var(--surface-elevated)]">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--brand-primary)] font-semibold">
               <Calculator size={16} />
               {CONVERSION_LANDING_LEAD_MAGNET.eyebrow}
             </div>
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
-              <span className="text-[#2ca3bd]">Calculateur</span> de prix interactif
+              <span className="text-[var(--brand-primary)]">Calculateur</span> de prix interactif
             </h2>
             <p className="mt-3 text-lg text-[var(--text-secondary)]">
               {CONVERSION_LANDING_LEAD_MAGNET.description}
@@ -33,9 +36,9 @@ export function LeadMagnet() {
 
               <div>
                 <label className="flex items-center text-sm font-semibold text-[var(--text-secondary)]">
-                  <Clock size={16} className="text-[#2ca3bd] mr-2" />
+                  <Clock size={16} className="text-[var(--brand-primary)] mr-2" />
                   {CONVERSION_LANDING_LEAD_MAGNET.durationLabel} :
-                  <span className="ml-2 text-[#2ca3bd] font-bold">
+                  <span className="ml-2 text-[var(--brand-primary)] font-bold">
                     {durationInWeeks} {durationInWeeks === 1 ? "semaine" : "semaines"}
                   </span>
                 </label>
@@ -45,7 +48,7 @@ export function LeadMagnet() {
                   max={120}
                   value={durationInWeeks}
                   onChange={(event) => setDurationInWeeks(Number(event.target.value))}
-                  className="mt-4 w-full accent-[#2ca3bd]"
+                  className="mt-4 w-full accent-[var(--brand-primary)]"
                 />
                 <div className="mt-2 flex justify-between text-xs text-[var(--text-tertiary)]">
                   <span>1 sem</span>
@@ -54,18 +57,21 @@ export function LeadMagnet() {
               </div>
             </div>
 
-            <div className="rounded-3xl p-6 text-white bg-gradient-to-br from-[#2ca3bd] to-[#248fa5] shadow-2xl shadow-[#2ca3bd]/30">
+            <div className="rounded-3xl p-6 text-white bg-gradient-to-br from-[var(--brand-primary)] to-[#248fa5] shadow-2xl shadow-[var(--brand-primary)]/30">
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">
                 <Sparkles size={16} />
                 {CONVERSION_LANDING_LEAD_MAGNET.estimateLabel}
               </div>
               <div className="mt-6 text-center">
-                <div className="text-xs uppercase tracking-[0.2em] text-white/70">{CONVERSION_LANDING_LEAD_MAGNET.tjmLabel}</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-white/70">
+                  {CONVERSION_LANDING_LEAD_MAGNET.tjmLabel}
+                </div>
                 <div className="text-4xl font-bold mt-2">
                   {tjm.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}
                 </div>
                 <div className="text-xs text-white/70 mt-1">
-                  {CONVERSION_LANDING_LEAD_MAGNET.basePriceLabel}: {basePrice.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}/j
+                  {CONVERSION_LANDING_LEAD_MAGNET.basePriceLabel}:{" "}
+                  {basePrice.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}/j
                 </div>
               </div>
 
@@ -86,7 +92,7 @@ export function LeadMagnet() {
 
               <a
                 href="#lead-form"
-                className="mt-6 block text-center bg-white text-[#2ca3bd] font-semibold py-3 rounded-full hover:scale-[1.02] transition-all cursor-pointer"
+                className="mt-6 block text-center bg-white text-[var(--brand-primary)] font-semibold py-3 rounded-full hover:scale-[1.02] transition-all cursor-pointer"
               >
                 {CONVERSION_LANDING_LEAD_MAGNET.actionLabel}
               </a>

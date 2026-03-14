@@ -7,7 +7,9 @@ export function Layout({ children }: BaseComponentProps) {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-primary)]">
       <Navbar />
-      <main id="main-content" className="flex-grow">{children}</main>
+      <main id="main-content" className="flex-grow">
+        {children}
+      </main>
       <Footer />
       <ScrollToTop />
     </div>

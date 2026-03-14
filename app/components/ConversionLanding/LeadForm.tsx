@@ -39,7 +39,7 @@ export function LeadForm() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
+            <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-primary)] font-semibold">
               {CONVERSION_LANDING_LEAD_FORM.eyebrow}
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
@@ -51,8 +51,8 @@ export function LeadForm() {
             <div className="space-y-3">
               {CONVERSION_LANDING_LEAD_FORM.benefits.map((benefit) => (
                 <div key={benefit} className="flex items-center gap-3">
-                  <div className="bg-[#2ca3bd]/20 p-2 rounded-full">
-                    <CheckCircle2 className="text-[#2ca3bd]" size={20} />
+                  <div className="bg-[var(--brand-primary)]/20 p-2 rounded-full">
+                    <CheckCircle2 className="text-[var(--brand-primary)]" size={20} />
                   </div>
                   <span className="text-[var(--text-secondary)]">{benefit}</span>
                 </div>
@@ -63,8 +63,8 @@ export function LeadForm() {
           <div className="rounded-3xl p-8 border shadow-2xl border-[var(--border-primary)] bg-[var(--surface-elevated)]">
             {submissionStatus === "success" ? (
               <div className="text-center py-12 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full">
-                  <CheckCircle2 className="text-[#2ca3bd]" size={40} />
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-[var(--brand-primary)]/20 rounded-full">
+                  <CheckCircle2 className="text-[var(--brand-primary)]" size={40} />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-2 text-[var(--text-primary)]">
@@ -84,14 +84,17 @@ export function LeadForm() {
                 )}
 
                 <div>
-                  <label htmlFor="name" className="block font-medium mb-2 text-[var(--text-primary)]">
+                  <label
+                    htmlFor="name"
+                    className="block font-medium mb-2 text-[var(--text-primary)]"
+                  >
                     Nom complet *
                   </label>
                   <input
                     type="text"
                     id="name"
                     {...register("name", CONVERSION_LEAD_VALIDATION.name)}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="Jean Dupont"
                   />
                   {errors.name && (
@@ -100,14 +103,17 @@ export function LeadForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block font-medium mb-2 text-[var(--text-primary)]">
+                  <label
+                    htmlFor="email"
+                    className="block font-medium mb-2 text-[var(--text-primary)]"
+                  >
                     Email professionnel *
                   </label>
                   <input
                     type="email"
                     id="email"
                     {...register("email", CONVERSION_LEAD_VALIDATION.email)}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="jean@entreprise.fr"
                   />
                   {errors.email && (
@@ -116,14 +122,17 @@ export function LeadForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="website" className="block font-medium mb-2 text-[var(--text-primary)]">
+                  <label
+                    htmlFor="website"
+                    className="block font-medium mb-2 text-[var(--text-primary)]"
+                  >
                     Site web
                   </label>
                   <input
                     type="text"
                     id="website"
                     {...register("website", CONVERSION_LEAD_VALIDATION.website)}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="https://votre-site.com"
                   />
                   {errors.website && (
@@ -132,14 +141,17 @@ export function LeadForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block font-medium mb-2 text-[var(--text-primary)]">
+                  <label
+                    htmlFor="message"
+                    className="block font-medium mb-2 text-[var(--text-primary)]"
+                  >
                     Parlez-nous de votre projet *
                   </label>
                   <textarea
                     id="message"
                     {...register("message", CONVERSION_LEAD_VALIDATION.message)}
                     rows={4}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[#2ca3bd] focus:ring-2 focus:ring-[#2ca3bd]/20 transition-all resize-none bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all resize-none bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
                     placeholder="Décrivez votre besoin et vos sprints à venir..."
                   />
                   {errors.message && (
@@ -150,7 +162,7 @@ export function LeadForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
                   <Send size={20} className={isSubmitting ? "animate-pulse" : ""} />
@@ -158,9 +170,13 @@ export function LeadForm() {
 
                 <p className="text-sm text-center text-[var(--text-tertiary)]">
                   En envoyant ce formulaire, vous acceptez notre{" "}
-                  <a href="/politique-de-confidentialite" className="text-[#2ca3bd] hover:underline">
+                  <a
+                    href="/politique-de-confidentialite"
+                    className="text-[var(--brand-primary)] hover:underline"
+                  >
                     {CONVERSION_LANDING_LEAD_FORM.privacyLabel}
-                  </a>.
+                  </a>
+                  .
                 </p>
               </form>
             )}

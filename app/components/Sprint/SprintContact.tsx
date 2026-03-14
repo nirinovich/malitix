@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { TextInput } from '~/components/Shared/Form/TextInput';
-import { Textarea } from '~/components/Shared/Form/Textarea';
-import { FormFeedback } from '~/components/Shared/Form/FormFeedback';
-import { VALIDATION_PATTERNS } from '~/utils/validation';
-import { submitContactForm } from '~/utils/forms/submitContact';
-import { Mail, Globe, User, ArrowRight } from 'lucide-react';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { TextInput } from "~/components/Shared/Form/TextInput";
+import { Textarea } from "~/components/Shared/Form/Textarea";
+import { FormFeedback } from "~/components/Shared/Form/FormFeedback";
+import { VALIDATION_PATTERNS } from "~/utils/validation";
+import { submitContactForm } from "~/utils/forms/submitContact";
+import { Mail, Globe, User, ArrowRight } from "lucide-react";
 
 interface SprintFormData {
   name: string;
@@ -15,32 +15,32 @@ interface SprintFormData {
 }
 
 export default function SprintContact() {
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  
-  const { 
-    register, 
-    handleSubmit, 
+  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const {
+    register,
+    handleSubmit,
     reset,
-    formState: { errors, isSubmitting } 
+    formState: { errors, isSubmitting },
   } = useForm<SprintFormData>();
 
   const onSubmit = async (data: SprintFormData) => {
     try {
-      await submitContactForm({ data, source: 'LP - Sprint' });
-      setSubmissionStatus('success');
+      await submitContactForm({ data, source: "LP - Sprint" });
+      setSubmissionStatus("success");
       reset();
-      
+
       setTimeout(() => {
-        setSubmissionStatus('idle');
+        setSubmissionStatus("idle");
       }, 5000);
     } catch (err) {
       console.error(err);
-      setSubmissionStatus('error');
+      setSubmissionStatus("error");
     }
   };
 
   return (
-    <section 
+    <section
       id="contact-sprint"
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)]"
     >
@@ -53,11 +53,11 @@ export default function SprintContact() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12 space-y-3 sm:space-y-4">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]"></div>
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-transparent to-[var(--brand-primary)]"></div>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-[var(--brand-primary)]">
               Passez à l'action
             </span>
-            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]"></div>
+            <div className="h-px w-6 sm:w-8 bg-gradient-to-l from-transparent to-[var(--brand-primary)]"></div>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 text-[var(--text-primary)]">
             <span className="block sm:inline">Prêt à débloquer votre projet ?</span>
@@ -69,12 +69,15 @@ export default function SprintContact() {
 
         {/* Form */}
         <div className="backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-[var(--border-primary)]">
-          {submissionStatus === 'success' ? (
-             <FormFeedback status="success" message="Nous vous recontactons sous 24h pour démarrer votre Sprint Commando." />
+          {submissionStatus === "success" ? (
+            <FormFeedback
+              status="success"
+              message="Nous vous recontactons sous 24h pour démarrer votre Sprint Commando."
+            />
           ) : (
             <>
-              {submissionStatus === 'error' && <FormFeedback status="error" />}
-              
+              {submissionStatus === "error" && <FormFeedback status="error" />}
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
                 <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                   <TextInput
@@ -82,7 +85,7 @@ export default function SprintContact() {
                     placeholder="Jean Dupont"
                     icon={<User size={18} />}
                     error={errors.name?.message}
-                    {...register('name', { required: 'Le nom est requis' })}
+                    {...register("name", { required: "Le nom est requis" })}
                     required
                   />
 
@@ -92,9 +95,9 @@ export default function SprintContact() {
                     placeholder="jean@entreprise.com"
                     icon={<Mail size={18} />}
                     error={errors.email?.message}
-                    {...register('email', { 
-                      required: 'L\'email est requis',
-                      pattern: VALIDATION_PATTERNS.EMAIL
+                    {...register("email", {
+                      required: "L'email est requis",
+                      pattern: VALIDATION_PATTERNS.EMAIL,
                     })}
                     required
                   />
@@ -105,7 +108,7 @@ export default function SprintContact() {
                   placeholder="https://votre-site.com"
                   icon={<Globe size={18} />}
                   error={errors.website?.message}
-                  {...register('website')}
+                  {...register("website")}
                 />
 
                 <Textarea
@@ -113,20 +116,21 @@ export default function SprintContact() {
                   placeholder="Décrivez brièvement ce qui vous bloque..."
                   rows={4}
                   error={errors.message?.message}
-                  {...register('message')}
+                  {...register("message")}
                 />
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-xl font-bold bg-[#2ca3bd] text-white transition-all hover:bg-[#258da5] hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#2ca3bd]/25 disabled:opacity-50 disabled:hover:scale-100 flex items-center justify-center gap-2`}
+                  className={`w-full py-4 px-6 rounded-xl font-bold bg-[var(--brand-primary)] text-white transition-all hover:bg-[#258da5] hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[var(--brand-primary)]/25 disabled:opacity-50 disabled:hover:scale-100 flex items-center justify-center gap-2`}
                 >
-                  {isSubmitting ? 'Envoi en cours...' : 'Démarrer le Sprint'}
+                  {isSubmitting ? "Envoi en cours..." : "Démarrer le Sprint"}
                   {!isSubmitting && <ArrowRight size={20} />}
                 </button>
 
                 <p className="text-xs text-center text-[var(--text-muted)]">
-                  En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix dans le cadre de votre demande.
+                  En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix dans le
+                  cadre de votre demande.
                 </p>
               </form>
             </>

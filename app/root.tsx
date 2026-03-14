@@ -59,13 +59,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         )}
       </head>
       <body className={isAdminRoute ? "sanity-embedded" : undefined}>
-        <a 
-          href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-[#2ca3bd] focus:text-white focus:font-bold focus:rounded-md outline-none focus:ring-4 focus:ring-white/20 transition-all"
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-[var(--brand-primary)] focus:text-white focus:font-bold focus:rounded-md outline-none focus:ring-4 focus:ring-white/20 transition-all"
         >
           Skip to content
         </a>
-          {isAdminRoute ? children : <ThemeProvider>{children}</ThemeProvider>}
+        {isAdminRoute ? children : <ThemeProvider>{children}</ThemeProvider>}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -85,9 +85,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   if (isRouteErrorResponse(error)) {
     message = error.status === 404 ? "404" : "Error";
     details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+      error.status === 404 ? "The requested page could not be found." : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;

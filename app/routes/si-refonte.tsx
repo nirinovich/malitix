@@ -9,11 +9,13 @@ import SIRefonteContact from "~/components/SIRefonte/SIRefonteContact";
 
 import { buildMeta } from "~/utils/seo";
 
-export const meta: Route.MetaFunction = () => buildMeta({
-  title: "Refonte SI | Modernisation Cloud, Data & IA",
-  description: "Modernisez votre Système d'Information en 90 jours : Cloud optimisé, Data gouvernée, Sécurité renforcée, Architecture IA-ready. Réduction 20-40% des coûts. Audit Express 8h offert.",
-  url: "https://malitix.com/refonte-si",
-});
+export const meta: Route.MetaFunction = () =>
+  buildMeta({
+    title: "Refonte SI | Modernisation Cloud, Data & IA",
+    description:
+      "Modernisez votre Système d'Information en 90 jours : Cloud optimisé, Data gouvernée, Sécurité renforcée, Architecture IA-ready. Réduction 20-40% des coûts. Audit Express 8h offert.",
+    url: "https://malitix.com/refonte-si",
+  });
 
 export default function SIRefonte() {
   return (

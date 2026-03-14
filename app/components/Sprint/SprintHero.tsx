@@ -1,55 +1,55 @@
-import { CTAButtonV3 } from '~/components/Utility/CTAButtons';
-import { ProgressRescueGaugeVariant } from '~/components/Utility/ProgressIllustration';
-import { LogoCarousel } from '~/components/Utility/LogoCarousel';
+import { CTAButtonV3 } from "~/components/Utility/CTAButtons";
+import { ProgressRescueGaugeVariant } from "~/components/Utility/ProgressIllustration";
+import { LogoCarousel } from "~/components/Utility/LogoCarousel";
 
 const companyLogos = [
   {
     id: 1,
     name: "KPMG",
-    logo: "/images/references/2560px-KPMG_logo.svg.png"
+    logo: "/images/references/2560px-KPMG_logo.svg.png",
   },
   {
     id: 2,
     name: "Renault",
-    logo: "/images/references/Automotive_Bleu-RVB.png"
+    logo: "/images/references/Automotive_Bleu-RVB.png",
   },
   {
     id: 3,
     name: "Danone",
-    logo: "/images/references/Danone-Logo.png"
+    logo: "/images/references/Danone-Logo.png",
   },
   {
     id: 4,
     name: "Engie",
-    logo: "/images/references/engie-logo.png"
+    logo: "/images/references/engie-logo.png",
   },
   {
     id: 5,
     name: "Fraikin",
-    logo: "/images/references/fraikin_fr.png"
+    logo: "/images/references/fraikin_fr.png",
   },
   {
     id: 6,
     name: "LexisNexis",
-    logo: "/images/references/LexisNexis_logo.svg.png"
+    logo: "/images/references/LexisNexis_logo.svg.png",
   },
   {
     id: 7,
     name: "Petit Forestier",
-    logo: "/images/references/Logo-Petit-Forestier-300x189-1.png"
+    logo: "/images/references/Logo-Petit-Forestier-300x189-1.png",
   },
   {
     id: 8,
     name: "Thales",
-    logo: "/images/references/THALES.png"
-  }
+    logo: "/images/references/THALES.png",
+  },
 ];
 
 // Variante C - Design Split avec Visual et Stats
 export default function SprintHero() {
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact-sprint');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
+    const contactSection = document.getElementById("contact-sprint");
+    contactSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   const ButtonComponent = CTAButtonV3;
@@ -62,43 +62,55 @@ export default function SprintHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Colonne gauche - Contenu */}
-          <div 
-            className="space-y-6 sm:space-y-8 order-2 lg:order-1 animate-slide-right in-view"
-          >
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1 animate-slide-right in-view">
             {/* Headline */}
             <div className="space-y-4 sm:space-y-5 animate-on-scroll in-view stagger-1">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-[var(--text-primary)]">
-                Vos projets IT{' '}
+                Vos projets IT{" "}
                 <span className="relative inline-block">
-                  <span className="text-[#2ca3bd]">en retard ?</span>
-                  <svg className="absolute -bottom-2 sm:-bottom-3 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none">
-                    <path 
-                      d="M0 5 Q50 0, 100 5 T200 5" 
-                      stroke="#2ca3bd" 
-                      strokeWidth="4" 
+                  <span className="text-[var(--brand-primary)]">en retard ?</span>
+                  <svg
+                    className="absolute -bottom-2 sm:-bottom-3 left-0 w-full"
+                    height="10"
+                    viewBox="0 0 200 10"
+                    fill="none"
+                  >
+                    <path
+                      d="M0 5 Q50 0, 100 5 T200 5"
+                      stroke="var(--brand-primary)"
+                      strokeWidth="4"
                       fill="none"
                       strokeLinecap="round"
                     />
                   </svg>
                 </span>
               </h1>
-              
+
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed text-[var(--text-secondary)]">
                 On redresse votre roadmap <br className="hidden sm:inline" />
-                en <span className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2ca3bd]">2 semaines</span>.
+                en{" "}
+                <span className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[var(--brand-primary)]">
+                  2 semaines
+                </span>
+                .
               </div>
             </div>
 
             {/* Features rapides */}
             <div className="space-y-3 sm:space-y-4 animate-on-scroll in-view stagger-2">
-              {['✓ Diagnostic en 48h', '✓ Équipe dédiée', '✓ Résultats mesurables'].map((feature) => (
-                <div key={feature} className="flex items-center gap-3 text-base sm:text-lg lg:text-xl text-[var(--text-secondary)]">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-[#2ca3bd]/20">
-                    <span className="text-[#2ca3bd] text-sm sm:text-base font-bold">✓</span>
+              {["✓ Diagnostic en 48h", "✓ Équipe dédiée", "✓ Résultats mesurables"].map(
+                (feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-center gap-3 text-base sm:text-lg lg:text-xl text-[var(--text-secondary)]"
+                  >
+                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-[var(--brand-primary)]/20">
+                      <span className="text-[var(--brand-primary)] text-sm sm:text-base font-bold">✓</span>
+                    </div>
+                    {feature.replace("✓ ", "")}
                   </div>
-                  {feature.replace('✓ ', '')}
-                </div>
-              ))}
+                )
+              )}
             </div>
 
             {/* CTA avec CTAButtonV3 */}
@@ -109,13 +121,13 @@ export default function SprintHero() {
             {/* Stats de confiance */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t border-[var(--border-primary)] animate-on-scroll in-view stagger-4">
               {[
-                { value: '600+', label: 'Projets livrés' },
-                { value: '350+', label: 'Développeurs' },
-                { value: '15 ans', label: "D'expertise" },
-                { value: '24h', label: 'Temps de réponse' },
+                { value: "600+", label: "Projets livrés" },
+                { value: "350+", label: "Développeurs" },
+                { value: "15 ans", label: "D'expertise" },
+                { value: "24h", label: "Temps de réponse" },
               ].map((stat, idx) => (
                 <div key={idx} className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-[#2ca3bd]">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-[var(--brand-primary)]">
                     {stat.value}
                   </div>
                   <div className="text-xs sm:text-sm lg:text-base text-[var(--text-tertiary)]">
@@ -127,9 +139,7 @@ export default function SprintHero() {
           </div>
 
           {/* Colonne droite - Visual Illustration */}
-          <div 
-            className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0 animate-on-scroll in-view stagger-4"
-          >
+          <div className="relative flex justify-center items-center order-1 lg:order-2 h-[300px] sm:h-[400px] lg:h-[500px] pt-[10vh] lg:pt-0 animate-on-scroll in-view stagger-4">
             <div className="scale-75 sm:scale-90 lg:scale-100">
               <IllustrationComponent />
             </div>
@@ -137,9 +147,7 @@ export default function SprintHero() {
         </div>
 
         {/* Logo Carousel en bas */}
-        <div 
-          className="mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t border-[var(--border-primary)] animate-on-scroll in-view stagger-5"
-        >
+        <div className="mt-16 sm:mt-20 lg:mt-24 pt-8 sm:pt-10 lg:pt-12 border-t border-[var(--border-primary)] animate-on-scroll in-view stagger-5">
           <LogoCarousel logos={companyLogos} title="Ils nous font confiance" speed={40} />
         </div>
       </div>

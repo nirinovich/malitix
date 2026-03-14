@@ -1,11 +1,11 @@
-import type { Route } from './+types/blog';
-import { useLoaderData } from 'react-router';
-import { Layout } from '~/components/Shared/Layout';
-import { BlogList } from '~/components/Blog/BlogList';
-import { sanityClient } from '~/utils/sanityClient';
-import { POSTS_QUERY } from '~/utils/sanityQueries';
-import type { BlogPostListItem } from '~/types';
-import { buildMeta } from '~/utils/seo';
+import type { Route } from "./+types/blog";
+import { useLoaderData } from "react-router";
+import { Layout } from "~/components/Shared/Layout";
+import { BlogList } from "~/components/Blog/BlogList";
+import { sanityClient } from "~/utils/sanityClient";
+import { POSTS_QUERY } from "~/utils/sanityQueries";
+import type { BlogPostListItem } from "~/types";
+import { buildMeta } from "~/utils/seo";
 
 export async function loader() {
   const posts = await sanityClient.fetch<BlogPostListItem[]>(POSTS_QUERY);
@@ -13,15 +13,15 @@ export async function loader() {
 }
 
 export const meta: Route.MetaFunction = () => {
-  const title = 'Blog';
+  const title = "Blog";
   const description =
-    'Découvrez nos analyses, conseils et retours d’expérience sur la technologie, l’IA et la transformation digitale.';
+    "Découvrez nos analyses, conseils et retours d’expérience sur la technologie, l’IA et la transformation digitale.";
 
   return buildMeta({
     title,
     description,
-    type: 'website',
-    url: 'https://malitix.com/blog',
+    type: "website",
+    url: "https://malitix.com/blog",
   });
 };
 
@@ -33,7 +33,7 @@ export default function BlogIndex() {
       <section className="pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#2ca3bd]/30 bg-[#2ca3bd]/10 px-4 py-2 text-xs font-semibold text-[#2ca3bd]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/10 px-4 py-2 text-xs font-semibold text-[var(--brand-primary)]">
               Journal Malitix
             </div>
             <h1 className="text-3xl md:text-5xl font-semibold text-[var(--text-primary)]">

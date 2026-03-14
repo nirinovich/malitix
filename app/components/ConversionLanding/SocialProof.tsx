@@ -37,7 +37,7 @@ export function SocialProof() {
     <section id="social-proof" className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
+          <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-primary)] font-semibold">
             {CONVERSION_LANDING_SOCIAL_PROOF.eyebrow}
           </div>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
@@ -52,10 +52,10 @@ export function SocialProof() {
               className="rounded-3xl border p-6 border-[var(--border-primary)] bg-[var(--surface-elevated)]"
             >
               <div className="flex items-center justify-between">
-                <Quote className="text-[#2ca3bd]" size={22} aria-hidden="true" />
+                <Quote className="text-[var(--brand-primary)]" size={22} aria-hidden="true" />
                 <div className="flex gap-1">
                   {[...Array(testimonial.rating)].map((_, index) => (
-                    <Star key={index} size={14} className="text-[#2ca3bd] fill-[#2ca3bd]" />
+                    <Star key={index} size={14} className="text-[var(--brand-primary)] fill-[var(--brand-primary)]" />
                   ))}
                 </div>
               </div>

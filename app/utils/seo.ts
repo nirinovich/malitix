@@ -13,10 +13,7 @@ export function buildTitle(parts: string[], siteName: string = "Malitix"): strin
   return core ? `${core} | ${siteName}` : siteName;
 }
 
-export function buildMeta(
-  config: MetaConfig,
-  siteName: string = "Malitix"
-): Route.MetaDescriptors {
+export function buildMeta(config: MetaConfig, siteName: string = "Malitix"): Route.MetaDescriptors {
   const { title, description, image, url, type = "website" } = config;
 
   return [
@@ -36,8 +33,6 @@ export function buildMeta(
 }
 
 // Structured data (JSON-LD) disabled on dev branch — no indexing
-export function buildStructuredData(
-  _data: Record<string, unknown>
-): Route.MetaDescriptors {
+export function buildStructuredData(_data: Record<string, unknown>): Route.MetaDescriptors {
   return [];
 }

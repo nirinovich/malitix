@@ -9,10 +9,10 @@ export function GrandSlamOffer() {
     <section
       ref={sectionRef}
       id="grand-slam-offer"
-      className={`py-20 bg-[var(--bg-primary)] animate-on-scroll ${isInView ? 'in-view' : ''}`}
+      className={`py-20 bg-[var(--bg-primary)] animate-on-scroll ${isInView ? "in-view" : ""}`}
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#2ca3bd] font-semibold">
+        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--brand-primary)] font-semibold">
           <ShieldCheck size={16} />
           {CONVERSION_LANDING_GRAND_SLAM.eyebrow}
         </div>
@@ -25,7 +25,7 @@ export function GrandSlamOffer() {
         <div className="mt-8">
           <a
             href="#lead-form"
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 text-base font-semibold shadow-xl shadow-[#2ca3bd]/30 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-8 py-4 text-base font-semibold shadow-xl shadow-[var(--brand-primary)]/30 transition-all duration-300"
           >
             {CONVERSION_LANDING_GRAND_SLAM.cta}
             <ArrowRight size={20} />

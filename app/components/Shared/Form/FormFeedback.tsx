@@ -1,14 +1,14 @@
-import { Check, X } from 'lucide-react';
+import { Check, X } from "lucide-react";
 
 interface FormFeedbackProps {
-  status: 'success' | 'error' | 'idle';
+  status: "success" | "error" | "idle";
   message?: string;
 }
 
 export function FormFeedback({ status, message }: FormFeedbackProps) {
-  if (status === 'idle') return null;
+  if (status === "idle") return null;
 
-  if (status === 'success') {
+  if (status === "success") {
     return (
       <div className="text-center py-8 sm:py-12 animate-in fade-in zoom-in duration-300">
         <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-green-500/20 mb-4">

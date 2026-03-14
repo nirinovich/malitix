@@ -1,10 +1,10 @@
-const ALLOWED_PROTOCOLS = new Set(['http:', 'https:', 'mailto:', 'tel:']);
+const ALLOWED_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
 
 export function sanitizeUrl(rawUrl?: string | null): string | null {
   if (!rawUrl) return null;
   const trimmed = rawUrl.trim();
 
-  if (trimmed.startsWith('/') || trimmed.startsWith('#')) {
+  if (trimmed.startsWith("/") || trimmed.startsWith("#")) {
     return trimmed;
   }
 

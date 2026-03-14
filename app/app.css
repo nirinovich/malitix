@@ -2,7 +2,7 @@
 
 @theme {
   /* Custom font family */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Base styles */
@@ -17,7 +17,9 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   /* Smooth transition when theme changes */
-  transition: background-color 200ms ease, color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 /* Embedded Sanity Studio overrides */
@@ -63,13 +65,13 @@ body.sanity-embedded > * {
      FOUNDATION COLORS
      Base color values used throughout the theme
      =========================================== */
-  
+
   /* Base backgrounds */
   --base-bg: #060705;
   --base-bg-alt: #0a0e0d;
   --base-bg-elevated: #0f1412;
   --base-bg-surface: #1a1d1b;
-  
+
   /* White opacity variants */
   --alpha-white-5: rgba(255, 255, 255, 0.05);
   --alpha-white-10: rgba(255, 255, 255, 0.1);
@@ -81,7 +83,7 @@ body.sanity-embedded > * {
   --alpha-white-70: rgba(255, 255, 255, 0.7);
   --alpha-white-80: rgba(255, 255, 255, 0.8);
   --alpha-white-90: rgba(255, 255, 255, 0.9);
-  
+
   /* Brand color opacity variants */
   --alpha-brand-5: rgba(44, 163, 189, 0.05);
   --alpha-brand-10: rgba(44, 163, 189, 0.1);
@@ -98,25 +100,25 @@ body.sanity-embedded > * {
 
   /* Accessible Text Color for Brand */
   --brand-text: #2ca3bd;
-  
+
   /* iPhone Frame */
   --iphone-frame: #ffffff;
   --iphone-notch: #1a1a1a;
   --iphone-camera-border: #333333;
-  
+
   /* Background colors */
   --bg-primary: var(--base-bg);
   --bg-primary-dark: var(--base-bg);
   --bg-secondary: var(--base-bg-alt);
   --bg-tertiary: var(--base-bg-elevated);
   --bg-elevated: var(--base-bg-surface);
-  
+
   /* Surface colors */
   --surface-primary: var(--base-bg);
   --surface-secondary: var(--base-bg-alt);
   --surface-elevated: var(--alpha-white-5);
   --surface-hover: var(--alpha-brand-10);
-  
+
   /* Text colors */
   --text-primary: #ffffff;
   --text-secondary: var(--alpha-white-70);
@@ -125,13 +127,13 @@ body.sanity-embedded > * {
   --text-muted: var(--alpha-white-40);
   --text-emphasis: var(--alpha-white-90);
   --text-subtle: var(--alpha-white-80);
-  
+
   /* Border colors */
   --border-primary: var(--alpha-white-10);
   --border-secondary: var(--alpha-brand-20);
   --border-hover: var(--alpha-brand-40);
   --border-focus: #2ca3bd;
-  
+
   /* Accent colors */
   --accent-primary: var(--alpha-brand-10);
   --accent-secondary: var(--alpha-brand-5);
@@ -191,40 +193,47 @@ body.sanity-embedded > * {
   --services-card-bg: var(--card-bg);
   --services-card-border: var(--card-border);
   --services-orb-bg: var(--bg-secondary);
-  
+
   /* Hero gradient colors */
-  --hero-gradient-bg: linear-gradient(to bottom right, var(--base-bg), var(--base-bg), var(--base-bg-alt));
+  --hero-gradient-bg: linear-gradient(
+    to bottom right,
+    var(--base-bg),
+    var(--base-bg),
+    var(--base-bg-alt)
+  );
   --hero-orb-primary: var(--alpha-brand-20);
   --hero-orb-secondary: var(--alpha-brand-10);
-  --hero-grid-pattern: linear-gradient(rgba(44,163,189,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(44,163,189,0.03) 1px, transparent 1px);
-  
+  --hero-grid-pattern:
+    linear-gradient(rgba(44, 163, 189, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 163, 189, 0.03) 1px, transparent 1px);
+
   /* Card colors */
   --card-bg: linear-gradient(to bottom right, var(--alpha-brand-10), var(--alpha-brand-5));
   --card-border: var(--alpha-brand-20);
   --card-shadow: var(--alpha-brand-20);
   --card-code-bg: rgba(6, 7, 5, 0.5);
-  
+
   /* Scroll indicator */
   --scroll-border: var(--alpha-white-30);
-  
+
   /* Divider line */
   --divider-gradient: linear-gradient(to right, transparent, var(--alpha-white-20), transparent);
-  
+
   /* Logo filter */
   --logo-filter: grayscale(1);
-  
+
   /* Additional component-specific colors */
   --quote-color: var(--alpha-brand-40);
   --stat-bg: var(--alpha-brand-10);
   --feature-card-bg: var(--alpha-brand-5);
   --feature-card-hover-bg: var(--alpha-brand-10);
   --icon-stroke: #2ca3bd;
-  
+
   /* Progress colors */
   --progress-danger: #ef4444;
   --progress-warning: #f59e0b;
   --progress-success: #2ca3bd;
-  
+
   /* Error colors */
   --error-text: #f87171;
   --error-border: rgba(248, 113, 113, 0.2);
@@ -238,12 +247,12 @@ body.sanity-embedded > * {
      FOUNDATION COLORS
      Base color values used throughout the theme
      =========================================== */
-  
+
   /* Base backgrounds */
   --base-bg: #fefefe;
   --base-bg-alt: #f9fafb;
   --base-bg-secondary: #f5f7f9;
-  
+
   /* Brand color opacity variants */
   --alpha-brand-4: rgba(44, 163, 189, 0.04);
   --alpha-brand-5: rgba(44, 163, 189, 0.05);
@@ -255,7 +264,7 @@ body.sanity-embedded > * {
   --alpha-brand-20: rgba(44, 163, 189, 0.2);
   --alpha-brand-30: rgba(44, 163, 189, 0.3);
   --alpha-brand-40: rgba(44, 163, 189, 0.4);
-  
+
   /* Neutral opacity variants */
   --alpha-neutral-10: rgba(0, 0, 0, 0.1);
   --alpha-neutral-40: rgba(226, 232, 240, 0.4);
@@ -268,25 +277,25 @@ body.sanity-embedded > * {
 
   /* Accessible Text Color for Brand (Darker for Light Mode) */
   --brand-text: #0e8aa5;
-  
+
   /* iPhone Frame */
   --iphone-frame: #000000;
   --iphone-notch: #000000;
   --iphone-camera-border: #1a1a1a;
-  
+
   /* Background colors - Soft neutrals with blue undertones */
   --bg-primary: var(--base-bg);
   --bg-primary-dark: var(--base-bg);
   --bg-secondary: var(--base-bg);
   --bg-tertiary: var(--base-bg);
   --bg-elevated: var(--base-bg);
-  
+
   /* Surface colors */
   --surface-primary: var(--base-bg);
   --surface-secondary: var(--base-bg);
   --surface-elevated: var(--alpha-brand-4);
   --surface-hover: var(--alpha-brand-6);
-  
+
   /* Text colors - Deeper for better contrast */
   --text-primary: #1a2332;
   --text-secondary: #3d4f5f;
@@ -295,13 +304,13 @@ body.sanity-embedded > * {
   --text-muted: #8798a8;
   --text-emphasis: #1f2937;
   --text-subtle: #374151;
-  
+
   /* Border colors */
   --border-primary: var(--alpha-neutral-10);
   --border-secondary: var(--alpha-brand-15);
   --border-hover: var(--alpha-brand-30);
   --border-focus: #2ca3bd;
-  
+
   /* Accent colors */
   --accent-primary: var(--alpha-brand-10);
   --accent-secondary: var(--alpha-brand-5);
@@ -325,41 +334,43 @@ body.sanity-embedded > * {
   --services-card-bg: var(--card-bg);
   --services-card-border: var(--card-border);
   --services-orb-bg: var(--bg-secondary);
-  
+
   /* Hero gradient colors */
   --hero-gradient-bg: var(--bg-primary);
   --hero-orb-primary: var(--bg-secondary);
   --hero-orb-secondary: var(--alpha-neutral-40);
-  
+
   /* Additional component-specific colors */
   --quote-color: var(--alpha-brand-40);
   --stat-bg: var(--alpha-neutral-40);
   --feature-card-bg: var(--bg-secondary);
   --feature-card-hover-bg: var(--alpha-brand-6);
   --icon-stroke: #2ca3bd;
-  
+
   /* Progress colors */
   --progress-danger: #dc2626;
   --progress-warning: #d97706;
   --progress-success: #2ca3bd;
-  
+
   /* Error colors */
   --error-text: #dc2626;
   --error-border: rgba(220, 38, 38, 0.2);
-  --hero-grid-pattern: linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
-  
+  --hero-grid-pattern:
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+
   /* Card colors */
   --card-bg: linear-gradient(to bottom right, var(--surface-primary), var(--surface-primary));
   --card-border: var(--alpha-brand-20);
   --card-shadow: rgba(59, 130, 246, 0.5);
   --card-code-bg: var(--bg-secondary);
-  
+
   /* Scroll indicator */
   --scroll-border: rgba(156, 163, 175, 1);
-  
+
   /* Divider line */
   --divider-gradient: linear-gradient(to right, transparent, rgba(209, 213, 219, 1), transparent);
-  
+
   /* Logo filter */
   --logo-filter: invert(1);
 }
@@ -432,8 +443,9 @@ body.sanity-embedded > * {
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-on-scroll.in-view {
@@ -445,7 +457,9 @@ body.sanity-embedded > * {
 .animate-slide-right {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .animate-slide-right.in-view {
@@ -454,16 +468,30 @@ body.sanity-embedded > * {
 }
 
 /* Stagger delays — apply to children */
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
-.stagger-6 { transition-delay: 0.6s; }
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+.stagger-4 {
+  transition-delay: 0.4s;
+}
+.stagger-5 {
+  transition-delay: 0.5s;
+}
+.stagger-6 {
+  transition-delay: 0.6s;
+}
 
 /* Carousel slide transitions */
 .carousel-slide {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .carousel-slide-enter {
@@ -500,7 +528,8 @@ body.sanity-embedded > * {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -512,10 +541,13 @@ body.sanity-embedded > * {
   animation: float 6s ease-in-out infinite;
 }
 
-
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-scroll-left {
@@ -737,51 +769,74 @@ html:not(.theme-ready) * {
   color: #2ca3bd;
 }
 
-
 /* Custom Animations from Legacy */
 
 @keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
-  50% { 
+  50% {
     opacity: 1;
     transform: scale(1.05);
   }
 }
 
 @keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 @keyframes float-subtle {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @keyframes slide {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes grow {
-  0% { 
+  0% {
     transform: scaleY(0);
     opacity: 0;
   }
-  100% { 
+  100% {
     transform: scaleY(1);
     opacity: 1;
   }

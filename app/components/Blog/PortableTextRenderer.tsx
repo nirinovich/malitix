@@ -1,12 +1,12 @@
-import { PortableText, type PortableTextComponents } from '@portabletext/react';
-import type { SanityImage } from '~/types';
-import type { PortableTextValue } from '~/types/portableText';
-import { urlFor } from '~/utils/sanityImage';
-import { sanitizeUrl } from '~/utils/sanitizeUrl';
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { SanityImage } from "~/types";
+import type { PortableTextValue } from "~/types/portableText";
+import { urlFor } from "~/utils/sanityImage";
+import { sanitizeUrl } from "~/utils/sanitizeUrl";
 
 /** Ref callback that removes blur-up when the image is already cached. */
 function blurUpRef(img: HTMLImageElement | null) {
-  if (img?.complete) img.classList.remove('blur-up');
+  if (img?.complete) img.classList.remove("blur-up");
 }
 
 type TextChildrenProps = { children?: React.ReactNode };
@@ -19,20 +19,22 @@ type CodeProps = { value?: { code?: string; language?: string; filename?: string
 function slugify(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9àâäéèêëïîôùûüÿçœæ\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/[^a-z0-9àâäéèêëïîôùûüÿçœæ\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 /** Extract raw text from React children (works with Portable Text spans). */
 function childrenToText(children: React.ReactNode): string {
-  if (typeof children === 'string') return children;
-  if (Array.isArray(children)) return children.map(childrenToText).join('');
-  if (children && typeof children === 'object' && 'props' in children) {
-    return childrenToText((children as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(childrenToText).join("");
+  if (children && typeof children === "object" && "props" in children) {
+    return childrenToText(
+      (children as React.ReactElement<{ children?: React.ReactNode }>).props.children
+    );
   }
-  return '';
+  return "";
 }
 
 const components: PortableTextComponents = {
@@ -41,7 +43,10 @@ const components: PortableTextComponents = {
       const text = childrenToText(children);
       const id = slugify(text);
       return (
-        <h2 id={id} className="text-2xl font-semibold text-[var(--text-primary)] mt-12 mb-4 scroll-mt-24">
+        <h2
+          id={id}
+          className="text-2xl font-semibold text-[var(--text-primary)] mt-12 mb-4 scroll-mt-24"
+        >
           {children}
         </h2>
       );
@@ -50,20 +55,21 @@ const components: PortableTextComponents = {
       const text = childrenToText(children);
       const id = slugify(text);
       return (
-        <h3 id={id} className="text-xl font-semibold text-[var(--text-primary)] mt-8 mb-3 scroll-mt-24">
+        <h3
+          id={id}
+          className="text-xl font-semibold text-[var(--text-primary)] mt-8 mb-3 scroll-mt-24"
+        >
           {children}
         </h3>
       );
     },
     blockquote: ({ children }: TextChildrenProps) => (
-      <blockquote className="border-l-4 border-[#2ca3bd] bg-[#2ca3bd]/5 rounded-r-xl pl-5 pr-4 py-4 italic text-[var(--text-secondary)] my-6">
+      <blockquote className="border-l-4 border-[var(--brand-primary)] bg-[var(--brand-primary)]/5 rounded-r-xl pl-5 pr-4 py-4 italic text-[var(--text-secondary)] my-6">
         {children}
       </blockquote>
     ),
     normal: ({ children }: TextChildrenProps) => (
-      <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-5">
-        {children}
-      </p>
+      <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-5">{children}</p>
     ),
   },
   marks: {
@@ -75,12 +81,12 @@ const components: PortableTextComponents = {
       }
 
       const isExternal =
-        !href.startsWith('/') &&
-        !href.startsWith('#') &&
-        !href.startsWith('mailto:') &&
-        !href.startsWith('tel:');
-      const rel = isExternal ? 'noopener noreferrer' : undefined;
-      const target = value?.openInNewTab ? '_blank' : undefined;
+        !href.startsWith("/") &&
+        !href.startsWith("#") &&
+        !href.startsWith("mailto:") &&
+        !href.startsWith("tel:");
+      const rel = isExternal ? "noopener noreferrer" : undefined;
+      const target = value?.openInNewTab ? "_blank" : undefined;
 
       return (
         <a
@@ -106,7 +112,7 @@ const components: PortableTextComponents = {
     image: ({ value }: ImageProps) => {
       const image = value;
       const imageUrl = image?.asset?.url
-        ? urlFor(image).width(1200).height(700).fit('crop').url()
+        ? urlFor(image).width(1200).height(700).fit("crop").url()
         : null;
       if (!imageUrl) return null;
       const lqip = image?.asset?.metadata?.lqip;
@@ -115,11 +121,11 @@ const components: PortableTextComponents = {
           <img
             ref={lqip ? blurUpRef : undefined}
             src={imageUrl}
-            alt={image?.alt || ''}
-            className={`w-full rounded-2xl border border-[var(--border-primary)] ${lqip ? 'blur-up' : ''}`}
+            alt={image?.alt || ""}
+            className={`w-full rounded-2xl border border-[var(--border-primary)] ${lqip ? "blur-up" : ""}`}
             loading="lazy"
-            style={lqip ? { backgroundImage: `url(${lqip})`, backgroundSize: 'cover' } : undefined}
-            onLoad={(e) => e.currentTarget.classList.remove('blur-up')}
+            style={lqip ? { backgroundImage: `url(${lqip})`, backgroundSize: "cover" } : undefined}
+            onLoad={(e) => e.currentTarget.classList.remove("blur-up")}
           />
           {image?.alt && (
             <figcaption className="mt-3 text-sm text-center text-[var(--text-muted)]">
@@ -138,7 +144,7 @@ const components: PortableTextComponents = {
               {value.filename}
             </div>
           )}
-          <pre className={`blog-code-block ${value.filename ? 'rounded-t-none' : ''}`}>
+          <pre className={`blog-code-block ${value.filename ? "rounded-t-none" : ""}`}>
             <code>{value.code}</code>
           </pre>
         </div>
@@ -147,14 +153,10 @@ const components: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }: TextChildrenProps) => (
-      <ul className="list-disc pl-5 text-[var(--text-secondary)] space-y-2 mb-5">
-        {children}
-      </ul>
+      <ul className="list-disc pl-5 text-[var(--text-secondary)] space-y-2 mb-5">{children}</ul>
     ),
     number: ({ children }: TextChildrenProps) => (
-      <ol className="list-decimal pl-5 text-[var(--text-secondary)] space-y-2 mb-5">
-        {children}
-      </ol>
+      <ol className="list-decimal pl-5 text-[var(--text-secondary)] space-y-2 mb-5">{children}</ol>
     ),
   },
 };

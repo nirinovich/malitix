@@ -30,11 +30,9 @@ export interface SocialLink {
   icon: string;
 }
 
-export type HeroVariant = 'animated' | 'clean';
-export type ServicesVariant = 'bento' | 'reference';
-export type NavbarVariant = 'default' | 'centered' | 'minimal';
-
-
+export type HeroVariant = "animated" | "clean";
+export type ServicesVariant = "bento" | "reference";
+export type NavbarVariant = "default" | "centered" | "minimal";
 
 /* Common Component Props */
 export interface BaseComponentProps {
@@ -98,9 +96,7 @@ export interface SEOConfig {
 }
 
 /* Conversion Landing Types */
-export type IconComponent = React.ComponentType<
-  React.SVGProps<SVGSVGElement> & { size?: number }
->;
+export type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }>;
 
 export interface ConversionLandingValueItem {
   icon: IconComponent;
@@ -127,4 +123,4 @@ export interface ConversionLandingFaqItem {
   answer: string;
 }
 
-export * from './blog';
+export * from "./blog";

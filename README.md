@@ -127,7 +127,7 @@ import { type RouteConfig, index, route, layout } from "@react-router/dev/routes
 
 export default [
   layout("root.tsx", [
-    index("routes/home.tsx"),           // /
+    index("routes/home.tsx"), // /
     route("custom-dev", "routes/custom-dev.tsx"),
     route("mobile-app", "routes/mobile-app.tsx"),
     // ...
@@ -141,7 +141,7 @@ This approach provides **explicit control** over route structure without relying
 
 - **Global styles**: `app/app.css` (design tokens, resets, utilities)
 - **Component styles**: CSS Modules or Tailwind utility classes
-- **Theme variables**: CSS custom properties (--color-*, --space-*, etc.)
+- **Theme variables**: CSS custom properties (--color-_, --space-_, etc.)
 - **Responsive breakpoints**: Preserved from legacy design
 
 ## Performance Goals

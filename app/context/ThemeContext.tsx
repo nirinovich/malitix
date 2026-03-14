@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useLayoutEffect } from 'react';
-import type { ReactNode } from 'react';
+import { createContext, useContext, useState, useLayoutEffect } from "react";
+import type { ReactNode } from "react";
 
-export type Theme = 'light' | 'dark';
+export type Theme = "light" | "dark";
 
 export interface ThemeContextType {
   theme: Theme;
@@ -16,12 +16,12 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
  * Falls back to 'light' if detection is not supported
  */
 function getSystemPreference(): Theme {
-  if (typeof window === 'undefined') {
-    return 'light';
+  if (typeof window === "undefined") {
+    return "light";
   }
 
-  const query = window.matchMedia('(prefers-color-scheme: dark)');
-  return query.matches ? 'dark' : 'light';
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+  return query.matches ? "dark" : "light";
 }
 
 /**
@@ -33,13 +33,13 @@ function getSystemPreference(): Theme {
  * This function is called synchronously to prevent flash of wrong theme.
  */
 function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') {
-    return 'light';
+  if (typeof window === "undefined") {
+    return "light";
   }
 
   // Check localStorage first (highest priority)
-  const stored = localStorage.getItem('theme') as Theme | null;
-  if (stored === 'light' || stored === 'dark') {
+  const stored = localStorage.getItem("theme") as Theme | null;
+  if (stored === "light" || stored === "dark") {
     return stored;
   }
 
@@ -52,21 +52,21 @@ function getInitialTheme(): Theme {
  * Returns a cleanup function to remove the listener
  */
 function listenToSystemPreference(callback: (theme: Theme) => void) {
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     return () => {};
   }
 
-  const query = window.matchMedia('(prefers-color-scheme: dark)');
-  
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+
   // Modern browsers support addEventListener on MediaQueryList
   const handler = (e: MediaQueryListEvent | MediaQueryList) => {
-    callback(e.matches ? 'dark' : 'light');
+    callback(e.matches ? "dark" : "light");
   };
 
   // Use the modern addEventListener if available, fallback to addListener
   if (query.addEventListener) {
-    query.addEventListener('change', handler as EventListener);
-    return () => query.removeEventListener('change', handler as EventListener);
+    query.addEventListener("change", handler as EventListener);
+    return () => query.removeEventListener("change", handler as EventListener);
   } else {
     // Fallback for older browsers
     query.addListener(handler);
@@ -81,10 +81,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Use useLayoutEffect to update DOM before rendering
   // This prevents flash of wrong theme color
   useLayoutEffect(() => {
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
     const html = document.documentElement;
-    const opposite = theme === 'light' ? 'dark' : 'light';
-    
+    const opposite = theme === "light" ? "dark" : "light";
+
     // Only mutate DOM if needed — avoids blocking main thread during hydration
     if (!html.classList.contains(theme) || html.classList.contains(opposite)) {
       html.classList.remove(opposite);
@@ -94,15 +94,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
 
     // Enable smooth transitions for theme toggle only after first paint
-    if (!html.classList.contains('theme-ready')) {
-      requestAnimationFrame(() => html.classList.add('theme-ready'));
+    if (!html.classList.contains("theme-ready")) {
+      requestAnimationFrame(() => html.classList.add("theme-ready"));
     }
   }, [theme]);
 
   // Listen for system preference changes and update localStorage-less component
   useLayoutEffect(() => {
     // Only listen if user hasn't explicitly set a preference in localStorage
-    const userPreference = localStorage.getItem('theme');
+    const userPreference = localStorage.getItem("theme");
     if (!userPreference) {
       return listenToSystemPreference((newSystemPreference) => {
         setTheme(newSystemPreference);
@@ -111,7 +111,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
@@ -124,7 +124,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within ThemeProvider');
+    throw new Error("useTheme must be used within ThemeProvider");
   }
   return context;
 }

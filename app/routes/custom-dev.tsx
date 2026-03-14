@@ -11,11 +11,13 @@ const CustomDevTestimonials = lazy(() => import("~/components/CustomDev/CustomDe
 const CustomDevGuarantee = lazy(() => import("~/components/CustomDev/CustomDevGuarantee"));
 const CustomDevCTA = lazy(() => import("~/components/CustomDev/CustomDevCTA"));
 
-export const meta: Route.MetaFunction = () => buildMeta({
-  title: "Développement Sur Mesure | Application Web & Mobile en 90 Jours",
-  description: "Arrêtez de tordre votre business pour un logiciel standard. Application web ou mobile sur mesure en 90 jours, garantie sans bug. Budget fixe, propriété totale du code.",
-  url: "https://malitix.com/developpement-sur-mesure",
-});
+export const meta: Route.MetaFunction = () =>
+  buildMeta({
+    title: "Développement Sur Mesure | Application Web & Mobile en 90 Jours",
+    description:
+      "Arrêtez de tordre votre business pour un logiciel standard. Application web ou mobile sur mesure en 90 jours, garantie sans bug. Budget fixe, propriété totale du code.",
+    url: "https://malitix.com/developpement-sur-mesure",
+  });
 
 export default function CustomDevelopment() {
   return (

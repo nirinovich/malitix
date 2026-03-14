@@ -1,17 +1,20 @@
-import { Link } from 'react-router';
-import { Home, ArrowLeft } from 'lucide-react';
+import { Link } from "react-router";
+import { Home, ArrowLeft } from "lucide-react";
 
 export function NotFound() {
   return (
     <>
       <title>404 - Page introuvable | Malitix</title>
-      <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil de Malitix." />
+      <meta
+        name="description"
+        content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil de Malitix."
+      />
       <meta name="robots" content="noindex, follow" />
-      
+
       <div className="min-h-screen flex items-center justify-center px-4 bg-[var(--bg-primary)] relative overflow-hidden">
         {/* Decoration Orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl opacity-30 bg-[#2ca3bd]"></div>
+          <div className="absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl opacity-30 bg-[var(--brand-primary)]"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full blur-3xl opacity-20 bg-[#248fa5]"></div>
         </div>
 
@@ -22,7 +25,7 @@ export function NotFound() {
               404
             </h1>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-[#2ca3bd] to-[#248fa5] bg-clip-text text-transparent">
+              <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-[var(--brand-primary)] to-[#248fa5] bg-clip-text text-transparent">
                 404
               </div>
             </div>
@@ -40,12 +43,12 @@ export function NotFound() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/"
-              className="inline-flex items-center justify-center gap-2 bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold shadow-lg shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               <Home size={20} />
               Retour à l'accueil
             </Link>
-            
+
             <button
               onClick={() => window.history.back()}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border-2 border-[var(--text-secondary)]/20 text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-all duration-300 cursor-pointer"

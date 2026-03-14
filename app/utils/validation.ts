@@ -24,7 +24,7 @@ export interface ContactFormData {
 
 // Conversion Landing lead form validation
 export const CONVERSION_LEAD_VALIDATION = {
-  name: { required: 'Le nom est requis' },
+  name: { required: "Le nom est requis" },
   email: {
     required: "L'email est requis",
     pattern: VALIDATION_PATTERNS.EMAIL,
@@ -32,5 +32,5 @@ export const CONVERSION_LEAD_VALIDATION = {
   website: {
     pattern: VALIDATION_PATTERNS.URL,
   },
-  message: { required: 'Le message est requis' },
+  message: { required: "Le message est requis" },
 };

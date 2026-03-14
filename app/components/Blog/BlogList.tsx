@@ -1,5 +1,5 @@
-import type { BlogPostListItem } from '~/types';
-import { BlogCard } from './BlogCard';
+import type { BlogPostListItem } from "~/types";
+import { BlogCard } from "./BlogCard";
 
 interface BlogListProps {
   posts: BlogPostListItem[];

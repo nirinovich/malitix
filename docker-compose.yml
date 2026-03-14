@@ -11,16 +11,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: app                       # Stage 4
+      target: app # Stage 4
     restart: unless-stopped
     expose:
-      - "3000"                          # only visible to nginx, not host
+      - "3000" # only visible to nginx, not host
     environment:
       - NODE_ENV=production
       - VITE_SANITY_PROJECT_ID=tuac272n
       - VITE_SANITY_DATASET=production
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
       interval: 15s
       timeout: 10s
       retries: 5
@@ -31,7 +37,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: nginx                     # Stage 5
+      target: nginx # Stage 5
     restart: unless-stopped
     ports:
       - "80:80"

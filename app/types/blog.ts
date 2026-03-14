@@ -1,4 +1,4 @@
-import type { PortableTextValue } from './portableText';
+import type { PortableTextValue } from "./portableText";
 
 export interface SanityImageAsset {
   _id: string;

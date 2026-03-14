@@ -1,10 +1,9 @@
-import { ArrowRight, Zap, Shield, TrendingUp, Code2 } from 'lucide-react';
+import { ArrowRight, Zap, Shield, TrendingUp, Code2 } from "lucide-react";
 
 export default function CustomDevHero() {
-
   const scrollToROI = () => {
-    const roiSection = document.getElementById('contact-customdev');
-    roiSection?.scrollIntoView({ behavior: 'smooth' });
+    const roiSection = document.getElementById("contact-customdev");
+    roiSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -12,7 +11,10 @@ export default function CustomDevHero() {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]"
+          style={{ animationDelay: "2s" }}
+        ></div>
         <div className="absolute inset-0 bg-[size:50px_50px] bg-[image:var(--hero-grid-pattern)]"></div>
       </div>
 
@@ -20,10 +22,7 @@ export default function CustomDevHero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight text-[var(--text-primary)]">
-              Votre Logiciel Sur Mesure en{' '}
-              <span className="text-[#2ca3bd]">
-                90 Jours
-              </span>
+              Votre Logiciel Sur Mesure en <span className="text-[var(--brand-primary)]">90 Jours</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed text-[var(--text-secondary)]">
@@ -34,27 +33,28 @@ export default function CustomDevHero() {
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full">
                 <button
                   onClick={scrollToROI}
-                  className="group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]"
+                  className="group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer bg-gradient-to-r from-[var(--brand-primary)] to-[#1e7a8f] text-white shadow-[0_0_30px_rgba(44,163,189,0.3)]"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Mon audit gratuit
-                  </span>
+                  <span className="relative z-10 flex items-center gap-2">Mon audit gratuit</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 </button>
-                
+
                 <button
                   onClick={scrollToROI}
-                  className="group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 border-2 cursor-pointer border-[#2ca3bd] text-[#2ca3bd] hover:bg-[#2ca3bd]/10"
+                  className="group relative px-8 py-4 text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 border-2 cursor-pointer border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Démarrer mon projet
-                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                    <ArrowRight
+                      className="group-hover:translate-x-1 transition-transform"
+                      size={20}
+                    />
                   </span>
                 </button>
               </div>
-              
+
               <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)]">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2ca3bd]"></span>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--brand-primary)]"></span>
                 Audit gratuit et sans engagement
               </div>
             </div>
@@ -65,13 +65,13 @@ export default function CustomDevHero() {
               {/* Glow effect behind mockup */}
               <div className="absolute inset-0 blur-3xl -z-10 bg-[var(--accent-secondary)] scale-90"></div>
               <div className="absolute inset-0 -z-10 rounded-3xl opacity-70 blur-2xl bg-[radial-gradient(circle_at_50%_50%,var(--accent-glow),transparent_60%)]"></div>
-              
+
               {/* Central mockup illustration */}
               <div className="relative w-full max-w-md h-96 rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-10 bg-[image:var(--card-bg)] border border-[var(--card-border)]">
                 <div className="absolute -inset-4 rounded-[28px] opacity-50 blur-2xl bg-[radial-gradient(circle_at_30%_20%,var(--accent-glow),transparent_60%)]"></div>
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-shimmer"></div>
-                
+
                 {/* Browser window mockup */}
                 <div className="p-4 h-full flex flex-col relative z-10">
                   {/* Window controls */}
@@ -80,34 +80,52 @@ export default function CustomDevHero() {
                     <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
                   </div>
-                  
+
                   {/* Content area with grid */}
                   <div className="flex-1 space-y-3">
                     {/* Header bar with pulse animation */}
                     <div className="h-8 rounded-lg animate-pulse-subtle relative overflow-hidden bg-[var(--surface-elevated)]">
                       <div className="absolute inset-0 bg-[image:linear-gradient(to_right,transparent,var(--accent-glow),transparent)] animate-slide"></div>
                     </div>
-                    
+
                     {/* Card grid with stagger animation */}
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-[var(--surface-elevated)]" style={{ animationDelay: '0s' }}>
+                      <div
+                        className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-[var(--surface-elevated)]"
+                        style={{ animationDelay: "0s" }}
+                      >
                         <div className="absolute top-2 left-2 w-8 h-1 rounded-full bg-[var(--brand-primary)] opacity-50"></div>
                         <div className="absolute top-5 left-2 w-12 h-1 rounded-full bg-[var(--brand-primary)] opacity-30"></div>
                       </div>
-                      <div className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-[var(--surface-elevated)]" style={{ animationDelay: '0.2s' }}>
+                      <div
+                        className="h-20 rounded-lg animate-float-subtle relative overflow-hidden bg-[var(--surface-elevated)]"
+                        style={{ animationDelay: "0.2s" }}
+                      >
                         <div className="absolute top-2 left-2 w-8 h-1 rounded-full bg-[var(--brand-primary)] opacity-50"></div>
                         <div className="absolute top-5 left-2 w-12 h-1 rounded-full bg-[var(--brand-primary)] opacity-30"></div>
                       </div>
                     </div>
-                    
+
                     {/* Large content area */}
                     <div className="h-32 rounded-lg relative overflow-hidden bg-[var(--accent-primary)]">
                       {/* Simulated chart bars */}
                       <div className="absolute bottom-2 left-2 right-2 flex items-end gap-1">
-                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '0.5s', height: '2rem' }}></div>
-                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '0.7s', height: '4rem' }}></div>
-                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '0.9s', height: '3rem' }}></div>
-                        <div className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow" style={{ animationDelay: '1.1s', height: '5rem' }}></div>
+                        <div
+                          className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow"
+                          style={{ animationDelay: "0.5s", height: "2rem" }}
+                        ></div>
+                        <div
+                          className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow"
+                          style={{ animationDelay: "0.7s", height: "4rem" }}
+                        ></div>
+                        <div
+                          className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow"
+                          style={{ animationDelay: "0.9s", height: "3rem" }}
+                        ></div>
+                        <div
+                          className="w-full rounded-t opacity-0 bg-[var(--accent-glow)] animate-grow"
+                          style={{ animationDelay: "1.1s", height: "5rem" }}
+                        ></div>
                       </div>
                     </div>
                   </div>
@@ -115,12 +133,12 @@ export default function CustomDevHero() {
               </div>
 
               {/* Floating feature cards */}
-              <div 
-                className="absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 shadow-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
-                style={{ animationDelay: '0s' }}
+              <div
+                className="absolute top-8 -left-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 border border-[var(--brand-primary)]/20 shadow-[var(--brand-primary)]/20 ring-1 ring-[var(--brand-primary)]/10"
+                style={{ animationDelay: "0s" }}
               >
                 <div className="flex items-center gap-2">
-                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                  <div className="bg-[var(--brand-primary)] p-1.5 rounded-lg">
                     <TrendingUp className="text-white" size={16} />
                   </div>
                   <div>
@@ -130,27 +148,29 @@ export default function CustomDevHero() {
                 </div>
               </div>
 
-              <div 
-                className="absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
-                style={{ animationDelay: '0.5s' }}
+              <div
+                className="absolute top-20 -right-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 border border-[var(--brand-primary)]/20 ring-1 ring-[var(--brand-primary)]/10"
+                style={{ animationDelay: "0.5s" }}
               >
                 <div className="flex items-center gap-2">
-                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                  <div className="bg-[var(--brand-primary)] p-1.5 rounded-lg">
                     <Zap className="text-white" size={16} />
                   </div>
                   <div>
                     <div className="font-semibold text-xs text-[var(--text-primary)]">Rapide</div>
-                    <div className="text-[10px] text-[var(--text-secondary)]">&lt; 2s chargement</div>
+                    <div className="text-[10px] text-[var(--text-secondary)]">
+                      &lt; 2s chargement
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div 
-                className="absolute bottom-16 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
-                style={{ animationDelay: '1s' }}
+              <div
+                className="absolute bottom-16 -left-8 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 border border-[var(--brand-primary)]/20 ring-1 ring-[var(--brand-primary)]/10"
+                style={{ animationDelay: "1s" }}
               >
                 <div className="flex items-center gap-2">
-                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                  <div className="bg-[var(--brand-primary)] p-1.5 rounded-lg">
                     <Shield className="text-white" size={16} />
                   </div>
                   <div>
@@ -160,12 +180,12 @@ export default function CustomDevHero() {
                 </div>
               </div>
 
-              <div 
-                className="absolute bottom-8 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[#2ca3bd]/10 to-[#2ca3bd]/5 border border-[#2ca3bd]/20 ring-1 ring-[#2ca3bd]/10"
-                style={{ animationDelay: '1.5s' }}
+              <div
+                className="absolute bottom-8 -right-4 backdrop-blur-xl rounded-xl p-4 shadow-2xl animate-float z-20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 border border-[var(--brand-primary)]/20 ring-1 ring-[var(--brand-primary)]/10"
+                style={{ animationDelay: "1.5s" }}
               >
                 <div className="flex items-center gap-2">
-                  <div className="bg-[#2ca3bd] p-1.5 rounded-lg">
+                  <div className="bg-[var(--brand-primary)] p-1.5 rounded-lg">
                     <Code2 className="text-white" size={16} />
                   </div>
                   <div>

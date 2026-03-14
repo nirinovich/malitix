@@ -42,7 +42,8 @@ export default defineConfig({
           // Sanity Studio into its own chunk (only loaded on /admin)
           // Exclude @sanity/client and @sanity/image-url — they're small and used by blog
           if (
-            (id.includes("node_modules/sanity/") || id.includes("node_modules\\sanity\\")) ||
+            id.includes("node_modules/sanity/") ||
+            id.includes("node_modules\\sanity\\") ||
             id.includes("@sanity/vision") ||
             id.includes("@sanity/icons") ||
             id.includes("@sanity/ui") ||
