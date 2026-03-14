@@ -55,16 +55,21 @@ export default function Contact() {
 
   return (
     <Layout>
-      <div className="min-h-screen pt-20 flex items-center bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden">
+      <div className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-primary)] to-[var(--bg-secondary)]">
         {/* Abstract Background Decorators */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] bg-[var(--brand-primary)]/10 pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] bg-[var(--cta-orb-bg)] pointer-events-none" />
-        <div className="absolute inset-0 cta-grid-pattern opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]"></div>
+          <div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse bg-[var(--bg-secondary)]"
+            style={{ animationDelay: "2s" }}
+          ></div>
+          <div className="absolute inset-0 bg-[size:50px_50px] bg-[image:var(--hero-grid-pattern)]"></div>
+        </div>
 
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 lg:py-0">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-24 items-center">
             {/* Left Side - Presentation */}
-            <div className="space-y-10">
+            <div className="space-y-10 animate-slide-right in-view stagger-1">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2">
                   <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--brand-primary)]"></div>
@@ -72,9 +77,9 @@ export default function Contact() {
                     Consultation Gratuite
                   </span>
                 </div>
-                <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black leading-tight text-[var(--text-primary)]">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[var(--text-primary)]">
                   Discutons de vos <br className="hidden sm:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--brand-primary)] to-[#51cede]">
+                  <span className="text-[var(--brand-primary)]">
                     futurs succès
                   </span>
                 </h1>
@@ -88,7 +93,7 @@ export default function Contact() {
               <div className="grid sm:grid-cols-2 gap-8 pt-8 border-t border-[var(--border-primary)]">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl">
+                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl flex-shrink-0">
                       <Mail className="text-[var(--brand-primary)]" size={24} />
                     </div>
                     <div>
@@ -97,14 +102,14 @@ export default function Contact() {
                       </h3>
                       <a
                         href={`mailto:${COMPANY_INFO.email}`}
-                        className="text-[var(--text-primary)] font-medium hover:text-[var(--brand-primary)] transition-colors"
+                        className="text-[var(--text-primary)] font-medium hover:text-[var(--brand-primary)] transition-colors break-all"
                       >
                         {COMPANY_INFO.email}
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl">
+                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl flex-shrink-0">
                       <Phone className="text-[var(--brand-primary)]" size={24} />
                     </div>
                     <div>
@@ -123,7 +128,7 @@ export default function Contact() {
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl">
+                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl flex-shrink-0">
                       <Building2 className="text-[var(--brand-primary)]" size={24} />
                     </div>
                     <div>
@@ -136,7 +141,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl">
+                    <div className="bg-[var(--brand-primary)]/10 p-3 rounded-2xl flex-shrink-0">
                       <Clock className="text-[var(--brand-primary)]" size={24} />
                     </div>
                     <div>
@@ -153,13 +158,10 @@ export default function Contact() {
             </div>
 
             {/* Right Side - Form Card */}
-            <div className="relative">
-              {/* Card Decoration */}
-              <div className="absolute -inset-0.5 bg-gradient-to-br from-[var(--brand-primary)]/50 to-transparent rounded-[2rem] blur opacity-30 pointer-events-none"></div>
-
-              <div className="relative bg-[var(--surface-primary)] backdrop-blur-xl border border-[var(--border-primary)] rounded-[2rem] p-8 sm:p-10 shadow-2xl">
+            <div className="relative animate-on-scroll in-view stagger-2">
+              <div className="relative bg-[image:var(--card-bg)] backdrop-blur-xl border border-[var(--card-border)] rounded-[2rem] p-8 sm:p-10 shadow-2xl">
                 {submissionStatus === "success" ? (
-                  <div className="text-center py-16 space-y-6 animation-fade-in-up">
+                  <div className="text-center py-16 space-y-6 animate-fade-in-up">
                     <div className="inline-flex items-center justify-center w-24 h-24 bg-[var(--brand-primary)]/10 rounded-full mb-4 mx-auto animate-bounce-soft">
                       <CheckCircle2 className="text-[var(--brand-primary)]" size={48} />
                     </div>
@@ -197,7 +199,6 @@ export default function Contact() {
                           placeholder="Jean Dupont"
                           error={errors.name?.message}
                           {...register("name", { required: "Le nom est requis" })}
-                          className="!bg-[var(--bg-primary)]"
                         />
 
                         <TextInput
@@ -209,7 +210,6 @@ export default function Contact() {
                             required: "L'email est requis",
                             pattern: VALIDATION_PATTERNS.EMAIL,
                           })}
-                          className="!bg-[var(--bg-primary)]"
                         />
                       </div>
 
@@ -219,7 +219,6 @@ export default function Contact() {
                         error={errors.website?.message}
                         icon={<Globe size={18} className="text-[var(--text-muted)]" />}
                         {...register("website")}
-                        className="!bg-[var(--bg-primary)]"
                       />
 
                       <Textarea
@@ -228,13 +227,12 @@ export default function Contact() {
                         rows={5}
                         error={errors.message?.message}
                         {...register("message", { required: "Le message est requis" })}
-                        className="!bg-[var(--bg-primary)]"
                       />
 
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-[var(--brand-primary)] to-[#36bccf] hover:from-[#248fa5] hover:to-[var(--brand-primary)] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-[0_10px_30px_-10px_rgba(44,163,189,0.5)] hover:shadow-[0_15px_40px_-10px_rgba(44,163,189,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 mt-4 cursor-pointer"
+                        className="w-full bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-[0_10px_30px_-10px_var(--alpha-brand-50)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 mt-4 cursor-pointer"
                       >
                         {isSubmitting ? "Envoi en cours..." : "Planifier ma consultation"}
                         <Send
@@ -248,7 +246,7 @@ export default function Contact() {
                       </button>
 
                       <p className="text-xs text-center text-[var(--text-muted)] mt-4">
-                        Vos informations sont sécurisées et ne seront jamais partagées.
+                         Vos informations sont sécurisées et ne seront jamais partagées.
                       </p>
                     </form>
                   </>
