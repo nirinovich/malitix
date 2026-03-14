@@ -1,4 +1,4 @@
-import { RefreshCcw, Smartphone, Zap, Cog, ArrowRight, Globe, Shield, Database, Brain } from 'lucide-react';
+import { RefreshCcw, Smartphone, Zap, Cog, ArrowRight, Globe } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { useRef, useEffect } from 'react';
 import type { LucideIcon } from 'lucide-react';

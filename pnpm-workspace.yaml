@@ -1,6 +1,5 @@
 packages:
   - .
-  - sanity-studio
 
 onlyBuiltDependencies:
   - sharp

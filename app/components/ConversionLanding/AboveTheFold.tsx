@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { ArrowRight, Target } from "lucide-react";
 import { CONVERSION_LANDING_ABOVE_THE_FOLD } from "~/utils/constants";
 import { useInView } from "~/hooks/useInView";
