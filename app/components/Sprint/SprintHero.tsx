@@ -65,7 +65,7 @@ export default function SprintHero() {
           <div className="space-y-6 sm:space-y-8 order-2 lg:order-1 animate-slide-right in-view">
             {/* Headline */}
             <div className="space-y-4 sm:space-y-5 animate-on-scroll in-view stagger-1">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-[var(--text-primary)]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[var(--text-primary)]">
                 Vos projets IT{" "}
                 <span className="relative inline-block">
                   <span className="text-[var(--brand-primary)]">en retard ?</span>

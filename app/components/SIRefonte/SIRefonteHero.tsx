@@ -28,7 +28,7 @@ export default function SIRefonteHero() {
           <div className="space-y-8">
             {/* Main Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] text-[var(--text-primary)]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[var(--text-primary)]">
                 Votre SI doit{" "}
                 <span className="relative inline-block">
                   <span className="text-[var(--brand-primary)]">accélérer</span>

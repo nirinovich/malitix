@@ -50,7 +50,7 @@ const MobileAppHero = React.memo(() => {
           {/* Left: Minimal Headline */}
           <div className="space-y-4 sm:space-y-6">
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[var(--text-primary)] leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[var(--text-primary)]">
                 Catapultez votre appli mobile.
               </h1>
               <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[var(--brand-primary)] mt-3 sm:mt-4">

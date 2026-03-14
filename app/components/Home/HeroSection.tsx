@@ -184,7 +184,7 @@ export function HeroSection() {
           {/* Right Side - Content */}
           <div className="text-center lg:text-left space-y-8 animate-slide-right in-view">
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-6xl font-bold leading-tight text-[var(--text-primary)]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[var(--text-primary)]">
               {HERO_CONTENT.animated.headline.split("\n").map((line, lineIndex) => (
                 <span
                   key={line}
