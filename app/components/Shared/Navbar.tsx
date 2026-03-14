@@ -153,7 +153,7 @@ export function Navbar() {
               <div
                 className="absolute top-full left-0 pt-3 transition-all duration-200 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
               >
-                <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border overflow-hidden bg-white dark:bg-gray-900">
+                <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border border-[var(--border-primary)] overflow-hidden bg-[var(--surface-primary)]">
                   <div className="p-2">
                     {SERVICES_MENU.map((service) => (
                       <Link
@@ -168,10 +168,10 @@ export function Navbar() {
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[var(--brand-text)] transition-colors">
+                            <div className="font-semibold text-sm mb-1 text-[var(--text-primary)] group-hover/item:text-[var(--brand-text)] transition-colors">
                               {service.label}
                             </div>
-                            <div className="dropdown-desc text-xs text-gray-500">
+                            <div className="dropdown-desc text-xs text-[var(--text-secondary)]">
                               {service.description}
                             </div>
                           </div>
@@ -274,7 +274,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 border-t mobile-menu bg-white dark:bg-gray-900 transition-all duration-300 ${
+        className={`md:hidden absolute top-full left-0 right-0 border-t border-[var(--border-primary)] mobile-menu bg-[var(--surface-primary)] transition-all duration-300 ${
           isMobileMenuOpen
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 -translate-y-4 pointer-events-none'
