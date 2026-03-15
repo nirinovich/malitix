@@ -42,6 +42,8 @@ export function Navbar() {
   const location = useLocation();
   const isBlogActive = location.pathname.startsWith("/blog");
   const isContactActive = location.pathname === "/contact";
+  const isServicesActive = location.pathname === "/services";
+  const isAboutActive = location.pathname === "/about-us";
 
   // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
   useEffect(() => {
@@ -150,10 +152,10 @@ export function Navbar() {
             {/* Services Dropdown - Pure CSS Hover */}
             <div className="relative group">
               <button
-                className={`nav-link relative py-2 transition-colors flex items-center gap-2 cursor-pointer leading-none ${isActiveHash("#services") ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+                className={`nav-link relative py-2 transition-colors flex items-center gap-2 cursor-pointer leading-none ${isServicesActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
                 aria-haspopup="menu"
                 type="button"
-                onClick={() => handleNavClick("#services")}
+                onClick={() => handleNavClick("/services")}
               >
                 Services
                 <ChevronDown
@@ -162,7 +164,7 @@ export function Navbar() {
                 />
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                    isActiveHash("#services") ? "w-full" : "w-0 group-hover:w-full"
+                    isServicesActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 ></span>
               </button>
@@ -203,18 +205,19 @@ export function Navbar() {
             </div>
 
             {/* À propos */}
-            <button
-              onClick={() => handleNavClick("#about")}
-              aria-current={isActiveHash("#about") ? "page" : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isActiveHash("#about") ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+            <Link
+              to="/about-us"
+              prefetch="intent"
+              aria-current={isAboutActive ? "page" : undefined}
+              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isAboutActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
               À propos
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                  isActiveHash("#about") ? "w-full" : "w-0 group-hover:w-full"
+                  isAboutActive ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               ></span>
-            </button>
+            </Link>
 
             {/* Contact */}
             <Link
@@ -344,14 +347,16 @@ export function Navbar() {
             </div>
           </div>
 
-          <button
-            onClick={() => handleNavClick("#about")}
+          <Link
+            to="/about-us"
+            prefetch="intent"
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              isActiveHash("#about") ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
+              isAboutActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
             }`}
           >
             À propos
-          </button>
+          </Link>
 
           <Link
             to="/contact"

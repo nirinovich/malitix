@@ -10,6 +10,8 @@ export default [
   route("blog", "routes/blog.tsx"),
   route("blog/:slug", "routes/blog.$slug.tsx"),
   route("contact", "routes/contact.tsx"),
+  route("services", "routes/services.tsx"),
+  route("about-us", "routes/about-us.tsx"),
   route("admin/*", "routes/admin.tsx"),
   route("politique-de-confidentialite", "routes/privacy-policy.tsx"),
   route("mentions-legales", "routes/legal-notice.tsx"),
