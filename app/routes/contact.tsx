@@ -30,7 +30,7 @@ export default function Contact() {
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-24 items-center">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
             {/* Left Side - Presentation */}
             <div className="space-y-10 animate-slide-right in-view stagger-1">
               <div className="space-y-6">
