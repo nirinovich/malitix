@@ -79,7 +79,7 @@ function ServiceCard({ service, layout, onClick }: ServiceCardProps) {
   return (
     <button
       onClick={onClick}
-      className={`${layout} group cursor-pointer backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden text-left border border-[var(--brand-primary)]/20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/50 hover:shadow-[var(--brand-primary)]/20 animate-on-scroll`}
+      className={`${layout} group cursor-pointer backdrop-blur-xl rounded-3xl p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden text-left border border-[var(--brand-primary)]/20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/50 hover:shadow-[var(--brand-primary)]/20 animate-on-scroll`}
     >
       {/* Glow */}
       <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--brand-primary)]/10" />
@@ -151,7 +151,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)] relative"
+      className="py-20 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary)] relative"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -168,7 +168,7 @@ export function ServicesSection() {
             </span>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--brand-primary)]"></div>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-[var(--text-primary)] leading-tight">
             Une expertise complète pour tous vos besoins tech
           </h2>
           <p className="text-lg text-[var(--text-secondary)]">

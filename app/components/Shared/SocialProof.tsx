@@ -46,13 +46,13 @@ export function SocialProof({
   id = "social-proof"
 }: SocialProofProps) {
   return (
-    <section id={id} className={`py-20 bg-[var(--bg-secondary)] ${className}`}>
+    <section id={id} className={`py-16 bg-[var(--bg-secondary)] ${className}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-primary)] font-semibold">
             {eyebrow}
           </div>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
+          <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-[var(--text-primary)]">
             {title}
           </h2>
         </div>

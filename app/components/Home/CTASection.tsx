@@ -25,7 +25,7 @@ export function CTASection() {
   return (
     <section
       id="contact"
-      className="py-24 bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)] relative overflow-hidden"
+      className="py-20 bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)] relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
@@ -45,10 +45,10 @@ export function CTASection() {
                 </span>
                 <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--cta-accent)]"></div>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-[var(--text-primary)]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold mb-5 text-[var(--text-primary)] leading-[1.1]">
                 Prêt à propulser votre entreprise ?
               </h2>
-              <p className="text-xl leading-relaxed text-[var(--text-secondary)]">
+              <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
                 Discutons de votre projet et découvrons comment Malitix peut vous aider à atteindre
                 vos objectifs technologiques.
               </p>

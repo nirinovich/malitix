@@ -31,7 +31,7 @@ export function TrustStats() {
     <section
       ref={sectionRef}
       id="about"
-      className="py-24 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden"
+      className="py-20 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
@@ -54,7 +54,7 @@ export function TrustStats() {
 
         {/* About Malitix - Human Touch */}
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-6 animate-on-scroll stagger-2">
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-4 leading-tight text-[var(--text-primary)]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold mb-4 leading-tight text-[var(--text-primary)]">
             Chez Malitix, nous ne construisons pas que du code,{" "}
             <span className="text-[var(--brand-primary)]">nous créons des solutions qui changent la donne</span>
           </h2>
@@ -78,7 +78,7 @@ export function TrustStats() {
             return (
               <div
                 key={index}
-                className={`group relative backdrop-blur-xl rounded-3xl p-8 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[var(--brand-primary)]/50 hover:shadow-[var(--brand-primary)]/20 animate-on-scroll stagger-${index + 4}`}
+                className={`group relative backdrop-blur-xl rounded-2xl p-6 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[var(--brand-primary)]/50 hover:shadow-[var(--brand-primary)]/20 animate-on-scroll stagger-${index + 4}`}
               >
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[var(--brand-primary)]/0 to-[var(--brand-primary)]/0 transition-all duration-500 group-hover:from-[var(--brand-primary)]/10 group-hover:to-transparent"></div>
@@ -91,7 +91,7 @@ export function TrustStats() {
 
                   {/* Stat Value */}
                   <div>
-                    <div className="text-4xl lg:text-5xl font-bold mb-2 text-[var(--text-primary)]">
+                    <div className="text-3xl lg:text-4xl font-bold mb-2 text-[var(--text-primary)]">
                       <CountUp end={stat.value} suffix={stat.suffix || ""} isVisible={isVisible} />
                     </div>
                     <div className="text-sm font-medium text-[var(--text-secondary)]">
