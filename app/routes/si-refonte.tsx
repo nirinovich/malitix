@@ -6,6 +6,7 @@ import SIRefonteSolution from "~/components/SIRefonte/SIRefonteSolution";
 import SIRefonteOffers from "~/components/SIRefonte/SIRefonteOffers";
 import SIRefonteBenefits from "~/components/SIRefonte/SIRefonteBenefits";
 import SIRefonteContact from "~/components/SIRefonte/SIRefonteContact";
+import { SocialProof } from "~/components/Shared/SocialProof";
 
 import { buildMeta } from "~/utils/seo";
 
@@ -25,6 +26,7 @@ export default function SIRefonte() {
       <SIRefonteSolution />
       <SIRefonteOffers />
       <SIRefonteBenefits />
+      <SocialProof />
       <SIRefonteContact />
     </Layout>
   );

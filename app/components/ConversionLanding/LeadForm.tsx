@@ -1,39 +1,8 @@
-import { useState } from "react";
-import { CheckCircle2, Send } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { SharedContactForm } from "~/components/Shared/Form/SharedContactForm";
 import { CONVERSION_LANDING_LEAD_FORM } from "~/utils/constants";
-import { submitContactForm } from "~/utils/forms/submitContact";
-import { CONVERSION_LEAD_VALIDATION } from "~/utils/validation";
-
-interface LeadFormData {
-  name: string;
-  email: string;
-  website?: string;
-  message: string;
-}
+import { CheckCircle2 } from "lucide-react";
 
 export function LeadForm() {
-  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<LeadFormData>();
-
-  const onSubmit = async (data: LeadFormData) => {
-    try {
-      await submitContactForm({ data, source: "Conversion Landing" });
-      setSubmissionStatus("success");
-      reset();
-      setTimeout(() => setSubmissionStatus("idle"), 3000);
-    } catch (err) {
-      console.error(err);
-      setSubmissionStatus("error");
-    }
-  };
-
   return (
     <section id="lead-form" className="py-24 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,126 +29,13 @@ export function LeadForm() {
             </div>
           </div>
 
-          <div className="rounded-3xl p-8 border shadow-2xl border-[var(--border-primary)] bg-[var(--surface-elevated)]">
-            {submissionStatus === "success" ? (
-              <div className="text-center py-12 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-[var(--brand-primary)]/20 rounded-full">
-                  <CheckCircle2 className="text-[var(--brand-primary)]" size={40} />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-2 text-[var(--text-primary)]">
-                    Message envoyé !
-                  </h3>
-                  <p className="text-[var(--text-secondary)]">
-                    Nous reviendrons vers vous sous 24 heures.
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                {submissionStatus === "error" && (
-                  <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500">
-                    Erreur lors de l'envoi du formulaire
-                  </div>
-                )}
-
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block font-medium mb-2 text-[var(--text-primary)]"
-                  >
-                    Nom complet *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    {...register("name", CONVERSION_LEAD_VALIDATION.name)}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
-                    placeholder="Jean Dupont"
-                  />
-                  {errors.name && (
-                    <p className="mt-2 text-sm text-red-500">{errors.name.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block font-medium mb-2 text-[var(--text-primary)]"
-                  >
-                    Email professionnel *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    {...register("email", CONVERSION_LEAD_VALIDATION.email)}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
-                    placeholder="jean@entreprise.fr"
-                  />
-                  {errors.email && (
-                    <p className="mt-2 text-sm text-red-500">{errors.email.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="website"
-                    className="block font-medium mb-2 text-[var(--text-primary)]"
-                  >
-                    Site web
-                  </label>
-                  <input
-                    type="text"
-                    id="website"
-                    {...register("website", CONVERSION_LEAD_VALIDATION.website)}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
-                    placeholder="https://votre-site.com"
-                  />
-                  {errors.website && (
-                    <p className="mt-2 text-sm text-red-500">{errors.website.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block font-medium mb-2 text-[var(--text-primary)]"
-                  >
-                    Parlez-nous de votre projet *
-                  </label>
-                  <textarea
-                    id="message"
-                    {...register("message", CONVERSION_LEAD_VALIDATION.message)}
-                    rows={4}
-                    className="w-full rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20 transition-all resize-none bg-[var(--form-input-bg)] border border-[var(--form-input-border)] text-[var(--form-input-text)] placeholder-[var(--form-input-placeholder)]"
-                    placeholder="Décrivez votre besoin et vos sprints à venir..."
-                  />
-                  {errors.message && (
-                    <p className="mt-2 text-sm text-red-500">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                >
-                  {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
-                  <Send size={20} className={isSubmitting ? "animate-pulse" : ""} />
-                </button>
-
-                <p className="text-sm text-center text-[var(--text-tertiary)]">
-                  En envoyant ce formulaire, vous acceptez notre{" "}
-                  <a
-                    href="/politique-de-confidentialite"
-                    className="text-[var(--brand-primary)] hover:underline"
-                  >
-                    {CONVERSION_LANDING_LEAD_FORM.privacyLabel}
-                  </a>
-                  .
-                </p>
-              </form>
-            )}
+          <div className="relative animate-on-scroll in-view">
+             <SharedContactForm 
+                source="Conversion Landing"
+                buttonText="Envoyer ma demande"
+                title="Demande d'informations"
+                subtitle="Réponse sous 24h ouvrées."
+             />
           </div>
         </div>
       </div>

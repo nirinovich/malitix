@@ -7,7 +7,7 @@ import CustomDevProblem from "~/components/CustomDev/CustomDevProblem";
 
 const CustomDevSolution = lazy(() => import("~/components/CustomDev/CustomDevSolution"));
 const CustomDevStack = lazy(() => import("~/components/CustomDev/CustomDevStack"));
-const CustomDevTestimonials = lazy(() => import("~/components/CustomDev/CustomDevTestimonials"));
+const SocialProof = lazy(() => import("~/components/Shared/SocialProof").then(m => ({ default: m.SocialProof })));
 const CustomDevGuarantee = lazy(() => import("~/components/CustomDev/CustomDevGuarantee"));
 const CustomDevCTA = lazy(() => import("~/components/CustomDev/CustomDevCTA"));
 
@@ -27,7 +27,7 @@ export default function CustomDevelopment() {
       <Suspense fallback={<div className="min-h-screen" />}>
         <CustomDevSolution />
         <CustomDevStack />
-        <CustomDevTestimonials />
+        <SocialProof />
         <CustomDevGuarantee />
         <CustomDevCTA />
       </Suspense>

@@ -4,7 +4,7 @@ import type { Route } from "./+types/contact";
 import { Mail, Phone, Building2, Clock } from "lucide-react";
 import { COMPANY_INFO } from "~/utils/constants";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: "Consultation Gratuite | Malitix" },
     {
@@ -121,11 +121,11 @@ export default function Contact() {
             </div>
 
             <div className="relative animate-on-scroll in-view stagger-2">
-               <SharedContactForm 
-                  source="Contact Page" 
-                  buttonText="Planifier ma consultation"
-                  title="Envoyez-nous un message"
-               />
+              <SharedContactForm
+                source="Contact Page"
+                buttonText="Planifier ma consultation"
+                title="Envoyez-nous un message"
+              />
             </div>
           </div>
         </div>

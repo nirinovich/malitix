@@ -1,46 +1,7 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { ArrowRight, Mail, Globe, User, Phone, CheckCircle } from "lucide-react";
-import { TextInput } from "~/components/Shared/Form/TextInput";
-import { Textarea } from "~/components/Shared/Form/Textarea";
-import { FormFeedback } from "~/components/Shared/Form/FormFeedback";
-import { VALIDATION_PATTERNS } from "~/utils/validation";
-import { submitContactForm } from "~/utils/forms/submitContact";
-
-interface SIRefonteFormData {
-  name: string;
-  email: string;
-  website: string;
-  phone?: string;
-  message?: string;
-}
+import { SharedContactForm } from "~/components/Shared/Form/SharedContactForm";
+import { CheckCircle } from "lucide-react";
 
 export default function SIRefonteContact() {
-  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<SIRefonteFormData>();
-
-  const onSubmit = async (data: SIRefonteFormData) => {
-    try {
-      await submitContactForm({ data, source: "LP - SI Refonte" });
-      setSubmissionStatus("success");
-      reset();
-
-      // Reset status after delay to show form again (Legacy behavior)
-      setTimeout(() => {
-        setSubmissionStatus("idle");
-      }, 5000);
-    } catch (err) {
-      console.error(err);
-      setSubmissionStatus("error");
-    }
-  };
-
   return (
     <section
       id="contact-sirefonte"
@@ -67,102 +28,17 @@ export default function SIRefonteContact() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Form */}
-          <div>
-            {/* Form Container */}
-            <div className="p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 bg-[var(--surface-primary)] border-[var(--border-primary)] shadow-lg">
-              {submissionStatus === "success" ? (
-                <FormFeedback
-                  status="success"
-                  message="Demande d'Audit Express envoyée avec succès !"
-                />
-              ) : (
-                <>
-                  {submissionStatus === "error" && <FormFeedback status="error" />}
-
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    {/* Name */}
-                    <TextInput
-                      label="Nom"
-                      placeholder="Jean Dupont"
-                      icon={<User size={20} />}
-                      error={errors.name?.message}
-                      {...register("name", { required: "Le nom est requis" })}
-                      required
-                    />
-
-                    {/* Email */}
-                    <TextInput
-                      label="E-mail"
-                      type="email"
-                      placeholder="jean.dupont@entreprise.fr"
-                      icon={<Mail size={20} />}
-                      error={errors.email?.message}
-                      {...register("email", {
-                        required: "L'email est requis",
-                        pattern: VALIDATION_PATTERNS.EMAIL,
-                      })}
-                      required
-                    />
-
-                    {/* Website */}
-                    <TextInput
-                      label="Votre site web"
-                      placeholder="https://votre-site.com"
-                      icon={<Globe size={20} />}
-                      error={errors.website?.message}
-                      {...register("website", { required: "Le site web est requis" })}
-                      required
-                    />
-
-                    {/* Phone */}
-                    <TextInput
-                      label="Téléphone"
-                      type="tel"
-                      placeholder="+33 6 12 34 56 78"
-                      icon={<Phone size={20} />}
-                      error={errors.phone?.message}
-                      {...register("phone", {
-                        pattern: VALIDATION_PATTERNS.PHONE,
-                      })}
-                    />
-
-                    {/* Message */}
-                    <Textarea
-                      label="Message"
-                      placeholder="Décrivez brièvement votre contexte SI..."
-                      rows={4}
-                      error={errors.message?.message}
-                      {...register("message")}
-                    />
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={`group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[var(--brand-primary)] to-[#248fa5] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 ${
-                        isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
-                    >
-                      {isSubmitting ? "Envoi en cours..." : "Je demande mon Audit Express offert"}
-                      {!isSubmitting && (
-                        <ArrowRight
-                          className="group-hover:translate-x-1 transition-transform"
-                          size={20}
-                        />
-                      )}
-                    </button>
-
-                    <p className="text-xs text-center text-[var(--text-muted)]">
-                      En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix.
-                    </p>
-                  </form>
-                </>
-              )}
-            </div>
+          <div className="relative animate-on-scroll in-view stagger-1">
+            <SharedContactForm 
+              source="LP - SI Refonte"
+              buttonText="Je demande mon Audit Express offert"
+              title="Demandez votre Audit Express"
+              subtitle="Diagnostic 8h offert par nos experts SI."
+            />
           </div>
 
           {/* Right: Benefits/Promise */}
-          <div className="space-y-6 lg:self-center">
+          <div className="space-y-6 lg:self-center animate-on-scroll in-view stagger-2">
             <div className="p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30 shadow-lg">
               <h3 className="text-2xl font-black mb-6 text-[var(--text-primary)]">
                 L'Audit Express — Diagnostic 8h (offert)

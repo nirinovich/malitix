@@ -1,44 +1,6 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { TextInput } from "~/components/Shared/Form/TextInput";
-import { Textarea } from "~/components/Shared/Form/Textarea";
-import { FormFeedback } from "~/components/Shared/Form/FormFeedback";
-import { VALIDATION_PATTERNS } from "~/utils/validation";
-import { submitContactForm } from "~/utils/forms/submitContact";
-import { Mail, Globe, User, ArrowRight } from "lucide-react";
-
-interface SprintFormData {
-  name: string;
-  email: string;
-  website?: string;
-  message?: string;
-}
+import { SharedContactForm } from "~/components/Shared/Form/SharedContactForm";
 
 export default function SprintContact() {
-  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<SprintFormData>();
-
-  const onSubmit = async (data: SprintFormData) => {
-    try {
-      await submitContactForm({ data, source: "LP - Sprint" });
-      setSubmissionStatus("success");
-      reset();
-
-      setTimeout(() => {
-        setSubmissionStatus("idle");
-      }, 5000);
-    } catch (err) {
-      console.error(err);
-      setSubmissionStatus("error");
-    }
-  };
-
   return (
     <section
       id="contact-sprint"
@@ -67,75 +29,12 @@ export default function SprintContact() {
           </p>
         </div>
 
-        {/* Form */}
-        <div className="backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border bg-gradient-to-br from-[var(--surface-primary)] to-[var(--surface-primary)] border-[var(--border-primary)]">
-          {submissionStatus === "success" ? (
-            <FormFeedback
-              status="success"
-              message="Nous vous recontactons sous 24h pour démarrer votre Sprint Commando."
-            />
-          ) : (
-            <>
-              {submissionStatus === "error" && <FormFeedback status="error" />}
-
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
-                <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
-                  <TextInput
-                    label="Nom complet"
-                    placeholder="Jean Dupont"
-                    icon={<User size={18} />}
-                    error={errors.name?.message}
-                    {...register("name", { required: "Le nom est requis" })}
-                    required
-                  />
-
-                  <TextInput
-                    label="E-mail professionnel"
-                    type="email"
-                    placeholder="jean@entreprise.com"
-                    icon={<Mail size={18} />}
-                    error={errors.email?.message}
-                    {...register("email", {
-                      required: "L'email est requis",
-                      pattern: VALIDATION_PATTERNS.EMAIL,
-                    })}
-                    required
-                  />
-                </div>
-
-                <TextInput
-                  label="Site web (optionnel)"
-                  placeholder="https://votre-site.com"
-                  icon={<Globe size={18} />}
-                  error={errors.website?.message}
-                  {...register("website")}
-                />
-
-                <Textarea
-                  label="Votre problématique actuelle"
-                  placeholder="Décrivez brièvement ce qui vous bloque..."
-                  rows={4}
-                  error={errors.message?.message}
-                  {...register("message")}
-                />
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-xl font-bold bg-[var(--brand-primary)] text-white transition-all hover:bg-[#258da5] hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[var(--brand-primary)]/25 disabled:opacity-50 disabled:hover:scale-100 flex items-center justify-center gap-2`}
-                >
-                  {isSubmitting ? "Envoi en cours..." : "Démarrer le Sprint"}
-                  {!isSubmitting && <ArrowRight size={20} />}
-                </button>
-
-                <p className="text-xs text-center text-[var(--text-muted)]">
-                  En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix dans le
-                  cadre de votre demande.
-                </p>
-              </form>
-            </>
-          )}
-        </div>
+        <SharedContactForm 
+          source="LP - Sprint"
+          buttonText="Démarrer le Sprint"
+          title="Parlez-nous de votre problématique"
+          subtitle="Réponse sous 24h garantie."
+        />
       </div>
     </section>
   );

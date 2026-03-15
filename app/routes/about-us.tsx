@@ -1,6 +1,7 @@
 import type { Route } from "./+types/about-us";
 import { Layout } from "~/components/Shared/Layout";
 import { CheckCircle2, Users, Rocket, Target } from "lucide-react";
+import { SocialProof } from "~/components/Shared/SocialProof";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -101,6 +102,8 @@ export default function AboutPage() {
                  ))}
              </div>
           </div>
+
+          <SocialProof className="mt-24 px-0" />
         </div>
       </div>
     </Layout>

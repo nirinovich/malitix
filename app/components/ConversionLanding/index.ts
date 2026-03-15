@@ -4,5 +4,5 @@ export { ValueStack } from "./ValueStack";
 export { GrandSlamOffer } from "./GrandSlamOffer";
 export { LeadMagnet } from "./LeadMagnet";
 export { LeadForm } from "./LeadForm";
-export { SocialProof } from "./SocialProof";
+export { SocialProof } from "../Shared/SocialProof";
 export { Faq } from "./Faq";

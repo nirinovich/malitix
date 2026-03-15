@@ -1,6 +1,7 @@
 import type { Route } from "./+types/services";
 import { Layout } from "~/components/Shared/Layout";
 import { ServicesSection } from "~/components/Home/ServicesSection";
+import { SocialProof } from "~/components/Shared/SocialProof";
 import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
@@ -29,6 +30,8 @@ export default function ServicesPage() {
          <div className="-mt-12 sm:-mt-8">
              <ServicesSection />
          </div>
+
+         <SocialProof />
 
          {/* Call to action at the bottom */}
          <div className="text-center mt-12 px-4">

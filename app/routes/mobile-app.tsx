@@ -4,7 +4,7 @@ import MobileAppHero from "~/components/MobileApp/MobileAppHero";
 import MobileAppProblem from "~/components/MobileApp/MobileAppProblem";
 import MobileAppSolution from "~/components/MobileApp/MobileAppSolution";
 import SpeedAdvantage from "~/components/MobileApp/SpeedAdvantage";
-import SocialProof from "~/components/MobileApp/SocialProof";
+import { SocialProof } from "~/components/Shared/SocialProof";
 import FinalCTA from "~/components/MobileApp/FinalCTA";
 import { buildMeta } from "~/utils/seo";
 

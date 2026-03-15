@@ -16,6 +16,9 @@ const TrustStats = lazy(() =>
 const CTASection = lazy(() =>
   import("~/components/Home/CTASection").then((module) => ({ default: module.CTASection }))
 );
+const SocialProof = lazy(() =>
+  import("~/components/Shared/SocialProof").then((module) => ({ default: module.SocialProof }))
+);
 
 export const meta: Route.MetaFunction = () =>
   buildMeta({
@@ -34,6 +37,9 @@ export default function Home() {
       </Suspense>
       <Suspense fallback={<div className="min-h-[400px]" />}>
         <TrustStats />
+      </Suspense>
+      <Suspense fallback={<div className="min-h-[400px]" />}>
+        <SocialProof />
       </Suspense>
       <Suspense fallback={<div className="min-h-[300px]" />}>
         <CTASection />

@@ -7,9 +7,9 @@ import SprintHero from "~/components/Sprint/SprintHero";
 // Lazy-load all below-fold sections
 const SprintProblem = lazy(() => import("~/components/Sprint/SprintProblem"));
 const SprintSolution = lazy(() => import("~/components/Sprint/SprintSolution"));
-const SprintTestimonials = lazy(() => import("~/components/Sprint/SprintTestimonials"));
 const SprintBenefits = lazy(() => import("~/components/Sprint/SprintBenefits"));
 const SprintContact = lazy(() => import("~/components/Sprint/SprintContact"));
+const SocialProof = lazy(() => import("~/components/Shared/SocialProof").then(m => ({ default: m.SocialProof })));
 
 export const meta: Route.MetaFunction = () =>
   buildMeta({
@@ -32,7 +32,7 @@ export default function SprintCommando() {
       <Suspense
         fallback={<div className="h-96 w-full animate-pulse bg-gray-100 dark:bg-white/5" />}
       >
-        <SprintTestimonials />
+        <SocialProof />
       </Suspense>
       <Suspense fallback={<div className="min-h-[500px]" />}>
         <SprintBenefits />
