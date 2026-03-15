@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react";
+import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router"; // Adjust if using react-router-dom
 import { CTA_TEXT } from "~/utils/constants";
 import { useTheme } from "~/context/ThemeContext";
@@ -9,26 +9,31 @@ const SERVICES_MENU = [
     label: "Sprint Commando",
     href: "/sprint-commando",
     description: "Déblocage garanti en 14 jours",
+    icon: Zap,
   },
   {
     label: "Externalisation",
     href: "/externalisation",
     description: "Équipe senior opérationnelle en 72h",
+    icon: Globe,
   },
   {
     label: "Développement Sur Mesure",
     href: "/developpement-sur-mesure",
     description: "Application web & mobile en 90 jours",
+    icon: Code,
   },
   {
     label: "Développement Mobile",
     href: "/developpement-mobile",
     description: "iOS & Android native & cross-platform",
+    icon: Smartphone,
   },
   {
     label: "Refonte SI",
     href: "/refonte-si",
     description: "Modernisation de système d'information",
+    icon: Database,
   },
 ];
 
@@ -168,7 +173,7 @@ export function Navbar() {
 
               {/* Desktop Dropdown Menu - CSS Only Visibility */}
               <div className="absolute top-full left-0 pt-3 transition-all duration-200 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
-                <div className="dropdown-menu w-72 rounded-2xl shadow-2xl border border-[var(--border-primary)] overflow-hidden bg-[var(--surface-primary)]">
+                <div className="dropdown-menu w-96 rounded-2xl shadow-2xl border border-[var(--border-primary)] overflow-hidden bg-[var(--surface-primary)]">
                   <div className="p-2">
                     {SERVICES_MENU.map((service) => (
                       <Link
@@ -181,16 +186,19 @@ export function Navbar() {
                         }}
                         className="dropdown-item block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
                       >
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center text-[var(--brand-primary)] group-hover/item:bg-[var(--brand-primary)] group-hover/item:text-white transition-colors">
+                            <service.icon size={20} />
+                          </div>
                           <div>
                             <div className="font-semibold text-sm mb-1 text-[var(--text-primary)] group-hover/item:text-[var(--brand-text)] transition-colors">
                               {service.label}
                             </div>
-                            <div className="dropdown-desc text-xs text-[var(--text-secondary)]">
+                            <div className="dropdown-desc text-xs text-[var(--text-secondary)] whitespace-nowrap">
                               {service.description}
                             </div>
                           </div>
-                          <div className="text-[var(--brand-primary)] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                          <div className="ml-auto text-[var(--brand-primary)] opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-[-4px] group-hover/item:translate-x-0">
                             →
                           </div>
                         </div>
@@ -208,7 +216,7 @@ export function Navbar() {
               aria-current={isAboutActive ? "page" : undefined}
               className={`nav-link relative group py-2 transition-colors cursor-pointer ${isAboutActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
-              Qui sommes-nous
+              Qui sommes-nous ?
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isAboutActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
@@ -329,8 +337,9 @@ export function Navbar() {
                       setIsMobileMenuOpen(false);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="mobile-nav-item block w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    className="mobile-nav-item flex items-center gap-3 w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   >
+                    <service.icon size={18} className="text-[var(--brand-primary)]" />
                     {service.label}
                   </Link>
                 ))}
@@ -345,7 +354,7 @@ export function Navbar() {
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${isAboutActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
               }`}
           >
-            Qui sommes-nous
+            Qui sommes-nous ?
           </Link>
 
           <Link
