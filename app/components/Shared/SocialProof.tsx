@@ -39,8 +39,8 @@ interface SocialProofProps {
   id?: string;
 }
 
-export function SocialProof({ 
-  title = CONVERSION_LANDING_SOCIAL_PROOF.title, 
+export function SocialProof({
+  title = CONVERSION_LANDING_SOCIAL_PROOF.title,
   eyebrow = CONVERSION_LANDING_SOCIAL_PROOF.eyebrow,
   className = "",
   id = "social-proof"

@@ -99,9 +99,8 @@ export function Navbar() {
   return (
     <nav
       data-app-navbar
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
-        isScrolled ? "navbar-scrolled backdrop-blur-lg shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${isScrolled ? "navbar-scrolled backdrop-blur-lg shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -143,9 +142,8 @@ export function Navbar() {
             >
               Accueil
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                  isActiveHash("#home") ? "w-full" : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isActiveHash("#home") ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
               ></span>
             </button>
 
@@ -163,9 +161,8 @@ export function Navbar() {
                   className="transition-transform duration-200 flex-shrink-0 -rotate-90 group-hover:rotate-0"
                 />
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                    isServicesActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isServicesActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
                 ></span>
               </button>
 
@@ -213,9 +210,8 @@ export function Navbar() {
             >
               À propos
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                  isAboutActive ? "w-full" : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isAboutActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
               ></span>
             </Link>
 
@@ -229,9 +225,8 @@ export function Navbar() {
             >
               Contact
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                  isContactActive ? "w-full" : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isContactActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
               ></span>
             </Link>
 
@@ -247,9 +242,8 @@ export function Navbar() {
             >
               Blog
               <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${
-                  isBlogActive ? "w-full" : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isBlogActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
               ></span>
             </Link>
           </div>
@@ -293,18 +287,16 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 border-t border-[var(--border-primary)] mobile-menu bg-[var(--surface-primary)] transition-all duration-300 ${
-          isMobileMenuOpen
+        className={`md:hidden absolute top-full left-0 right-0 border-t border-[var(--border-primary)] mobile-menu bg-[var(--surface-primary)] transition-all duration-300 ${isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"
-        }`}
+          }`}
       >
         <div className="px-4 py-6 space-y-4">
           <button
             onClick={() => handleNavClick("#home")}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              isActiveHash("#home") ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${isActiveHash("#home") ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
+              }`}
           >
             Accueil
           </button>
@@ -323,9 +315,8 @@ export function Navbar() {
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isServicesMobileOpen ? "max-h-96 mt-2" : "max-h-0"
-              }`}
+              className={`overflow-hidden transition-all duration-300 ${isServicesMobileOpen ? "max-h-96 mt-2" : "max-h-0"
+                }`}
             >
               <div className="space-y-2 pl-4 border-l-2 border-[var(--brand-primary)]/20">
                 {SERVICES_MENU.map((service) => (
@@ -351,9 +342,8 @@ export function Navbar() {
             to="/about-us"
             prefetch="intent"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              isAboutActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${isAboutActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
+              }`}
           >
             À propos
           </Link>
@@ -362,9 +352,8 @@ export function Navbar() {
             to="/contact"
             prefetch="intent"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium ${
-              isContactActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium ${isContactActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
+              }`}
           >
             Contact
           </Link>
@@ -373,9 +362,8 @@ export function Navbar() {
             to="/blog"
             prefetch="intent"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`mobile-nav-item block w-full text-left py-3 font-medium border-t border-[var(--text-secondary)]/10 ${
-              isBlogActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
-            }`}
+            className={`mobile-nav-item block w-full text-left py-3 font-medium border-t border-[var(--text-secondary)]/10 ${isBlogActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
+              }`}
           >
             Blog
           </Link>

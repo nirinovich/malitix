@@ -64,7 +64,7 @@ export function CTASection() {
                 <div key={i} className="flex items-center gap-3">
                   <div className="bg-[var(--cta-accent-soft)] p-2 rounded-full">
                     <div className="w-5 h-5 flex items-center justify-center">
-                       <div className="w-2 h-2 bg-[var(--cta-accent)] rounded-full"></div>
+                      <div className="w-2 h-2 bg-[var(--cta-accent)] rounded-full"></div>
                     </div>
                   </div>
                   <span className="text-[var(--text-secondary)]">{benefit}</span>
@@ -101,9 +101,9 @@ export function CTASection() {
 
           {/* Right Side - Shared Form */}
           <div className="relative">
-            <SharedContactForm 
-               source="Main Page"
-               buttonText={CTA_TEXT.primary}
+            <SharedContactForm
+              source="Main Page"
+              buttonText={CTA_TEXT.primary}
             />
           </div>
         </div>
