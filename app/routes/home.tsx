@@ -19,7 +19,7 @@ const CTASection = lazy(() =>
 
 export const meta: Route.MetaFunction = () =>
   buildMeta({
-    title: "Excellence technologique, innovation continue",
+    title: "Accueil | Excellence technologique, innovation continue",
     description:
       "Malitix transforme vos défis technologiques en opportunités de croissance. Développement web & mobile, refonte SI, externalisation IT — 600+ projets livrés, 350+ ingénieurs.",
     url: "https://malitix.com/",
