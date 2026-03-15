@@ -5,7 +5,7 @@ import type { Service, NavLink, Stat, SocialLink } from "../types";
 export const NAV_LINKS: NavLink[] = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "À propos", href: "/about-us" },
+  { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];

@@ -1,11 +1,11 @@
-import type { Route } from "./+types/about-us";
+import type { Route } from "./+types/qui-sommes-nous";
 import { Layout } from "~/components/Shared/Layout";
 import { CheckCircle2, Users, Rocket, Target } from "lucide-react";
 import { SocialProof } from "~/components/Shared/SocialProof";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "À propos | Malitix" },
+    { title: "Qui sommes-nous | Malitix" },
     {
       name: "description",
       content:

@@ -43,7 +43,7 @@ export function Navbar() {
   const isBlogActive = location.pathname.startsWith("/blog");
   const isContactActive = location.pathname === "/contact";
   const isServicesActive = location.pathname === "/services";
-  const isAboutActive = location.pathname === "/about-us";
+  const isAboutActive = location.pathname === "/qui-sommes-nous";
 
   // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
   useEffect(() => {
@@ -201,14 +201,14 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* À propos */}
+            {/* Qui sommes-nous */}
             <Link
-              to="/about-us"
+              to="/qui-sommes-nous"
               prefetch="intent"
               aria-current={isAboutActive ? "page" : undefined}
               className={`nav-link relative group py-2 transition-colors cursor-pointer ${isAboutActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
-              À propos
+              Qui sommes-nous
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isAboutActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
@@ -339,13 +339,13 @@ export function Navbar() {
           </div>
 
           <Link
-            to="/about-us"
+            to="/qui-sommes-nous"
             prefetch="intent"
             onClick={() => setIsMobileMenuOpen(false)}
             className={`mobile-nav-item block w-full text-left py-3 font-medium ${isAboutActive ? "text-[var(--brand-text)]" : "text-[var(--text-secondary)]"
               }`}
           >
-            À propos
+            Qui sommes-nous
           </Link>
 
           <Link
