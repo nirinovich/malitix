@@ -20,7 +20,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[size:50px_50px] bg-[image:var(--hero-grid-pattern)]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Animated Decorative Elements */}
           <div className="relative hidden lg:block">
@@ -28,7 +28,7 @@ export function HeroSection() {
             <div className="relative h-[600px]">
               {/* Main floating card - Code snippet */}
               <div
-                className="absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
                 style={{ animationDelay: "0s" }}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -51,7 +51,7 @@ export function HeroSection() {
 
               {/* Database card */}
               <div
-                className="absolute top-32 right-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute top-32 right-10 backdrop-blur-xl rounded-2xl p-4 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
                 style={{ animationDelay: "1s" }}
               >
                 <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export function HeroSection() {
 
               {/* AI chip card */}
               <div
-                className="absolute bottom-32 left-20 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute bottom-32 left-20 backdrop-blur-xl rounded-2xl p-4 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
                 style={{ animationDelay: "2s" }}
               >
                 <div className="flex items-center gap-3">
@@ -95,7 +95,7 @@ export function HeroSection() {
 
               {/* Stats card */}
               <div
-                className="absolute bottom-12 right-16 backdrop-blur-xl rounded-2xl p-6 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute bottom-16 right-16 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
                 style={{ animationDelay: "1.5s" }}
               >
                 <div className="flex items-center gap-4">
@@ -182,9 +182,9 @@ export function HeroSection() {
           </div>
 
           {/* Right Side - Content */}
-          <div className="text-center lg:text-left space-y-8 animate-slide-right in-view">
+          <div className="text-center lg:text-left space-y-6 animate-slide-right in-view">
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-[var(--text-primary)]">
+            <h1 className="text-3xl sm:text-4xl lg:text-[3.375rem] font-extrabold tracking-tight leading-[1.1] text-[var(--text-primary)]">
               {HERO_CONTENT.animated.headline.split("\n").map((line, lineIndex) => (
                 <span
                   key={line}
@@ -196,7 +196,7 @@ export function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl max-w-2xl leading-relaxed text-[var(--text-secondary)] animate-on-scroll in-view stagger-5">
+            <p className="text-base sm:text-lg max-w-xl leading-relaxed text-[var(--text-secondary)] animate-on-scroll in-view stagger-5">
               {HERO_CONTENT.animated.subheadline}
             </p>
 
@@ -211,14 +211,14 @@ export function HeroSection() {
                     (window as any).gtag_report_conversion("#contact");
                   }
                 }}
-                className="group bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-8 py-4 rounded-full font-semibold shadow-xl shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                className="group bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-xl shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 {CTA_TEXT.primary}
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#services"
-                className="backdrop-blur-xl px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] border border-[var(--border-primary)] text-[var(--text-primary)]"
+                className="backdrop-blur-xl px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300 bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] border border-[var(--border-primary)] text-[var(--text-primary)]"
               >
                 {CTA_TEXT.secondary}
               </a>
@@ -227,15 +227,15 @@ export function HeroSection() {
             {/* Trust Indicators */}
             <div className="flex flex-wrap gap-8 justify-center lg:justify-start pt-8 border-t border-[var(--border-primary)]">
               <div>
-                <div className="text-3xl font-bold text-[var(--brand-text)]">600+</div>
+                <div className="text-2xl font-bold text-[var(--brand-text)]">600+</div>
                 <div className="text-sm text-[var(--text-tertiary)]">Projets</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[var(--brand-text)]">350+</div>
+                <div className="text-2xl font-bold text-[var(--brand-text)]">350+</div>
                 <div className="text-sm text-[var(--text-tertiary)]">Ingénieurs</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[var(--brand-text)]">24/7</div>
+                <div className="text-2xl font-bold text-[var(--brand-text)]">24/7</div>
                 <div className="text-sm text-[var(--text-tertiary)]">Support</div>
               </div>
             </div>

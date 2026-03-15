@@ -108,37 +108,37 @@ export function Navbar() {
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link
               to="/"
               prefetch="intent"
-              className="relative block h-10 w-40 hover:opacity-80 transition-opacity cursor-pointer"
+              className="relative block h-8 w-32 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
-                width={160}
-                height={40}
+                width={128}
+                height={32}
                 fetchPriority="high"
                 decoding="sync"
-                className="logo-dark absolute inset-0 h-10 w-auto"
+                className="logo-dark absolute inset-0 h-8 w-auto"
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
-                width={160}
-                height={40}
+                width={128}
+                height={32}
                 fetchPriority="high"
                 decoding="sync"
-                className="logo-light absolute inset-0 h-10 w-auto"
+                className="logo-light absolute inset-0 h-8 w-auto"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {/* Accueil */}
             <button
               onClick={() => handleNavClick("#home")}
@@ -286,7 +286,7 @@ export function Navbar() {
                 }
                 handleNavClick("/contact");
               }}
-              className="bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               {CTA_TEXT.primary}
             </button>
