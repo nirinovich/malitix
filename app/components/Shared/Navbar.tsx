@@ -143,32 +143,36 @@ export function Navbar() {
             <button
               onClick={() => handleNavClick("#home")}
               aria-current={isActiveHash("#home") ? "page" : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isActiveHash("#home") ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+              className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isActiveHash("#home") ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
-              Accueil
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isActiveHash("#home") ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-              ></span>
+              <span className="relative">
+                Accueil
+                <span
+                  className={`absolute -bottom-2 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isActiveHash("#home") ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                ></span>
+              </span>
             </button>
 
             {/* Services Dropdown - Pure CSS Hover */}
             <div className="relative group">
               <button
-                className={`nav-link relative py-2 transition-colors flex items-center gap-2 cursor-pointer leading-none ${isServicesActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+                className={`nav-link py-2 transition-colors flex items-center gap-2 cursor-pointer ${isServicesActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
                 aria-haspopup="menu"
                 type="button"
                 onClick={() => handleNavClick("/services")}
               >
-                Services
+                <span className="relative">
+                  Services
+                  <span
+                    className={`absolute -bottom-2 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isServicesActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                  ></span>
+                </span>
                 <ChevronDown
                   size={16}
                   className="transition-transform duration-200 flex-shrink-0 -rotate-90 group-hover:rotate-0"
                 />
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isServicesActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                ></span>
               </button>
 
               {/* Desktop Dropdown Menu - CSS Only Visibility */}
@@ -214,13 +218,15 @@ export function Navbar() {
               to="/qui-sommes-nous"
               prefetch="intent"
               aria-current={isAboutActive ? "page" : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isAboutActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+              className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isAboutActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
-              Qui sommes-nous ?
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isAboutActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-              ></span>
+              <span className="relative">
+                Qui sommes-nous ?
+                <span
+                  className={`absolute -bottom-2 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isAboutActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                ></span>
+              </span>
             </Link>
 
             {/* Contact */}
@@ -229,13 +235,15 @@ export function Navbar() {
               prefetch="intent"
               aria-label="Contactez-nous"
               aria-current={isContactActive ? "page" : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isContactActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+              className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isContactActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
-              Contact
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isContactActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-              ></span>
+              <span className="relative">
+                Contact
+                <span
+                  className={`absolute -bottom-2 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isContactActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                ></span>
+              </span>
             </Link>
 
             {/* Separator */}
@@ -246,13 +254,15 @@ export function Navbar() {
               to="/blog"
               prefetch="intent"
               aria-current={isBlogActive ? "page" : undefined}
-              className={`nav-link relative group py-2 transition-colors cursor-pointer ${isBlogActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+              className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isBlogActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
-              Blog
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isBlogActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-              ></span>
+              <span className="relative">
+                Blog
+                <span
+                  className={`absolute -bottom-2 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isBlogActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                ></span>
+              </span>
             </Link>
           </div>
 
@@ -296,8 +306,8 @@ export function Navbar() {
       {/* Mobile Menu */}
       <div
         className={`md:hidden absolute top-full left-0 right-0 border-t border-[var(--border-primary)] mobile-menu bg-[var(--surface-primary)] transition-all duration-300 ${isMobileMenuOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4 pointer-events-none"
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
       >
         <div className="px-4 py-6 space-y-4">
