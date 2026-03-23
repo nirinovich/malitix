@@ -3,7 +3,7 @@ import HeroVariantC from '../components/Sprint/HeroVariantC';
 import SprintProblem from '../components/Sprint/SprintProblem';
 import SprintSolution from '../components/Sprint/SprintSolution';
 import SprintContact from '../components/Sprint/SprintContact';
-import TestimonialSection from '../components/Sprint/TestimonialSection';
+import ClientTestimonials from '../components/Shared/ClientTestimonials';
 import BenefitsShowcase from '../components/Sprint/BenefitsShowcase';
 
 export default function SprintCommando() {
@@ -35,7 +35,7 @@ export default function SprintCommando() {
       <SprintSolution />
 
       {/* Section 3 - Testimonials */}
-      <TestimonialSection />
+      <ClientTestimonials />
 
       {/* Section 4 - Benefits Showcase - Interactive Cards */}
       <BenefitsShowcase />

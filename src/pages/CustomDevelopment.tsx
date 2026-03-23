@@ -3,7 +3,7 @@ import CustomDevHero from '../components/CustomDev/CustomDevHero';
 import CustomDevProblem from '../components/CustomDev/CustomDevProblem';
 import CustomDevSolution from '../components/CustomDev/CustomDevSolution';
 import CustomDevStack from '../components/CustomDev/CustomDevStack';
-import CustomDevTestimonials from '../components/CustomDev/CustomDevTestimonials';
+import ClientTestimonials from '../components/Shared/ClientTestimonials';
 import CustomDevGuarantee from '../components/CustomDev/CustomDevGuarantee';
 import CustomDevCTA from '../components/CustomDev/CustomDevCTA';
 
@@ -40,7 +40,7 @@ export default function CustomDevelopment() {
       <CustomDevStack />
 
       {/* Section 4 - Social Proof & Case Studies */}
-      <CustomDevTestimonials />
+      <ClientTestimonials />
 
       {/* Section 5 - The Guarantee (Risk Reversal) */}
       <CustomDevGuarantee />

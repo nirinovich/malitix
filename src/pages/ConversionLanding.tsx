@@ -1,7 +1,7 @@
 import AboveTheFoldVariantB from '../components/ConversionLanding/AboveTheFold/AboveTheFoldVariantB';
 import HumaniserVariantB from '../components/ConversionLanding/Humaniser/HumaniserVariantB';
 import ValueStackVariantB from '../components/ConversionLanding/ValueStack/ValueStackVariantB';
-import SocialProofVariantC from '../components/ConversionLanding/SocialProof/SocialProofVariantC';
+import ClientTestimonials from '../components/Shared/ClientTestimonials';
 import GrandSlamOfferVariantC from '../components/ConversionLanding/GrandSlamOffer/GrandSlamOfferVariantC';
 import LeadMagnetVariantA from '../components/ConversionLanding/LeadMagnet/LeadMagnetVariantA';
 import FaqVariantA from '../components/ConversionLanding/Faq/FaqVariantA';
@@ -23,7 +23,7 @@ export default function ConversionLanding() {
         <ValueStackVariantB />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.2s' }}>
-        <SocialProofVariantC />
+        <ClientTestimonials />
       </div>
       <div className="lp-section" style={{ animationDelay: '0.25s' }}>
         <GrandSlamOfferVariantC />
