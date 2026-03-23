@@ -34,7 +34,7 @@ function useAnimatedCounter(end: number, duration = 1200, active = true) {
   useEffect(() => {
     if (!active) return;
     prevEnd.current = end;
-    let start = 0;
+    const start = 0;
     const startTime = performance.now();
     let raf: number;
 
@@ -188,8 +188,8 @@ export default function SOCMonitoring() {
     setIsLoading(true);
 
     try {
-      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-        (window as any).gtag_report_conversion(undefined);
+      if (typeof window !== 'undefined' && window.gtag_report_conversion) {
+        window.gtag_report_conversion(undefined);
       }
 
       const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {
@@ -319,8 +319,8 @@ export default function SOCMonitoring() {
 
     try {
       // Google Ads conversion tracking
-      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-        (window as any).gtag_report_conversion(undefined);
+      if (typeof window !== 'undefined' && window.gtag_report_conversion) {
+        window.gtag_report_conversion(undefined);
       }
 
       const response = await fetch('https://arkedown.app.n8n.cloud/webhook/malitix', {

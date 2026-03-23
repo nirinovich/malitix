@@ -1,11 +1,9 @@
 // TypeScript interfaces for Malitix landing page
 
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  fullDescription?: string;
+declare global {
+  interface Window {
+    gtag_report_conversion?: (url?: string) => void;
+  }
 }
 
 export interface NavLink {
