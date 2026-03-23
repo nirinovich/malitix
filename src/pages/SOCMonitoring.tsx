@@ -11,7 +11,6 @@ import {
   Clock,
   CheckCircle,
   Star,
-  Quote,
   Shield,
   Zap,
   Brain,
@@ -22,6 +21,7 @@ import {
   Download,
   Loader2,
 } from 'lucide-react';
+import ClientTestimonials from '../components/Shared/ClientTestimonials';
 import { jsPDF } from 'jspdf';
 import LogoCarousel from '../components/Utility/LogoCarousel';
 import { useInView } from '../hooks/useInView';
@@ -124,30 +124,7 @@ const transformations = [
   },
 ];
 
-/* ─── Testimonial Data ─── */
-const testimonials = [
-  {
-    quote: 'Nous travaillons depuis 3 ans avec Malitix à qui nous avons confié notre supervision et monitoring 24/7 sur un périmètre assez large. Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA.',
-    highlights: ['supervision et monitoring 24/7', 'respect des SLA'],
-    name: 'Riad Roubache',
-    role: 'CISO/CTO • Tersadia',
-    image: '/images/testimonials/riad.png',
-  },
-  {
-    quote: 'Nous avons pu développer notre solution avec des équipes de Malitix qui ont parfaitement compris notre besoin et notre ambition. Elles nous ont aidé à cadrer le sujet et à organiser un suivi régulier et flexible.',
-    highlights: ['parfaitement compris notre besoin'],
-    name: 'Selim Saadi',
-    role: 'CEO & Co-founder • Karlisolutions',
-    image: '/images/testimonials/selim-saadi.png',
-  },
-  {
-    quote: 'Malitix has been a longstanding partner since the inception of our company\'s first website, contributing to our online presence and technological solutions over the years.',
-    highlights: ['longstanding partner'],
-    name: 'David Bovet',
-    role: 'CEO • Bios Analytics',
-    image: '/images/testimonials/david.png',
-  },
-];
+
 
 export default function SOCMonitoring() {
   const [formData, setFormData] = useState({
@@ -191,14 +168,7 @@ export default function SOCMonitoring() {
   const [roiLoading, setRoiLoading] = useState(false);
   const [roiError, setRoiError] = useState('');
 
-  // Active testimonial state
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+
 
   useEffect(() => {
     document.title = 'Externalisation SOC | Malitix';
@@ -885,115 +855,9 @@ export default function SOCMonitoring() {
       </section>
 
       {/* ═══════════════════════════════════════
-          TESTIMONIALS — Elevated
+          TESTIMONIALS
           ═══════════════════════════════════════ */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 bg-[var(--bg-secondary)] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-40 left-1/3 w-[500px] h-[500px] rounded-full bg-[#2ca3bd]/5 blur-[120px]" />
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <RevealSection>
-            <div className="text-center mb-12 sm:mb-16">
-              <div className="inline-flex items-center justify-center gap-2 mb-6">
-                <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#2ca3bd]" />
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2ca3bd]">
-                  Témoignages
-                </span>
-                <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#2ca3bd]" />
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-[var(--text-primary)]">
-                Ils nous font <span className="text-[#2ca3bd]">confiance</span>
-              </h2>
-              <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-                Des résultats concrets pour des équipes tech exigeantes
-              </p>
-            </div>
-          </RevealSection>
-
-          {/* Testimonials Grid */}
-          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <RevealSection key={index} delay={index * 150}>
-                <div
-                  className={`group relative bg-[var(--bg-primary)] border rounded-2xl p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#2ca3bd]/10 h-full flex flex-col ${
-                    activeTestimonial === index
-                      ? 'border-[#2ca3bd]/50 shadow-xl shadow-[#2ca3bd]/10'
-                      : 'border-[var(--border-primary)] hover:border-[#2ca3bd]/40'
-                  }`}
-                  onMouseEnter={() => setActiveTestimonial(index)}
-                >
-                  {/* Quote decor */}
-                  <div className="absolute top-6 right-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                    <Quote size={56} className="text-[#2ca3bd]" />
-                  </div>
-                  
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} className="text-[#2ca3bd] fill-[#2ca3bd]" />
-                    ))}
-                  </div>
-                  
-                  {/* Quote text */}
-                  <p className="text-[var(--text-secondary)] mb-6 leading-relaxed text-sm flex-1">
-                    "{testimonial.highlights.reduce<(string | React.ReactNode)[]>(
-                      (parts, highlight) => {
-                        const result: (string | React.ReactNode)[] = [];
-                        parts.forEach((part) => {
-                          if (typeof part !== 'string') {
-                            result.push(part);
-                            return;
-                          }
-                          const splits = part.split(highlight);
-                          splits.forEach((s, i) => {
-                            result.push(s);
-                            if (i < splits.length - 1) {
-                              result.push(
-                                <span key={`${highlight}-${i}`} className="text-[#2ca3bd] font-semibold">
-                                  {highlight}
-                                </span>
-                              );
-                            }
-                          });
-                        });
-                        return result;
-                      },
-                      [testimonial.quote]
-                    )}"
-                  </p>
-                  
-                  {/* Author */}
-                  <div className="flex items-center gap-4 pt-5 border-t border-[var(--border-primary)]">
-                    <img 
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-[#2ca3bd]/20"
-                    />
-                    <div>
-                      <div className="font-bold text-sm text-[var(--text-primary)]">{testimonial.name}</div>
-                      <div className="text-xs text-[var(--text-tertiary)]">{testimonial.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </RevealSection>
-            ))}
-          </div>
-
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveTestimonial(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  activeTestimonial === i ? 'w-8 bg-[#2ca3bd]' : 'w-2 bg-[var(--border-primary)] hover:bg-[#2ca3bd]/50'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientTestimonials heading="Ce qu'ils disent de nous" />
 
       {/* ═══════════════════════════════════════
           CONTACT SECTION — Enhanced

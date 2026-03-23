@@ -1,24 +1,5 @@
-import { useState, useCallback } from 'react';
 import { ArrowRight, ArrowDown, Star } from 'lucide-react';
-import SOCHeroVariantSwitcher from './SOCHeroVariantSwitcher';
-import SOCHeroVariantA_Dashboard from './SOCHeroVariantA_Dashboard.tsx';
 import SOCHeroVariantB_TrustImage from './SOCHeroVariantB_TrustImage.tsx';
-import SOCHeroVariantC_ShieldMetrics from './SOCHeroVariantC_ShieldMetrics.tsx';
-import SOCHeroVariantD_BeforeAfter from './SOCHeroVariantD_BeforeAfter.tsx';
-
-/* ─── Types ─── */
-export type HeroVariant = 'dashboard' | 'trust-image' | 'shield-metrics' | 'before-after';
-
-const VARIANTS: HeroVariant[] = ['dashboard', 'trust-image', 'shield-metrics', 'before-after'];
-const LS_KEY = 'soc-hero-variant';
-
-function readStoredVariant(): HeroVariant {
-  try {
-    const stored = localStorage.getItem(LS_KEY);
-    if (stored && VARIANTS.includes(stored as HeroVariant)) return stored as HeroVariant;
-  } catch { /* private browsing / unavailable */ }
-  return 'dashboard';
-}
 
 /* ─── Props ─── */
 interface Props {
@@ -26,29 +7,8 @@ interface Props {
   scrollToContact: () => void;
 }
 
-/* ─── Variant Renderer ─── */
-function VariantVisual({ variant }: { variant: HeroVariant }) {
-  switch (variant) {
-    case 'dashboard':
-      return <SOCHeroVariantA_Dashboard />;
-    case 'trust-image':
-      return <SOCHeroVariantB_TrustImage />;
-    case 'shield-metrics':
-      return <SOCHeroVariantC_ShieldMetrics />;
-    case 'before-after':
-      return <SOCHeroVariantD_BeforeAfter />;
-  }
-}
-
 /* ─── Component ─── */
 export default function SOCHeroSection({ scrollToCalculator, scrollToContact }: Props) {
-  const [variant, setVariant] = useState<HeroVariant>(readStoredVariant);
-
-  const handleVariantChange = useCallback((v: HeroVariant) => {
-    setVariant(v);
-    try { localStorage.setItem(LS_KEY, v); } catch { /* ignore */ }
-  }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 relative overflow-hidden bg-[var(--bg-primary)]">
       {/* Decorative gradient orbs */}
@@ -68,7 +28,7 @@ export default function SOCHeroSection({ scrollToCalculator, scrollToContact }: 
       </div>
 
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
-        {/* ── Left Content (shared across all variants) ── */}
+        {/* ── Left Content ── */}
         <div className="flex flex-col justify-center space-y-8 animate-fade-in-up">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-black leading-[1.12] tracking-[-0.01em] text-[var(--text-primary)]">
             <span className="block">Vos ingénieurs coûtent</span>
@@ -123,15 +83,9 @@ export default function SOCHeroSection({ scrollToCalculator, scrollToContact }: 
           </div>
         </div>
 
-        {/* ── Right Column — Variant Visual ── */}
-        <div className="hidden lg:block">
-          <div
-            key={variant}
-            className="animate-fade-in-up"
-            style={{ animationDuration: '300ms' }}
-          >
-            <VariantVisual variant={variant} />
-          </div>
+        {/* ── Right Column — Illustration B (Trust Image) ── */}
+        <div className="hidden lg:block animate-fade-in-up" style={{ animationDuration: '300ms' }}>
+          <SOCHeroVariantB_TrustImage />
         </div>
       </div>
 
@@ -139,9 +93,6 @@ export default function SOCHeroSection({ scrollToCalculator, scrollToContact }: 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
         <ArrowDown size={20} className="text-[var(--text-muted)]" />
       </div>
-
-      {/* Variant Switcher */}
-      <SOCHeroVariantSwitcher current={variant} onChange={handleVariantChange} />
     </section>
   );
 }
