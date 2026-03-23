@@ -41,6 +41,14 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- SOC Monitoring Page -->
+  <url>
+    <loc>https://malitix.com/externalisation-soc</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
   <!-- Mobile App Development Page -->
   <url>
     <loc>https://malitix.com/developpement-mobile</loc>
