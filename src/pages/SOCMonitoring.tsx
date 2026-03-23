@@ -10,7 +10,6 @@ import {
   AlertTriangle,
   Clock,
   CheckCircle,
-  Star,
   Shield,
   Zap,
   Brain,

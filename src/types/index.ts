@@ -25,19 +25,3 @@ export interface SocialLink {
   icon: string;
 }
 
-export type HeroVariant = 'animated' | 'clean';
-export type ServicesVariant = 'bento' | 'reference';
-export type NavbarVariant = 'default' | 'centered' | 'minimal';
-export type ThemeMode = 'dark' | 'light';
-
-export type LandingVariant = 'A' | 'B' | 'C';
-export type LandingSectionKey =
-  | 'aboveTheFold'
-  | 'humaniser'
-  | 'valueStack'
-  | 'socialProof'
-  | 'grandSlamOffer'
-  | 'leadMagnet'
-  | 'faq'
-  | 'leadForm';
-export type LandingVariantConfig = Record<LandingSectionKey, LandingVariant>;

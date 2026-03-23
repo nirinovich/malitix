@@ -1,5 +1,5 @@
 // Constants for Malitix landing page
-import type { Service, NavLink, Stat, SocialLink } from '../types';
+import type { NavLink, Stat, SocialLink } from '../types';
 
 // Navigation Links
 export const NAV_LINKS: NavLink[] = [
@@ -9,44 +9,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Contact', href: '#contact' },
 ];
 
-// Malitix Services
-export const SERVICES: Service[] = [
-  {
-    id: 'refonte-si',
-    title: 'Refonte de SI',
-    description: 'Modernisez votre infrastructure informatique pour une performance optimale et une agilité accrue.',
-    icon: 'RefreshCcw',
-    fullDescription: 'Transformation complète de votre système d\'information avec les dernières technologies et les meilleures pratiques.'
-  },
-  {
-    id: 'dev-produit',
-    title: 'Développement produit (web & mobile)',
-    description: 'Conception et développement d\'applications web et mobile sur mesure, adaptées à vos besoins métier.',
-    icon: 'Smartphone',
-    fullDescription: 'Solutions complètes de développement full-stack avec les frameworks les plus modernes.'
-  },
-  {
-    id: 'services-manages',
-    title: 'Services managés 24/7/365 & HNO',
-    description: 'Support technique continu et maintenance proactive pour garantir la disponibilité de vos systèmes.',
-    icon: 'Shield',
-    fullDescription: 'Surveillance, maintenance et support technique 24h/24, 7j/7, 365 jours par an avec engagement HNO.'
-  },
-  {
-    id: 'data-platform',
-    title: 'Data Platform',
-    description: 'Construction de plateformes data robustes pour exploiter pleinement le potentiel de vos données.',
-    icon: 'Database',
-    fullDescription: 'Architecture data moderne avec pipelines ETL, data warehousing et analytics avancés.'
-  },
-  {
-    id: 'ia-metier',
-    title: 'Déploiement IA métier',
-    description: 'Intégration d\'intelligence artificielle pour automatiser et optimiser vos processus métier.',
-    icon: 'Brain',
-    fullDescription: 'Solutions IA sur mesure : Machine Learning, NLP, Computer Vision et automatisation intelligente.'
-  },
-];
+
 
 // Statistics
 export const STATS: Stat[] = [
