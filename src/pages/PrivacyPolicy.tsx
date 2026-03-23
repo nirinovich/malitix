@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useTheme } from '../context/ThemeContext';
 
 export default function PrivacyPolicy() {
@@ -5,10 +6,12 @@ export default function PrivacyPolicy() {
 
   return (
     <>
-      <title>Politique de Confidentialité - Malitix</title>
-      <meta name="description" content="Politique de confidentialité et protection des données personnelles chez Malitix. Conformité RGPD et législation malgache sur la protection des données." />
-      <meta name="robots" content="noindex, follow" />
-      <link rel="canonical" href="https://www.malitix.com/politique-de-confidentialite" />
+      <Helmet>
+        <title>Politique de Confidentialité - Malitix</title>
+        <meta name="description" content="Politique de confidentialité et protection des données personnelles chez Malitix. Conformité RGPD et législation malgache sur la protection des données." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://www.malitix.com/politique-de-confidentialite" />
+      </Helmet>
       
       <div className="min-h-screen py-24 bg-[var(--bg-primary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

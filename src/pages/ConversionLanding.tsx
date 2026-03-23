@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import AboveTheFoldVariantB from '../components/ConversionLanding/AboveTheFold/AboveTheFoldVariantB';
 import HumaniserVariantB from '../components/ConversionLanding/Humaniser/HumaniserVariantB';
 import ValueStackVariantB from '../components/ConversionLanding/ValueStack/ValueStackVariantB';
@@ -10,8 +11,10 @@ import LeadFormVariantA from '../components/ConversionLanding/LeadForm/LeadFormV
 export default function ConversionLanding() {
   return (
     <>
-      <title>Malitix | Équipe Senior en 72h</title>
-      <meta name="description" content="Arrêtez de recruter. Accédez au top 1% d'ingénieurs sur une large sélection de technologies en 72h avec Malitix." />
+      <Helmet>
+        <title>Malitix | Équipe Senior en 72h</title>
+        <meta name="description" content="Arrêtez de recruter. Accédez au top 1% d'ingénieurs sur une large sélection de technologies en 72h avec Malitix." />
+      </Helmet>
 
       <div className="lp-section" style={{ animationDelay: '0.05s' }}>
         <AboveTheFoldVariantB />

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
+import { Helmet } from 'react-helmet-async';
 import {
   Mail,
   Phone,
@@ -169,9 +170,7 @@ export default function SOCMonitoring() {
 
 
 
-  useEffect(() => {
-    document.title = 'Externalisation SOC | Malitix';
-  }, []);
+
 
   const handleFormChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -366,6 +365,19 @@ export default function SOCMonitoring() {
 
   return (
     <>
+      <Helmet>
+        <title>Externalisation SOC | Malitix</title>
+        <meta name="description" content="Externalisez votre SOC avec Malitix. Réduisez vos coûts de monitoring sécurité, libérez vos ingénieurs et gagnez en productivité. Calculez votre ROI instantanément." />
+        <meta property="og:title" content="Externalisation SOC | Malitix" />
+        <meta property="og:description" content="Externalisez votre SOC : réduisez vos coûts de monitoring sécurité et libérez vos ingénieurs seniors. ROI calculé instantanément." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.malitix.com/externalisation-soc" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Externalisation SOC | Malitix" />
+        <meta name="twitter:description" content="Externalisez votre SOC avec Malitix. Calculez votre ROI instantanément." />
+        <link rel="canonical" href="https://www.malitix.com/externalisation-soc" />
+      </Helmet>
+
       <SOCHeroSection scrollToCalculator={scrollToCalculator} scrollToContact={scrollToContact} />
 
       {/* ═══════════════════════════════════════

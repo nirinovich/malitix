@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router';
 import { Home, ArrowLeft } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -7,9 +8,11 @@ export default function NotFound() {
 
   return (
     <>
-      <title>404 - Page introuvable | Malitix</title>
-      <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil de Malitix." />
-      <meta name="robots" content="noindex, follow" />
+      <Helmet>
+        <title>404 - Page introuvable | Malitix</title>
+        <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil de Malitix." />
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
       
       <div className="min-h-screen flex items-center justify-center px-4 bg-[var(--bg-primary)]">
       <div className="max-w-2xl w-full text-center">
