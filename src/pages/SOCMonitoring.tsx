@@ -16,7 +16,6 @@ import {
   Zap,
   Brain,
   Calendar,
-  ArrowDown,
   ChevronRight,
   X,
   Check,
@@ -26,6 +25,7 @@ import {
 import { jsPDF } from 'jspdf';
 import LogoCarousel from '../components/Utility/LogoCarousel';
 import { useInView } from '../hooks/useInView';
+import SOCHeroSection from '../components/SOCMonitoring/Hero/SOCHeroSection';
 
 /* ─── Animated Counter Hook ─── */
 function useAnimatedCounter(end: number, duration = 1200, active = true) {
@@ -397,150 +397,7 @@ export default function SOCMonitoring() {
 
   return (
     <>
-      {/* ═══════════════════════════════════════
-          HERO SECTION — Gradient Mesh + Glow
-          ═══════════════════════════════════════ */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 relative overflow-hidden bg-[var(--bg-primary)]">
-        {/* Decorative gradient orbs */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#2ca3bd]/15 blur-[120px] animate-pulse-subtle" />
-          <div className="absolute -bottom-60 -left-40 w-[500px] h-[500px] rounded-full bg-[#2ca3bd]/10 blur-[100px] animate-float-subtle" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#2ca3bd]/5 blur-[150px]" />
-          {/* Grid pattern overlay */}
-          <div 
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: 'linear-gradient(var(--text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--text-primary) 1px, transparent 1px)',
-              backgroundSize: '60px 60px',
-            }}
-          />
-        </div>
-
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
-          {/* Left Content */}
-          <div className="flex flex-col justify-center space-y-8 animate-fade-in-up">
-            
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.12] tracking-[-0.01em] text-[var(--text-primary)]">
-              Vos ingénieurs coûtent trop cher pour{' '}
-              <span className="relative inline-block">
-                <span className="text-[#2ca3bd]">faire les pompiers</span>
-                <svg className="absolute -bottom-2 sm:-bottom-3 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none">
-                  <path d="M0 5 Q50 0, 100 5 T200 5" stroke="#2ca3bd" strokeWidth="3" fill="none" strokeLinecap="round" />
-                </svg>
-              </span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-xl">
-              Ne laissez plus vos talents seniors se noyer sous les alertes. 
-              Externalisez le monitoring à nos experts SOC pour{' '}
-              <span className="font-semibold text-[#2ca3bd]">diviser vos coûts par 2</span>{' '}
-              et redonner <span className="font-semibold text-[#2ca3bd]">20% de productivité</span> à votre roadmap.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <button
-                onClick={scrollToCalculator}
-                className="group bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all duration-300 shadow-xl shadow-[#2ca3bd]/20 hover:shadow-2xl hover:shadow-[#2ca3bd]/30 hover:scale-[1.02]"
-              >
-                Simuler mon ROI en 30s
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
-                onClick={scrollToContact}
-                className="border border-[var(--border-primary)] hover:border-[#2ca3bd] text-[var(--text-primary)] hover:text-[#2ca3bd] px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:bg-[#2ca3bd]/5"
-              >
-                Prendre rendez-vous
-              </button>
-            </div>
-
-            {/* Social proof mini */}
-            <div className="flex items-center gap-4 pt-4">
-              <div className="flex -space-x-3">
-                {['/images/testimonials/riad.png', '/images/testimonials/selim-saadi.png', '/images/testimonials/david.png'].map((src, i) => (
-                  <img key={i} src={src} alt="" className="w-10 h-10 rounded-full border-2 border-[var(--bg-primary)] object-cover" />
-                ))}
-              </div>
-              <div>
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} className="text-[#2ca3bd] fill-[#2ca3bd]" />
-                  ))}
-                </div>
-                <p className="text-xs text-[var(--text-tertiary)] mt-0.5">+50 000 alertes traitées</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right — Animated Visual / Stats Dashboard */}
-          <div className="hidden lg:block">
-            <div className="relative" style={{ animationDelay: '200ms' }}>
-              {/* Glow behind card */}
-              <div className="absolute -inset-6 bg-[#2ca3bd]/10 rounded-3xl blur-2xl" />
-              
-              <div className="relative bg-[var(--surface-elevated)] backdrop-blur-xl border border-[var(--border-primary)] rounded-2xl p-8 space-y-6 shadow-2xl">
-                {/* Dashboard header */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse" />
-                    <span className="text-sm font-semibold text-[var(--text-primary)]">SOC Dashboard — Live</span>
-                  </div>
-                  <span className="text-xs text-[var(--text-tertiary)]">Temps réel</span>
-                </div>
-
-                {/* Stats grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { label: 'Alertes traitées', value: '2,847', change: '+12%', up: true },
-                    { label: 'Temps moyen', value: '< 15min', change: '-34%', up: false },
-                    { label: 'SLA respecté', value: '99.7%', change: '+2.1%', up: true },
-                    { label: 'Coût / alerte', value: '17 €', change: '-56%', up: false },
-                  ].map((stat, i) => (
-                    <div 
-                      key={i} 
-                      className="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-4 hover:border-[#2ca3bd]/40 transition-all duration-300"
-                    >
-                      <p className="text-xs text-[var(--text-tertiary)] mb-1">{stat.label}</p>
-                      <p className="text-2xl font-bold text-[var(--text-primary)]">{stat.value}</p>
-                      <p className={`text-xs font-semibold mt-1 ${stat.up ? 'text-emerald-400' : 'text-[#2ca3bd]'}`}>
-                        {stat.change}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Mini bar chart */}
-                <div className="space-y-3">
-                  <p className="text-xs font-semibold text-[var(--text-secondary)]">Économies mensuelles</p>
-                  <div className="flex items-end gap-1.5 h-16">
-                    {[35, 52, 48, 65, 58, 72, 80, 75, 88, 92, 85, 95].map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 bg-[#2ca3bd] rounded-t-sm transition-all duration-500 hover:bg-[#3bb8d4]"
-                        style={{ 
-                          height: `${h}%`, 
-                          opacity: 0.4 + (i / 12) * 0.6,
-                          animationDelay: `${i * 100}ms` 
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="flex justify-between text-[10px] text-[var(--text-muted)]">
-                    <span>Jan</span>
-                    <span>Déc</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <ArrowDown size={20} className="text-[var(--text-muted)]" />
-        </div>
-      </section>
+      <SOCHeroSection scrollToCalculator={scrollToCalculator} scrollToContact={scrollToContact} />
 
       {/* ═══════════════════════════════════════
           PROOF BAR 
