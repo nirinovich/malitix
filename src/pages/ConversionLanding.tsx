@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import AboveTheFoldVariantB from '../components/ConversionLanding/AboveTheFold/AboveTheFoldVariantB';
-import HumaniserVariantB from '../components/ConversionLanding/Humaniser/HumaniserVariantB';
-import ValueStackVariantB from '../components/ConversionLanding/ValueStack/ValueStackVariantB';
+import AboveTheFoldVariantB from '../components/ConversionLanding/AboveTheFoldVariantB';
+import HumaniserVariantB from '../components/ConversionLanding/HumaniserVariantB';
+import ValueStackVariantB from '../components/ConversionLanding/ValueStackVariantB';
 import ClientTestimonials from '../components/Shared/ClientTestimonials';
-import GrandSlamOfferVariantC from '../components/ConversionLanding/GrandSlamOffer/GrandSlamOfferVariantC';
+import GrandSlamOfferVariantC from '../components/ConversionLanding/GrandSlamOfferVariantC';
 import LeadMagnetVariantA from '../components/ConversionLanding/LeadMagnet/LeadMagnetVariantA';
-import FaqVariantA from '../components/ConversionLanding/Faq/FaqVariantA';
+import FaqVariantA from '../components/ConversionLanding/FaqVariantA';
 import LeadFormVariantA from '../components/ConversionLanding/LeadForm/LeadFormVariantA';
 
 export default function ConversionLanding() {

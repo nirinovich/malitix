@@ -1,5 +1,5 @@
 import { ArrowRight, Target } from 'lucide-react';
-import { useTheme } from '../../../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const headlinePrimary = 'Arrêtez de Recruter. Commencez à Livrer.';
 const headlineSecondary = 'Votre équipe senior opérationnelle en 72h.';

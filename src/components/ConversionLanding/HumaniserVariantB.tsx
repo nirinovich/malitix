@@ -1,5 +1,5 @@
 import { UsersRound } from 'lucide-react';
-import { useTheme } from '../../../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const paragraph = "Vous avez une roadmap chargée et pas assez de mains pour coder ? Le recrutement traditionnel est lent et risqué. Les freelances sont imprévisibles. Chez Malitix, nous ne sommes pas une 'agence offshore'. Nous sommes votre extension technique. Nous vous pluggons une équipe commando déjà rodée qui s'intègre à vos outils (Slack, Jira) dès le Jour 1.";
 
