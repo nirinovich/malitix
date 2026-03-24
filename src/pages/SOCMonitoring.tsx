@@ -22,7 +22,6 @@ import {
   Loader2,
 } from 'lucide-react';
 import ClientTestimonials from '../components/Shared/ClientTestimonials';
-import { jsPDF } from 'jspdf';
 import LogoCarousel from '../components/Utility/LogoCarousel';
 import { useInView } from '../hooks/useInView';
 import SOCHeroSection from '../components/SOCMonitoring/Hero/SOCHeroSection';
@@ -210,7 +209,8 @@ export default function SOCMonitoring() {
   };
 
   /* ── Generate & download client-side PDF report ── */
-  const generatePDFReport = useCallback(() => {
+  const generatePDFReport = useCallback(async () => {
+    const { jsPDF } = await import('jspdf');
     const doc = new jsPDF();
     const w = doc.internal.pageSize.getWidth();
     const accent = [44, 163, 189] as const; // #2ca3bd
