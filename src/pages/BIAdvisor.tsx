@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import BIAdvisorContact from '../components/BIAdvisor/BIAdvisorContact';
 import { Helmet } from 'react-helmet-async';
 import {
   BarChart4,
@@ -39,7 +40,7 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
 
 export default function BIAdvisor() {
   const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('#bi-advisor-contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -464,38 +465,8 @@ export default function BIAdvisor() {
         </div>
       </section>
 
-      {/* 6. LE CLOSE */}
-      <section className="py-24 px-6 sm:px-12 bg-[var(--bg-secondary)] border-t border-[var(--border-primary)] relative overflow-hidden">
-        {/* Background blobs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#2ca3bd]/5 blur-[150px] rounded-full pointer-events-none" />
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <RevealSection>
-            <div className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 border border-red-500/20 text-red-500 rounded-full mb-8">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest">
-                Nous ne lançons que 5 POC par mois pour garantir un accompagnement premium.
-              </span>
-            </div>
-
-            <h2 className="text-4xl md:text-6xl font-extrabold text-[var(--text-primary)] mb-8 leading-tight">
-              Prêt à dialoguer avec votre entreprise ?
-            </h2>
-
-            <p className="text-xl text-[var(--text-secondary)] mb-12 max-w-2xl mx-auto">
-              Lançons un Proof of Concept (POC) sur vos données historiques pour constater la valeur immédiate du système.
-            </p>
-
-            <button
-              onClick={scrollToContact}
-              className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] hover:from-[#005260] hover:to-[#248fa5] text-white px-6 py-4 sm:px-10 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all w-full md:w-auto mx-auto flex items-center justify-center gap-2 group"
-            >
-              <span className="text-center sm:text-left">Demander ma démo et mon test gratuit</span>
-              <ArrowRight className="group-hover:translate-x-1 transition-transform shrink-0" />
-            </button>
-          </RevealSection>
-        </div>
-      </section>
+      {/* 6. CONTACT FORM */}
+      <BIAdvisorContact />
     </>
   );
 }
