@@ -76,10 +76,10 @@ export default function BIAdvisor() {
                 Transformez votre ERP standard en Assistant Décisionnel Intelligent. Plus d'exports Excel. Plus d'attente d'experts. Juste des prévisions instantanées, prêtes pour le board.
               </p>
 
-              <div className="flex flex-wrap gap-4 items-center">
+              <div className="flex flex-col sm:flex-row gap-4 items-center w-full">
                 <button
                   onClick={scrollToContact}
-                  className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-[#2ca3bd]/25 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group border border-white/10"
+                  className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] text-white px-6 py-4 sm:px-8 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-xl shadow-[#2ca3bd]/25 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group border border-white/10 w-full sm:w-auto"
                 >
                   Lancer mon test (Données réelles)
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -169,13 +169,13 @@ export default function BIAdvisor() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* The Visual (Latence Critique) */}
             <RevealSection delay={200} className="order-2 lg:order-1">
-              <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-8 rounded-3xl shadow-xl">
-                <div className="mb-8 flex justify-between items-end">
-                  <h4 className="font-bold text-lg text-[var(--text-primary)]">La Latence Critique</h4>
-                  <span className="text-xs font-bold text-red-500 bg-red-500/10 px-3 py-1 rounded-full uppercase tracking-widest">Risque Stratégique</span>
+              <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-4 sm:p-8 rounded-3xl shadow-xl w-full overflow-hidden">
+                <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 sm:gap-0">
+                  <h4 className="font-bold text-base sm:text-lg text-[var(--text-primary)]">La Latence Critique</h4>
+                  <span className="text-[10px] sm:text-xs font-bold text-red-500 bg-red-500/10 px-3 py-1 rounded-full uppercase tracking-widest">Risque Stratégique</span>
                 </div>
 
-                <div className="relative h-64 w-full flex items-end justify-between gap-4">
+                <div className="relative h-48 sm:h-64 w-full flex items-end justify-between gap-2 sm:gap-4">
                   <div className="flex flex-col items-center gap-2 w-full">
                     <div className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-t-lg h-12 relative overflow-hidden flex items-end">
                       <div className="w-full bg-[#2ca3bd]/20 h-full" />
@@ -365,18 +365,18 @@ export default function BIAdvisor() {
             </RevealSection>
 
             <RevealSection delay={400} className="lg:col-span-4">
-              <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-8 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6 group">
+              <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-6 sm:p-8 rounded-3xl flex flex-col md:flex-row items-center md:items-start justify-between gap-6 group text-center md:text-left">
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)]">Intégration Universelle</h3>
                   <p className="text-[var(--text-secondary)] text-sm">
                     Connecteurs natifs prêts à l'emploi.
                   </p>
                 </div>
-                <div className="flex flex-wrap gap-4">
-                  <span className="px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-sm font-bold text-[var(--text-primary)] shadow-sm">ERP</span>
-                  <span className="px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-sm font-bold text-[var(--text-primary)] shadow-sm">CRM</span>
-                  <span className="px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-sm font-bold text-[var(--text-primary)] shadow-sm">EXCEL</span>
-                  <span className="px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-sm font-bold text-[var(--text-primary)] shadow-sm">HRIS</span>
+                <div className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-4">
+                  <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-xs sm:text-sm font-bold text-[var(--text-primary)] shadow-sm">ERP</span>
+                  <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-xs sm:text-sm font-bold text-[var(--text-primary)] shadow-sm">CRM</span>
+                  <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-xs sm:text-sm font-bold text-[var(--text-primary)] shadow-sm">EXCEL</span>
+                  <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl font-mono text-xs sm:text-sm font-bold text-[var(--text-primary)] shadow-sm">HRIS</span>
                 </div>
               </div>
             </RevealSection>
@@ -407,8 +407,8 @@ export default function BIAdvisor() {
                 </div>
               </div>
 
-              <div className="p-6 bg-[var(--surface-elevated)] border-2 border-[#2ca3bd] rounded-2xl shadow-xl shadow-[#2ca3bd]/10 relative transform scale-105 z-10 w-[95%]">
-                <div className="absolute -top-3 right-6 bg-amber-400 text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-md">
+              <div className="p-5 sm:p-6 bg-[var(--surface-elevated)] border-2 border-[#2ca3bd] rounded-2xl shadow-xl shadow-[#2ca3bd]/10 relative transform scale-100 lg:scale-105 z-10 w-full lg:w-[95%] mx-auto lg:mx-0">
+                <div className="absolute -top-3 right-4 sm:right-6 bg-amber-400 text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-md">
                   Vitesse Éclair
                 </div>
                 <div className="flex justify-between items-center mb-4">
@@ -488,10 +488,10 @@ export default function BIAdvisor() {
 
             <button
               onClick={scrollToContact}
-              className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] hover:from-[#005260] hover:to-[#248fa5] text-white px-10 py-5 rounded-2xl font-black text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all w-full sm:w-auto mx-auto flex items-center justify-center gap-3 group"
+              className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] hover:from-[#005260] hover:to-[#248fa5] text-white px-6 py-4 sm:px-10 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all w-full md:w-auto mx-auto flex items-center justify-center gap-2 group"
             >
-              Demander ma démo et mon test gratuit
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <span className="text-center sm:text-left">Demander ma démo et mon test gratuit</span>
+              <ArrowRight className="group-hover:translate-x-1 transition-transform shrink-0" />
             </button>
           </RevealSection>
         </div>
