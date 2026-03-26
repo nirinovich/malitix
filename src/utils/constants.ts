@@ -1,4 +1,6 @@
 // Constants for Malitix landing page
+// Note: SERVICES is kept for backward compatibility with any cached/stale references
+export const SERVICES: string[] = [];
 import type { NavLink, Stat, SocialLink } from '../types';
 
 // Navigation Links
