@@ -18,15 +18,22 @@ const USE_CASES = [
   // Add more services here in the future
 ];
 
+const SOLUTIONS = [
+  { label: 'BI Advisor', href: '/bi-advisor', description: 'Assistant Décisionnel Intelligent' },
+  // Add more solutions here in the future
+];
+
 export default function Navbar({ theme: propTheme }: NavbarProps) {
   const { theme: contextTheme, toggleTheme } = useTheme();
   const theme = propTheme || contextTheme;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const dropdownTimeoutRef = useRef<number | null>(null);
+  const solutionsTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +59,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     setIsUseCasesOpen(false);
+    setIsSolutionsOpen(false);
     
     // Si c'est un hash (ancre), gérer la navigation vers la section
     if (href.startsWith('#')) {
@@ -77,6 +85,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
 
   const handleUseCaseClick = (href: string) => {
     setIsUseCasesOpen(false);
+    setIsSolutionsOpen(false);
     setIsMobileMenuOpen(false);
     navigate(href);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -93,6 +102,19 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
   const handleDropdownLeave = () => {
     dropdownTimeoutRef.current = window.setTimeout(() => {
       setIsUseCasesOpen(false);
+    }, 200); // 200ms delay before closing
+  };
+
+  const handleSolutionsDropdownEnter = () => {
+    if (solutionsTimeoutRef.current) {
+      clearTimeout(solutionsTimeoutRef.current);
+    }
+    setIsSolutionsOpen(true);
+  };
+
+  const handleSolutionsDropdownLeave = () => {
+    solutionsTimeoutRef.current = window.setTimeout(() => {
+      setIsSolutionsOpen(false);
     }, 200); // 200ms delay before closing
   };
 
@@ -156,7 +178,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                   theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
-                Services
+                Nos Services
                 <ChevronDown 
                   size={16} 
                   className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
@@ -197,6 +219,70 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                               theme === 'dark' ? 'text-white/50' : 'text-gray-500'
                             }`}>
                               {useCase.description}
+                            </div>
+                          </div>
+                          <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                            →
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Nos Solutions Dropdown */}
+            <div 
+              className="relative group"
+              onMouseEnter={handleSolutionsDropdownEnter}
+              onMouseLeave={handleSolutionsDropdownLeave}
+            >
+              <button
+                className={`relative py-2 transition-colors flex items-center gap-1 cursor-pointer ${
+                  theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
+                Nos Solutions
+                <ChevronDown 
+                  size={16} 
+                  className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180' : ''}`}
+                />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+              </button>
+
+              <div
+                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
+                  isSolutionsOpen
+                    ? 'opacity-100 visible translate-y-0'
+                    : 'opacity-0 invisible -translate-y-2'
+                }`}
+              >
+                <div className={`w-72 rounded-2xl shadow-2xl border overflow-hidden ${
+                  theme === 'dark'
+                    ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
+                    : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
+                }`}>
+                  <div className="p-2">
+                    {SOLUTIONS.map((solution) => (
+                      <button
+                        key={solution.href}
+                        onClick={() => handleUseCaseClick(solution.href)}
+                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
+                          theme === 'dark'
+                            ? 'hover:bg-white/10 text-white/80 hover:text-white'
+                            : 'hover:bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[#2ca3bd] transition-colors">
+                              {solution.label}
+                            </div>
+                            <div className={`text-xs ${
+                              theme === 'dark' ? 'text-white/50' : 'text-gray-500'
+                            }`}>
+                              {solution.description}
                             </div>
                           </div>
                           <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
@@ -310,7 +396,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                   : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
               }`}
             >
-              <span>Services</span>
+              <span>Nos Services</span>
               <ChevronDown 
                 size={16} 
                 className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
@@ -339,6 +425,52 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
                       theme === 'dark' ? 'text-white/50' : 'text-gray-500'
                     }`}>
                       {useCase.description}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Nos Solutions Mobile Dropdown */}
+          <div>
+            <button
+              onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all cursor-pointer ${
+                theme === 'dark'
+                  ? 'text-white/80 hover:text-white hover:bg-white/5'
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
+              }`}
+            >
+              <span>Nos Solutions</span>
+              <ChevronDown 
+                size={16} 
+                className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            
+            {/* Mobile Solutions List */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                isSolutionsOpen ? 'max-h-96 mt-2' : 'max-h-0'
+              }`}
+            >
+              <div className="space-y-2 pl-4">
+                {SOLUTIONS.map((solution) => (
+                  <button
+                    key={solution.href}
+                    onClick={() => handleUseCaseClick(solution.href)}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
+                      theme === 'dark'
+                        ? 'bg-white/5 text-white/80 hover:text-white hover:bg-white/10'
+                        : 'bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900 hover:bg-[var(--surface-primary)]'
+                    }`}
+                  >
+                    <div className="font-semibold text-sm mb-1">{solution.label}</div>
+                    <div className={`text-xs ${
+                      theme === 'dark' ? 'text-white/50' : 'text-gray-500'
+                    }`}>
+                      {solution.description}
                     </div>
                   </button>
                 ))}

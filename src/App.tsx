@@ -14,6 +14,7 @@ const CustomDevelopment = lazy(() => import('./pages/CustomDevelopment'));
 const SIRefonte = lazy(() => import('./pages/SIRefonte'));
 const MobileAppDevelopment = lazy(() => import('./pages/MobileAppDevelopment'));
 const SOCMonitoring = lazy(() => import('./pages/SOCMonitoring'));
+const BIAdvisor = lazy(() => import('./pages/BIAdvisor'));
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/refonte-si" element={<SIRefonte />} />
             <Route path="/developpement-mobile" element={<MobileAppDevelopment />} />
+            <Route path="/bi-advisor" element={<BIAdvisor />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
