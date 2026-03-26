@@ -50,29 +50,29 @@ export default function BIAdvisor() {
       </Helmet>
 
       {/* 1. HEADER (Le Hook) */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-950">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[var(--bg-primary)]">
         <div className="absolute inset-0 z-0">
           <img
             alt="Data network background"
-            className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+            className="w-full h-full object-cover opacity-[0.12] dark:opacity-30 transition-opacity duration-700"
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] from-20% to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] from-5% to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 py-20 w-full">
           <div className="flex flex-col justify-center">
             <RevealSection>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-white mb-6">
-                Arrêtez de piloter dans le <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-600 line-through decoration-red-500/50">rétroviseur.</span>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-[var(--text-primary)] mb-6">
+                Arrêtez de piloter dans le <span className="text-[var(--text-muted)] line-through decoration-red-500/50">rétroviseur.</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ca3bd] to-[#6ad5f0]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f]">
                   Parlez à vos données.
                 </span>
               </h1>
 
-              <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl font-light">
+              <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-10 leading-relaxed max-w-xl font-light">
                 Transformez votre ERP standard en Assistant Décisionnel Intelligent. Plus d'exports Excel. Plus d'attente d'experts. Juste des prévisions instantanées, prêtes pour le board.
               </p>
 
@@ -93,39 +93,39 @@ export default function BIAdvisor() {
               <div className="relative w-full max-w-lg mx-auto">
                 <div className="absolute inset-0 bg-[#2ca3bd]/20 blur-[100px] rounded-full" />
 
-                <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl">
-                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                <div className="relative bg-[var(--surface-primary)]/90 backdrop-blur-xl border border-[var(--border-primary)] p-6 rounded-3xl shadow-2xl">
+                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-[var(--border-primary)]">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2ca3bd] to-[#00687a] flex items-center justify-center shadow-lg">
                         <MessageSquare size={20} className="text-white" />
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-white">BI Advisor AI</div>
-                        <div className="text-xs text-emerald-400 flex items-center gap-1 font-semibold">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Connecté à votre ERP
+                        <div className="text-sm font-bold text-[var(--text-primary)]">BI Advisor AI</div>
+                        <div className="text-xs text-emerald-500 flex items-center gap-1 font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Connecté à votre ERP
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-4">
-                    <div className="bg-white/5 rounded-2xl rounded-tr-sm p-4 text-sm text-slate-300 ml-8 border border-white/5">
+                    <div className="bg-[var(--surface-elevated)] rounded-2xl rounded-tr-sm p-4 text-sm text-[var(--text-secondary)] ml-8 border border-[var(--border-primary)]">
                       Quel sera l'impact sur la trésorerie si la campagne Q4 augmente les ventes de +15% ?
                     </div>
 
-                    <div className="bg-[#2ca3bd]/10 border border-[#2ca3bd]/20 rounded-2xl rounded-tl-sm p-5 text-sm text-white mr-8 shadow-inner relative overflow-hidden">
+                    <div className="bg-[#2ca3bd]/10 border border-[#2ca3bd]/20 rounded-2xl rounded-tl-sm p-5 text-sm text-[var(--text-primary)] mr-8 shadow-inner relative overflow-hidden">
                       <div className="absolute left-0 top-0 h-full w-1 bg-[#2ca3bd]" />
                       <p className="mb-4 font-light leading-relaxed">
                         En simulant cette hausse avec nos modèles prédictifs :
                       </p>
                       <div className="space-y-2 mb-4">
-                        <div className="flex justify-between items-center bg-black/20 px-3 py-2 rounded-lg">
-                          <span className="text-slate-400">Besoin en fonds de roulement</span>
-                          <span className="font-bold text-red-400">+ 120k €</span>
+                        <div className="flex justify-between items-center bg-[var(--surface-elevated)] px-3 py-2 rounded-lg border border-[var(--border-primary)]/50">
+                          <span className="text-[var(--text-secondary)]">Besoin en fonds de roulement</span>
+                          <span className="font-bold text-red-500">+ 120k €</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/20 px-3 py-2 rounded-lg">
-                          <span className="text-slate-400">Marge nette prévisionnelle</span>
-                          <span className="font-bold text-emerald-400">+ 45k €</span>
+                        <div className="flex justify-between items-center bg-[var(--surface-elevated)] px-3 py-2 rounded-lg border border-[var(--border-primary)]/50">
+                          <span className="text-[var(--text-secondary)]">Marge nette prévisionnelle</span>
+                          <span className="font-bold text-emerald-600">+ 45k €</span>
                         </div>
                       </div>
                       <p className="text-xs text-[#2ca3bd] font-semibold flex items-center gap-1">
@@ -135,11 +135,11 @@ export default function BIAdvisor() {
                   </div>
 
                   {/* Chat Input Mockup */}
-                  <div className="mt-6 flex items-center gap-3 bg-white/5 border border-white/10 p-2 rounded-2xl">
+                  <div className="mt-6 flex items-center gap-3 bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-2 rounded-2xl">
                     <input
                       type="text"
                       placeholder="Posez votre question à vos données..."
-                      className="bg-transparent border-none shadow-none text-white text-sm w-full focus:ring-0 focus:outline-none placeholder:text-slate-500 pl-3"
+                      className="bg-transparent border-none shadow-none text-[var(--text-primary)] text-sm w-full focus:ring-0 focus:outline-none placeholder:text-[var(--text-muted)] pl-3"
                       readOnly
                     />
                     <div className="bg-[#2ca3bd] w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#2ca3bd]/20 hover:scale-105 transition-transform cursor-pointer">
@@ -302,7 +302,7 @@ export default function BIAdvisor() {
                 <div className="absolute top-0 right-0 p-3 bg-[#2ca3bd] text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-widest">
                   Live
                 </div>
-                <div className="w-16 h-16 rounded-2xl bg-white/10 dark:bg-black/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition-colors duration-500 shadow-inner">
+                <div className="w-16 h-16 rounded-2xl bg-[#2ca3bd]/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition-colors duration-500 shadow-inner">
                   <BellRing className="text-[#2ca3bd] group-hover:text-white transition-colors" size={32} />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Alerting Proactif</h3>
