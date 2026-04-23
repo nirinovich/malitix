@@ -79,7 +79,7 @@ function ServiceCard({ service, layout, onClick }: ServiceCardProps) {
   return (
     <button
       onClick={onClick}
-      className={`${layout} group cursor-pointer backdrop-blur-xl rounded-3xl p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden text-left border border-[var(--brand-primary)]/20 bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/50 hover:shadow-[var(--brand-primary)]/20 animate-on-scroll`}
+      className={`${layout} group cursor-pointer backdrop-blur-xl rounded-3xl p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden text-left border border-[var(--brand-primary)]/20 bg-[var(--services-card-bg)] hover:border-[var(--brand-primary)]/50 hover:shadow-[var(--brand-primary)]/20 animate-on-scroll`}
     >
       {/* Glow */}
       <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700 bg-[var(--brand-primary)]/10" />

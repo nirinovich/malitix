@@ -28,7 +28,7 @@ export function HeroSection() {
             <div className="relative h-[600px]">
               {/* Main floating card - Code snippet */}
               <div
-                className="absolute top-20 left-10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute top-20 left-10 backdrop-blur-xl rounded-3xl p-6 shadow-2xl animate-float bg-[var(--card-bg)] border border-[var(--brand-primary)]/20 shadow-[var(--brand-primary)]/20"
                 style={{ animationDelay: "0s" }}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -49,9 +49,8 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Database card */}
               <div
-                className="absolute top-32 right-10 backdrop-blur-xl rounded-2xl p-4 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute top-32 right-10 backdrop-blur-xl rounded-3xl p-6 shadow-2xl animate-float bg-[var(--card-bg)] border border-[var(--brand-primary)]/20 shadow-[var(--brand-primary)]/20"
                 style={{ animationDelay: "1s" }}
               >
                 <div className="flex items-center gap-3">
@@ -67,9 +66,8 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* AI chip card */}
               <div
-                className="absolute bottom-32 left-20 backdrop-blur-xl rounded-2xl p-4 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute bottom-32 left-20 backdrop-blur-xl rounded-3xl p-6 shadow-2xl animate-float bg-[var(--card-bg)] border border-[var(--brand-primary)]/20 shadow-[var(--brand-primary)]/20"
                 style={{ animationDelay: "2s" }}
               >
                 <div className="flex items-center gap-3">
@@ -95,14 +93,14 @@ export function HeroSection() {
 
               {/* Stats card */}
               <div
-                className="absolute bottom-16 right-16 backdrop-blur-xl rounded-2xl p-5 shadow-2xl animate-float bg-[image:var(--card-bg)] border border-[var(--card-border)] shadow-[var(--card-shadow)]"
+                className="absolute bottom-16 right-16 backdrop-blur-xl rounded-3xl p-6 shadow-2xl animate-float bg-[var(--card-bg)] border border-[var(--brand-primary)]/20 shadow-[var(--brand-primary)]/20"
                 style={{ animationDelay: "1.5s" }}
               >
                 <div className="flex items-center gap-4">
                   <Sparkles className="text-[var(--brand-text)]" size={32} />
                   <div>
                     <div className="text-3xl font-bold text-[var(--text-primary)]">600+</div>
-                    <div className="text-xs text-[var(--text-tertiary)]">Projets réussis</div>
+                    <div className="text-sm text-[var(--text-tertiary)]">Projets réussis</div>
                   </div>
                 </div>
               </div>
@@ -225,19 +223,25 @@ export function HeroSection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap gap-8 justify-center lg:justify-start pt-8 border-t border-[var(--border-primary)]">
-              <div>
-                <div className="text-2xl font-bold text-[var(--brand-text)]">600+</div>
-                <div className="text-sm text-[var(--text-tertiary)]">Projets</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-[var(--brand-text)]">350+</div>
-                <div className="text-sm text-[var(--text-tertiary)]">Ingénieurs</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-[var(--brand-text)]">24/7</div>
-                <div className="text-sm text-[var(--text-tertiary)]">Support</div>
-              </div>
+            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-[var(--border-primary)]">
+              {[
+                { label: "Projets", value: "600+" },
+                { label: "Ingénieurs", value: "350+" },
+                { label: "Support", value: "24/7" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="backdrop-blur-xl rounded-2xl p-4 bg-[var(--card-bg)] border border-[var(--brand-primary)]/20 text-center animate-on-scroll in-view"
+                  style={{ transitionDelay: `${0.6 + i * 0.1}s` }}
+                >
+                  <div className="text-xl sm:text-2xl font-bold text-[var(--brand-text)]">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # --shamefully-hoist creates a flat node_modules that survives Docker COPY
 # between stages (pnpm's default symlink structure breaks across layers)
-RUN pnpm install --frozen-lockfile --shamefully-hoist
+RUN pnpm install --no-frozen-lockfile --shamefully-hoist
 
 # ──────────────────────────────────────────────────────────────
 # Stage 2 — Build the React Router app (SSG + SSR bundle)
@@ -26,7 +26,7 @@ FROM node:20-alpine AS prod-deps
 RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN pnpm install --frozen-lockfile --prod --shamefully-hoist
+RUN pnpm install --no-frozen-lockfile --prod --shamefully-hoist
 
 # ──────────────────────────────────────────────────────────────
 # Stage 4 — Node.js runtime (SSR server)
