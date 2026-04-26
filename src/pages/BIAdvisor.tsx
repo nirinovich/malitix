@@ -20,7 +20,6 @@ import {
   ChevronDown,
   Quote,
   Timer,
-  Users,
   Target,
   Lock,
 } from 'lucide-react';
@@ -72,9 +71,8 @@ function AnimatedStat({
   return (
     <div ref={ref} className="text-center">
       <div
-        className={`text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] transition-all duration-1000 ${
-          hasBeenInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
-        }`}
+        className={`text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] transition-all duration-1000 ${hasBeenInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+          }`}
       >
         {prefix}
         {value}
@@ -91,9 +89,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
   return (
     <div
-      className={`border border-[var(--border-primary)] rounded-2xl overflow-hidden transition-all duration-300 ${
-        isOpen ? 'bg-[var(--surface-elevated)] shadow-lg shadow-[#2ca3bd]/5' : 'bg-transparent hover:bg-[var(--surface-elevated)]/50'
-      }`}
+      className={`border border-[var(--border-primary)] rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'bg-[var(--surface-elevated)] shadow-lg shadow-[#2ca3bd]/5' : 'bg-transparent hover:bg-[var(--surface-elevated)]/50'
+        }`}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -106,9 +103,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         />
       </button>
       <div
-        className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <p className="px-6 pb-5 text-[var(--text-secondary)] leading-relaxed">{answer}</p>
       </div>
@@ -154,34 +150,30 @@ export default function BIAdvisor() {
           <div className="flex flex-col justify-center">
             <RevealSection>
               {/* HEADLINE: End Result + Time Period + Emotional Payoff */}
-              <h1 className="text-3xl md:text-4xl lg:text-[3.25rem] font-black leading-[1.1] tracking-tighter text-[var(--text-primary)] mb-6">
-                Divisez votre temps de décision par 10{' '}
+              <h1 className="text-3xl md:text-4xl lg:text-[3rem] font-black leading-[1.15] tracking-tight text-[var(--text-primary)] mb-6 text-balance">
+                Divisez votre temps de décision par 10.<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f]">
-                  et reprenez le contrôle de votre business.
+                  Reprenez le contrôle.
                 </span>
               </h1>
 
               {/* SUB-HEADLINE: Pain Point + Specific USPs/Solution */}
-              <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-10 leading-relaxed max-w-xl font-light">
-                Fini les exports Excel interminables et l'attente de l'équipe data.{' '}
-                <span className="text-[var(--text-primary)] font-medium">
-                  BI Advisor transforme votre ERP en assistant IA
-                </span>{' '}
-                qui répond à vos questions en langage naturel, avec des prévisions prêtes pour le board.
+              <p className="text-lg text-[var(--text-secondary)] mb-10 leading-relaxed max-w-lg font-light text-balance">
+                Fini les exports Excel interminables. <span className="text-[var(--text-primary)] font-medium">BI Advisor transforme votre ERP en assistant IA</span> qui répond à vos questions en langage naturel, avec des prévisions prêtes pour le board.
               </p>
 
               {/* CTA + Anti-FUDs */}
-              <div className="flex flex-col gap-4 w-full max-w-md">
+              <div className="flex flex-col gap-4">
                 <button
                   onClick={scrollToContact}
-                  className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-[#2ca3bd]/25 hover:scale-105 hover:shadow-2xl hover:shadow-[#2ca3bd]/30 active:scale-95 transition-all flex items-center justify-center gap-3 group border border-white/10 w-full"
+                  className="bg-gradient-to-r from-[#00687a] to-[#2ca3bd] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-[#2ca3bd]/25 hover:scale-105 hover:shadow-2xl hover:shadow-[#2ca3bd]/30 active:scale-95 transition-all flex items-center justify-center gap-3 group border border-white/10 w-full sm:w-max"
                 >
                   Tester gratuitement sur mes données
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
 
                 {/* Anti-FUDs — Eradicate Fear, Uncertainty, Doubt */}
-                <div className="flex items-center justify-center gap-6 text-xs text-[var(--text-muted)]">
+                <div className="flex items-center gap-5 text-xs text-[var(--text-muted)] mt-2">
                   <span className="flex items-center gap-1.5">
                     <Lock size={12} className="text-[#2ca3bd]" />
                     Données chiffrées
