@@ -14,6 +14,7 @@ import {
   BellRing,
   PackageSearch,
   ArrowRight,
+  ArrowUpRight,
   Send,
   CheckCircle,
   XCircle,
@@ -855,93 +856,71 @@ export default function BIAdvisor() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 9: STRATEGIC SOCIAL PROOF
-          "Helping X customers achieve [Dream Outcome]"
-          Never "Our Reviews" or "Testimonials"
+          SECTION 9: CAS D'USAGES (Replaces Fake Social Proof)
+          Show, Don't Tell.
           ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-12 bg-[var(--bg-primary)]">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-6 sm:px-12 bg-[var(--bg-primary)] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
           <RevealSection>
-            <div className="text-center mb-16">
-              {/* NEVER use "Nos Avis" or "Témoignages" */}
-              <h2 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-4">
-                +30 entreprises ont accéléré leur prise de décision{' '}
-                <span className="text-[#2ca3bd]">avec BI Advisor</span>.
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] mb-6 text-balance">
+                Ce que vos directions peuvent enfin demander.
               </h2>
+              <p className="text-lg text-[var(--text-secondary)]">
+                Transformez votre ERP en un outil de décision instantané grâce à des requêtes en langage naturel.
+              </p>
             </div>
           </RevealSection>
 
-          {/* Wall of Love — Dense Grid of Proof */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                quote:
-                  "On est passé de 3 semaines de reporting à des réponses en temps réel. Le board est impressionné.",
-                name: 'Marc D.',
-                role: 'DAF',
-                company: 'Groupe Industriel, +500 salariés',
-                metric: 'Temps de décision divisé par 15',
+                icon: <LineChart size={24} />,
+                department: "Direction Financière",
+                query: "Quel est l'impact sur notre BFR prévisionnel si nous augmentons nos stocks de composants de 15% pour anticiper Q4 ?",
+                before: "3 jours d'exports",
+                after: "Généré en 1.2s"
               },
               {
-                quote:
-                  "Mes commerciaux posent directement leurs questions à l'IA au lieu de harceler l'IT. Tout le monde est plus efficace.",
-                name: 'Sophie L.',
-                role: 'Directrice Commerciale',
-                company: 'Distribution B2B',
-                metric: '+32% de productivité équipe',
+                icon: <ArrowUpRight size={24} />,
+                department: "Direction Commerciale",
+                query: "Affiche-moi le top 10 des clients dont la marge a le plus baissé ce trimestre, et identifie les causes.",
+                before: "Attente de l'IT",
+                after: "Généré en 1.5s"
               },
               {
-                quote:
-                  "L'alerte WhatsApp sur la chute de marge nous a sauvé 80k€ en un trimestre. Le ROI est immédiat.",
-                name: 'Thomas R.',
-                role: 'CEO',
-                company: 'E-commerce, CA 15M€',
-                metric: 'ROI en moins de 30 jours',
-              },
-              {
-                quote:
-                  "Intégré à notre Sage en 10 jours. L'implémentation la plus fluide qu'on ait connue pour un outil data.",
-                name: 'Nathalie P.',
-                role: 'DSI',
-                company: 'PME Tech, 120 salariés',
-                metric: 'Mise en place en 10 jours',
-              },
-              {
-                quote:
-                  "Je peux enfin avoir une vision cash à 90 jours sans dépendre de mon contrôleur de gestion. C'est libérateur.",
-                name: 'Jean-Pierre M.',
-                role: 'Directeur Général',
-                company: 'Groupe de Services',
-                metric: 'Visibilité tréso x6',
-              },
-              {
-                quote:
-                  "Zéro rupture de stock depuis 6 mois grâce aux alertes prédictives. Avant, on en avait 3 par mois.",
-                name: 'Karim B.',
-                role: 'Responsable Supply Chain',
-                company: 'Retail, 45 points de vente',
-                metric: 'Ruptures stock → 0',
-              },
-            ].map((testimonial, index) => (
-              <RevealSection key={testimonial.name} delay={index * 100}>
-                <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-6 rounded-2xl h-full flex flex-col hover:border-[#2ca3bd]/20 transition-colors">
-                  {/* Metric badge */}
-                  <div className="mb-4">
-                    <span className="text-xs font-bold text-[#2ca3bd] bg-[#2ca3bd]/10 px-3 py-1 rounded-full">
-                      {testimonial.metric}
-                    </span>
+                icon: <PackageSearch size={24} />,
+                department: "Supply Chain",
+                query: "Quelles sont les références qui risquent une rupture de stock d'ici 3 semaines en croisant avec nos prévisions ?",
+                before: "Analyses croisées",
+                after: "Alerte en 0.8s"
+              }
+            ].map((useCase, index) => (
+              <RevealSection key={useCase.department} delay={index * 100}>
+                <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-8 rounded-3xl h-full flex flex-col hover:border-[#2ca3bd]/50 hover:shadow-2xl hover:shadow-[#2ca3bd]/5 transition-all group">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2ca3bd]/10 flex items-center justify-center text-[#2ca3bd] group-hover:scale-110 group-hover:bg-[#2ca3bd] group-hover:text-white transition-all shadow-inner border border-[#2ca3bd]/20">
+                      {useCase.icon}
+                    </div>
+                    <h3 className="font-bold text-lg text-[var(--text-primary)]">{useCase.department}</h3>
+                  </div>
+                  
+                  <div className="bg-[var(--bg-primary)] p-5 rounded-2xl rounded-tl-sm border border-[var(--border-primary)] mb-8 flex-1 relative shadow-inner">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-[#2ca3bd] rounded-l-full" />
+                    <p className="text-[var(--text-secondary)] text-sm font-medium italic leading-relaxed">
+                      "{useCase.query}"
+                    </p>
                   </div>
 
-                  <Quote size={20} className="text-[#2ca3bd]/30 mb-3" />
-                  <p className="text-[var(--text-secondary)] leading-relaxed flex-1 mb-4 italic">
-                    "{testimonial.quote}"
-                  </p>
-
-                  <div className="pt-4 border-t border-[var(--border-primary)]">
-                    <p className="font-bold text-[var(--text-primary)] text-sm">{testimonial.name}</p>
-                    <p className="text-xs text-[var(--text-muted)]">
-                      {testimonial.role} — {testimonial.company}
-                    </p>
+                  <div className="pt-6 border-t border-[var(--border-primary)]/50 space-y-3 mt-auto">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-[var(--text-secondary)]">Avant l'IA</span>
+                      <span className="text-[var(--text-muted)] line-through decoration-red-500/50">{useCase.before}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm font-bold">
+                      <span className="text-[var(--text-primary)]">Avec BI Advisor</span>
+                      <span className="text-emerald-500 font-black">{useCase.after}</span>
+                    </div>
                   </div>
                 </div>
               </RevealSection>
