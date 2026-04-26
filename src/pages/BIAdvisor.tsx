@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import BIAdvisorContact from '../components/BIAdvisor/BIAdvisorContact';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -112,6 +112,155 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+/* ─── Animated Hero Chat ─── */
+function HeroChatDemo() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { hasBeenInView } = useInView(ref, { threshold: 0.5 });
+  const [step, setStep] = useState(0);
+  const [typedText, setTypedText] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+  
+  const questionText = "Quel sera l'impact sur la trésorerie si la campagne Q4 augmente les ventes de +15% ?";
+
+  useEffect(() => {
+    if (hasBeenInView && step === 0) {
+      const t = setTimeout(() => setStep(1), 800);
+      return () => clearTimeout(t);
+    }
+  }, [hasBeenInView, step]);
+
+  useEffect(() => {
+    if (step === 1) {
+      let i = 0;
+      const interval = setInterval(() => {
+        setTypedText(questionText.slice(0, i + 1));
+        i++;
+        if (i >= questionText.length) {
+          clearInterval(interval);
+          setTimeout(() => setStep(2), 600); 
+        } else if (inputRef.current) {
+          inputRef.current.scrollLeft = inputRef.current.scrollWidth;
+        }
+      }, 40); 
+      return () => clearInterval(interval);
+    }
+    if (step === 2) {
+      const t = setTimeout(() => setStep(3), 1500); 
+      return () => clearTimeout(t);
+    }
+  }, [step]);
+
+  return (
+    <div className="relative w-full max-w-lg mx-auto" ref={ref}>
+      <div className="absolute inset-0 bg-[#2ca3bd]/15 blur-[100px] rounded-full" />
+
+      <div className="relative bg-[var(--surface-primary)]/90 backdrop-blur-xl border border-[var(--border-primary)] p-6 rounded-3xl shadow-2xl flex flex-col h-[520px]">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--border-primary)] shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2ca3bd] to-[#00687a] flex items-center justify-center shadow-lg">
+              <MessageSquare size={20} className="text-white" />
+            </div>
+            <div>
+              <div className="text-sm font-bold text-[var(--text-primary)]">BI Advisor AI</div>
+              <div className="text-xs text-emerald-500 flex items-center gap-1 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Connecté à votre ERP
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Chat Area */}
+        <div className="flex-1 space-y-4 overflow-hidden flex flex-col justify-end pb-2">
+          {/* Welcome Message */}
+          <div className="self-start bg-[#2ca3bd]/10 border border-[#2ca3bd]/20 rounded-2xl rounded-tl-sm p-4 text-sm text-[var(--text-primary)] mr-8 shadow-inner animate-fade-in-up shrink-0">
+            <span className="block mb-1">👋 <strong>Bonjour !</strong></span>
+            Je suis connecté à votre ERP et prêt à analyser vos données. Que souhaitez-vous savoir aujourd'hui ?
+          </div>
+
+          {/* Question bubble */}
+          {step >= 2 && (
+            <div className="self-end bg-[var(--surface-elevated)] rounded-2xl rounded-tr-sm p-4 text-sm text-[var(--text-primary)] ml-12 border border-[var(--border-primary)] animate-fade-in-up flex-shrink-0">
+              {questionText}
+            </div>
+          )}
+
+          {/* Typing Indicator (Thinking) */}
+          {step === 2 && (
+            <div className="self-start bg-[#2ca3bd]/10 border border-[#2ca3bd]/20 rounded-2xl rounded-tl-sm p-4 w-16 mr-12 text-[var(--text-primary)] shadow-inner animate-fade-in-up flex-shrink-0" style={{ animationDelay: '0.2s' }}>
+               <div className="flex gap-1.5 justify-center mt-1">
+                 <div className="w-1.5 h-1.5 bg-[#2ca3bd] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                 <div className="w-1.5 h-1.5 bg-[#2ca3bd] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                 <div className="w-1.5 h-1.5 bg-[#2ca3bd] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+               </div>
+            </div>
+          )}
+
+          {/* Answer bubble */}
+          {step >= 3 && (
+            <div className="self-start bg-[#2ca3bd]/10 border border-[#2ca3bd]/20 rounded-2xl rounded-tl-sm p-5 text-sm text-[var(--text-primary)] mr-8 shadow-inner relative overflow-hidden animate-fade-in-up flex-shrink-0">
+              <div className="absolute left-0 top-0 h-full w-1 bg-[#2ca3bd]" />
+              <p className="mb-4 font-light leading-relaxed">
+                En simulant cette hausse avec nos modèles prédictifs :
+              </p>
+              <div className="space-y-2 mb-4">
+                <div className="flex justify-between items-center bg-[var(--surface-elevated)] px-3 py-2 rounded-lg border border-[var(--border-primary)]/50">
+                  <span className="text-[var(--text-secondary)]">BFR additionnel</span>
+                  <span className="font-bold text-red-500">+ 120k €</span>
+                </div>
+                <div className="flex justify-between items-center bg-[var(--surface-elevated)] px-3 py-2 rounded-lg border border-[var(--border-primary)]/50">
+                  <span className="text-[var(--text-secondary)]">Marge nette</span>
+                  <span className="font-bold text-emerald-500">+ 45k €</span>
+                </div>
+              </div>
+              <p className="text-xs text-[#2ca3bd] font-semibold flex items-center gap-1">
+                <Zap size={12} className="fill-[#2ca3bd]" /> Actionnable / Généré en 1.2s
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Input or CTA */}
+        <div 
+          onClick={step >= 3 ? () => document.querySelector('#bi-advisor-contact')?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+          className={`mt-4 flex items-center justify-between gap-3 bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-2 rounded-2xl shrink-0 transition-all duration-500 ${
+            step >= 3 ? 'cursor-pointer hover:border-[#2ca3bd]/40 hover:bg-[#2ca3bd]/5 hover:shadow-lg hover:shadow-[#2ca3bd]/10 group ring-1 ring-transparent hover:ring-[#2ca3bd]/20' : ''
+          }`}
+        >
+          {step >= 3 ? (
+            <>
+              <div className="flex-1 overflow-hidden">
+                <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2ca3bd] to-[#1e7a8f] pl-3 animate-fade-in-up block truncate">
+                  Essayer avec vos propres données
+                </span>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ca3bd] to-[#00687a] flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#2ca3bd]/20 group-hover:scale-105 transition-transform animate-fade-in-up">
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </>
+          ) : (
+            <>
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder={step === 0 ? "Posez votre question à vos données..." : ""}
+                className="bg-transparent border-none shadow-none text-[var(--text-primary)] text-sm w-full focus:ring-0 focus:outline-none placeholder:text-[var(--text-muted)] pl-3"
+                value={step === 1 ? typedText : ''}
+                readOnly
+              />
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${
+                step >= 2 ? 'bg-transparent text-[var(--text-muted)] opacity-20 scale-75' : 'bg-[#2ca3bd] text-white shadow-lg shadow-[#2ca3bd]/20'
+              }`}>
+                <Send size={16} className={step >= 2 ? "" : "-ml-1"} />
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BIAdvisor() {
   const scrollToContact = () => {
     document.querySelector('#bi-advisor-contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -194,64 +343,7 @@ export default function BIAdvisor() {
           {/* Right: Interactive Chat Demo */}
           <div className="hidden lg:flex flex-col justify-center relative">
             <RevealSection delay={200}>
-              <div className="relative w-full max-w-lg mx-auto">
-                <div className="absolute inset-0 bg-[#2ca3bd]/15 blur-[100px] rounded-full" />
-
-                <div className="relative bg-[var(--surface-primary)]/90 backdrop-blur-xl border border-[var(--border-primary)] p-6 rounded-3xl shadow-2xl">
-                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-[var(--border-primary)]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2ca3bd] to-[#00687a] flex items-center justify-center shadow-lg">
-                        <MessageSquare size={20} className="text-white" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-[var(--text-primary)]">BI Advisor AI</div>
-                        <div className="text-xs text-emerald-500 flex items-center gap-1 font-semibold">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Connecté à votre
-                          ERP
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="bg-[var(--surface-elevated)] rounded-2xl rounded-tr-sm p-4 text-sm text-[var(--text-secondary)] ml-8 border border-[var(--border-primary)]">
-                      Quel sera l'impact sur la trésorerie si la campagne Q4 augmente les ventes de +15% ?
-                    </div>
-
-                    <div className="bg-[#2ca3bd]/10 border border-[#2ca3bd]/20 rounded-2xl rounded-tl-sm p-5 text-sm text-[var(--text-primary)] mr-8 shadow-inner relative overflow-hidden">
-                      <div className="absolute left-0 top-0 h-full w-1 bg-[#2ca3bd]" />
-                      <p className="mb-4 font-light leading-relaxed">
-                        En simulant cette hausse avec nos modèles prédictifs :
-                      </p>
-                      <div className="space-y-2 mb-4">
-                        <div className="flex justify-between items-center bg-[var(--surface-elevated)] px-3 py-2 rounded-lg border border-[var(--border-primary)]/50">
-                          <span className="text-[var(--text-secondary)]">Besoin en fonds de roulement</span>
-                          <span className="font-bold text-red-500">+ 120k €</span>
-                        </div>
-                        <div className="flex justify-between items-center bg-[var(--surface-elevated)] px-3 py-2 rounded-lg border border-[var(--border-primary)]/50">
-                          <span className="text-[var(--text-secondary)]">Marge nette prévisionnelle</span>
-                          <span className="font-bold text-emerald-600">+ 45k €</span>
-                        </div>
-                      </div>
-                      <p className="text-xs text-[#2ca3bd] font-semibold flex items-center gap-1">
-                        <Zap size={12} className="fill-[#2ca3bd]" /> Généré en 1.2s
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 flex items-center gap-3 bg-[var(--surface-elevated)] border border-[var(--border-primary)] p-2 rounded-2xl">
-                    <input
-                      type="text"
-                      placeholder="Posez votre question à vos données..."
-                      className="bg-transparent border-none shadow-none text-[var(--text-primary)] text-sm w-full focus:ring-0 focus:outline-none placeholder:text-[var(--text-muted)] pl-3"
-                      readOnly
-                    />
-                    <div className="bg-[#2ca3bd] w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#2ca3bd]/20 hover:scale-105 transition-transform cursor-pointer">
-                      <Send size={16} className="-ml-1" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <HeroChatDemo />
             </RevealSection>
           </div>
         </div>
