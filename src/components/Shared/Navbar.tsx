@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database, BarChart, ShieldCheck } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { CTA_TEXT } from '../../utils/constants';
 import { useTheme } from '../../context/ThemeContext';
@@ -8,65 +8,61 @@ interface NavbarProps {
   theme?: 'dark' | 'light';
 }
 
-const USE_CASES = [
-  { label: 'Externalisation', href: '/externalisation', description: 'Équipe senior opérationnelle en 72h' },
-  { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours' },
-  { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure', description: 'Application web & mobile en 90 jours' },
-  { label: 'Développement Mobile', href: '/developpement-mobile', description: 'iOS & Android native & cross-platform' },
-  { label: 'Refonte SI', href: '/refonte-si', description: 'Modernisation de système d\'information' },
-  { label: 'SOC Monitoring', href: '/externalisation-soc', description: '24/7 Security Operations Center' },
-  // Add more services here in the future
+const SERVICES_MENU = [
+  { label: 'Sprint Commando', href: '/sprint-commando', description: 'Déblocage garanti en 14 jours', icon: Zap },
+  { label: 'Externalisation', href: '/externalisation', description: 'Équipe senior opérationnelle en 72h', icon: Globe },
+  { label: 'Développement Sur Mesure', href: '/developpement-sur-mesure', description: 'Application web & mobile en 90 jours', icon: Code },
+  { label: 'Développement Mobile', href: '/developpement-mobile', description: 'iOS & Android native & cross-platform', icon: Smartphone },
+  { label: 'Refonte SI', href: '/refonte-si', description: 'Modernisation de système d\'information', icon: Database },
+  { label: 'SOC Monitoring', href: '/soc-monitoring', description: 'Surveillance et opérations de sécurité 24/7', icon: ShieldCheck },
 ];
 
-const SOLUTIONS = [
-  { label: 'BI Advisor', href: '/bi-advisor', description: 'Assistant Décisionnel Intelligent' },
-  // Add more solutions here in the future
+const SOLUTIONS_MENU = [
+  { label: 'BI Advisor', href: '/bi-advisor', description: 'Assistant Décisionnel Intelligent par l\'IA', icon: BarChart },
 ];
 
 export default function Navbar({ theme: propTheme }: NavbarProps) {
   const { theme: contextTheme, toggleTheme } = useTheme();
   const theme = propTheme || contextTheme;
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isServicesMobileOpen, setIsServicesMobileOpen] = useState(false);
+  const [isSolutionsMobileOpen, setIsSolutionsMobileOpen] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
-  const dropdownTimeoutRef = useRef<number | null>(null);
-  const solutionsTimeoutRef = useRef<number | null>(null);
+  const isBlogActive = location.pathname.startsWith("/blog");
+  const isContactActive = location.pathname === "/contact";
+  const isAboutActive = location.pathname === "/qui-sommes-nous";
+
+  const isServicesActive = SERVICES_MENU.some(s => location.pathname === s.href);
+  const isSolutionsActive = SOLUTIONS_MENU.some(s => location.pathname === s.href);
 
   useEffect(() => {
+    let isCurrentlyScrolled = window.scrollY > 20;
+    setIsScrolled(isCurrentlyScrolled);
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const shouldBeScrolled = window.scrollY > 20;
+      if (shouldBeScrolled !== isCurrentlyScrolled) {
+        isCurrentlyScrolled = shouldBeScrolled;
+        setIsScrolled(shouldBeScrolled);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Gérer le scroll vers la section si il y a un hash dans l'URL
-  useEffect(() => {
-    if (location.pathname === '/' && location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, [location]);
-
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    setIsUseCasesOpen(false);
-    setIsSolutionsOpen(false);
-    
-    // Si c'est un hash (ancre), gérer la navigation vers la section
+    setIsServicesMobileOpen(false);
+    setIsSolutionsMobileOpen(false);
+
     if (href.startsWith('#')) {
-      // Si on est sur une autre page, retourner d'abord à l'accueil avec le hash
       if (location.pathname !== '/') {
         navigate('/' + href);
-        // Attendre que la navigation soit complète avant de scroller
         setTimeout(() => {
           const element = document.querySelector(href);
           if (element) {
@@ -74,49 +70,41 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           }
         }, 100);
       } else {
-        // Si on est déjà sur l'accueil, juste scroller
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
+      return;
+    }
+
+    if (location.pathname !== href) {
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const handleUseCaseClick = (href: string) => {
-    setIsUseCasesOpen(false);
-    setIsSolutionsOpen(false);
-    setIsMobileMenuOpen(false);
-    navigate(href);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const isActiveHash = (hash: string) => {
+    if (location.pathname === '/' && location.hash === hash) return true;
+    if (location.pathname === '/' && location.hash === '' && hash === '#home') return true;
+    return false;
   };
 
-  // Better dropdown handling to prevent it from closing too quickly
-  const handleDropdownEnter = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-    }
-    setIsUseCasesOpen(true);
-  };
+  const textClassList = `nav-link py-2 transition-colors flex items-center gap-1 cursor-pointer ${
+    theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+  }`;
 
-  const handleDropdownLeave = () => {
-    dropdownTimeoutRef.current = window.setTimeout(() => {
-      setIsUseCasesOpen(false);
-    }, 200); // 200ms delay before closing
-  };
+  const linkClassList = `nav-link group py-2 flex items-center transition-colors cursor-pointer ${
+    theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+  }`;
 
-  const handleSolutionsDropdownEnter = () => {
-    if (solutionsTimeoutRef.current) {
-      clearTimeout(solutionsTimeoutRef.current);
-    }
-    setIsSolutionsOpen(true);
-  };
-
-  const handleSolutionsDropdownLeave = () => {
-    solutionsTimeoutRef.current = window.setTimeout(() => {
-      setIsSolutionsOpen(false);
-    }, 200); // 200ms delay before closing
-  };
+  const dropdownContainerClass = `w-96 rounded-2xl shadow-2xl border overflow-hidden ${
+    theme === 'dark' ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10' : 'bg-surface backdrop-blur-xl border-gray-200'
+  }`;
+  
+  const dropdownItemClass = `block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
+    theme === 'dark' ? 'hover:bg-white/10 text-white/80 hover:text-white' : 'hover:bg-gray-50 text-gray-700 hover:text-gray-900'
+  }`;
 
   return (
     <nav
@@ -137,18 +125,18 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+              className="relative block h-10 w-40 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
-                className={`h-10 transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 absolute pointer-events-none' : 'opacity-100 relative'}`}
+                className={`absolute inset-0 h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 style={{ zIndex: theme === 'dark' ? 0 : 1 }}
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
-                className={`h-10 transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100 relative' : 'opacity-0 absolute pointer-events-none'}`}
+                className={`absolute inset-0 h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 style={{ zIndex: theme === 'dark' ? 1 : 0 }}
               />
             </Link>
@@ -159,73 +147,56 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             {/* Accueil */}
             <button
               onClick={() => handleNavClick('#home')}
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+              className={linkClassList}
             >
-              Accueil
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+              <span className="relative">
+                Accueil
+                <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${isActiveHash('#home') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </span>
             </button>
 
-            {/* Services Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={handleDropdownEnter}
-              onMouseLeave={handleDropdownLeave}
-            >
-              <button
-                className={`relative py-2 transition-colors flex items-center gap-1 cursor-pointer ${
-                  theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Nos Services
-                <ChevronDown 
-                  size={16} 
-                  className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
-                />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+            {/* Nos Services Dropdown */}
+            <div className="relative group">
+              <button className={textClassList} type="button">
+                <span className="relative">
+                  Services
+                  <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${isServicesActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                </span>
+                <ChevronDown size={16} className="transition-transform duration-200 flex-shrink-0 -rotate-90 group-hover:rotate-0 ml-1" />
               </button>
 
-              {/* Dropdown Menu - Improved with proper spacing */}
-              <div
-                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
-                  isUseCasesOpen
-                    ? 'opacity-100 visible translate-y-0'
-                    : 'opacity-0 invisible -translate-y-2'
-                }`}
-              >
-                <div className={`w-72 rounded-2xl shadow-2xl border overflow-hidden ${
-                  theme === 'dark'
-                    ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-                    : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
-                }`}>
+              <div className="absolute top-full left-0 pt-3 transition-all duration-200 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+                <div className={dropdownContainerClass}>
                   <div className="p-2">
-                    {USE_CASES.map((useCase) => (
-                      <button
-                        key={useCase.href}
-                        onClick={() => handleUseCaseClick(useCase.href)}
-                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
-                          theme === 'dark'
-                            ? 'hover:bg-white/10 text-white/80 hover:text-white'
-                            : 'hover:bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900'
-                        }`}
+                    {SERVICES_MENU.map((service) => (
+                      <Link
+                        key={service.href}
+                        to={service.href}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={dropdownItemClass}
                       >
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                            theme === 'dark' ? 'bg-[#2ca3bd]/20 text-[#2ca3bd] group-hover/item:bg-[#2ca3bd] group-hover/item:text-white' : 'bg-[#2ca3bd]/10 text-[#2ca3bd] group-hover/item:bg-[#2ca3bd] group-hover/item:text-white'
+                          }`}>
+                            <service.icon size={20} />
+                          </div>
                           <div>
-                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[#2ca3bd] transition-colors">
-                              {useCase.label}
+                            <div className="font-semibold text-sm mb-1 transition-colors group-hover/item:text-brand">
+                              {service.label}
                             </div>
-                            <div className={`text-xs ${
-                              theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                            }`}>
-                              {useCase.description}
+                            <div className={`text-xs ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
+                              {service.description}
                             </div>
                           </div>
-                          <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                          <div className="ml-auto text-brand opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-[-4px] group-hover/item:translate-x-0">
                             →
                           </div>
                         </div>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -233,116 +204,112 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
             </div>
 
             {/* Nos Solutions Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={handleSolutionsDropdownEnter}
-              onMouseLeave={handleSolutionsDropdownLeave}
-            >
-              <button
-                className={`relative py-2 transition-colors flex items-center gap-1 cursor-pointer ${
-                  theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Nos Solutions
-                <ChevronDown 
-                  size={16} 
-                  className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180' : ''}`}
-                />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
+            <div className="relative group">
+              <button className={textClassList} type="button">
+                <span className="relative">
+                  Solutions
+                  <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${isSolutionsActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                </span>
+                <ChevronDown size={16} className="transition-transform duration-200 flex-shrink-0 -rotate-90 group-hover:rotate-0 ml-1" />
               </button>
 
-              <div
-                className={`absolute top-full left-0 pt-3 transition-all duration-200 ${
-                  isSolutionsOpen
-                    ? 'opacity-100 visible translate-y-0'
-                    : 'opacity-0 invisible -translate-y-2'
-                }`}
-              >
-                <div className={`w-72 rounded-2xl shadow-2xl border overflow-hidden ${
-                  theme === 'dark'
-                    ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-                    : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
-                }`}>
+              <div className="absolute top-full left-0 pt-3 transition-all duration-200 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+                <div className={dropdownContainerClass}>
                   <div className="p-2">
-                    {SOLUTIONS.map((solution) => (
-                      <button
+                    {SOLUTIONS_MENU.map((solution) => (
+                      <Link
                         key={solution.href}
-                        onClick={() => handleUseCaseClick(solution.href)}
-                        className={`w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
-                          theme === 'dark'
-                            ? 'hover:bg-white/10 text-white/80 hover:text-white'
-                            : 'hover:bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900'
-                        }`}
+                        to={solution.href}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={dropdownItemClass}
                       >
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                            theme === 'dark' ? 'bg-[#2ca3bd]/20 text-[#2ca3bd] group-hover/item:bg-[#2ca3bd] group-hover/item:text-white' : 'bg-[#2ca3bd]/10 text-[#2ca3bd] group-hover/item:bg-[#2ca3bd] group-hover/item:text-white'
+                          }`}>
+                            <solution.icon size={20} />
+                          </div>
                           <div>
-                            <div className="font-semibold text-sm mb-1 group-hover/item:text-[#2ca3bd] transition-colors">
+                            <div className="font-semibold text-sm mb-1 transition-colors group-hover/item:text-brand">
                               {solution.label}
                             </div>
-                            <div className={`text-xs ${
-                              theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                            }`}>
+                            <div className={`text-xs ${theme === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>
                               {solution.description}
                             </div>
                           </div>
-                          <div className="text-[#2ca3bd] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                          <div className="ml-auto text-brand opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-[-4px] group-hover/item:translate-x-0">
                             →
                           </div>
                         </div>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* À propos */}
-            <button
-              onClick={() => handleNavClick('#about')}
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+            {/* Qui sommes-nous */}
+            <Link
+              to="/qui-sommes-nous"
+              className={linkClassList}
             >
-              À propos
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-            </button>
+              <span className="relative">
+                Qui sommes-nous ?
+                <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${isAboutActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </span>
+            </Link>
 
             {/* Contact */}
-            <button
-              onClick={() => handleNavClick('#contact')}
-              className={`relative group py-2 transition-colors cursor-pointer ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
+            <Link
+              to="/contact"
+              className={linkClassList}
             >
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2ca3bd] group-hover:w-full transition-all duration-300"></span>
-            </button>
+              <span className="relative">
+                Contact
+                <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${isContactActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </span>
+            </Link>
+
+            {/* Separator */}
+            <div className={`h-5 w-px ${theme === 'dark' ? 'bg-white/20' : 'bg-gray-300'}`}></div>
+
+            {/* Blog */}
+            <Link
+              to="/blog"
+              className={linkClassList}
+            >
+              <span className="relative">
+                Blog
+                <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${isBlogActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </span>
+            </Link>
           </div>
 
           {/* Theme Toggle and CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
                 theme === 'dark' 
                   ? 'bg-white/10 hover:bg-white/20 text-white' 
-                  : 'bg-[var(--bg-secondary)] hover:bg-[var(--surface-primary)] text-gray-900'
+                  : 'bg-surface hover:bg-gray-100 text-gray-900 border border-gray-100'
               }`}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
-            {/* CTA Button */}
             <button
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-                  (window as any).gtag_report_conversion('#contact');
+                  (window as any).gtag_report_conversion('/contact');
                 }
-                handleNavClick('#contact');
+                handleNavClick('/contact');
               }}
-              className="bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="bg-brand hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-brand/30 hover:shadow-brand/50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               {CTA_TEXT.primary}
             </button>
@@ -352,7 +319,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer ${
-              theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-[var(--bg-secondary)]'
+              theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-100'
             }`}
             aria-label="Toggle menu"
           >
@@ -366,7 +333,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
         className={`md:hidden absolute top-full left-0 right-0 border-t transition-all duration-300 ${
           theme === 'dark'
             ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10'
-            : 'bg-[var(--surface-primary)] backdrop-blur-xl border-gray-200'
+            : 'bg-surface backdrop-blur-xl border-gray-200'
         } ${
           isMobileMenuOpen
             ? 'opacity-100 translate-y-0'
@@ -374,145 +341,154 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
         }`}
       >
         <div className="px-4 py-6 space-y-4">
-          {/* Accueil */}
           <button
             onClick={() => handleNavClick('#home')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
+            className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
-            }`}
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            } ${isActiveHash('#home') ? 'text-brand' : ''}`}
           >
             Accueil
           </button>
 
-          {/* Services Mobile Dropdown */}
+          {/* Services Mobile */}
           <div>
             <button
-              onClick={() => setIsUseCasesOpen(!isUseCasesOpen)}
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all cursor-pointer ${
+              onClick={() => setIsServicesMobileOpen(!isServicesMobileOpen)}
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${
                 theme === 'dark'
                   ? 'text-white/80 hover:text-white hover:bg-white/5'
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
-              <span>Nos Services</span>
+              <span>Services</span>
               <ChevronDown 
                 size={16} 
-                className={`transition-transform duration-200 ${isUseCasesOpen ? 'rotate-180' : ''}`}
+                className={`transition-transform duration-200 ${isServicesMobileOpen ? 'rotate-180' : ''}`}
               />
             </button>
-            
-            {/* Mobile Services List */}
-            <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isUseCasesOpen ? 'max-h-96 mt-2' : 'max-h-0'
-              }`}
-            >
-              <div className="space-y-2 pl-4">
-                {USE_CASES.map((useCase) => (
-                  <button
-                    key={useCase.href}
-                    onClick={() => handleUseCaseClick(useCase.href)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
-                      theme === 'dark'
-                        ? 'bg-white/5 text-white/80 hover:text-white hover:bg-white/10'
-                        : 'bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900 hover:bg-[var(--surface-primary)]'
+            <div className={`overflow-hidden transition-all duration-300 ${isServicesMobileOpen ? 'max-h-96 mt-2' : 'max-h-0'}`}>
+              <div className="space-y-2 pl-4 border-l-2 border-brand/20 ml-4">
+                {SERVICES_MENU.map((service) => (
+                  <Link
+                    key={service.href}
+                    to={service.href}
+                    onClick={() => {
+                      setIsServicesMobileOpen(false);
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className={`flex items-center gap-3 w-full text-left py-3 px-2 rounded-lg transition-all cursor-pointer ${
+                      theme === 'dark' ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
-                    <div className="font-semibold text-sm mb-1">{useCase.label}</div>
-                    <div className={`text-xs ${
-                      theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                    }`}>
-                      {useCase.description}
-                    </div>
-                  </button>
+                    <service.icon size={18} className="text-brand" />
+                    <span>{service.label}</span>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Nos Solutions Mobile Dropdown */}
+          {/* Solutions Mobile */}
           <div>
             <button
-              onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all cursor-pointer ${
+              onClick={() => setIsSolutionsMobileOpen(!isSolutionsMobileOpen)}
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${
                 theme === 'dark'
                   ? 'text-white/80 hover:text-white hover:bg-white/5'
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
-              <span>Nos Solutions</span>
+              <span>Solutions</span>
               <ChevronDown 
                 size={16} 
-                className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180' : ''}`}
+                className={`transition-transform duration-200 ${isSolutionsMobileOpen ? 'rotate-180' : ''}`}
               />
             </button>
-            
-            {/* Mobile Solutions List */}
-            <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isSolutionsOpen ? 'max-h-96 mt-2' : 'max-h-0'
-              }`}
-            >
-              <div className="space-y-2 pl-4">
-                {SOLUTIONS.map((solution) => (
-                  <button
+            <div className={`overflow-hidden transition-all duration-300 ${isSolutionsMobileOpen ? 'max-h-96 mt-2' : 'max-h-0'}`}>
+              <div className="space-y-2 pl-4 border-l-2 border-brand/20 ml-4">
+                {SOLUTIONS_MENU.map((solution) => (
+                  <Link
                     key={solution.href}
-                    onClick={() => handleUseCaseClick(solution.href)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
-                      theme === 'dark'
-                        ? 'bg-white/5 text-white/80 hover:text-white hover:bg-white/10'
-                        : 'bg-[var(--bg-secondary)] text-gray-700 hover:text-gray-900 hover:bg-[var(--surface-primary)]'
+                    to={solution.href}
+                    onClick={() => {
+                      setIsSolutionsMobileOpen(false);
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className={`flex items-center gap-3 w-full text-left py-3 px-2 rounded-lg transition-all cursor-pointer ${
+                      theme === 'dark' ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
-                    <div className="font-semibold text-sm mb-1">{solution.label}</div>
-                    <div className={`text-xs ${
-                      theme === 'dark' ? 'text-white/50' : 'text-gray-500'
-                    }`}>
-                      {solution.description}
-                    </div>
-                  </button>
+                    <solution.icon size={18} className="text-brand" />
+                    <span>{solution.label}</span>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* À propos */}
-          <button
-            onClick={() => handleNavClick('#about')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
+          <Link
+            to="/qui-sommes-nous"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
-            }`}
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            } ${isAboutActive ? 'text-brand' : ''}`}
           >
-            À propos
-          </button>
+            Qui sommes-nous ?
+          </Link>
 
-          {/* Contact */}
-          <button
-            onClick={() => handleNavClick('#contact')}
-            className={`block w-full text-left px-4 py-3 rounded-lg transition-all cursor-pointer ${
+          <Link
+            to="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               theme === 'dark'
                 ? 'text-white/80 hover:text-white hover:bg-white/5'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-[var(--bg-secondary)]'
-            }`}
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            } ${isContactActive ? 'text-brand' : ''}`}
           >
             Contact
-          </button>
+          </Link>
 
-          <button
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-                (window as any).gtag_report_conversion('#contact');
-              }
-              handleNavClick('#contact');
-            }}
-            className="block w-full bg-[#2ca3bd] hover:bg-[#248fa5] text-white text-center px-6 py-3 rounded-full font-semibold shadow-lg shadow-[#2ca3bd]/30 transition-all cursor-pointer"
+          <Link
+            to="/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all border-t ${
+              theme === 'dark'
+                ? 'border-white/10 text-white/80 hover:text-white hover:bg-white/5'
+                : 'border-gray-200 text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            } ${isBlogActive ? 'text-brand' : ''}`}
           >
-            {CTA_TEXT.primary}
-          </button>
+            Blog
+          </Link>
+
+          <div className="pt-4 px-4 flex gap-4">
+            <button
+              onClick={toggleTheme}
+              className={`p-3 rounded-lg flex items-center justify-center transition-all ${
+                theme === 'dark' 
+                  ? 'bg-white/10 text-white' 
+                  : 'bg-gray-100 text-gray-900 border border-gray-200'
+              }`}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                  (window as any).gtag_report_conversion('/contact');
+                }
+                handleNavClick('/contact');
+              }}
+              className="flex-1 bg-brand hover:bg-[#248fa5] text-white text-center py-3 rounded-xl font-semibold shadow-lg shadow-brand/30 transition-all cursor-pointer"
+            >
+              {CTA_TEXT.primary}
+            </button>
+          </div>
         </div>
       </div>
     </nav>
