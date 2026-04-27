@@ -18,6 +18,9 @@ const BIAdvisor = lazy(() => import('./pages/BIAdvisor'));
 const Contact = lazy(() => import('./pages/Contact'));
 const QuiSommesNous = lazy(() => import('./pages/QuiSommesNous'));
 const Blog = lazy(() => import('./pages/Blog'));
+const BlogPostFinance = lazy(() => import('./pages/BlogPostFinance'));
+const BlogPostERP = lazy(() => import('./pages/BlogPostERP'));
+const BlogPostCashFlow = lazy(() => import('./pages/BlogPostCashFlow'));
 
 function App() {
   return (
@@ -42,6 +45,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/qui-sommes-nous" element={<QuiSommesNous />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/optimisation-reporting-financier" element={<BlogPostFinance />} />
+            <Route path="/blog/ia-erp-chatbot-futur-bi-2026" element={<BlogPostERP />} />
+            <Route path="/blog/logiciel-prevision-tresorerie-pme" element={<BlogPostCashFlow />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
