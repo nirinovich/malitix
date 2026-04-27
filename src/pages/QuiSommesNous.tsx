@@ -42,7 +42,7 @@ export default function QuiSommesNous() {
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10" />
               <div className="rounded-[2.5rem] overflow-hidden border border-primary shadow-2xl transition-transform duration-700 group-hover:scale-[1.01]">
                 <img
-                  src="/images/team.png"
+                  src="/images/team.webp"
                   alt="L'équipe Malitix en action"
                   className="w-full h-auto object-cover max-h-[500px]"
                 />

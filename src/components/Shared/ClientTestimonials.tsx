@@ -6,7 +6,7 @@ const testimonials = [
     name: 'Selim Saadi',
     role: 'CEO & Co-founder',
     company: 'Karlisolutions',
-    image: '/images/testimonials/selim-saadi.png',
+    image: '/images/testimonials/selim-saadi.webp',
     quote:
       "Nous avons pu développer notre solution dans sa première version (déjà très complète) avec des équipes de Malitix qui ont parfaitement compris notre besoin et notre ambition. Elles nous ont aidé à cadrer le sujet et à organiser un suivi régulier et flexible. Nous avons eu d'excellentes relations avec le chef de projet digital, les développeurs, la business analyst et les équipes commerciales.",
     rating: 5,
@@ -15,7 +15,7 @@ const testimonials = [
     name: 'David Bovet',
     role: 'CEO',
     company: 'Bios Analytics',
-    image: '/images/testimonials/david.png',
+    image: '/images/testimonials/david.webp',
     quote:
       "Malitix est un partenaire de longue date depuis la création du premier site web de notre entreprise, contribuant à notre présence en ligne et à nos solutions technologiques au fil des années.",
     rating: 5,
@@ -24,7 +24,7 @@ const testimonials = [
     name: 'Riad Roubache',
     role: 'CISO/CTO',
     company: 'Tersadia',
-    image: '/images/testimonials/riad.png',
+    image: '/images/testimonials/riad.webp',
     quote:
       "Nous travaillons depuis 3 ans avec Malitix à qui nous avons confié notre supervision et monitoring 24/7 sur un périmètre assez large (Système d'informations, Cyber sécurité). Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA qui nous permettent d'être confiants sur notre collaboration actuelle et future.",
     rating: 5,
