@@ -65,6 +65,38 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Blog Index Page -->
+  <url>
+    <loc>https://malitix.com/blog</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Blog Post: Optimisation Reporting Financier -->
+  <url>
+    <loc>https://malitix.com/blog/optimisation-reporting-financier</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post: IA ERP Chatbot -->
+  <url>
+    <loc>https://malitix.com/blog/ia-erp-chatbot-futur-bi-2026</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post: Prévision Trésorerie -->
+  <url>
+    <loc>https://malitix.com/blog/logiciel-prevision-tresorerie-pme</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Legal Notice Page -->
   <url>
     <loc>https://malitix.com/mentions-legales</loc>
