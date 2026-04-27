@@ -15,6 +15,9 @@ const SIRefonte = lazy(() => import('./pages/SIRefonte'));
 const MobileAppDevelopment = lazy(() => import('./pages/MobileAppDevelopment'));
 const SOCMonitoring = lazy(() => import('./pages/SOCMonitoring'));
 const BIAdvisor = lazy(() => import('./pages/BIAdvisor'));
+const Contact = lazy(() => import('./pages/Contact'));
+const QuiSommesNous = lazy(() => import('./pages/QuiSommesNous'));
+const Blog = lazy(() => import('./pages/Blog'));
 
 function App() {
   return (
@@ -28,7 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/externalisation" element={<ConversionLanding />} />
-            <Route path="/externalisation-soc" element={<SOCMonitoring />} />
+            <Route path="/soc-monitoring" element={<SOCMonitoring />} />
             <Route path="/sprint-commando" element={<SprintCommando />} />
             <Route path="/developpement-sur-mesure" element={<CustomDevelopment />} />
             <Route path="/refonte-si" element={<SIRefonte />} />
@@ -36,6 +39,9 @@ function App() {
             <Route path="/bi-advisor" element={<BIAdvisor />} />
             <Route path="/mentions-legales" element={<LegalNotice />} />
             <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/qui-sommes-nous" element={<QuiSommesNous />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
