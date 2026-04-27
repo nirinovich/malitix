@@ -41,7 +41,7 @@ export default function BlogPostFinance() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 relative z-10">
           <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-primary relative">
             <img 
-              src="/images/finance_hero.png" 
+              src="/images/finance_hero.webp" 
               alt="Dashboard financier futuriste Malitix" 
               className="w-full h-auto max-h-[500px] object-cover"
             />
@@ -103,7 +103,7 @@ export default function BlogPostFinance() {
           
           <div className="rounded-[2rem] overflow-hidden my-10 border border-primary shadow-lg bg-surface placeholder">
             <img 
-              src="/images/finance_contrast.png" 
+              src="/images/finance_contrast.webp" 
               alt="Contraste Excel vs BI Advisor" 
               className="w-full h-auto object-cover"
             />
@@ -140,7 +140,7 @@ export default function BlogPostFinance() {
 
           <div className="rounded-[2rem] overflow-hidden my-10 border border-primary shadow-lg max-w-md mx-auto">
             <img 
-              src="/images/finance_mobile.png" 
+              src="/images/finance_mobile.webp" 
               alt="Notification financière sur mobile Malitix" 
               className="w-full h-auto object-cover"
             />

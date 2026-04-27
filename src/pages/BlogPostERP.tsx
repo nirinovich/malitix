@@ -40,7 +40,7 @@ export default function BlogPostERP() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 relative z-10">
           <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-primary relative">
             <img 
-              src="/images/erp_hero.png" 
+              src="/images/erp_hero.webp" 
               alt="IA et ERP Connectés - Chatbot BI Malitix" 
               className="w-full h-auto max-h-[500px] object-cover"
             />
@@ -102,7 +102,7 @@ export default function BlogPostERP() {
           {/* Image Contrast / Chatbot UI */}
           <div className="rounded-[2rem] overflow-hidden my-12 border border-primary shadow-lg bg-surface placeholder">
             <img 
-              src="/images/erp_chatbot.png" 
+              src="/images/erp_chatbot.webp" 
               alt="Interface NLP to SQL avec matrice de données" 
               className="w-full h-auto object-cover"
             />

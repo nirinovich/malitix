@@ -36,15 +36,13 @@ export default function BlogPostCashFlow() {
           </div>
         </div>
         
-        {/* Hero Image */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 relative z-10">
           <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-primary relative">
             <img 
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" 
               alt="Prévision de Trésorerie PME" 
-              className="w-full h-auto max-h-[500px] object-cover opacity-80"
+              className="w-full h-auto max-h-[500px] object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-60"></div>
           </div>
         </div>
       </section>
@@ -102,7 +100,7 @@ export default function BlogPostCashFlow() {
           {/* Re-using AI image */}
           <div className="rounded-[2rem] overflow-hidden my-12 border border-primary shadow-lg bg-surface placeholder">
             <img 
-              src="/images/erp_chatbot.png" 
+              src="/images/erp_chatbot.webp" 
               alt="Moteur de prédiction par IA Malitix" 
               className="w-full h-auto object-cover"
             />

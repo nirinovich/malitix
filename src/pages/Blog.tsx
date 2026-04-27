@@ -33,7 +33,7 @@ export default function Blog() {
             <Link to="/blog/optimisation-reporting-financier" className="group rounded-[2.5rem] border border-primary bg-surface overflow-hidden hover:-translate-y-2 transition-all duration-300 shadow-xl hover:shadow-[#2ca3bd]/20 flex flex-col h-full">
               <div className="h-56 bg-[var(--bg-secondary)] flex items-center justify-center border-b border-primary relative overflow-hidden">
                 <img 
-                  src="/images/finance_thumbnail.png" 
+                  src="/images/finance_thumbnail.webp" 
                   alt="Optimisation Reporting Financier" 
                   className="w-full h-full object-cover"
                 />
@@ -59,7 +59,7 @@ export default function Blog() {
             <Link to="/blog/ia-erp-chatbot-futur-bi-2026" className="group rounded-[2.5rem] border border-primary bg-surface overflow-hidden hover:-translate-y-2 transition-all duration-300 shadow-xl hover:shadow-[#2ca3bd]/20 flex flex-col h-full">
               <div className="h-56 bg-[var(--bg-secondary)] flex items-center justify-center border-b border-primary relative overflow-hidden">
                 <img 
-                  src="/images/erp_hero.png" 
+                  src="/images/erp_hero.webp" 
                   alt="IA et ERP - Chatbot" 
                   className="w-full h-full object-cover"
                 />
