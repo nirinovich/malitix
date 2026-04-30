@@ -6,6 +6,7 @@ export default [
   route("developpement-mobile", "routes/mobile-app.tsx"),
   route("refonte-si", "routes/si-refonte.tsx"),
   route("sprint-commando", "routes/sprint.tsx"),
+  route("bi-advisor", "routes/bi-advisor.tsx"),
   route("externalisation", "routes/conversion-landing.tsx"),
   route("blog", "routes/blog.tsx"),
   route("blog/:slug", "routes/blog.$slug.tsx"),
