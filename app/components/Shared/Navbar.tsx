@@ -139,7 +139,7 @@ export function Navbar() {
                 width={128}
                 height={32}
                 fetchPriority="high"
-                decoding="sync"
+                decoding="async"
                 className="logo-dark absolute inset-0 h-8 w-auto"
               />
               <img
@@ -148,7 +148,7 @@ export function Navbar() {
                 width={128}
                 height={32}
                 fetchPriority="high"
-                decoding="sync"
+                decoding="async"
                 className="logo-light absolute inset-0 h-8 w-auto"
               />
             </Link>

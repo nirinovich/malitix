@@ -5,6 +5,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 export default defineConfig({
+  optimizeDeps: {
+    include: ["lucide-react"],
+  },
   plugins: [
     tailwindcss(),
     reactRouter(),
@@ -51,8 +54,14 @@ export default defineConfig({
           ) {
             return "sanity-studio";
           }
-          // React core
-          if (id.includes("react-dom") || id.includes("react/")) {
+          if (
+            id.includes("/node_modules/react/") ||
+            id.includes("\\node_modules\\react\\") ||
+            id.includes("/node_modules/react-dom/") ||
+            id.includes("\\node_modules\\react-dom\\") ||
+            id.includes("/node_modules/scheduler/") ||
+            id.includes("\\node_modules\\scheduler\\")
+          ) {
             return "react-vendor";
           }
         },
