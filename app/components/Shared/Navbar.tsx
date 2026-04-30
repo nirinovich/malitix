@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database } from "lucide-react";
+import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database, BarChart } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router"; // Adjust if using react-router-dom
 import { CTA_TEXT } from "~/utils/constants";
 import { useTheme } from "~/context/ThemeContext";
+
+const SOLUTIONS_MENU = [
+  {
+    label: "BI Advisor",
+    href: "/bi-advisor",
+    description: "Prenez des décisions 10x plus vite grâce à l'IA",
+    icon: BarChart,
+  },
+];
 
 const SERVICES_MENU = [
   {
@@ -42,12 +51,19 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesMobileOpen, setIsServicesMobileOpen] = useState(false);
+  const [isSolutionsMobileOpen, setIsSolutionsMobileOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const isBlogActive = location.pathname.startsWith("/blog");
   const isContactActive = location.pathname === "/contact";
-  const isServicesActive = location.pathname === "/services";
+  const isServicesActive = location.pathname === "/services" ||
+                           location.pathname === "/sprint-commando" ||
+                           location.pathname === "/externalisation" ||
+                           location.pathname === "/developpement-sur-mesure" ||
+                           location.pathname === "/developpement-mobile" ||
+                           location.pathname === "/refonte-si";
+  const isSolutionsActive = location.pathname === "/bi-advisor";
   const isAboutActive = location.pathname === "/qui-sommes-nous";
 
   // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
@@ -70,6 +86,7 @@ export function Navbar() {
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     setIsServicesMobileOpen(false);
+    setIsSolutionsMobileOpen(false);
 
     if (href.startsWith("#")) {
       if (location.pathname !== "/") {
@@ -177,7 +194,7 @@ export function Navbar() {
 
               {/* Desktop Dropdown Menu - CSS Only Visibility */}
               <div className="absolute top-full left-0 pt-3 transition-all duration-200 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
-                <div className="dropdown-menu w-96 rounded-2xl shadow-2xl border border-[var(--border-primary)] overflow-hidden bg-[var(--surface-primary)]">
+                <div className="dropdown-menu w-[420px] rounded-2xl shadow-2xl border border-[var(--border-primary)] overflow-hidden bg-[var(--surface-primary)]">
                   <div className="p-2">
                     {SERVICES_MENU.map((service) => (
                       <Link
@@ -198,11 +215,69 @@ export function Navbar() {
                             <div className="font-semibold text-sm mb-1 text-[var(--text-primary)] group-hover/item:text-[var(--brand-text)] transition-colors">
                               {service.label}
                             </div>
-                            <div className="dropdown-desc text-xs text-[var(--text-secondary)] whitespace-nowrap">
+                            <div className="dropdown-desc text-xs text-[var(--text-secondary)] leading-relaxed">
                               {service.description}
                             </div>
                           </div>
-                          <div className="ml-auto text-[var(--brand-primary)] opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-[-4px] group-hover/item:translate-x-0">
+                          <div className="ml-auto text-[var(--brand-primary)] opacity-0 group-hover/item:opacity-100 transition-opacity -translate-x-1 group-hover/item:translate-x-0">
+                            →
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Solutions Dropdown - Pure CSS Hover */}
+            <div className="relative group">
+              <button
+                className={`nav-link py-2 transition-colors flex items-center gap-2 cursor-pointer ${isSolutionsActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
+                aria-haspopup="menu"
+                type="button"
+              >
+                <span className="relative">
+                  Solutions
+                  <span
+                    className={`absolute -bottom-2 left-0 h-0.5 bg-[var(--brand-primary)] transition-all duration-300 ${isSolutionsActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                  ></span>
+                </span>
+                <ChevronDown
+                  size={16}
+                  className="transition-transform duration-200 flex-shrink-0 -rotate-90 group-hover:rotate-0"
+                />
+              </button>
+
+              {/* Desktop Dropdown Menu - CSS Only Visibility */}
+              <div className="absolute top-full left-0 pt-3 transition-all duration-200 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+                <div className="dropdown-menu w-[420px] rounded-2xl shadow-2xl border border-[var(--border-primary)] overflow-hidden bg-[var(--surface-primary)]">
+                  <div className="p-2">
+                    {SOLUTIONS_MENU.map((solution) => (
+                      <Link
+                        key={solution.href}
+                        to={solution.href}
+                        prefetch="intent"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="dropdown-item block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center text-[var(--brand-primary)] group-hover/item:bg-[var(--brand-primary)] group-hover/item:text-white transition-colors">
+                            <solution.icon size={20} />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-sm mb-1 text-[var(--text-primary)] group-hover/item:text-[var(--brand-text)] transition-colors">
+                              {solution.label}
+                            </div>
+                            <div className="dropdown-desc text-xs text-[var(--text-secondary)] leading-relaxed">
+                              {solution.description}
+                            </div>
+                          </div>
+                          <div className="ml-auto text-[var(--brand-primary)] opacity-0 group-hover/item:opacity-100 transition-opacity -translate-x-1 group-hover/item:translate-x-0">
                             →
                           </div>
                         </div>
@@ -333,7 +408,7 @@ export function Navbar() {
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-300 ${isServicesMobileOpen ? "max-h-96 mt-2" : "max-h-0"
+              className={`overflow-hidden transition-all duration-300 ${isServicesMobileOpen ? "max-h-[500px] mt-2" : "max-h-0"
                 }`}
             >
               <div className="space-y-2 pl-4 border-l-2 border-[var(--brand-primary)]/20">
@@ -351,6 +426,44 @@ export function Navbar() {
                   >
                     <service.icon size={18} className="text-[var(--brand-primary)]" />
                     {service.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Solutions Mobile Dropdown */}
+          <div>
+            <button
+              onClick={() => setIsSolutionsMobileOpen(!isSolutionsMobileOpen)}
+              className="mobile-nav-item w-full text-left py-3 font-medium flex items-center justify-between text-[var(--text-secondary)]"
+            >
+              Solutions
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${isSolutionsMobileOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            <div
+              className={`overflow-hidden transition-all duration-300 ${isSolutionsMobileOpen ? "max-h-[500px] mt-2" : "max-h-0"
+                }`}
+            >
+              <div className="space-y-2 pl-4 border-l-2 border-[var(--brand-primary)]/20">
+                {SOLUTIONS_MENU.map((solution) => (
+                  <Link
+                    key={solution.href}
+                    to={solution.href}
+                    prefetch="intent"
+                    onClick={() => {
+                      setIsSolutionsMobileOpen(false);
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="mobile-nav-item flex items-center gap-3 w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  >
+                    <solution.icon size={18} className="text-[var(--brand-primary)]" />
+                    {solution.label}
                   </Link>
                 ))}
               </div>
