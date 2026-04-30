@@ -6,17 +6,17 @@ const companyLogos = [
   {
     id: 1,
     name: "KPMG",
-    logo: "/images/references/2560px-KPMG_logo.svg.png",
+    logo: "/images/references/2560px-KPMG_logo.svg.webp",
   },
   {
     id: 2,
     name: "Renault",
-    logo: "/images/references/Automotive_Bleu-RVB.png",
+    logo: "/images/references/Automotive_Bleu-RVB.webp",
   },
   {
     id: 3,
     name: "Danone",
-    logo: "/images/references/Danone-Logo.png",
+    logo: "/images/references/Danone-Logo.webp",
   },
   {
     id: 4,
@@ -31,17 +31,17 @@ const companyLogos = [
   {
     id: 6,
     name: "LexisNexis",
-    logo: "/images/references/LexisNexis_logo.svg.png",
+    logo: "/images/references/LexisNexis_logo.svg.webp",
   },
   {
     id: 7,
     name: "Petit Forestier",
-    logo: "/images/references/Logo-Petit-Forestier-300x189-1.png",
+    logo: "/images/references/Logo-Petit-Forestier-300x189-1.webp",
   },
   {
     id: 8,
     name: "Thales",
-    logo: "/images/references/THALES.png",
+    logo: "/images/references/THALES.webp",
   },
 ];
 

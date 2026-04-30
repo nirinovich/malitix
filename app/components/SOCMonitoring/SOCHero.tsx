@@ -63,7 +63,7 @@ export default function SOCHero() {
           {/* Social proof mini */}
           <div className="flex items-center gap-4 pt-4 animate-on-scroll in-view stagger-4">
             <div className="flex -space-x-3">
-              {["/images/testimonials/riad.png", "/images/testimonials/selim-saadi.png", "/images/testimonials/david.png"].map((src, i) => (
+              {["/images/testimonials/riad.webp", "/images/testimonials/selim-saadi.webp", "/images/testimonials/david.webp"].map((src, i) => (
                 <img key={i} src={src} alt="" className="w-10 h-10 rounded-full border-2 border-[var(--bg-primary)] object-cover" />
               ))}
             </div>

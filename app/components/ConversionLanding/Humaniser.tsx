@@ -12,7 +12,7 @@ export function Humaniser() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
             <div className="relative">
               <img
-                src="/images/team.png"
+                src="/images/team.webp"
                 alt={imageAlt}
                 className="w-full h-full object-cover min-h-[320px]"
               />
