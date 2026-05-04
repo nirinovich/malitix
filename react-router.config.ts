@@ -5,20 +5,7 @@ export default {
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: true,
   async prerender() {
-    if (process.env.NODE_ENV !== "production") {
-      return [
-        "/",
-        "/developpement-sur-mesure",
-        "/developpement-mobile",
-        "/refonte-si",
-        "/sprint-commando",
-        "/externalisation",
-        "/mentions-legales",
-        "/politique-de-confidentialite",
-      ];
-    }
-
-    return [
+    const staticRoutes = [
       "/",
       "/developpement-sur-mesure",
       "/developpement-mobile",
@@ -27,6 +14,14 @@ export default {
       "/externalisation",
       "/mentions-legales",
       "/politique-de-confidentialite",
+      // Previously SSR-rendered static pages — promoted to SSG
+      "/bi-advisor",
+      "/soc-monitoring",
+      "/contact",
+      "/services",
+      "/qui-sommes-nous",
     ];
+
+    return staticRoutes;
   },
 } satisfies Config;
