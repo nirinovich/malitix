@@ -30,24 +30,24 @@ export default function BlogIndex() {
 
   return (
     <Layout>
-      <section className="pt-28 pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/10 px-4 py-2 text-xs font-semibold text-[var(--brand-primary)]">
-              Journal Malitix
+      <section className="pt-32 pb-24 min-h-[70vh] bg-[var(--bg-primary)] relative overflow-hidden">
+        {/* Abstract Background Decorators */}
+        <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-[var(--brand-primary)]/20 pointer-events-none" />
+        <div className="absolute top-2/3 left-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-[var(--brand-primary)]/20 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="space-y-6 text-center max-w-3xl mx-auto mb-20 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/10 px-4 py-2 text-xs font-semibold text-[var(--brand-primary)] uppercase tracking-wider">
+              Blog Malitix
             </div>
-            <h1 className="text-3xl md:text-5xl font-semibold text-[var(--text-primary)]">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[var(--text-primary)]">
               Insights & retours terrain
             </h1>
-            <p className="max-w-2xl text-lg text-[var(--text-secondary)]">
-              Analyses, guides et témoignages pour accélérer vos projets digitaux.
+            <p className="text-xl text-[var(--text-secondary)] leading-relaxed">
+              Analyses stratégiques, guides d'ingénierie et témoignages pour accélérer votre prise de décision technologique.
             </p>
           </div>
-        </div>
-      </section>
 
-      <section className="pb-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <BlogList posts={posts ?? []} />
         </div>
       </section>

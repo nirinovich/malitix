@@ -51,11 +51,7 @@ export default function BlogDetail() {
 
   return (
     <Layout>
-      <section className="pt-28 pb-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BlogPost post={post} />
-        </div>
-      </section>
+      <BlogPost post={post} />
     </Layout>
   );
 }

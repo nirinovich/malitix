@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import type { Route } from "./+types/root";
+import type { Route } from "./+types/soc-monitoring";
 import { Layout } from "~/components/Shared/Layout";
 import { buildMeta } from "~/utils/seo";
 import SOCHero from "~/components/SOCMonitoring/SOCHero";
