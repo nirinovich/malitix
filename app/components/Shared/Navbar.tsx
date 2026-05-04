@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database, BarChart } from "lucide-react";
+import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database, BarChart, ShieldCheck } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router"; // Adjust if using react-router-dom
 import { CTA_TEXT } from "~/utils/constants";
 import { useTheme } from "~/context/ThemeContext";
@@ -44,6 +44,12 @@ const SERVICES_MENU = [
     description: "Modernisation de système d'information",
     icon: Database,
   },
+  {
+    label: "SOC Monitoring",
+    href: "/soc-monitoring",
+    description: "Surveillance et opérations de sécurité 24/7",
+    icon: ShieldCheck,
+  },
 ];
 
 export function Navbar() {
@@ -57,13 +63,8 @@ export function Navbar() {
   const location = useLocation();
   const isBlogActive = location.pathname.startsWith("/blog");
   const isContactActive = location.pathname === "/contact";
-  const isServicesActive = location.pathname === "/services" ||
-                           location.pathname === "/sprint-commando" ||
-                           location.pathname === "/externalisation" ||
-                           location.pathname === "/developpement-sur-mesure" ||
-                           location.pathname === "/developpement-mobile" ||
-                           location.pathname === "/refonte-si";
-  const isSolutionsActive = location.pathname === "/bi-advisor";
+  const isServicesActive = SERVICES_MENU.some(s => location.pathname === s.href) || location.pathname === "/services";
+  const isSolutionsActive = SOLUTIONS_MENU.some(s => location.pathname === s.href);
   const isAboutActive = location.pathname === "/qui-sommes-nous";
 
   // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
@@ -108,7 +109,7 @@ export function Navbar() {
 
     if (location.pathname !== href) {
       navigate(href);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo(0, 0);
     }
   };
 
@@ -121,7 +122,7 @@ export function Navbar() {
   return (
     <nav
       data-app-navbar
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${isScrolled ? "navbar-scrolled backdrop-blur-lg shadow-lg" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "navbar-scrolled backdrop-blur-lg shadow-lg" : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,7 +131,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link
               to="/"
-              prefetch="intent"
+
               className="relative block h-8 w-32 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
@@ -200,10 +201,10 @@ export function Navbar() {
                       <Link
                         key={service.href}
                         to={service.href}
-                        prefetch="intent"
+          
                         onClick={() => {
                           setIsMobileMenuOpen(false);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          window.scrollTo(0, 0);
                         }}
                         className="dropdown-item block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
                       >
@@ -258,10 +259,10 @@ export function Navbar() {
                       <Link
                         key={solution.href}
                         to={solution.href}
-                        prefetch="intent"
+          
                         onClick={() => {
                           setIsMobileMenuOpen(false);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          window.scrollTo(0, 0);
                         }}
                         className="dropdown-item block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer"
                       >
@@ -291,7 +292,7 @@ export function Navbar() {
             {/* Qui sommes-nous */}
             <Link
               to="/qui-sommes-nous"
-              prefetch="intent"
+
               aria-current={isAboutActive ? "page" : undefined}
               className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isAboutActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
@@ -307,7 +308,7 @@ export function Navbar() {
             {/* Contact */}
             <Link
               to="/contact"
-              prefetch="intent"
+
               aria-label="Contactez-nous"
               aria-current={isContactActive ? "page" : undefined}
               className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isContactActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
@@ -327,7 +328,7 @@ export function Navbar() {
             {/* Blog */}
             <Link
               to="/blog"
-              prefetch="intent"
+
               aria-current={isBlogActive ? "page" : undefined}
               className={`nav-link group py-2 flex items-center transition-colors cursor-pointer ${isBlogActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
@@ -416,11 +417,11 @@ export function Navbar() {
                   <Link
                     key={service.href}
                     to={service.href}
-                    prefetch="intent"
+      
                     onClick={() => {
                       setIsServicesMobileOpen(false);
                       setIsMobileMenuOpen(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      window.scrollTo(0, 0);
                     }}
                     className="mobile-nav-item flex items-center gap-3 w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   >
@@ -454,11 +455,11 @@ export function Navbar() {
                   <Link
                     key={solution.href}
                     to={solution.href}
-                    prefetch="intent"
+      
                     onClick={() => {
                       setIsSolutionsMobileOpen(false);
                       setIsMobileMenuOpen(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      window.scrollTo(0, 0);
                     }}
                     className="mobile-nav-item flex items-center gap-3 w-full text-left py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   >
