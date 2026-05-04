@@ -1,78 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Dev/staging branch — sitemap intentionally empty -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-</urlset>
   
   <!-- Homepage -->
   <url>
     <loc>https://malitix.com/</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- Sprint Commando -->
+  <!-- Services -->
+  <url>
+    <loc>https://malitix.com/services</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Qui Sommes-Nous -->
+  <url>
+    <loc>https://malitix.com/qui-sommes-nous</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://malitix.com/contact</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sprint Commando Page -->
   <url>
     <loc>https://malitix.com/sprint-commando</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Développement Sur Mesure -->
+  <!-- Custom Development Page -->
   <url>
     <loc>https://malitix.com/developpement-sur-mesure</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Développement Mobile -->
-  <url>
-    <loc>https://malitix.com/developpement-mobile</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Refonte SI -->
+  <!-- Refonte SI Page -->
   <url>
     <loc>https://malitix.com/refonte-si</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Externalisation -->
+  
+  <!-- Externalisation Page -->
   <url>
     <loc>https://malitix.com/externalisation</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog -->
+  
+  <!-- SOC Monitoring Page -->
+  <url>
+    <loc>https://malitix.com/soc-monitoring</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Mobile App Development Page -->
+  <url>
+    <loc>https://malitix.com/developpement-mobile</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- BI Advisor Page -->
+  <url>
+    <loc>https://malitix.com/bi-advisor</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Index Page -->
   <url>
     <loc>https://malitix.com/blog</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   
   <!-- Mentions Légales -->
   <url>
     <loc>https://malitix.com/mentions-legales</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
   </url>
   
   <!-- Politique de Confidentialité -->
   <url>
     <loc>https://malitix.com/politique-de-confidentialite</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

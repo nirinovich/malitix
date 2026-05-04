@@ -28,8 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
-        {/* Dev branch: block all indexing and crawling */}
-        <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+
         <link rel="icon" href="/favicon.ico" />
         <Meta />
         <Links />
@@ -57,8 +56,60 @@ export function Layout({ children }: { children: React.ReactNode }) {
             }}
           />
         )}
+        <script data-cookieconsent="ignore" dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('consent', 'default', {
+            'ad_personalization': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500,
+          });
+          gtag("set", "ads_data_redaction", true);
+          gtag("set", "url_passthrough", false);
+        `}} />
+        <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/8c7b194ddfb209c75d3cbd84ee02b13f/script.js"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-KTH9CRZ4');
+        `}} />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGEFD1FDRZ"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-11480258743');
+          gtag('config', 'G-XGEFD1FDRZ');
+        `}} />
+        <script dangerouslySetInnerHTML={{ __html: `
+          function gtag_report_conversion(url) {
+            var callback = function () {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            };
+            gtag('event', 'conversion', {
+              'send_to': 'AW-11480258743/VW8uCPmcocsaELexm-Iq',
+              'value': 1.0,
+              'currency': 'USD',
+              'event_callback': callback
+            });
+            return false;
+          }
+        `}} />
       </head>
       <body className={isAdminRoute ? "sanity-embedded" : undefined}>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTH9CRZ4" height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-[var(--brand-primary)] focus:text-white focus:font-bold focus:rounded-md outline-none focus:ring-4 focus:ring-white/20 transition-all"
