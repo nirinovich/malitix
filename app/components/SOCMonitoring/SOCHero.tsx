@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowDown, Star } from "lucide-react";
+import { ArrowRight, ArrowDown, Star, Shield, Clock, CheckCircle } from "lucide-react";
 
 export default function SOCHero() {
   const scrollToCalculator = () => {
@@ -78,37 +78,61 @@ export default function SOCHero() {
           </div>
         </div>
 
-        {/* Right Column — Trust Visual */}
+        {/* Right Column — Trust Image */}
         <div className="hidden lg:flex flex-col justify-center relative animate-on-scroll in-view stagger-4">
-          <div className="relative w-full max-w-md mx-auto">
-            <div className="absolute inset-0 bg-[var(--brand-primary)]/20 blur-[100px] rounded-full" />
-            <div className="relative bg-[image:var(--card-bg)] backdrop-blur-xl border border-[var(--border-primary)] rounded-3xl p-8 shadow-2xl space-y-6">
-              {/* Shield visual */}
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[var(--brand-primary)]/10 mb-4">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-[var(--brand-primary)]">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+          <div className="relative w-full max-w-md mx-auto" aria-hidden="true" role="presentation">
+            {/* Glow behind card */}
+            <div className="absolute -inset-6 bg-[var(--brand-primary)]/10 rounded-3xl blur-2xl" />
+
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--border-primary)] shadow-2xl">
+              <img
+                src="/images/SOC.webp"
+                alt="Security Operations Center"
+                className="h-[420px] w-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  e.currentTarget.nextElementSibling?.classList.add('flex');
+                }}
+              />
+              {/* Fallback */}
+              <div className="hidden h-[420px] w-full bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-tertiary)] to-[var(--bg-primary)] flex-col items-center justify-center">
+                <div className="flex flex-col items-center gap-4 opacity-60">
+                  <Shield size={64} className="text-[var(--brand-primary)]" />
+                  <span className="text-sm font-semibold text-[var(--text-muted)]">Security Operations Center</span>
                 </div>
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">SOC Malitix</h3>
-                <p className="text-xs text-emerald-500 flex items-center justify-center gap-1 font-semibold mt-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Monitoring actif 24/7
-                </p>
               </div>
-              {/* Stats grid */}
-              <div className="grid grid-cols-2 gap-3">
+
+              {/* Bottom gradient overlay */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
+
+              {/* Floating trust badges */}
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between gap-3">
                 {[
-                  { label: "Alertes/mois", value: "500+", color: "text-[var(--brand-primary)]" },
-                  { label: "Temps réaction", value: "<15min", color: "text-emerald-500" },
-                  { label: "Coût réduit", value: "-50%", color: "text-[var(--brand-primary)]" },
-                  { label: "SLA garanti", value: "99.9%", color: "text-emerald-500" },
-                ].map((stat, i) => (
-                  <div key={i} className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] rounded-xl p-3 text-center">
-                    <div className={`text-xl font-black ${stat.color}`}>{stat.value}</div>
-                    <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mt-0.5">{stat.label}</div>
-                  </div>
-                ))}
+                  { icon: Clock, label: '24/7', sublabel: 'Monitoring' },
+                  { icon: CheckCircle, label: '99.7%', sublabel: 'SLA' },
+                  { icon: Shield, label: 'ISO', sublabel: '27001' },
+                ].map((badge) => {
+                  const Icon = badge.icon;
+                  return (
+                    <div
+                      key={badge.label}
+                      className="flex-1 flex items-center gap-2.5 rounded-xl border border-white/15 bg-white/10 backdrop-blur-md px-3.5 py-2.5"
+                    >
+                      <Icon size={18} className="text-[var(--brand-primary)] flex-shrink-0" />
+                      <div>
+                        <div className="text-sm font-bold text-white leading-tight">{badge.label}</div>
+                        <div className="text-[10px] text-white/70 leading-tight">{badge.sublabel}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Top-right live indicator */}
+              <div className="absolute top-4 right-4 flex items-center gap-2 rounded-full bg-black/40 backdrop-blur-md px-3 py-1.5">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                <span className="text-xs font-semibold text-white">Live</span>
               </div>
             </div>
           </div>
