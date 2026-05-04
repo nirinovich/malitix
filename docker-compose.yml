@@ -40,7 +40,7 @@ services:
       target: nginx # Stage 5
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       app:
         condition: service_healthy

@@ -38,7 +38,7 @@ COPY package.json ./
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build    /app/build         ./build
 EXPOSE 3000
-CMD ["node", "node_modules/.bin/react-router-serve", "./build/server/index.js"]
+CMD ["npx", "--no-install", "react-router-serve", "./build/server/index.js"]
 
 # ──────────────────────────────────────────────────────────────
 # Stage 5 — nginx (serves static/pre-rendered + proxies SSR)
