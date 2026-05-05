@@ -102,6 +102,8 @@ export function Navbar() {
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
+          // Sync URL hash without jumping
+          window.history.pushState(null, "", href);
         }
       }
       return;

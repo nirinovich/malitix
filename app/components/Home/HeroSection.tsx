@@ -1,7 +1,37 @@
+import { useNavigate, useLocation } from "react-router";
 import { ArrowRight, Code, Database, Cpu, Sparkles } from "lucide-react";
 import { HERO_CONTENT, CTA_TEXT } from "~/utils/constants";
 
 export function HeroSection() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // 1. Trigger GTM tracking if applicable
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof window !== "undefined" && (window as any).gtag_report_conversion) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).gtag_report_conversion(href);
+    }
+
+    // 2. Handle smooth scroll if on same page
+    if (href.startsWith("#")) {
+      if (location.pathname !== "/") {
+        navigate("/" + href);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", href);
+        }
+      }
+    } else {
+      navigate(href);
+    }
+  };
+
   return (
     <section
       id="home"
@@ -202,13 +232,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#contact"
-                onClick={() => {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  if (typeof window !== "undefined" && (window as any).gtag_report_conversion) {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    (window as any).gtag_report_conversion("#contact");
-                  }
-                }}
+                onClick={(e) => handleCTAClick(e, "#contact")}
                 className="group bg-[var(--brand-primary)] hover:bg-[#248fa5] text-white px-6 py-3 rounded-full font-semibold shadow-xl shadow-[var(--brand-primary)]/30 hover:shadow-[var(--brand-primary)]/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 {CTA_TEXT.primary}
@@ -216,6 +240,7 @@ export function HeroSection() {
               </a>
               <a
                 href="#services"
+                onClick={(e) => handleCTAClick(e, "#services")}
                 className="backdrop-blur-xl px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300 bg-[var(--surface-elevated)] hover:bg-[var(--surface-hover)] border border-[var(--border-primary)] text-[var(--text-primary)]"
               >
                 {CTA_TEXT.secondary}
