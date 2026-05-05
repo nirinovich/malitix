@@ -12,7 +12,10 @@ import type { Route } from "./+types/root";
 import { ThemeProvider } from "./context/ThemeContext";
 import "./app.css";
 
-export const links: Route.LinksFunction = () => [];
+export const links: Route.LinksFunction = () => [
+  { rel: "icon", type: "image/x-icon", href: "/favicon.ico?v=2" },
+  { rel: "icon", type: "image/png", href: "/favicon.png?v=2" },
+];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
@@ -29,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
 
-        <link rel="icon" href="/favicon.ico" />
+
         <Meta />
         <Links />
         {!isAdminRoute && (
