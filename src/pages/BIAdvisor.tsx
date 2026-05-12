@@ -15,7 +15,8 @@ import {
   ChevronDown,
   Shield,
   Star,
-  Zap
+  Zap,
+  FileSpreadsheet
 } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 
@@ -63,7 +64,7 @@ function AnimatedStat({
   const { hasBeenInView } = useInView(ref, { threshold: 0.3 });
 
   return (
-    <div ref={ref} className="text-center p-6 border-b sm:border-b-0 sm:border-r last:border-0 border-[var(--border-primary)]">
+    <div ref={ref} className="text-center p-6 border-b sm:border-b-0 sm:border-r last:border-0 border-gray-200 dark:border-white/10">
       <div
         className={`text-5xl md:text-6xl font-black text-[#1e7a8f] transition-all duration-1000 ${hasBeenInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
           }`}
@@ -72,7 +73,7 @@ function AnimatedStat({
         {value}
         {suffix}
       </div>
-      <p className="text-sm md:text-base text-[var(--text-secondary)] mt-2 font-bold uppercase tracking-widest">{label}</p>
+      <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mt-2 font-bold uppercase tracking-widest">{label}</p>
     </div>
   );
 }
@@ -82,12 +83,12 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-[var(--border-primary)] last:border-0">
+    <div className="border-b border-gray-200 dark:border-white/10 last:border-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left py-6 flex items-center justify-between gap-4 cursor-pointer hover:text-[#2ca3bd] transition-colors"
       >
-        <span className="text-xl font-bold text-[var(--text-primary)]">{question}</span>
+        <span className="text-xl font-bold text-gray-900 dark:text-white">{question}</span>
         <ChevronDown
           className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
           size={24}
@@ -97,7 +98,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px] opacity-100 pb-6' : 'max-h-0 opacity-0'
           }`}
       >
-        <p className="text-[var(--text-secondary)] leading-relaxed text-lg">{answer}</p>
+        <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">{answer}</p>
       </div>
     </div>
   );
@@ -143,8 +144,7 @@ function HeroChatDemo() {
 
   return (
     <div className="relative w-full max-w-lg mx-auto" ref={ref}>
-      <div className="absolute inset-0 bg-[#2ca3bd]/20 blur-[120px] rounded-full" />
-      <div className="relative bg-white dark:bg-[#1a1d1b] border border-gray-200 dark:border-white/10 p-4 sm:p-6 rounded-3xl shadow-2xl flex flex-col h-[500px] sm:h-[520px]">
+      <div className="relative bg-white/90 dark:bg-[#1a1d1b]/90 backdrop-blur-2xl border border-gray-200 dark:border-white/10 p-4 sm:p-6 rounded-3xl shadow-2xl flex flex-col h-[500px] sm:h-[520px]">
         {/* Header */}
         <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100 dark:border-white/5 shrink-0">
           <div className="flex items-center gap-3">
@@ -268,61 +268,95 @@ export default function BIAdvisor() {
         {/* Subtle background noise/grid */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M0%200h20v20H0V0zm20%2020h20v20H20V20z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
         
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center">
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Badge & Stars */}
-          <RevealSection>
-            <div className="flex flex-col items-center gap-4 mb-8">
-              <div className="bg-white/10 backdrop-blur border border-white/20 text-white px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase flex items-center gap-2">
-                <span className="text-xl">🔥</span> INNOVATION BI : IA CONVERSATIONNELLE
-              </div>
-              <div className="flex items-center gap-2 bg-[#1A1C25] px-4 py-2 rounded-lg border border-white/5 shadow-xl">
-                <div className="flex text-yellow-400">
-                  <Star fill="currentColor" size={16} />
-                  <Star fill="currentColor" size={16} />
-                  <Star fill="currentColor" size={16} />
-                  <Star fill="currentColor" size={16} />
-                  <Star fill="currentColor" size={16} />
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Badge & Stars */}
+            <RevealSection>
+              <div className="flex flex-col items-center lg:items-start gap-4 mb-8">
+                <div className="flex items-center gap-2 bg-[#1A1C25] px-4 py-2 rounded-lg border border-white/5 shadow-xl">
+                  <div className="flex text-yellow-400">
+                    <Star fill="currentColor" size={16} />
+                    <Star fill="currentColor" size={16} />
+                    <Star fill="currentColor" size={16} />
+                    <Star fill="currentColor" size={16} />
+                    <Star fill="currentColor" size={16} />
+                  </div>
+                  <span className="text-white text-xs font-black tracking-widest uppercase">Satisfaction Client 95%</span>
                 </div>
-                <span className="text-white text-xs font-black tracking-widest">SATISFACTION CLIENT 95%</span>
+              </div>
+            </RevealSection>
+
+            {/* Headline */}
+            <RevealSection delay={100}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-8">
+                DIVISEZ VOTRE TEMPS DE DÉCISION PAR 10.
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl font-medium leading-relaxed">
+                Fini les exports Excel interminables. <span className="text-white font-bold">BI Advisor transforme votre ERP en assistant IA</span> qui répond à vos questions en langage naturel.
+              </p>
+            </RevealSection>
+
+            {/* Big CTA & Social Proof */}
+            <RevealSection delay={200} className="w-full flex flex-col items-center lg:items-start">
+              <button
+                onClick={scrollToContact}
+                className="w-full sm:w-auto bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 sm:px-12 py-6 rounded-2xl font-black text-xl tracking-wide uppercase shadow-[0_0_40px_rgba(44,163,189,0.3)] hover:shadow-[0_0_60px_rgba(44,163,189,0.5)] hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group border border-white/10"
+              >
+                TESTER GRATUITEMENT
+                <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+              </button>
+              
+              <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
+                <div className="flex -space-x-3">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="w-10 h-10 rounded-full border-2 border-[#0B0D17]" />
+                  ))}
+                </div>
+                <span className="text-gray-400 font-bold text-sm uppercase tracking-wider">Rejoignez 30+ entreprises</span>
+              </div>
+            </RevealSection>
+          </div>
+
+          {/* Video Column - Only modifying this part */}
+          <RevealSection delay={300} className="w-full relative lg:pl-12">
+            {/* Background Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#2ca3bd]/10 blur-[100px] rounded-full pointer-events-none" />
+
+            {/* Floating Badge: Excel */}
+            <div className="absolute -top-4 -left-4 lg:-left-2 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl flex items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <FileSpreadsheet size={24} />
+              </div>
+              <div className="hidden sm:block">
+                <div className="text-[10px] font-black uppercase tracking-widest opacity-50">Connecté</div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white">Excel Live</div>
               </div>
             </div>
-          </RevealSection>
 
-          {/* Headline */}
-          <RevealSection delay={100}>
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black text-white leading-[1.05] tracking-tight mb-8 max-w-4xl">
-              DIVISEZ VOTRE TEMPS DE DÉCISION PAR 10.
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl font-medium leading-relaxed">
-              Fini les exports Excel interminables. <span className="text-white font-bold">BI Advisor transforme votre ERP en assistant IA</span> qui répond à vos questions en langage naturel, avec des prévisions prêtes pour le board.
-            </p>
-          </RevealSection>
-
-          {/* Big CTA */}
-          <RevealSection delay={200} className="w-full flex flex-col items-center mb-16">
-            <button
-              onClick={scrollToContact}
-              className="w-full sm:w-auto bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 sm:px-16 py-6 rounded-2xl font-black text-xl sm:text-2xl tracking-wide uppercase shadow-[0_0_40px_rgba(44,163,189,0.4)] hover:shadow-[0_0_60px_rgba(44,163,189,0.6)] hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group border border-white/20"
-            >
-              TESTER GRATUITEMENT SUR MES DONNÉES
-              <ArrowRight className="group-hover:translate-x-2 transition-transform" size={28} />
-            </button>
-            
-            {/* Social Proof Strip */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="w-10 h-10 rounded-full border-2 border-[#0B0D17]" />
-                ))}
+            {/* Floating Badge: Odoo / ERP */}
+            <div className="absolute -bottom-6 -right-4 lg:right-0 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl flex items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default" style={{ animationDelay: '1.5s' }}>
+              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                <Zap size={24} />
               </div>
-              <span className="text-gray-400 font-bold text-sm">REJOIGNEZ PLUS DE 30 ENTREPRISES ACCOMPAGNÉES</span>
+              <div className="hidden sm:block">
+                <div className="text-[10px] font-black uppercase tracking-widest opacity-50">ERP Sync</div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white">Odoo & Sage</div>
+              </div>
             </div>
-          </RevealSection>
 
-          {/* Chat Demo */}
-          <RevealSection delay={300} className="w-full mt-8">
-            <HeroChatDemo />
+            {/* Video Container with refined proportions */}
+            <div className="relative z-10 aspect-[16/10] lg:aspect-video rounded-[2.5rem] overflow-hidden border-[12px] border-[#1A1C25] shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-[#0a0e0d] group">
+              <iframe 
+                src="https://drive.google.com/file/d/1_IEbnZQQJgOLD6ZGXmebQd5YD5_64_ol/preview" 
+                className="w-full h-full border-0 grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                allow="autoplay"
+                title="BI Advisor Demo"
+              />
+              {/* Overlay Glass Effect */}
+              <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-[1.5rem]" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
           </RevealSection>
 
         </div>
@@ -480,8 +514,17 @@ export default function BIAdvisor() {
             </div>
           </RevealSection>
 
+          <div className="relative mb-24">
+            <div className="absolute inset-0 bg-[#2ca3bd]/5 blur-[120px] rounded-full pointer-events-none" />
+            <RevealSection delay={100} className="relative z-10 w-full max-w-4xl mx-auto px-4">
+              <div className="p-4 sm:p-8 rounded-[3rem] bg-gray-50/30 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 backdrop-blur-md shadow-inner">
+                <HeroChatDemo />
+              </div>
+            </RevealSection>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <RevealSection delay={100}>
+            <RevealSection delay={200}>
               <div className="bg-gray-50 dark:bg-[#1A1C25] border border-gray-200 dark:border-white/5 p-10 rounded-3xl h-full flex flex-col hover:-translate-y-2 transition-transform shadow-lg">
                 <MessageSquare className="text-[#2ca3bd] mb-6" size={48} />
                 <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white uppercase leading-tight">Parlez à vos données comme à un collègue</h3>
