@@ -318,40 +318,42 @@ export default function BIAdvisor() {
             </RevealSection>
           </div>
 
-          {/* Video Column - Only modifying this part */}
-          <RevealSection delay={300} className="w-full relative lg:pl-12">
+          {/* Video Column - Adjusted size */}
+          <RevealSection delay={300} className="w-full relative lg:pl-12 lg:scale-[1.15] lg:translate-x-8">
             {/* Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#2ca3bd]/10 blur-[100px] rounded-full pointer-events-none" />
 
             {/* Floating Badge: Excel */}
-            <div className="absolute -top-4 -left-4 lg:-left-2 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl flex items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default">
+            <div className="absolute -top-8 -left-8 lg:-left-4 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl flex items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                 <FileSpreadsheet size={24} />
               </div>
               <div className="hidden sm:block">
-                <div className="text-[10px] font-black uppercase tracking-widest opacity-50">Connecté</div>
-                <div className="text-sm font-bold text-gray-900 dark:text-white">Excel Live</div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">Connecté</div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white leading-tight">Excel Live</div>
               </div>
             </div>
 
             {/* Floating Badge: Odoo / ERP */}
-            <div className="absolute -bottom-6 -right-4 lg:right-0 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl flex items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default" style={{ animationDelay: '1.5s' }}>
+            <div className="absolute -bottom-10 -right-8 lg:-right-4 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl flex items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default" style={{ animationDelay: '1.5s' }}>
               <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
                 <Zap size={24} />
               </div>
               <div className="hidden sm:block">
-                <div className="text-[10px] font-black uppercase tracking-widest opacity-50">ERP Sync</div>
-                <div className="text-sm font-bold text-gray-900 dark:text-white">Odoo & Sage</div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">ERP Sync</div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white leading-tight">Odoo & Sage</div>
               </div>
             </div>
 
             {/* Video Container with refined proportions */}
             <div className="relative z-10 aspect-[16/10] lg:aspect-video rounded-[2.5rem] overflow-hidden border-[12px] border-[#1A1C25] shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-[#0a0e0d] group">
-              <iframe 
-                src="https://drive.google.com/file/d/1_IEbnZQQJgOLD6ZGXmebQd5YD5_64_ol/preview" 
-                className="w-full h-full border-0 grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
-                allow="autoplay"
-                title="BI Advisor Demo"
+              <video 
+                src="/demo-bi.mp4" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
               />
               {/* Overlay Glass Effect */}
               <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-[1.5rem]" />
@@ -494,68 +496,106 @@ export default function BIAdvisor() {
                   ))}
                 </div>
               </div>
-
             </div>
           </RevealSection>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 5: WHAT YOU GET (Features as Benefits)
+          SECTION 5: THE CORE EXPERIENCE (Interactive Demo)
           ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-12 bg-white dark:bg-[#111]">
-        <div className="max-w-7xl mx-auto">
-          <RevealSection>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase">
-                POSEZ UNE QUESTION.<br />
-                <span className="text-[#2ca3bd]">OBTENEZ LA RÉPONSE EN SECONDES.</span>
-              </h2>
+      <section className="py-32 bg-white dark:bg-[#0B0D17] border-b border-gray-200 dark:border-white/10 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            
+            {/* Left: Chat Demo */}
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#2ca3bd]/10 blur-[100px] rounded-full" />
+              <RevealSection className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[#2ca3bd]/10 to-purple-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="relative bg-white dark:bg-[#111] rounded-[2.5rem] border border-gray-200 dark:border-white/10 shadow-2xl overflow-hidden backdrop-blur-xl">
+                  {/* Dashboard Header */}
+                  <div className="flex items-center gap-2 px-6 py-4 bg-gray-50/50 dark:bg-white/[0.02] border-b border-gray-100 dark:border-white/5">
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
+                      <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                      <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
+                    </div>
+                    <span className="ml-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Connecté à votre ERP</span>
+                  </div>
+                  <div className="p-4 sm:p-6">
+                    <HeroChatDemo />
+                  </div>
+                </div>
+              </RevealSection>
             </div>
-          </RevealSection>
 
-          <div className="relative mb-24">
-            <div className="absolute inset-0 bg-[#2ca3bd]/5 blur-[120px] rounded-full pointer-events-none" />
-            <RevealSection delay={100} className="relative z-10 w-full max-w-4xl mx-auto px-4">
-              <div className="p-4 sm:p-8 rounded-[3rem] bg-gray-50/30 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 backdrop-blur-md shadow-inner">
-                <HeroChatDemo />
+            {/* Right: Benefits */}
+            <div className="order-1 lg:order-2">
+              <RevealSection>
+                <div className="inline-block bg-[#2ca3bd]/10 text-[#2ca3bd] px-4 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest mb-6">
+                  L'IA AU SERVICE DU PILOTAGE
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white leading-tight mb-12">
+                  POSEZ UNE QUESTION.<br/>
+                  <span className="text-[#2ca3bd]">RÉPONSE EN SECONDES.</span>
+                </h2>
+              </RevealSection>
+
+              <div className="space-y-10">
+                {/* Point 1 */}
+                <RevealSection delay={100}>
+                  <div className="group">
+                    <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight flex items-center gap-3">
+                      <div className="w-1.5 h-6 bg-[#2ca3bd] rounded-full" />
+                      Parlez à vos données comme à un collègue
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                      Posez vos questions en français, à l'écrit ou à la voix. L'IA traduit votre intention en requête technique et génère des graphiques à la volée.
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 px-4 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest border border-emerald-100 dark:border-emerald-800/30">
+                      <CheckCircle size={14} /> RÉSULTAT : AUTONOMIE TOTALE
+                    </div>
+                  </div>
+                </RevealSection>
+
+                {/* Point 2 */}
+                <RevealSection delay={200}>
+                  <div className="group">
+                    <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight flex items-center gap-3">
+                      <div className="w-1.5 h-6 bg-purple-500 rounded-full" />
+                      Anticipez les crises avant qu'elles n'arrivent
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                      Prévisions de trésorerie, tendances de ventes, projections de BFR — basées sur vos historiques réels et vos échéances.
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 px-4 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest border border-emerald-100 dark:border-emerald-800/30">
+                      <CheckCircle size={14} /> RÉSULTAT : PILOTAGE PROACTIF
+                    </div>
+                  </div>
+                </RevealSection>
+
+                {/* Point 3 */}
+                <RevealSection delay={300}>
+                  <div className="group">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-1.5 h-6 bg-red-500 rounded-full" />
+                      <h3 className="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Ne ratez plus jamais un signal critique</h3>
+                      <span className="px-2 py-0.5 rounded bg-red-500 text-white text-[10px] font-black uppercase animate-pulse">LIVE</span>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                      Recevez une alerte dès qu'une anomalie, une chute de marge ou un seuil critique est détecté par l'algorithme.
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 px-4 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest border border-emerald-100 dark:border-emerald-800/30">
+                      <CheckCircle size={14} /> RÉSULTAT : L'IA SURVEILLE 24/7
+                    </div>
+                  </div>
+                </RevealSection>
               </div>
-            </RevealSection>
+            </div>
+
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <RevealSection delay={200}>
-              <div className="bg-gray-50 dark:bg-[#1A1C25] border border-gray-200 dark:border-white/5 p-10 rounded-3xl h-full flex flex-col hover:-translate-y-2 transition-transform shadow-lg">
-                <MessageSquare className="text-[#2ca3bd] mb-6" size={48} />
-                <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white uppercase leading-tight">Parlez à vos données comme à un collègue</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 flex-1 text-lg">
-                  Posez vos questions en français, à l'écrit ou à la voix. L'IA traduit votre intention en requête technique et génère des graphiques à la volée.
-                </p>
-                <p className="text-[#2ca3bd] font-black uppercase tracking-widest flex items-center gap-2">
-                  <CheckCircle size={18} /> RÉSULTAT : AUTONOMIE TOTALE
-                </p>
-              </div>
-            </RevealSection>
-
-            <RevealSection delay={200}>
-              <div className="bg-gray-50 dark:bg-[#1A1C25] border border-gray-200 dark:border-white/5 p-10 rounded-3xl h-full flex flex-col hover:-translate-y-2 transition-transform shadow-lg">
-                <TrendingUp className="text-[#2ca3bd] mb-6" size={48} />
-                <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white uppercase leading-tight">Anticipez les crises avant qu'elles n'arrivent</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 flex-1 text-lg">
-                  Prévisions de trésorerie, tendances de ventes, projections de BFR — basées sur vos historiques réels et vos échéances.
-                </p>
-                <p className="text-[#2ca3bd] font-black uppercase tracking-widest flex items-center gap-2">
-                  <CheckCircle size={18} /> RÉSULTAT : PILOTAGE PROACTIF
-                </p>
-              </div>
-            </RevealSection>
-
-            <RevealSection delay={300}>
-              <div className="bg-gray-50 dark:bg-[#1A1C25] border border-gray-200 dark:border-white/5 p-10 rounded-3xl h-full flex flex-col hover:-translate-y-2 transition-transform shadow-lg relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-xs px-4 py-2 uppercase tracking-widest rounded-bl-xl">LIVE</div>
-                <BellRing className="text-[#2ca3bd] mb-6" size={48} />
-                <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white uppercase leading-tight">Ne ratez plus jamais un signal critique</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 flex-1 text-lg">
+        </div>
                   Recevez une alerte dès qu'une anomalie, une chute de marge ou un seuil critique est détecté par l'algorithme.
                 </p>
                 <p className="text-[#2ca3bd] font-black uppercase tracking-widest flex items-center gap-2">
