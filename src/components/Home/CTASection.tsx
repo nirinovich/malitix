@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
+import { Send, CheckCircle2, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { CTA_TEXT, COMPANY_INFO } from '../../utils/constants';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -14,6 +14,7 @@ export default function CTASection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [contactMethod, setContactMethod] = useState<'meeting' | 'form'>('meeting');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -154,14 +155,67 @@ export default function CTASection() {
                 ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/10'
                 : 'bg-gradient-to-br from-[var(--surface-primary)] to-[var(--bg-secondary)] border border-gray-200'
             }`}>
+              {/* Contact Method Selector */}
+              <div className="flex p-1 bg-gray-100 dark:bg-white/5 rounded-2xl mb-8">
+                <button
+                  onClick={() => setContactMethod('meeting')}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 font-bold uppercase tracking-widest text-xs cursor-pointer ${
+                    contactMethod === 'meeting'
+                      ? 'bg-[#2ca3bd] text-white shadow-lg'
+                      : 'text-gray-500 dark:text-gray-400 hover:text-[#2ca3bd]'
+                  }`}
+                >
+                  <Phone size={16} />
+                  RDV Gratuit
+                </button>
+                <button
+                  onClick={() => setContactMethod('form')}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 font-bold uppercase tracking-widest text-xs cursor-pointer ${
+                    contactMethod === 'form'
+                      ? 'bg-[#2ca3bd] text-white shadow-lg'
+                      : 'text-gray-500 dark:text-gray-400 hover:text-[#2ca3bd]'
+                  }`}
+                >
+                  <Mail size={16} />
+                  Formulaire
+                </button>
+              </div>
+
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Error Message */}
-                  {error && (
-                    <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500">
-                      {error}
+                contactMethod === 'meeting' ? (
+                  <div className="text-center py-8 space-y-8 animate-fade-in">
+                    <div className="w-20 h-20 bg-[#2ca3bd]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Phone className="text-[#2ca3bd]" size={40} />
                     </div>
-                  )}
+                    <div className="space-y-4">
+                      <h3 className={`text-2xl font-black uppercase ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        Réservez votre créneau
+                      </h3>
+                      <p className={theme === 'dark' ? 'text-white/70' : 'text-gray-600'}>
+                        Choisissez le moment idéal pour discuter de votre projet avec notre équipe.
+                      </p>
+                    </div>
+                    <a
+                      href="https://meetings.hubspot.com/lola-rakotoarison"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-10 py-5 rounded-full font-black text-lg shadow-xl shadow-[#2ca3bd]/30 hover:shadow-[#2ca3bd]/50 hover:scale-105 transition-all duration-300 uppercase tracking-widest"
+                    >
+                      Prendre RDV sur HubSpot
+                      <ArrowRight size={20} />
+                    </a>
+                    <p className={`text-xs ${theme === 'dark' ? 'text-white/40' : 'text-gray-500'} font-bold uppercase tracking-widest`}>
+                      Consultation 100% gratuite • 30 minutes
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+                    {/* Error Message */}
+                    {error && (
+                      <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500">
+                        {error}
+                      </div>
+                    )}
 
                   {/* Name */}
                   <div>
@@ -270,7 +324,7 @@ export default function CTASection() {
                     En envoyant ce formulaire, vous acceptez notre politique de confidentialité
                   </p>
                 </form>
-              ) : (
+              )) : (
                 <div className="text-center py-12 space-y-6">
                   <div className="inline-flex items-center justify-center w-20 h-20 bg-[#2ca3bd]/20 rounded-full">
                     <CheckCircle2 className="text-[#2ca3bd]" size={40} />
@@ -294,4 +348,3 @@ export default function CTASection() {
     </section>
   );
 }
-

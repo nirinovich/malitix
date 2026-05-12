@@ -11,6 +11,7 @@ export default function BIAdvisorContact() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [contactMethod, setContactMethod] = useState<'meeting' | 'form'>('meeting');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,12 +76,67 @@ export default function BIAdvisorContact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left — Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="p-8 sm:p-12 rounded-3xl bg-[#0a0e0d] border-4 border-[#1A1C25] shadow-2xl relative"
-          >
-            <div className="space-y-4">
+          {/* Left — Contact card */}
+          <div className="p-8 sm:p-12 rounded-3xl bg-[#0a0e0d] border-4 border-[#1A1C25] shadow-2xl relative min-h-[600px] flex flex-col">
+            {/* Contact Method Selector */}
+            <div className="flex p-1 bg-white/5 rounded-2xl mb-8">
+              <button
+                onClick={() => setContactMethod('meeting')}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 font-bold uppercase tracking-widest text-xs cursor-pointer ${
+                  contactMethod === 'meeting'
+                    ? 'bg-[#2ca3bd] text-white shadow-lg'
+                    : 'text-gray-400 hover:text-[#2ca3bd]'
+                }`}
+              >
+                <Phone size={16} />
+                Réserver un RDV
+              </button>
+              <button
+                onClick={() => setContactMethod('form')}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 font-bold uppercase tracking-widest text-xs cursor-pointer ${
+                  contactMethod === 'form'
+                    ? 'bg-[#2ca3bd] text-white shadow-lg'
+                    : 'text-gray-400 hover:text-[#2ca3bd]'
+                }`}
+              >
+                <Mail size={16} />
+                Via Formulaire
+              </button>
+            </div>
+
+            {contactMethod === 'meeting' ? (
+              <div className="flex-1 flex flex-col items-center justify-center text-center py-8 space-y-10 animate-fade-in">
+                <div className="w-24 h-24 bg-[#2ca3bd]/20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#2ca3bd]/30">
+                  <Phone className="text-[#2ca3bd]" size={48} />
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-black uppercase text-white tracking-tight">
+                    Choisissez votre créneau
+                  </h3>
+                  <p className="text-xl text-gray-400 font-medium max-w-sm">
+                    Découvrez comment BI Advisor peut transformer votre gestion data en 30 minutes.
+                  </p>
+                </div>
+                <a
+                  href="https://meetings.hubspot.com/lola-rakotoarison"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-4 bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-12 py-6 rounded-2xl font-black text-xl shadow-[0_0_40px_rgba(44,163,189,0.3)] hover:shadow-[0_0_60px_rgba(44,163,189,0.5)] hover:-translate-y-1 transition-all uppercase tracking-widest border border-white/20"
+                >
+                  Prendre RDV sur HubSpot
+                  <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+                </a>
+                <div className="flex items-center gap-6 text-xs text-gray-500 font-bold uppercase tracking-[0.2em]">
+                  <span>✓ 100% GRATUIT</span>
+                  <span>✓ AUCUN ENGAGEMENT</span>
+                </div>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="animate-fade-in"
+              >
+                <div className="space-y-4">
               {/* Name */}
               <div>
                 <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">
@@ -187,8 +243,10 @@ export default function BIAdvisorContact() {
               <p className="text-xs text-center text-gray-500 font-bold uppercase tracking-widest mt-4">
                 En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix.
               </p>
-            </div>
-          </form>
+                </div>
+              </form>
+            )}
+          </div>
 
           {/* Right — What you get */}
           <div className="space-y-6 lg:self-center">
