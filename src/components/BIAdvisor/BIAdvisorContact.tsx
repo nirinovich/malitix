@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, Mail, User, Phone, Building2, CheckCircle } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
 
 export default function BIAdvisorContact() {
-  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,38 +45,31 @@ export default function BIAdvisorContact() {
     }
   };
 
-  const isDark = theme === 'dark';
-
   return (
     <section
       id="bi-advisor-contact"
-      className={`relative py-24 overflow-hidden ${
-        isDark ? 'bg-gradient-to-b from-[#06080a] to-[#0a0e10]' : 'bg-[var(--bg-primary)]'
-      }`}
+      className="relative py-24 px-6 sm:px-12 bg-[#0B0D17] text-white border-t-8 border-[#2ca3bd]"
     >
+      {/* Subtle background noise/grid */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M0%200h20v20H0V0zm20%2020h20v20H20V20z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
+      
       {/* Background glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full blur-3xl ${
-            isDark ? 'bg-[#2ca3bd]/5' : 'bg-[#2ca3bd]/8'
-          }`}
+          className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full blur-[120px] bg-[#2ca3bd]/10"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <div className="mb-12">
-          <div className="inline-block px-4 py-2 rounded-full bg-[#2ca3bd] text-white text-sm font-bold mb-4">
-            Démo &amp; Test Gratuit — Sur vos données réelles
+        <div className="mb-16 text-center">
+          <div className="inline-block bg-[#2ca3bd]/20 text-[#2ca3bd] px-6 py-2 rounded-full font-black uppercase tracking-widest text-sm mb-6 border border-[#2ca3bd]/50">
+            DÉMO & TEST GRATUIT
           </div>
-          <h2
-            className={`text-4xl sm:text-5xl font-black mb-4 ${
-              isDark ? 'text-white' : 'text-[var(--text-primary)]'
-            }`}
-          >
-            Prêt à dialoguer avec votre entreprise ?
+          <h2 className="text-4xl md:text-6xl font-black mb-6 uppercase">
+            PRÊT À DIALOGUER <span className="text-[#2ca3bd]">AVEC VOTRE ENTREPRISE ?</span>
           </h2>
-          <p className={`text-xl ${isDark ? 'text-white/70' : 'text-[var(--text-secondary)]'}`}>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-medium">
             Lancez un Proof of Concept sur vos données historiques. Résultats en moins de 48h.
           </p>
         </div>
@@ -87,123 +78,83 @@ export default function BIAdvisorContact() {
           {/* Left — Form */}
           <form
             onSubmit={handleSubmit}
-            className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
-              isDark
-                ? 'bg-white/5 border-white/10'
-                : 'bg-[var(--surface-primary)] border-gray-200 shadow-lg'
-            }`}
+            className="p-8 sm:p-12 rounded-3xl bg-[#0a0e0d] border-4 border-[#1A1C25] shadow-2xl relative"
           >
             <div className="space-y-4">
               {/* Name */}
               <div>
-                <label
-                  className={`block text-sm font-semibold mb-2 ${
-                    isDark ? 'text-white' : 'text-[var(--text-primary)]'
-                  }`}
-                >
+                <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">
                   Nom *
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={24} />
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Jean Dupont"
-                    className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                      isDark
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-[var(--bg-secondary)] border-gray-200 text-[var(--text-primary)] placeholder-gray-400'
-                    }`}
+                    className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg"
                   />
                 </div>
               </div>
 
               {/* Email */}
               <div>
-                <label
-                  className={`block text-sm font-semibold mb-2 ${
-                    isDark ? 'text-white' : 'text-[var(--text-primary)]'
-                  }`}
-                >
+                <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">
                   E-mail *
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={24} />
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="jean.dupont@entreprise.fr"
-                    className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                      isDark
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-[var(--bg-secondary)] border-gray-200 text-[var(--text-primary)] placeholder-gray-400'
-                    }`}
+                    className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg"
                   />
                 </div>
               </div>
 
               {/* Company */}
               <div>
-                <label
-                  className={`block text-sm font-semibold mb-2 ${
-                    isDark ? 'text-white' : 'text-[var(--text-primary)]'
-                  }`}
-                >
+                <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">
                   Entreprise *
                 </label>
                 <div className="relative">
-                  <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
+                  <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={24} />
                   <input
                     type="text"
                     required
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="Nom de votre entreprise"
-                    className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                      isDark
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-[var(--bg-secondary)] border-gray-200 text-[var(--text-primary)] placeholder-gray-400'
-                    }`}
+                    className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg"
                   />
                 </div>
               </div>
 
               {/* Phone */}
               <div>
-                <label
-                  className={`block text-sm font-semibold mb-2 ${
-                    isDark ? 'text-white' : 'text-[var(--text-primary)]'
-                  }`}
-                >
+                <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">
                   Téléphone
                 </label>
                 <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={20} />
+                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2ca3bd]" size={24} />
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+33 6 12 34 56 78"
-                    className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] ${
-                      isDark
-                        ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                        : 'bg-[var(--bg-secondary)] border-gray-200 text-[var(--text-primary)] placeholder-gray-400'
-                    }`}
+                    className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg"
                   />
                 </div>
               </div>
 
               {/* Message */}
               <div>
-                <label
-                  className={`block text-sm font-semibold mb-2 ${
-                    isDark ? 'text-white' : 'text-[var(--text-primary)]'
-                  }`}
-                >
+                <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">
                   Votre contexte (optionnel)
                 </label>
                 <textarea
@@ -211,11 +162,7 @@ export default function BIAdvisorContact() {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={4}
                   placeholder="Quel ERP utilisez-vous ? Quelles sont vos problématiques data actuelles ?"
-                  className={`w-full px-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] resize-none ${
-                    isDark
-                      ? 'bg-white/5 border-white/10 text-white placeholder-white/40'
-                      : 'bg-[var(--bg-secondary)] border-gray-200 text-[var(--text-primary)] placeholder-gray-400'
-                  }`}
+                  className="w-full px-5 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[#2ca3bd] resize-none bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg"
                 />
               </div>
 
@@ -223,21 +170,21 @@ export default function BIAdvisorContact() {
               <button
                 type="submit"
                 disabled={isLoading || isSubmitted}
-                className={`group cursor-pointer w-full py-4 px-8 rounded-xl font-bold bg-gradient-to-r from-[#00687a] to-[#2ca3bd] text-white transition-all hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 ${
+                className={`group cursor-pointer w-full mt-4 bg-[#2ca3bd] hover:bg-[#248fa5] text-white px-8 py-6 rounded-2xl font-black text-xl tracking-wide uppercase shadow-[0_0_40px_rgba(44,163,189,0.3)] hover:shadow-[0_0_60px_rgba(44,163,189,0.5)] hover:-translate-y-1 transition-all flex items-center justify-center gap-3 border border-white/20 ${
                   isLoading || isSubmitted ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
                 {isLoading
-                  ? 'Envoi en cours...'
+                  ? 'ENVOI EN COURS...'
                   : isSubmitted
-                  ? '✓ Demande envoyée !'
-                  : 'Demander ma démo et mon test gratuit'}
+                  ? '✓ DEMANDE ENVOYÉE !'
+                  : 'RÉSERVER MA DÉMO GRATUITE'}
                 {!isLoading && !isSubmitted && (
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
                 )}
               </button>
 
-              <p className={`text-xs text-center ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+              <p className="text-xs text-center text-gray-500 font-bold uppercase tracking-widest mt-4">
                 En soumettant ce formulaire, vous acceptez d'être recontacté par Malitix.
               </p>
             </div>
@@ -245,17 +192,10 @@ export default function BIAdvisorContact() {
 
           {/* Right — What you get */}
           <div className="space-y-6 lg:self-center">
-            <div
-              className={`p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 ${
-                isDark
-                  ? 'bg-[#2ca3bd]/10 border-[#2ca3bd]/30'
-                  : 'bg-[#2ca3bd]/5 border-[#2ca3bd]/30 shadow-lg'
-              }`}
-            >
-              <h3
-                className={`text-2xl font-black mb-6 ${isDark ? 'text-white' : 'text-[var(--text-primary)]'}`}
-              >
-                Ce que vous obtenez
+            <div className="p-8 sm:p-12 rounded-3xl bg-[#2ca3bd]/5 relative border border-[#2ca3bd]/30">
+              <div className="absolute top-0 left-0 w-full h-2 bg-[#2ca3bd]" />
+              <h3 className="text-3xl font-black mb-10 text-white uppercase tracking-widest">
+                CE QUE VOUS OBTENEZ
               </h3>
               <div className="space-y-4">
                 {[
@@ -280,15 +220,13 @@ export default function BIAdvisorContact() {
                     desc: "Aucun contrat. Décidez d'avancer uniquement si les résultats vous convainquent.",
                   },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <CheckCircle className="text-[#2ca3bd] flex-shrink-0 mt-1" size={22} />
+                  <div key={item.title} className="flex items-start gap-4">
+                    <CheckCircle className="text-[#2ca3bd] flex-shrink-0" size={24} />
                     <div>
-                      <div
-                        className={`font-bold mb-1 ${isDark ? 'text-white' : 'text-[var(--text-primary)]'}`}
-                      >
+                      <div className="font-bold text-lg mb-1 text-white">
                         {item.title}
                       </div>
-                      <p className={`text-sm ${isDark ? 'text-white/70' : 'text-[var(--text-secondary)]'}`}>
+                      <p className="text-gray-400 font-medium">
                         {item.desc}
                       </p>
                     </div>
@@ -297,13 +235,9 @@ export default function BIAdvisorContact() {
               </div>
             </div>
 
-            <div
-              className={`p-6 rounded-2xl text-center backdrop-blur-sm border ${
-                isDark ? 'bg-white/5 border-white/10' : 'bg-[var(--bg-secondary)] border-gray-200'
-              }`}
-            >
-              <p className={`text-sm ${isDark ? 'text-white/70' : 'text-[var(--text-secondary)]'}`}>
-                "Nous ne lançons que 5 POC par mois pour garantir un accompagnement premium."
+            <div className="p-6 rounded-2xl text-center border-2 border-gray-800 bg-[#1A1C25]">
+              <p className="text-gray-400 font-bold tracking-widest uppercase text-sm">
+                "NOUS NE LANÇONS QUE 5 POC PAR MOIS POUR GARANTIR UN ACCOMPAGNEMENT PREMIUM."
               </p>
             </div>
           </div>
