@@ -39,6 +39,10 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
   const isServicesActive = SERVICES_MENU.some(s => location.pathname === s.href);
   const isSolutionsActive = SOLUTIONS_MENU.some(s => location.pathname === s.href);
 
+  // Force dark mode aesthetics for the BI Advisor landing page
+  const isBIAdvisor = location.pathname === '/bi-advisor';
+  const effectiveTheme = isBIAdvisor ? 'dark' : theme;
+
   useEffect(() => {
     let isCurrentlyScrolled = window.scrollY > 20;
     setIsScrolled(isCurrentlyScrolled);
@@ -91,19 +95,19 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
   };
 
   const textClassList = `nav-link py-2 transition-colors flex items-center gap-1 cursor-pointer ${
-    theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+    effectiveTheme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
   }`;
 
   const linkClassList = `nav-link group py-2 flex items-center transition-colors cursor-pointer ${
-    theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+    effectiveTheme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
   }`;
 
   const dropdownContainerClass = `w-96 rounded-2xl shadow-2xl border overflow-hidden ${
-    theme === 'dark' ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10' : 'bg-surface backdrop-blur-xl border-gray-200'
+    effectiveTheme === 'dark' ? 'bg-[#060705]/98 backdrop-blur-xl border-white/10' : 'bg-surface backdrop-blur-xl border-gray-200'
   }`;
   
   const dropdownItemClass = `block w-full text-left px-4 py-3 rounded-xl transition-all group/item cursor-pointer ${
-    theme === 'dark' ? 'hover:bg-white/10 text-white/80 hover:text-white' : 'hover:bg-gray-50 text-gray-700 hover:text-gray-900'
+    effectiveTheme === 'dark' ? 'hover:bg-white/10 text-white/80 hover:text-white' : 'hover:bg-gray-50 text-gray-700 hover:text-gray-900'
   }`;
 
   return (
@@ -115,8 +119,8 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           : 'bg-transparent'
       }`}
       style={isScrolled ? { 
-        backgroundColor: theme === 'dark' ? 'rgba(6, 7, 5, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-        boxShadow: theme === 'dark' ? '0 0 40px rgba(44, 163, 189, 0.1)' : '0 10px 40px rgba(0, 0, 0, 0.1)'
+        backgroundColor: effectiveTheme === 'dark' ? 'rgba(6, 7, 5, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+        boxShadow: effectiveTheme === 'dark' ? '0 0 40px rgba(44, 163, 189, 0.1)' : '0 10px 40px rgba(0, 0, 0, 0.1)'
       } : undefined}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,14 +134,14 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
               <img
                 src="/mx_dark.webp"
                 alt="Malitix dark logo"
-                className={`absolute inset-0 h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-                style={{ zIndex: theme === 'dark' ? 0 : 1 }}
+                className={`absolute inset-0 h-10 w-auto transition-opacity duration-200 ${effectiveTheme === 'dark' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                style={{ zIndex: effectiveTheme === 'dark' ? 0 : 1 }}
               />
               <img
                 src="/mx_light.webp"
                 alt="Malitix light logo"
-                className={`absolute inset-0 h-10 w-auto transition-opacity duration-200 ${theme === 'dark' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-                style={{ zIndex: theme === 'dark' ? 1 : 0 }}
+                className={`absolute inset-0 h-10 w-auto transition-opacity duration-200 ${effectiveTheme === 'dark' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                style={{ zIndex: effectiveTheme === 'dark' ? 1 : 0 }}
               />
             </Link>
           </div>
@@ -290,17 +294,19 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
 
           {/* Theme Toggle and CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
-                theme === 'dark' 
-                  ? 'bg-white/10 hover:bg-white/20 text-white' 
-                  : 'bg-surface hover:bg-gray-100 text-gray-900 border border-gray-100'
-              }`}
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            {!isBIAdvisor && (
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
+                  theme === 'dark' 
+                    ? 'bg-white/10 hover:bg-white/20 text-white' 
+                    : 'bg-surface hover:bg-gray-100 text-gray-900 border border-gray-200'
+                }`}
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+            )}
 
             <button
               onClick={() => {
@@ -319,7 +325,7 @@ export default function Navbar({ theme: propTheme }: NavbarProps) {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer ${
-              theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-100'
+              effectiveTheme === 'dark' ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-100'
             }`}
             aria-label="Toggle menu"
           >
