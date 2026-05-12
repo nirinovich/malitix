@@ -268,9 +268,9 @@ export default function BIAdvisor() {
       <section className="relative pt-32 pb-20 px-6 sm:px-12 bg-[#0B0D17] border-b-8 border-[#2ca3bd] overflow-hidden">
         {/* Subtle background noise/grid */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M0%200h20v20H0V0zm20%2020h20v20H20V20z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
-        
+
         <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
+
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Badge & Stars */}
             <RevealSection>
@@ -307,7 +307,7 @@ export default function BIAdvisor() {
                 TESTER GRATUITEMENT
                 <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
               </button>
-              
+
               <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -348,11 +348,11 @@ export default function BIAdvisor() {
 
             {/* Video Container with refined proportions */}
             <div className="relative z-10 aspect-[16/10] lg:aspect-video rounded-[2.5rem] overflow-hidden border-[12px] border-[#1A1C25] shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-[#0a0e0d] group">
-              <video 
-                src="/demo-bi.mp4" 
-                autoPlay 
-                muted 
-                loop 
+              <video
+                src="/demo-bi.mp4"
+                autoPlay
+                muted
+                loop
                 playsInline
                 className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
               />
@@ -458,7 +458,7 @@ export default function BIAdvisor() {
 
           <RevealSection delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-4 border-[#1A1C25] rounded-3xl overflow-hidden bg-[#0a0e0d]">
-              
+
               {/* BEFORE */}
               <div className="p-10 sm:p-12 border-b md:border-b-0 md:border-r border-[#1A1C25] relative">
                 <h3 className="text-3xl font-black text-gray-500 mb-10 uppercase tracking-widest text-center">Avant</h3>
@@ -515,7 +515,7 @@ export default function BIAdvisor() {
                 L'IA AU SERVICE DU PILOTAGE
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white leading-tight tracking-tight">
-                POSEZ UNE QUESTION.<br/>
+                POSEZ UNE QUESTION.<br />
                 <span className="text-[#2ca3bd]">RÉPONSE EN SECONDES.</span>
               </h2>
             </div>
@@ -528,14 +528,42 @@ export default function BIAdvisor() {
             <RevealSection className="relative order-2 lg:order-1">
               <div className="absolute -top-24 -left-24 w-72 h-72 bg-[#2ca3bd]/8 blur-[100px] rounded-full pointer-events-none" />
               <div className="relative bg-white dark:bg-[#111] rounded-3xl border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden">
-                {/* macOS-style title bar */}
-                <div className="flex items-center gap-2 px-6 py-4 bg-gray-50 dark:bg-white/[0.03] border-b border-gray-100 dark:border-white/5">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-                    <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-                    <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
+                {/* Browser chrome */}
+                <div className="bg-[#f0f0f0] dark:bg-[#1e1e1e] border-b border-gray-300 dark:border-white/5">
+                  {/* Tab bar */}
+                  <div className="flex items-end gap-0 px-3 pt-2">
+                    <div className="flex gap-1.5 items-center mr-3 mb-2">
+                      <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
+                      <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                      <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
+                    </div>
+                    {/* Active tab — fixed width like a real browser */}
+                    <div className="flex items-center gap-1.5 bg-white dark:bg-[#111] border border-b-white dark:border-white/10 dark:border-b-[#111] rounded-t-lg px-3 py-1.5 -mb-px max-w-[200px] min-w-0 flex-shrink-0">
+                      <div className="w-3 h-3 rounded-full bg-[#2ca3bd] flex-shrink-0" />
+                      <span className="text-[11px] font-medium text-gray-700 dark:text-gray-300 truncate">BI Advisor — Malitix</span>
+                      <svg className="w-3 h-3 text-gray-400 ml-auto flex-shrink-0 hover:text-gray-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </div>
+                    {/* New tab button */}
+                    <button className="pb-1 px-2 text-gray-400 flex-shrink-0">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                    </button>
                   </div>
-                  <span className="ml-3 text-[11px] font-bold text-gray-400 uppercase tracking-widest">BI Advisor — Connecté à l'ERP</span>
+                  {/* Address bar row */}
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#f0f0f0] dark:bg-[#1e1e1e]">
+                    <div className="flex gap-1 text-gray-400 dark:text-gray-600">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                      <svg className="w-3.5 h-3.5 opacity-40" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-1 bg-white dark:bg-[#2a2a2a] rounded-md px-2.5 py-1 border border-gray-300 dark:border-white/10">
+                      <svg className="w-3 h-3 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-[11px] font-mono text-gray-700 dark:text-gray-300 flex-1">
+                        malitix.com<span className="text-gray-400 dark:text-gray-500">/bi-advisor</span>
+                      </span>
+                      <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                    </div>
+                  </div>
                 </div>
                 <div className="p-6">
                   <HeroChatDemo />
@@ -660,7 +688,7 @@ export default function BIAdvisor() {
             ].map((useCase, index) => (
               <RevealSection key={useCase.department} delay={index * 100}>
                 <div className="bg-white dark:bg-[#111] border-2 border-gray-200 dark:border-white/10 p-8 rounded-3xl h-full flex flex-col shadow-xl relative mt-8">
-                  
+
                   {/* Floating Avatar/Icon to match testimonial style */}
                   <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-[#111] dark:bg-[#2ca3bd] rounded-full flex items-center justify-center text-white border-4 border-gray-100 dark:border-[#0a0e0d] shadow-lg">
                     {useCase.icon}
@@ -672,7 +700,7 @@ export default function BIAdvisor() {
                       "{useCase.query}"
                     </p>
                   </div>
-                  
+
                   <div className="bg-[#2ca3bd]/10 py-3 rounded-xl text-center">
                     <span className="text-[#2ca3bd] font-black uppercase tracking-widest">{useCase.after}</span>
                   </div>
@@ -682,6 +710,48 @@ export default function BIAdvisor() {
           </div>
         </div>
       </section>
+
+      {/* ── REVIEWS STRIP ─────────────────────────────── */}
+      <div className="py-16 px-6 sm:px-12 bg-gray-50 dark:bg-[#0a0e0d] border-y border-gray-200 dark:border-white/10 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Selim Saadi",
+                role: "CEO & Co-founder · Karlisolutions",
+                avatar: "/images/testimonials/selim-saadi.webp",
+                quote: "Nous avons pu développer notre solution dans sa première version avec des équipes de Malitix qui ont parfaitement compris notre besoin. Une équipe réactive et un suivi flexible."
+              },
+              {
+                name: "David Bovet",
+                role: "CEO · Bios Analytics",
+                avatar: "/images/testimonials/david.webp",
+                quote: "Malitix est un partenaire de longue date depuis la création de notre premier site web, contribuant à notre présence en ligne et à nos solutions technologiques au fil des années."
+              },
+              {
+                name: "Riad Roubache",
+                role: "CISO/CTO · Tersadia",
+                avatar: "/images/testimonials/riad.webp",
+                quote: "Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA qui nous permettent d'être confiants sur notre collaboration."
+              }
+            ].map((r, i) => (
+              <div key={i} className="bg-white dark:bg-[#111] rounded-2xl p-6 border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                <div className="flex gap-0.5 mb-4 text-[#2ca3bd]">
+                  {[1,2,3,4,5].map(s => <Star key={s} fill="currentColor" size={14} />)}
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 italic">"{r.quote}"</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-white/5">
+                  <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full object-cover grayscale hover:grayscale-0 transition-all" />
+                  <div>
+                    <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-wider">{r.name}</p>
+                    <p className="text-[10px] text-gray-400 font-bold">{r.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ═══════════════════════════════════════════════
           SECTION 7: THE GUARANTEE (Risk Reversal)
@@ -723,7 +793,7 @@ export default function BIAdvisor() {
               </h2>
             </div>
           </RevealSection>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Cards styled as stark bold blocks */}
             <RevealSection delay={100}>
@@ -810,7 +880,7 @@ export default function BIAdvisor() {
           SECTION 10: FINAL CTA (Contact)
           ═══════════════════════════════════════════════ */}
       <BIAdvisorContact />
-      
+
     </div>
   );
 }
