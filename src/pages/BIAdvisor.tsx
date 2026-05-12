@@ -2,10 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import BIAdvisorContact from '../components/BIAdvisor/BIAdvisorContact';
 import { Helmet } from 'react-helmet-async';
 import {
-  TrendingUp,
   LineChart,
-  MessageSquare,
-  BellRing,
   PackageSearch,
   ArrowRight,
   ArrowUpRight,
