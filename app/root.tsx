@@ -79,7 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               gtag("set", "ads_data_redaction", true);
               gtag("set", "url_passthrough", false);
             `}} />
-            <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/8c7b194ddfb209c75d3cbd84ee02b13f/script.js"></script>
+            <script id="cookieyes" type="text/javascript" async src="https://cdn-cookieyes.com/client_data/8c7b194ddfb209c75d3cbd84ee02b13f/script.js"></script>
             <script dangerouslySetInnerHTML={{ __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
