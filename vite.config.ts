@@ -42,18 +42,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Sanity Studio into its own chunk (only loaded on /admin)
-          // Exclude @sanity/client and @sanity/image-url — they're small and used by blog
-          if (
-            id.includes("node_modules/sanity/") ||
-            id.includes("node_modules\\sanity\\") ||
-            id.includes("@sanity/vision") ||
-            id.includes("@sanity/icons") ||
-            id.includes("@sanity/ui") ||
-            id.includes("sanity/structure")
-          ) {
-            return "sanity-studio";
-          }
+          // Removed manual chunking for sanity-studio because it was trapping Vite's preload helper
+          // and shared dependencies, causing a 5.7MB chunk to load on the homepage.
+          // Vite's default dynamic import chunking will handle Sanity Studio automatically
+          // since it's lazy-loaded in admin.tsx.
           if (
             id.includes("/node_modules/react/") ||
             id.includes("\\node_modules\\react\\") ||
