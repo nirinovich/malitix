@@ -6,7 +6,7 @@ import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 export default defineConfig({
   optimizeDeps: {
-    include: ["lucide-react"],
+    include: ["lucide-react", "react-hook-form"],
   },
   plugins: [
     tailwindcss(),
