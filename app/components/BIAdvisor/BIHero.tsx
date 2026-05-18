@@ -231,8 +231,11 @@ export default function BIHero() {
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-          {/* Badge & Stars */}
-          <RevealSection>
+          {/* Badge & Stars — immediate animation */}
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDuration: "0.7s", animationFillMode: "both" }}
+          >
             <div className="flex flex-col items-center lg:items-start gap-4 mb-8">
               <div className="flex items-center gap-2 bg-[#1A1C25] px-4 py-2 rounded-lg border border-white/5 shadow-xl">
                 <div className="flex text-yellow-400">
@@ -247,10 +250,13 @@ export default function BIHero() {
                 </span>
               </div>
             </div>
-          </RevealSection>
+          </div>
 
-          {/* Headline */}
-          <RevealSection delay={100}>
+          {/* Headline — immediate animation with slight delay */}
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDuration: "0.7s", animationDelay: "0.15s", animationFillMode: "both" }}
+          >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-8">
               DIVISEZ VOTRE TEMPS DE DÉCISION PAR 10.
             </h1>
@@ -261,12 +267,12 @@ export default function BIHero() {
               </span>{" "}
               qui répond à vos questions en langage naturel.
             </p>
-          </RevealSection>
+          </div>
 
-          {/* Big CTA & Social Proof */}
-          <RevealSection
-            delay={200}
-            className="w-full flex flex-col items-center lg:items-start"
+          {/* Big CTA & Social Proof — immediate animation with delay */}
+          <div
+            className="w-full flex flex-col items-center lg:items-start animate-fade-in-up"
+            style={{ animationDuration: "0.7s", animationDelay: "0.3s", animationFillMode: "both" }}
           >
             <button
               onClick={scrollToContact}
@@ -294,63 +300,65 @@ export default function BIHero() {
                 Rejoignez 30+ entreprises
               </span>
             </div>
-          </RevealSection>
+          </div>
         </div>
 
         {/* Right Section: Video Showcase */}
         <RevealSection
           delay={300}
-          className="w-full relative mt-12 lg:mt-0 flex justify-center lg:justify-end lg:pl-12 lg:scale-[1.15] lg:translate-x-8"
+          className="w-full mt-12 lg:mt-0 flex justify-center lg:justify-end lg:pl-4 xl:pl-8"
         >
-          {/* Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[var(--brand-primary)]/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative w-full max-w-[500px] lg:max-w-[540px] xl:max-w-[580px]">
+            {/* Background Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[var(--brand-primary)]/10 blur-[100px] rounded-full pointer-events-none" />
 
-          {/* Floating Badge: Excel */}
-          <div className="hidden sm:flex absolute -top-6 -left-4 md:-left-8 lg:-left-4 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-              <FileSpreadsheet size={24} />
-            </div>
-            <div>
-              <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                Connecté
+            {/* Floating Badge: Excel */}
+            <div className="hidden sm:flex absolute -top-6 -left-4 md:-left-6 lg:-left-8 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <FileSpreadsheet size={24} />
               </div>
-              <div className="text-sm font-bold text-gray-900 dark:text-white leading-tight">
-                Excel Live
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Connecté
+                </div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white leading-tight">
+                  Excel Live
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Floating Badge: Odoo / ERP */}
-          <div
-            className="hidden sm:flex absolute -bottom-6 -right-4 md:-right-8 lg:-right-4 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default"
-            style={{ animationDelay: "1.5s" }}
-          >
-            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
-              <Zap size={24} />
-            </div>
-            <div>
-              <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                ERP Sync
+            {/* Floating Badge: Odoo / ERP */}
+            <div
+              className="hidden sm:flex absolute -bottom-6 -right-4 md:-right-6 lg:-right-4 z-30 bg-white dark:bg-[#1A1C25] p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl items-center gap-3 animate-float transition-transform hover:scale-110 cursor-default"
+              style={{ animationDelay: "1.5s" }}
+            >
+              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                <Zap size={24} />
               </div>
-              <div className="text-sm font-bold text-gray-900 dark:text-white leading-tight">
-                Odoo &amp; Sage
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  ERP Sync
+                </div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white leading-tight">
+                  Odoo &amp; Sage
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Video Container with refined proportions */}
-          <div className="relative z-10 w-full max-w-[550px] lg:max-w-[600px] aspect-[16/10] lg:aspect-video rounded-3xl sm:rounded-[2.5rem] overflow-hidden border-8 sm:border-[12px] border-[#1A1C25] shadow-[0_0_50px_rgba(0,0,0,0.5)] lg:shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-[#0a0e0d] group">
-            <video
-              src="/demo-bi.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
-            />
-            {/* Overlay Glass Effect */}
-            <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-3xl sm:rounded-[2.5rem]" />
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            {/* Video Container with refined proportions */}
+            <div className="relative z-10 w-full aspect-[16/10] lg:aspect-video rounded-3xl sm:rounded-[2.5rem] overflow-hidden border-8 sm:border-[12px] border-[#1A1C25] shadow-[0_0_50px_rgba(0,0,0,0.5)] lg:shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-[#0a0e0d] group">
+              <video
+                src="/demo-bi.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+              />
+              {/* Overlay Glass Effect */}
+              <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-3xl sm:rounded-[2.5rem]" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
           </div>
         </RevealSection>
       </div>

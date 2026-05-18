@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database, BarChart, ShieldCheck } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router"; // Adjust if using react-router-dom
 import { CTA_TEXT } from "../../utils/constants";
@@ -53,7 +53,7 @@ const SERVICES_MENU = [
 ];
 
 export function Navbar() {
-  const { toggleTheme } = useTheme();
+  const { theme, setTheme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesMobileOpen, setIsServicesMobileOpen] = useState(false);
@@ -67,6 +67,20 @@ export function Navbar() {
   const isSolutionsActive = SOLUTIONS_MENU.some(s => location.pathname === s.href);
   const isAboutActive = location.pathname === "/qui-sommes-nous";
   const isBIAdvisorActive = location.pathname === "/bi-advisor";
+
+  // Force dark mode on BI Advisor page, restore previous theme on leave
+  const prevThemeRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (isBIAdvisorActive) {
+      if (theme !== "dark") {
+        prevThemeRef.current = theme;
+        setTheme("dark");
+      }
+    } else if (prevThemeRef.current) {
+      setTheme(prevThemeRef.current as "light" | "dark");
+      prevThemeRef.current = null;
+    }
+  }, [isBIAdvisorActive]);
 
   // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
   useEffect(() => {

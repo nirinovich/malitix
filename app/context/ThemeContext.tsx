@@ -5,6 +5,7 @@ export type Theme = "light" | "dark";
 
 export interface ThemeContextType {
   theme: Theme;
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
   systemPreference: Theme;
 }
@@ -115,7 +116,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, systemPreference }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, systemPreference }}>
       {children}
     </ThemeContext.Provider>
   );
