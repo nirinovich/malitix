@@ -1,46 +1,23 @@
-# ──────────────────────────────────────────────────────────────
-# Malitix – Hybrid SSG + SSR deployment
-# ──────────────────────────────────────────────────────────────
-# - nginx:  serves pre-rendered pages + static assets directly
-# - app:    Node.js server for SSR routes (blog, admin, etc.)
-# ──────────────────────────────────────────────────────────────
+version: '3.8'
 
 services:
-  # ── Node.js SSR server ────────────────────────────────────
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: app # Stage 4
-    restart: unless-stopped
-    expose:
-      - "3000" # only visible to nginx, not host
+      target: runner  # ou "production" selon le nom du stage final
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=production
-      - VITE_SANITY_PROJECT_ID=tuac272n
-      - VITE_SANITY_DATASET=production
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "node",
-          "-e",
-          "fetch('http://localhost:3000/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
-        ]
-      interval: 15s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
-
-  # ── nginx reverse proxy ──────────────────────────────────
-  nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: nginx # Stage 5
+      - PORT=3000
     restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
     ports:
       - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
-      app:
-        condition: service_healthy
+      - app
+    restart: unless-stopped
