@@ -14,7 +14,8 @@ import "./app.css";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", type: "image/x-icon", href: "/favicon.ico?v=2" },
-  { rel: "icon", type: "image/png", href: "/favicon.png?v=2" },
+  { rel: "shortcut icon", href: "/favicon.ico?v=2" },
+  { rel: "icon", type: "image/png", href: "/favicon.png?v=2", sizes: "any" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -64,7 +65,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <script data-cookieconsent="ignore" dangerouslySetInnerHTML={{ __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag() {
-                dataLayer.push(arguments);
+                window.dataLayer.push(arguments);
               }
               gtag('consent', 'default', {
                 'ad_personalization': 'denied',
@@ -78,38 +79,52 @@ export function Layout({ children }: { children: React.ReactNode }) {
               });
               gtag("set", "ads_data_redaction", true);
               gtag("set", "url_passthrough", false);
-            `}} />
-            <script id="cookieyes" type="text/javascript" async src="https://cdn-cookieyes.com/client_data/8c7b194ddfb209c75d3cbd84ee02b13f/script.js"></script>
-            <script dangerouslySetInnerHTML={{ __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-KTH9CRZ4');
-            `}} />
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGEFD1FDRZ"></script>
-            <script dangerouslySetInnerHTML={{ __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-
               gtag('config', 'AW-11480258743');
               gtag('config', 'G-XGEFD1FDRZ');
-            `}} />
-            <script dangerouslySetInnerHTML={{ __html: `
-              function gtag_report_conversion(url) {
+
+              window.gtag_report_conversion = function gtag_report_conversion(url) {
                 var callback = function () {
-                  if (typeof(url) != 'undefined') {
+                  if (typeof url !== 'undefined') {
                     window.location = url;
                   }
                 };
+
                 gtag('event', 'conversion', {
                   'send_to': 'AW-11480258743/VW8uCPmcocsaELexm-Iq',
                   'value': 1.0,
                   'currency': 'USD',
                   'event_callback': callback
                 });
+
                 return false;
+              };
+            `}} />
+            <script dangerouslySetInnerHTML={{ __html: `
+              function loadScript(src, id) {
+                if (id && document.getElementById(id)) {
+                  return;
+                }
+
+                var script = document.createElement('script');
+                script.async = true;
+                if (id) {
+                  script.id = id;
+                }
+                script.src = src;
+                document.head.appendChild(script);
+              }
+
+              function loadMarketingScripts() {
+                loadScript('https://cdn-cookieyes.com/client_data/8c7b194ddfb209c75d3cbd84ee02b13f/script.js', 'cookieyes');
+                loadScript('https://www.googletagmanager.com/gtm.js?id=GTM-KTH9CRZ4', 'gtm-js');
+                loadScript('https://www.googletagmanager.com/gtag/js?id=G-XGEFD1FDRZ', 'gtag-js');
+              }
+
+              if (document.readyState === 'complete') {
+                loadMarketingScripts();
+              } else {
+                window.addEventListener('load', loadMarketingScripts, { once: true });
               }
             `}} />
           </>
