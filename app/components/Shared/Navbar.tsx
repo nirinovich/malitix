@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Sun, Moon, Zap, Globe, Code, Smartphone, Database, BarChart, ShieldCheck } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router"; // Adjust if using react-router-dom
-import { CTA_TEXT } from "~/utils/constants";
-import { useTheme } from "~/context/ThemeContext";
+import { CTA_TEXT } from "../../utils/constants";
+import { useTheme } from "../../context/ThemeContext";
 
 const SOLUTIONS_MENU = [
   {
@@ -66,6 +66,7 @@ export function Navbar() {
   const isServicesActive = SERVICES_MENU.some(s => location.pathname === s.href) || location.pathname === "/services";
   const isSolutionsActive = SOLUTIONS_MENU.some(s => location.pathname === s.href);
   const isAboutActive = location.pathname === "/qui-sommes-nous";
+  const isBIAdvisorActive = location.pathname === "/bi-advisor";
 
   // Instant Scroll Listener (Fixes the 1-second delay and micro-freezing)
   useEffect(() => {
@@ -346,15 +347,17 @@ export function Navbar() {
 
           {/* Theme Toggle and CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className="theme-toggle p-2 rounded-lg transition-all duration-300 hover:scale-110"
-              aria-label="Basculer le thème"
-              suppressHydrationWarning
-            >
-              <Sun size={20} className="theme-icon-sun" />
-              <Moon size={20} className="theme-icon-moon" />
-            </button>
+            {!isBIAdvisorActive && (
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle p-2 rounded-lg transition-all duration-300 hover:scale-110"
+                aria-label="Basculer le thème"
+                suppressHydrationWarning
+              >
+                <Sun size={20} className="theme-icon-sun" />
+                <Moon size={20} className="theme-icon-moon" />
+              </button>
+            )}
 
             <button
               aria-label="Consultation Gratuite - Contactez-nous"
@@ -505,15 +508,17 @@ export function Navbar() {
 
           {/* Action Buttons Mobile */}
           <div className="pt-4 flex items-center justify-between gap-4 border-t border-[var(--text-secondary)]/10">
-            <button
-              onClick={toggleTheme}
-              className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              aria-label="Basculer le thème"
-              suppressHydrationWarning
-            >
-              <Sun size={20} className="theme-icon-sun" />
-              <Moon size={20} className="theme-icon-moon" />
-            </button>
+            {!isBIAdvisorActive && (
+              <button
+                onClick={toggleTheme}
+                className="mobile-theme-toggle p-3 rounded-lg flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                aria-label="Basculer le thème"
+                suppressHydrationWarning
+              >
+                <Sun size={20} className="theme-icon-sun" />
+                <Moon size={20} className="theme-icon-moon" />
+              </button>
+            )}
 
             <button
               onClick={() => {

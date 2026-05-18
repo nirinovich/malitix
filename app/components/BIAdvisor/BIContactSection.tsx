@@ -1,97 +1,152 @@
-import { CheckCircle } from "lucide-react";
-import { SharedContactForm } from "~/components/Shared/Form/SharedContactForm";
-import { useInView } from "~/hooks/useInView";
-
-const benefits = [
-  {
-    title: "1) Une démo live sur vos données",
-    desc: "Connecté à votre ERP, en conditions réelles, pas sur des données fictives.",
-  },
-  {
-    title: "2) Une session de questions/réponses dédiée",
-    desc: "Avec un expert Malitix pour calibrer BI Advisor à vos cas d'usage métier.",
-  },
-  {
-    title: "3) Un POC complet sous 48h",
-    desc: "Prévisions, alertes et chatbot BI configurés sur vos données historiques.",
-  },
-  {
-    title: "4) Un rapport d'impact ROI personnalisé",
-    desc: "Estimations chiffrées du gain de temps et de marge pour votre activité.",
-  },
-  {
-    title: "5) Zéro engagement",
-    desc: "Aucun contrat. Décidez d'avancer uniquement si les résultats vous convainquent.",
-  },
-];
+import { useState } from "react";
+import { ArrowRight, Mail, User, Phone, Building2, CheckCircle } from "lucide-react";
 
 export default function BIContactSection() {
-  const { ref, isInView } = useInView({ once: true });
+  const [formData, setFormData] = useState({ name: "", email: "", company: "", phone: "", message: "" });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [contactMethod, setContactMethod] = useState<"meeting" | "form">("meeting");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      if (typeof window !== "undefined" && (window as any).gtag_report_conversion) {
+        (window as any).gtag_report_conversion(undefined);
+      }
+      const response = await fetch("https://arkedown.app.n8n.cloud/webhook/malitix", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, source: "LP - BI Advisor" }),
+      });
+      if (!response.ok) throw new Error("Erreur lors de l'envoi du formulaire");
+      setIsSubmitted(true);
+      setTimeout(() => { setIsSubmitted(false); setFormData({ name: "", email: "", company: "", phone: "", message: "" }); }, 5000);
+    } catch (err) { console.error(err); }
+    finally { setIsLoading(false); }
+  };
 
   return (
-    <section
-      id="bi-advisor-contact"
-      className="relative py-24 overflow-hidden bg-[var(--bg-primary)]"
-    >
-      {/* Background glow */}
+    <section id="bi-advisor-contact" className="relative py-24 px-6 sm:px-12 bg-[#0B0D17] text-white border-t-8 border-[var(--brand-primary)]">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M0%200h20v20H0V0zm20%2020h20v20H20V20z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full blur-3xl bg-[var(--brand-primary)]/5" />
+        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full blur-[120px] bg-[var(--brand-primary)]/10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div
-          ref={ref as React.RefObject<HTMLDivElement>}
-          className={`mb-12 animate-on-scroll ${isInView ? "in-view" : ""}`}
-        >
-          <div className="inline-block px-4 py-2 rounded-full bg-[var(--brand-primary)] text-white text-sm font-bold mb-4">
-            Démo &amp; Test Gratuit — Sur vos données réelles
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-black mb-4 text-[var(--text-primary)]">
-            Prêt à dialoguer avec votre entreprise ?
-          </h2>
-          <p className="text-xl text-[var(--text-secondary)]">
-            Lancez un Proof of Concept sur vos données historiques. Résultats en moins de 48h.
-          </p>
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="mb-16 text-center">
+          <div className="inline-block bg-[var(--brand-primary)]/20 text-[var(--brand-primary)] px-6 py-2 rounded-full font-black uppercase tracking-widest text-sm mb-6 border border-[var(--brand-primary)]/50">DÉMO &amp; TEST GRATUIT</div>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 uppercase">PRÊT À DIALOGUER <span className="text-[var(--brand-primary)]">AVEC VOTRE ENTREPRISE ?</span></h2>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-medium">Lancez un Proof of Concept sur vos données historiques. Résultats en moins de 48h.</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left — Form */}
-          <div className={`animate-on-scroll stagger-1 ${isInView ? "in-view" : ""}`}>
-            <SharedContactForm
-              source="LP - BI Advisor"
-              buttonText="Demander ma démo et mon test gratuit"
-              title="Planifiez votre démonstration"
-              subtitle="Remplissez le formulaire pour recevoir votre POC personnalisé sous 48h."
-            />
+          {/* Left — Contact card */}
+          <div className="p-8 sm:p-12 rounded-3xl bg-[#0a0e0d] border-4 border-[#1A1C25] shadow-2xl relative min-h-[600px] flex flex-col">
+            <div className="flex p-1 bg-white/5 rounded-2xl mb-8">
+              <button onClick={() => setContactMethod("meeting")} className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 font-bold uppercase tracking-widest text-xs cursor-pointer ${contactMethod === "meeting" ? "bg-[var(--brand-primary)] text-white shadow-lg" : "text-gray-400 hover:text-[var(--brand-primary)]"}`}>
+                <Phone size={16} /> Réserver un RDV
+              </button>
+              <button onClick={() => setContactMethod("form")} className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 font-bold uppercase tracking-widest text-xs cursor-pointer ${contactMethod === "form" ? "bg-[var(--brand-primary)] text-white shadow-lg" : "text-gray-400 hover:text-[var(--brand-primary)]"}`}>
+                <Mail size={16} /> Via Formulaire
+              </button>
+            </div>
+
+            {contactMethod === "meeting" ? (
+              <div className="flex-1 flex flex-col items-center justify-center text-center py-8 space-y-10 animate-fade-in">
+                <div className="w-24 h-24 bg-[var(--brand-primary)]/20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[var(--brand-primary)]/30">
+                  <Phone className="text-[var(--brand-primary)]" size={48} />
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-black uppercase text-white tracking-tight">Choisissez votre créneau</h3>
+                  <p className="text-xl text-gray-400 font-medium max-w-sm">Découvrez comment BI Advisor peut transformer votre gestion data en 30 minutes.</p>
+                </div>
+                <a href="https://meetings.hubspot.com/lola-rakotoarison" target="_blank" rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-4 bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] text-white px-12 py-6 rounded-2xl font-black text-xl shadow-[0_0_40px_rgba(44,163,189,0.3)] hover:shadow-[0_0_60px_rgba(44,163,189,0.5)] hover:-translate-y-1 transition-all uppercase tracking-widest border border-white/20">
+                  Prendre RDV sur HubSpot
+                  <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+                </a>
+                <div className="flex items-center gap-6 text-xs text-gray-500 font-bold uppercase tracking-[0.2em]">
+                  <span>✓ 100% GRATUIT</span><span>✓ AUCUN ENGAGEMENT</span>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="animate-fade-in">
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">Nom *</label>
+                    <div className="relative">
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--brand-primary)]" size={24} />
+                      <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Jean Dupont"
+                        className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[var(--brand-primary)] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">E-mail *</label>
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--brand-primary)]" size={24} />
+                      <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="jean.dupont@entreprise.fr"
+                        className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[var(--brand-primary)] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">Entreprise *</label>
+                    <div className="relative">
+                      <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--brand-primary)]" size={24} />
+                      <input type="text" required value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} placeholder="Nom de votre entreprise"
+                        className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[var(--brand-primary)] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">Téléphone</label>
+                    <div className="relative">
+                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--brand-primary)]" size={24} />
+                      <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+33 6 12 34 56 78"
+                        className="w-full pl-14 pr-4 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[var(--brand-primary)] bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold mb-3 text-white uppercase tracking-widest">Votre contexte (optionnel)</label>
+                    <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} rows={4} placeholder="Quel ERP utilisez-vous ? Quelles sont vos problématiques data actuelles ?"
+                      className="w-full px-5 py-4 rounded-2xl border-2 transition-all focus:outline-none focus:border-[var(--brand-primary)] resize-none bg-[#111] border-[#333] text-white placeholder-gray-500 font-medium text-lg" />
+                  </div>
+                  <button type="submit" disabled={isLoading || isSubmitted}
+                    className={`group cursor-pointer w-full mt-4 bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] text-white px-8 py-6 rounded-2xl font-black text-xl tracking-wide uppercase shadow-[0_0_40px_rgba(44,163,189,0.3)] hover:shadow-[0_0_60px_rgba(44,163,189,0.5)] hover:-translate-y-1 transition-all flex items-center justify-center gap-3 border border-white/20 ${isLoading || isSubmitted ? "opacity-50 cursor-not-allowed" : ""}`}>
+                    {isLoading ? "ENVOI EN COURS..." : isSubmitted ? "✓ DEMANDE ENVOYÉE !" : "RÉSERVER MA DÉMO GRATUITE"}
+                    {!isLoading && !isSubmitted && <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />}
+                  </button>
+                  <p className="text-xs text-center text-gray-500 font-bold uppercase tracking-widest mt-4">En soumettant ce formulaire, vous acceptez d&apos;être recontacté par Malitix.</p>
+                </div>
+              </form>
+            )}
           </div>
 
           {/* Right — What you get */}
-          <div className={`space-y-6 lg:self-center animate-on-scroll stagger-2 ${isInView ? "in-view" : ""}`}>
-            <div className="p-6 sm:p-8 rounded-3xl backdrop-blur-sm border-2 bg-[var(--brand-primary)]/5 border-[var(--brand-primary)]/30">
-              <h3 className="text-2xl font-black mb-6 text-[var(--text-primary)]">
-                Ce que vous obtenez
-              </h3>
+          <div className="space-y-6 lg:self-center">
+            <div className="p-8 sm:p-12 rounded-3xl bg-[var(--brand-primary)]/5 relative border border-[var(--brand-primary)]/30">
+              <div className="absolute top-0 left-0 w-full h-2 bg-[var(--brand-primary)]" />
+              <h3 className="text-3xl font-black mb-10 text-white uppercase tracking-widest">CE QUE VOUS OBTENEZ</h3>
               <div className="space-y-4">
-                {benefits.map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <CheckCircle
-                      className="text-[var(--brand-primary)] flex-shrink-0 mt-1"
-                      size={22}
-                    />
+                {[
+                  { title: "1) Une démo live sur vos données", desc: "Connecté à votre ERP, en conditions réelles, pas sur des données fictives." },
+                  { title: "2) Une session de questions/réponses dédiée", desc: "Avec un expert Malitix pour calibrer BI Advisor à vos cas d'usage métier." },
+                  { title: "3) Un POC complet sous 48h", desc: "Prévisions, alertes et chatbot BI configurés sur vos données historiques." },
+                  { title: "4) Un rapport d'impact ROI personnalisé", desc: "Estimations chiffrées du gain de temps et de marge pour votre activité." },
+                  { title: "5) Zéro engagement", desc: "Aucun contrat. Décidez d'avancer uniquement si les résultats vous convainquent." },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <CheckCircle className="text-[var(--brand-primary)] flex-shrink-0" size={24} />
                     <div>
-                      <div className="font-bold mb-1 text-[var(--text-primary)]">{item.title}</div>
-                      <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
+                      <div className="font-bold text-lg mb-1 text-white">{item.title}</div>
+                      <p className="text-gray-400 font-medium">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div className="p-6 rounded-2xl text-center backdrop-blur-sm border border-[var(--border-primary)] bg-[var(--surface-elevated)]">
-              <p className="text-sm text-[var(--text-secondary)]">
-                &quot;Nous ne lançons que 5 POC par mois pour garantir un accompagnement
-                premium.&quot;
+            <div className="p-6 rounded-2xl text-center border-2 border-gray-800 bg-[#1A1C25]">
+              <p className="text-gray-400 font-bold tracking-widest uppercase text-sm">
+                &quot;NOUS NE LANÇONS QUE 5 POC PAR MOIS POUR GARANTIR UN ACCOMPAGNEMENT PREMIUM.&quot;
               </p>
             </div>
           </div>

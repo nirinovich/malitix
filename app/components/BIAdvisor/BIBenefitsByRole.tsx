@@ -1,71 +1,69 @@
-import { LineChart, TrendingUp, PackageSearch } from "lucide-react";
 import { useInView } from "~/hooks/useInView";
 
-export default function BIBenefitsByRole() {
-  const { ref, isInView } = useInView({ once: true });
-
-  const roles = [
-    {
-      icon: LineChart,
-      title: "DAF / Finance",
-      desc: "Suivi de trésorerie prédictif, optimisation du BFR et analyse d'écarts budgétaires — à la demande, en temps réel.",
-      result: "→ Visibilité cash à J+90 au lieu de J+15",
-    },
-    {
-      icon: TrendingUp,
-      title: "Commerce / Sales",
-      desc: "Analyse de rentabilité par client, prévision des ventes basées sur la pipeline, détection d'opportunités cachées.",
-      result: "→ +25% de taux de conversion pipeline",
-    },
-    {
-      icon: PackageSearch,
-      title: "Logistique / Ops",
-      desc: "Prévention des ruptures de stocks, optimisation des approvisionnements, analyse de la chaîne logistique en continu.",
-      result: "→ -40% de ruptures de stock",
-    },
-  ];
-
+function RevealSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const { ref, isInView } = useInView({ once: true, threshold: 0.08 });
   return (
-    <section className="py-24 px-6 sm:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-primary)]">
+    <div ref={ref as React.RefObject<HTMLDivElement>} className={`transition-all duration-700 ease-out ${className}`}
+      style={{ opacity: isInView ? 1 : 0, transform: isInView ? "translateY(0)" : "translateY(40px)", transitionDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
+}
+
+export default function BIBenefitsByRole() {
+  return (
+    <section className="py-24 px-6 sm:px-12 bg-white dark:bg-[#111]">
       <div className="max-w-7xl mx-auto">
-        <div
-          ref={ref as React.RefObject<HTMLDivElement>}
-          className={`text-center mb-16 animate-on-scroll ${isInView ? "in-view" : ""}`}
-        >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-4">
-            Chaque métier y gagne.{" "}
-            <span className="text-[var(--brand-primary)]">Concrètement.</span>
-          </h2>
-          <p className="text-[var(--text-secondary)] text-lg">
-            Des résultats mesurables, pas des promesses vagues.
-          </p>
-        </div>
+        <RevealSection>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase">
+              CHAQUE MÉTIER Y GAGNE. <span className="text-[var(--brand-primary)]">CONCRÈTEMENT.</span>
+            </h2>
+          </div>
+        </RevealSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {roles.map((role, i) => {
-            const Icon = role.icon;
-            return (
-              <div
-                key={role.title}
-                className={`animate-on-scroll ${isInView ? "in-view" : ""}`}
-                style={{ transitionDelay: `${(i + 1) * 100}ms` }}
-              >
-                <div className="bg-[var(--surface-elevated)] border border-[var(--border-primary)] rounded-3xl p-8 h-full hover:border-[var(--brand-primary)]/30 transition-all group">
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--brand-primary)]/10 flex items-center justify-center mb-6 group-hover:bg-[var(--brand-primary)] transition-colors">
-                    <Icon
-                      className="text-[var(--brand-primary)] group-hover:text-white transition-colors"
-                      size={28}
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
-                    {role.title}
-                  </h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed mb-4">{role.desc}</p>
-                  <p className="text-sm text-[var(--brand-primary)] font-semibold">{role.result}</p>
-                </div>
+          <RevealSection delay={100}>
+            <div className="border-4 border-gray-900 dark:border-white p-8 rounded-3xl h-full">
+              <h3 className="text-3xl font-black mb-6 text-gray-900 dark:text-white uppercase border-b-4 border-[var(--brand-primary)] inline-block pb-2">DAF / FINANCE</h3>
+              <ul className="space-y-4 mb-8 text-gray-600 dark:text-gray-300 font-medium text-lg">
+                <li>• Suivi de trésorerie prédictif</li>
+                <li>• Optimisation du BFR</li>
+                <li>• Analyse d&apos;écarts budgétaires</li>
+              </ul>
+              <div className="bg-gray-900 dark:bg-white text-white dark:text-[#111] p-4 rounded-xl font-black text-center uppercase tracking-wider">
+                VISIBILITÉ CASH J+90
               </div>
-            );
-          })}
+            </div>
+          </RevealSection>
+
+          <RevealSection delay={200}>
+            <div className="border-4 border-gray-900 dark:border-white p-8 rounded-3xl h-full">
+              <h3 className="text-3xl font-black mb-6 text-gray-900 dark:text-white uppercase border-b-4 border-[var(--brand-primary)] inline-block pb-2">COMMERCE</h3>
+              <ul className="space-y-4 mb-8 text-gray-600 dark:text-gray-300 font-medium text-lg">
+                <li>• Rentabilité par client</li>
+                <li>• Prévision des ventes sur pipeline</li>
+                <li>• Détection d&apos;opportunités</li>
+              </ul>
+              <div className="bg-gray-900 dark:bg-white text-white dark:text-[#111] p-4 rounded-xl font-black text-center uppercase tracking-wider">
+                +25% CONVERSION
+              </div>
+            </div>
+          </RevealSection>
+
+          <RevealSection delay={300}>
+            <div className="border-4 border-gray-900 dark:border-white p-8 rounded-3xl h-full">
+              <h3 className="text-3xl font-black mb-6 text-gray-900 dark:text-white uppercase border-b-4 border-[var(--brand-primary)] inline-block pb-2">LOGISTIQUE</h3>
+              <ul className="space-y-4 mb-8 text-gray-600 dark:text-gray-300 font-medium text-lg">
+                <li>• Prévention des ruptures</li>
+                <li>• Optimisation des stocks</li>
+                <li>• Analyse de la chaîne en continu</li>
+              </ul>
+              <div className="bg-gray-900 dark:bg-white text-white dark:text-[#111] p-4 rounded-xl font-black text-center uppercase tracking-wider">
+                -40% DE RUPTURES
+              </div>
+            </div>
+          </RevealSection>
         </div>
       </div>
     </section>

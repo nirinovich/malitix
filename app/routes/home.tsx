@@ -1,23 +1,23 @@
 import { Suspense, lazy } from "react";
 import type { Route } from "./+types/home";
-import { HeroSection } from "~/components/Home/HeroSection";
-import { Layout } from "~/components/Shared/Layout";
-import { buildMeta } from "~/utils/seo";
+import { Layout } from "../components/Shared/Layout";
+import { buildMeta } from "../utils/seo";
+import { HeroSection } from "../components/Home/HeroSection";
 
 // Lazy load below-the-fold content
 const ServicesSection = lazy(() =>
-  import("~/components/Home/ServicesSection").then((module) => ({
+  import("../components/Home/ServicesSection").then((module) => ({
     default: module.ServicesSection,
   }))
 );
 const TrustStats = lazy(() =>
-  import("~/components/Home/TrustStats").then((module) => ({ default: module.TrustStats }))
+  import("../components/Home/TrustStats").then((module) => ({ default: module.TrustStats }))
 );
 const CTASection = lazy(() =>
-  import("~/components/Home/CTASection").then((module) => ({ default: module.CTASection }))
+  import("../components/Home/CTASection").then((module) => ({ default: module.CTASection }))
 );
 const SocialProof = lazy(() =>
-  import("~/components/Shared/SocialProof").then((module) => ({ default: module.SocialProof }))
+  import("../components/Shared/SocialProof").then((module) => ({ default: module.SocialProof }))
 );
 
 export const meta: Route.MetaFunction = () =>

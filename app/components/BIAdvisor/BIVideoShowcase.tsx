@@ -1,40 +1,50 @@
-import { useInView } from "~/hooks/useInView";
+import { Star } from "lucide-react";
+
+const reviews = [
+  {
+    name: "Selim Saadi",
+    role: "CEO & Co-founder · Karlisolutions",
+    avatar: "/images/testimonials/selim-saadi.webp",
+    quote: "Nous avons pu développer notre solution dans sa première version avec des équipes de Malitix qui ont parfaitement compris notre besoin. Une équipe réactive et un suivi flexible.",
+  },
+  {
+    name: "David Bovet",
+    role: "CEO · Bios Analytics",
+    avatar: "/images/testimonials/david.webp",
+    quote: "Malitix est un partenaire de longue date depuis la création de notre premier site web, contribuant à notre présence en ligne et à nos solutions technologiques au fil des années.",
+  },
+  {
+    name: "Riad Roubache",
+    role: "CISO/CTO · Tersadia",
+    avatar: "/images/testimonials/riad.webp",
+    quote: "Une équipe réactive, qui respecte les consignes, avec un suivi commercial précis et un respect des SLA qui nous permettent d'être confiants sur notre collaboration.",
+  },
+];
 
 export default function BIVideoShowcase() {
-  const { ref, isInView } = useInView({ once: true });
-
   return (
-    <section className="py-20 px-6 sm:px-12 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] relative border-b border-[var(--border-primary)]">
-      <div className="max-w-6xl mx-auto">
-        <div className={`text-center mb-10 animate-on-scroll ${isInView ? "in-view" : ""}`} ref={ref as React.RefObject<HTMLDivElement>}>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] mb-4">
-            Découvrez <span className="text-[var(--brand-primary)]">BI Advisor</span> en action
-          </h2>
-          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
-            Voyez comment nous transformons vos données brutes en insights exploitables
-            instantanément.
-          </p>
-        </div>
-
-        <div className={`animate-on-scroll stagger-2 ${isInView ? "in-view" : ""}`}>
-          <div className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[var(--brand-primary)]/20 border-2 sm:border-4 border-[var(--border-primary)] hover:border-[var(--brand-primary)]/30 transition-all duration-500 group bg-[var(--surface-elevated)] p-2">
-            <div className="relative rounded-3xl overflow-hidden aspect-video border border-[var(--border-primary)]">
-              <video
-                src="https://res.cloudinary.com/dqprx7rdw/video/upload/v1777277729/BI_ADVISOR-lOGO_MALITIX_1_kkkswp.mp4"
-                className="w-full h-full object-cover"
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/images/erp_hero.webp"
-              >
-                Votre navigateur ne supporte pas la balise vidéo.
-              </video>
+    <div className="py-16 px-6 sm:px-12 bg-gray-50 dark:bg-[#0a0e0d] border-y border-gray-200 dark:border-white/10 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {reviews.map((r, i) => (
+            <div key={i} className="bg-white dark:bg-[#111] rounded-2xl p-6 border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+              <div className="flex gap-0.5 mb-4 text-[var(--brand-primary)]">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star key={s} fill="currentColor" size={14} />
+                ))}
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 italic">&quot;{r.quote}&quot;</p>
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-white/5">
+                <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full object-cover grayscale hover:grayscale-0 transition-all" />
+                <div>
+                  <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-wider">{r.name}</p>
+                  <p className="text-[10px] text-gray-400 font-bold">{r.role}</p>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
